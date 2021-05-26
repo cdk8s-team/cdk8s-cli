@@ -1,40 +1,39 @@
 const { TypeScriptProject } = require('projen');
 
-const common = require('../projen-common');
+const cdk8sver = require('./cdk8s-version.json').version;
 
 const project = new TypeScriptProject({
   name: 'cdk8s-cli',
   description: 'CDK for Kubernetes CLI',
+  repositoryUrl: 'git@github.com:cdk8s-team/cdk8s-cli.git',
+  authorName: 'Amazon Web Services',
+  authorUrl: 'https://aws.amazon.com',
+  minNodeVersion: '10.17.0',
+  defaultReleaseBranch: 'main',
   bin: {
     cdk8s: 'bin/cdk8s',
   },
   deps: [
-    'cdk8s@^0.0.0',
+    `cdk8s@${cdk8sver}`,
     'codemaker',
     'constructs',
-    'fs-extra',
+    'fs-extra@^8',
     'jsii-srcmak',
     'jsii-pacmak',
     'sscaff',
     'yaml',
-    'yargs',
+    'yargs@^15',
     'json2jsii',
     'colors',
 
     // add @types/node as a regular dependency since it's needed to during "import"
     // to compile the generated jsii code.
-    '@types/node',
+    '@types/node@^10.17.0',
   ],
   devDeps: [
-    '@types/fs-extra',
+    '@types/fs-extra@^8',
     '@types/json-schema',
   ],
-  ...common.options,
 });
-
-project.eslint.addIgnorePattern('/templates/');
-project.jest.addIgnorePattern('/templates/');
-
-common.fixup(project);
 
 project.synth();
