@@ -12,6 +12,7 @@ const project = new TypeScriptProject({
   authorUrl: 'https://aws.amazon.com',
   minNodeVersion: '10.17.0',
   defaultReleaseBranch: 'main',
+  releaseToNpm: true,
   bin: {
     cdk8s: 'bin/cdk8s',
   },
