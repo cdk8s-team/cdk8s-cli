@@ -6,6 +6,8 @@ const project = new TypeScriptProject({
   name: 'cdk8s-cli',
   description: 'CDK for Kubernetes CLI',
   repositoryUrl: 'git@github.com:cdk8s-team/cdk8s-cli.git',
+  prerelease: 'beta',
+  projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
   authorName: 'Amazon Web Services',
   authorUrl: 'https://aws.amazon.com',
   minNodeVersion: '10.17.0',
