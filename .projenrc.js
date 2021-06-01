@@ -10,12 +10,18 @@ const project = new TypeScriptProject({
   authorUrl: 'https://aws.amazon.com',
   minNodeVersion: '10.17.0',
   defaultReleaseBranch: 'main',
+
+  // needed for "cdk init" tests to work in all languages
+  workflowContainerImage: 'jsii/superchain',
+  workflowBootstrapSteps: [{ run: 'pip3 install pipenv' }],
+
   releaseToNpm: true,
   bin: {
     cdk8s: 'bin/cdk8s',
   },
   deps: [
     'cdk8s',
+    'cdk8s-plus-17',
     'codemaker',
     'constructs',
     'fs-extra@^8',
@@ -35,6 +41,9 @@ const project = new TypeScriptProject({
     '@types/fs-extra@^8',
     '@types/json-schema',
   ],
+
+  // we need the compiled .js files for the init tests (we run the cli in there)
+  compileBeforeTest: true,
 });
 
 project.synth();

@@ -59,9 +59,6 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "rm -fr lib/"
-        },
-        {
           "spawn": "test:compile"
         },
         {
@@ -81,10 +78,10 @@
           "exec": "npx projen"
         },
         {
-          "spawn": "test"
+          "spawn": "compile"
         },
         {
-          "spawn": "compile"
+          "spawn": "test"
         },
         {
           "spawn": "package"

@@ -1406,6 +1406,13 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
+cdk8s-plus-17@1.0.0-beta.18:
+  version "1.0.0-beta.18"
+  resolved "https://registry.yarnpkg.com/cdk8s-plus-17/-/cdk8s-plus-17-1.0.0-beta.18.tgz#b7a7ebdadcf3a75618e719d5764344b515006f59"
+  integrity sha512-7TIYXo9fIdj8kawpiIaGNlhxewE2KbundrZDMMLSchsb9QtJBYQEj8a00kUBonPMpftwZCQY36RANEThq16BRQ==
+  dependencies:
+    minimatch "^3.0.4"
+
 cdk8s@1.0.0-beta.14:
   version "1.0.0-beta.14"
   resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.0.0-beta.14.tgz#39c506e8d6440ff8b5b11066eb94174446055acd"
@@ -5606,10 +5613,10 @@ progress@^2.0.0, progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.20.2:
-  version "0.20.2"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.20.2.tgz#e68fb5fa71c58800e60e8271c896657c37c369ff"
-  integrity sha512-31aC6crFj6s4eJn92uu1VjWiABtDgZmV7MuW8ioALH10HACgFYr6rMy7jWOvT6JX2bEMfs5Uyr3Oyf521RocOQ==
+projen@^0.20.8:
+  version "0.20.8"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.20.8.tgz#5f26fd742ebb6c5bfd2f7cd06494bdacf5d42fbd"
+  integrity sha512-kYxKr4YOH4Yh4gyW04ZjPuKMulwU1EnyxxbfmAetAx3+2zJZ0Xf5QAOCsRBKYVH2Ct6dMyliWwh60XFkqfg6gw==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.1"
