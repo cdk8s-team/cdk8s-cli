@@ -90,7 +90,6 @@
     },
     {
       "name": "cdk8s",
-      "version": "1.0.0-beta.11",
       "type": "runtime"
     },
     {
