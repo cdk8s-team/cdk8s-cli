@@ -10,6 +10,7 @@ const project = new TypeScriptProject({
   authorUrl: 'https://aws.amazon.com',
   minNodeVersion: '10.17.0',
   defaultReleaseBranch: 'main',
+  workflowContainerImage: 'jsii/superchain', // needed for "cdk init" tests to work in all languages
   releaseToNpm: true,
   bin: {
     cdk8s: 'bin/cdk8s',

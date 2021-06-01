@@ -44,3 +44,5 @@ jobs:
           status="completed" -F conclusion="success"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    container:
+      image: jsii/superchain
