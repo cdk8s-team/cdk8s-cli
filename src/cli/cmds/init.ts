@@ -13,6 +13,7 @@ const constructsVersion = pkg.dependencies.constructs.replace('^', '');
 const templatesDir = path.join(pkgroot, 'templates');
 const availableTemplates = fs.readdirSync(templatesDir).filter(x => !x.startsWith('.'));
 
+export const IS_TEST = 'CDK8S_TEST';
 
 class Command implements yargs.CommandModule {
   public readonly command = 'init TYPE';
@@ -47,7 +48,6 @@ async function determineDeps(): Promise<Deps> {
 
   return {
     npm_cdk8s: cdk8s.npmDependency,
-    npm_cdk8s_cli: cdk8sCli.npmDependency,
     npm_cdk8s_plus: cdk8sPlus17.npmDependency,
     pypi_cdk8s: cdk8s.pypiDependency,
     pypi_cdk8s_plus: cdk8sPlus17.pypiDependency,
@@ -56,12 +56,15 @@ async function determineDeps(): Promise<Deps> {
     cdk8s_core_version: cdk8s.version,
     cdk8s_plus_version: cdk8sPlus17.version,
     constructs_version: constructsVersion,
+
+    // do not attempt to install cdk8s cli if we are running in a test context
+    npm_cdk8s_cli: process.env[IS_TEST] ? undefined : cdk8sCli.npmDependency,
   };
 }
 
 interface Deps {
   npm_cdk8s: string;
-  npm_cdk8s_cli: string;
+  npm_cdk8s_cli?: string;
   npm_cdk8s_plus: string;
   pypi_cdk8s: string;
   pypi_cdk8s_plus: string;

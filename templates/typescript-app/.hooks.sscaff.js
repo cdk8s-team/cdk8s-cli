@@ -1,5 +1,8 @@
 const { execSync } = require('child_process');
 const { readFileSync } = require('fs');
+const { dirname } = require('path');
+
+const clibin = dirname(require.resolve('../../bin/cdk8s'));
 
 exports.post = ctx => {
   const npm_cdk8s = ctx.npm_cdk8s;
@@ -8,11 +11,9 @@ exports.post = ctx => {
   const constructs_version = ctx.constructs_version;
 
   if (!npm_cdk8s) { throw new Error(`missing context "npm_cdk8s"`); }
-  if (!npm_cdk8s_cli) { throw new Error(`missing context "npm_cdk8s_cli"`); }
 
   installDeps([ npm_cdk8s, npm_cdk8s_plus, `constructs@^${constructs_version}` ]);
   installDeps([
-      npm_cdk8s_cli,
       '@types/node',
       '@types/jest',
       'jest',
@@ -20,11 +21,20 @@ exports.post = ctx => {
       'typescript'
   ], true);
 
+  const env = { ...process.env };
+
+  // install cdk8s cli if defined
+  if (npm_cdk8s_cli) {
+    installDeps([npm_cdk8s_cli], true);
+  } else {
+    env.PATH = `${clibin}:${process.env.PATH}`;
+  }
+
   // import k8s objects
-  execSync('npm run import', { stdio: 'inherit' });
-  execSync('npm run compile', { stdio: 'inherit' });
-  execSync('npm run test -- -u', { stdio: 'inherit' });
-  execSync('npm run synth', { stdio: 'inherit' });
+  execSync('npm run import', { stdio: 'inherit', env });
+  execSync('npm run compile', { stdio: 'inherit', env });
+  execSync('npm run test -- -u', { stdio: 'inherit', env });
+  execSync('npm run synth', { stdio: 'inherit', env });
 
   console.log(readFileSync('./help', 'utf-8'));
 };
