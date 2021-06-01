@@ -32,6 +32,8 @@ const project = new TypeScriptProject({
     'yargs@^15',
     'json2jsii',
     'colors',
+    'http-proxy-agent',
+    'https-proxy-agent',
 
     // add @types/node as a regular dependency since it's needed to during "import"
     // to compile the generated jsii code.
