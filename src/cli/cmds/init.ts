@@ -20,8 +20,6 @@ class Command implements yargs.CommandModule {
   public readonly builder = (args: yargs.Argv) => args
     .positional('TYPE', { demandOption: true, desc: 'Project type' })
     .showHelpOnFail(false)
-    .option('dist', { type: 'string', desc: 'Install dependencies from a "dist" directory (for development)' })
-    .option('cdk8s-version', { type: 'string', desc: 'The cdk8s version to use when creating the new project', default: pkg.version })
     .choices('TYPE', availableTemplates);
 
   public async handler(argv: any) {
@@ -32,52 +30,20 @@ class Command implements yargs.CommandModule {
 
     console.error(`Initializing a project from the ${argv.type} template`);
     const templatePath = path.join(templatesDir, argv.type);
-    const deps: any = await determineDeps(argv.cdk8SVersion, argv.dist);
+    const deps: any = await determineDeps();
 
     try {
-      await sscaff(templatePath, '.', { ...deps, dist: argv.dist, pre: argv.cdk8SVersion.includes('-') });
+      await sscaff(templatePath, '.', deps);
     } catch (e) {
       throw new Error(`error during project initialization: ${e.stack}\nSTDOUT:\n${e.stdout?.toString()}\nSTDERR:\n${e.stderr?.toString()}`);
     }
   }
 }
 
-async function determineDeps(version: string, dist?: string): Promise<Deps> {
-  const cdk8s = new ModuleVersion('cdk8s', version, { jsii: true });
-  const cdk8sPlus17 = new ModuleVersion('cdk8s-plus-17', version, { jsii: true });
-  const cdk8sCli = new ModuleVersion('cdk8s-cli', version);
-
-  if (dist) {
-    const ret = {
-      npm_cdk8s: path.resolve(dist, 'js', cdk8s.npmTarballFile),
-      npm_cdk8s_cli: path.resolve(dist, 'js', cdk8sCli.npmTarballFile),
-      npm_cdk8s_plus: path.resolve(dist, 'js', cdk8sPlus17.npmTarballFile),
-      pypi_cdk8s: path.resolve(dist, 'python', cdk8s.pypiWheelFile),
-      pypi_cdk8s_plus: path.resolve(dist, 'python', cdk8sPlus17.pypiWheelFile),
-      mvn_cdk8s: path.resolve(dist, 'java', cdk8s.javaJarFile),
-      mvn_cdk8s_plus: path.resolve(dist, 'java', cdk8sPlus17.javaJarFile),
-    };
-
-    for (const file of Object.values(ret)) {
-      if (!(await fs.pathExists(file))) {
-        throw new Error(`unable to find ${file} under the "dist" directory (${dist})`);
-      }
-    }
-
-    const versions = {
-      cdk8s_version: version,
-      constructs_version: constructsVersion,
-    };
-
-    return {
-      ...ret,
-      ...versions,
-    };
-  }
-
-  if (version === '0.0.0') {
-    throw new Error('cannot use version 0.0.0, use --cdk8s-version, --dist or CDK8S_DIST to install from a "dist" directory');
-  }
+async function determineDeps(): Promise<Deps> {
+  const cdk8s = new ModuleVersion('cdk8s', { jsii: true });
+  const cdk8sPlus17 = new ModuleVersion('cdk8s-plus-17', { jsii: true });
+  const cdk8sCli = new ModuleVersion('cdk8s-cli');
 
   return {
     npm_cdk8s: cdk8s.npmDependency,
@@ -87,7 +53,8 @@ async function determineDeps(version: string, dist?: string): Promise<Deps> {
     pypi_cdk8s_plus: cdk8sPlus17.pypiDependency,
     mvn_cdk8s: cdk8s.mavenDependency,
     mvn_cdk8s_plus: cdk8sPlus17.mavenDependency,
-    cdk8s_version: version,
+    cdk8s_core_version: cdk8s.version,
+    cdk8s_plus_version: cdk8sPlus17.version,
     constructs_version: constructsVersion,
   };
 }
@@ -100,7 +67,8 @@ interface Deps {
   pypi_cdk8s_plus: string;
   mvn_cdk8s: string;
   mvn_cdk8s_plus: string;
-  cdk8s_version: string;
+  cdk8s_core_version: string;
+  cdk8s_plus_version: string;
   constructs_version: string;
 }
 
@@ -108,13 +76,15 @@ class ModuleVersion {
   public readonly pypiVersion: string;
   public readonly npmVersion: string;
   public readonly mavenVersion: string;
+  public readonly version: string;
 
   private readonly jsii: boolean;
 
-  constructor(private readonly moduleName: string, private readonly version: string, options: { jsii?: boolean } = { }) {
-    this.npmVersion = version;
+  constructor(private readonly moduleName: string, options: { jsii?: boolean } = { }) {
+    this.version = this.resolveVersion(moduleName);
+    this.npmVersion = this.version;
     this.pypiVersion = pacmakv.toReleaseVersion(this.version, pacmak.TargetName.PYTHON);
-    this.mavenVersion = pacmakv.toReleaseVersion(version, pacmak.TargetName.JAVA);
+    this.mavenVersion = pacmakv.toReleaseVersion(this.version, pacmak.TargetName.JAVA);
     this.jsii = options.jsii ?? false;
   }
 
@@ -146,6 +116,16 @@ class ModuleVersion {
   public get mavenDependency() {
     return this.mavenVersion;
   }
+
+  private resolveVersion(module: string): string {
+    if (module === 'cdk8s-cli') {
+      module = '../../../';
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    return require(`${module}/package.json`).version;
+  }
 }
+
 
 module.exports = new Command();

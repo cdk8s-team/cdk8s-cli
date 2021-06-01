@@ -23,27 +23,14 @@ exports.post = options => {
     throw new Error(`missing context "pypi_cdk8s_plus"`);
   }
 
-  const flags = [];
-
-  if (options.dist) {
-    // https://github.com/awslabs/cdk8s/pull/399
-    flags.push('--skip-lock');
-  }
-
-  if (options.pre) {
-    flags.push('--pre');
-  }
-
-  const args = flags.join(' ');
-
   execSync('pipenv lock --clear')
 
   // this installs the libraries in the Pipfile we provide
   execSync('pipenv install', { stdio: 'inherit' });
 
   // these are more akward to put in the Pipfile since they can be local wheel files
-  execSync(`pipenv install ${args} ${pypi_cdk8s}`, { stdio: 'inherit' });
-  execSync(`pipenv install ${args} ${pypi_cdk8s_plus}`, { stdio: 'inherit' });
+  execSync(`pipenv install --pre ${pypi_cdk8s}`, { stdio: 'inherit' });
+  execSync(`pipenv install --pre ${pypi_cdk8s_plus}`, { stdio: 'inherit' });
 
   chmodSync('main.py', '700');
 

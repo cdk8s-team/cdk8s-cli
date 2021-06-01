@@ -93,6 +93,10 @@
       "type": "runtime"
     },
     {
+      "name": "cdk8s-plus-17",
+      "type": "runtime"
+    },
+    {
       "name": "codemaker",
       "type": "runtime"
     },
