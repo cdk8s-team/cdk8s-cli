@@ -50,8 +50,8 @@
   },
   "dependencies": {
     "@types/node": "^10.17.0",
-    "cdk8s": "1.0.0-beta.14",
-    "cdk8s-plus-17": "1.0.0-beta.18",
+    "cdk8s": "1.0.0-beta.17",
+    "cdk8s-plus-17": "1.0.0-beta.19",
     "codemaker": "^1.30.0",
     "colors": "^1.4.0",
     "constructs": "^3.3.75",
