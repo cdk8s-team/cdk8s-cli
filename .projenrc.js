@@ -36,6 +36,9 @@ const project = new TypeScriptProject({
     '@types/fs-extra@^8',
     '@types/json-schema',
   ],
+
+  // we need the compiled .js files for the init tests (we run the cli in there)
+  compileBeforeTest: true,
 });
 
 project.synth();
