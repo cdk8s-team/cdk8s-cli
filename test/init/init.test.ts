@@ -2,7 +2,6 @@ import { execFileSync } from 'child_process';
 import { mkdtempSync, readdirSync, statSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
-import { IS_TEST } from '../../src/cli/cmds/init';
 
 const cli = require.resolve('../../lib/cli/index');
 
@@ -20,7 +19,7 @@ test.each(templates)('%s', name => {
     cwd: workdir,
     env: {
       ...process.env,
-      [IS_TEST]: 'true', // indicates that we run in test context
+      CDK8S_TEST: 'true',
     },
   });
 });

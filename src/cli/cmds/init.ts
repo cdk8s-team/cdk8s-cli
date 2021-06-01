@@ -13,8 +13,6 @@ const constructsVersion = pkg.dependencies.constructs.replace('^', '');
 const templatesDir = path.join(pkgroot, 'templates');
 const availableTemplates = fs.readdirSync(templatesDir).filter(x => !x.startsWith('.'));
 
-export const IS_TEST = 'CDK8S_TEST';
-
 class Command implements yargs.CommandModule {
   public readonly command = 'init TYPE';
   public readonly describe = 'Create a new cdk8s project from a template.';
@@ -58,7 +56,7 @@ async function determineDeps(): Promise<Deps> {
     constructs_version: constructsVersion,
 
     // do not attempt to install cdk8s cli if we are running in a test context
-    npm_cdk8s_cli: process.env[IS_TEST] ? undefined : cdk8sCli.npmDependency,
+    npm_cdk8s_cli: process.env.CDK8S_TEST ? undefined : cdk8sCli.npmDependency,
   };
 }
 
