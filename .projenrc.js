@@ -1,7 +1,5 @@
 const { TypeScriptProject } = require('projen');
 
-const cdk8sver = require('./cdk8s-version.json').version;
-
 const project = new TypeScriptProject({
   name: 'cdk8s-cli',
   description: 'CDK for Kubernetes CLI',
@@ -17,7 +15,7 @@ const project = new TypeScriptProject({
     cdk8s: 'bin/cdk8s',
   },
   deps: [
-    `cdk8s@${cdk8sver}`,
+    'cdk8s',
     'codemaker',
     'constructs',
     'fs-extra@^8',
