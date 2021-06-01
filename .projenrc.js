@@ -10,7 +10,11 @@ const project = new TypeScriptProject({
   authorUrl: 'https://aws.amazon.com',
   minNodeVersion: '10.17.0',
   defaultReleaseBranch: 'main',
-  workflowContainerImage: 'jsii/superchain', // needed for "cdk init" tests to work in all languages
+
+  // needed for "cdk init" tests to work in all languages
+  workflowContainerImage: 'jsii/superchain',
+  workflowBootstrapSteps: [{ run: 'pip3 install pipenv' }],
+
   releaseToNpm: true,
   bin: {
     cdk8s: 'bin/cdk8s',
