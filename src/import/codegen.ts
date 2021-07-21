@@ -143,7 +143,7 @@ export function generateConstruct(typegen: TypeGenerator, def: ApiObjectDefiniti
       code.openBlock(`public static ${MANIFEST_STATIC_METHOD}(props: ${propsTypeName}${defaultProps}): any`);
       code.open('return {');
       code.line(`...${constructName}.${GVK_STATIC},`);
-      code.line('...props,');
+      code.line(`...toJson_${propsTypeName}(props),`);
       code.close('};');
       code.closeBlock();
     }

@@ -1,9 +1,12 @@
-import { promises as fs } from 'fs';
+import { promises as fs, readFileSync } from 'fs';
 import * as path from 'path';
+import { promisify } from 'util';
+import * as glob from 'glob';
 import { ImportBase, ImportOptions, Language } from '../../src/import/base';
 import { mkdtemp } from '../../src/util';
 
-jest.setTimeout(3 * 60_000);
+
+jest.setTimeout(10 * 60_000);
 
 export function testImportMatchSnapshot(name: string, fn: () => ImportBase, options?: Partial<ImportOptions>) {
 
@@ -15,21 +18,41 @@ export function testImportMatchSnapshot(name: string, fn: () => ImportBase, opti
 export async function expectImportMatchSnapshot(fn: () => ImportBase, options?: Partial<ImportOptions>) {
   await mkdtemp(async workdir => {
     const importer = fn();
-    const jsiiPath = path.join(workdir, '.jsii');
 
-    await importer.import({
-      outdir: workdir,
-      outputJsii: jsiiPath,
-      targetLanguage: Language.TYPESCRIPT,
-      ...options,
-    });
+    const languages = [Language.TYPESCRIPT];
 
-    const manifest = JSON.parse((await fs.readFile(jsiiPath)).toString('utf-8'));
+    for (const lang of languages) {
+      const jsiiPath = lang === Language.TYPESCRIPT ? path.join(workdir, '.jsii') : undefined;
 
-    // patch cdk8s version in manifest because it's not stable
-    manifest.dependencies.cdk8s = '999.999.999';
-    manifest.fingerprint = '<fingerprint>';
+      await importer.import({
+        outdir: workdir,
+        outputJsii: jsiiPath,
+        targetLanguage: lang,
+        ...options,
+      });
 
-    expect(manifest).toMatchSnapshot();
+      if (jsiiPath) {
+        const manifest = JSON.parse((await fs.readFile(jsiiPath)).toString('utf-8'));
+
+        // patch cdk8s version in manifest because it's not stable
+        manifest.dependencies.cdk8s = '999.999.999';
+        manifest.fingerprint = '<fingerprint>';
+        expect(manifest).toMatchSnapshot();
+      }
+
+      const files = await promisify(glob)('**', {
+        cwd: workdir,
+        ignore: ['**/*.tgz'],
+        nodir: true,
+      });
+
+      const map: Record<string, string> = {};
+      for (const file of files) {
+        const source = readFileSync(path.join(workdir, file), 'utf-8');
+        map[file] = source;
+      }
+
+      expect(map).toMatchSnapshot();
+    }
   });
 }
