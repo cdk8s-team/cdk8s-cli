@@ -13,7 +13,7 @@
    npm run synth       Synthesize k8s manifests from charts to dist/ (ready for 'kubectl apply -f')
 
  Deploy:
-   kubectl apply -f dist/*.k8s.yaml
+   kubectl apply -f dist/
 
  Upgrades:
    npm run import        Import/update k8s apis (you should check-in this directory)
