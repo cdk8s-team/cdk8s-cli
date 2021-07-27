@@ -104,7 +104,7 @@ Object {
         },
         "locationInModule": Object {
           "filename": "meta.pkg.crossplane.io.ts",
-          "line": 39,
+          "line": 40,
         },
         "parameters": Array [
           Object {
@@ -139,7 +139,7 @@ Object {
       "kind": "class",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 10,
+        "line": 11,
       },
       "methods": Array [
         Object {
@@ -149,7 +149,7 @@ Object {
           },
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 26,
+            "line": 27,
           },
           "name": "manifest",
           "parameters": Array [
@@ -181,7 +181,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 14,
+            "line": 15,
           },
           "name": "GVK",
           "static": true,
@@ -204,7 +204,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 49,
+        "line": 50,
       },
       "name": "ConfigurationProps",
       "properties": Array [
@@ -219,7 +219,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 60,
+            "line": 61,
           },
           "name": "spec",
           "type": Object {
@@ -236,12 +236,12 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 53,
+            "line": 54,
           },
           "name": "metadata",
           "optional": true,
           "type": Object {
-            "primitive": "any",
+            "fqn": "cdk8s.ApiObjectMetadata",
           },
         },
       ],
@@ -259,7 +259,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 69,
+        "line": 70,
       },
       "name": "ConfigurationSpec",
       "properties": Array [
@@ -274,7 +274,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 75,
+            "line": 76,
           },
           "name": "crossplane",
           "optional": true,
@@ -293,7 +293,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 82,
+            "line": 83,
           },
           "name": "dependsOn",
           "optional": true,
@@ -321,7 +321,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 91,
+        "line": 92,
       },
       "name": "ConfigurationSpecCrossplane",
       "properties": Array [
@@ -336,7 +336,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 97,
+            "line": 98,
           },
           "name": "version",
           "type": Object {
@@ -359,7 +359,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 106,
+        "line": 107,
       },
       "name": "ConfigurationSpecDependsOn",
       "properties": Array [
@@ -374,7 +374,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 126,
+            "line": 127,
           },
           "name": "version",
           "type": Object {
@@ -392,7 +392,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 112,
+            "line": 113,
           },
           "name": "configuration",
           "optional": true,
@@ -411,7 +411,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 119,
+            "line": 120,
           },
           "name": "provider",
           "optional": true,
