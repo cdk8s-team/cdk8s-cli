@@ -168,7 +168,7 @@ export class ImportCustomResourceDefinition extends ImportBase {
     const crds = this.groups[moduleName];
 
 
-    emitHeader(code);
+    emitHeader(code, true);
 
     for (const crd of crds) {
       console.log(`  ${crd.key}`);
