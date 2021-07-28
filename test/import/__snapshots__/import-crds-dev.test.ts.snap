@@ -10,7 +10,7 @@ Object {
   },
   "dependencies": Object {
     "cdk8s": "999.999.999",
-    "constructs": "3.3.83",
+    "constructs": "3.3.106",
   },
   "dependencyClosure": Object {
     "cdk8s": Object {
@@ -20,7 +20,7 @@ Object {
           "packageId": "Org.Cdk8s",
         },
         "go": Object {
-          "moduleName": "github.com/cdk8s-team/cdk8s-go",
+          "moduleName": "github.com/cdk8s-team/cdk8s-core-go",
         },
         "java": Object {
           "maven": Object {
@@ -67,7 +67,7 @@ Object {
   "description": "metapkgcrossplaneio",
   "fingerprint": "<fingerprint>",
   "homepage": "http://generated",
-  "jsiiVersion": "1.30.0 (build adae23f)",
+  "jsiiVersion": "1.32.0 (build 3f4fe23)",
   "license": "UNLICENSED",
   "metadata": Object {
     "jsii": Object {
@@ -259,7 +259,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 70,
+        "line": 85,
       },
       "name": "ConfigurationSpec",
       "properties": Array [
@@ -274,7 +274,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 76,
+            "line": 91,
           },
           "name": "crossplane",
           "optional": true,
@@ -293,7 +293,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 83,
+            "line": 98,
           },
           "name": "dependsOn",
           "optional": true,
@@ -321,7 +321,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 92,
+        "line": 122,
       },
       "name": "ConfigurationSpecCrossplane",
       "properties": Array [
@@ -336,7 +336,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 98,
+            "line": 128,
           },
           "name": "version",
           "type": Object {
@@ -359,7 +359,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 107,
+        "line": 151,
       },
       "name": "ConfigurationSpecDependsOn",
       "properties": Array [
@@ -374,7 +374,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 127,
+            "line": 171,
           },
           "name": "version",
           "type": Object {
@@ -392,7 +392,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 113,
+            "line": 157,
           },
           "name": "configuration",
           "optional": true,
@@ -411,7 +411,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 120,
+            "line": 164,
           },
           "name": "provider",
           "optional": true,
