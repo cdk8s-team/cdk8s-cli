@@ -137,7 +137,7 @@ export abstract class ImportBase {
             const importModuleName = module.name.split('.')[0].replace(/[^A-Za-z0-9]/g, '').toLocaleLowerCase();
 
             opts.golang = {
-              outdir: 'imports',
+              outdir: outdir,
               moduleName: `${userModuleName}/imports`,
               packageName: moduleNamePrefix ? moduleNamePrefix + '_' + importModuleName : importModuleName,
             };

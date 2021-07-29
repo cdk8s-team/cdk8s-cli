@@ -1,6 +1,6 @@
-import { promises as fs, readFileSync } from 'fs';
 import * as path from 'path';
 import { promisify } from 'util';
+import * as fs from 'fs-extra';
 import * as glob from 'glob';
 import { ImportBase, ImportOptions, Language } from '../../src/import/base';
 import { mkdtemp } from '../../src/util';
@@ -23,6 +23,10 @@ export async function expectImportMatchSnapshot(fn: () => ImportBase, options?: 
 
     for (const lang of languages) {
       const jsiiPath = lang === Language.TYPESCRIPT ? path.join(workdir, '.jsii') : undefined;
+
+      if (lang === Language.GO) {
+        fs.writeFileSync(path.join(workdir, 'go.mod'), 'module integtest');
+      }
 
       await importer.import({
         outdir: workdir,
@@ -48,7 +52,7 @@ export async function expectImportMatchSnapshot(fn: () => ImportBase, options?: 
 
       const map: Record<string, string> = {};
       for (const file of files) {
-        const source = readFileSync(path.join(workdir, file), 'utf-8');
+        const source = fs.readFileSync(path.join(workdir, file), 'utf-8');
         map[file] = source;
       }
 
