@@ -9,6 +9,7 @@ export enum Language {
   PYTHON = 'python',
   DOTNET = 'dotnet',
   JAVA = 'java',
+  GO = 'go',
 }
 
 export interface ImportOptions {
@@ -52,7 +53,7 @@ export abstract class ImportBase {
       console.error('warning: no definitions to import');
     }
 
-    const mapFunc = ( origName: any ) => {
+    const mapFunc = ( origName: string ) => {
       let name = origName;
       switch (options.targetLanguage) {
         case Language.PYTHON:
@@ -126,9 +127,48 @@ export abstract class ImportBase {
             };
           }
 
+          // go!
+          if (options.targetLanguage === Language.GO) {
+            const userModuleName = this.getGoModuleName(outdir);
+
+            // go package names may only consist of letters or digits.
+            // underscores are allowed too, but they are less idiomatic
+            // this converts e.g. "cert-manager.path.to.url" to "certmanager"
+            const importModuleName = module.name.split('.')[0].replace(/[^A-Za-z0-9]/g, '').toLocaleLowerCase();
+
+            opts.golang = {
+              outdir: 'imports',
+              moduleName: `${userModuleName}/imports`,
+              packageName: moduleNamePrefix ? moduleNamePrefix + '_' + importModuleName : importModuleName,
+            };
+          }
+
           await srcmak.srcmak(staging, opts);
         });
       }
     }
+  }
+
+  private getGoModuleName(outdir: string) {
+    outdir = path.normalize(outdir);
+
+    while (outdir !== path.dirname(outdir)) {
+      const file = path.join(outdir, 'go.mod');
+
+      if (fs.existsSync(file)) {
+        const contents = fs.readFileSync(file, 'utf8');
+        const matches = /module (.*)/.exec(contents);
+
+        if (!matches) {
+          throw new Error('Invalid go.mod file - could not find module path.');
+        }
+
+        return matches[1];
+      }
+
+      outdir = path.dirname(outdir);
+    }
+
+    throw new Error(`Cannot find go.mod file within ${outdir}.`);
   }
 }
