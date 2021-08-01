@@ -80,7 +80,7 @@ export class ImportKubernetesApi extends ImportBase {
       generateConstruct(typeGenerator, o);
     }
 
-    emitHeader(code);
+    emitHeader(code, false);
 
     code.line(typeGenerator.render());
   }

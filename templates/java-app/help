@@ -8,6 +8,6 @@
    mvn compile   Compiles your java packages
 
   Deploy:
-   kubectl apply -f dist/*.k8s.yaml
+   kubectl apply -f dist/
 
 ========================================================================================================

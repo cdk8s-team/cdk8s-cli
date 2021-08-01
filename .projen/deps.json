@@ -6,6 +6,10 @@
       "type": "build"
     },
     {
+      "name": "@types/glob",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -43,6 +47,10 @@
       "type": "build"
     },
     {
+      "name": "glob",
+      "type": "build"
+    },
+    {
       "name": "jest",
       "type": "build"
     },
@@ -61,13 +69,7 @@
       "type": "build"
     },
     {
-      "name": "npm-check-updates",
-      "version": "^11",
-      "type": "build"
-    },
-    {
       "name": "projen",
-      "version": "^0.20.10",
       "type": "build"
     },
     {

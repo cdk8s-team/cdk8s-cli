@@ -40,10 +40,17 @@ const project = new TypeScriptProject({
   devDeps: [
     '@types/fs-extra@^8',
     '@types/json-schema',
+    'glob',
+    '@types/glob',
   ],
 
   // we need the compiled .js files for the init tests (we run the cli in there)
   compileBeforeTest: true,
+  autoApproveOptions: {
+    allowedUsernames: ['cdk8s-automation'],
+    secret: 'GITHUB_TOKEN',
+  },
+  autoApproveUpgrades: true,
 });
 
 project.synth();

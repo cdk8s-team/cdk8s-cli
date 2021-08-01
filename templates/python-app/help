@@ -7,6 +7,6 @@
    cdk8s import  Imports k8s API objects to "imports/k8s"
 
   Deploy:
-   kubectl apply -f dist/*.k8s.yaml
+   kubectl apply -f dist/
 
 ========================================================================================================
