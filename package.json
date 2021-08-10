@@ -21,8 +21,7 @@
     "package": "npx projen package",
     "eslint": "npx projen eslint",
     "release": "npx projen release",
-    "projen": "npx projen",
-    "start": "npx projen start"
+    "projen": "npx projen"
   },
   "author": {
     "name": "Amazon Web Services",
@@ -46,23 +45,23 @@
     "jest-junit": "^12",
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
-    "projen": "^0.27.11",
+    "projen": "^0.27.13",
     "standard-version": "^9",
     "ts-jest": "^26.5.6",
     "typescript": "~3.9.10"
   },
   "dependencies": {
     "@types/node": "^10.17.0",
-    "cdk8s": "1.0.0-beta.26",
-    "cdk8s-plus-17": "1.0.0-beta.38",
+    "cdk8s": "1.0.0-beta.27",
+    "cdk8s-plus-17": "1.0.0-beta.42",
     "codemaker": "^1.32.0",
     "colors": "^1.4.0",
-    "constructs": "^3.3.107",
+    "constructs": "^3.3.110",
     "fs-extra": "^8",
     "jsii-pacmak": "^1.32.0",
-    "jsii-srcmak": "^0.1.309",
-    "json2jsii": "^0.1.278",
-    "sscaff": "^1.2.29",
+    "jsii-srcmak": "^0.1.312",
+    "json2jsii": "^0.1.282",
+    "sscaff": "^1.2.33",
     "yaml": "^1.10.2",
     "yargs": "^15"
   },
