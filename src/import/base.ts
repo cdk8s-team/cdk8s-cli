@@ -129,16 +129,17 @@ export abstract class ImportBase {
 
           // go!
           if (options.targetLanguage === Language.GO) {
-            const userModuleName = this.getGoModuleName(outdir);
+            const { userModuleName, userModulePath } = this.getGoModuleName(outdir);
+            const relativeDir = path.relative(userModulePath, outdir);
 
             // go package names may only consist of letters or digits.
             // underscores are allowed too, but they are less idiomatic
-            // this converts e.g. "cert-manager.path.to.url" to "certmanager"
-            const importModuleName = module.name.split('.')[0].replace(/[^A-Za-z0-9]/g, '').toLocaleLowerCase();
+            // this converts e.g. "cert-manager.path.to.url" to "certmanagerpathtourl"
+            const importModuleName = module.name.replace(/[^A-Za-z0-9]/g, '').toLocaleLowerCase();
 
             opts.golang = {
               outdir: outdir,
-              moduleName: `${userModuleName}/imports`,
+              moduleName: `${userModuleName}/${relativeDir}`,
               packageName: moduleNamePrefix ? moduleNamePrefix + '_' + importModuleName : importModuleName,
             };
           }
@@ -149,8 +150,12 @@ export abstract class ImportBase {
     }
   }
 
-  private getGoModuleName(outdir: string) {
-    outdir = path.normalize(outdir);
+  /**
+   * Traverses up directories until it finds a directory with a go.mod file,
+   * and parses the module name from the file.
+   */
+  private getGoModuleName(origOutdir: string) {
+    let outdir = path.resolve(origOutdir);
 
     while (outdir !== path.dirname(outdir)) {
       const file = path.join(outdir, 'go.mod');
@@ -163,12 +168,15 @@ export abstract class ImportBase {
           throw new Error('Invalid go.mod file - could not find module path.');
         }
 
-        return matches[1];
+        return {
+          userModuleName: matches[1],
+          userModulePath: outdir,
+        };
       }
 
       outdir = path.dirname(outdir);
     }
 
-    throw new Error(`Cannot find go.mod file within ${outdir}.`);
+    throw new Error(`Cannot find go.mod file within ${origOutdir} or any of its parent directories.`);
   }
 }
