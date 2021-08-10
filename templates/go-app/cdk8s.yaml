@@ -1,4 +1,4 @@
 language: go
-app: go run main.go
+app: go run .
 imports:
   - k8s
