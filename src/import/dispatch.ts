@@ -12,6 +12,8 @@ export async function importDispatch(imports: ImportSpec[], argv: any, options: 
       throw new Error(`unable to determine import type for "${importSpec}"`);
     }
 
+    console.error('Importing resources, this may take a few moments...');
+
     await importer.import({
       moduleNamePrefix: importSpec.moduleNamePrefix,
       ...options,
