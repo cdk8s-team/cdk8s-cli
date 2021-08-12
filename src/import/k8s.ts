@@ -82,7 +82,7 @@ export class ImportKubernetesApi extends ImportBase {
       } else {
         // rename struct types from their original names to ensure that
         // differently-versioned but identically-named resources
-        // are generated as distinct interfaces (differentiated by
+        // are generated as distinct types (differentiated by
         // their version).
         const { fullVersion } = parseApiTypeName(fqn);
         const canonicalName = getCanonicalName(fqn, fullVersion === '' ? 'v1' : fullVersion);
