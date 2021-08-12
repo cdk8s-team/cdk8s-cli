@@ -8,7 +8,7 @@ import { TypeGenerator } from 'json2jsii';
 import { ImportSpec } from '../config';
 import { download } from '../util';
 import { GenerateOptions, ImportBase } from './base';
-import { ApiObjectDefinition, emitHeader, generateConstruct, getPropsTypeName } from './codegen';
+import { ApiObjectDefinition, emitHeader, generateConstruct, getCanonicalName, getPropsTypeName } from './codegen';
 import { parseApiTypeName } from './k8s-util';
 
 
@@ -58,26 +58,40 @@ export class ImportKubernetesApi extends ImportBase {
       throw new Error(`unexpected module name "${moduleName}" when importing k8s types (expected "k8s")`);
     }
 
-    const prefix = options.classNamePrefix ?? DEFAULT_CLASS_NAME_PREFIX;
-    const topLevelObjects = findApiObjectDefinitions(schema, prefix);
+    const classNamePrefix = options.classNamePrefix ?? DEFAULT_CLASS_NAME_PREFIX;
 
-    const typeGenerator = new TypeGenerator({
-      definitions: schema.definitions,
-      exclude: this.options.exclude,
-    });
+    const typeGenerator = new TypeGenerator({ exclude: this.options.exclude });
 
-    // rename "Props" type from their original name based on the API object kind
-    // (e.g. `Deployment`) to their actual props type (`KubeDeploymentProps`) in
-    // order to avoid confusion between constructs (`KubeDeployment`) and those
-    // types. This is done by simply replacing their definition in the schema
-    // with a $ref to the definition of the props type.
-    for (const o of topLevelObjects) {
-      typeGenerator.addDefinition(o.fqn, { $ref: `#/definitions/${getPropsTypeName(o)}` });
-    }
+    for (const [fqn, def] of Object.entries(schema.definitions ?? {})) {
+      const apiObjectName = tryGetApiObjectName(def);
 
-    // emit construct types (recursive)
-    for (const o of topLevelObjects) {
-      generateConstruct(typeGenerator, o);
+      // emit types differently based on whether the definition corresponds to
+      // an API object (object that has the 'x-kubernetes-group-version-kind'
+      // annotation) or not
+      if (apiObjectName) {
+        const obj = createApiObjectDefinition(fqn, def, classNamePrefix);
+
+        // rename "Props" type from their original name based on the API object kind
+        // (e.g. `Deployment`) to their actual props type (`KubeDeploymentProps`) in
+        // order to avoid confusion between constructs (`KubeDeployment`) and those
+        // types.
+        typeGenerator.addAlias(fqn, getPropsTypeName(obj));
+
+        // emit construct type (recursive)
+        generateConstruct(typeGenerator, obj);
+      } else {
+        // rename struct types from their original names to ensure that
+        // differently-versioned but identically-named resources
+        // are generated as distinct interfaces (differentiated by
+        // their version).
+        const { fullVersion } = parseApiTypeName(fqn);
+        const canonicalName = getCanonicalName(fqn, fullVersion === '' ? 'v1' : fullVersion);
+
+        // e.g. re-map "io.k8s.api.apps.v1beta1.DeploymentCondition" to "DeploymentConditionV1Beta1",
+        // and "DeploymentConditionV1Beta1" to its schema
+        typeGenerator.addAlias(fqn, canonicalName);
+        typeGenerator.addDefinition(canonicalName, def);
+      }
     }
 
     emitHeader(code, false);
@@ -86,41 +100,24 @@ export class ImportKubernetesApi extends ImportBase {
   }
 }
 
-/**
- * Returns a map of all API objects in the spec (objects that have the
- * 'x-kubernetes-group-version-kind' annotation).
- *
- * The key is the base name of the type (i.e. `Deployment`). Since API objects
- * may have multiple versions, each value in the map is an array of type definitions
- * along with version information.
- *
- * @see https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-versioning
- */
-export function findApiObjectDefinitions(schema: JSONSchema4, prefix: string): ApiObjectDefinition[] {
-  const result = new Array<ApiObjectDefinition>();
-
-  for (const [typename, apischema] of Object.entries(schema.definitions || { })) {
-    const objectName = tryGetObjectName(apischema);
-    if (!objectName) {
-      continue;
-    }
-
-    const type = parseApiTypeName(typename);
-    result.push({
-      custom: false, // not a CRD
-      fqn: type.fullname,
-      group: objectName.group,
-      kind: objectName.kind,
-      version: objectName.version,
-      schema: apischema,
-      prefix,
-    });
+export function createApiObjectDefinition(fqn: string, def: JSONSchema4, prefix: string): ApiObjectDefinition {
+  const objectName = tryGetApiObjectName(def);
+  if (!objectName) {
+    throw new Error(`${fqn} cannot be defined as an API object.`);
   }
 
-  return result;
+  return {
+    custom: false, // not a CRD
+    fqn,
+    group: objectName.group,
+    kind: objectName.kind,
+    version: objectName.version,
+    schema: def,
+    prefix,
+  };
 }
 
-function tryGetObjectName(def: JSONSchema4): GroupVersionKind | undefined {
+function tryGetApiObjectName(def: JSONSchema4): GroupVersionKind | undefined {
   const objectNames = def[X_GROUP_VERSION_KIND] as GroupVersionKind[];
   if (!objectNames) {
     return undefined;

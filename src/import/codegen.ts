@@ -28,6 +28,12 @@ export interface ApiObjectDefinition {
   readonly prefix?: string;
 }
 
+export function getCanonicalName(fqn: string, version: string) {
+  const postfix = version === 'v1' ? '' : toPascalCase(version);
+  const root = fqn.split('.').pop();
+  return TypeGenerator.normalizeTypeName(`${root}${postfix}`);
+}
+
 /**
  * Emits the header for a generated imports file.
  *

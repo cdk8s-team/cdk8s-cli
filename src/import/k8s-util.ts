@@ -4,9 +4,9 @@
  *     |--------- ^ -------|  ^  ^ ^ |---^----|
  *                |           |  | |     |
  *  - namespace --+           |  | |     |
- *  - version ----------------+  | |     |
- *  - level ---------------------+ |     |
- *  - subversion ------------------+     |
+ *  - major ------------------+  | |     |
+ *  - stability -----------------+ |     |
+ *  - minor -----------------------+     |
  *  - basename --------------------------+
  */
 export interface ApiObjectName extends ApiObjectVersion {
@@ -16,12 +16,13 @@ export interface ApiObjectName extends ApiObjectVersion {
 }
 
 interface ApiObjectVersion {
-  level: ApiLevel;
-  version: number;
-  subversion: number;
+  fullVersion: string;
+  stability: ApiStability;
+  major: number;
+  minor: number;
 }
 
-enum ApiLevel {
+enum ApiStability {
   ALPHA = 'alpha',
   BETA = 'beta',
   STABLE = 'stable',
@@ -32,29 +33,40 @@ enum ApiLevel {
  */
 export function parseApiTypeName(fullname: string): ApiObjectName {
   const parts = fullname.split('.');
-  const type = parts[parts.length - 1];
+  const basename = parts[parts.length - 1];
 
   const namespace = parts.slice(0, parts.length - 2).join('.');
 
   const v = parts[parts.length - 2];
   const match = /^v([0-9]+)(([a-z]+)([0-9]+))?$/.exec(v);
   if (!match) {
-    throw new Error(`unable to parse version ${v}`);
+    return {
+      fullname,
+      namespace: parts.slice(0, parts.length - 1).join('.'),
+      basename,
+      fullVersion: '',
+      major: 0,
+      stability: ApiStability.STABLE,
+      minor: 0,
+    };
   }
-  const version = match[1];
-  if (!version) {
+
+  const fullVersion = match[0];
+  const major = match[1];
+  if (!major) {
     throw new Error(`unable to parse version ${v}. missing version number ("vN")`);
   }
 
-  const level = match[3] as ApiLevel ?? ApiLevel.STABLE;
-  const subversion = parseInt(match[4] ?? '0');
+  const stability = match[3] as ApiStability ?? ApiStability.STABLE;
+  const minor = parseInt(match[4] ?? '0');
   return {
-    fullname: fullname,
+    fullname,
     namespace,
-    basename: type,
-    version: parseInt(version),
-    level,
-    subversion,
+    basename,
+    fullVersion,
+    major: parseInt(major),
+    stability,
+    minor,
   };
 }
 
