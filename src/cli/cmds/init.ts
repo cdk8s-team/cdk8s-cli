@@ -43,6 +43,7 @@ async function determineDeps(): Promise<Deps> {
   const cdk8s = new ModuleVersion('cdk8s', { jsii: true });
   const cdk8sPlus17 = new ModuleVersion('cdk8s-plus-17', { jsii: true });
   const cdk8sCli = new ModuleVersion('cdk8s-cli');
+  const jsii = new ModuleVersion('jsii');
 
   return {
     npm_cdk8s: cdk8s.npmDependency,
@@ -54,6 +55,7 @@ async function determineDeps(): Promise<Deps> {
     cdk8s_core_version: cdk8s.version,
     cdk8s_plus_version: cdk8sPlus17.version,
     constructs_version: constructsVersion,
+    jsii_version: jsii.version,
 
     // do not attempt to install cdk8s cli if we are running in a test context
     npm_cdk8s_cli: process.env.CDK8S_TEST ? undefined : cdk8sCli.npmDependency,
@@ -71,6 +73,7 @@ interface Deps {
   cdk8s_core_version: string;
   cdk8s_plus_version: string;
   constructs_version: string;
+  jsii_version: string;
 }
 
 class ModuleVersion {
