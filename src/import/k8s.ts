@@ -8,7 +8,7 @@ import { TypeGenerator } from 'json2jsii';
 import { ImportSpec } from '../config';
 import { download } from '../util';
 import { GenerateOptions, ImportBase } from './base';
-import { ApiObjectDefinition, emitHeader, generateConstruct, getPropsTypeName } from './codegen';
+import { ApiObjectDefinition, emitHeader, generateConstruct, getPropsTypeName, getTypeName } from './codegen';
 import { parseApiTypeName } from './k8s-util';
 
 
@@ -64,6 +64,19 @@ export class ImportKubernetesApi extends ImportBase {
     const typeGenerator = new TypeGenerator({
       definitions: schema.definitions,
       exclude: this.options.exclude,
+      renderTypeName: (def: string) => {
+        const type = def.split('.');
+
+        if (type.length < 2) {
+          // this can happen with synthetic definitions we inject.
+          // e.g KubeMutatingWebhookConfigurationV1Beta1Props
+          return def;
+        }
+
+        const basename = type[type.length - 1];
+        const version = type[type.length - 2];
+        return getTypeName(basename, version);
+      },
     });
 
     // rename "Props" type from their original name based on the API object kind
