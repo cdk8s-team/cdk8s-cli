@@ -14,7 +14,6 @@ import { parseApiTypeName } from './k8s-util';
 
 const DEFAULT_API_VERSION = '1.15.0';
 const DEFAULT_CLASS_NAME_PREFIX = 'Kube';
-const VERSION_REGEX = new RegExp(/v\d+(alpha\d+|beta\d+|$)/);
 
 export interface ImportKubernetesApiOptions {
   /**
@@ -66,24 +65,12 @@ export class ImportKubernetesApi extends ImportBase {
       definitions: schema.definitions,
       exclude: this.options.exclude,
       renderTypeName: (def: string) => {
-        const type = def.split('.');
-
-        if (type.length < 2) {
-          // this can happen with synthetic definitions we inject.
-          // e.g KubeMutatingWebhookConfigurationV1Beta1Props
-          return def;
+        const parsed = parseApiTypeName(def);
+        if (!parsed.version) {
+          // not a versioned api type. return basename
+          return parsed.basename;
         }
-
-        const basename = type[type.length - 1];
-        const version = type[type.length - 2];
-
-        if (!VERSION_REGEX.test(version)) {
-          // its not really a version. no need to consider it.
-          // for example: io.k8s.apimachinery.pkg.util.intstr.IntOrString
-          return basename;
-        }
-
-        return getTypeName(false, basename, version);
+        return getTypeName(false, parsed.basename, parsed.version.raw);
       },
     });
 
@@ -127,6 +114,9 @@ export function findApiObjectDefinitions(schema: JSONSchema4, prefix: string): A
     }
 
     const type = parseApiTypeName(typename);
+    if (!type.version) {
+      throw new Error(`Unable to parse version for type: ${typename}`);
+    }
     result.push({
       custom: false, // not a CRD
       fqn: type.fullname,
