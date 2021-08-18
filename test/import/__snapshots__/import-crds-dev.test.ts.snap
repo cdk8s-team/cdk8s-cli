@@ -170,6 +170,22 @@ Object {
           },
           "static": true,
         },
+        Object {
+          "docs": Object {
+            "summary": "Renders the object to Kubernetes JSON.",
+          },
+          "locationInModule": Object {
+            "filename": "meta.pkg.crossplane.io.ts",
+            "line": 47,
+          },
+          "name": "toJson",
+          "overrides": "cdk8s.ApiObject",
+          "returns": Object {
+            "type": Object {
+              "primitive": "any",
+            },
+          },
+        },
       ],
       "name": "Configuration",
       "properties": Array [
@@ -204,7 +220,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 50,
+        "line": 62,
       },
       "name": "ConfigurationProps",
       "properties": Array [
@@ -219,7 +235,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 61,
+            "line": 73,
           },
           "name": "spec",
           "type": Object {
@@ -236,7 +252,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 54,
+            "line": 66,
           },
           "name": "metadata",
           "optional": true,
@@ -259,7 +275,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 85,
+        "line": 97,
       },
       "name": "ConfigurationSpec",
       "properties": Array [
@@ -274,7 +290,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 91,
+            "line": 103,
           },
           "name": "crossplane",
           "optional": true,
@@ -293,7 +309,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 98,
+            "line": 110,
           },
           "name": "dependsOn",
           "optional": true,
@@ -321,7 +337,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 122,
+        "line": 134,
       },
       "name": "ConfigurationSpecCrossplane",
       "properties": Array [
@@ -336,7 +352,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 128,
+            "line": 140,
           },
           "name": "version",
           "type": Object {
@@ -359,7 +375,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 151,
+        "line": 163,
       },
       "name": "ConfigurationSpecDependsOn",
       "properties": Array [
@@ -374,7 +390,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 171,
+            "line": 183,
           },
           "name": "version",
           "type": Object {
@@ -392,7 +408,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 157,
+            "line": 169,
           },
           "name": "configuration",
           "optional": true,
@@ -411,7 +427,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 164,
+            "line": 176,
           },
           "name": "provider",
           "optional": true,
@@ -457,7 +473,7 @@ export class CompositeResourceDefinition extends ApiObject {
   public static manifest(props: CompositeResourceDefinitionProps = {}): any {
     return {
       ...CompositeResourceDefinition.GVK,
-      ...toJson_CompositeResourceDefinitionProps(props),
+      ...props,
     };
   }
 
@@ -469,6 +485,18 @@ export class CompositeResourceDefinition extends ApiObject {
    */
   public constructor(scope: Construct, id: string, props: CompositeResourceDefinitionProps = {}) {
     super(scope, id, CompositeResourceDefinition.manifest(props));
+  }
+
+  /**
+   * Renders the object to Kubernetes JSON.
+   */
+  public toJson(): any {
+    const resolved = super.toJson();
+
+    return {
+      ...CompositeResourceDefinition.GVK,
+      ...toJson_CompositeResourceDefinitionProps(resolved),
+    };
   }
 }
 
@@ -968,7 +996,7 @@ export class Composition extends ApiObject {
   public static manifest(props: CompositionProps = {}): any {
     return {
       ...Composition.GVK,
-      ...toJson_CompositionProps(props),
+      ...props,
     };
   }
 
@@ -980,6 +1008,18 @@ export class Composition extends ApiObject {
    */
   public constructor(scope: Construct, id: string, props: CompositionProps = {}) {
     super(scope, id, Composition.manifest(props));
+  }
+
+  /**
+   * Renders the object to Kubernetes JSON.
+   */
+  public toJson(): any {
+    const resolved = super.toJson();
+
+    return {
+      ...Composition.GVK,
+      ...toJson_CompositionProps(resolved),
+    };
   }
 }
 
@@ -1453,7 +1493,7 @@ export class Configuration extends ApiObject {
   public static manifest(props: ConfigurationProps): any {
     return {
       ...Configuration.GVK,
-      ...toJson_ConfigurationProps(props),
+      ...props,
     };
   }
 
@@ -1465,6 +1505,18 @@ export class Configuration extends ApiObject {
    */
   public constructor(scope: Construct, id: string, props: ConfigurationProps) {
     super(scope, id, Configuration.manifest(props));
+  }
+
+  /**
+   * Renders the object to Kubernetes JSON.
+   */
+  public toJson(): any {
+    const resolved = super.toJson();
+
+    return {
+      ...Configuration.GVK,
+      ...toJson_ConfigurationProps(resolved),
+    };
   }
 }
 
