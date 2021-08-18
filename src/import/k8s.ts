@@ -14,6 +14,7 @@ import { parseApiTypeName } from './k8s-util';
 
 const DEFAULT_API_VERSION = '1.15.0';
 const DEFAULT_CLASS_NAME_PREFIX = 'Kube';
+const VERSION_REGEX = new RegExp(/v\d+(alpha\d+|beta\d+|$)/);
 
 export interface ImportKubernetesApiOptions {
   /**
@@ -73,9 +74,16 @@ export class ImportKubernetesApi extends ImportBase {
           return def;
         }
 
-        const kind = type[type.length - 1];
+        const basename = type[type.length - 1];
         const version = type[type.length - 2];
-        return getTypeName(false, kind, version);
+
+        if (!VERSION_REGEX.test(version)) {
+          // its not really a version. no need to consider it.
+          // for example: io.k8s.apimachinery.pkg.util.intstr.IntOrString
+          return basename;
+        }
+
+        return getTypeName(false, basename, version);
       },
     });
 
