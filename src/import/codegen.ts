@@ -45,12 +45,12 @@ export function emitHeader(code: CodeMaker, custom: boolean) {
   code.line();
 }
 
-export function getTypeName(basename: string, version: string) {
+export function getTypeName(kind: string, version: string) {
   // add an API version postfix only if this is core API (`import k8s`).
   // TODO = what about the rest of the namespace? the same resource can exist in multiple
   // api groups (Ingress for example exists in 'extensions' and 'networking')
   const postfix = version === 'v1' ? '' : toPascalCase(version);
-  return `${basename}${postfix}`;
+  return `${kind}${postfix}`;
 }
 
 export function getConstructTypeName(def: ApiObjectDefinition) {
