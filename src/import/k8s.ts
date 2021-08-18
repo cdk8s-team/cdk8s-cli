@@ -75,7 +75,7 @@ export class ImportKubernetesApi extends ImportBase {
 
         const kind = type[type.length - 1];
         const version = type[type.length - 2];
-        return getTypeName(kind, version);
+        return getTypeName(false, kind, version);
       },
     });
 
