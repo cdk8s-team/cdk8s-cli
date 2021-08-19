@@ -127,6 +127,10 @@ export function generateConstruct(typegen: TypeGenerator, def: ApiObjectDefiniti
 
       emitInitializer();
 
+      code.line('');
+
+      emitToJson();
+
       code.closeBlock();
     }
 
@@ -151,7 +155,10 @@ export function generateConstruct(typegen: TypeGenerator, def: ApiObjectDefiniti
 
       code.openBlock(`public constructor(scope: Construct, id: string, props: ${propsTypeName}${defaultProps})`);
 
-      code.line(`super(scope, id, ${constructName}.${MANIFEST_STATIC_METHOD}(props));`);
+      code.open('super(scope, id, {');
+      code.line(`...${constructName}.${GVK_STATIC},`);
+      code.line('...props,');
+      code.close('});');
 
       code.closeBlock();
     }
@@ -169,6 +176,20 @@ export function generateConstruct(typegen: TypeGenerator, def: ApiObjectDefiniti
       code.open('return {');
       code.line(`...${constructName}.${GVK_STATIC},`);
       code.line(`...toJson_${propsTypeName}(props),`);
+      code.close('};');
+      code.closeBlock();
+    }
+
+    function emitToJson() {
+      code.line('/**');
+      code.line(' * Renders the object to Kubernetes JSON.');
+      code.line(' */');
+      code.openBlock('public toJson(): any');
+      code.line('const resolved = super.toJson();');
+      code.line();
+      code.open('return {');
+      code.line(`...${constructName}.${GVK_STATIC},`);
+      code.line(`...toJson_${propsTypeName}(resolved),`);
       code.close('};');
       code.closeBlock();
     }
