@@ -10,7 +10,7 @@ Object {
   },
   "dependencies": Object {
     "cdk8s": "999.999.999",
-    "constructs": "3.3.110",
+    "constructs": "3.3.127",
   },
   "dependencyClosure": Object {
     "cdk8s": Object {
@@ -67,7 +67,7 @@ Object {
   "description": "metapkgcrossplaneio",
   "fingerprint": "<fingerprint>",
   "homepage": "http://generated",
-  "jsiiVersion": "1.32.0 (build 3f4fe23)",
+  "jsiiVersion": "1.33.0 (build 7951e32)",
   "license": "UNLICENSED",
   "metadata": Object {
     "jsii": Object {
