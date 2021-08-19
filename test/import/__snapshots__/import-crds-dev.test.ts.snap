@@ -176,7 +176,7 @@ Object {
           },
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 47,
+            "line": 50,
           },
           "name": "toJson",
           "overrides": "cdk8s.ApiObject",
@@ -220,7 +220,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 62,
+        "line": 65,
       },
       "name": "ConfigurationProps",
       "properties": Array [
@@ -235,7 +235,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 73,
+            "line": 76,
           },
           "name": "spec",
           "type": Object {
@@ -252,7 +252,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 66,
+            "line": 69,
           },
           "name": "metadata",
           "optional": true,
@@ -275,7 +275,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 97,
+        "line": 100,
       },
       "name": "ConfigurationSpec",
       "properties": Array [
@@ -290,7 +290,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 103,
+            "line": 106,
           },
           "name": "crossplane",
           "optional": true,
@@ -309,7 +309,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 110,
+            "line": 113,
           },
           "name": "dependsOn",
           "optional": true,
@@ -337,7 +337,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 134,
+        "line": 137,
       },
       "name": "ConfigurationSpecCrossplane",
       "properties": Array [
@@ -352,7 +352,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 140,
+            "line": 143,
           },
           "name": "version",
           "type": Object {
@@ -375,7 +375,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 163,
+        "line": 166,
       },
       "name": "ConfigurationSpecDependsOn",
       "properties": Array [
@@ -390,7 +390,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 183,
+            "line": 186,
           },
           "name": "version",
           "type": Object {
@@ -408,7 +408,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 169,
+            "line": 172,
           },
           "name": "configuration",
           "optional": true,
@@ -427,7 +427,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 176,
+            "line": 179,
           },
           "name": "provider",
           "optional": true,
@@ -473,7 +473,7 @@ export class CompositeResourceDefinition extends ApiObject {
   public static manifest(props: CompositeResourceDefinitionProps = {}): any {
     return {
       ...CompositeResourceDefinition.GVK,
-      ...props,
+      ...toJson_CompositeResourceDefinitionProps(props),
     };
   }
 
@@ -484,7 +484,10 @@ export class CompositeResourceDefinition extends ApiObject {
    * @param props initialization props
    */
   public constructor(scope: Construct, id: string, props: CompositeResourceDefinitionProps = {}) {
-    super(scope, id, CompositeResourceDefinition.manifest(props));
+    super(scope, id, {
+      ...CompositeResourceDefinition.GVK,
+      ...props,
+    });
   }
 
   /**
@@ -996,7 +999,7 @@ export class Composition extends ApiObject {
   public static manifest(props: CompositionProps = {}): any {
     return {
       ...Composition.GVK,
-      ...props,
+      ...toJson_CompositionProps(props),
     };
   }
 
@@ -1007,7 +1010,10 @@ export class Composition extends ApiObject {
    * @param props initialization props
    */
   public constructor(scope: Construct, id: string, props: CompositionProps = {}) {
-    super(scope, id, Composition.manifest(props));
+    super(scope, id, {
+      ...Composition.GVK,
+      ...props,
+    });
   }
 
   /**
@@ -1493,7 +1499,7 @@ export class Configuration extends ApiObject {
   public static manifest(props: ConfigurationProps): any {
     return {
       ...Configuration.GVK,
-      ...props,
+      ...toJson_ConfigurationProps(props),
     };
   }
 
@@ -1504,7 +1510,10 @@ export class Configuration extends ApiObject {
    * @param props initialization props
    */
   public constructor(scope: Construct, id: string, props: ConfigurationProps) {
-    super(scope, id, Configuration.manifest(props));
+    super(scope, id, {
+      ...Configuration.GVK,
+      ...props,
+    });
   }
 
   /**

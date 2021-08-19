@@ -146,7 +146,10 @@ export function generateConstruct(typegen: TypeGenerator, def: ApiObjectDefiniti
 
       code.openBlock(`public constructor(scope: Construct, id: string, props: ${propsTypeName}${defaultProps})`);
 
-      code.line(`super(scope, id, ${constructName}.${MANIFEST_STATIC_METHOD}(props));`);
+      code.open('super(scope, id, {');
+      code.line(`...${constructName}.${GVK_STATIC},`);
+      code.line('...props,');
+      code.close('});');
 
       code.closeBlock();
     }
@@ -163,7 +166,7 @@ export function generateConstruct(typegen: TypeGenerator, def: ApiObjectDefiniti
       code.openBlock(`public static ${MANIFEST_STATIC_METHOD}(props: ${propsTypeName}${defaultProps}): any`);
       code.open('return {');
       code.line(`...${constructName}.${GVK_STATIC},`);
-      code.line('...props,');
+      code.line(`...toJson_${propsTypeName}(props),`);
       code.close('};');
       code.closeBlock();
     }
