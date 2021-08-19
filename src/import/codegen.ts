@@ -45,12 +45,18 @@ export function emitHeader(code: CodeMaker, custom: boolean) {
   code.line();
 }
 
+export function getTypeName(custom: boolean, kind: string, version: string) {
+  // add an API version postfix only if this is core API (`import k8s`).
+  // TODO = what about the rest of the namespace? the same resource can exist in multiple
+  // api groups (Ingress for example exists in 'extensions' and 'networking')
+  const postfix = (custom || version === 'v1') ? '' : toPascalCase(version);
+  return `${kind}${postfix}`;
+}
+
 export function getConstructTypeName(def: ApiObjectDefinition) {
   const prefix = def.prefix ?? '';
 
-  // add an API version postfix only if this is core API (`import k8s`).
-  const postfix = (def.custom || def.version === 'v1') ? '' : toPascalCase(def.version);
-  return TypeGenerator.normalizeTypeName(`${prefix}${def.kind}${postfix}`);
+  return TypeGenerator.normalizeTypeName(`${prefix}${getTypeName(def.custom, def.kind, def.version)}`);
 }
 
 export function getPropsTypeName(def: ApiObjectDefinition) {
@@ -90,7 +96,10 @@ export function generateConstruct(typegen: TypeGenerator, def: ApiObjectDefiniti
       delete copy['x-kubernetes-group-version-kind'];
 
       copy.required = copy.required || [];
-      copy.required = copy.required.filter(x => x !== 'apiVersion' && x !== 'kind' && x !== 'status');
+
+      if (Array.isArray(copy.required)) {
+        copy.required = copy.required.filter(x => x !== 'apiVersion' && x !== 'kind' && x !== 'status');
+      }
 
       if (def.custom) {
         // add "metadata" field for all CRDs, overriding any existing typings

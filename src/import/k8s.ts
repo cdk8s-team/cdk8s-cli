@@ -8,7 +8,7 @@ import { TypeGenerator } from 'json2jsii';
 import { ImportSpec } from '../config';
 import { download } from '../util';
 import { GenerateOptions, ImportBase } from './base';
-import { ApiObjectDefinition, emitHeader, generateConstruct, getPropsTypeName } from './codegen';
+import { ApiObjectDefinition, emitHeader, generateConstruct, getPropsTypeName, getTypeName } from './codegen';
 import { parseApiTypeName } from './k8s-util';
 
 
@@ -64,6 +64,14 @@ export class ImportKubernetesApi extends ImportBase {
     const typeGenerator = new TypeGenerator({
       definitions: schema.definitions,
       exclude: this.options.exclude,
+      renderTypeName: (def: string) => {
+        const parsed = parseApiTypeName(def);
+        if (!parsed.version) {
+          // not a versioned api type. return basename
+          return parsed.basename;
+        }
+        return getTypeName(false, parsed.basename, parsed.version.raw);
+      },
     });
 
     // rename "Props" type from their original name based on the API object kind
@@ -106,6 +114,9 @@ export function findApiObjectDefinitions(schema: JSONSchema4, prefix: string): A
     }
 
     const type = parseApiTypeName(typename);
+    if (!type.version) {
+      throw new Error(`Unable to parse version for type: ${typename}`);
+    }
     result.push({
       custom: false, // not a CRD
       fqn: type.fullname,
