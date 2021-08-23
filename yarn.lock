@@ -1678,10 +1678,10 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
   integrity sha1-PXz0Rk22RG6mRL9LOVB/mFEAjo4=
 
-constructs@^3.3.129:
-  version "3.3.129"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.129.tgz#18394f480fc2362f01ec1c800f640d415e4175ad"
-  integrity sha512-XSQ/TTinb25oA8KxlPXbAIo3SnkIRdgl6lX8qTze2cKrxdTtmjgaapO7fdv7bVj+Sd0v5ld9dE2K8P+j3b8z/g==
+constructs@^3.3.130:
+  version "3.3.130"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.130.tgz#08b18e41ea3342e7bc39567b4ee73cac2b3a6706"
+  integrity sha512-GitHQl8pPzhdfqUZAJ71EW1v97NgendPdsgl403a8nttVQF86p1xJSwiWHNimMP5KUqDMa5Hr9e4wmrCkB92+A==
 
 conventional-changelog-angular@^5.0.12:
   version "5.0.12"
@@ -4230,10 +4230,10 @@ jsii-rosetta@^1.33.0:
     xmldom "github:xmldom/xmldom#0.7.0"
     yargs "^16.2.0"
 
-jsii-srcmak@^0.1.330:
-  version "0.1.330"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.330.tgz#e73c4e4d47ff8f91acc7f15b40a26ce153d68771"
-  integrity sha512-Bj0MGezO6cHra9hxpW1/4k2H/wH7WnvpOSOvC50uThnMCvpPmmVdl8UyNtw9YPk0iJRb/5/CTEn9BIwib7dMjg==
+jsii-srcmak@^0.1.331:
+  version "0.1.331"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.331.tgz#ab5fc8bb688525d1d0f200ca2ffe5c312453ccfd"
+  integrity sha512-k0Q7ZmGHRqFRiaP1KFWdpwCRmHO3a70E4V+nbWeRoySquBrjNEqQCd2Ht0ws8dNRzvj00Hx1PkY3twyPOD/gTA==
   dependencies:
     fs-extra "^9.1.0"
     jsii "^1.33.0"
@@ -4307,10 +4307,10 @@ json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
 
-json2jsii@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/json2jsii/-/json2jsii-0.2.2.tgz#f808e0ea6da622b6a3c487f6492ad0b0e17e6436"
-  integrity sha512-hFtcsJOD59znja0YMY8aNzefV9pq9JyIuzbEzVAWbzpS1+a0xmg6vTd92W62ZSze6U2mwx5yPkvjTvFyEbMXmg==
+json2jsii@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/json2jsii/-/json2jsii-0.2.3.tgz#4981832703b2bec096826a0b8ee64cf0c474479b"
+  integrity sha512-k5hCUaRqa8OgvzcsDTtVI3I9PqZ/g9gxyOxTN9DXFIldqhp76rfSO5YSlDNIlO66UyrJCX2kLwuXE4GvvsmREA==
   dependencies:
     camelcase "^6.2.0"
     json-schema "^0.3.0"
