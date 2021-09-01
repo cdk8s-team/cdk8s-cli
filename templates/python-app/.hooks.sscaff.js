@@ -34,7 +34,7 @@ exports.post = options => {
 
   chmodSync('main.py', '700');
 
-  execSync(`${cli} import k8s -l python`);
+  execSync(`node "${cli}" import k8s -l python`);
   execSync(`pipenv run ./main.py`);
 
   console.log(readFileSync('./help', 'utf-8'));

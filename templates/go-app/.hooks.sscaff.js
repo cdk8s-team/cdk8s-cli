@@ -14,7 +14,7 @@ exports.pre = () => {
 };
 
 exports.post = options => {
-  execSync(`${cli} import k8s -l go`);
+  execSync(`node "${cli}" import k8s -l go`);
 
   // used to generate go.sum file which tracks hashes of all dependencies
   execSync('go mod tidy');
