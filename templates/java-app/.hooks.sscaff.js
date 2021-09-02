@@ -35,7 +35,7 @@ exports.post = options => {
   }
 
   execSync(`mvn install`);
-  execSync(`${cli} import k8s -l java`);
+  execSync(`node "${cli}" import k8s -l java`);
   execSync(`mvn compile`);
   execSync(`mvn exec:java -Dexec.mainClass="com.mycompany.app.Main"`);
 
