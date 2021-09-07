@@ -11,7 +11,7 @@ export async function shell(program: string, args: string[] = [], options: Spawn
   return new Promise((ok, ko) => {
     const child = spawn(program, args, { stdio: ['inherit', 'pipe', 'inherit'], ...options });
     const data = new Array<Buffer>();
-    child.stdout.on('data', chunk => data.push(chunk));
+    child.stdout?.on('data', chunk => data.push(chunk));
 
     child.once('error', err => ko(new Error(`command ${command} failed: ${err}`)));
     child.once('exit', code => {
