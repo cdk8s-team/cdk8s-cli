@@ -8,7 +8,7 @@ const project = new TypeScriptProject({
   projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
   authorName: 'Amazon Web Services',
   authorUrl: 'https://aws.amazon.com',
-  minNodeVersion: '10.17.0',
+  minNodeVersion: '12.13.0',
   defaultReleaseBranch: 'main',
 
   // needed for "cdk init" tests to work in all languages
@@ -35,7 +35,7 @@ const project = new TypeScriptProject({
 
     // add @types/node as a regular dependency since it's needed to during "import"
     // to compile the generated jsii code.
-    '@types/node@^10.17.0',
+    '@types/node@^12.13.0',
   ],
   devDeps: [
     '@types/fs-extra@^8',
