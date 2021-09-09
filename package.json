@@ -34,7 +34,7 @@
     "@types/glob": "^7.1.4",
     "@types/jest": "^26.0.24",
     "@types/json-schema": "^7.0.9",
-    "@types/node": "^10.17.0",
+    "@types/node": "^12.13.0",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
     "eslint": "^6.8.0",
@@ -52,7 +52,7 @@
     "typescript": "~3.9.10"
   },
   "dependencies": {
-    "@types/node": "^10.17.0",
+    "@types/node": "^12.13.0",
     "cdk8s": "1.0.0-beta.30",
     "cdk8s-plus-17": "1.0.0-beta.57",
     "codemaker": "^1.33.0",
@@ -68,7 +68,7 @@
   },
   "bundledDependencies": [],
   "engines": {
-    "node": ">= 10.17.0"
+    "node": ">= 12.13.0"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",

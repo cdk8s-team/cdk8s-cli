@@ -19,7 +19,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^10.17.0",
+      "version": "^12.13.0",
       "type": "build"
     },
     {
@@ -87,7 +87,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^10.17.0",
+      "version": "^12.13.0",
       "type": "runtime"
     },
     {
