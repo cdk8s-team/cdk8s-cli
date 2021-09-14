@@ -1,5 +1,5 @@
 import { ImportSpec } from '../config';
-import { ImportCustomResourceDefinition, CustomResourceDefinitionSchema } from './crd';
+import { ImportCustomResourceDefinition, ManifestObjectDefinition } from './crd';
 
 /**
  *
@@ -22,7 +22,7 @@ import { ImportCustomResourceDefinition, CustomResourceDefinitionSchema } from '
  *
  * @param source
  */
-export async function importCrdsDevRepoMatch(importSpec: ImportSpec): Promise<undefined | CustomResourceDefinitionSchema[]> {
+export async function importCrdsDevRepoMatch(importSpec: ImportSpec): Promise<undefined | ManifestObjectDefinition[]> {
   const { source } = importSpec;
   const url = crdsDevUrl(source);
   if (url) {

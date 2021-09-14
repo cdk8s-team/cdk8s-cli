@@ -43,17 +43,11 @@ describe('snapshots', () => {
   }
 });
 
-test('fails if CRDs api version is not supported', async () => {
-
-  const manifest = {
+test('fails if CRDs api version is not supported', () => {
+  expect(() => new ImportCustomResourceDefinition([{
     apiVersion: 'voo',
     kind: 'CustomResourceDefinition',
-  };
-
-  await withTempFixture(manifest, async (fixture: string) => {
-    await expect(() => ImportCustomResourceDefinition.match({ source: fixture })).rejects.toThrow('invalid CustomResourceDefinition manifest: "apiVersion" is "voo" but it should be one of: "apiextensions.k8s.io/v1beta1", "apiextensions.k8s.io/v1"');
-  });
-
+  }])).toThrow('invalid CustomResourceDefinition manifest: "apiVersion" is "voo" but it should be one of: "apiextensions.k8s.io/v1beta1", "apiextensions.k8s.io/v1"');
 });
 
 test('fails if manifest does not have a "spec" field', () => {
@@ -93,50 +87,52 @@ test('fails if one apiObject in multiObject CRD is not a valid CRD', async () =>
   ])).toThrow('manifest does not have a "spec" attribute');
 });
 
-test('can import a "List" of CRDs (kubectl get crds -o json)', async () => {
-  const manifest = {
-    kind: 'List',
-    items: [
-      {
-        apiVersion: 'apiextensions.k8s.io/v1beta1',
-        kind: 'CustomResourceDefinition',
-        metadata: {
-          name: 'crontabs.stable.example.com',
-        },
-        spec: {
-          group: 'stable.example.com',
-          versions: [
-            {
-              name: 'v1',
-              served: true,
-              storage: true,
-            },
-          ],
-          scope: 'Namespaced',
-          names: {
-            plural: 'crontabs',
-            singular: 'crontab',
-            kind: 'OtherCronTab',
-            shortNames: [
-              'ct',
-            ],
+test('can import a "List" of CRDs (kubectl get crds -o json)', () => {
+  const importer = new ImportCustomResourceDefinition([
+    {
+      kind: 'List',
+      items: [
+        {
+          apiVersion: 'apiextensions.k8s.io/v1beta1',
+          kind: 'CustomResourceDefinition',
+          metadata: {
+            name: 'crontabs.stable.example.com',
           },
-          preserveUnknownFields: false,
-          validation: {
-            openAPIV3Schema: {
-              type: 'object',
-              properties: {
-                spec: {
-                  type: 'object',
-                  properties: {
-                    cronSpec: {
-                      type: 'string',
-                    },
-                    image: {
-                      type: 'string',
-                    },
-                    replicas: {
-                      type: 'integer',
+          spec: {
+            group: 'stable.example.com',
+            versions: [
+              {
+                name: 'v1',
+                served: true,
+                storage: true,
+              },
+            ],
+            scope: 'Namespaced',
+            names: {
+              plural: 'crontabs',
+              singular: 'crontab',
+              kind: 'OtherCronTab',
+              shortNames: [
+                'ct',
+              ],
+            },
+            preserveUnknownFields: false,
+            validation: {
+              openAPIV3Schema: {
+                type: 'object',
+                properties: {
+                  spec: {
+                    type: 'object',
+                    properties: {
+                      cronSpec: {
+                        type: 'string',
+                      },
+                      image: {
+                        type: 'string',
+                      },
+                      replicas: {
+                        type: 'integer',
+                      },
                     },
                   },
                 },
@@ -144,80 +140,80 @@ test('can import a "List" of CRDs (kubectl get crds -o json)', async () => {
             },
           },
         },
-      },
-      {}, // verify that we skip empty
-      {
-        kind: 'List',
-        items: [],
-      },
+        {}, // verify that we skip empty
+        {
+          kind: 'List',
+          items: [],
+        },
 
-      // nested lists
-      {
-        kind: 'List',
-        items: [
-          {
-            apiVersion: 'apiextensions.k8s.io/v1beta1',
-            kind: 'CustomResourceDefinition',
-            spec: {
-              group: 'foo.bar',
-              version: 'v1',
-              names: {
-                kind: 'foo',
+        // nested lists
+        {
+          kind: 'List',
+          items: [
+            {
+              apiVersion: 'apiextensions.k8s.io/v1beta1',
+              kind: 'CustomResourceDefinition',
+              spec: {
+                group: 'foo.bar',
+                version: 'v1',
+                names: {
+                  kind: 'foo',
+                },
               },
             },
-          },
 
-          // skip non-CRD
-          {
-            apiVersion: 'apiextensions.k8s.io/v1beta1',
-            kind: 'NonCustomResourceDefinition',
-            spec: {
-              group: 'foo.bar',
-              names: { kind: 'foo' },
-            },
-          },
-        ],
-      },
-      {
-        apiVersion: 'apiextensions.k8s.io/v1beta1',
-        kind: 'CustomResourceDefinition',
-        metadata: {
-          name: 'crontabs.stable.example.com',
-        },
-        spec: {
-          group: 'stable.example.com',
-          versions: [
+            // skip non-CRD
             {
-              name: 'v1',
-              served: true,
-              storage: true,
+              apiVersion: 'apiextensions.k8s.io/v1beta1',
+              kind: 'NonCustomResourceDefinition',
+              spec: {
+                group: 'foo.bar',
+                names: { kind: 'foo' },
+              },
             },
           ],
-          scope: 'Namespaced',
-          names: {
-            plural: 'crontabs',
-            singular: 'crontab',
-            kind: 'CronTab',
-            shortNames: [
-              'ct',
-            ],
+        },
+        {
+          apiVersion: 'apiextensions.k8s.io/v1beta1',
+          kind: 'CustomResourceDefinition',
+          metadata: {
+            name: 'crontabs.stable.example.com',
           },
-          preserveUnknownFields: false,
-          validation: {
-            openAPIV3Schema: {
-              type: 'object',
-              properties: {
-                spec: {
-                  type: 'object',
-                  properties: {
-                    cronSpec: {
-                      type: 'string',
-                    },
-                    image: {
-                      type: 'string',
-                    },
-                    replicas: {
-                      type: 'integer',
+          spec: {
+            group: 'stable.example.com',
+            versions: [
+              {
+                name: 'v1',
+                served: true,
+                storage: true,
+              },
+            ],
+            scope: 'Namespaced',
+            names: {
+              plural: 'crontabs',
+              singular: 'crontab',
+              kind: 'CronTab',
+              shortNames: [
+                'ct',
+              ],
+            },
+            preserveUnknownFields: false,
+            validation: {
+              openAPIV3Schema: {
+                type: 'object',
+                properties: {
+                  spec: {
+                    type: 'object',
+                    properties: {
+                      cronSpec: {
+                        type: 'string',
+                      },
+                      image: {
+                        type: 'string',
+                      },
+                      replicas: {
+                        type: 'integer',
+                      },
                     },
                   },
                 },
@@ -225,22 +221,14 @@ test('can import a "List" of CRDs (kubectl get crds -o json)', async () => {
             },
           },
         },
-      },
-    ],
-  };
+      ],
+    },
+  ]);
 
-  await withTempFixture(manifest, async (fixture: string) => {
-
-    const matched = await ImportCustomResourceDefinition.match({ source: fixture });
-    const importer = new ImportCustomResourceDefinition(matched!);
-
-    expect(importer.moduleNames).toEqual([
-      'foo.bar',
-      'stable.example.com',
-    ]);
-
-  });
-
+  expect(importer.moduleNames).toEqual([
+    'foo.bar',
+    'stable.example.com',
+  ]);
 });
 
 describe('classPrefix can be used to add a prefix to all construct class names', () => {

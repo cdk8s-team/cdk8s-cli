@@ -12,10 +12,10 @@ import { GroupVersionKind } from './k8s';
 
 const CRD_KIND = 'CustomResourceDefinition';
 
-export interface CustomResourceDefinitionSchema {
-  apiVersion?: 'apiextensions.k8s.io/v1beta1' | 'apiextensions.k8s.io/v1';
-  kind?: 'CustomResourceDefinition' | 'List';
-  items?: CustomResourceDefinitionSchema[]; // if `kind` is "List"
+export interface ManifestObjectDefinition {
+  apiVersion?: string;
+  kind?: string;
+  items?: ManifestObjectDefinition[]; // if `kind` is "List"
   metadata?: {
     name?: string;
   };
@@ -36,6 +36,12 @@ export interface CustomResourceDefinitionSchema {
   };
 }
 
+// all these APIs are compatible from our perspective.
+const SUPPORTED_API_VERSIONS = [
+  'apiextensions.k8s.io/v1beta1',
+  'apiextensions.k8s.io/v1',
+];
+
 export class CustomResourceDefinition {
   private readonly schema?: any;
   private readonly group: string;
@@ -43,7 +49,11 @@ export class CustomResourceDefinition {
   private readonly kind: string;
   private readonly fqn: string;
 
-  constructor(manifest: CustomResourceDefinitionSchema) {
+  constructor(manifest: ManifestObjectDefinition) {
+    const apiVersion = manifest?.apiVersion ?? 'undefined';
+    assert(SUPPORTED_API_VERSIONS.includes(apiVersion), `"apiVersion" is "${apiVersion}" but it should be one of: ${SUPPORTED_API_VERSIONS.map(x => `"${x}"`).join(', ')}`);
+    assert(manifest.kind === CRD_KIND, `"kind" must be "${CRD_KIND}"`);
+
     const spec = manifest.spec;
     if (!spec) {
       throw new Error('manifest does not have a "spec" attribute');
@@ -95,7 +105,7 @@ export class CustomResourceDefinition {
 }
 
 export class ImportCustomResourceDefinition extends ImportBase {
-  public static async match(importSpec: ImportSpec): Promise<undefined | CustomResourceDefinitionSchema[]> {
+  public static async match(importSpec: ImportSpec): Promise<undefined | ManifestObjectDefinition[]> {
     const { source } = importSpec;
     const manifest = await download(source);
     return safeParseCrds(manifest);
@@ -103,13 +113,21 @@ export class ImportCustomResourceDefinition extends ImportBase {
 
   private readonly groups: Record<string, CustomResourceDefinition[]> = { };
 
-  constructor(manifest: CustomResourceDefinitionSchema[]) {
+  constructor(manifest: ManifestObjectDefinition[]) {
     super();
+
+    // ideally this contrcutor would be private and input validation
+    // would take place only via the `match` method
+
+    const crdsSpecs = [];
+    for (const obj of manifest) {
+      crdsSpecs.push(...safeParseCrds(JSON.stringify(obj)));
+    }
 
     const crds: Record<string, CustomResourceDefinition> = { };
     const groups: Record<string, CustomResourceDefinition[]> = { };
 
-    for (const obj of manifest) {
+    for (const obj of crdsSpecs) {
       const crd = new CustomResourceDefinition(obj);
       const key = crd.key;
 
@@ -149,6 +167,13 @@ export class ImportCustomResourceDefinition extends ImportBase {
     }
   }
 }
+
+function assert(condition: boolean, message: string) {
+  if (!condition) {
+    throw new Error(`invalid CustomResourceDefinition manifest: ${message}`);
+  }
+}
+
 
 export function safeParseCrds(manifest: string): any[] {
   const schemaPath = path.join(__dirname, '..', 'schemas', 'crd.schema.json');
