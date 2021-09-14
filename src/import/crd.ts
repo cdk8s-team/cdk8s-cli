@@ -127,8 +127,8 @@ export class ImportCustomResourceDefinition extends ImportBase {
     const crds: Record<string, CustomResourceDefinition> = { };
     const groups: Record<string, CustomResourceDefinition[]> = { };
 
-    for (const obj of crdsSpecs) {
-      const crd = new CustomResourceDefinition(obj);
+    for (const spec of crdsSpecs) {
+      const crd = new CustomResourceDefinition(spec);
       const key = crd.key;
 
       if (key in crds) {
@@ -175,7 +175,7 @@ function assert(condition: boolean, message: string) {
 }
 
 
-export function safeParseCrds(manifest: string): any[] {
+export function safeParseCrds(manifest: string): ManifestObjectDefinition[] {
   const schemaPath = path.join(__dirname, '..', 'schemas', 'crd.schema.json');
   const schema = JSON.parse(fs.readFileSync(schemaPath, { encoding: 'utf8' }));
   const reviver = new SafeReviver({
