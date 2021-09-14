@@ -12,10 +12,10 @@ import { GroupVersionKind } from './k8s';
 
 const CRD_KIND = 'CustomResourceDefinition';
 
-export interface CustomResourceObjectDefinition {
+export interface CustomResourceDefinitionSchema {
   apiVersion?: 'apiextensions.k8s.io/v1beta1' | 'apiextensions.k8s.io/v1';
   kind?: 'CustomResourceDefinition' | 'List';
-  items?: CustomResourceObjectDefinition[]; // if `kind` is "List"
+  items?: CustomResourceDefinitionSchema[]; // if `kind` is "List"
   metadata?: {
     name?: string;
   };
@@ -43,7 +43,7 @@ export class CustomResourceDefinition {
   private readonly kind: string;
   private readonly fqn: string;
 
-  constructor(manifest: CustomResourceObjectDefinition) {
+  constructor(manifest: CustomResourceDefinitionSchema) {
     const spec = manifest.spec;
     if (!spec) {
       throw new Error('manifest does not have a "spec" attribute');
@@ -95,7 +95,7 @@ export class CustomResourceDefinition {
 }
 
 export class ImportCustomResourceDefinition extends ImportBase {
-  public static async match(importSpec: ImportSpec): Promise<undefined | CustomResourceObjectDefinition[]> {
+  public static async match(importSpec: ImportSpec): Promise<undefined | CustomResourceDefinitionSchema[]> {
     const { source } = importSpec;
     const manifest = await download(source);
     return safeParseCrds(manifest);
@@ -103,7 +103,7 @@ export class ImportCustomResourceDefinition extends ImportBase {
 
   private readonly groups: Record<string, CustomResourceDefinition[]> = { };
 
-  constructor(manifest: CustomResourceObjectDefinition[]) {
+  constructor(manifest: CustomResourceDefinitionSchema[]) {
     super();
 
     const crds: Record<string, CustomResourceDefinition> = { };
