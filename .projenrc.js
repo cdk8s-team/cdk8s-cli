@@ -32,6 +32,7 @@ const project = new TypeScriptProject({
     'yargs@^15',
     'json2jsii',
     'colors',
+    'ajv',
 
     // add @types/node as a regular dependency since it's needed to during "import"
     // to compile the generated jsii code.
@@ -42,6 +43,7 @@ const project = new TypeScriptProject({
     '@types/json-schema',
     'glob',
     '@types/glob',
+    'typescript-json-schema',
   ],
 
   // we need the compiled .js files for the init tests (we run the cli in there)
@@ -51,6 +53,14 @@ const project = new TypeScriptProject({
     secret: 'GITHUB_TOKEN',
   },
   autoApproveUpgrades: true,
+  tsconfig: {
+    include: ['src/schemas/*.json'],
+  },
 });
+
+const schemas = project.addTask('schemas');
+schemas.exec('ts-node scripts/crd.schema.ts');
+
+project.buildTask.spawn(schemas);
 
 project.synth();

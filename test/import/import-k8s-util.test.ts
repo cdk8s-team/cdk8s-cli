@@ -1,4 +1,4 @@
-import { parseApiTypeName } from '../../src/import/k8s-util';
+import { parseApiTypeName, safeParseJsonSchema } from '../../src/import/k8s-util';
 
 test('parseApiTypeName', () => {
   expect(parseApiTypeName('io.k8s.api.extensions.v1.Deployment')).toStrictEqual({
@@ -51,4 +51,100 @@ test('parseApiTypeName', () => {
     namespace: 'io.intstr',
     version: undefined,
   });
+});
+
+describe('safeParseJsonSchema', () => {
+
+  test('description is sanitized', () => {
+
+    const schema = {
+      definitions: {
+        MutatingWebhook: {
+          description: "*/console.log('hello')/*",
+          properties: {
+            sideEffects: {
+              description: 'some normal description',
+              type: 'string',
+            },
+          },
+          required: [
+            'sideEffects',
+          ],
+          type: 'object',
+        },
+      },
+    };
+    const parsed = safeParseJsonSchema(JSON.stringify(schema));
+    expect(parsed.definitions.MutatingWebhook.description).toEqual("_/console.log('hello')/*");
+  });
+
+  test('keys must be words', () => {
+
+    const schema = {
+      definitions: {
+        MutatingWebhook: {
+          description: "*/console.log('hello')/*",
+          properties: {
+            'sideEffects': {
+              description: 'some normal description',
+              type: 'string',
+            },
+            'not a word': {
+              type: 'string',
+            },
+          },
+          required: [
+            'sideEffects',
+          ],
+          type: 'object',
+        },
+      },
+    };
+    expect(() => safeParseJsonSchema(JSON.stringify(schema))).toThrow("Key 'not a word' contains non standard characters");
+  });
+
+  test('values must be words', () => {
+
+    const schema = {
+      definitions: {
+        MutatingWebhook: {
+          description: "*/console.log('hello')/*",
+          properties: {
+            sideEffects: {
+              description: 'some normal description',
+              type: 'not a word',
+            },
+          },
+          required: [
+            'sideEffects',
+          ],
+          type: 'object',
+        },
+      },
+    };
+    expect(() => safeParseJsonSchema(JSON.stringify(schema))).toThrow("Value for key 'type' contains non standard characters");
+  });
+
+  test('array element values must be words', () => {
+
+    const schema = {
+      definitions: {
+        MutatingWebhook: {
+          description: "*/console.log('hello')/*",
+          properties: {
+            sideEffects: {
+              description: 'some normal description',
+              type: 'string',
+            },
+          },
+          required: [
+            'sideEffects', 'not a word',
+          ],
+          type: 'object',
+        },
+      },
+    };
+    expect(() => safeParseJsonSchema(JSON.stringify(schema))).toThrow("Value for key '1' contains non standard characters");
+  });
+
 });

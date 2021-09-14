@@ -1,8 +1,10 @@
+import * as fs from 'fs';
+import * as path from 'path';
+import Ajv from 'ajv';
 import { CodeMaker } from 'codemaker';
 import { TypeGenerator } from 'json2jsii';
-import * as yaml from 'yaml';
 import { ImportSpec } from '../config';
-import { download } from '../util';
+import { download, safeParseYaml } from '../util';
 import { GenerateOptions, ImportBase } from './base';
 import { emitHeader, generateConstruct } from './codegen';
 import { GroupVersionKind } from './k8s';
@@ -105,7 +107,7 @@ export class ImportCustomResourceDefinition extends ImportBase {
   public static async match(importSpec: ImportSpec): Promise<undefined | ManifestObjectDefinition[]> {
     const { source } = importSpec;
     const manifest = await download(source);
-    return yaml.parseAllDocuments(manifest).map((doc: yaml.Document) => doc.toJSON());
+    return safeParseCrd(manifest);
   }
 
   private readonly groups: Record<string, CustomResourceDefinition[]> = { };
@@ -181,4 +183,23 @@ function assert(condition: boolean, message: string) {
   if (!condition) {
     throw new Error(`invalid CustomResourceDefinition manifest: ${message}`);
   }
+}
+
+function safeParseCrd(text: string): any[] {
+  const schemaPath = path.join(__dirname, 'schemas', 'crd.schema.json');
+  const schema = JSON.parse(fs.readFileSync(schemaPath, { encoding: 'utf8' }));
+  const crds = safeParseYaml(text);
+  const ajv = new Ajv();
+  const validate = ajv.compile(schema);
+  const errors = [];
+  for (const crd of crds) {
+    validate(crd);
+    if (validate.errors) {
+      errors.push(...validate.errors);
+    };
+  }
+  if (errors.length > 0) {
+    throw new Error(`Schema validtion errors detected\n ${errors.map(e => `* ${e.message}`).join('\n')}`);
+  }
+  return crds;
 }

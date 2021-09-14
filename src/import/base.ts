@@ -39,7 +39,7 @@ export interface GenerateOptions {
 export abstract class ImportBase {
   public abstract get moduleNames(): string[];
 
-  protected abstract async generateTypeScript(code: CodeMaker, moduleName: string, options: GenerateOptions): Promise<void>;
+  protected abstract generateTypeScript(code: CodeMaker, moduleName: string, options: GenerateOptions): Promise<void>;
 
   public async import(options: ImportOptions) {
     const code = new CodeMaker();

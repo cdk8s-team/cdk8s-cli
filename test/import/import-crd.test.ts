@@ -1,17 +1,31 @@
-import * as fs from 'fs';
+import * as os from 'os';
 import * as path from 'path';
+import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
+import { ManifestObjectDefinition } from '../../lib/import/crd';
 import { ImportCustomResourceDefinition } from '../../src/import/crd';
+import { safeParseYaml } from '../../src/util';
 import { testImportMatchSnapshot } from './util';
 
 const fixtures = path.join(__dirname, 'fixtures');
 
 const readFixture = (fixture: string) => {
   const filePath = path.join(fixtures, fixture);
-  return yaml
-    .parseAllDocuments(fs.readFileSync(filePath, 'utf-8'))
+  return safeParseYaml(fs.readFileSync(filePath, 'utf-8'))
     .map((doc: yaml.Document) => doc.toJSON());
 };
+
+async function withTempFixture(data: any, test: (fixture: string) => Promise<void>) {
+  const tempDir = fs.mkdtempSync(os.tmpdir());
+  const fixture = path.join(tempDir, 'fixture.yaml');
+  try {
+    fs.writeFileSync(fixture, yaml.stringify(data));
+    await test(fixture);
+  } finally {
+    fs.removeSync(tempDir);
+  }
+
+}
 
 // just drop files into the "fixtures" directory and we will import it as a crd
 // and match it against a jest snapshot.
@@ -218,4 +232,118 @@ describe('classPrefix can be used to add a prefix to all construct class names',
   testImportMatchSnapshot('Foo', () => new ImportCustomResourceDefinition(crd), {
     classNamePrefix: 'Foo',
   });
+});
+
+describe('safe parsing', () => {
+
+  test('description is sanitized', async () => {
+
+    const crd: ManifestObjectDefinition = {
+      apiVersion: 'apiextensions.k8s.io/v1beta1',
+      kind: 'CustomResourceDefinition',
+      metadata: {
+        name: 'testMetadata',
+      },
+      spec: {
+        group: 'testGroup',
+        names: {
+          kind: 'testNameKind',
+        },
+        validation: {
+          openAPIV3Schema: {
+            description: "*/console.log('hello')/*",
+          },
+        },
+      },
+    };
+
+    await withTempFixture(crd, async (fixture: string) => {
+      const definitions = await ImportCustomResourceDefinition.match({ source: fixture });
+      expect(definitions?.length).toEqual(1);
+      const definition = definitions ? definitions[0] : undefined;
+      expect(definition?.spec?.validation?.openAPIV3Schema?.description).toEqual("_/console.log('hello')/*");
+    });
+  });
+
+  test('keys must be words', async () => {
+
+    const crd: ManifestObjectDefinition = {
+      apiVersion: 'apiextensions.k8s.io/v1beta1',
+      kind: 'CustomResourceDefinition',
+      metadata: {
+        name: 'testMetadata',
+      },
+      spec: {
+        group: 'testGroup',
+        names: {
+          kind: 'testNameKind',
+        },
+        validation: {
+          openAPIV3Schema: {
+            'description': "*/console.log('hello')/*",
+            'not a word': 'value',
+          },
+        },
+      },
+    };
+
+    await withTempFixture(crd, async (fixture: string) => {
+      await expect(() => ImportCustomResourceDefinition.match({ source: fixture })).rejects.toThrow("Key 'not a word' contains non standard characters");
+    });
+
+  });
+
+  test('values must be words', async () => {
+
+    const crd: ManifestObjectDefinition = {
+      apiVersion: 'apiextensions.k8s.io/v1beta1',
+      kind: 'CustomResourceDefinition',
+      metadata: {
+        name: 'testMetadata',
+      },
+      spec: {
+        group: 'its not ok to have spaces here',
+        names: {
+          kind: 'testNameKind',
+        },
+        validation: {
+          openAPIV3Schema: {
+            description: 'Its ok to have spaces here',
+          },
+        },
+      },
+    };
+
+    await withTempFixture(crd, async (fixture: string) => {
+      await expect(() => ImportCustomResourceDefinition.match({ source: fixture })).rejects.toThrow("Value for key 'group' contains non standard characters");
+    });
+
+  });
+
+  test('detects invalid schema', async () => {
+
+    const crd = {
+      apiVersion: 'apiextensions.k8s.io/v1beta1',
+      kind: 'CustomResourceDefinition',
+      metadata: {
+        name: 'testMetadata',
+      },
+      spec: {
+        names: {
+          kind: 'testNameKind',
+        },
+        validation: {
+          openAPIV3Schema: {
+            description: 'Its ok to have spaces here',
+          },
+        },
+      },
+    };
+
+    await withTempFixture(crd, async (fixture: string) => {
+      await expect(() => ImportCustomResourceDefinition.match({ source: fixture })).rejects.toThrow("must have required property 'group'");
+    });
+
+  });
+
 });

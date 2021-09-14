@@ -5,6 +5,43 @@ import * as os from 'os';
 import * as path from 'path';
 import { parse } from 'url';
 import * as fs from 'fs-extra';
+import * as yaml from 'yaml';
+
+export function safeReviver(key: unknown, value: unknown): unknown {
+
+  if (key === '') {
+    // root
+    return value;
+  }
+
+  const legal = /^(\w|\.|\/|-)+$/;
+
+  if (typeof(key) !== 'string') {
+    throw new Error(`Expected key (${key}) to be of type 'string', but got '${typeof(key)}'`);
+  }
+
+  // keys must be standard words
+  if (!key.match(legal)) {
+    throw new Error(`Key '${key}' contains non standard characters (Must match regex '${legal}')`);
+  }
+
+  if (typeof(value) === 'string') {
+
+    if (key === 'description') {
+      // sanitize description
+      return value.replace(/\*\//g, '_/');
+    }
+
+    if (!value.match(legal)) {
+      // values of string keys should be standard words as well.
+      throw new Error(`Value for key '${key}' contains non standard characters: ${value} (Must match regex '${legal}')`);
+    }
+
+    return value;
+  }
+
+  return value;
+};
 
 export async function shell(program: string, args: string[] = [], options: SpawnOptions = { }): Promise<string> {
   const command = `"${program} ${args.join(' ')}" at ${path.resolve(options.cwd ?? '.')}`;
@@ -58,6 +95,23 @@ export async function synthApp(command: string, outdir: string) {
   if (!found) {
     console.error('No manifests synthesized');
   }
+}
+
+export function safeParseJson(text: string): any {
+  return JSON.parse(text, safeReviver);
+}
+
+export function safeParseYaml(text: string): any[] {
+
+  // parseAllDocuments doesnt accept a reviver
+  // so we first parse normally and than transform
+  // to JS using the reviver.
+  const parsed = yaml.parseAllDocuments(text);
+  const docs = [];
+  for (const doc of parsed) {
+    docs.push(doc.toJS({ reviver: safeReviver }));
+  }
+  return docs;
 }
 
 export async function download(url: string): Promise<string> {

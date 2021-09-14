@@ -1,3 +1,6 @@
+import Ajv from 'ajv';
+import { safeParseJson } from '../util';
+
 /**
  *
  *     io.k8s.api.extensions.v1beta1.Deployment
@@ -52,3 +55,9 @@ export function parseApiTypeName(fullname: string): ApiTypeName {
   };
 }
 
+export function safeParseJsonSchema(text: string): any {
+  const schema = safeParseJson(text);
+  const ajv = new Ajv();
+  ajv.compile(schema);
+  return schema;
+}

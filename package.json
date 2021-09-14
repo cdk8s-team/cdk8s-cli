@@ -49,10 +49,12 @@
     "projen": "^0.27.32",
     "standard-version": "^9",
     "ts-jest": "^26.5.6",
-    "typescript": "~3.9.10"
+    "typescript": "~4.4.3",
+    "typescript-json-schema": "^0.50.1"
   },
   "dependencies": {
     "@types/node": "^12.13.0",
+    "ajv": "^8.6.3",
     "cdk8s": "1.0.0-beta.30",
     "cdk8s-plus-17": "1.0.0-beta.57",
     "codemaker": "^1.33.0",
@@ -63,7 +65,7 @@
     "jsii-srcmak": "^0.1.332",
     "json2jsii": "^0.2.4",
     "sscaff": "^1.2.51",
-    "yaml": "^1.10.2",
+    "yaml": "2.0.0-5",
     "yargs": "^15"
   },
   "bundledDependencies": [],
