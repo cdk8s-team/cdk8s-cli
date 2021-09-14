@@ -3,16 +3,20 @@ import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import { ManifestObjectDefinition } from '../../lib/import/crd';
-import { ImportCustomResourceDefinition } from '../../src/import/crd';
-import { safeParseYaml } from '../../src/util';
+import { ImportCustomResourceDefinition, safeParseCrds } from '../../src/import/crd';
+import { SafeReviver } from '../../src/reviver';
 import { testImportMatchSnapshot } from './util';
 
 const fixtures = path.join(__dirname, 'fixtures');
 
 const readFixture = (fixture: string) => {
   const filePath = path.join(fixtures, fixture);
-  return safeParseYaml(fs.readFileSync(filePath, 'utf-8'))
-    .map((doc: yaml.Document) => doc.toJSON());
+  try {
+    return safeParseCrds(fs.readFileSync(filePath, 'utf-8'));
+  } catch (e) {
+    console.log(`Failed reading fixture: ${fixture}: ${e}`);
+    throw e;
+  }
 };
 
 async function withTempFixture(data: any, test: (fixture: string) => Promise<void>) {
@@ -265,7 +269,7 @@ describe('safe parsing', () => {
     });
   });
 
-  test('keys must be words', async () => {
+  test('throws when key is illegal', async () => {
 
     const crd: ManifestObjectDefinition = {
       apiVersion: 'apiextensions.k8s.io/v1beta1',
@@ -293,7 +297,7 @@ describe('safe parsing', () => {
 
   });
 
-  test('values must be words', async () => {
+  test('strips values when illegal', async () => {
 
     const crd: ManifestObjectDefinition = {
       apiVersion: 'apiextensions.k8s.io/v1beta1',
@@ -315,7 +319,10 @@ describe('safe parsing', () => {
     };
 
     await withTempFixture(crd, async (fixture: string) => {
-      await expect(() => ImportCustomResourceDefinition.match({ source: fixture })).rejects.toThrow("Value for key 'group' contains non standard characters");
+      const definitions = await ImportCustomResourceDefinition.match({ source: fixture });
+      expect(definitions?.length).toEqual(1);
+      const definition = definitions ? definitions[0] : undefined;
+      expect(definition?.spec?.group).toEqual(SafeReviver.STRIPPED_VALUE);
     });
 
   });

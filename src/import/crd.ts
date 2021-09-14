@@ -4,6 +4,7 @@ import Ajv from 'ajv';
 import { CodeMaker } from 'codemaker';
 import { TypeGenerator } from 'json2jsii';
 import { ImportSpec } from '../config';
+import { SafeReviver } from '../reviver';
 import { download, safeParseYaml } from '../util';
 import { GenerateOptions, ImportBase } from './base';
 import { emitHeader, generateConstruct } from './codegen';
@@ -11,10 +12,10 @@ import { GroupVersionKind } from './k8s';
 
 const CRD_KIND = 'CustomResourceDefinition';
 
-export interface ManifestObjectDefinition {
-  apiVersion?: string;
-  kind?: string;
-  items?: ManifestObjectDefinition[]; // if `kind` is "List"
+export interface CustomResourceObjectDefinition {
+  apiVersion?: 'apiextensions.k8s.io/v1beta1' | 'apiextensions.k8s.io/v1';
+  kind?: 'CustomResourceDefinition' | 'List';
+  items?: CustomResourceObjectDefinition[]; // if `kind` is "List"
   metadata?: {
     name?: string;
   };
@@ -35,12 +36,6 @@ export interface ManifestObjectDefinition {
   };
 }
 
-// all these APIs are compatible from our perspective.
-const SUPPORTED_API_VERSIONS = [
-  'apiextensions.k8s.io/v1beta1',
-  'apiextensions.k8s.io/v1',
-];
-
 export class CustomResourceDefinition {
   private readonly schema?: any;
   private readonly group: string;
@@ -48,11 +43,7 @@ export class CustomResourceDefinition {
   private readonly kind: string;
   private readonly fqn: string;
 
-  constructor(manifest: ManifestObjectDefinition) {
-    const apiVersion = manifest?.apiVersion ?? 'undefined';
-    assert(SUPPORTED_API_VERSIONS.includes(apiVersion), `"apiVersion" is "${apiVersion}" but it should be one of: ${SUPPORTED_API_VERSIONS.map(x => `"${x}"`).join(', ')}`);
-    assert(manifest.kind === CRD_KIND, `"kind" must be "${CRD_KIND}"`);
-
+  constructor(manifest: CustomResourceObjectDefinition) {
     const spec = manifest.spec;
     if (!spec) {
       throw new Error('manifest does not have a "spec" attribute');
@@ -104,49 +95,29 @@ export class CustomResourceDefinition {
 }
 
 export class ImportCustomResourceDefinition extends ImportBase {
-  public static async match(importSpec: ImportSpec): Promise<undefined | ManifestObjectDefinition[]> {
+  public static async match(importSpec: ImportSpec): Promise<undefined | CustomResourceObjectDefinition[]> {
     const { source } = importSpec;
     const manifest = await download(source);
-    return safeParseCrd(manifest);
+    return safeParseCrds(manifest);
   }
 
   private readonly groups: Record<string, CustomResourceDefinition[]> = { };
 
-  constructor(manifest: ManifestObjectDefinition[]) {
+  constructor(manifest: CustomResourceObjectDefinition[]) {
     super();
 
     const crds: Record<string, CustomResourceDefinition> = { };
     const groups: Record<string, CustomResourceDefinition[]> = { };
 
-    const extractCRDs = (objects: ManifestObjectDefinition[] = []) => {
-      for (const obj of objects) {
-        // filter empty docs in the manifest
-        if (!obj) {
-          continue;
-        }
+    for (const obj of manifest) {
+      const crd = new CustomResourceDefinition(obj);
+      const key = crd.key;
 
-        // found a crd, yey!
-        if (obj.kind === CRD_KIND) {
-          const crd = new CustomResourceDefinition(obj);
-          const key = crd.key;
-
-          if (key in crds) {
-            throw new Error(`${key} already exists`);
-          }
-          crds[key] = crd;
-
-          continue;
-        }
-
-        // recurse into lists
-        if (obj.kind === 'List') {
-          extractCRDs(obj.items);
-          continue;
-        }
+      if (key in crds) {
+        throw new Error(`${key} already exists`);
       }
-    };
-
-    extractCRDs(manifest);
+      crds[key] = crd;
+    }
 
     //sort to ensure consistent ordering for snapshot compare
     const sortedCrds = Object.values(crds).sort((a: CustomResourceDefinition, b: CustomResourceDefinition) => a.key.localeCompare(b.key));
@@ -179,16 +150,34 @@ export class ImportCustomResourceDefinition extends ImportBase {
   }
 }
 
-function assert(condition: boolean, message: string) {
-  if (!condition) {
-    throw new Error(`invalid CustomResourceDefinition manifest: ${message}`);
-  }
-}
-
-function safeParseCrd(text: string): any[] {
-  const schemaPath = path.join(__dirname, 'schemas', 'crd.schema.json');
+export function safeParseCrds(manifest: string): any[] {
+  const schemaPath = path.join(__dirname, '..', 'schemas', 'crd.schema.json');
   const schema = JSON.parse(fs.readFileSync(schemaPath, { encoding: 'utf8' }));
-  const crds = safeParseYaml(text);
+  const reviver = new SafeReviver({
+    sanitizers: { description: SafeReviver.DESCRIPTION_SANITIZER },
+  });
+
+  // first parse and strip
+  const objects = safeParseYaml(manifest, reviver);
+
+  // since the manifest can contain non crds as well, we first
+  // collect all crds and only apply a schema validatio on them.
+
+  const crds: any[] = [];
+
+  function collectCRDs(objs: any[]) {
+    for (const obj of objs.filter(o => o)) {
+      if (obj.kind === CRD_KIND) {
+        crds.push(obj);
+      }
+      if (obj.kind === 'List') {
+        collectCRDs(obj.items);
+      }
+    }
+  }
+
+  collectCRDs(objects);
+
   const ajv = new Ajv();
   const validate = ajv.compile(schema);
   const errors = [];

@@ -1,4 +1,5 @@
 import { parseApiTypeName, safeParseJsonSchema } from '../../src/import/k8s-util';
+import { SafeReviver } from '../../src/reviver';
 
 test('parseApiTypeName', () => {
   expect(parseApiTypeName('io.k8s.api.extensions.v1.Deployment')).toStrictEqual({
@@ -78,7 +79,7 @@ describe('safeParseJsonSchema', () => {
     expect(parsed.definitions.MutatingWebhook.description).toEqual("_/console.log('hello')/*");
   });
 
-  test('keys must be words', () => {
+  test('throws when a key is illegal', () => {
 
     const schema = {
       definitions: {
@@ -103,7 +104,7 @@ describe('safeParseJsonSchema', () => {
     expect(() => safeParseJsonSchema(JSON.stringify(schema))).toThrow("Key 'not a word' contains non standard characters");
   });
 
-  test('values must be words', () => {
+  test('strips when value is illegal', () => {
 
     const schema = {
       definitions: {
@@ -112,7 +113,8 @@ describe('safeParseJsonSchema', () => {
           properties: {
             sideEffects: {
               description: 'some normal description',
-              type: 'not a word',
+              type: 'string',
+              somethingElse: 'not a word',
             },
           },
           required: [
@@ -122,10 +124,11 @@ describe('safeParseJsonSchema', () => {
         },
       },
     };
-    expect(() => safeParseJsonSchema(JSON.stringify(schema))).toThrow("Value for key 'type' contains non standard characters");
+    const parsed = safeParseJsonSchema(JSON.stringify(schema));
+    expect(parsed.definitions.MutatingWebhook.properties.sideEffects.somethingElse).toEqual(SafeReviver.STRIPPED_VALUE);
   });
 
-  test('array element values must be words', () => {
+  test('strips array element values when illegal', () => {
 
     const schema = {
       definitions: {
@@ -144,7 +147,32 @@ describe('safeParseJsonSchema', () => {
         },
       },
     };
-    expect(() => safeParseJsonSchema(JSON.stringify(schema))).toThrow("Value for key '1' contains non standard characters");
+    const parsed = safeParseJsonSchema(JSON.stringify(schema));
+    expect(parsed.definitions.MutatingWebhook.required).toEqual(['sideEffects', SafeReviver.STRIPPED_VALUE]);
+  });
+
+  test('detects invalid schema', async () => {
+
+    const schema = {
+      definitions: {
+        MutatingWebhook: {
+          description: "*/console.log('hello')/*",
+          properties: {
+            sideEffects: {
+              description: 'some normal description',
+              type: 'not a valid type',
+            },
+          },
+          required: [
+            'sideEffects',
+          ],
+          type: 'object',
+        },
+      },
+    };
+
+    expect(() => safeParseJsonSchema(JSON.stringify(schema))).toThrow('schema is invalid');
+
   });
 
 });

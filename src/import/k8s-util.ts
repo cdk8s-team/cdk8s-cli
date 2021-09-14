@@ -1,4 +1,5 @@
 import Ajv from 'ajv';
+import { SafeReviver } from '../reviver';
 import { safeParseJson } from '../util';
 
 /**
@@ -56,7 +57,11 @@ export function parseApiTypeName(fullname: string): ApiTypeName {
 }
 
 export function safeParseJsonSchema(text: string): any {
-  const schema = safeParseJson(text);
+  const reviver = new SafeReviver({
+    allowlistedKeys: ['$ref', '$schema'],
+    sanitizers: { description: SafeReviver.DESCRIPTION_SANITIZER },
+  });
+  const schema = safeParseJson(text, reviver);
   const ajv = new Ajv();
   ajv.compile(schema);
   return schema;

@@ -161,7 +161,7 @@ export interface GroupVersionKind {
 const X_GROUP_VERSION_KIND = 'x-kubernetes-group-version-kind';
 
 async function downloadSchema(apiVersion: string) {
-  const url = `/Users/epolon/dev/src/github.com/cdk8s-team/cdk8s/kubernetes-schemas/v${apiVersion}/_definitions.json`;
+  const url = `https://raw.githubusercontent.com/awslabs/cdk8s/master/kubernetes-schemas/v${apiVersion}/_definitions.json`;
   const output = await download(url);
   try {
     return safeParseJsonSchema(output) as JSONSchema4;

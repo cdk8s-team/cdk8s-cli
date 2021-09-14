@@ -21,6 +21,7 @@
     "watch": "npx projen watch",
     "package": "npx projen package",
     "eslint": "npx projen eslint",
+    "schemas": "npx projen schemas",
     "release": "npx projen release",
     "projen": "npx projen"
   },
