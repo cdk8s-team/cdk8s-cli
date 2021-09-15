@@ -125,6 +125,7 @@ describe('safeParseJsonSchema', () => {
       },
     };
     const parsed = safeParseJsonSchema(JSON.stringify(schema));
+    // the 'somethingElse' key should be stripped because it contains spaces.
     expect(parsed.definitions.MutatingWebhook.properties.sideEffects.somethingElse).toEqual(SafeReviver.STRIPPED_VALUE);
   });
 

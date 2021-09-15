@@ -61,6 +61,6 @@ const project = new TypeScriptProject({
 const schemas = project.addTask('schemas');
 schemas.exec('ts-node scripts/crd.schema.ts');
 
-project.buildTask.spawn(schemas);
+project.compileTask.spawn(schemas);
 
 project.synth();

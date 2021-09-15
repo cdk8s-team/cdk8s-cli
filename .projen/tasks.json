@@ -38,6 +38,9 @@
       "steps": [
         {
           "exec": "tsc --build"
+        },
+        {
+          "spawn": "schemas"
         }
       ]
     },
@@ -80,9 +83,6 @@
         },
         {
           "spawn": "package"
-        },
-        {
-          "spawn": "schemas"
         }
       ]
     },

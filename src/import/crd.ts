@@ -105,29 +105,21 @@ export class CustomResourceDefinition {
 }
 
 export class ImportCustomResourceDefinition extends ImportBase {
-  public static async match(importSpec: ImportSpec): Promise<undefined | ManifestObjectDefinition[]> {
+  public static async fromSpec(importSpec: ImportSpec): Promise<ImportCustomResourceDefinition> {
     const { source } = importSpec;
     const manifest = await download(source);
-    return safeParseCrds(manifest);
+    return new ImportCustomResourceDefinition(safeParseCrds(manifest));
   }
 
   private readonly groups: Record<string, CustomResourceDefinition[]> = { };
 
-  constructor(manifest: ManifestObjectDefinition[]) {
+  private constructor(manifest: ManifestObjectDefinition[]) {
     super();
-
-    // ideally this contrcutor would be private and input validation
-    // would take place only via the `match` method
-
-    const crdsSpecs = [];
-    for (const obj of manifest) {
-      crdsSpecs.push(...safeParseCrds(JSON.stringify(obj)));
-    }
 
     const crds: Record<string, CustomResourceDefinition> = { };
     const groups: Record<string, CustomResourceDefinition[]> = { };
 
-    for (const spec of crdsSpecs) {
+    for (const spec of manifest) {
       const crd = new CustomResourceDefinition(spec);
       const key = crd.key;
 
@@ -186,11 +178,11 @@ export function safeParseCrds(manifest: string): ManifestObjectDefinition[] {
   const objects = safeParseYaml(manifest, reviver);
 
   // since the manifest can contain non crds as well, we first
-  // collect all crds and only apply a schema validatio on them.
+  // collect all crds and only apply a schema validation on them.
 
   const crds: any[] = [];
 
-  function collectCRDs(objs: any[]) {
+  function collectCRDs(objs: unknown[]) {
     for (const obj of objs.filter(o => o)) {
       if (obj.kind === CRD_KIND) {
         crds.push(obj);

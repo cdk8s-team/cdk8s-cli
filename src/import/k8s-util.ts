@@ -1,6 +1,10 @@
 import Ajv from 'ajv';
+// we just need the types from json-schema
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { JSONSchema4 } from 'json-schema';
 import { SafeReviver } from '../reviver';
 import { safeParseJson } from '../util';
+
 
 /**
  *
@@ -56,7 +60,7 @@ export function parseApiTypeName(fullname: string): ApiTypeName {
   };
 }
 
-export function safeParseJsonSchema(text: string): any {
+export function safeParseJsonSchema(text: string): JSONSchema4 {
   const reviver = new SafeReviver({
     allowlistedKeys: ['$ref', '$schema'],
     sanitizers: { description: SafeReviver.DESCRIPTION_SANITIZER },

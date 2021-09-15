@@ -1,7 +1,7 @@
 import { ImportSpec } from '../config';
-import { ImportOptions } from './base';
+import { ImportBase, ImportOptions } from './base';
 import { ImportCustomResourceDefinition } from './crd';
-import { importCrdsDevRepoMatch } from './crds-dev';
+import { matchCrdsDevUrl } from './crds-dev';
 import { ImportKubernetesApi } from './k8s';
 
 export async function importDispatch(imports: ImportSpec[], argv: any, options: ImportOptions) {
@@ -21,21 +21,20 @@ export async function importDispatch(imports: ImportSpec[], argv: any, options: 
   }
 }
 
-async function matchImporter(importSpec: ImportSpec, argv: any) {
+async function matchImporter(importSpec: ImportSpec, argv: any): Promise<ImportBase> {
+
+  // first check if its a `k8s@` import
   const k8s = await ImportKubernetesApi.match(importSpec, argv);
   if (k8s) {
     return new ImportKubernetesApi(k8s);
   }
 
-  const crdsDev = await importCrdsDevRepoMatch(importSpec);
-  if (crdsDev) {
-    return new ImportCustomResourceDefinition(crdsDev);
+  // now check if its a crds.dev import
+  const crdsDevUrl = matchCrdsDevUrl(importSpec.source);
+  if (crdsDevUrl) {
+    return ImportCustomResourceDefinition.fromSpec({ source: crdsDevUrl, moduleNamePrefix: importSpec.moduleNamePrefix });
   }
 
-  const crd = await ImportCustomResourceDefinition.match(importSpec);
-  if (crd) {
-    return new ImportCustomResourceDefinition(crd);
-  }
-
-  return undefined;
+  // default to a normal CRD
+  return ImportCustomResourceDefinition.fromSpec(importSpec);
 }
