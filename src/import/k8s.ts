@@ -9,7 +9,7 @@ import { ImportSpec } from '../config';
 import { download } from '../util';
 import { GenerateOptions, ImportBase } from './base';
 import { ApiObjectDefinition, emitHeader, generateConstruct, getPropsTypeName, getTypeName } from './codegen';
-import { parseApiTypeName } from './k8s-util';
+import { parseApiTypeName, safeParseJsonSchema } from './k8s-util';
 
 
 const DEFAULT_API_VERSION = '1.15.0';
@@ -163,5 +163,9 @@ const X_GROUP_VERSION_KIND = 'x-kubernetes-group-version-kind';
 async function downloadSchema(apiVersion: string) {
   const url = `https://raw.githubusercontent.com/awslabs/cdk8s/master/kubernetes-schemas/v${apiVersion}/_definitions.json`;
   const output = await download(url);
-  return JSON.parse(output) as JSONSchema4;
+  try {
+    return safeParseJsonSchema(output) as JSONSchema4;
+  } catch (e) {
+    throw new Error(`Unable to parse schema at ${url}: ${e}`);
+  }
 }

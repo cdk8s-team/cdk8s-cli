@@ -1,3 +1,11 @@
+import Ajv from 'ajv';
+// we just need the types from json-schema
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { JSONSchema4 } from 'json-schema';
+import { SafeReviver } from '../reviver';
+import { safeParseJson } from '../util';
+
+
 /**
  *
  *     io.k8s.api.extensions.v1beta1.Deployment
@@ -52,3 +60,13 @@ export function parseApiTypeName(fullname: string): ApiTypeName {
   };
 }
 
+export function safeParseJsonSchema(text: string): JSONSchema4 {
+  const reviver = new SafeReviver({
+    allowlistedKeys: ['$ref', '$schema'],
+    sanitizers: { description: SafeReviver.DESCRIPTION_SANITIZER },
+  });
+  const schema = safeParseJson(text, reviver);
+  const ajv = new Ajv();
+  ajv.compile(schema);
+  return schema;
+}

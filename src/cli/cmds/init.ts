@@ -33,7 +33,8 @@ class Command implements yargs.CommandModule {
 
     try {
       await sscaff(templatePath, '.', deps);
-    } catch (e) {
+    } catch (er) {
+      const e = er as any;
       throw new Error(`error during project initialization: ${e.stack}\nSTDOUT:\n${e.stdout?.toString()}\nSTDERR:\n${e.stderr?.toString()}`);
     }
   }

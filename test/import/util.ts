@@ -8,16 +8,16 @@ import { mkdtemp } from '../../src/util';
 
 jest.setTimeout(10 * 60_000);
 
-export function testImportMatchSnapshot(name: string, fn: () => ImportBase, options?: Partial<ImportOptions>) {
+export function testImportMatchSnapshot(name: string, fn: () => Promise<ImportBase>, options?: Partial<ImportOptions>) {
 
   test(name, async () => {
     await expectImportMatchSnapshot(fn, options);
   });
 }
 
-export async function expectImportMatchSnapshot(fn: () => ImportBase, options?: Partial<ImportOptions>) {
+export async function expectImportMatchSnapshot(fn: () => Promise<ImportBase>, options?: Partial<ImportOptions>) {
   await mkdtemp(async workdir => {
-    const importer = fn();
+    const importer = await fn();
 
     const languages = [Language.TYPESCRIPT];
 

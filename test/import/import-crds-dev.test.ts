@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { mocked } from 'ts-jest/utils';
 import { ImportCustomResourceDefinition } from '../../src/import/crd';
-import { importCrdsDevRepoMatch, crdsDevUrl } from '../../src/import/crds-dev';
+import { matchCrdsDevUrl } from '../../src/import/crds-dev';
 import { download } from '../../src/util';
 import { expectImportMatchSnapshot } from './util';
 
@@ -48,10 +48,10 @@ describe('crds.dev import', () => {
     });
 
     test(`${source} emit module per API group`, async () => {
-      const crdsDev = await importCrdsDevRepoMatch( { source });
+      const crdsDev = await matchCrdsDevUrl(source);
       expect(crdsDev).toBeDefined();
       if (crdsDev) {
-        await expectImportMatchSnapshot( () => new ImportCustomResourceDefinition(crdsDev));
+        await expectImportMatchSnapshot( () => ImportCustomResourceDefinition.fromSpec({ source: crdsDev }));
       }
     });
   }
@@ -60,7 +60,7 @@ describe('crds.dev import', () => {
 describe('crds.dev import errors', () => {
   for ( const t of crdsDevUrlTests.filter( o => o.expected === undefined )) {
     test(t.import, async () => {
-      const crdsDev = await importCrdsDevRepoMatch({ source: t.import });
+      const crdsDev = matchCrdsDevUrl(t.import);
       expect(crdsDev).toBeUndefined();
     });
   }
@@ -69,7 +69,7 @@ describe('crds.dev import errors', () => {
 describe('crds.dev url map', () => {
   for ( const t of crdsDevUrlTests ) {
     test(t.import, () => {
-      const url = crdsDevUrl(t.import);
+      const url = matchCrdsDevUrl(t.import);
       expect(url).toBe(t.expected);
     });
   }

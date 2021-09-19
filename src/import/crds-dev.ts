@@ -1,6 +1,3 @@
-import { ImportSpec } from '../config';
-import { ImportCustomResourceDefinition, ManifestObjectDefinition } from './crd';
-
 /**
  *
  *              github:crossplane/crossplane@0.14.0
@@ -17,26 +14,12 @@ import { ImportCustomResourceDefinition, ManifestObjectDefinition } from './crd'
 /**
  * Matches a https://doc.crds.dev repo
  *
- *  - ManifestObjectDefinition[] if found
+ *  - url if found
  *  - undefined if not
  *
  * @param source
  */
-export async function importCrdsDevRepoMatch(importSpec: ImportSpec): Promise<undefined | ManifestObjectDefinition[]> {
-  const { source } = importSpec;
-  const url = crdsDevUrl(source);
-  if (url) {
-    const crd = await ImportCustomResourceDefinition.match({
-      source: url,
-    });
-
-    return crd;
-  }
-
-  return undefined;
-}
-
-export function crdsDevUrl(source: string): (undefined | string) {
+export function matchCrdsDevUrl(source: string): (undefined | string) {
   const match = /^github:([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)(?:\@([0-9]+)\.([0-9]+)(?:\.([0-9]+))?)?$/.exec(source);
   if (match) {
     const account = match[1];

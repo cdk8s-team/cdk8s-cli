@@ -86,8 +86,16 @@
       "type": "build"
     },
     {
+      "name": "typescript-json-schema",
+      "type": "build"
+    },
+    {
       "name": "@types/node",
       "version": "^12.13.0",
+      "type": "runtime"
+    },
+    {
+      "name": "ajv",
       "type": "runtime"
     },
     {
