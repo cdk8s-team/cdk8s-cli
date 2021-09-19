@@ -10,7 +10,7 @@ export interface SafeReviverProps {
  * JSON/YAML reviver that:
  *
  * - Throws when an illegal key is detected.
- * - Replaces illegal values with undefined.
+ * - Replaces illegal values with a special marker.
  */
 export class SafeReviver {
 
