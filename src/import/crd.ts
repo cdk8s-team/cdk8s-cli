@@ -182,7 +182,7 @@ export function safeParseCrds(manifest: string): ManifestObjectDefinition[] {
 
   const crds: any[] = [];
 
-  function collectCRDs(objs: unknown[]) {
+  function collectCRDs(objs: any[]) {
     for (const obj of objs.filter(o => o)) {
       if (obj.kind === CRD_KIND) {
         crds.push(obj);
