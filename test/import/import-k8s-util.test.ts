@@ -76,7 +76,7 @@ describe('safeParseJsonSchema', () => {
       },
     };
     const parsed = safeParseJsonSchema(JSON.stringify(schema));
-    expect(parsed.definitions.MutatingWebhook.description).toEqual("_/console.log('hello')/*");
+    expect(parsed.definitions?.MutatingWebhook?.description).toEqual("_/console.log('hello')/*");
   });
 
   test('throws when a key is illegal', () => {
@@ -126,7 +126,7 @@ describe('safeParseJsonSchema', () => {
     };
     const parsed = safeParseJsonSchema(JSON.stringify(schema));
     // the 'somethingElse' key should be stripped because it contains spaces.
-    expect(parsed.definitions.MutatingWebhook.properties.sideEffects.somethingElse).toEqual(SafeReviver.STRIPPED_VALUE);
+    expect(parsed.definitions?.MutatingWebhook?.properties?.sideEffects?.somethingElse).toEqual(SafeReviver.STRIPPED_VALUE);
   });
 
   test('strips array element values when illegal', () => {
@@ -149,7 +149,7 @@ describe('safeParseJsonSchema', () => {
       },
     };
     const parsed = safeParseJsonSchema(JSON.stringify(schema));
-    expect(parsed.definitions.MutatingWebhook.required).toEqual(['sideEffects', SafeReviver.STRIPPED_VALUE]);
+    expect(parsed.definitions?.MutatingWebhook?.required).toEqual(['sideEffects', SafeReviver.STRIPPED_VALUE]);
   });
 
   test('detects invalid schema', async () => {
