@@ -38,8 +38,9 @@ export async function expectImportMatchSnapshot(fn: () => Promise<ImportBase>, o
       if (jsiiPath) {
         const manifest = JSON.parse((await fs.readFile(jsiiPath)).toString('utf-8'));
 
-        // patch cdk8s version in manifest because it's not stable
-        manifest.dependencies.cdk8s = '999.999.999';
+        // patch dependency versions in manifest because they are not stable
+        manifest.dependencies = '__omitted__';
+        manifest.jsiiVersion = '__omitted__';
         manifest.fingerprint = '<fingerprint>';
         expect(manifest).toMatchSnapshot();
       }
