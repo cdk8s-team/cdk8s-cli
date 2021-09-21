@@ -21,7 +21,7 @@ const project = new TypeScriptProject({
   },
   deps: [
     'cdk8s',
-    'cdk8s-plus-17',
+    'cdk8s-plus-22',
     'codemaker',
     'constructs',
     'fs-extra@^8',
