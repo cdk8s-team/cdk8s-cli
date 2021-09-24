@@ -1486,10 +1486,10 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-cdk8s-plus-22@^1.0.0-beta.4:
-  version "1.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-22/-/cdk8s-plus-22-1.0.0-beta.4.tgz#f5e9ed14f7d4b6c9739d6285020bf2f3d3e79fe3"
-  integrity sha512-lxxXgDBaL3KtXDHsJy9Isg5LYctz7a9tiEtJ16zeJiGAJXqQo3VOpshV1eVbwD0E28l2NU1H2HLuFum1pw3C+w==
+cdk8s-plus-22@^1.0.0-beta.5:
+  version "1.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/cdk8s-plus-22/-/cdk8s-plus-22-1.0.0-beta.5.tgz#2dceb229f8a21f0467c9a76dace0bde830929541"
+  integrity sha512-q63klY0wfgwNv1iGuaR7CaLvro8VQynmuOqpD1RJYiIMEIkGms45+pA96KbesUC1vjDAOmWGSVy6FxCyqxjbBw==
   dependencies:
     minimatch "^3.0.4"
 
