@@ -12,7 +12,7 @@ import { ApiObjectDefinition, emitHeader, generateConstruct, getPropsTypeName, g
 import { parseApiTypeName, safeParseJsonSchema } from './k8s-util';
 
 
-const DEFAULT_API_VERSION = '1.15.0';
+const DEFAULT_API_VERSION = '1.22.0';
 const DEFAULT_CLASS_NAME_PREFIX = 'Kube';
 
 export interface ImportKubernetesApiOptions {
