@@ -12,7 +12,8 @@ import { ApiObjectDefinition, emitHeader, generateConstruct, getPropsTypeName, g
 import { parseApiTypeName, safeParseJsonSchema } from './k8s-util';
 
 
-const DEFAULT_API_VERSION = '1.22.0';
+export const DEFAULT_API_VERSION = '1.22.0';
+
 const DEFAULT_CLASS_NAME_PREFIX = 'Kube';
 
 export interface ImportKubernetesApiOptions {
@@ -37,8 +38,12 @@ export class ImportKubernetesApi extends ImportBase {
       return undefined;
     }
 
+    let k8sVersion = source.split('@')[1];
+
+    console.error(`Importing k8s v${k8sVersion}...`);
+
     return {
-      apiVersion: source.split('@')[1] ?? DEFAULT_API_VERSION,
+      apiVersion: k8sVersion,
       exclude: argv.exclude,
     };
   }
