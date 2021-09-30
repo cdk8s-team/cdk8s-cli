@@ -796,9 +796,9 @@
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
 "@types/node@*", "@types/node@^16.9.2":
-  version "16.10.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.10.1.tgz#f3647623199ca920960006b3dccf633ea905f243"
-  integrity sha512-4/Z9DMPKFexZj/Gn3LylFgamNKHm4K3QDi0gz9B26Uk0c8izYf97B5fxfpspMNkWlFupblKM/nV8+NA9Ffvr+w==
+  version "16.10.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.10.2.tgz#5764ca9aa94470adb4e1185fe2e9f19458992b2e"
+  integrity sha512-zCclL4/rx+W5SQTzFs9wyvvyCwoK9QtBpratqz2IYJ3O8Umrn0m3nsTv0wQBk9sRGpvUe9CwPDrQFB10f1FIjQ==
 
 "@types/node@^12.13.0":
   version "12.20.27"
@@ -2072,9 +2072,9 @@ decamelize@^4.0.0:
   integrity sha512-9iE1PgSik9HeIIw2JO94IidnE3eBoQrFJ3w7sFuzSX4DpmZ3v5sZpUiV5Swcf6mQEF+Y0ru8Neo+p+nyh2J+hQ==
 
 decamelize@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-5.0.0.tgz#88358157b010ef133febfd27c18994bd80c6215b"
-  integrity sha512-U75DcT5hrio3KNtvdULAWnLiAPbFUC4191ldxMmj4FA/mRuBnmDwU0boNfPyFRhnan+Jm+haLeSn3P0afcBn4w==
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-5.0.1.tgz#db11a92e58c741ef339fb0a2868d8a06a9a7b1e9"
+  integrity sha512-VfxadyCECXgQlkoEAjeghAr5gY3Hf+IKjKb+X8tGVDtveCjN+USwprd2q3QXBR9T1+x2DG0XZF5/w+7HAtSaXA==
 
 decimal.js@^10.2.1:
   version "10.3.1"
@@ -2273,9 +2273,9 @@ ecc-jsbn@~0.1.1:
     safer-buffer "^2.1.0"
 
 electron-to-chromium@^1.3.846:
-  version "1.3.853"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.853.tgz#f3ed1d31f092cb3a17af188bca6c6a3ec91c3e82"
-  integrity sha512-W4U8n+U8I5/SUaFcqZgbKRmYZwcyEIQVBDf+j5QQK6xChjXnQD+wj248eGR9X4u+dDmDR//8vIfbu4PrdBBIoQ==
+  version "1.3.854"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.854.tgz#003f0b9c80eccc35be0ef04a0e0b1c31a10b90d5"
+  integrity sha512-00/IIC1mFPkq32MhUJyLdcTp7+wsKK2G3Sb65GSas9FKJQGYkDcZ4GwJkkxf5YyM3ETvl6n+toV8OmtXl4IA/g==
 
 emittery@^0.7.1:
   version "0.7.2"
@@ -3582,9 +3582,9 @@ is-generator-fn@^2.0.0:
   integrity sha512-cTIB4yPYL/Grw0EaSzASzg6bBy9gqCofvWN8okThAYIxKJZC+udlRAmGbM0XLeniEJSs8uEgHPGuHSe1XsOLSQ==
 
 is-glob@^4.0.0, is-glob@^4.0.1:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.2.tgz#859fc2e731e58c902f99fcabccb75a7dd07d29d8"
-  integrity sha512-ZZTOjRcDjuAAAv2cTBQP/lL59ZTArx77+7UzHdWW/XB1mrfp7DEaVpKmZ0XIzx+M7AxfhKcqV+nMetUQmFifwg==
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.3.tgz#64f61e42cbbb2eec2071a9dac0b28ba1e65d5084"
+  integrity sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==
   dependencies:
     is-extglob "^2.1.1"
 
@@ -6120,9 +6120,9 @@ side-channel@^1.0.3, side-channel@^1.0.4:
     object-inspect "^1.9.0"
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.4.tgz#366a4684d175b9cab2081e3681fda3747b6c51d7"
-  integrity sha512-rqYhcAnZ6d/vTPGghdrw7iumdcbXpsk1b8IG/rz+VWV51DM0p7XCtMoJ3qhPLIbp3tvyt3pKRbaaEMZYpHto8Q==
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.5.tgz#9e3e8cc0c75a99472b44321033a7702e7738252f"
+  integrity sha512-KWcOiKeQj6ZyXx7zq4YxSMgHRlod4czeBQZrPb8OKcohcqAXShm7E20kEMle9WBt26hFcAf0qLOcp5zmY7kOqQ==
 
 sisteransi@^1.0.5:
   version "1.0.5"
@@ -6313,10 +6313,10 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-sscaff@^1.2.80:
-  version "1.2.80"
-  resolved "https://registry.yarnpkg.com/sscaff/-/sscaff-1.2.80.tgz#cc5be039f71f01d8a5c5a62c4aec7fdcb3f8e529"
-  integrity sha512-BpfptEqal8Q2oi4XDQFOpiGgWWxrN1R1GqkkGTefbuM2qFouJv3LiUV0wE/mmYsRpUgQ2iVnPCVQQG0ob/U47g==
+sscaff@^1.2.81:
+  version "1.2.81"
+  resolved "https://registry.yarnpkg.com/sscaff/-/sscaff-1.2.81.tgz#d99e61d284ce2e69fe4a0fff64161f950b7d8a18"
+  integrity sha512-wstcZwmSjQR1mxIUpGJ8RFZeDP/KtKVtg0p5I1Bjy35rpx7PunHZ9ZFTlxaAIdwvs6Jztxr+wMtck5959z01qQ==
 
 sshpk@^1.7.0:
   version "1.16.1"
