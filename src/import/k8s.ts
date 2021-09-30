@@ -38,7 +38,7 @@ export class ImportKubernetesApi extends ImportBase {
       return undefined;
     }
 
-    let k8sVersion = source.split('@')[1];
+    let k8sVersion = source.split('@')[1] ?? DEFAULT_API_VERSION;
 
     console.error(`Importing k8s v${k8sVersion}...`);
 
