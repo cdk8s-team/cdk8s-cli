@@ -56,8 +56,8 @@
   "dependencies": {
     "@types/node": "^12.13.0",
     "ajv": "^8.6.3",
-    "cdk8s": "^1.0.0-beta.53",
-    "cdk8s-plus-22": "^1.0.0-beta.5",
+    "cdk8s": "^1.0.0-beta.55",
+    "cdk8s-plus-22": "^1.0.0-beta.6",
     "codemaker": "^1.35.0",
     "colors": "^1.4.0",
     "constructs": "^3.3.156",
@@ -65,7 +65,7 @@
     "jsii-pacmak": "^1.35.0",
     "jsii-srcmak": "^0.1.357",
     "json2jsii": "^0.2.33",
-    "sscaff": "^1.2.84",
+    "sscaff": "^1.2.85",
     "yaml": "2.0.0-8",
     "yargs": "^15"
   },
