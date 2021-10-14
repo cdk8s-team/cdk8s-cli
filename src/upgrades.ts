@@ -1,8 +1,8 @@
-// import { shell } from './util';
 import { homedir } from 'os';
 import { join } from 'path';
 import * as cdk8s from 'cdk8s';
-import { readFileSync, statSync, writeFileSync } from 'fs-extra';
+import { readFileSync, statSync } from 'fs-extra';
+import { _fs } from './_fs';
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const pkg = require('../package.json');
@@ -76,9 +76,10 @@ export function getLatestVersion(module: string, options: { cacheFile: string; c
 
   function writeCache(version: string) {
     try {
-      writeFileSync(options.cacheFile, version);
+      _fs.writeFileSync(options.cacheFile, version);
     } catch (e) {
       return;
     }
   }
 }
+

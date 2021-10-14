@@ -1,4 +1,4 @@
-import * as colors from 'colors';
+import { yellow } from 'colors';
 import * as yargs from 'yargs';
 import { upgradeAvailable } from '../upgrades';
 
@@ -10,9 +10,9 @@ async function main() {
         const versions = upgradeAvailable();
         if (versions) {
           console.error('------------------------------------------------------------------------------------------------');
-          console.error(colors.yellow(`A new version ${versions.latest} of cdk8s-cli is available (current ${versions.current}).`));
-          console.error(colors.yellow('Run "npm install -g cdk8s-cli" to install the latest version on your system.'));
-          console.error(colors.yellow('For additional installation methods, see https://cdk8s.io/docs/latest/getting-started'));
+          console.error(yellow(`A new version ${versions.latest} of cdk8s-cli is available (current ${versions.current}).`));
+          console.error(yellow('Run "npm install -g cdk8s-cli" to install the latest version on your system.'));
+          console.error(yellow('For additional installation methods, see https://cdk8s.io/docs/latest/getting-started'));
           console.error('------------------------------------------------------------------------------------------------');
         }
       }
