@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { promisify } from 'util';
 import * as fs from 'fs-extra';
-import * as glob from 'glob';
+import { glob } from 'glob';
 import { ImportBase, ImportOptions, Language } from '../../src/import/base';
 import { mkdtemp } from '../../src/util';
 

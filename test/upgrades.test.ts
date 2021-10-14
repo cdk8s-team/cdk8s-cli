@@ -2,6 +2,7 @@ import { tmpdir } from 'os';
 import { join } from 'path';
 import { Yaml } from 'cdk8s';
 import * as fs from 'fs-extra';
+import { _fs } from '../src/_fs';
 import { getLatestVersion } from '../src/upgrades';
 
 describe('getLatestVersion', () => {
@@ -127,7 +128,7 @@ describe('getLatestVersion', () => {
   test('fail to write to local cache', () => {
     // GIVEN
     yamlLoad.mockReturnValue([{ version: '43.12.13' }]);
-    jest.spyOn(fs, 'writeFileSync').mockImplementation(() => {
+    jest.spyOn(_fs, 'writeFileSync').mockImplementation(() => {
       throw new Error('unable to write file');
     });
 
@@ -147,7 +148,7 @@ describe('getLatestVersion', () => {
       throw new Error('unable to download');
     });
 
-    jest.spyOn(fs, 'writeFileSync').mockImplementation(() => {
+    jest.spyOn(_fs, 'writeFileSync').mockImplementation(() => {
       throw new Error('unable to write file');
     });
 
