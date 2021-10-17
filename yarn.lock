@@ -14,7 +14,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.15.0.tgz#2dbaf8b85334796cafbb0f5793a90a2fc010b176"
   integrity sha512-0NqAC1IJE0S0+lL1SWFMxMkz1pKCNCjI4tr2Zx4LJSXxCLAdr6KyArnY+sno5m3yH9g737ygOyPABDsnXkpxiA==
 
-"@babel/core@^7.1.0", "@babel/core@^7.7.5":
+"@babel/core@^7.1.0", "@babel/core@^7.12.3", "@babel/core@^7.7.5":
   version "7.15.8"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.15.8.tgz#195b9f2bffe995d2c6c159e72fe525b4114e8c10"
   integrity sha512-3UG9dsxvYBMYwRv+gS41WKHno4K60/9GPy1CJaH6xy3Elq8CTtvtjT5R5jmNhXfCYLX2mTw+7/aq5ak/gOE0og==
@@ -169,7 +169,7 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.1.0", "@babel/parser@^7.15.4", "@babel/parser@^7.15.8":
+"@babel/parser@^7.1.0", "@babel/parser@^7.14.7", "@babel/parser@^7.15.4", "@babel/parser@^7.15.8":
   version "7.15.8"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.15.8.tgz#7bacdcbe71bdc3ff936d510c15dcea7cf0b99016"
   integrity sha512-BRYa3wcQnjS/nqI8Ac94pYYpJfojHVvVXJ97+IDCImX4Jc8W8Xv1+47enbruk+q1etOpsQNwnfFcNGw+gtPGxA==
@@ -1218,14 +1218,14 @@ babel-jest@^26.6.3:
     slash "^3.0.0"
 
 babel-plugin-istanbul@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-istanbul/-/babel-plugin-istanbul-6.0.0.tgz#e159ccdc9af95e0b570c75b4573b7c34d671d765"
-  integrity sha512-AF55rZXpe7trmEylbaE1Gv54wn6rwU03aptvRoVIGP8YykoSxqdVLV1TfwflBCE/QtHmqtP8SWlTENqbK8GCSQ==
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-istanbul/-/babel-plugin-istanbul-6.1.1.tgz#fa88ec59232fd9b4e36dbbc540a8ec9a9b47da73"
+  integrity sha512-Y1IQok9821cC9onCx5otgFfRm7Lm+I+wwxOx738M/WLPZ9Q42m4IG5W0FNX8WLL2gYMZo3JkuXIH2DOpWM+qwA==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@istanbuljs/load-nyc-config" "^1.0.0"
     "@istanbuljs/schema" "^0.1.2"
-    istanbul-lib-instrument "^4.0.0"
+    istanbul-lib-instrument "^5.0.4"
     test-exclude "^6.0.0"
 
 babel-plugin-jest-hoist@^26.6.2:
@@ -1487,10 +1487,10 @@ cdk8s-plus-22@^1.0.0-beta.21:
   dependencies:
     minimatch "^3.0.4"
 
-cdk8s@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.1.3.tgz#00180a0367e94f8648d5c1c439d486cd79aaacf1"
-  integrity sha512-ZmFZYlv0ZgErU6GC4nnANZPXeLnsjX3h0tJgw6k1GI4VgadeC27UffGhTeMZOMXn4iTHOT2XmR2GTx0DHge4UA==
+cdk8s@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.1.4.tgz#2b9f765b90b26ce3017b0bb7317c2a08bea67540"
+  integrity sha512-zTGv48MRCvxXYvvFVLiiaL6v2HA/NSCtUdKgUFfMkYy6LfgJ0nYTzkRwY+c7OGyOsUepn3eYkT80fFkYtT9ndg==
   dependencies:
     fast-json-patch "^2.2.1"
     follow-redirects "^1.14.4"
@@ -3794,12 +3794,23 @@ istanbul-lib-coverage@^3.0.0:
   resolved "https://registry.yarnpkg.com/istanbul-lib-coverage/-/istanbul-lib-coverage-3.0.2.tgz#36786d4d82aad2ea5911007e255e2da6b5f80d86"
   integrity sha512-o5+eTUYzCJ11/+JhW5/FUCdfsdoYVdQ/8I/OveE2XsjehYn5DdeSnNQAbjYaO8gQ6hvGTN6GM6ddQqpTVG5j8g==
 
-istanbul-lib-instrument@^4.0.0, istanbul-lib-instrument@^4.0.3:
+istanbul-lib-instrument@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/istanbul-lib-instrument/-/istanbul-lib-instrument-4.0.3.tgz#873c6fff897450118222774696a3f28902d77c1d"
   integrity sha512-BXgQl9kf4WTCPCCpmFGoJkz/+uhvm7h7PFKUYxh7qarQd3ER33vHG//qaE8eN25l07YqZPpHXU9I09l/RD5aGQ==
   dependencies:
     "@babel/core" "^7.7.5"
+    "@istanbuljs/schema" "^0.1.2"
+    istanbul-lib-coverage "^3.0.0"
+    semver "^6.3.0"
+
+istanbul-lib-instrument@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/istanbul-lib-instrument/-/istanbul-lib-instrument-5.0.4.tgz#e976f2aa66ebc6737f236d3ab05b76e36f885c80"
+  integrity sha512-W6jJF9rLGEISGoCyXRqa/JCGQGmmxPO10TMu7izaUTynxvBvTjqzAIIGCK9USBmIbQAaSWD6XJPrM9Pv5INknw==
+  dependencies:
+    "@babel/core" "^7.12.3"
+    "@babel/parser" "^7.14.7"
     "@istanbuljs/schema" "^0.1.2"
     istanbul-lib-coverage "^3.0.0"
     semver "^6.3.0"
@@ -4333,10 +4344,10 @@ jsii-rosetta@^1.39.0:
     typescript "~3.9.10"
     yargs "^16.2.0"
 
-jsii-srcmak@^0.1.370:
-  version "0.1.370"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.370.tgz#9282e39508d46eda5d7a70871d8baaaab52a3b6f"
-  integrity sha512-Jyer82ZE0W3OfST6S3vOVZRF88xDa5PnMqU4dRS2dGNdKzjBF1QnoN/vdX4iljutScfl5hXvZTJLy4drFnHUsg==
+jsii-srcmak@^0.1.371:
+  version "0.1.371"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.371.tgz#aa79dc4f884884b1860ce2e58e3ac109205d580d"
+  integrity sha512-8MSayke1kpZc3LTQreAkdmGr2WTdaIO7FY10w5fJn1RpwXwdKNC1DmB49eu6XquhnBgHIjWGWs7yHHuvtNlv1w==
   dependencies:
     fs-extra "^9.1.0"
     jsii "^1.39.0"
@@ -6314,10 +6325,10 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-sscaff@^1.2.97:
-  version "1.2.97"
-  resolved "https://registry.yarnpkg.com/sscaff/-/sscaff-1.2.97.tgz#d6182dc716ea85bc8cb1facc9c3d233de8db1009"
-  integrity sha512-J7uBmQrCtK2C5vO8RPK8XJLzf/IfouCyu+sKduy6W+VBM1ZSAQMtp5VS41utEtlfAOu1ZveKXhE04zJ6bUrYEg==
+sscaff@^1.2.98:
+  version "1.2.98"
+  resolved "https://registry.yarnpkg.com/sscaff/-/sscaff-1.2.98.tgz#af747efe29c377b82cc0cfef66c8f0d73311194e"
+  integrity sha512-MvrL3n51y3PS2OG8Y8rBp144rhg6dv099XEwU3T1aNur4Aioex536ZX4IzdvsvlppuV0nPM1j2uOzfl7zBluLQ==
 
 sshpk@^1.7.0:
   version "1.16.1"
