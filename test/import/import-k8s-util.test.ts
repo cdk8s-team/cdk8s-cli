@@ -114,7 +114,7 @@ describe('safeParseJsonSchema', () => {
             sideEffects: {
               description: 'some normal description',
               type: 'string',
-              somethingElse: 'not a word',
+              somethingElse: 'invalid\tvalue',
             },
           },
           required: [
@@ -142,7 +142,7 @@ describe('safeParseJsonSchema', () => {
             },
           },
           required: [
-            'sideEffects', 'not a word',
+            'sideEffects', 'invalid\tvalue',
           ],
           type: 'object',
         },
