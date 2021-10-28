@@ -203,6 +203,7 @@ Object {
           },
         },
       ],
+      "symbolId": "meta.pkg.crossplane.io:Configuration",
     },
     "metapkgcrossplaneio.ConfigurationProps": Object {
       "assembly": "metapkgcrossplaneio",
@@ -258,6 +259,7 @@ Object {
           },
         },
       ],
+      "symbolId": "meta.pkg.crossplane.io:ConfigurationProps",
     },
     "metapkgcrossplaneio.ConfigurationSpec": Object {
       "assembly": "metapkgcrossplaneio",
@@ -320,6 +322,7 @@ Object {
           },
         },
       ],
+      "symbolId": "meta.pkg.crossplane.io:ConfigurationSpec",
     },
     "metapkgcrossplaneio.ConfigurationSpecCrossplane": Object {
       "assembly": "metapkgcrossplaneio",
@@ -357,6 +360,7 @@ Object {
           },
         },
       ],
+      "symbolId": "meta.pkg.crossplane.io:ConfigurationSpecCrossplane",
     },
     "metapkgcrossplaneio.ConfigurationSpecDependsOn": Object {
       "assembly": "metapkgcrossplaneio",
@@ -433,6 +437,7 @@ Object {
           },
         },
       ],
+      "symbolId": "meta.pkg.crossplane.io:ConfigurationSpecDependsOn",
     },
   },
   "version": "0.0.0",
