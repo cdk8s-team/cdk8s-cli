@@ -35,16 +35,18 @@ export class SafeReviver {
       throw new Error(`Expected key (${key}) to be of type 'string', but got '${typeof(key)}'`);
     }
 
-    // . | used in resource fqn which servers as a key (e.g io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup)
-    // / | used in $ref to point to a definition (e.g #/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery)
-    // - | used in annotation keys (e.g x-kubernetes-group-version-kind)
-    // # | used in $ref to point to a definition (e.g #/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery)
-    // , | used in values that represent a list (e.g merge,retainKeys)
-    const legal = /^(\w|\.|\/|-|#|,)*$/;
+    // .       | used in resource fqn which servers as a key (e.g io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup)
+    // /       | used in $ref to point to a definition (e.g #/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery)
+    // -       | used in annotation keys (e.g x-kubernetes-group-version-kind)
+    // #       | used in $ref to point to a definition (e.g #/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery)
+    // ,       | used in values that represent a list (e.g merge,retainKeys)
+    // <space> | used in enum values with spaces
+    const legalKey = /^(\w|\.|\/|-|#|,)*$/;
+    const legalValue = /^(\w| |\.|\/|-|#|,)*$/;
 
-    if (!this.allowlistedKeys.includes(key) && !key.match(legal)) {
+    if (!this.allowlistedKeys.includes(key) && !key.match(legalKey)) {
       // keys cannot be stripped so we have to throw - thats ok, we don't want to parse such docs at all
-      throw new Error(`Key '${key}' contains non standard characters (Must match regex '${legal}')`);
+      throw new Error(`Key '${key}' contains non standard characters (Must match regex '${legalKey}')`);
     }
 
     if (typeof(value) === 'string') {
@@ -56,7 +58,7 @@ export class SafeReviver {
         return sanitizer(value);
       }
 
-      if (!value.match(legal)) {
+      if (!value.match(legalValue)) {
         // otherwise strip illegal values.
         // we shouldn't be using these values anyway.
         // the reason we don't throw is because sometimes these type of values exist in

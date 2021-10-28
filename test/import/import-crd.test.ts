@@ -274,6 +274,71 @@ describe('safe parsing', () => {
     });
   });
 
+  test('does not error for enums with spaces', async () => {
+
+    const crd: ManifestObjectDefinition = {
+      apiVersion: 'apiextensions.k8s.io/v1beta1',
+      kind: 'CustomResourceDefinition',
+      metadata: {
+        name: 'testMetadata',
+      },
+      spec: {
+        version: 'v1',
+        group: 'testGroup',
+        names: {
+          kind: 'testNameKind',
+        },
+        validation: {
+          openAPIV3Schema: {
+            properties: {
+              usages: {
+                description: 'Usages is the set of x509 usages that are requested for the certificate. Defaults to `digital signature` and `key encipherment` if not specified.',
+                type: 'array',
+                items: {
+                  description: '\'KeyUsage specifies valid usage contexts for keys. See: https://tools.ietf.org/html/rfc5280#section-4.2.1.3      https://tools.ietf.org/html/rfc5280#section-4.2.1.12 Valid KeyUsage values are as follows: "signing", "digital signature", "content commitment", "key encipherment", "key agreement", "data encipherment", "cert sign", "crl sign", "encipher only", "decipher only", "any", "server auth", "client auth", "code signing", "email protection", "s/mime", "ipsec end system", "ipsec tunnel", "ipsec user", "timestamping", "ocsp signing", "microsoft sgc", "netscape sgc"\'',
+                  type: 'string',
+                  enum: [
+                    'signing',
+                    'digital signature',
+                    'content commitment',
+                    'key encipherment',
+                    'key agreement',
+                    'data encipherment',
+                    'cert sign',
+                    'crl sign',
+                    'encipher only',
+                    'decipher only',
+                    'any',
+                    'server auth',
+                    'client auth',
+                    'code signing',
+                    'email protection',
+                    's/mime',
+                    'ipsec end system',
+                    'ipsec tunnel',
+                    'ipsec user',
+                    'timestamping',
+                    'ocsp signing',
+                    'microsoft sgc',
+                    'netscape sgc',
+                  ],
+                },
+              },
+            },
+          },
+        },
+      },
+    };
+
+    await withTempFixture(crd, async (fixture: string, cwd: string) => {
+      const importer = await ImportCustomResourceDefinition.fromSpec({ source: fixture });
+      await importer.import({ targetLanguage: Language.TYPESCRIPT, outdir: cwd });
+      const output = fs.readFileSync(path.join(cwd, 'testGroup.ts'), { encoding: 'utf8' });
+      expect(output).toMatchSnapshot();
+      expect(output).not.toContain('STRIPPED_BY_CDK8S');
+    });
+  });
+
   test('throws when key is illegal', async () => {
 
     const crd: ManifestObjectDefinition = {
@@ -314,11 +379,11 @@ describe('safe parsing', () => {
         version: 'v1',
         group: 'testGroup',
         names: {
-          kind: 'its not ok to have spaces here',
+          kind: 'its not ok to have tabs\there',
         },
         validation: {
           openAPIV3Schema: {
-            description: 'Its ok to have spaces here',
+            description: 'Its ok to have tabs\there',
           },
         },
       },
@@ -346,7 +411,7 @@ describe('safe parsing', () => {
         },
         validation: {
           openAPIV3Schema: {
-            description: 'Its ok to have spaces here',
+            description: 'Its ok to have tabs\there',
           },
         },
       },
