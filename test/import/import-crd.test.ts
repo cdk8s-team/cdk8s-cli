@@ -379,11 +379,11 @@ describe('safe parsing', () => {
         version: 'v1',
         group: 'testGroup',
         names: {
-          kind: 'its not ok to have tabs\there',
+          kind: 'its not ok to have spaces here',
         },
         validation: {
           openAPIV3Schema: {
-            description: 'Its ok to have tabs\there',
+            description: 'Its ok to have spaces here',
           },
         },
       },
@@ -411,7 +411,7 @@ describe('safe parsing', () => {
         },
         validation: {
           openAPIV3Schema: {
-            description: 'Its ok to have tabs\there',
+            description: 'Its ok to have spaces here',
           },
         },
       },
