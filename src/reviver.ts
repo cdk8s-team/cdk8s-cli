@@ -40,7 +40,7 @@ export class SafeReviver {
     // - | used in annotation keys (e.g x-kubernetes-group-version-kind)
     // # | used in $ref to point to a definition (e.g #/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery)
     // , | used in values that represent a list (e.g merge,retainKeys)
-    const legal = /^(\w|\.|\/|-|#|,)*$/;
+    const legal = /^(\w|\.|\/|-|#|@|,)*$/;
 
     if (!this.allowlistedKeys.includes(key) && !key.match(legal)) {
       // keys cannot be stripped so we have to throw - thats ok, we don't want to parse such docs at all
