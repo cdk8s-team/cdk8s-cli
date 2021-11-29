@@ -1,6 +1,6 @@
 {
   "name": "cdk8s-cli",
-  "description": "CDK for Kubernetes CLI",
+  "description": "This is the command line tool for Cloud Development Kit (CDK) for Kubernetes (cdk8s).",
   "bin": {
     "cdk8s": "bin/cdk8s"
   },
@@ -71,6 +71,15 @@
     "yargs": "^15"
   },
   "bundledDependencies": [],
+  "keywords": [
+    "automation",
+    "cdk8s",
+    "cli",
+    "containers",
+    "k8s",
+    "kubernetes",
+    "tools"
+  ],
   "engines": {
     "node": ">= 12.13.0"
   },
