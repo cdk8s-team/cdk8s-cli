@@ -14,10 +14,10 @@ exports.post = ctx => {
 
   installDeps([ npm_cdk8s, npm_cdk8s_plus, `constructs@^${constructs_version}` ]);
   installDeps([
-      '@types/node',
-      '@types/jest',
-      'jest',
-      'ts-jest',
+      '@types/node@14',
+      '@types/jest@26',
+      'jest@26',
+      'ts-jest@26',
       'typescript'
   ], true);
 
