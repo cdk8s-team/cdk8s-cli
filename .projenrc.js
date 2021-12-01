@@ -2,13 +2,23 @@ const { TypeScriptProject } = require('projen');
 
 const project = new TypeScriptProject({
   name: 'cdk8s-cli',
-  description: 'CDK for Kubernetes CLI',
+  description: 'This is the command line tool for Cloud Development Kit (CDK) for Kubernetes (cdk8s).',
   repositoryUrl: 'https://github.com/cdk8s-team/cdk8s-cli.git',
   projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
   authorName: 'Amazon Web Services',
   authorUrl: 'https://aws.amazon.com',
   minNodeVersion: '12.13.0',
   defaultReleaseBranch: 'main',
+
+  keywords: [
+    'k8s',
+    'cdk8s',
+    'kubernetes',
+    'cli',
+    'tools',
+    'automation',
+    'containers',
+  ],
 
   // needed for "cdk init" tests to work in all languages
   workflowContainerImage: 'jsii/superchain',
