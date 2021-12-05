@@ -1,6 +1,6 @@
-const { TypeScriptProject } = require('projen');
+const { typescript } = require('projen');
 
-const project = new TypeScriptProject({
+const project = new typescript.TypeScriptProject({
   name: 'cdk8s-cli',
   description: 'This is the command line tool for Cloud Development Kit (CDK) for Kubernetes (cdk8s).',
   repositoryUrl: 'https://github.com/cdk8s-team/cdk8s-cli.git',
