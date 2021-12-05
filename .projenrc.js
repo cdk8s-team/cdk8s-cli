@@ -8,6 +8,7 @@ const project = new TypeScriptProject({
   authorName: 'Amazon Web Services',
   authorUrl: 'https://aws.amazon.com',
   minNodeVersion: '12.13.0',
+  workflowNodeVersion: '12.22.0', // required by @typescript-eslint/eslint-plugin
   defaultReleaseBranch: 'main',
 
   keywords: [
