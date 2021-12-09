@@ -13,6 +13,8 @@ To install the CLI use one of the following methods:
 * npm: `npm i -g cdk8s-cli`
 * yarn: `yarn global add cdk8s-cli`
 
+> **Note:** This repository is the command-line tool for cdk8s that is published as [`cdk8s-cli`](https://www.npmjs.com/package/cdk8s-cli). For more general information about cdk8s, please see [cdk8s.io](https://cdk8s.io), or visit the umbrella repository located at [cdk8s-team/cdk8s](https://github.com/cdk8s-team/cdk8s).
+
 ## Documentation
 
 See [cdk8s.io](https://cdk8s.io).
