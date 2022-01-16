@@ -132,7 +132,7 @@ export async function download(url: string): Promise<string> {
   });
 }
 
-async function getFiles(filePath :string) {
+async function getFiles(filePath: string): Promise<string[]> {
   const entries = await promises.readdir(filePath, { withFileTypes: true });
 
   // Get files within the current directory
@@ -144,9 +144,6 @@ async function getFiles(filePath :string) {
   const folders = entries.filter(folder => folder.isDirectory());
 
   for (const folder of folders) {
-    /*
-        Get files in sub-folders
-      */
     files.push(...await getFiles(`${filePath}/${folder.name}`));
   }
 
