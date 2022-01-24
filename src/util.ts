@@ -132,7 +132,15 @@ export async function download(url: string): Promise<string> {
   });
 }
 
-async function getFiles(filePath: string): Promise<string[]> {
+export async function getFiles(filePath: string): Promise<string[]> {
+  // Ensure path is valid
+  try {
+    await promises.access(filePath);
+  } catch {
+    return [];
+  }
+
+  // Read Path contents
   const entries = await promises.readdir(filePath, { withFileTypes: true });
 
   // Get files within the current directory
