@@ -1,4 +1,5 @@
 import { spawn, SpawnOptions } from 'child_process';
+import { promises } from 'fs';
 import * as http from 'http';
 import * as https from 'https';
 import * as os from 'os';
@@ -50,11 +51,12 @@ export async function synthApp(command: string, outdir: string) {
   }
 
   let found = false;
-  for (const file of await fs.readdir(outdir)) {
-    if (file.endsWith('.k8s.yaml')) {
-      console.log(`${outdir}/${file}`);
-      found = true;
+  const yamlFiles = await getFiles(outdir);
+  if (yamlFiles?.length) {
+    for (const yamlFile of yamlFiles) {
+      console.log(yamlFile);
     }
+    found = true;
   }
 
   if (!found) {
@@ -128,4 +130,30 @@ export async function download(url: string): Promise<string> {
     req.once('error', ko);
     req.end();
   });
+}
+
+export async function getFiles(filePath: string): Promise<string[]> {
+  // Ensure path is valid
+  try {
+    await promises.access(filePath);
+  } catch {
+    return [];
+  }
+
+  // Read Path contents
+  const entries = await promises.readdir(filePath, { withFileTypes: true });
+
+  // Get files within the current directory
+  const files = entries
+    .filter(file => (!file.isDirectory() && file.name.endsWith('.k8s.yaml')))
+    .map(file => (filePath + '/' + file.name));
+
+  // Get sub-folders within the current folder
+  const folders = entries.filter(folder => folder.isDirectory());
+
+  for (const folder of folders) {
+    files.push(...await getFiles(`${filePath}/${folder.name}`));
+  }
+
+  return files;
 }
