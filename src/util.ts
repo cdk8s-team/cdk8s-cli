@@ -65,7 +65,9 @@ export async function synthApp(command: string, outdir: string) {
 }
 
 export function safeParseJson(text: string, reviver: SafeReviver): any {
-  return JSON.parse(text, (key: unknown, value: unknown) => reviver.revive(key, value));
+  const json = JSON.parse(text);
+  reviver.sanitize(json);
+  return json;
 }
 
 export function safeParseYaml(text: string, reviver: SafeReviver): any[] {
@@ -76,7 +78,9 @@ export function safeParseYaml(text: string, reviver: SafeReviver): any[] {
   const parsed = yaml.parseAllDocuments(text);
   const docs = [];
   for (const doc of parsed) {
-    docs.push(doc.toJS({ reviver: (key: unknown, value: unknown) => reviver.revive(key, value) }));
+    const json = doc.toJS();
+    reviver.sanitize(json);
+    docs.push(json);
   }
   return docs;
 }

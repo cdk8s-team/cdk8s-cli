@@ -63,7 +63,7 @@ export function parseApiTypeName(fullname: string): ApiTypeName {
 export function safeParseJsonSchema(text: string): JSONSchema4 {
   const reviver = new SafeReviver({
     allowlistedKeys: ['$ref', '$schema'],
-    sanitizers: { description: SafeReviver.DESCRIPTION_SANITIZER },
+    sanitizers: [SafeReviver.DESCRIPTION_SANITIZER, SafeReviver.LEGAL_CHAR_SANITIZER],
   });
   const schema = safeParseJson(text, reviver);
   const ajv = new Ajv();
