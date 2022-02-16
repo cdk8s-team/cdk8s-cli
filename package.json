@@ -36,7 +36,6 @@
     "@types/glob": "^7.2.0",
     "@types/jest": "^26.0.24",
     "@types/json-schema": "^7.0.9",
-    "@types/node": "^12",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "eslint": "^8",
@@ -55,7 +54,7 @@
     "typescript-json-schema": "^0.53.0"
   },
   "dependencies": {
-    "@types/node": "^12.13.0",
+    "@types/node": "^12",
     "ajv": "^8.10.0",
     "cdk8s": "^1.5.17",
     "cdk8s-plus-22": "^1.0.0-beta.117",

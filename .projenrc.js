@@ -1,4 +1,5 @@
-const { typescript } = require('projen');
+const { typescript, DependencyType } = require('projen');
+const { UpgradeDependenciesSchedule } = require('projen/lib/javascript');
 
 const project = new typescript.TypeScriptProject({
   name: 'cdk8s-cli',
@@ -43,10 +44,6 @@ const project = new typescript.TypeScriptProject({
     'json2jsii',
     'colors',
     'ajv',
-
-    // add @types/node as a regular dependency since it's needed to during "import"
-    // to compile the generated jsii code.
-    '@types/node@^12.13.0',
   ],
   devDeps: [
     '@types/fs-extra@^8',
@@ -66,7 +63,21 @@ const project = new typescript.TypeScriptProject({
   tsconfig: {
     include: ['src/schemas/*.json'],
   },
+
+  // run upgrade-dependencies workflow at a different hour than other cdk8s
+  // repos to decrease flakiness of integration tests caused by new versions of
+  // cdk8s and cdk8s+ being published to different languages at the same time
+  depsUpgradeOptions: {
+    workflowOptions: {
+      schedule: UpgradeDependenciesSchedule.expressions(['0 1 * * *']),
+    },
+  },
 });
+
+// add @types/node as a regular dependency since it's needed to during "import"
+// to compile the generated jsii code.
+project.deps.removeDependency('@types/node', DependencyType.BUILD);
+project.deps.addDependency('@types/node@^12', DependencyType.RUNTIME);
 
 const schemas = project.addTask('schemas');
 schemas.exec('ts-node scripts/crd.schema.ts');
