@@ -43,6 +43,7 @@ class Command implements yargs.CommandModule {
 function parseImports(spec: string): ImportSpec {
   const splitImport = spec.split(':=');
 
+  // k8s@x.y.z
   // crd.yaml
   // url.com/crd.yaml
   if (splitImport.length === 1) {
