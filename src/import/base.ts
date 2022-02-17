@@ -100,7 +100,7 @@ export abstract class ImportBase {
 
           const opts: srcmak.Options = {
             entrypoint: fileName,
-            moduleKey: module.name,
+            moduleKey: moduleNamePrefix ? `${moduleNamePrefix}_${module.name}` : module.name,
             deps: deps.map(dep => path.dirname(require.resolve(`${dep}/package.json`))),
           };
 
@@ -142,6 +142,7 @@ export abstract class ImportBase {
               moduleName: `${userModuleName}/${relativeDir}`,
               packageName: moduleNamePrefix ? moduleNamePrefix + '_' + importModuleName : importModuleName,
             };
+            console.log(JSON.stringify(opts.golang));
           }
 
           await srcmak.srcmak(staging, opts);
