@@ -100,7 +100,7 @@ export abstract class ImportBase {
 
           const opts: srcmak.Options = {
             entrypoint: fileName,
-            moduleKey: module.name,
+            moduleKey: moduleNamePrefix ? `${moduleNamePrefix}_${module.name}` : module.name,
             deps: deps.map(dep => path.dirname(require.resolve(`${dep}/package.json`))),
           };
 
