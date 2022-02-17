@@ -142,7 +142,6 @@ export abstract class ImportBase {
               moduleName: `${userModuleName}/${relativeDir}`,
               packageName: moduleNamePrefix ? moduleNamePrefix + '_' + importModuleName : importModuleName,
             };
-            console.log(JSON.stringify(opts.golang));
           }
 
           await srcmak.srcmak(staging, opts);
