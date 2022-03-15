@@ -171,7 +171,7 @@ export function safeParseCrds(manifest: string): ManifestObjectDefinition[] {
   const schemaPath = path.join(__dirname, '..', 'schemas', 'crd.schema.json');
   const schema = JSON.parse(fs.readFileSync(schemaPath, { encoding: 'utf8' }));
   const reviver = new SafeReviver({
-    sanitizers: { description: SafeReviver.DESCRIPTION_SANITIZER },
+    sanitizers: [SafeReviver.DESCRIPTION_SANITIZER, SafeReviver.LEGAL_CHAR_SANITIZER],
   });
 
   // first parse and strip
@@ -205,7 +205,7 @@ export function safeParseCrds(manifest: string): ManifestObjectDefinition[] {
     };
   }
   if (errors.length > 0) {
-    throw new Error(`Schema validtion errors detected\n ${errors.map(e => `* ${e.message}`).join('\n')}`);
+    throw new Error(`Schema validation errors detected\n ${errors.map(e => `* ${e.message}`).join('\n')}`);
   }
   return crds;
 }
