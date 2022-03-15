@@ -2,9 +2,8 @@ import * as os from 'os';
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
-import { ManifestObjectDefinition } from '../../lib/import/crd';
 import { Language } from '../../src/import/base';
-import { ImportCustomResourceDefinition } from '../../src/import/crd';
+import { ManifestObjectDefinition, ImportCustomResourceDefinition } from '../../src/import/crd';
 import { testImportMatchSnapshot } from './util';
 
 const fixtures = path.join(__dirname, 'fixtures');
@@ -422,5 +421,47 @@ describe('safe parsing', () => {
     });
 
   });
+
+});
+
+test('given a prefix, we can import two crds with the same group id', async () => {
+
+  const crd = (kind: string) => ({
+    apiVersion: 'apiextensions.k8s.io/v1beta1',
+    kind: 'CustomResourceDefinition',
+    metadata: {
+      name: 'testMetadata',
+    },
+    spec: {
+      version: 'v1',
+      group: 'testGroup',
+      names: {
+        kind,
+      },
+      validation: {
+        openAPIV3Schema: {
+          description: 'Some text',
+        },
+      },
+    },
+  });
+
+  const crd1 = crd('kind1');
+  const crd2 = crd('kind2');
+
+  await withTempFixture(crd1, async (fixture1: string, _: string) => {
+    const importer1 = await ImportCustomResourceDefinition.fromSpec({ source: fixture1 });
+
+    await withTempFixture(crd2, async (fixture2: string, cwd: string) => {
+      const importer2 = await ImportCustomResourceDefinition.fromSpec({ source: fixture2 });
+      await importer1.import({ targetLanguage: Language.PYTHON, outdir: cwd, moduleNamePrefix: 'pref1' });
+      await importer2.import({ targetLanguage: Language.PYTHON, outdir: cwd, moduleNamePrefix: 'pref2' });
+      expect(fs.existsSync(path.join(cwd, 'pref1', 'testGroup', '_jsii', 'pref1_testGroup@0.0.0.jsii.tgz'))).toBeTruthy();
+      expect(fs.existsSync(path.join(cwd, 'pref2', 'testGroup', '_jsii', 'pref2_testGroup@0.0.0.jsii.tgz'))).toBeTruthy();
+      expect(fs.readFileSync(path.join(cwd, 'pref1', 'testGroup', '_jsii', '__init__.py'), { encoding: 'utf8' })).toMatchSnapshot();
+      expect(fs.readFileSync(path.join(cwd, 'pref2', 'testGroup', '_jsii', '__init__.py'), { encoding: 'utf8' })).toMatchSnapshot();
+    });
+  });
+
 
 });

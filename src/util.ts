@@ -126,7 +126,7 @@ export async function download(url: string): Promise<string> {
         }
 
         default: {
-          throw new Error(`${res.statusMessage}: ${url}`);
+          ko(new Error(`${res.statusMessage}: ${url}`));
         }
       }
     });

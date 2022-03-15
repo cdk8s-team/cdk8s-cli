@@ -40,6 +40,11 @@ export class ImportKubernetesApi extends ImportBase {
 
     let k8sVersion = source.split('@')[1] ?? DEFAULT_API_VERSION;
 
+    const k8sVersionRegex = /^\d+\.\d+\.\d+$/;
+    if (!k8sVersionRegex.test(k8sVersion)) {
+      throw new Error(`Expected k8s version "${k8sVersion}" to match format "<major>.<minor>.<patch>".`);
+    }
+
     console.error(`Importing k8s v${k8sVersion}...`);
 
     return {
@@ -166,8 +171,14 @@ export interface GroupVersionKind {
 const X_GROUP_VERSION_KIND = 'x-kubernetes-group-version-kind';
 
 async function downloadSchema(apiVersion: string) {
-  const url = `https://raw.githubusercontent.com/awslabs/cdk8s/master/kubernetes-schemas/v${apiVersion}/_definitions.json`;
-  const output = await download(url);
+  const url = `https://raw.githubusercontent.com/cdk8s-team/cdk8s/master/kubernetes-schemas/v${apiVersion}/_definitions.json`;
+  let output;
+  try {
+    output = await download(url);
+  } catch (e) {
+    console.error(`Could not find a schema for k8s version ${apiVersion}. The current list of available schemas is at https://github.com/cdk8s-team/cdk8s/tree/master/kubernetes-schemas.`);
+    throw e;
+  }
   try {
     return safeParseJsonSchema(output) as JSONSchema4;
   } catch (e) {
