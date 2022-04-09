@@ -68,6 +68,9 @@ const project = new typescript.TypeScriptProject({
   // repos to decrease flakiness of integration tests caused by new versions of
   // cdk8s and cdk8s+ being published to different languages at the same time
   depsUpgradeOptions: {
+    // the latest versions of yaml require node > 12, which
+    // is a change we are still not willing to make.
+    exclude: ['yaml'],
     workflowOptions: {
       schedule: UpgradeDependenciesSchedule.expressions(['0 1 * * *']),
     },
