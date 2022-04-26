@@ -22,8 +22,6 @@ const project = new typescript.TypeScriptProject({
     'containers',
   ],
 
-  // needed for "cdk init" tests to work in all languages
-  workflowContainerImage: 'jsii/superchain',
   workflowBootstrapSteps: [{ run: 'pip3 install pipenv' }],
 
   releaseToNpm: true,
