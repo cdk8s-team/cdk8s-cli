@@ -1,7 +1,9 @@
+const { Cdk8sCommon } = require('@cdk8s/projen-common');
 const { typescript, DependencyType } = require('projen');
-const { UpgradeDependenciesSchedule } = require('projen/lib/javascript');
 
 const project = new typescript.TypeScriptProject({
+  ...Cdk8sCommon.props,
+
   name: 'cdk8s-cli',
   description: 'This is the command line tool for Cloud Development Kit (CDK) for Kubernetes (cdk8s).',
   repositoryUrl: 'https://github.com/cdk8s-team/cdk8s-cli.git',
@@ -44,6 +46,7 @@ const project = new typescript.TypeScriptProject({
     'ajv',
   ],
   devDeps: [
+    '@cdk8s/projen-common',
     '@types/fs-extra@^8',
     '@types/json-schema',
     'glob',
@@ -53,11 +56,6 @@ const project = new typescript.TypeScriptProject({
 
   // we need the compiled .js files for the init tests (we run the cli in there)
   compileBeforeTest: true,
-  autoApproveOptions: {
-    allowedUsernames: ['cdk8s-automation'],
-    secret: 'GITHUB_TOKEN',
-  },
-  autoApproveUpgrades: true,
   tsconfig: {
     include: ['src/schemas/*.json'],
   },
@@ -70,10 +68,12 @@ const project = new typescript.TypeScriptProject({
     // is a change we are still not willing to make.
     exclude: ['yaml'],
     workflowOptions: {
-      schedule: UpgradeDependenciesSchedule.expressions(['0 1 * * *']),
+      schedule: Cdk8sCommon.upgradeScheduleFor('cdk8s-cli'),
     },
   },
 });
+
+new Cdk8sCommon(project);
 
 // add @types/node as a regular dependency since it's needed to during "import"
 // to compile the generated jsii code.
