@@ -26,6 +26,16 @@ const project = new typescript.TypeScriptProject({
 
   workflowBootstrapSteps: [{ run: 'pip3 install pipenv' }],
 
+  defaultReleaseBranch: '2.x',
+  majorVersion: 2,
+  prerelease: 'rc',
+  releaseBranches: {
+    '1.x': {
+      majorVersion: 1,
+      npmDistTag: 'latest-1',
+    },
+  },
+
   releaseToNpm: true,
   bin: {
     cdk8s: 'bin/cdk8s',
