@@ -10,8 +10,7 @@ const project = new typescript.TypeScriptProject({
   projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
   authorName: 'Amazon Web Services',
   authorUrl: 'https://aws.amazon.com',
-  minNodeVersion: '12.13.0',
-  workflowNodeVersion: '12.22.0', // required by @typescript-eslint/eslint-plugin
+  minNodeVersion: '14.17.0',
   defaultReleaseBranch: 'main',
 
   keywords: [
@@ -25,6 +24,16 @@ const project = new typescript.TypeScriptProject({
   ],
 
   workflowBootstrapSteps: [{ run: 'pip3 install pipenv' }],
+
+  defaultReleaseBranch: '2.x',
+  majorVersion: 2,
+  prerelease: 'rc',
+  releaseBranches: {
+    '1.x': {
+      majorVersion: 1,
+      npmDistTag: 'latest-1',
+    },
+  },
 
   releaseToNpm: true,
   bin: {
