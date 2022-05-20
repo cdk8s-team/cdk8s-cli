@@ -51,3 +51,5 @@ junit.xml
 /lib
 /dist/
 !/.eslintrc.json
+!/.backportrc.json
+!/.github/workflows/backport.yml
