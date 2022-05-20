@@ -5,6 +5,9 @@
     "cdk8s": "bin/cdk8s"
   },
   "scripts": {
+    "backport": "npx projen backport",
+    "backport:1.x": "npx projen backport:1.x",
+    "backport:2.x": "npx projen backport:2.x",
     "build": "npx projen build",
     "bump": "npx projen bump",
     "clobber": "npx projen clobber",
