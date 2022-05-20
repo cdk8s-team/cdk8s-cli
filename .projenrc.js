@@ -101,7 +101,7 @@ const backportConfig = new JsonFile(project, '.backportrc.json', {
   // see https://github.com/sqren/backport/blob/main/docs/config-file-options.md
   obj: {
     repoOwner: 'cdk8s-team',
-    repoName: 'cdk8s-core',
+    repoName: 'cdk8s-cli',
     signoff: true,
     branchLabelMapping: {
       '^backport-to-(.+)$': '$1',
