@@ -27,7 +27,6 @@ const project = new typescript.TypeScriptProject({
 
   defaultReleaseBranch: '2.x',
   majorVersion: 2,
-  prerelease: 'rc',
   releaseBranches: {
     '1.x': {
       majorVersion: 1,
