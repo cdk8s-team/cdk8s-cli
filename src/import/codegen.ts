@@ -114,6 +114,16 @@ export function generateConstruct(typegen: TypeGenerator, def: ApiObjectDefiniti
         copy.properties.metadata = { $ref: '#/definitions/ApiObjectMetadata' };
       }
 
+      // reorder top-level keys so that we have "metadata" first and then all the rest
+      // This matches the behavior in the ApiObject's toJson function (https://github.com/cdk8s-team/cdk8s-core/blob/58fb8c0882ddd95a9b9dedb4107e12f601443cf4/src/api-object.ts#L185)
+      const result: any = {};
+      for (const k of ['metadata', ...Object.keys(copy.properties)]) {
+        if (k in copy.properties) {
+          result[k] = copy.properties[k];
+        }
+      }
+
+      copy.properties = result;
       return copy;
     }
 
