@@ -62,7 +62,7 @@
     "@types/node": "^12",
     "ajv": "^8.11.0",
     "cdk8s": "^2.3.31",
-    "cdk8s-plus-22": "^2.0.0-rc.21",
+    "cdk8s-plus-22": "^2.0.0-rc.22",
     "codemaker": "^1.61.0",
     "colors": "1.4.0",
     "constructs": "^10.1.42",
