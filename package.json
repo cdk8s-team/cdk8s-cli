@@ -15,6 +15,11 @@
     "default": "npx projen default",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
+    "integ:init": "npx projen integ:init",
+    "integ:init:go-app": "npx projen integ:init:go-app",
+    "integ:init:java-app": "npx projen integ:init:java-app",
+    "integ:init:python-app": "npx projen integ:init:python-app",
+    "integ:init:typescript-app": "npx projen integ:init:typescript-app",
     "package": "npx projen package",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
@@ -55,6 +60,7 @@
     "projen": "^0.58.17",
     "standard-version": "^9",
     "ts-jest": "^27",
+    "ts-node": "^10.8.1",
     "typescript": "~4.7.4",
     "typescript-json-schema": "^0.53.1"
   },
@@ -91,8 +97,7 @@
   "version": "0.0.0",
   "jest": {
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-      "<rootDir>/(test|src)/**/?(*.)+(spec|test).ts?(x)"
+      "<rootDir>/(test|src|integ)/**/?(*.)+(spec|test).ts?(x)"
     ],
     "clearMocks": true,
     "collectCoverage": true,

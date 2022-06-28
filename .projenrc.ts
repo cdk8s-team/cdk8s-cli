@@ -1,9 +1,12 @@
-const { Cdk8sCommon } = require('@cdk8s/projen-common');
-const { typescript, DependencyType, JsonFile, github } = require('projen');
+import * as fs from 'fs';
+import * as path from 'path';
+import { Cdk8sCommon } from '@cdk8s/projen-common';
+import { github, typescript, JsonFile, DependencyType } from 'projen';
 
 const project = new typescript.TypeScriptProject({
   ...Cdk8sCommon.props,
 
+  projenrcTs: true,
   name: 'cdk8s-cli',
   description: 'This is the command line tool for Cloud Development Kit (CDK) for Kubernetes (cdk8s).',
   repositoryUrl: 'https://github.com/cdk8s-team/cdk8s-cli.git',
@@ -11,7 +14,6 @@ const project = new typescript.TypeScriptProject({
   authorName: 'Amazon Web Services',
   authorUrl: 'https://aws.amazon.com',
   minNodeVersion: '14.17.0',
-  defaultReleaseBranch: 'main',
 
   keywords: [
     'k8s',
@@ -62,10 +64,11 @@ const project = new typescript.TypeScriptProject({
     'typescript-json-schema',
   ],
 
-  // we need the compiled .js files for the init tests (we run the cli in there)
-  compileBeforeTest: true,
   tsconfig: {
     include: ['src/schemas/*.json'],
+  },
+  tsconfigDev: {
+    include: ['integ/**/*.ts'],
   },
 
   // run upgrade-dependencies workflow at a different hour than other cdk8s
@@ -80,6 +83,11 @@ const project = new typescript.TypeScriptProject({
     },
   },
 });
+
+// so that tests in the integ directory will be included as well
+project.jest!.config.testMatch = ['<rootDir>/(test|src|integ)/**/?(*.)+(spec|test).ts?(x)'];
+
+project.gitignore.exclude('.vscode/');
 
 new Cdk8sCommon(project);
 
@@ -110,7 +118,7 @@ const backportConfig = new JsonFile(project, '.backportrc.json', {
     publishStatusCommentOnFailure: true,
     publishStatusCommentOnSuccess: true,
     publishStatusCommentOnAbort: true,
-    targetPRLabels: [project.autoApprove.label],
+    targetPRLabels: [project.autoApprove!.label],
     dir: backportDir,
   },
 });
@@ -119,11 +127,11 @@ const backportConfig = new JsonFile(project, '.backportrc.json', {
 const backportTask = createBackportTask();
 
 // backport tasks to the explicit release branches
-for (const branch of project.release.branches) {
+for (const branch of project.release!.branches) {
   createBackportTask(branch);
 }
 
-const backportWorkflow = project.github.addWorkflow('backport');
+const backportWorkflow = project.github!.addWorkflow('backport');
 backportWorkflow.on({ pullRequestTarget: { types: ['closed'] } });
 backportWorkflow.addJob('backport', {
   runsOn: ['ubuntu-18.04'],
@@ -158,7 +166,7 @@ backportWorkflow.addJob('backport', {
   ],
 });
 
-function createBackportTask(branch) {
+function createBackportTask(branch?: string) {
   const name = branch ? `backport:${branch}` : 'backport';
   const task = project.addTask(name, { requiredEnv: ['BACKPORT_PR_NUMBER', 'GITHUB_TOKEN'] });
   task.exec(`rm -rf ${backportHome}`);
@@ -174,5 +182,118 @@ function createBackportTask(branch) {
   task.exec(command.join(' '), { cwd: backportHome });
   return task;
 }
+
+const integInit = project.addTask('integ:init');
+integInit.exec('jest integ/init.test.ts');
+
+const templatesDir = path.join(__dirname, 'templates');
+for (const template of fs.readdirSync(templatesDir)) {
+  if (fs.statSync(path.join(templatesDir, template)).isDirectory()) {
+    const task = project.addTask(`integ:init:${template}`);
+    task.exec(`jest integ/init.test.ts -t ${template}`);
+  }
+}
+
+// run all integration tests on node 14
+const integWorkflow = project.github!.addWorkflow('integ');
+integWorkflow.on({
+  pullRequest: {},
+  workflowDispatch: {},
+});
+integWorkflow.addJob('integ:init', {
+  runsOn: ['ubuntu-latest'],
+  permissions: {
+    contents: github.workflows.JobPermission.READ,
+  },
+  steps: [
+    { uses: 'actions/checkout@v2' },
+    {
+      name: 'Set up Node.js',
+      uses: 'actions/setup-node@v2',
+      with: { 'node-version': 14 },
+    },
+    {
+      name: 'Set up Python 3.x',
+      uses: 'actions/setup-python@v2',
+      with: {
+        'python-version': '3.x',
+      },
+    },
+    {
+      name: 'Install pipenv',
+      run: 'pip install pipenv',
+    },
+    {
+      name: 'Set up Go',
+      uses: 'actions/setup-go@v2',
+      with: {
+        'go-version': '1.16',
+      },
+    },
+    {
+      name: 'Install dependencies',
+      run: 'yarn install --frozen-lockfile',
+    },
+    {
+      name: 'Run integration tests',
+      run: `yarn run ${integInit.name}`,
+    },
+  ],
+});
+
+integWorkflow.addJob('integ:init:typescript-app', {
+  runsOn: ['ubuntu-latest'],
+  strategy: {
+    failFast: false,
+    matrix: {
+      domain: {
+        nodeVersion: [16, 18],
+      },
+    },
+  },
+  permissions: {
+    contents: github.workflows.JobPermission.READ,
+  },
+  steps: [
+    { uses: 'actions/checkout@v2' },
+    {
+      name: 'Set up Node.js',
+      uses: 'actions/setup-node@v2',
+      with: {
+        'node-version': '${{ matrix.nodeVersion }}',
+      },
+    },
+    {
+      name: 'Set up Python 3.x',
+      uses: 'actions/setup-python@v2',
+      with: {
+        'python-version': '3.x',
+      },
+    },
+    {
+      name: 'Install pipenv',
+      run: 'pip install pipenv',
+    },
+    {
+      name: 'Set up Go',
+      uses: 'actions/setup-go@v2',
+      with: {
+        'go-version': '1.16',
+      },
+    },
+    {
+      name: 'Install dependencies',
+      run: 'yarn install --frozen-lockfile',
+    },
+    {
+      name: 'Run integration tests',
+      run: 'yarn run integ:init:typescript-app',
+    },
+  ],
+});
+
+project.autoMerge!.addConditions('status-success=integ:init.node14');
+project.autoMerge!.addConditions('status-success=integ:init:typescript-app.node16');
+project.autoMerge!.addConditions('status-success=integ:init:typescript-app.node18');
 
 project.synth();
