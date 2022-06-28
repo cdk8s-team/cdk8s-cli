@@ -245,14 +245,14 @@ integWorkflow.addJob('integ-init', {
   ],
 });
 
+const nodeVersions = [16, 18];
+
 integWorkflow.addJob('integ-init-typescript-app', {
   runsOn: ['ubuntu-latest'],
   strategy: {
     failFast: false,
     matrix: {
-      domain: {
-        nodeVersion: [16, 18],
-      },
+      domain: { nodeVersion: nodeVersions },
     },
   },
   permissions: {
@@ -297,7 +297,9 @@ integWorkflow.addJob('integ-init-typescript-app', {
 });
 
 project.autoMerge!.addConditions('status-success=integ-init');
-project.autoMerge!.addConditions('status-success=integ-init-typescript-app');
-project.autoMerge!.addConditions('status-success=integ-init-typescript-app');
+
+for (const nodeVersion of nodeVersions) {
+  project.autoMerge!.addConditions(`status-success=integ-init-typescript-app (${nodeVersion})`);
+}
 
 project.synth();

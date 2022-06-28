@@ -16,7 +16,7 @@ execSync(`npm install ${cli}`, {
   stdio: ['inherit', 'inherit', 'inherit'],
 });
 
-test('typesciprt-app', () => {
+test('typescript-app', () => {
   init('typescript-app');
 });
 
