@@ -6,9 +6,9 @@ queue_rules:
       - "#approved-reviews-by>=1"
       - -label~=(do-not-merge)
       - status-success=build
-      - status-success=integ:init.node14
-      - status-success=integ:init:typescript-app.node16
-      - status-success=integ:init:typescript-app.node18
+      - status-success=integ-init
+      - status-success=integ-init-typescript-app
+      - status-success=integ-init-typescript-app
 pull_request_rules:
   - name: Automatic merge on approval and successful build
     actions:
@@ -24,6 +24,6 @@ pull_request_rules:
       - "#approved-reviews-by>=1"
       - -label~=(do-not-merge)
       - status-success=build
-      - status-success=integ:init.node14
-      - status-success=integ:init:typescript-app.node16
-      - status-success=integ:init:typescript-app.node18
+      - status-success=integ-init
+      - status-success=integ-init-typescript-app
+      - status-success=integ-init-typescript-app

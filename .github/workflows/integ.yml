@@ -5,7 +5,7 @@ on:
   pull_request: {}
   workflow_dispatch: {}
 jobs:
-  integ:init:
+  integ-init:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -29,7 +29,7 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Run integration tests
         run: yarn run integ:init
-  integ:init:typescript-app:
+  integ-init-typescript-app:
     runs-on: ubuntu-latest
     permissions:
       contents: read

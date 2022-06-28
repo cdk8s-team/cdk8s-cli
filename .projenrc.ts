@@ -200,7 +200,7 @@ integWorkflow.on({
   pullRequest: {},
   workflowDispatch: {},
 });
-integWorkflow.addJob('integ:init', {
+integWorkflow.addJob('integ-init', {
   runsOn: ['ubuntu-latest'],
   permissions: {
     contents: github.workflows.JobPermission.READ,
@@ -241,7 +241,7 @@ integWorkflow.addJob('integ:init', {
   ],
 });
 
-integWorkflow.addJob('integ:init:typescript-app', {
+integWorkflow.addJob('integ-init-typescript-app', {
   runsOn: ['ubuntu-latest'],
   strategy: {
     failFast: false,
@@ -292,8 +292,8 @@ integWorkflow.addJob('integ:init:typescript-app', {
   ],
 });
 
-project.autoMerge!.addConditions('status-success=integ:init.node14');
-project.autoMerge!.addConditions('status-success=integ:init:typescript-app.node16');
-project.autoMerge!.addConditions('status-success=integ:init:typescript-app.node18');
+project.autoMerge!.addConditions('status-success=integ-init');
+project.autoMerge!.addConditions('status-success=integ-init-typescript-app');
+project.autoMerge!.addConditions('status-success=integ-init-typescript-app');
 
 project.synth();
