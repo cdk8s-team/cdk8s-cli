@@ -184,12 +184,16 @@ function createBackportTask(branch?: string) {
 }
 
 const integInit = project.addTask('integ:init');
+integInit.exec(`yarn run ${project.compileTask.name}`);
+integInit.exec(`yarn run ${project.packageTask.name}`);
 integInit.exec('jest integ/init.test.ts');
 
 const templatesDir = path.join(__dirname, 'templates');
 for (const template of fs.readdirSync(templatesDir)) {
   if (fs.statSync(path.join(templatesDir, template)).isDirectory()) {
     const task = project.addTask(`integ:init:${template}`);
+    task.exec(`yarn run ${project.compileTask.name}`);
+    task.exec(`yarn run ${project.packageTask.name}`);
     task.exec(`jest integ/init.test.ts -t ${template}`);
   }
 }

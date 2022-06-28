@@ -185,6 +185,12 @@
       "name": "integ:init",
       "steps": [
         {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
           "exec": "jest integ/init.test.ts"
         }
       ]
@@ -192,6 +198,12 @@
     "integ:init:go-app": {
       "name": "integ:init:go-app",
       "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
         {
           "exec": "jest integ/init.test.ts -t go-app"
         }
@@ -201,6 +213,12 @@
       "name": "integ:init:java-app",
       "steps": [
         {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
           "exec": "jest integ/init.test.ts -t java-app"
         }
       ]
@@ -209,6 +227,12 @@
       "name": "integ:init:python-app",
       "steps": [
         {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
           "exec": "jest integ/init.test.ts -t python-app"
         }
       ]
@@ -216,6 +240,12 @@
     "integ:init:typescript-app": {
       "name": "integ:init:typescript-app",
       "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
         {
           "exec": "jest integ/init.test.ts -t typescript-app"
         }
