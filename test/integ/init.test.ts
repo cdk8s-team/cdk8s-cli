@@ -3,7 +3,7 @@ import { mkdtempSync, existsSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
 
-const cli = join(__dirname, '..', 'dist', 'js', 'cdk8s-cli-0.0.0.tgz');
+const cli = join(__dirname, '..', '..', 'dist', 'js', 'cdk8s-cli-0.0.0.tgz');
 
 if (!existsSync(cli)) {
   throw new Error(`Unable to find cli distribution at: ${cli}. Make sure you run 'npx projen package' before running this test`);
