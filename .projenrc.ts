@@ -82,7 +82,7 @@ const project = new typescript.TypeScriptProject({
 
 // ignore integration tests since they need to executed after packaging
 // and are defined in a separate tasks.
-project.jest?.addIgnorePattern('integ*');
+project.jest?.addIgnorePattern('/test/integ/');
 
 project.gitignore.exclude('.vscode/');
 

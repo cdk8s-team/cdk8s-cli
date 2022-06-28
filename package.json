@@ -112,11 +112,11 @@
     "coverageDirectory": "coverage",
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "integ*"
+      "/test/integ/"
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "integ*"
+      "/test/integ/"
     ],
     "watchPathIgnorePatterns": [
       "/node_modules/"
