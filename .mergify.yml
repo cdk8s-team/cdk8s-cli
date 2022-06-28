@@ -7,8 +7,8 @@ queue_rules:
       - -label~=(do-not-merge)
       - status-success=build
       - status-success=integ-init
-      - status-success=integ-init-typescript-app
-      - status-success=integ-init-typescript-app
+      - status-success=integ-init-typescript-app (16)
+      - status-success=integ-init-typescript-app (18)
 pull_request_rules:
   - name: Automatic merge on approval and successful build
     actions:
@@ -25,5 +25,5 @@ pull_request_rules:
       - -label~=(do-not-merge)
       - status-success=build
       - status-success=integ-init
-      - status-success=integ-init-typescript-app
-      - status-success=integ-init-typescript-app
+      - status-success=integ-init-typescript-app (16)
+      - status-success=integ-init-typescript-app (18)
