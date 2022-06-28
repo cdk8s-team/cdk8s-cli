@@ -191,7 +191,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest integ/init.test.ts"
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts"
         }
       ]
     },
@@ -205,7 +205,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest integ/init.test.ts -t go-app"
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app"
         }
       ]
     },
@@ -219,7 +219,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest integ/init.test.ts -t java-app"
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app"
         }
       ]
     },
@@ -233,7 +233,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest integ/init.test.ts -t python-app"
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app"
         }
       ]
     },
@@ -247,7 +247,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest integ/init.test.ts -t typescript-app"
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app"
         }
       ]
     },

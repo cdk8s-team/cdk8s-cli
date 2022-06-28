@@ -97,7 +97,8 @@
   "version": "0.0.0",
   "jest": {
     "testMatch": [
-      "<rootDir>/(test|src|integ)/**/?(*.)+(spec|test).ts?(x)"
+      "<rootDir>/src/**/__tests__/**/*.ts?(x)",
+      "<rootDir>/(test|src)/**/?(*.)+(spec|test).ts?(x)"
     ],
     "clearMocks": true,
     "collectCoverage": true,
@@ -110,10 +111,12 @@
     ],
     "coverageDirectory": "coverage",
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "integ*"
     ],
     "testPathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "integ*"
     ],
     "watchPathIgnorePatterns": [
       "/node_modules/"

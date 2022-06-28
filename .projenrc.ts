@@ -1,7 +1,6 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import { Cdk8sCommon } from '@cdk8s/projen-common';
 import { github, typescript, JsonFile, DependencyType } from 'projen';
+import { addIntegTests } from './projenrc/integ';
 
 const project = new typescript.TypeScriptProject({
   ...Cdk8sCommon.props,
@@ -84,8 +83,9 @@ const project = new typescript.TypeScriptProject({
   },
 });
 
-// so that tests in the integ directory will be included as well
-project.jest!.config.testMatch = ['<rootDir>/(test|src|integ)/**/?(*.)+(spec|test).ts?(x)'];
+// ignore integration tests since they need to executed after packaging
+// and are defined in a separate tasks.
+project.jest?.addIgnorePattern('integ*');
 
 project.gitignore.exclude('.vscode/');
 
@@ -183,123 +183,6 @@ function createBackportTask(branch?: string) {
   return task;
 }
 
-const integInit = project.addTask('integ:init');
-integInit.exec(`yarn run ${project.compileTask.name}`);
-integInit.exec(`yarn run ${project.packageTask.name}`);
-integInit.exec('jest integ/init.test.ts');
-
-const templatesDir = path.join(__dirname, 'templates');
-for (const template of fs.readdirSync(templatesDir)) {
-  if (fs.statSync(path.join(templatesDir, template)).isDirectory()) {
-    const task = project.addTask(`integ:init:${template}`);
-    task.exec(`yarn run ${project.compileTask.name}`);
-    task.exec(`yarn run ${project.packageTask.name}`);
-    task.exec(`jest integ/init.test.ts -t ${template}`);
-  }
-}
-
-// run all integration tests on node 14
-const integWorkflow = project.github!.addWorkflow('integ');
-integWorkflow.on({
-  pullRequest: {},
-  workflowDispatch: {},
-});
-integWorkflow.addJob('integ-init', {
-  runsOn: ['ubuntu-latest'],
-  permissions: {
-    contents: github.workflows.JobPermission.READ,
-  },
-  steps: [
-    { uses: 'actions/checkout@v2' },
-    {
-      name: 'Set up Node.js',
-      uses: 'actions/setup-node@v2',
-      with: { 'node-version': 14 },
-    },
-    {
-      name: 'Set up Python 3.x',
-      uses: 'actions/setup-python@v2',
-      with: {
-        'python-version': '3.x',
-      },
-    },
-    {
-      name: 'Install pipenv',
-      run: 'pip install pipenv',
-    },
-    {
-      name: 'Set up Go',
-      uses: 'actions/setup-go@v2',
-      with: {
-        'go-version': '1.16',
-      },
-    },
-    {
-      name: 'Install dependencies',
-      run: 'yarn install --frozen-lockfile',
-    },
-    {
-      name: 'Run integration tests',
-      run: `yarn run ${integInit.name}`,
-    },
-  ],
-});
-
-const nodeVersions = [16, 18];
-
-integWorkflow.addJob('integ-init-typescript-app', {
-  runsOn: ['ubuntu-latest'],
-  strategy: {
-    failFast: false,
-    matrix: {
-      domain: { nodeVersion: nodeVersions },
-    },
-  },
-  permissions: {
-    contents: github.workflows.JobPermission.READ,
-  },
-  steps: [
-    { uses: 'actions/checkout@v2' },
-    {
-      name: 'Set up Node.js',
-      uses: 'actions/setup-node@v2',
-      with: {
-        'node-version': '${{ matrix.nodeVersion }}',
-      },
-    },
-    {
-      name: 'Set up Python 3.x',
-      uses: 'actions/setup-python@v2',
-      with: {
-        'python-version': '3.x',
-      },
-    },
-    {
-      name: 'Install pipenv',
-      run: 'pip install pipenv',
-    },
-    {
-      name: 'Set up Go',
-      uses: 'actions/setup-go@v2',
-      with: {
-        'go-version': '1.16',
-      },
-    },
-    {
-      name: 'Install dependencies',
-      run: 'yarn install --frozen-lockfile',
-    },
-    {
-      name: 'Run integration tests',
-      run: 'yarn run integ:init:typescript-app',
-    },
-  ],
-});
-
-project.autoMerge!.addConditions('status-success=integ-init');
-
-for (const nodeVersion of nodeVersions) {
-  project.autoMerge!.addConditions(`status-success=integ-init-typescript-app (${nodeVersion})`);
-}
+addIntegTests(project);
 
 project.synth();
