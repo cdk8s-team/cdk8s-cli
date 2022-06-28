@@ -66,9 +66,6 @@ const project = new typescript.TypeScriptProject({
   tsconfig: {
     include: ['src/schemas/*.json'],
   },
-  tsconfigDev: {
-    include: ['integ/**/*.ts'],
-  },
 
   // run upgrade-dependencies workflow at a different hour than other cdk8s
   // repos to decrease flakiness of integration tests caused by new versions of
