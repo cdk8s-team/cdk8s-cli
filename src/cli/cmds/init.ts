@@ -58,8 +58,8 @@ async function determineDeps(): Promise<Deps> {
     constructs_version: constructsVersion,
     jsii_version: jsii.version,
 
-    // do not attempt to install cdk8s cli if we are running in a test context
-    npm_cdk8s_cli: process.env.CDK8S_TEST ? undefined : cdk8sCli.npmDependency,
+    // when running tests, install the tarball created from our source
+    npm_cdk8s_cli: process.env.CDK8S_TARBALL ?? cdk8sCli.npmDependency,
   };
 }
 
