@@ -1,9 +1,11 @@
-const { Cdk8sCommon } = require('@cdk8s/projen-common');
-const { typescript, DependencyType, JsonFile, github } = require('projen');
+import { Cdk8sCommon } from '@cdk8s/projen-common';
+import { github, typescript, JsonFile, DependencyType } from 'projen';
+import { addIntegTests } from './projenrc/integ';
 
 const project = new typescript.TypeScriptProject({
   ...Cdk8sCommon.props,
 
+  projenrcTs: true,
   name: 'cdk8s-cli',
   description: 'This is the command line tool for Cloud Development Kit (CDK) for Kubernetes (cdk8s).',
   repositoryUrl: 'https://github.com/cdk8s-team/cdk8s-cli.git',
@@ -11,7 +13,6 @@ const project = new typescript.TypeScriptProject({
   authorName: 'Amazon Web Services',
   authorUrl: 'https://aws.amazon.com',
   minNodeVersion: '14.17.0',
-  defaultReleaseBranch: 'main',
 
   keywords: [
     'k8s',
@@ -62,8 +63,6 @@ const project = new typescript.TypeScriptProject({
     'typescript-json-schema',
   ],
 
-  // we need the compiled .js files for the init tests (we run the cli in there)
-  compileBeforeTest: true,
   tsconfig: {
     include: ['src/schemas/*.json'],
   },
@@ -80,6 +79,12 @@ const project = new typescript.TypeScriptProject({
     },
   },
 });
+
+// ignore integration tests since they need to executed after packaging
+// and are defined in a separate tasks.
+project.jest?.addIgnorePattern('/test/integ/');
+
+project.gitignore.exclude('.vscode/');
 
 new Cdk8sCommon(project);
 
@@ -110,7 +115,7 @@ const backportConfig = new JsonFile(project, '.backportrc.json', {
     publishStatusCommentOnFailure: true,
     publishStatusCommentOnSuccess: true,
     publishStatusCommentOnAbort: true,
-    targetPRLabels: [project.autoApprove.label],
+    targetPRLabels: [project.autoApprove!.label],
     dir: backportDir,
   },
 });
@@ -119,11 +124,11 @@ const backportConfig = new JsonFile(project, '.backportrc.json', {
 const backportTask = createBackportTask();
 
 // backport tasks to the explicit release branches
-for (const branch of project.release.branches) {
+for (const branch of project.release!.branches) {
   createBackportTask(branch);
 }
 
-const backportWorkflow = project.github.addWorkflow('backport');
+const backportWorkflow = project.github!.addWorkflow('backport');
 backportWorkflow.on({ pullRequestTarget: { types: ['closed'] } });
 backportWorkflow.addJob('backport', {
   runsOn: ['ubuntu-18.04'],
@@ -158,7 +163,7 @@ backportWorkflow.addJob('backport', {
   ],
 });
 
-function createBackportTask(branch) {
+function createBackportTask(branch?: string) {
   const name = branch ? `backport:${branch}` : 'backport';
   const task = project.addTask(name, { requiredEnv: ['BACKPORT_PR_NUMBER', 'GITHUB_TOKEN'] });
   task.exec(`rm -rf ${backportHome}`);
@@ -174,5 +179,7 @@ function createBackportTask(branch) {
   task.exec(command.join(' '), { cwd: backportHome });
   return task;
 }
+
+addIntegTests(project);
 
 project.synth();

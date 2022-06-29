@@ -156,7 +156,7 @@
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "node .projenrc.js"
+          "exec": "ts-node --project tsconfig.dev.json .projenrc.ts"
         }
       ]
     },
@@ -177,7 +177,77 @@
       "description": "Runs eslint against the codebase",
       "steps": [
         {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools .projenrc.js"
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools projenrc .projenrc.ts"
+        }
+      ]
+    },
+    "integ:init": {
+      "name": "integ:init",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts"
+        }
+      ]
+    },
+    "integ:init:go-app": {
+      "name": "integ:init:go-app",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app"
+        }
+      ]
+    },
+    "integ:init:java-app": {
+      "name": "integ:init:java-app",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app"
+        }
+      ]
+    },
+    "integ:init:python-app": {
+      "name": "integ:init:python-app",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app"
+        }
+      ]
+    },
+    "integ:init:typescript-app": {
+      "name": "integ:init:typescript-app",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app"
         }
       ]
     },
@@ -338,7 +408,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @cdk8s/projen-common @types/fs-extra @types/glob @types/jest @types/json-schema @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint glob jest-junit jest json-schema npm-check-updates projen standard-version ts-jest typescript typescript-json-schema @types/node ajv cdk8s cdk8s-plus-22 codemaker colors constructs fs-extra jsii-pacmak jsii-srcmak json2jsii sscaff yargs"
+          "exec": "yarn upgrade @cdk8s/projen-common @types/fs-extra @types/glob @types/jest @types/json-schema @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint glob jest-junit jest json-schema npm-check-updates projen standard-version ts-jest ts-node typescript typescript-json-schema @types/node ajv cdk8s cdk8s-plus-22 codemaker colors constructs fs-extra jsii-pacmak jsii-srcmak json2jsii sscaff yargs"
         },
         {
           "exec": "npx projen"
