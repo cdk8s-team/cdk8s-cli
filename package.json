@@ -41,7 +41,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@cdk8s/projen-common": "^0.0.23",
+    "@cdk8s/projen-common": "^0.0.25",
     "@types/fs-extra": "^8",
     "@types/glob": "^7.2.0",
     "@types/jest": "^26.0.24",
@@ -67,15 +67,15 @@
   "dependencies": {
     "@types/node": "^12",
     "ajv": "^8.11.0",
-    "cdk8s": "^2.3.45",
-    "cdk8s-plus-22": "^2.0.0-rc.41",
+    "cdk8s": "^2.3.48",
+    "cdk8s-plus-22": "^2.0.0-rc.42",
     "codemaker": "^1.61.0",
     "colors": "1.4.0",
     "constructs": "^10.1.43",
     "fs-extra": "^8",
     "jsii-pacmak": "^1.61.0",
-    "jsii-srcmak": "^0.1.609",
-    "json2jsii": "^0.3.58",
+    "jsii-srcmak": "^0.1.610",
+    "json2jsii": "^0.3.59",
     "sscaff": "^1.2.274",
     "yaml": "2.0.0-11",
     "yargs": "^15"
