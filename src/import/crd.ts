@@ -8,7 +8,6 @@ import { SafeReviver } from '../reviver';
 import { download, safeParseYaml } from '../util';
 import { GenerateOptions, ImportBase } from './base';
 import { emitHeader, generateConstruct } from './codegen';
-import { GroupVersionKind } from './k8s';
 
 const CRD_KIND = 'CustomResourceDefinition';
 
@@ -44,7 +43,7 @@ const SUPPORTED_API_VERSIONS = [
 
 export class CustomResourceDefinition {
   private readonly schema?: any;
-  private readonly group: string;
+  private readonly _group: string;
   private readonly version: string;
   private readonly kind: string;
   private readonly fqn: string;
@@ -69,7 +68,7 @@ export class CustomResourceDefinition {
       : version?.schema?.openAPIV3Schema ?? spec.validation?.openAPIV3Schema;
 
     this.schema = schema;
-    this.group = spec.group;
+    this._group = spec.group;
     this.version = typeof version === 'string' ? version : version.name;
     this.kind = spec.names.kind;
     this.fqn = this.kind;
@@ -79,12 +78,8 @@ export class CustomResourceDefinition {
     return `${this.group}/${this.kind.toLocaleLowerCase()}`;
   }
 
-  public get gvk(): GroupVersionKind {
-    return {
-      group: this.group,
-      version: this.version,
-      kind: this.kind,
-    };
+  public get group(): string {
+    return this._group;
   }
 
   public async generateTypeScript(code: CodeMaker, options: GenerateOptions) {
@@ -133,7 +128,7 @@ export class ImportCustomResourceDefinition extends ImportBase {
     const sortedCrds = Object.values(crds).sort((a: CustomResourceDefinition, b: CustomResourceDefinition) => a.key.localeCompare(b.key));
 
     for (const crd of sortedCrds) {
-      const g = crd.gvk.group;
+      const g = crd.group;
       if ( !(g in groups) ) {
         groups[g] = new Array<CustomResourceDefinition>();
       }
