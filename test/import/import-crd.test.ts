@@ -465,3 +465,8 @@ test('given a prefix, we can import two crds with the same group id', async () =
 
 
 });
+
+// test('can import multiple versions from the same crd', async () => {
+//   const fixture = path.join(fixtures, 'multi_version_tenant_crd.yaml');
+//   await expect(() => ImportCustomResourceDefinition.fromSpec({ source: fixture })).rejects.toThrow('manifest does not have a "spec" attribute');
+// });
