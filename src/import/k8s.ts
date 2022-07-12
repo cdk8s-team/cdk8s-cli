@@ -80,7 +80,7 @@ export class ImportKubernetesApi extends ImportBase {
           // not a versioned api type. return basename
           return parsed.basename;
         }
-        return getTypeName(parsed.basename, parsed.version.raw);
+        return getTypeName(false, parsed.basename, parsed.version.raw);
       },
     });
 

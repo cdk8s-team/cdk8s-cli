@@ -26,6 +26,8 @@ export interface ApiObjectDefinition {
    * @default ""
    */
   readonly prefix?: string;
+
+  readonly suffix?: string;
 }
 
 /**
@@ -45,18 +47,18 @@ export function emitHeader(code: CodeMaker, custom: boolean) {
   code.line();
 }
 
-export function getTypeName(kind: string, version: string) {
+export function getTypeName(custom: boolean, kind: string, version: string) {
   // add an API version postfix only if this is core API (`import k8s`).
   // TODO = what about the rest of the namespace? the same resource can exist in multiple
   // api groups (Ingress for example exists in 'extensions' and 'networking')
-  const postfix = version === 'v1' ? '' : toPascalCase(version);
+  const postfix = (custom || version === 'v1') ? '' : toPascalCase(version);
   return `${kind}${postfix}`;
 }
 
 export function getConstructTypeName(def: ApiObjectDefinition) {
   const prefix = def.prefix ?? '';
-
-  return TypeGenerator.normalizeTypeName(`${prefix}${getTypeName(def.kind, def.version)}`);
+  const name = TypeGenerator.normalizeTypeName(`${prefix}${getTypeName(def.custom, def.kind, def.version)}`);
+  return `${name}${def.suffix ?? ''}`;
 }
 
 export function getPropsTypeName(def: ApiObjectDefinition) {

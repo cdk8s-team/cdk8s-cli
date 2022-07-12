@@ -97,12 +97,13 @@ export class CustomResourceDefinition {
 
       generateConstruct(types, {
         group: this.group,
-        version: suffix,
+        version: version.name,
         kind: this.kind,
         fqn: `${this.kind}${suffix}`,
         schema: version.schema,
         custom: true,
         prefix: options.classNamePrefix,
+        suffix,
       });
 
       code.line(types.render());

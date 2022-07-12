@@ -461,7 +461,7 @@ export class CompositeResourceDefinition extends ApiObject {
    * Returns the apiVersion and kind for \\"CompositeResourceDefinition\\"
    */
   public static readonly GVK: GroupVersionKind = {
-    apiVersion: 'apiextensions.crossplane.io/',
+    apiVersion: 'apiextensions.crossplane.io/v1alpha1',
     kind: 'CompositeResourceDefinition',
   }
 
@@ -987,7 +987,7 @@ export class CompositeResourceDefinitionV1Beta1 extends ApiObject {
    * Returns the apiVersion and kind for \\"CompositeResourceDefinitionV1Beta1\\"
    */
   public static readonly GVK: GroupVersionKind = {
-    apiVersion: 'apiextensions.crossplane.io/V1Beta1',
+    apiVersion: 'apiextensions.crossplane.io/v1beta1',
     kind: 'CompositeResourceDefinition',
   }
 
@@ -1513,7 +1513,7 @@ export class Composition extends ApiObject {
    * Returns the apiVersion and kind for \\"Composition\\"
    */
   public static readonly GVK: GroupVersionKind = {
-    apiVersion: 'apiextensions.crossplane.io/',
+    apiVersion: 'apiextensions.crossplane.io/v1alpha1',
     kind: 'Composition',
   }
 
@@ -2008,7 +2008,7 @@ export class CompositionV1Beta1 extends ApiObject {
    * Returns the apiVersion and kind for \\"CompositionV1Beta1\\"
    */
   public static readonly GVK: GroupVersionKind = {
-    apiVersion: 'apiextensions.crossplane.io/V1Beta1',
+    apiVersion: 'apiextensions.crossplane.io/v1beta1',
     kind: 'Composition',
   }
 
@@ -2508,7 +2508,7 @@ export class Configuration extends ApiObject {
    * Returns the apiVersion and kind for \\"Configuration\\"
    */
   public static readonly GVK: GroupVersionKind = {
-    apiVersion: 'meta.pkg.crossplane.io/',
+    apiVersion: 'meta.pkg.crossplane.io/v1alpha1',
     kind: 'Configuration',
   }
 
