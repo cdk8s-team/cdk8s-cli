@@ -42,10 +42,11 @@ const SUPPORTED_API_VERSIONS = [
 ];
 
 export class CustomResourceDefinition {
-  private readonly _group: string;
-  private readonly kind: string;
 
+  private readonly kind: string;
   private readonly versions: { name: string; schema?: any }[];
+
+  public readonly group: string;
 
   constructor(manifest: ManifestObjectDefinition) {
     const apiVersion = manifest?.apiVersion ?? 'undefined';
@@ -67,16 +68,12 @@ export class CustomResourceDefinition {
       throw new Error('unable to determine CRD versions');
     }
 
-    this._group = spec.group;
+    this.group = spec.group;
     this.kind = spec.names.kind;
   }
 
   public get key() {
     return `${this.group}/${this.kind.toLocaleLowerCase()}`;
-  }
-
-  public get group(): string {
-    return this._group;
   }
 
   public async generateTypeScript(code: CodeMaker, options: GenerateOptions) {
@@ -89,11 +86,11 @@ export class CustomResourceDefinition {
         throw new Error(`Schema for version ${version.name} is missing`);
       }
 
-      const types = new TypeGenerator({});
-
       // to preseve backwards compatiblity, only append a suffix for
       // the second version onwards.
       const suffix = i === 0 ? '' : toPascalCase(version.name);
+
+      const types = new TypeGenerator({});
 
       generateConstruct(types, {
         group: this.group,
