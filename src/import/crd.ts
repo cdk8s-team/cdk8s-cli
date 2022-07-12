@@ -45,7 +45,7 @@ export class CustomResourceDefinition {
   private readonly _group: string;
   private readonly kind: string;
 
-  private readonly schemas: Map<string, any> = new Map();
+  private readonly versions: { name: string; schema?: any }[];
 
   constructor(manifest: ManifestObjectDefinition) {
     const apiVersion = manifest?.apiVersion ?? 'undefined';
@@ -58,14 +58,12 @@ export class CustomResourceDefinition {
     }
 
     if (spec.version) {
-      this.schemas.set(spec.version, spec.validation?.openAPIV3Schema);
+      this.versions = [{ name: spec.version, schema: spec.validation?.openAPIV3Schema }];
     } else {
-      for (const version of spec.versions ?? []) {
-        this.schemas.set(version.name, version.schema?.openAPIV3Schema ?? spec.validation?.openAPIV3Schema);
-      }
+      this.versions = (spec.versions ?? []).map(v => ({ name: v.name, schema: v.schema?.openAPIV3Schema ?? spec.validation?.openAPIV3Schema }));
     }
 
-    if (this.schemas.size === 0) {
+    if (this.versions.length === 0) {
       throw new Error('unable to determine CRD versions');
     }
 
@@ -83,29 +81,26 @@ export class CustomResourceDefinition {
 
   public async generateTypeScript(code: CodeMaker, options: GenerateOptions) {
 
-    const keys = Array.from(this.schemas.keys());
+    for (let i = 0; i < this.versions.length; i++) {
 
-    for (let i = 0; i < keys.length; i++) {
+      const version = this.versions[i];
 
-      const version = keys[i];
-      const schema = this.schemas.get(version);
-
-      if (!schema) {
-        throw new Error(`Schema for version ${version} is missing`);
+      if (!version.schema) {
+        throw new Error(`Schema for version ${version.name} is missing`);
       }
 
       const types = new TypeGenerator({});
 
       // to preseve backwards compatiblity, only append a suffix for
       // the second version onwards.
-      const suffix = i === 0 ? '' : toPascalCase(version);
+      const suffix = i === 0 ? '' : toPascalCase(version.name);
 
       generateConstruct(types, {
         group: this.group,
-        version: version,
+        version: version.name,
         kind: this.kind,
         fqn: `${this.kind}${suffix}`,
-        schema: schema,
+        schema: version.schema,
         custom: true,
         prefix: options.classNamePrefix,
       });
