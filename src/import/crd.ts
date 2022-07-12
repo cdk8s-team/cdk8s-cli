@@ -44,7 +44,6 @@ const SUPPORTED_API_VERSIONS = [
 export class CustomResourceDefinition {
   private readonly _group: string;
   private readonly kind: string;
-  private readonly fqn: string;
 
   private readonly schemas: Map<string, any> = new Map();
 
@@ -72,7 +71,6 @@ export class CustomResourceDefinition {
 
     this._group = spec.group;
     this.kind = spec.names.kind;
-    this.fqn = this.kind;
   }
 
   public get key() {
@@ -86,6 +84,7 @@ export class CustomResourceDefinition {
   public async generateTypeScript(code: CodeMaker, options: GenerateOptions) {
 
     const keys = Array.from(this.schemas.keys());
+
     for (let i = 0; i < keys.length; i++) {
 
       const version = keys[i];
@@ -95,25 +94,20 @@ export class CustomResourceDefinition {
         throw new Error(`Schema for version ${version} is missing`);
       }
 
+      const types = new TypeGenerator({});
+
       // to preseve backwards compatiblity, only append a suffix for
       // the second version onwards.
       const suffix = i === 0 ? '' : toPascalCase(version);
-
-      const constructName = TypeGenerator.normalizeTypeName(`${this.kind}${suffix}`);
-
-      const types = new TypeGenerator({
-        renderPropertyTypeName: (def: string) => `${def}${suffix}`,
-      });
 
       generateConstruct(types, {
         group: this.group,
         version: version,
         kind: this.kind,
-        fqn: this.fqn,
+        fqn: `${this.kind}${suffix}`,
         schema: schema,
         custom: true,
         prefix: options.classNamePrefix,
-        name: constructName,
       });
 
       code.line(types.render());

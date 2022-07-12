@@ -26,13 +26,6 @@ export interface ApiObjectDefinition {
    * @default ""
    */
   readonly prefix?: string;
-
-  /**
-   * Name of the construct to be generated from this ApiObject.
-   *
-   * @default - constructed from the `kind`, `version`, and `prefix`.
-   */
-  readonly name?: string;
 }
 
 /**
@@ -61,11 +54,6 @@ export function getTypeName(kind: string, version: string) {
 }
 
 export function getConstructTypeName(def: ApiObjectDefinition) {
-
-  if (def.name) {
-    return def.name;
-  }
-
   const prefix = def.prefix ?? '';
 
   return TypeGenerator.normalizeTypeName(`${prefix}${getTypeName(def.kind, def.version)}`);
