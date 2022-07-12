@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import Ajv from 'ajv';
-import { CodeMaker } from 'codemaker';
+import { CodeMaker, toPascalCase } from 'codemaker';
 import { TypeGenerator } from 'json2jsii';
 import { ImportSpec } from '../config';
 import { SafeReviver } from '../reviver';
@@ -42,11 +42,11 @@ const SUPPORTED_API_VERSIONS = [
 ];
 
 export class CustomResourceDefinition {
-  private readonly schema?: any;
   private readonly _group: string;
-  private readonly version: string;
   private readonly kind: string;
   private readonly fqn: string;
+
+  private readonly schemas: Map<string, any> = new Map();
 
   constructor(manifest: ManifestObjectDefinition) {
     const apiVersion = manifest?.apiVersion ?? 'undefined';
@@ -58,18 +58,19 @@ export class CustomResourceDefinition {
       throw new Error('manifest does not have a "spec" attribute');
     }
 
-    const version = spec.version ?? (spec.versions ?? [])[0];
-    if (!version) {
-      throw new Error('unable to determine CRD version');
+    if (spec.version) {
+      this.schemas.set(spec.version, spec.validation?.openAPIV3Schema);
+    } else {
+      for (const version of spec.versions ?? []) {
+        this.schemas.set(version.name, version.schema?.openAPIV3Schema ?? spec.validation?.openAPIV3Schema);
+      }
     }
 
-    const schema = typeof version === 'string'
-      ? spec.validation?.openAPIV3Schema
-      : version?.schema?.openAPIV3Schema ?? spec.validation?.openAPIV3Schema;
+    if (this.schemas.size === 0) {
+      throw new Error('unable to determine CRD versions');
+    }
 
-    this.schema = schema;
     this._group = spec.group;
-    this.version = typeof version === 'string' ? version : version.name;
     this.kind = spec.names.kind;
     this.fqn = this.kind;
   }
@@ -83,19 +84,50 @@ export class CustomResourceDefinition {
   }
 
   public async generateTypeScript(code: CodeMaker, options: GenerateOptions) {
-    const types = new TypeGenerator();
 
-    generateConstruct(types, {
-      group: this.group,
-      version: this.version,
-      kind: this.kind,
-      fqn: this.fqn,
-      schema: this.schema,
-      custom: true,
-      prefix: options.classNamePrefix,
-    });
+    const keys = Array.from(this.schemas.keys());
+    for (let i = 0; i < keys.length; i++) {
 
-    code.line(types.render());
+      const version = keys[i];
+      const schema = this.schemas.get(version);
+
+      if (!schema) {
+        throw new Error(`Schema for version ${version} is missing`);
+      }
+
+      // to preseve backwards compatiblity, only append a suffix for
+      // the second version onwards.
+      const suffix = i === 0 ? '' : toPascalCase(version);
+
+      const constructName = TypeGenerator.normalizeTypeName(`${this.kind}${suffix}`);
+
+      const types = new TypeGenerator({
+        renderTypeName: (def: string) => {
+          if (def === `${constructName}Props`) {
+            // special struct emitted by the generateConstruct function
+            return def;
+          }
+          if (def === 'ApiObjectMetadata') {
+            // standard metadata type that doesn't need a version suffix
+            return def;
+          }
+          return `${def}${suffix}`;
+        },
+      });
+
+      generateConstruct(types, {
+        group: this.group,
+        version: version,
+        kind: this.kind,
+        fqn: this.fqn,
+        schema: schema,
+        custom: true,
+        prefix: options.classNamePrefix,
+        name: constructName,
+      });
+
+      code.line(types.render());
+    }
   }
 }
 

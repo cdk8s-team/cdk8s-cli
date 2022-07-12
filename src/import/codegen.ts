@@ -26,6 +26,13 @@ export interface ApiObjectDefinition {
    * @default ""
    */
   readonly prefix?: string;
+
+  /**
+   * Name of the construct to be generated from this ApiObject.
+   *
+   * @default - constructed from the `kind`, `version`, and `prefix`.
+   */
+  readonly name?: string;
 }
 
 /**
@@ -45,18 +52,23 @@ export function emitHeader(code: CodeMaker, custom: boolean) {
   code.line();
 }
 
-export function getTypeName(custom: boolean, kind: string, version: string) {
+export function getTypeName(kind: string, version: string) {
   // add an API version postfix only if this is core API (`import k8s`).
   // TODO = what about the rest of the namespace? the same resource can exist in multiple
   // api groups (Ingress for example exists in 'extensions' and 'networking')
-  const postfix = (custom || version === 'v1') ? '' : toPascalCase(version);
+  const postfix = version === 'v1' ? '' : toPascalCase(version);
   return `${kind}${postfix}`;
 }
 
 export function getConstructTypeName(def: ApiObjectDefinition) {
+
+  if (def.name) {
+    return def.name;
+  }
+
   const prefix = def.prefix ?? '';
 
-  return TypeGenerator.normalizeTypeName(`${prefix}${getTypeName(def.custom, def.kind, def.version)}`);
+  return TypeGenerator.normalizeTypeName(`${prefix}${getTypeName(def.kind, def.version)}`);
 }
 
 export function getPropsTypeName(def: ApiObjectDefinition) {
