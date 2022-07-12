@@ -97,7 +97,7 @@ export class CustomResourceDefinition {
 
       generateConstruct(types, {
         group: this.group,
-        version: version.name,
+        version: suffix,
         kind: this.kind,
         fqn: `${this.kind}${suffix}`,
         schema: version.schema,

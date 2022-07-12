@@ -85,6 +85,182 @@ Object {
     },
   },
   "types": Object {
+    "metapkgcrossplaneio.Configuration": Object {
+      "assembly": "metapkgcrossplaneio",
+      "base": "cdk8s.ApiObject",
+      "docs": Object {
+        "custom": Object {
+          "schema": "Configuration",
+        },
+        "summary": "A Configuration is the description of a Crossplane Configuration package.",
+      },
+      "fqn": "metapkgcrossplaneio.Configuration",
+      "initializer": Object {
+        "docs": Object {
+          "summary": "Defines a \\"Configuration\\" API object.",
+        },
+        "locationInModule": Object {
+          "filename": "meta.pkg.crossplane.io.ts",
+          "line": 40,
+        },
+        "parameters": Array [
+          Object {
+            "docs": Object {
+              "summary": "the scope in which to define this object.",
+            },
+            "name": "scope",
+            "type": Object {
+              "fqn": "constructs.Construct",
+            },
+          },
+          Object {
+            "docs": Object {
+              "summary": "a scope-local name for the object.",
+            },
+            "name": "id",
+            "type": Object {
+              "primitive": "string",
+            },
+          },
+          Object {
+            "docs": Object {
+              "summary": "initialization props.",
+            },
+            "name": "props",
+            "type": Object {
+              "fqn": "metapkgcrossplaneio.ConfigurationProps",
+            },
+          },
+        ],
+      },
+      "kind": "class",
+      "locationInModule": Object {
+        "filename": "meta.pkg.crossplane.io.ts",
+        "line": 11,
+      },
+      "methods": Array [
+        Object {
+          "docs": Object {
+            "remarks": "This can be used to inline resource manifests inside other objects (e.g. as templates).",
+            "summary": "Renders a Kubernetes manifest for \\"Configuration\\".",
+          },
+          "locationInModule": Object {
+            "filename": "meta.pkg.crossplane.io.ts",
+            "line": 27,
+          },
+          "name": "manifest",
+          "parameters": Array [
+            Object {
+              "docs": Object {
+                "summary": "initialization props.",
+              },
+              "name": "props",
+              "type": Object {
+                "fqn": "metapkgcrossplaneio.ConfigurationProps",
+              },
+            },
+          ],
+          "returns": Object {
+            "type": Object {
+              "primitive": "any",
+            },
+          },
+          "static": true,
+        },
+        Object {
+          "docs": Object {
+            "summary": "Renders the object to Kubernetes JSON.",
+          },
+          "locationInModule": Object {
+            "filename": "meta.pkg.crossplane.io.ts",
+            "line": 50,
+          },
+          "name": "toJson",
+          "overrides": "cdk8s.ApiObject",
+          "returns": Object {
+            "type": Object {
+              "primitive": "any",
+            },
+          },
+        },
+      ],
+      "name": "Configuration",
+      "properties": Array [
+        Object {
+          "const": true,
+          "docs": Object {
+            "summary": "Returns the apiVersion and kind for \\"Configuration\\".",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "meta.pkg.crossplane.io.ts",
+            "line": 15,
+          },
+          "name": "GVK",
+          "static": true,
+          "type": Object {
+            "fqn": "cdk8s.GroupVersionKind",
+          },
+        },
+      ],
+      "symbolId": "meta.pkg.crossplane.io:Configuration",
+    },
+    "metapkgcrossplaneio.ConfigurationProps": Object {
+      "assembly": "metapkgcrossplaneio",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "Configuration",
+        },
+        "summary": "A Configuration is the description of a Crossplane Configuration package.",
+      },
+      "fqn": "metapkgcrossplaneio.ConfigurationProps",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "meta.pkg.crossplane.io.ts",
+        "line": 65,
+      },
+      "name": "ConfigurationProps",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "Configuration#spec",
+            },
+            "summary": "ConfigurationSpec specifies the configuration of a Configuration.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "meta.pkg.crossplane.io.ts",
+            "line": 76,
+          },
+          "name": "spec",
+          "type": Object {
+            "fqn": "metapkgcrossplaneio.ConfigurationSpec",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "Configuration#metadata",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "meta.pkg.crossplane.io.ts",
+            "line": 69,
+          },
+          "name": "metadata",
+          "optional": true,
+          "type": Object {
+            "fqn": "cdk8s.ApiObjectMetadata",
+          },
+        },
+      ],
+      "symbolId": "meta.pkg.crossplane.io:ConfigurationProps",
+    },
     "metapkgcrossplaneio.ConfigurationSpec": Object {
       "assembly": "metapkgcrossplaneio",
       "datatype": true,
@@ -263,182 +439,6 @@ Object {
       ],
       "symbolId": "meta.pkg.crossplane.io:ConfigurationSpecDependsOn",
     },
-    "metapkgcrossplaneio.ConfigurationV1Alpha1": Object {
-      "assembly": "metapkgcrossplaneio",
-      "base": "cdk8s.ApiObject",
-      "docs": Object {
-        "custom": Object {
-          "schema": "Configuration",
-        },
-        "summary": "A Configuration is the description of a Crossplane Configuration package.",
-      },
-      "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1",
-      "initializer": Object {
-        "docs": Object {
-          "summary": "Defines a \\"Configuration\\" API object.",
-        },
-        "locationInModule": Object {
-          "filename": "meta.pkg.crossplane.io.ts",
-          "line": 40,
-        },
-        "parameters": Array [
-          Object {
-            "docs": Object {
-              "summary": "the scope in which to define this object.",
-            },
-            "name": "scope",
-            "type": Object {
-              "fqn": "constructs.Construct",
-            },
-          },
-          Object {
-            "docs": Object {
-              "summary": "a scope-local name for the object.",
-            },
-            "name": "id",
-            "type": Object {
-              "primitive": "string",
-            },
-          },
-          Object {
-            "docs": Object {
-              "summary": "initialization props.",
-            },
-            "name": "props",
-            "type": Object {
-              "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1Props",
-            },
-          },
-        ],
-      },
-      "kind": "class",
-      "locationInModule": Object {
-        "filename": "meta.pkg.crossplane.io.ts",
-        "line": 11,
-      },
-      "methods": Array [
-        Object {
-          "docs": Object {
-            "remarks": "This can be used to inline resource manifests inside other objects (e.g. as templates).",
-            "summary": "Renders a Kubernetes manifest for \\"Configuration\\".",
-          },
-          "locationInModule": Object {
-            "filename": "meta.pkg.crossplane.io.ts",
-            "line": 27,
-          },
-          "name": "manifest",
-          "parameters": Array [
-            Object {
-              "docs": Object {
-                "summary": "initialization props.",
-              },
-              "name": "props",
-              "type": Object {
-                "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1Props",
-              },
-            },
-          ],
-          "returns": Object {
-            "type": Object {
-              "primitive": "any",
-            },
-          },
-          "static": true,
-        },
-        Object {
-          "docs": Object {
-            "summary": "Renders the object to Kubernetes JSON.",
-          },
-          "locationInModule": Object {
-            "filename": "meta.pkg.crossplane.io.ts",
-            "line": 50,
-          },
-          "name": "toJson",
-          "overrides": "cdk8s.ApiObject",
-          "returns": Object {
-            "type": Object {
-              "primitive": "any",
-            },
-          },
-        },
-      ],
-      "name": "ConfigurationV1Alpha1",
-      "properties": Array [
-        Object {
-          "const": true,
-          "docs": Object {
-            "summary": "Returns the apiVersion and kind for \\"Configuration\\".",
-          },
-          "immutable": true,
-          "locationInModule": Object {
-            "filename": "meta.pkg.crossplane.io.ts",
-            "line": 15,
-          },
-          "name": "GVK",
-          "static": true,
-          "type": Object {
-            "fqn": "cdk8s.GroupVersionKind",
-          },
-        },
-      ],
-      "symbolId": "meta.pkg.crossplane.io:ConfigurationV1Alpha1",
-    },
-    "metapkgcrossplaneio.ConfigurationV1Alpha1Props": Object {
-      "assembly": "metapkgcrossplaneio",
-      "datatype": true,
-      "docs": Object {
-        "custom": Object {
-          "schema": "Configuration",
-        },
-        "summary": "A Configuration is the description of a Crossplane Configuration package.",
-      },
-      "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1Props",
-      "kind": "interface",
-      "locationInModule": Object {
-        "filename": "meta.pkg.crossplane.io.ts",
-        "line": 65,
-      },
-      "name": "ConfigurationV1Alpha1Props",
-      "properties": Array [
-        Object {
-          "abstract": true,
-          "docs": Object {
-            "custom": Object {
-              "schema": "Configuration#spec",
-            },
-            "summary": "ConfigurationSpec specifies the configuration of a Configuration.",
-          },
-          "immutable": true,
-          "locationInModule": Object {
-            "filename": "meta.pkg.crossplane.io.ts",
-            "line": 76,
-          },
-          "name": "spec",
-          "type": Object {
-            "fqn": "metapkgcrossplaneio.ConfigurationSpec",
-          },
-        },
-        Object {
-          "abstract": true,
-          "docs": Object {
-            "custom": Object {
-              "schema": "Configuration#metadata",
-            },
-          },
-          "immutable": true,
-          "locationInModule": Object {
-            "filename": "meta.pkg.crossplane.io.ts",
-            "line": 69,
-          },
-          "name": "metadata",
-          "optional": true,
-          "type": Object {
-            "fqn": "cdk8s.ApiObjectMetadata",
-          },
-        },
-      ],
-      "symbolId": "meta.pkg.crossplane.io:ConfigurationV1Alpha1Props",
-    },
   },
   "version": "0.0.0",
 }
@@ -456,12 +456,12 @@ import { Construct } from 'constructs';
  *
  * @schema CompositeResourceDefinition
  */
-export class CompositeResourceDefinitionV1Alpha1 extends ApiObject {
+export class CompositeResourceDefinition extends ApiObject {
   /**
    * Returns the apiVersion and kind for \\"CompositeResourceDefinition\\"
    */
   public static readonly GVK: GroupVersionKind = {
-    apiVersion: 'apiextensions.crossplane.io/v1alpha1',
+    apiVersion: 'apiextensions.crossplane.io/',
     kind: 'CompositeResourceDefinition',
   }
 
@@ -472,10 +472,10 @@ export class CompositeResourceDefinitionV1Alpha1 extends ApiObject {
    *
    * @param props initialization props
    */
-  public static manifest(props: CompositeResourceDefinitionV1Alpha1Props = {}): any {
+  public static manifest(props: CompositeResourceDefinitionProps = {}): any {
     return {
-      ...CompositeResourceDefinitionV1Alpha1.GVK,
-      ...toJson_CompositeResourceDefinitionV1Alpha1Props(props),
+      ...CompositeResourceDefinition.GVK,
+      ...toJson_CompositeResourceDefinitionProps(props),
     };
   }
 
@@ -485,9 +485,9 @@ export class CompositeResourceDefinitionV1Alpha1 extends ApiObject {
    * @param id a scope-local name for the object
    * @param props initialization props
    */
-  public constructor(scope: Construct, id: string, props: CompositeResourceDefinitionV1Alpha1Props = {}) {
+  public constructor(scope: Construct, id: string, props: CompositeResourceDefinitionProps = {}) {
     super(scope, id, {
-      ...CompositeResourceDefinitionV1Alpha1.GVK,
+      ...CompositeResourceDefinition.GVK,
       ...props,
     });
   }
@@ -499,8 +499,8 @@ export class CompositeResourceDefinitionV1Alpha1 extends ApiObject {
     const resolved = super.toJson();
 
     return {
-      ...CompositeResourceDefinitionV1Alpha1.GVK,
-      ...toJson_CompositeResourceDefinitionV1Alpha1Props(resolved),
+      ...CompositeResourceDefinition.GVK,
+      ...toJson_CompositeResourceDefinitionProps(resolved),
     };
   }
 }
@@ -510,7 +510,7 @@ export class CompositeResourceDefinitionV1Alpha1 extends ApiObject {
  *
  * @schema CompositeResourceDefinition
  */
-export interface CompositeResourceDefinitionV1Alpha1Props {
+export interface CompositeResourceDefinitionProps {
   /**
    * @schema CompositeResourceDefinition#metadata
    */
@@ -526,10 +526,10 @@ export interface CompositeResourceDefinitionV1Alpha1Props {
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionV1Alpha1Props' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionProps' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionV1Alpha1Props(obj: CompositeResourceDefinitionV1Alpha1Props | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionProps(obj: CompositeResourceDefinitionProps | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'metadata': obj.metadata,
@@ -987,7 +987,7 @@ export class CompositeResourceDefinitionV1Beta1 extends ApiObject {
    * Returns the apiVersion and kind for \\"CompositeResourceDefinitionV1Beta1\\"
    */
   public static readonly GVK: GroupVersionKind = {
-    apiVersion: 'apiextensions.crossplane.io/v1beta1',
+    apiVersion: 'apiextensions.crossplane.io/V1Beta1',
     kind: 'CompositeResourceDefinition',
   }
 
@@ -1508,12 +1508,12 @@ export function toJson_CompositeResourceDefinitionV1Beta1SpecVersionsSchema(obj:
  *
  * @schema Composition
  */
-export class CompositionV1Alpha1 extends ApiObject {
+export class Composition extends ApiObject {
   /**
    * Returns the apiVersion and kind for \\"Composition\\"
    */
   public static readonly GVK: GroupVersionKind = {
-    apiVersion: 'apiextensions.crossplane.io/v1alpha1',
+    apiVersion: 'apiextensions.crossplane.io/',
     kind: 'Composition',
   }
 
@@ -1524,10 +1524,10 @@ export class CompositionV1Alpha1 extends ApiObject {
    *
    * @param props initialization props
    */
-  public static manifest(props: CompositionV1Alpha1Props = {}): any {
+  public static manifest(props: CompositionProps = {}): any {
     return {
-      ...CompositionV1Alpha1.GVK,
-      ...toJson_CompositionV1Alpha1Props(props),
+      ...Composition.GVK,
+      ...toJson_CompositionProps(props),
     };
   }
 
@@ -1537,9 +1537,9 @@ export class CompositionV1Alpha1 extends ApiObject {
    * @param id a scope-local name for the object
    * @param props initialization props
    */
-  public constructor(scope: Construct, id: string, props: CompositionV1Alpha1Props = {}) {
+  public constructor(scope: Construct, id: string, props: CompositionProps = {}) {
     super(scope, id, {
-      ...CompositionV1Alpha1.GVK,
+      ...Composition.GVK,
       ...props,
     });
   }
@@ -1551,8 +1551,8 @@ export class CompositionV1Alpha1 extends ApiObject {
     const resolved = super.toJson();
 
     return {
-      ...CompositionV1Alpha1.GVK,
-      ...toJson_CompositionV1Alpha1Props(resolved),
+      ...Composition.GVK,
+      ...toJson_CompositionProps(resolved),
     };
   }
 }
@@ -1562,7 +1562,7 @@ export class CompositionV1Alpha1 extends ApiObject {
  *
  * @schema Composition
  */
-export interface CompositionV1Alpha1Props {
+export interface CompositionProps {
   /**
    * @schema Composition#metadata
    */
@@ -1578,10 +1578,10 @@ export interface CompositionV1Alpha1Props {
 }
 
 /**
- * Converts an object of type 'CompositionV1Alpha1Props' to JSON representation.
+ * Converts an object of type 'CompositionProps' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionV1Alpha1Props(obj: CompositionV1Alpha1Props | undefined): Record<string, any> | undefined {
+export function toJson_CompositionProps(obj: CompositionProps | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'metadata': obj.metadata,
@@ -2008,7 +2008,7 @@ export class CompositionV1Beta1 extends ApiObject {
    * Returns the apiVersion and kind for \\"CompositionV1Beta1\\"
    */
   public static readonly GVK: GroupVersionKind = {
-    apiVersion: 'apiextensions.crossplane.io/v1beta1',
+    apiVersion: 'apiextensions.crossplane.io/V1Beta1',
     kind: 'Composition',
   }
 
@@ -2503,12 +2503,12 @@ import { Construct } from 'constructs';
  *
  * @schema Configuration
  */
-export class ConfigurationV1Alpha1 extends ApiObject {
+export class Configuration extends ApiObject {
   /**
    * Returns the apiVersion and kind for \\"Configuration\\"
    */
   public static readonly GVK: GroupVersionKind = {
-    apiVersion: 'meta.pkg.crossplane.io/v1alpha1',
+    apiVersion: 'meta.pkg.crossplane.io/',
     kind: 'Configuration',
   }
 
@@ -2519,10 +2519,10 @@ export class ConfigurationV1Alpha1 extends ApiObject {
    *
    * @param props initialization props
    */
-  public static manifest(props: ConfigurationV1Alpha1Props): any {
+  public static manifest(props: ConfigurationProps): any {
     return {
-      ...ConfigurationV1Alpha1.GVK,
-      ...toJson_ConfigurationV1Alpha1Props(props),
+      ...Configuration.GVK,
+      ...toJson_ConfigurationProps(props),
     };
   }
 
@@ -2532,9 +2532,9 @@ export class ConfigurationV1Alpha1 extends ApiObject {
    * @param id a scope-local name for the object
    * @param props initialization props
    */
-  public constructor(scope: Construct, id: string, props: ConfigurationV1Alpha1Props) {
+  public constructor(scope: Construct, id: string, props: ConfigurationProps) {
     super(scope, id, {
-      ...ConfigurationV1Alpha1.GVK,
+      ...Configuration.GVK,
       ...props,
     });
   }
@@ -2546,8 +2546,8 @@ export class ConfigurationV1Alpha1 extends ApiObject {
     const resolved = super.toJson();
 
     return {
-      ...ConfigurationV1Alpha1.GVK,
-      ...toJson_ConfigurationV1Alpha1Props(resolved),
+      ...Configuration.GVK,
+      ...toJson_ConfigurationProps(resolved),
     };
   }
 }
@@ -2557,7 +2557,7 @@ export class ConfigurationV1Alpha1 extends ApiObject {
  *
  * @schema Configuration
  */
-export interface ConfigurationV1Alpha1Props {
+export interface ConfigurationProps {
   /**
    * @schema Configuration#metadata
    */
@@ -2573,10 +2573,10 @@ export interface ConfigurationV1Alpha1Props {
 }
 
 /**
- * Converts an object of type 'ConfigurationV1Alpha1Props' to JSON representation.
+ * Converts an object of type 'ConfigurationProps' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_ConfigurationV1Alpha1Props(obj: ConfigurationV1Alpha1Props | undefined): Record<string, any> | undefined {
+export function toJson_ConfigurationProps(obj: ConfigurationProps | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'metadata': obj.metadata,
