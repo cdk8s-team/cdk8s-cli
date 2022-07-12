@@ -1069,57 +1069,57 @@ export function toJson_CompositeResourceDefinitionV1Beta1Props(obj: CompositeRes
 /**
  * CompositeResourceDefinitionSpec specifies the desired state of the definition.
  *
- * @schema CompositeResourceDefinitionSpec
+ * @schema CompositeResourceDefinitionSpecV1Beta1
  */
 export interface CompositeResourceDefinitionSpecV1Beta1 {
   /**
    * ClaimNames specifies the names of an optional composite resource claim. When claim names are specified Crossplane will create a namespaced 'composite resource claim' CRD that corresponds to the defined composite resource. This composite resource claim acts as a namespaced proxy for the composite resource; creating, updating, or deleting the claim will create, update, or delete a corresponding composite resource. You may add claim names to an existing CompositeResourceDefinition, but they cannot be changed or removed once they have been set.
    *
-   * @schema CompositeResourceDefinitionSpec#claimNames
+   * @schema CompositeResourceDefinitionSpecV1Beta1#claimNames
    */
-  readonly claimNames?: CompositeResourceDefinitionSpecClaimNamesV1Beta1;
+  readonly claimNames?: CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1;
 
   /**
    * ConnectionSecretKeys is the list of keys that will be exposed to the end user of the defined kind.
    *
-   * @schema CompositeResourceDefinitionSpec#connectionSecretKeys
+   * @schema CompositeResourceDefinitionSpecV1Beta1#connectionSecretKeys
    */
   readonly connectionSecretKeys?: string[];
 
   /**
    * DefaultCompositionRef refers to the Composition resource that will be used in case no composition selector is given.
    *
-   * @schema CompositeResourceDefinitionSpec#defaultCompositionRef
+   * @schema CompositeResourceDefinitionSpecV1Beta1#defaultCompositionRef
    */
-  readonly defaultCompositionRef?: CompositeResourceDefinitionSpecDefaultCompositionRefV1Beta1;
+  readonly defaultCompositionRef?: CompositeResourceDefinitionSpecV1Beta1DefaultCompositionRefV1Beta1;
 
   /**
    * EnforcedCompositionRef refers to the Composition resource that will be used by all composite instances whose schema is defined by this definition.
    *
-   * @schema CompositeResourceDefinitionSpec#enforcedCompositionRef
+   * @schema CompositeResourceDefinitionSpecV1Beta1#enforcedCompositionRef
    */
-  readonly enforcedCompositionRef?: CompositeResourceDefinitionSpecEnforcedCompositionRefV1Beta1;
+  readonly enforcedCompositionRef?: CompositeResourceDefinitionSpecV1Beta1EnforcedCompositionRefV1Beta1;
 
   /**
    * Group specifies the API group of the defined composite resource. Composite resources are served under \`/apis/<group>/...\`. Must match the name of the XRD (in the form \`<names.plural>.<group>\`).
    *
-   * @schema CompositeResourceDefinitionSpec#group
+   * @schema CompositeResourceDefinitionSpecV1Beta1#group
    */
   readonly group: string;
 
   /**
    * Names specifies the resource and kind names of the defined composite resource.
    *
-   * @schema CompositeResourceDefinitionSpec#names
+   * @schema CompositeResourceDefinitionSpecV1Beta1#names
    */
-  readonly names: CompositeResourceDefinitionSpecNamesV1Beta1;
+  readonly names: CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1;
 
   /**
    * Versions is the list of all API versions of the defined composite resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is \\"kube-like\\", it will sort above non \\"kube-like\\" version strings, which are ordered lexicographically. \\"Kube-like\\" versions start with a \\"v\\", then are followed by a number (the major version), then optionally the string \\"alpha\\" or \\"beta\\" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10. Note that all versions must have identical schemas; Crossplane does not currently support conversion between different version schemas.
    *
-   * @schema CompositeResourceDefinitionSpec#versions
+   * @schema CompositeResourceDefinitionSpecV1Beta1#versions
    */
-  readonly versions: CompositeResourceDefinitionSpecVersionsV1Beta1[];
+  readonly versions: CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1[];
 
 }
 
@@ -1130,13 +1130,13 @@ export interface CompositeResourceDefinitionSpecV1Beta1 {
 export function toJson_CompositeResourceDefinitionSpecV1Beta1(obj: CompositeResourceDefinitionSpecV1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
-    'claimNames': toJson_CompositeResourceDefinitionSpecClaimNamesV1Beta1(obj.claimNames),
+    'claimNames': toJson_CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1(obj.claimNames),
     'connectionSecretKeys': obj.connectionSecretKeys?.map(y => y),
-    'defaultCompositionRef': toJson_CompositeResourceDefinitionSpecDefaultCompositionRefV1Beta1(obj.defaultCompositionRef),
-    'enforcedCompositionRef': toJson_CompositeResourceDefinitionSpecEnforcedCompositionRefV1Beta1(obj.enforcedCompositionRef),
+    'defaultCompositionRef': toJson_CompositeResourceDefinitionSpecV1Beta1DefaultCompositionRefV1Beta1(obj.defaultCompositionRef),
+    'enforcedCompositionRef': toJson_CompositeResourceDefinitionSpecV1Beta1EnforcedCompositionRefV1Beta1(obj.enforcedCompositionRef),
     'group': obj.group,
-    'names': toJson_CompositeResourceDefinitionSpecNamesV1Beta1(obj.names),
-    'versions': obj.versions?.map(y => toJson_CompositeResourceDefinitionSpecVersionsV1Beta1(y)),
+    'names': toJson_CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1(obj.names),
+    'versions': obj.versions?.map(y => toJson_CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1(y)),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -1146,20 +1146,20 @@ export function toJson_CompositeResourceDefinitionSpecV1Beta1(obj: CompositeReso
 /**
  * ClaimNames specifies the names of an optional composite resource claim. When claim names are specified Crossplane will create a namespaced 'composite resource claim' CRD that corresponds to the defined composite resource. This composite resource claim acts as a namespaced proxy for the composite resource; creating, updating, or deleting the claim will create, update, or delete a corresponding composite resource. You may add claim names to an existing CompositeResourceDefinition, but they cannot be changed or removed once they have been set.
  *
- * @schema CompositeResourceDefinitionSpecClaimNames
+ * @schema CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1
  */
-export interface CompositeResourceDefinitionSpecClaimNamesV1Beta1 {
+export interface CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1 {
   /**
    * categories is a list of grouped resources this custom resource belongs to (e.g. 'all'). This is published in API discovery documents, and used by clients to support invocations like \`kubectl get all\`.
    *
-   * @schema CompositeResourceDefinitionSpecClaimNames#categories
+   * @schema CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1#categories
    */
   readonly categories?: string[];
 
   /**
    * kind is the serialized kind of the resource. It is normally CamelCase and singular. Custom resource instances will use this value as the \`kind\` attribute in API calls.
    *
-   * @schema CompositeResourceDefinitionSpecClaimNames#kind
+   * @schema CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1#kind
    */
   readonly kind: string;
 
@@ -1167,21 +1167,21 @@ export interface CompositeResourceDefinitionSpecClaimNamesV1Beta1 {
    * listKind is the serialized kind of the list for this resource. Defaults to \\"\`kind\`List\\".
    *
    * @default kind\`List\\".
-   * @schema CompositeResourceDefinitionSpecClaimNames#listKind
+   * @schema CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1#listKind
    */
   readonly listKind?: string;
 
   /**
    * plural is the plural name of the resource to serve. The custom resources are served under \`/apis/<group>/<version>/.../<plural>\`. Must match the name of the CustomResourceDefinition (in the form \`<names.plural>.<group>\`). Must be all lowercase.
    *
-   * @schema CompositeResourceDefinitionSpecClaimNames#plural
+   * @schema CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1#plural
    */
   readonly plural: string;
 
   /**
    * shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like \`kubectl get <shortname>\`. It must be all lowercase.
    *
-   * @schema CompositeResourceDefinitionSpecClaimNames#shortNames
+   * @schema CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1#shortNames
    */
   readonly shortNames?: string[];
 
@@ -1189,17 +1189,17 @@ export interface CompositeResourceDefinitionSpecClaimNamesV1Beta1 {
    * singular is the singular name of the resource. It must be all lowercase. Defaults to lowercased \`kind\`.
    *
    * @default lowercased \`kind\`.
-   * @schema CompositeResourceDefinitionSpecClaimNames#singular
+   * @schema CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1#singular
    */
   readonly singular?: string;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecClaimNamesV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecClaimNamesV1Beta1(obj: CompositeResourceDefinitionSpecClaimNamesV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1(obj: CompositeResourceDefinitionSpecV1Beta1ClaimNamesV1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'categories': obj.categories?.map(y => y),
@@ -1217,23 +1217,23 @@ export function toJson_CompositeResourceDefinitionSpecClaimNamesV1Beta1(obj: Com
 /**
  * DefaultCompositionRef refers to the Composition resource that will be used in case no composition selector is given.
  *
- * @schema CompositeResourceDefinitionSpecDefaultCompositionRef
+ * @schema CompositeResourceDefinitionSpecV1Beta1DefaultCompositionRefV1Beta1
  */
-export interface CompositeResourceDefinitionSpecDefaultCompositionRefV1Beta1 {
+export interface CompositeResourceDefinitionSpecV1Beta1DefaultCompositionRefV1Beta1 {
   /**
    * Name of the referenced object.
    *
-   * @schema CompositeResourceDefinitionSpecDefaultCompositionRef#name
+   * @schema CompositeResourceDefinitionSpecV1Beta1DefaultCompositionRefV1Beta1#name
    */
   readonly name: string;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecDefaultCompositionRefV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionSpecV1Beta1DefaultCompositionRefV1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecDefaultCompositionRefV1Beta1(obj: CompositeResourceDefinitionSpecDefaultCompositionRefV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionSpecV1Beta1DefaultCompositionRefV1Beta1(obj: CompositeResourceDefinitionSpecV1Beta1DefaultCompositionRefV1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'name': obj.name,
@@ -1246,23 +1246,23 @@ export function toJson_CompositeResourceDefinitionSpecDefaultCompositionRefV1Bet
 /**
  * EnforcedCompositionRef refers to the Composition resource that will be used by all composite instances whose schema is defined by this definition.
  *
- * @schema CompositeResourceDefinitionSpecEnforcedCompositionRef
+ * @schema CompositeResourceDefinitionSpecV1Beta1EnforcedCompositionRefV1Beta1
  */
-export interface CompositeResourceDefinitionSpecEnforcedCompositionRefV1Beta1 {
+export interface CompositeResourceDefinitionSpecV1Beta1EnforcedCompositionRefV1Beta1 {
   /**
    * Name of the referenced object.
    *
-   * @schema CompositeResourceDefinitionSpecEnforcedCompositionRef#name
+   * @schema CompositeResourceDefinitionSpecV1Beta1EnforcedCompositionRefV1Beta1#name
    */
   readonly name: string;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecEnforcedCompositionRefV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionSpecV1Beta1EnforcedCompositionRefV1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecEnforcedCompositionRefV1Beta1(obj: CompositeResourceDefinitionSpecEnforcedCompositionRefV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionSpecV1Beta1EnforcedCompositionRefV1Beta1(obj: CompositeResourceDefinitionSpecV1Beta1EnforcedCompositionRefV1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'name': obj.name,
@@ -1275,20 +1275,20 @@ export function toJson_CompositeResourceDefinitionSpecEnforcedCompositionRefV1Be
 /**
  * Names specifies the resource and kind names of the defined composite resource.
  *
- * @schema CompositeResourceDefinitionSpecNames
+ * @schema CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1
  */
-export interface CompositeResourceDefinitionSpecNamesV1Beta1 {
+export interface CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1 {
   /**
    * categories is a list of grouped resources this custom resource belongs to (e.g. 'all'). This is published in API discovery documents, and used by clients to support invocations like \`kubectl get all\`.
    *
-   * @schema CompositeResourceDefinitionSpecNames#categories
+   * @schema CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1#categories
    */
   readonly categories?: string[];
 
   /**
    * kind is the serialized kind of the resource. It is normally CamelCase and singular. Custom resource instances will use this value as the \`kind\` attribute in API calls.
    *
-   * @schema CompositeResourceDefinitionSpecNames#kind
+   * @schema CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1#kind
    */
   readonly kind: string;
 
@@ -1296,21 +1296,21 @@ export interface CompositeResourceDefinitionSpecNamesV1Beta1 {
    * listKind is the serialized kind of the list for this resource. Defaults to \\"\`kind\`List\\".
    *
    * @default kind\`List\\".
-   * @schema CompositeResourceDefinitionSpecNames#listKind
+   * @schema CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1#listKind
    */
   readonly listKind?: string;
 
   /**
    * plural is the plural name of the resource to serve. The custom resources are served under \`/apis/<group>/<version>/.../<plural>\`. Must match the name of the CustomResourceDefinition (in the form \`<names.plural>.<group>\`). Must be all lowercase.
    *
-   * @schema CompositeResourceDefinitionSpecNames#plural
+   * @schema CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1#plural
    */
   readonly plural: string;
 
   /**
    * shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like \`kubectl get <shortname>\`. It must be all lowercase.
    *
-   * @schema CompositeResourceDefinitionSpecNames#shortNames
+   * @schema CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1#shortNames
    */
   readonly shortNames?: string[];
 
@@ -1318,17 +1318,17 @@ export interface CompositeResourceDefinitionSpecNamesV1Beta1 {
    * singular is the singular name of the resource. It must be all lowercase. Defaults to lowercased \`kind\`.
    *
    * @default lowercased \`kind\`.
-   * @schema CompositeResourceDefinitionSpecNames#singular
+   * @schema CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1#singular
    */
   readonly singular?: string;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecNamesV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecNamesV1Beta1(obj: CompositeResourceDefinitionSpecNamesV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1(obj: CompositeResourceDefinitionSpecV1Beta1NamesV1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'categories': obj.categories?.map(y => y),
@@ -1346,57 +1346,57 @@ export function toJson_CompositeResourceDefinitionSpecNamesV1Beta1(obj: Composit
 /**
  * CompositeResourceDefinitionVersion describes a version of an XR.
  *
- * @schema CompositeResourceDefinitionSpecVersions
+ * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1
  */
-export interface CompositeResourceDefinitionSpecVersionsV1Beta1 {
+export interface CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1 {
   /**
    * AdditionalPrinterColumns specifies additional columns returned in Table output. If no columns are specified, a single column displaying the age of the custom resource is used. See the following link for details: https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables
    *
-   * @schema CompositeResourceDefinitionSpecVersions#additionalPrinterColumns
+   * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1#additionalPrinterColumns
    */
-  readonly additionalPrinterColumns?: CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumnsV1Beta1[];
+  readonly additionalPrinterColumns?: CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1[];
 
   /**
    * Name of this version, e.g. “v1”, “v2beta1”, etc. Composite resources are served under this version at \`/apis/<group>/<version>/...\` if \`served\` is true.
    *
-   * @schema CompositeResourceDefinitionSpecVersions#name
+   * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1#name
    */
   readonly name: string;
 
   /**
    * Referenceable specifies that this version may be referenced by a Composition in order to configure which resources an XR may be composed of. Exactly one version must be marked as referenceable; all Compositions must target only the referenceable version. The referenceable version must be served.
    *
-   * @schema CompositeResourceDefinitionSpecVersions#referenceable
+   * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1#referenceable
    */
   readonly referenceable: boolean;
 
   /**
    * Schema describes the schema used for validation, pruning, and defaulting of this version of the defined composite resource. Fields required by all composite resources will be injected into this schema automatically, and will override equivalently named fields in this schema. Omitting this schema results in a schema that contains only the fields required by all composite resources.
    *
-   * @schema CompositeResourceDefinitionSpecVersions#schema
+   * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1#schema
    */
-  readonly schema?: CompositeResourceDefinitionSpecVersionsSchemaV1Beta1;
+  readonly schema?: CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1SchemaV1Beta1;
 
   /**
    * Served specifies that this version should be served via REST APIs.
    *
-   * @schema CompositeResourceDefinitionSpecVersions#served
+   * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1#served
    */
   readonly served: boolean;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecVersionsV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecVersionsV1Beta1(obj: CompositeResourceDefinitionSpecVersionsV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1(obj: CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
-    'additionalPrinterColumns': obj.additionalPrinterColumns?.map(y => toJson_CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumnsV1Beta1(y)),
+    'additionalPrinterColumns': obj.additionalPrinterColumns?.map(y => toJson_CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1(y)),
     'name': obj.name,
     'referenceable': obj.referenceable,
-    'schema': toJson_CompositeResourceDefinitionSpecVersionsSchemaV1Beta1(obj.schema),
+    'schema': toJson_CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1SchemaV1Beta1(obj.schema),
     'served': obj.served,
   };
   // filter undefined values
@@ -1407,58 +1407,58 @@ export function toJson_CompositeResourceDefinitionSpecVersionsV1Beta1(obj: Compo
 /**
  * CustomResourceColumnDefinition specifies a column for server side printing.
  *
- * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns
+ * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1
  */
-export interface CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumnsV1Beta1 {
+export interface CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1 {
   /**
    * description is a human readable description of this column.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#description
+   * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1#description
    */
   readonly description?: string;
 
   /**
    * format is an optional OpenAPI type definition for this column. The 'name' format is applied to the primary identifier column to assist in clients identifying column is the resource name. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#format
+   * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1#format
    */
   readonly format?: string;
 
   /**
    * jsonPath is a simple JSON path (i.e. with array notation) which is evaluated against each custom resource to produce the value for this column.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#jsonPath
+   * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1#jsonPath
    */
   readonly jsonPath: string;
 
   /**
    * name is a human readable name for the column.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#name
+   * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1#name
    */
   readonly name: string;
 
   /**
    * priority is an integer defining the relative importance of this column compared to others. Lower numbers are considered higher priority. Columns that may be omitted in limited space scenarios should be given a priority greater than 0.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#priority
+   * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1#priority
    */
   readonly priority?: number;
 
   /**
    * type is an OpenAPI type definition for this column. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#type
+   * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1#type
    */
   readonly type: string;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumnsV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumnsV1Beta1(obj: CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumnsV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1(obj: CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1AdditionalPrinterColumnsV1Beta1V1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'description': obj.description,
@@ -1476,23 +1476,23 @@ export function toJson_CompositeResourceDefinitionSpecVersionsAdditionalPrinterC
 /**
  * Schema describes the schema used for validation, pruning, and defaulting of this version of the defined composite resource. Fields required by all composite resources will be injected into this schema automatically, and will override equivalently named fields in this schema. Omitting this schema results in a schema that contains only the fields required by all composite resources.
  *
- * @schema CompositeResourceDefinitionSpecVersionsSchema
+ * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1SchemaV1Beta1
  */
-export interface CompositeResourceDefinitionSpecVersionsSchemaV1Beta1 {
+export interface CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1SchemaV1Beta1 {
   /**
    * OpenAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsSchema#openAPIV3Schema
+   * @schema CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1SchemaV1Beta1#openAPIV3Schema
    */
   readonly openApiv3Schema?: any;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecVersionsSchemaV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1SchemaV1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecVersionsSchemaV1Beta1(obj: CompositeResourceDefinitionSpecVersionsSchemaV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1SchemaV1Beta1(obj: CompositeResourceDefinitionSpecV1Beta1VersionsV1Beta1V1Beta1SchemaV1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'openAPIV3Schema': obj.openApiv3Schema,
@@ -2090,27 +2090,27 @@ export function toJson_CompositionV1Beta1Props(obj: CompositionV1Beta1Props | un
 /**
  * CompositionSpec specifies the desired state of the definition.
  *
- * @schema CompositionSpec
+ * @schema CompositionSpecV1Beta1
  */
 export interface CompositionSpecV1Beta1 {
   /**
    * CompositeTypeRef specifies the type of composite resource that this composition is compatible with.
    *
-   * @schema CompositionSpec#compositeTypeRef
+   * @schema CompositionSpecV1Beta1#compositeTypeRef
    */
-  readonly compositeTypeRef: CompositionSpecCompositeTypeRefV1Beta1;
+  readonly compositeTypeRef: CompositionSpecV1Beta1CompositeTypeRefV1Beta1;
 
   /**
    * Resources is the list of resource templates that will be used when a composite resource referring to this composition is created.
    *
-   * @schema CompositionSpec#resources
+   * @schema CompositionSpecV1Beta1#resources
    */
-  readonly resources: CompositionSpecResourcesV1Beta1[];
+  readonly resources: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1[];
 
   /**
    * WriteConnectionSecretsToNamespace specifies the namespace in which the connection secrets of composite resource dynamically provisioned using this composition will be created.
    *
-   * @schema CompositionSpec#writeConnectionSecretsToNamespace
+   * @schema CompositionSpecV1Beta1#writeConnectionSecretsToNamespace
    */
   readonly writeConnectionSecretsToNamespace?: string;
 
@@ -2123,8 +2123,8 @@ export interface CompositionSpecV1Beta1 {
 export function toJson_CompositionSpecV1Beta1(obj: CompositionSpecV1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
-    'compositeTypeRef': toJson_CompositionSpecCompositeTypeRefV1Beta1(obj.compositeTypeRef),
-    'resources': obj.resources?.map(y => toJson_CompositionSpecResourcesV1Beta1(y)),
+    'compositeTypeRef': toJson_CompositionSpecV1Beta1CompositeTypeRefV1Beta1(obj.compositeTypeRef),
+    'resources': obj.resources?.map(y => toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1(y)),
     'writeConnectionSecretsToNamespace': obj.writeConnectionSecretsToNamespace,
   };
   // filter undefined values
@@ -2135,30 +2135,30 @@ export function toJson_CompositionSpecV1Beta1(obj: CompositionSpecV1Beta1 | unde
 /**
  * CompositeTypeRef specifies the type of composite resource that this composition is compatible with.
  *
- * @schema CompositionSpecCompositeTypeRef
+ * @schema CompositionSpecV1Beta1CompositeTypeRefV1Beta1
  */
-export interface CompositionSpecCompositeTypeRefV1Beta1 {
+export interface CompositionSpecV1Beta1CompositeTypeRefV1Beta1 {
   /**
    * APIVersion of the type.
    *
-   * @schema CompositionSpecCompositeTypeRef#apiVersion
+   * @schema CompositionSpecV1Beta1CompositeTypeRefV1Beta1#apiVersion
    */
   readonly apiVersion: string;
 
   /**
    * Kind of the type.
    *
-   * @schema CompositionSpecCompositeTypeRef#kind
+   * @schema CompositionSpecV1Beta1CompositeTypeRefV1Beta1#kind
    */
   readonly kind: string;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecCompositeTypeRefV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositionSpecV1Beta1CompositeTypeRefV1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecCompositeTypeRefV1Beta1(obj: CompositionSpecCompositeTypeRefV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositionSpecV1Beta1CompositeTypeRefV1Beta1(obj: CompositionSpecV1Beta1CompositeTypeRefV1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'apiVersion': obj.apiVersion,
@@ -2172,50 +2172,50 @@ export function toJson_CompositionSpecCompositeTypeRefV1Beta1(obj: CompositionSp
 /**
  * ComposedTemplate is used to provide information about how the composed resource should be processed.
  *
- * @schema CompositionSpecResources
+ * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1
  */
-export interface CompositionSpecResourcesV1Beta1 {
+export interface CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1 {
   /**
    * Base is the target resource that the patches will be applied on.
    *
-   * @schema CompositionSpecResources#base
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1#base
    */
   readonly base: any;
 
   /**
    * ConnectionDetails lists the propagation secret keys from this target resource to the composition instance connection secret.
    *
-   * @schema CompositionSpecResources#connectionDetails
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1#connectionDetails
    */
-  readonly connectionDetails?: CompositionSpecResourcesConnectionDetailsV1Beta1[];
+  readonly connectionDetails?: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ConnectionDetailsV1Beta1V1Beta1[];
 
   /**
    * Patches will be applied as overlay to the base resource.
    *
-   * @schema CompositionSpecResources#patches
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1#patches
    */
-  readonly patches?: CompositionSpecResourcesPatchesV1Beta1[];
+  readonly patches?: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1[];
 
   /**
    * ReadinessChecks allows users to define custom readiness checks. All checks have to return true in order for resource to be considered ready. The default readiness check is to have the \\"Ready\\" condition to be \\"True\\".
    *
-   * @schema CompositionSpecResources#readinessChecks
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1#readinessChecks
    */
-  readonly readinessChecks?: CompositionSpecResourcesReadinessChecksV1Beta1[];
+  readonly readinessChecks?: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1[];
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesV1Beta1(obj: CompositionSpecResourcesV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1(obj: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'base': obj.base,
-    'connectionDetails': obj.connectionDetails?.map(y => toJson_CompositionSpecResourcesConnectionDetailsV1Beta1(y)),
-    'patches': obj.patches?.map(y => toJson_CompositionSpecResourcesPatchesV1Beta1(y)),
-    'readinessChecks': obj.readinessChecks?.map(y => toJson_CompositionSpecResourcesReadinessChecksV1Beta1(y)),
+    'connectionDetails': obj.connectionDetails?.map(y => toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ConnectionDetailsV1Beta1V1Beta1(y)),
+    'patches': obj.patches?.map(y => toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1(y)),
+    'readinessChecks': obj.readinessChecks?.map(y => toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1(y)),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -2225,37 +2225,37 @@ export function toJson_CompositionSpecResourcesV1Beta1(obj: CompositionSpecResou
 /**
  * ConnectionDetail includes the information about the propagation of the connection information from one secret to another.
  *
- * @schema CompositionSpecResourcesConnectionDetails
+ * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ConnectionDetailsV1Beta1V1Beta1
  */
-export interface CompositionSpecResourcesConnectionDetailsV1Beta1 {
+export interface CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ConnectionDetailsV1Beta1V1Beta1 {
   /**
    * FromConnectionSecretKey is the key that will be used to fetch the value from the given target resource.
    *
-   * @schema CompositionSpecResourcesConnectionDetails#fromConnectionSecretKey
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ConnectionDetailsV1Beta1V1Beta1#fromConnectionSecretKey
    */
   readonly fromConnectionSecretKey?: string;
 
   /**
    * Name of the connection secret key that will be propagated to the connection secret of the composition instance. Leave empty if you'd like to use the same key name.
    *
-   * @schema CompositionSpecResourcesConnectionDetails#name
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ConnectionDetailsV1Beta1V1Beta1#name
    */
   readonly name?: string;
 
   /**
    * Value that will be propagated to the connection secret of the composition instance. Typically you should use FromConnectionSecretKey instead, but an explicit value may be set to inject a fixed, non-sensitive connection secret values, for example a well-known port. Supercedes FromConnectionSecretKey when set.
    *
-   * @schema CompositionSpecResourcesConnectionDetails#value
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ConnectionDetailsV1Beta1V1Beta1#value
    */
   readonly value?: string;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesConnectionDetailsV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ConnectionDetailsV1Beta1V1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesConnectionDetailsV1Beta1(obj: CompositionSpecResourcesConnectionDetailsV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ConnectionDetailsV1Beta1V1Beta1(obj: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ConnectionDetailsV1Beta1V1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'fromConnectionSecretKey': obj.fromConnectionSecretKey,
@@ -2270,42 +2270,42 @@ export function toJson_CompositionSpecResourcesConnectionDetailsV1Beta1(obj: Com
 /**
  * Patch is used to patch the field on the base resource at ToFieldPath after piping the value that is at FromFieldPath of the target resource through transformers.
  *
- * @schema CompositionSpecResourcesPatches
+ * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1
  */
-export interface CompositionSpecResourcesPatchesV1Beta1 {
+export interface CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1 {
   /**
    * FromFieldPath is the path of the field on the upstream resource whose value to be used as input.
    *
-   * @schema CompositionSpecResourcesPatches#fromFieldPath
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1#fromFieldPath
    */
   readonly fromFieldPath: string;
 
   /**
    * ToFieldPath is the path of the field on the base resource whose value will be changed with the result of transforms. Leave empty if you'd like to propagate to the same path on the target resource.
    *
-   * @schema CompositionSpecResourcesPatches#toFieldPath
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1#toFieldPath
    */
   readonly toFieldPath?: string;
 
   /**
    * Transforms are the list of functions that are used as a FIFO pipe for the input to be transformed.
    *
-   * @schema CompositionSpecResourcesPatches#transforms
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1#transforms
    */
-  readonly transforms?: CompositionSpecResourcesPatchesTransformsV1Beta1[];
+  readonly transforms?: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1[];
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesPatchesV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesPatchesV1Beta1(obj: CompositionSpecResourcesPatchesV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1(obj: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'fromFieldPath': obj.fromFieldPath,
     'toFieldPath': obj.toFieldPath,
-    'transforms': obj.transforms?.map(y => toJson_CompositionSpecResourcesPatchesTransformsV1Beta1(y)),
+    'transforms': obj.transforms?.map(y => toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1(y)),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -2315,44 +2315,44 @@ export function toJson_CompositionSpecResourcesPatchesV1Beta1(obj: CompositionSp
 /**
  * ReadinessCheck is used to indicate how to tell whether a resource is ready for consumption
  *
- * @schema CompositionSpecResourcesReadinessChecks
+ * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1
  */
-export interface CompositionSpecResourcesReadinessChecksV1Beta1 {
+export interface CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1 {
   /**
    * FieldPath shows the path of the field whose value will be used.
    *
-   * @schema CompositionSpecResourcesReadinessChecks#fieldPath
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1#fieldPath
    */
   readonly fieldPath?: string;
 
   /**
    * MatchInt is the value you'd like to match if you're using \\"MatchInt\\" type.
    *
-   * @schema CompositionSpecResourcesReadinessChecks#matchInteger
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1#matchInteger
    */
   readonly matchInteger?: number;
 
   /**
    * MatchString is the value you'd like to match if you're using \\"MatchString\\" type.
    *
-   * @schema CompositionSpecResourcesReadinessChecks#matchString
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1#matchString
    */
   readonly matchString?: string;
 
   /**
    * Type indicates the type of probe you'd like to use.
    *
-   * @schema CompositionSpecResourcesReadinessChecks#type
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1#type
    */
-  readonly type: CompositionSpecResourcesReadinessChecksTypeV1Beta1;
+  readonly type: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1TypeV1Beta1;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesReadinessChecksV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesReadinessChecksV1Beta1(obj: CompositionSpecResourcesReadinessChecksV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1(obj: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'fieldPath': obj.fieldPath,
@@ -2368,49 +2368,49 @@ export function toJson_CompositionSpecResourcesReadinessChecksV1Beta1(obj: Compo
 /**
  * Transform is a unit of process whose input is transformed into an output with the supplied configuration.
  *
- * @schema CompositionSpecResourcesPatchesTransforms
+ * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1
  */
-export interface CompositionSpecResourcesPatchesTransformsV1Beta1 {
+export interface CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1 {
   /**
    * Map uses the input as a key in the given map and returns the value.
    *
-   * @schema CompositionSpecResourcesPatchesTransforms#map
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1#map
    */
   readonly map?: { [key: string]: string };
 
   /**
    * Math is used to transform the input via mathematical operations such as multiplication.
    *
-   * @schema CompositionSpecResourcesPatchesTransforms#math
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1#math
    */
-  readonly math?: CompositionSpecResourcesPatchesTransformsMathV1Beta1;
+  readonly math?: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1MathV1Beta1;
 
   /**
    * String is used to transform the input into a string or a different kind of string. Note that the input does not necessarily need to be a string.
    *
-   * @schema CompositionSpecResourcesPatchesTransforms#string
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1#string
    */
-  readonly string?: CompositionSpecResourcesPatchesTransformsStringV1Beta1;
+  readonly string?: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1StringV1Beta1;
 
   /**
    * Type of the transform to be run.
    *
-   * @schema CompositionSpecResourcesPatchesTransforms#type
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1#type
    */
   readonly type: string;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesPatchesTransformsV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesPatchesTransformsV1Beta1(obj: CompositionSpecResourcesPatchesTransformsV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1(obj: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'map': ((obj.map) === undefined) ? undefined : (Object.entries(obj.map).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
-    'math': toJson_CompositionSpecResourcesPatchesTransformsMathV1Beta1(obj.math),
-    'string': toJson_CompositionSpecResourcesPatchesTransformsStringV1Beta1(obj.string),
+    'math': toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1MathV1Beta1(obj.math),
+    'string': toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1StringV1Beta1(obj.string),
     'type': obj.type,
   };
   // filter undefined values
@@ -2421,9 +2421,9 @@ export function toJson_CompositionSpecResourcesPatchesTransformsV1Beta1(obj: Com
 /**
  * Type indicates the type of probe you'd like to use.
  *
- * @schema CompositionSpecResourcesReadinessChecksType
+ * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1TypeV1Beta1
  */
-export enum CompositionSpecResourcesReadinessChecksTypeV1Beta1 {
+export enum CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1ReadinessChecksV1Beta1V1Beta1TypeV1Beta1 {
   /** MatchString */
   MATCH_STRING = 'MatchString',
   /** MatchInteger */
@@ -2437,23 +2437,23 @@ export enum CompositionSpecResourcesReadinessChecksTypeV1Beta1 {
 /**
  * Math is used to transform the input via mathematical operations such as multiplication.
  *
- * @schema CompositionSpecResourcesPatchesTransformsMath
+ * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1MathV1Beta1
  */
-export interface CompositionSpecResourcesPatchesTransformsMathV1Beta1 {
+export interface CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1MathV1Beta1 {
   /**
    * Multiply the value.
    *
-   * @schema CompositionSpecResourcesPatchesTransformsMath#multiply
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1MathV1Beta1#multiply
    */
   readonly multiply?: number;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesPatchesTransformsMathV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1MathV1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesPatchesTransformsMathV1Beta1(obj: CompositionSpecResourcesPatchesTransformsMathV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1MathV1Beta1(obj: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1MathV1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'multiply': obj.multiply,
@@ -2466,23 +2466,23 @@ export function toJson_CompositionSpecResourcesPatchesTransformsMathV1Beta1(obj:
 /**
  * String is used to transform the input into a string or a different kind of string. Note that the input does not necessarily need to be a string.
  *
- * @schema CompositionSpecResourcesPatchesTransformsString
+ * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1StringV1Beta1
  */
-export interface CompositionSpecResourcesPatchesTransformsStringV1Beta1 {
+export interface CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1StringV1Beta1 {
   /**
    * Format the input using a Go format string. See https://golang.org/pkg/fmt/ for details.
    *
-   * @schema CompositionSpecResourcesPatchesTransformsString#fmt
+   * @schema CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1StringV1Beta1#fmt
    */
   readonly fmt: string;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesPatchesTransformsStringV1Beta1' to JSON representation.
+ * Converts an object of type 'CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1StringV1Beta1' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesPatchesTransformsStringV1Beta1(obj: CompositionSpecResourcesPatchesTransformsStringV1Beta1 | undefined): Record<string, any> | undefined {
+export function toJson_CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1StringV1Beta1(obj: CompositionSpecV1Beta1ResourcesV1Beta1V1Beta1PatchesV1Beta1V1Beta1TransformsV1Beta1V1Beta1StringV1Beta1 | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'fmt': obj.fmt,

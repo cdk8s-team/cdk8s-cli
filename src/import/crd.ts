@@ -102,17 +102,7 @@ export class CustomResourceDefinition {
       const constructName = TypeGenerator.normalizeTypeName(`${this.kind}${suffix}`);
 
       const types = new TypeGenerator({
-        renderTypeName: (def: string) => {
-          if (def === `${constructName}Props`) {
-            // special struct emitted by the generateConstruct function
-            return def;
-          }
-          if (def === 'ApiObjectMetadata') {
-            // standard metadata type that doesn't need a version suffix
-            return def;
-          }
-          return `${def}${suffix}`;
-        },
+        renderPropertyTypeName: (def: string) => `${def}${suffix}`,
       });
 
       generateConstruct(types, {

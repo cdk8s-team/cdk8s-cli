@@ -466,11 +466,11 @@ test('given a prefix, we can import two crds with the same group id', async () =
 
 });
 
-// test('can import multiple versions from the same crd', async () => {
-//   const fixture = path.join(fixtures, 'multi_version_tenant_crd.yaml');
-//   const importer = await ImportCustomResourceDefinition.fromSpec({ source: fixture });
-//   await importer.import({ targetLanguage: Language.TYPESCRIPT, outdir: '/tmp/test-tenant' });
-// });
+test('can import multiple versions from the same crd', async () => {
+  const fixture = path.join(fixtures, 'multi_version_tenant_crd.yaml');
+  const importer = await ImportCustomResourceDefinition.fromSpec({ source: fixture });
+  await importer.import({ targetLanguage: Language.TYPESCRIPT, outdir: '/tmp/test-tenant' });
+});
 
 
 // test('crds-dev', async () => {
