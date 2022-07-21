@@ -1,14 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import Ajv from 'ajv';
-import { CodeMaker } from 'codemaker';
+import { CodeMaker, toPascalCase } from 'codemaker';
 import { TypeGenerator } from 'json2jsii';
 import { ImportSpec } from '../config';
 import { SafeReviver } from '../reviver';
 import { download, safeParseYaml } from '../util';
 import { GenerateOptions, ImportBase } from './base';
 import { emitHeader, generateConstruct } from './codegen';
-import { GroupVersionKind } from './k8s';
 
 const CRD_KIND = 'CustomResourceDefinition';
 
@@ -43,11 +42,11 @@ const SUPPORTED_API_VERSIONS = [
 ];
 
 export class CustomResourceDefinition {
-  private readonly schema?: any;
-  private readonly group: string;
-  private readonly version: string;
+
   private readonly kind: string;
-  private readonly fqn: string;
+  private readonly versions: { name: string; schema?: any }[];
+
+  public readonly group: string;
 
   constructor(manifest: ManifestObjectDefinition) {
     const apiVersion = manifest?.apiVersion ?? 'undefined';
@@ -59,48 +58,53 @@ export class CustomResourceDefinition {
       throw new Error('manifest does not have a "spec" attribute');
     }
 
-    const version = spec.version ?? (spec.versions ?? [])[0];
-    if (!version) {
-      throw new Error('unable to determine CRD version');
+    if (spec.version) {
+      this.versions = [{ name: spec.version, schema: spec.validation?.openAPIV3Schema }];
+    } else {
+      this.versions = (spec.versions ?? []).map(v => ({ name: v.name, schema: v.schema?.openAPIV3Schema ?? spec.validation?.openAPIV3Schema }));
     }
 
-    const schema = typeof version === 'string'
-      ? spec.validation?.openAPIV3Schema
-      : version?.schema?.openAPIV3Schema ?? spec.validation?.openAPIV3Schema;
+    if (this.versions.length === 0) {
+      throw new Error('unable to determine CRD versions');
+    }
 
-    this.schema = schema;
     this.group = spec.group;
-    this.version = typeof version === 'string' ? version : version.name;
     this.kind = spec.names.kind;
-    this.fqn = this.kind;
   }
 
   public get key() {
     return `${this.group}/${this.kind.toLocaleLowerCase()}`;
   }
 
-  public get gvk(): GroupVersionKind {
-    return {
-      group: this.group,
-      version: this.version,
-      kind: this.kind,
-    };
-  }
-
   public async generateTypeScript(code: CodeMaker, options: GenerateOptions) {
-    const types = new TypeGenerator();
 
-    generateConstruct(types, {
-      group: this.group,
-      version: this.version,
-      kind: this.kind,
-      fqn: this.fqn,
-      schema: this.schema,
-      custom: true,
-      prefix: options.classNamePrefix,
-    });
+    for (let i = 0; i < this.versions.length; i++) {
 
-    code.line(types.render());
+      const version = this.versions[i];
+
+      if (!version.schema) {
+        throw new Error(`Schema for version ${version.name} is missing`);
+      }
+
+      // to preseve backwards compatiblity, only append a suffix for
+      // the second version onwards.
+      const suffix = i === 0 ? '' : toPascalCase(version.name);
+
+      const types = new TypeGenerator({});
+
+      generateConstruct(types, {
+        group: this.group,
+        version: version.name,
+        kind: this.kind,
+        fqn: `${this.kind}${suffix}`,
+        schema: version.schema,
+        custom: true,
+        prefix: options.classNamePrefix,
+        suffix,
+      });
+
+      code.line(types.render());
+    }
   }
 }
 
@@ -133,7 +137,7 @@ export class ImportCustomResourceDefinition extends ImportBase {
     const sortedCrds = Object.values(crds).sort((a: CustomResourceDefinition, b: CustomResourceDefinition) => a.key.localeCompare(b.key));
 
     for (const crd of sortedCrds) {
-      const g = crd.gvk.group;
+      const g = crd.group;
       if ( !(g in groups) ) {
         groups[g] = new Array<CustomResourceDefinition>();
       }
