@@ -26,6 +26,14 @@ export interface ApiObjectDefinition {
    * @default ""
    */
   readonly prefix?: string;
+
+  /*
+   * Indicates if a suffix should be added to the construct class name. For
+   * example, for multi-versioned crds, we add the version as the suffix.
+   *
+   * @default ""
+   */
+  readonly suffix?: string;
 }
 
 /**
@@ -55,8 +63,8 @@ export function getTypeName(custom: boolean, kind: string, version: string) {
 
 export function getConstructTypeName(def: ApiObjectDefinition) {
   const prefix = def.prefix ?? '';
-
-  return TypeGenerator.normalizeTypeName(`${prefix}${getTypeName(def.custom, def.kind, def.version)}`);
+  const suffix = def.suffix ?? '';
+  return TypeGenerator.normalizeTypeName(`${prefix}${getTypeName(def.custom, def.kind, def.version)}${suffix}`);
 }
 
 export function getPropsTypeName(def: ApiObjectDefinition) {
