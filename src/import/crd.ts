@@ -82,10 +82,6 @@ export class CustomResourceDefinition {
 
       const version = this.versions[i];
 
-      if (!version.schema) {
-        throw new Error(`Schema for version ${version.name} is missing`);
-      }
-
       // to preseve backwards compatiblity, only append a suffix for
       // the second version onwards.
       const suffix = i === 0 ? '' : toPascalCase(version.name);
