@@ -9,11 +9,20 @@ export interface ImportSpec {
   readonly source: string;
 }
 
+export interface ValidationConfig {
+
+  readonly package: string;
+  readonly version: string;
+  readonly class: string;
+  readonly properties: Map<string, string>;
+}
+
 export interface Config {
   readonly app?: string;
   readonly language?: Language;
   readonly output?: string;
   readonly imports?: string[];
+  readonly validations?: string | ValidationConfig[];
 }
 
 const DEFAULTS: Config = {
@@ -28,6 +37,5 @@ export function readConfigSync(): Config {
       ...yaml.parse(fs.readFileSync(CONFIG_FILE, 'utf-8')),
     };
   }
-
   return config;
 }

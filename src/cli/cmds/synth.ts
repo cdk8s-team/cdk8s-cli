@@ -1,8 +1,9 @@
 import * as path from 'path';
 import * as fs from 'fs-extra';
+import * as yaml from 'yaml';
 import * as yargs from 'yargs';
-import { readConfigSync } from '../../config';
-import { synthApp, mkdtemp } from '../../util';
+import { readConfigSync, ValidationConfig } from '../../config';
+import { synthApp, mkdtemp, download, validateManifests } from '../../util';
 
 const config = readConfigSync();
 
@@ -29,15 +30,27 @@ class Command implements yargs.CommandModule {
 
     if (stdout) {
       await mkdtemp(async tempDir => {
-        await synthApp(command, tempDir);
-
-        const manifests = (await fs.readdir(tempDir)).filter(f => path.extname(f) === '.yaml');
+        const manifests = await synthApp(command, tempDir);
         for (const f of manifests) {
           fs.createReadStream(path.join(tempDir, f)).pipe(process.stdout);
         }
       });
     } else {
-      await synthApp(command, outdir);
+      const manifests = await synthApp(command, outdir);
+      const validationsConfig = await this.fetchValidationsConfig();
+      if (validationsConfig) {
+        await validateManifests(manifests, validationsConfig);
+      }
+    }
+
+  }
+
+  private async fetchValidationsConfig(): Promise<ValidationConfig[] | undefined> {
+    if (typeof(config.validations) === 'string') {
+      const content = await download(config.validations);
+      return yaml.parse(content) as ValidationConfig[];
+    } else {
+      return config.validations;
     }
   }
 }

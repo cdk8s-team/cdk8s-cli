@@ -7,6 +7,8 @@ import * as path from 'path';
 import { parse } from 'url';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
+import { ValidationConfig } from './config';
+import { Validation } from './plugins/validation';
 import { SafeReviver } from './reviver';
 
 export async function shell(program: string, args: string[] = [], options: SpawnOptions = { }): Promise<string> {
@@ -36,7 +38,7 @@ export async function mkdtemp(closure: (dir: string) => Promise<void>) {
   }
 }
 
-export async function synthApp(command: string, outdir: string) {
+export async function synthApp(command: string, outdir: string): Promise<string[]> {
   await shell(command, [], {
     shell: true,
     env: {
@@ -62,6 +64,34 @@ export async function synthApp(command: string, outdir: string) {
   if (!found) {
     console.error('No manifests synthesized');
   }
+  return yamlFiles;
+}
+
+export async function validateManifests(manifests: string[], validationsConfig: ValidationConfig[]) {
+
+  const reports = [];
+  let success = true;
+
+  // first collect all reports so not to clutter up
+  // the terminal in case of failures
+  for (const config of validationsConfig) {
+    const validation = Validation.load(config);
+    const report = validation.validate(manifests);
+    reports.push(report);
+  }
+
+  // print the reports now that they are ready
+  for (const report of reports) {
+    console.log(report.toTable());
+    success = report.success;
+  }
+
+  // exit with failure if any validation reported a critical violation
+  if (!success) {
+    console.error('Validation failed. See above reports for violations');
+    process.exit(1);
+  }
+
 }
 
 export function safeParseJson(text: string, reviver: SafeReviver): any {
@@ -86,6 +116,11 @@ export function safeParseYaml(text: string, reviver: SafeReviver): any[] {
 }
 
 export async function download(url: string): Promise<string> {
+
+  if (fs.statSync(url).isFile()) {
+    return fs.readFileSync(url, 'utf8');
+  }
+
   let client: typeof http | typeof https;
   const proto = parse(url).protocol;
 

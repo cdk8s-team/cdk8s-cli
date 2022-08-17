@@ -146,6 +146,10 @@
       "type": "runtime"
     },
     {
+      "name": "table",
+      "type": "runtime"
+    },
+    {
       "name": "yaml",
       "type": "runtime"
     },

@@ -53,6 +53,7 @@ const project = new typescript.TypeScriptProject({
     'json2jsii',
     'colors',
     'ajv',
+    'table',
   ],
   devDeps: [
     '@cdk8s/projen-common',
