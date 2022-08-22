@@ -41,7 +41,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@cdk8s/projen-common": "^0.0.67",
+    "@cdk8s/projen-common": "^0.0.68",
     "@types/fs-extra": "^8",
     "@types/glob": "^7.2.0",
     "@types/jest": "^26.0.24",
@@ -57,7 +57,7 @@
     "jest-junit": "^13",
     "json-schema": "^0.4.0",
     "npm-check-updates": "^15",
-    "projen": "^0.61.22",
+    "projen": "^0.61.23",
     "standard-version": "^9",
     "ts-jest": "^27",
     "ts-node": "^10.9.1",
@@ -67,15 +67,15 @@
   "dependencies": {
     "@types/node": "^12",
     "ajv": "^8.11.0",
-    "cdk8s": "^2.4.6",
-    "cdk8s-plus-22": "^2.0.0-rc.88",
+    "cdk8s": "^2.4.7",
+    "cdk8s-plus-22": "^2.0.0-rc.89",
     "codemaker": "^1.65.0",
     "colors": "1.4.0",
-    "constructs": "^10.1.82",
+    "constructs": "^10.1.83",
     "fs-extra": "^8",
     "jsii-pacmak": "^1.65.0",
-    "jsii-srcmak": "^0.1.654",
-    "json2jsii": "^0.3.102",
+    "jsii-srcmak": "^0.1.655",
+    "json2jsii": "^0.3.103",
     "sscaff": "^1.2.274",
     "yaml": "2.0.0-11",
     "yargs": "^15"
