@@ -8,7 +8,8 @@ import { parse } from 'url';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import { ValidationConfig } from './config';
-import { Validation } from './plugins/validation';
+import { PluginManager } from './plugins/_manager';
+import { ValidationPlugin, ValidationContext, ValidationReport, Validation } from './plugins/validation';
 import { SafeReviver } from './reviver';
 
 export async function shell(program: string, args: string[] = [], options: SpawnOptions = { }): Promise<string> {
@@ -67,29 +68,35 @@ export async function synthApp(command: string, outdir: string): Promise<string[
   return yamlFiles;
 }
 
-export async function validateManifests(manifests: string[], validationsConfig: ValidationConfig[]) {
+export async function validateManifests(manifests: string[], validations: ValidationConfig[], pluginManager: PluginManager) {
 
-  const reports = [];
+  const validators: { plugin: Validation; context: ValidationContext}[] = [];
+
+  for (const validation of validations) {
+    const { plugin, context } = ValidationPlugin.load(validation, manifests, pluginManager);
+    validators.push({ plugin, context });
+  }
+
+  const reports: ValidationReport[] = [];
   let success = true;
 
-  // first collect all reports so not to clutter up
-  // the terminal in case of failures
-  for (const config of validationsConfig) {
-    const validation = Validation.load(config);
-    const report = validation.validate(manifests);
+  for (const validator of validators) {
+    await validator.plugin.validate(validator.context);
+    const report = validator.context.report;
+    success = success && report.success;
     reports.push(report);
   }
 
-  // print the reports now that they are ready
+  // now we can print them. we don't incrementally print
+  // so to not clutter the terminal in case of errors.
   for (const report of reports) {
     console.log(report.toTable());
-    success = report.success;
   }
 
-  // exit with failure if any validation reported a critical violation
+  // exit with failure if any report resulted in a failure
   if (!success) {
     console.error('Validation failed. See above reports for violations');
-    process.exit(1);
+    process.exit(2);
   }
 
 }
@@ -116,10 +123,6 @@ export function safeParseYaml(text: string, reviver: SafeReviver): any[] {
 }
 
 export async function download(url: string): Promise<string> {
-
-  if (fs.statSync(url).isFile()) {
-    return fs.readFileSync(url, 'utf8');
-  }
 
   let client: typeof http | typeof https;
   const proto = parse(url).protocol;

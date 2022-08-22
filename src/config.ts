@@ -14,7 +14,7 @@ export interface ValidationConfig {
   readonly package: string;
   readonly version: string;
   readonly class: string;
-  readonly properties: Map<string, string>;
+  readonly properties: any;
 }
 
 export interface Config {
@@ -22,6 +22,7 @@ export interface Config {
   readonly language?: Language;
   readonly output?: string;
   readonly imports?: string[];
+  readonly pluginsDirectory?: string;
   readonly validations?: string | ValidationConfig[];
 }
 
