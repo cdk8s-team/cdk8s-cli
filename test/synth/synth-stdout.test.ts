@@ -4,174 +4,198 @@ import * as yaml from 'yaml';
 import { Config, ValidationConfig } from '../../src/config';
 import { mkdtemp } from '../../src/util';
 
+beforeEach(() => {
+  // resetting so that every test can use a different config file,
+  // which is loaded on module load.
+  jest.resetModules();
+});
+
 test('synth with both --stdout and --output throws exception', () => {
 
-  const cmd = requireSynthUncached();
+  const cmd = requireSynth();
 
   // eslint-disable-next-line
   expect(cmd.handler({ app: 'cdk8s', output: 'test', stdout: true })).rejects.toEqual(new Error('\'--output\' and \'--stdout\' are mutually exclusive. Please only use one.'));
 });
 
-test('synth with inline validations', async () => {
+describe('validations', () => {
 
-  const validations: ValidationConfig[] = [{
-    package: path.join(__dirname, '__resources__', 'validation-plugin'),
-    version: '0.0.0',
-    class: 'MockValidation',
-    properties: {
-      fail: false,
-    },
-  }];
+  test('synth with inline validations', async () => {
 
-  await synth(validations, true);
-});
+    const validations: ValidationConfig[] = [{
+      package: path.join(__dirname, '__resources__', 'validation-plugin'),
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: false,
+      },
+    }];
 
-test('synth with local validations file', async () => {
+    await synth(validations, true);
+  });
 
-  const validationsFile = './validations.yaml';
+  test('synth with local validations file', async () => {
 
-  const validations: ValidationConfig[] = [{
-    package: path.join(__dirname, '__resources__', 'validation-plugin'),
-    version: '0.0.0',
-    class: 'MockValidation',
-    properties: {
-      fail: false,
-    },
-  }];
+    const validationsFile = './validations.yaml';
 
-  await synth(validationsFile, true, async (dir: string) => {
-    fs.writeFileSync(path.join(dir, validationsFile), yaml.stringify(validations));
+    const validations: ValidationConfig[] = [{
+      package: path.join(__dirname, '__resources__', 'validation-plugin'),
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: false,
+      },
+    }];
+
+    await synth(validationsFile, true, async (dir: string) => {
+      fs.writeFileSync(path.join(dir, validationsFile), yaml.stringify(validations));
+    });
+
+  });
+
+  test('synth with validation plugin specified as relative path', async () => {
+
+    const validations: ValidationConfig[] = [{
+      package: './validation-plugin',
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: false,
+      },
+    }];
+
+    await synth(validations, true, async (dir: string) => {
+      fs.copySync(path.join(__dirname, '__resources__', 'validation-plugin'), path.join(dir, 'validation-plugin'));
+    });
+
+  });
+
+  test('synth with validation plugin specified as absolute path', async () => {
+
+    const validations: ValidationConfig[] = [{
+      package: path.join(__dirname, '__resources__', 'validation-plugin'),
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: false,
+      },
+    }];
+
+    await synth(validations, true);
+
+  });
+
+  test('synth fails when validation plugin specified as url', async () => {
+
+    const validations: ValidationConfig[] = [{
+      package: 'http://path/to/plugin',
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: false,
+      },
+    }];
+
+    await expect(() => synth(validations, true)).rejects.toThrow(/Unsupported package reference/);
+
+  });
+
+  test('synth fails when validation reports failure', async () => {
+
+    const validations: ValidationConfig[] = [{
+      package: path.join(__dirname, '__resources__', 'validation-plugin'),
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: true,
+      },
+    }];
+
+    await expect(() => synth(validations, true)).rejects.toThrow('Code: 2');
+
+  });
+
+  test('synth skips validation if no-validate is passed', async () => {
+
+    const validations: ValidationConfig[] = [{
+      package: path.join(__dirname, '__resources__', 'validation-plugin'),
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: true,
+      },
+    }];
+
+    await synth(validations, false);
+  });
+
+  test('synth fails when validations specify non existing local plugin', async () => {
+
+    const plugin = path.join(__dirname, '__resources__', 'non-existing');
+    const validations: ValidationConfig[] = [{
+      package: plugin,
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: true,
+      },
+    }];
+
+    await expect(() => synth(validations, true)).rejects.toThrow(/Cannot find module/);
+
+  });
+
+  test('synth fails when validations specify non existing plugin version', async () => {
+
+    const validations: ValidationConfig[] = [{
+      package: path.join(__dirname, '__resources__', 'validation-plugin'),
+      version: '1.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: true,
+      },
+    }];
+
+    await expect(() => synth(validations, true)).rejects.toThrow(/Version mismatch for package/);
+
+  });
+
+  test('synth fails when validations specify plugin version range', async () => {
+
+    const validations: ValidationConfig[] = [{
+      package: path.join(__dirname, '__resources__', 'validation-plugin'),
+      version: '^1.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: true,
+      },
+    }];
+
+    await expect(() => synth(validations, true)).rejects.toThrow(/Unsupported version spec/);
+
+  });
+
+  test('synth fails when validation plugin throws', async () => {
+
+    const validations: ValidationConfig[] = [{
+      package: path.join(__dirname, '__resources__', 'validation-plugin'),
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        throw: true,
+      },
+    }];
+
+    await expect(() => synth(validations, true)).rejects.toThrow(/Throwing per request/);
+
   });
 
 });
-
-test('synth with validation plugin specified as relative path', async () => {
-
-  const validations: ValidationConfig[] = [{
-    package: './validation-plugin',
-    version: '0.0.0',
-    class: 'MockValidation',
-    properties: {
-      fail: false,
-    },
-  }];
-
-  await synth(validations, true, async (dir: string) => {
-    fs.copySync(path.join(__dirname, '__resources__', 'validation-plugin'), path.join(dir, 'validation-plugin'));
-  });
-
-});
-
-test('synth with validation plugin specified as absolute path', async () => {
-
-  const validations: ValidationConfig[] = [{
-    package: path.join(__dirname, '__resources__', 'validation-plugin'),
-    version: '0.0.0',
-    class: 'MockValidation',
-    properties: {
-      fail: false,
-    },
-  }];
-
-  await synth(validations, true);
-
-});
-
-test('synth fails when validation plugin specified as url', async () => {
-
-  const validations: ValidationConfig[] = [{
-    package: 'http://path/to/plugin',
-    version: '0.0.0',
-    class: 'MockValidation',
-    properties: {
-      fail: false,
-    },
-  }];
-
-  await expect(() => synth(validations, true)).rejects.toThrow(/Unsupported package reference/);
-
-});
-
-test('synth fails when validation reports failure', async () => {
-
-  const validations: ValidationConfig[] = [{
-    package: path.join(__dirname, '__resources__', 'validation-plugin'),
-    version: '0.0.0',
-    class: 'MockValidation',
-    properties: {
-      fail: true,
-    },
-  }];
-
-  await expect(() => synth(validations, true)).rejects.toThrow('Code: 2');
-
-});
-
-test('synth skips validation if no-validate is passed', async () => {
-
-  const validations: ValidationConfig[] = [{
-    package: path.join(__dirname, '__resources__', 'validation-plugin'),
-    version: '0.0.0',
-    class: 'MockValidation',
-    properties: {
-      fail: true,
-    },
-  }];
-
-  await synth(validations, false);
-});
-
-test('synth fails when validations specify non existing local plugin', async () => {
-
-  const plugin = path.join(__dirname, '__resources__', 'non-existing');
-  const validations: ValidationConfig[] = [{
-    package: plugin,
-    version: '0.0.0',
-    class: 'MockValidation',
-    properties: {
-      fail: true,
-    },
-  }];
-
-  await expect(() => synth(validations, true)).rejects.toThrow(/Cannot find module/);
-
-});
-
-test('synth fails when validations specify non existing local plugin version', async () => {
-
-  const validations: ValidationConfig[] = [{
-    package: path.join(__dirname, '__resources__', 'validation-plugin'),
-    version: '1.0.0',
-    class: 'MockValidation',
-    properties: {
-      fail: true,
-    },
-  }];
-
-  await expect(() => synth(validations, true)).rejects.toThrow(/Version mismatch for package/);
-
-});
-
-test('synth fails when validations specify plugin version range', async () => {
-
-  const validations: ValidationConfig[] = [{
-    package: path.join(__dirname, '__resources__', 'validation-plugin'),
-    version: '^1.0.0',
-    class: 'MockValidation',
-    properties: {
-      fail: true,
-    },
-  }];
-
-  await expect(() => synth(validations, true)).rejects.toThrow(/Unsupported version spec/);
-
-});
-
 
 async function synth(validations: string | ValidationConfig[], validate: boolean, preSynth?: (dir: string) => Promise<void>) {
 
   const app = `
-const cdk8s = require('${path.join(__dirname, '..', '..', 'node_modules', 'cdk8s')}');
+const cdk8s = require('${require.resolve('cdk8s')}');
 const app = new cdk8s.App();
 new cdk8s.Chart(app, 'Chart');
 app.synth();
@@ -198,7 +222,7 @@ app.synth();
         throw new Error(`Code: ${code}`);
       };
 
-      const cmd = requireSynthUncached();
+      const cmd = requireSynth();
       if (preSynth) {
         await preSynth(dir);
       }
@@ -217,9 +241,8 @@ app.synth();
 
 }
 
-function requireSynthUncached() {
+function requireSynth() {
   const module = '../../src/cli/cmds/synth';
-  delete require.cache[require.resolve(module)];
   // eslint-disable-next-line
   return require(module);
 }

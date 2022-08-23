@@ -22,10 +22,6 @@
       "type": "build"
     },
     {
-      "name": "@types/semver",
-      "type": "build"
-    },
-    {
       "name": "@typescript-eslint/eslint-plugin",
       "version": "^5",
       "type": "build"
@@ -143,10 +139,6 @@
     },
     {
       "name": "json2jsii",
-      "type": "runtime"
-    },
-    {
-      "name": "semver",
       "type": "runtime"
     },
     {

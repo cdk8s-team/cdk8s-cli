@@ -1,9 +1,9 @@
 /*****************************************************************************************************
- * This file is written in JS (and not TS) because:
+ * This file is written in JS (and not TS) because it more accurately simulates the real state
+ * of execution during `cdk8s synth`, where only .js files are present.
  *
- * 1. It allows us to keep running tests directory from the TS source without compiling first.
- * 2. It validates that at runtime, the validation plugin doesn't require any imports
- *    (which is good practice since it simplifies dynamic loading)
+ * It also has the added benefit of not having to import any external code, which helps make tests
+ * be more resilient to the location of this file.
  *
  *****************************************************************************************************/
 
@@ -16,24 +16,30 @@ class MockValidation {
   }
 
   async validate(context) {
+    for (const manifest of context.manifests) {
+      console.log(`Validating manifest: ${manifest}`);
+    }
+
     context.report.addViolation({
-      severity: 'warning',
+      severity: 'error',
       resourceName: 'resource',
       message: 'message',
       manifestPath: 'path',
     });
-    if (this.props.fail) {
-      context.report.fail();
-    } else {
-      context.report.pass();
+
+    if (this.props.throw ?? false) {
+      throw new Error('Throwing per request');
     }
+
+    context.report.submit(this.props.fail ? 'failure' : 'success');
+
     // a way to signal to tests that the validation was
     // indeed invoked.
-    fs.writeFileSync(`validation-done.marker`, '')
+    fs.writeFileSync('validation-done.marker', '');
   }
 
 }
 
 module.exports = {
   MockValidation: MockValidation,
-}
+};

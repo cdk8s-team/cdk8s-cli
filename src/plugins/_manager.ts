@@ -68,7 +68,8 @@ export class PluginManager {
 
   private loadPackage(pkg: string, version: string): Package {
 
-    if (!parseInt(version.charAt(0))) {
+    console.log(`Version is: ${version}`);
+    if (isNaN(parseInt(version.charAt(0)))) {
       // forbid version ranges because otherwise we need to do semver comparison and introduce a dependency.
       // also ranges make it easier to get left behind since it might give the false impression we will be installing
       // the latest version (which we will not because it would mean contacting NPM on every synth)
