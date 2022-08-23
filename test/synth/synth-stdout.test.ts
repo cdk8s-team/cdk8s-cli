@@ -6,7 +6,7 @@ import { mkdtemp } from '../../src/util';
 
 beforeEach(() => {
   // resetting so that every test can use a different config file,
-  // which is loaded on module load.
+  // which is read on module load.
   jest.resetModules();
 });
 

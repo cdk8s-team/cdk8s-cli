@@ -45,7 +45,7 @@ class Command implements yargs.CommandModule {
     } else {
       const manifests = await synthApp(command, outdir);
       if (validate) {
-        const validations = await this.fetchValidations();
+        const validations = await fetchValidations();
         if (validations) {
           const pluginManager = new PluginManager(pluginsDir);
           await validateManifests(manifests, validations, pluginManager);
@@ -55,14 +55,16 @@ class Command implements yargs.CommandModule {
 
   }
 
-  private async fetchValidations(): Promise<ValidationConfig[] | undefined> {
-    if (typeof(config.validations) === 'string') {
-      const content = await download(config.validations);
-      return yaml.parse(content) as ValidationConfig[];
-    } else {
-      return config.validations;
-    }
+}
+
+async function fetchValidations(): Promise<ValidationConfig[] | undefined> {
+  if (typeof(config.validations) === 'string') {
+    const content = await download(config.validations);
+    return yaml.parse(content) as ValidationConfig[];
+  } else {
+    return config.validations;
   }
 }
+
 
 module.exports = new Command();
