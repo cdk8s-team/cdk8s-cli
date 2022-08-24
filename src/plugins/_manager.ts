@@ -50,8 +50,9 @@ export class PluginManager {
 
   private readonly dir: string;
 
-  constructor(dir?: string) {
-    this.dir = dir ?? (process.env.CDK8S_PLUGINS_DIR ?? path.join(os.homedir(), '.cdk8s', 'plugins'));
+  constructor(dir: string) {
+    this.dir = dir;
+    console.log(`Loaded: ${dir}`);
   }
 
   public load(options: PluginManagerLoadOptions): Plugin {

@@ -5,6 +5,7 @@ import { upgradeAvailable } from '../upgrades';
 async function main() {
   const ya = yargs
     .option('check-upgrade', { type: 'boolean', desc: 'Check for cdk8s-cli upgrade', default: true })
+    .options('debug', { type: 'boolean', desc: 'Produce debug logs when running cdk8s', default: false })
     .check(argv => {
       if (argv.checkUpgrade) {
         const versions = upgradeAvailable();
