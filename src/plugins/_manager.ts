@@ -68,7 +68,6 @@ export class PluginManager {
 
   private loadPackage(pkg: string, version: string): Package {
 
-    console.log(`Version is: ${version}`);
     if (isNaN(parseInt(version.charAt(0)))) {
       // forbid version ranges because otherwise we need to do semver comparison and introduce a dependency.
       // also ranges make it easier to get left behind since it might give the false impression we will be installing
