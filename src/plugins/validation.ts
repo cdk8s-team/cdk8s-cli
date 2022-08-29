@@ -201,6 +201,7 @@ export class ValidationPlugin {
       version: validation.version,
       class: validation.class,
       properties: validation.properties,
+      installEnv: validation.installEnv,
     });
 
     if (typeof plugin.instance.validate !== 'function') {

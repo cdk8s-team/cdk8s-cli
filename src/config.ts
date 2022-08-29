@@ -16,7 +16,8 @@ export interface ValidationConfig {
   readonly package: string;
   readonly version: string;
   readonly class: string;
-  readonly properties: any;
+  readonly installEnv?: { [key: string]: any };
+  readonly properties?: { [key: string]: any };
 }
 
 export interface Config {

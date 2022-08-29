@@ -190,6 +190,25 @@ describe('validations', () => {
 
   });
 
+  test('can pass environment to installation command', async () => {
+
+    const validations: ValidationConfig[] = [{
+      package: 'some-plugin',
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        throw: true,
+      },
+      installEnv: {
+        // this should fail synth
+        npm_config_registry: 'localhost:1234',
+      },
+    }];
+
+    await expect(() => synth(validations, true)).rejects.toThrow(/Must be a full url with/);
+
+  });
+
 });
 
 async function synth(validations: string | ValidationConfig[], validate: boolean, preSynth?: (dir: string) => Promise<void>) {
@@ -207,6 +226,7 @@ app.synth();
       validations,
       app: 'node index.js',
       output: 'dist',
+      pluginsDirectory: path.join(dir, '.cdk8s', 'plugins'),
     };
 
     fs.writeFileSync(path.join(dir, 'index.js'), app);
@@ -226,7 +246,7 @@ app.synth();
       if (preSynth) {
         await preSynth(dir);
       }
-      await cmd.handler({ app: config.app, output: config.output, validate });
+      await cmd.handler({ app: config.app, output: config.output, validate, pluginsDir: config.pluginsDirectory });
       if (validate) {
         // this file is written by our test plugin
         const marker = path.join(dir, 'validation-done.marker');

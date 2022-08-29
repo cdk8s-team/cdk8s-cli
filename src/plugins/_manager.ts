@@ -43,7 +43,8 @@ export interface PluginManagerLoadOptions {
   readonly pkg: string;
   readonly version: string;
   readonly class: string;
-  readonly properties?: any;
+  readonly installEnv?: { [key: string]: any };
+  readonly properties?: { [key: string]: any };
 }
 
 export class PluginManager {
@@ -52,12 +53,11 @@ export class PluginManager {
 
   constructor(dir: string) {
     this.dir = dir;
-    console.log(`Loaded: ${dir}`);
   }
 
   public load(options: PluginManagerLoadOptions): Plugin {
 
-    const pkg = this.loadPackage(options.pkg, options.version);
+    const pkg = this.loadPackage(options.pkg, options.version, options.installEnv ?? {});
 
     const clazz = pkg.module[options.class];
     if (!clazz) {
@@ -67,7 +67,7 @@ export class PluginManager {
     return { instance: new clazz(options.properties ?? {}), class: options.class, ...pkg };
   }
 
-  private loadPackage(pkg: string, version: string): Package {
+  private loadPackage(pkg: string, version: string, installEnv: { [key: string]: any }): Package {
 
     if (isNaN(parseInt(version.charAt(0)))) {
       // forbid version ranges because otherwise we need to do semver comparison and introduce a dependency.
@@ -108,13 +108,13 @@ export class PluginManager {
       }
 
       // otherwise, we install from npm and re-require.
-      this.installPackage(pkg, version);
+      this.installPackage(pkg, version, installEnv);
       return this.require(modulePath, version);
     }
 
   }
 
-  private installPackage(pkg: string, version: string) {
+  private installPackage(pkg: string, version: string, env: { [key: string]: any }) {
 
     const pluginDir = this.pluginDir(pkg, version);
     fs.mkdirpSync(pluginDir);
@@ -125,7 +125,12 @@ export class PluginManager {
       '--no-save',
       '--prefix', pluginDir,
     ].join(' ');
-    child.execSync(command);
+
+    const finalEnv = { ...process.env };
+    for (const [key, value] of Object.entries(env)) {
+      finalEnv[key] = typeof value === 'string' ? key : JSON.stringify(value);
+    }
+    child.execSync(command, { stdio: ['ignore', 'pipe', 'pipe'], env: finalEnv });
   }
 
   private require(pkg: string, version: string): Package {
