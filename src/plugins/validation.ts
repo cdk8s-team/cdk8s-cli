@@ -8,6 +8,7 @@ import { PluginManager } from './_manager';
 export class ValidationContext {
 
   private readonly _report: ValidationReport;
+  private readonly _logger: ValidationLogger;
 
   constructor(
 
@@ -28,18 +29,38 @@ export class ValidationContext {
 
     /**
      * Construct metadata of resources in the application.
+     *
+     * @default - No metadata. This means construct aware metadata will not be available in the report.
      */
-    public readonly metadata?: {[key: string]: ConstructAwareMetadata}) {
+    public readonly metadata?: {[key: string]: ConstructAwareMetadata},
 
-    this._report = new ValidationReport(this.pkg, this.version, this.metadata ?? {});
+    /**
+     * Whether or not the synth command was executed with --stdout.
+     *
+     * @default false
+     */
+    public readonly stdout?: boolean) {
+
+    this._report = new ValidationReport(this.pkg, this.version, this.metadata ?? {}, stdout ?? false);
+    this._logger = new ValidationLogger();
   }
 
   /**
-   * The report emitted by the validation. Plugins should interact with this
-   * object to generate the report.
+   * Report emitted by the validation.
+   *
+   * Plugins should interact with this object to generate the report.
    */
   public get report(): ValidationReport {
     return this._report;
+  }
+
+  /**
+   * Logger for the validation.
+   *
+   * Plugins should interact with this object to log messages during validation.
+   */
+  public get logger(): ValidationLogger {
+    return this._logger;
   }
 }
 
@@ -107,6 +128,19 @@ interface ConstructAwareMetadata {
 }
 
 /**
+ * Logger. Use this instead of `console.log`.
+ */
+export class ValidationLogger {
+
+  /**
+   * Log a message.
+   */
+  public log(message: string) {
+    console.log(message);
+  }
+}
+
+/**
  * The report emitted by the plugin after evaluation.
  */
 export class ValidationReport {
@@ -120,7 +154,8 @@ export class ValidationReport {
   constructor(
     private readonly pkg: string,
     private readonly version: string,
-    private readonly metadata: {[key: string]: ConstructAwareMetadata}) {
+    private readonly metadata: {[key: string]: ConstructAwareMetadata},
+    private readonly stdout: boolean) {
     this.header = `Validation Report | ${this.pkg} (v${this.version})`;
   }
 
@@ -147,7 +182,7 @@ export class ValidationReport {
    */
   public get success(): boolean {
     if (!this._status) {
-      throw new Error('Unable to determine report result: Report is incomplete. Call \'report.submit\'');
+      throw new Error('Unable to determine report status: Report is incomplete. Call \'report.submit\'');
     }
     return this._status === 'success';
   }
@@ -156,14 +191,14 @@ export class ValidationReport {
    * Transform the report to a well formatted table string.
    */
   public toTable(): string {
-    if (!this._status) {
-      throw new Error('Unable to determine report result: Report is incomplete. Call \'report.submit\'');
-    }
+
+    const json = this.toJson();
+
     return table([
       ['Resource', 'Message', 'Manifest', 'Construct'],
-      ...this.violations.map(v => [v.resourceName, v.message, v.manifestPath, v.constructPath ?? 'N/A']),
+      ...json.violations.map(v => [v.resourceName, v.message, v.manifestPath, v.constructPath]),
     ], {
-      header: { content: `${this._status} | ${this.header}` },
+      header: { content: json.header },
     });
   }
 
@@ -175,8 +210,13 @@ export class ValidationReport {
       throw new Error('Unable to determine report result: Report is incomplete. Call \'report.submit\'');
     }
     return {
-      header: this.header,
-      violations: this.violations,
+      header: `${this._status} | ${this.header}`,
+      violations: this.violations.map(v => ({
+        resourceName: v.resourceName,
+        message: v.message,
+        manifestPath: this.stdout ? 'STDOUT' : v.manifestPath,
+        constructPath: v.constructPath ?? 'N/A',
+      })),
       status: this._status,
     };
   }
@@ -194,6 +234,7 @@ export class ValidationPlugin {
   public static load(
     validation: ValidationConfig,
     manifests: string[],
+    stdout: boolean,
     pluginManager: PluginManager): { plugin: Validation; context: ValidationContext } {
 
     const plugin = pluginManager.load({
@@ -210,7 +251,7 @@ export class ValidationPlugin {
 
     // TODO: parse from manifests
     const metadata = {};
-    const context = new ValidationContext(manifests, plugin.pkg, plugin.version, metadata);
+    const context = new ValidationContext(manifests, plugin.pkg, plugin.version, metadata, stdout);
     return { plugin: plugin.instance as Validation, context };
 
   }

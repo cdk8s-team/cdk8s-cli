@@ -31,7 +31,7 @@ describe('validations', () => {
       },
     }];
 
-    await synth(validations, true);
+    await synth({ validations });
   });
 
   test('synth with local validations file', async () => {
@@ -47,8 +47,11 @@ describe('validations', () => {
       },
     }];
 
-    await synth(validationsFile, true, async (dir: string) => {
-      fs.writeFileSync(path.join(dir, validationsFile), yaml.stringify(validations));
+    await synth({
+      validations: validationsFile,
+      preSynth: async (dir: string) => {
+        fs.writeFileSync(path.join(dir, validationsFile), yaml.stringify(validations));
+      },
     });
 
   });
@@ -64,8 +67,11 @@ describe('validations', () => {
       },
     }];
 
-    await synth(validations, true, async (dir: string) => {
-      fs.copySync(path.join(__dirname, '__resources__', 'validation-plugin'), path.join(dir, 'validation-plugin'));
+    await synth({
+      validations,
+      preSynth: async (dir: string) => {
+        fs.copySync(path.join(__dirname, '__resources__', 'validation-plugin'), path.join(dir, 'validation-plugin'));
+      },
     });
 
   });
@@ -81,7 +87,7 @@ describe('validations', () => {
       },
     }];
 
-    await synth(validations, true);
+    await synth({ validations });
 
   });
 
@@ -96,7 +102,7 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth(validations, true)).rejects.toThrow(/Unsupported package reference/);
+    await expect(() => synth({ validations })).rejects.toThrow(/Unsupported package reference/);
 
   });
 
@@ -111,7 +117,7 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth(validations, true)).rejects.toThrow('Code: 2');
+    await expect(() => synth({ validations })).rejects.toThrow('Code: 2');
 
   });
 
@@ -126,7 +132,7 @@ describe('validations', () => {
       },
     }];
 
-    await synth(validations, false);
+    await synth({ validations, validate: false });
   });
 
   test('synth fails when validations specify non existing local plugin', async () => {
@@ -141,7 +147,7 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth(validations, true)).rejects.toThrow(/Cannot find module/);
+    await expect(() => synth({ validations })).rejects.toThrow(/Cannot find module/);
 
   });
 
@@ -156,7 +162,7 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth(validations, true)).rejects.toThrow(/Version mismatch for package/);
+    await expect(() => synth({ validations })).rejects.toThrow(/Version mismatch for package/);
 
   });
 
@@ -171,7 +177,7 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth(validations, true)).rejects.toThrow(/Unsupported version spec/);
+    await expect(() => synth({ validations })).rejects.toThrow(/Unsupported version spec/);
 
   });
 
@@ -186,7 +192,7 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth(validations, true)).rejects.toThrow(/Throwing per request/);
+    await expect(() => synth({ validations })).rejects.toThrow(/Throwing per request/);
 
   });
 
@@ -205,27 +211,61 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth(validations, true)).rejects.toThrow(/Must be a full url with/);
+    await expect(() => synth({ validations })).rejects.toThrow(/Must be a full url with/);
+
+  });
+
+  test('synth executed with --stdout', async () => {
+
+    const validations: ValidationConfig[] = [{
+      package: path.join(__dirname, '__resources__', 'validation-plugin'),
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: false,
+      },
+    }];
+
+    await synth({ validations, stdout: true });
 
   });
 
 });
 
-async function synth(validations: string | ValidationConfig[], validate: boolean, preSynth?: (dir: string) => Promise<void>) {
+interface SynthOptions {
+
+  readonly validations: string | ValidationConfig[];
+  validate?: boolean;
+  stdout?: boolean;
+  preSynth?: (dir: string) => Promise<void>;
+
+}
+
+async function synth(options: SynthOptions) {
 
   const app = `
 const cdk8s = require('${require.resolve('cdk8s')}');
 const app = new cdk8s.App();
-new cdk8s.Chart(app, 'Chart');
+const chart = new cdk8s.Chart(app, 'Chart');
+new cdk8s.ApiObject(chart, 'Object', {
+  kind: 'ConfigMap',
+  apiVersion: 'v1',
+  metadata: {
+    name: 'config-map',
+  }
+});
 app.synth();
 `;
 
   await mkdtemp(async (dir: string) => {
 
+    const stdout = options.stdout ?? false;
+    const validate = options.validate ?? true;
+
     const config: Config = {
-      validations,
+      validations: options.validations,
       app: 'node index.js',
-      output: 'dist',
+      output: stdout ? undefined : 'dist',
       pluginsDirectory: path.join(dir, '.cdk8s', 'plugins'),
     };
 
@@ -243,10 +283,16 @@ app.synth();
       };
 
       const cmd = requireSynth();
-      if (preSynth) {
-        await preSynth(dir);
+      if (options.preSynth) {
+        await options.preSynth(dir);
       }
-      await cmd.handler({ app: config.app, output: config.output, validate, pluginsDir: config.pluginsDirectory });
+      await cmd.handler({
+        app: config.app,
+        output: config.output,
+        stdout: stdout,
+        validate: validate,
+        pluginsDir: config.pluginsDirectory,
+      });
       if (validate) {
         // this file is written by our test plugin
         const marker = path.join(dir, 'validation-done.marker');

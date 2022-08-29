@@ -1,4 +1,3 @@
-import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import * as yargs from 'yargs';
@@ -29,30 +28,35 @@ class Command implements yargs.CommandModule {
     const validate = argv.validate;
     const pluginsDir = argv.pluginsDir;
 
-    if (outdir !== config.output && stdout) {
+    if (outdir && outdir !== config.output && stdout) {
       throw new Error('\'--output\' and \'--stdout\' are mutually exclusive. Please only use one.');
     }
 
-    await fs.remove(outdir);
+    if (outdir) {
+      await fs.remove(outdir);
+    }
+
+    const validations = validate ? await fetchValidations() : undefined;
 
     if (stdout) {
       await mkdtemp(async tempDir => {
-        const manifests = await synthApp(command, tempDir);
-        // TODO how do we validate here? the manifests directory is temporary...
+        const manifests = await synthApp(command, tempDir, stdout);
         for (const f of manifests) {
-          fs.createReadStream(path.join(tempDir, f)).pipe(process.stdout);
+          fs.createReadStream(f).pipe(process.stdout);
+        }
+        if (validations) {
+          const pluginManager = new PluginManager(pluginsDir);
+          await validateManifests(manifests, stdout, validations, pluginManager);
         }
       });
     } else {
-      const manifests = await synthApp(command, outdir);
-      if (validate) {
-        const validations = await fetchValidations();
-        if (validations) {
-          const pluginManager = new PluginManager(pluginsDir);
-          await validateManifests(manifests, validations, pluginManager);
-        }
+      const manifests = await synthApp(command, outdir, stdout);
+      if (validations) {
+        const pluginManager = new PluginManager(pluginsDir);
+        await validateManifests(manifests, stdout, validations, pluginManager);
       }
     }
+
 
   }
 

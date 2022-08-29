@@ -39,7 +39,7 @@ export async function mkdtemp(closure: (dir: string) => Promise<void>) {
   }
 }
 
-export async function synthApp(command: string, outdir: string): Promise<string[]> {
+export async function synthApp(command: string, outdir: string, stdout: boolean): Promise<string[]> {
   await shell(command, [], {
     shell: true,
     env: {
@@ -56,8 +56,10 @@ export async function synthApp(command: string, outdir: string): Promise<string[
   let found = false;
   const yamlFiles = await getFiles(outdir);
   if (yamlFiles?.length) {
-    for (const yamlFile of yamlFiles) {
-      console.log(yamlFile);
+    if (!stdout) {
+      for (const yamlFile of yamlFiles) {
+        console.log(yamlFile);
+      }
     }
     found = true;
   }
@@ -68,12 +70,12 @@ export async function synthApp(command: string, outdir: string): Promise<string[
   return yamlFiles;
 }
 
-export async function validateManifests(manifests: string[], validations: ValidationConfig[], pluginManager: PluginManager) {
+export async function validateManifests(manifests: string[], stdout: boolean, validations: ValidationConfig[], pluginManager: PluginManager) {
 
   const validators: { plugin: Validation; context: ValidationContext}[] = [];
 
   for (const validation of validations) {
-    const { plugin, context } = ValidationPlugin.load(validation, manifests, pluginManager);
+    const { plugin, context } = ValidationPlugin.load(validation, manifests, stdout, pluginManager);
     validators.push({ plugin, context });
   }
 
@@ -187,7 +189,7 @@ export async function getFiles(filePath: string): Promise<string[]> {
 
   // Get files within the current directory
   const files = entries
-    .filter(file => (!file.isDirectory() && file.name.endsWith('.k8s.yaml')))
+    .filter(file => (!file.isDirectory() && file.name.endsWith('.yaml')))
     .map(file => (filePath + '/' + file.name));
 
   // Get sub-folders within the current folder
