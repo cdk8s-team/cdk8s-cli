@@ -298,11 +298,11 @@ export class ValidationReport {
     }
     for (const violation of json.violations) {
       const occurrences = violation.violatingConstructs.flatMap(c => c.locations).length;
-      const title = `\x1b[1m\x1b[31m${violation.ruleName} (${occurrences} occurences)\x1b[0m`;
+      const title = `\x1b[1m\x1b[31m${violation.ruleName} (${occurrences} occurrences)\x1b[0m`;
       output.push('');
       output.push(title);
       output.push('');
-      output.push('  Occurences:');
+      output.push('  Occurrences:');
       for (const construct of violation.violatingConstructs) {
         output.push('');
         output.push(`    - construct.path: ${construct.constructPath ?? 'N/A'}`);
