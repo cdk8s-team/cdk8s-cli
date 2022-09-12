@@ -14,6 +14,9 @@ const project = new typescript.TypeScriptProject({
   authorUrl: 'https://aws.amazon.com',
   minNodeVersion: '14.17.0',
 
+  // no need, we are configuring explicit exports.
+  entrypoint: '',
+
   keywords: [
     'k8s',
     'cdk8s',
@@ -78,6 +81,14 @@ const project = new typescript.TypeScriptProject({
     workflowOptions: {
       schedule: Cdk8sCommon.upgradeScheduleFor('cdk8s-cli'),
     },
+  },
+});
+
+//
+// see https://nodejs.org/api/packages.html#exports
+project.addFields({
+  exports: {
+    './plugins': './lib/plugins/index.js',
   },
 });
 

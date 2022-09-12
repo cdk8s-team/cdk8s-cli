@@ -82,6 +82,8 @@ export async function validateManifests(manifests: string[], stdout: boolean, va
   const reports: ValidationReport[] = [];
   let success = true;
 
+  console.log('Performing validations');
+
   for (const validator of validators) {
     await validator.plugin.validate(validator.context);
     const report = validator.context.report;
@@ -89,17 +91,23 @@ export async function validateManifests(manifests: string[], stdout: boolean, va
     reports.push(report);
   }
 
+  console.log('Validations finished');
+
   // now we can print them. we don't incrementally print
   // so to not clutter the terminal in case of errors.
   for (const report of reports) {
-    console.log(report.toTable());
+    console.log('');
+    console.log(report.toString());
+    console.log('');
   }
 
   // exit with failure if any report resulted in a failure
   if (!success) {
-    console.error('Validation failed. See above reports for violations');
+    console.error('Validation failed. See above reports for details');
     process.exit(2);
   }
+
+  console.log('Validations ended succesfully');
 
 }
 

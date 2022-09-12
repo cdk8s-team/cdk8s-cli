@@ -1,1 +1,1 @@
-export { Validation, ValidationContext } from './validation';
+export { Validation, ValidationContext, ValidationViolation, ValidationViolatingResource } from './validation';

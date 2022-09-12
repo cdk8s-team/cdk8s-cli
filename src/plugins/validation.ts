@@ -1,3 +1,4 @@
+import * as os from 'os';
 import { table } from 'table';
 import { ValidationConfig } from '../config';
 import { PluginManager } from './_manager';
@@ -32,7 +33,7 @@ export class ValidationContext {
      *
      * @default - No metadata. This means construct aware metadata will not be available in the report.
      */
-    public readonly metadata?: {[key: string]: ConstructAwareMetadata},
+    public readonly metadata?: {[key: string]: ResourceConstructMetadata},
 
     /**
      * Whether or not the synth command was executed with --stdout.
@@ -65,7 +66,20 @@ export class ValidationContext {
 }
 
 /**
- * The contract between cdk8s and third-parties looking to implement validation plugins.
+ * Logger available to plugins during validation. Use this instead of `console.log`.
+ */
+export class ValidationLogger {
+
+  /**
+   * Log a message.
+   */
+  public log(message: string) {
+    console.log(message);
+  }
+}
+
+/**
+ * Contract between cdk8s and third-parties looking to implement validation plugins.
  */
 export interface Validation {
 
@@ -82,31 +96,31 @@ export interface Validation {
 }
 
 /**
- * Violation produced by the validation plugin.
+ * Resource violating a specific rule.
  */
-export interface ValidationViolation {
+export interface ValidationViolatingResource {
 
   /**
-   * Violating resource name.
+   * The resource name.
    */
   readonly resourceName: string;
 
   /**
-   * Violation message.
+   * The locations in its config that pose the violations.
    */
-  readonly message: string;
+  readonly locations: string[];
 
   /**
-   * Path to the manifest containing the resource.
+   * The manifest this resource is defined in.
    */
   readonly manifestPath: string;
 
 }
 
 /**
- * Validation violation augmented with construct aware data.
+ * Construct violating a specific rule.
  */
-interface ConstructAwareValidationViolation extends ValidationViolation {
+export interface ValidationViolatingConstruct extends ValidationViolatingResource {
 
   /**
    * The construct path as defined in the application.
@@ -116,28 +130,82 @@ interface ConstructAwareValidationViolation extends ValidationViolation {
 }
 
 /**
- * Construct related metadata on resources.
+ * Violation produced by the validation plugin.
  */
-interface ConstructAwareMetadata {
+export interface ValidationViolation {
 
   /**
-   * The path of the construct in the application.
+   * The name of the rule.
    */
-  readonly path: string;
+  readonly ruleName: string;
+
+  /**
+   * The recommendation to resolve the violation.
+   */
+  readonly recommendation: string;
+
+  /**
+   * How to fix the recommendation.
+   */
+  readonly fix: string;
+
+  /**
+   * The resources violating this rule.
+   */
+  readonly violatingResources: ValidationViolatingResource[];
 
 }
 
 /**
- * Logger. Use this instead of `console.log`.
+ * Validation produced by the validation plugin, in construct terms.
  */
-export class ValidationLogger {
+export interface ValidationViolationConstructAware extends Omit<ValidationViolation, 'violatingResources'> {
 
   /**
-   * Log a message.
+   * The constructs violating this rule.
    */
-  public log(message: string) {
-    console.log(message);
-  }
+  readonly violatingConstructs: ValidationViolatingConstruct[];
+}
+
+// we intentionally don't use an enum so that
+// plugins don't have to import the cli at runtime.
+export type ValidationReportStatus = 'success' | 'failure';
+
+/**
+ * Summary of the report.
+ */
+export interface ValidationReportSummary {
+
+  readonly status: ValidationReportStatus;
+
+  readonly plugin: string;
+
+  readonly version: string;
+
+  readonly metadata?: { [key: string]: string };
+
+}
+
+/**
+ * JSON representation of the report.
+ */
+export interface ValidationReportJson {
+
+  /**
+   * Report title.
+   */
+  readonly title: string;
+
+  /**
+   * List of violations in the rerpot.
+   */
+  readonly violations: ValidationViolationConstructAware[];
+
+  /**
+   * Report summary.
+   */
+  readonly summary: ValidationReportSummary;
+
 }
 
 /**
@@ -145,79 +213,128 @@ export class ValidationLogger {
  */
 export class ValidationReport {
 
-  private readonly violations: ConstructAwareValidationViolation[] = [];
+  private readonly violations: ValidationViolationConstructAware[] = [];
 
-  private readonly header: string;
-
-  private _status?: 'success' | 'failure';
+  private _summary?: ValidationReportSummary;
 
   constructor(
     private readonly pkg: string,
     private readonly version: string,
-    private readonly metadata: {[key: string]: ConstructAwareMetadata},
+    private readonly metadata: {[key: string]: ResourceConstructMetadata},
     private readonly stdout: boolean) {
-    this.header = `Validation Report | ${this.pkg} (v${this.version})`;
   }
 
   /**
    * Add a violation to the report.
    */
   public addViolation(violation: ValidationViolation) {
-    if (this._status) {
+    if (this._summary) {
       throw new Error('Violations cannot be added to report after its submitted');
     }
-    const constructPath = this.metadata[violation.resourceName]?.path;
+
+    const violatingConstructs: ValidationViolatingConstruct[] = [];
+
+    for (const resource of violation.violatingResources) {
+      const constructPath = this.metadata[resource.resourceName]?.path;
+      violatingConstructs.push({
+        ...resource,
+
+        // augment with construct metadata
+        constructPath: constructPath,
+
+        // if synth is executed with --stdout, the manifest path
+        // here is temporary and will be deleted once the command finishes.
+        manifestPath: this.stdout ? 'STDOUT' : resource.manifestPath,
+      });
+    }
+
     this.violations.push({
-      ...violation,
-      constructPath,
+      ruleName: violation.ruleName,
+      recommendation: violation.recommendation,
+      violatingConstructs: violatingConstructs,
+      fix: violation.fix,
     });
   }
 
-  public submit(status: 'success' | 'failure') {
-    this._status = status;
+  /**
+   * Submit the report with a status and additional metadata.
+   */
+  public submit(status: ValidationReportStatus, metadata?: { [key: string]: string }) {
+    this._summary = { status, plugin: this.pkg, version: this.version, metadata };
   }
 
   /**
    * Whether or not the report was successfull.
    */
   public get success(): boolean {
-    if (!this._status) {
+    if (!this._summary) {
       throw new Error('Unable to determine report status: Report is incomplete. Call \'report.submit\'');
     }
-    return this._status === 'success';
+    return this._summary.status === 'success';
   }
 
   /**
    * Transform the report to a well formatted table string.
    */
-  public toTable(): string {
+  public toString(): string {
 
     const json = this.toJson();
+    const output = [json.title];
 
-    return table([
-      ['Resource', 'Message', 'Manifest', 'Construct'],
-      ...json.violations.map(v => [v.resourceName, v.message, v.manifestPath, v.constructPath]),
-    ], {
-      header: { content: json.header },
-    });
+    output.push('-'.repeat(json.title.length));
+    output.push('');
+    output.push('(Summary)');
+    output.push('');
+    output.push(table([
+      ['Status', json.summary.status],
+      ['Plugin', json.summary.plugin],
+      ['Version', json.summary.version],
+      ...Object.entries(json.summary.metadata ?? {}),
+    ]));
+
+    if (json.violations) {
+      output.push('');
+      output.push('(Violations)');
+    }
+    for (const violation of json.violations) {
+      const occurrences = violation.violatingConstructs.flatMap(c => c.locations).length;
+      const title = `\x1b[1m\x1b[31m${violation.ruleName} (${occurrences} occurences)\x1b[0m`;
+      output.push('');
+      output.push(title);
+      output.push('');
+      output.push('  Occurences:');
+      for (const construct of violation.violatingConstructs) {
+        output.push('');
+        output.push(`    - construct.path: ${construct.constructPath ?? 'N/A'}`);
+        output.push(`    - manifest.path: ${construct.manifestPath}`);
+        output.push(`    - resource.name: ${construct.resourceName}`);
+        if (construct.locations) {
+          output.push('    - locations:');
+          for (const location of construct.locations) {
+            output.push(`      > ${location}`);
+          }
+        }
+      }
+      output.push('');
+      output.push(`  Recommendation: ${violation.recommendation}`);
+      output.push(`  How to fix: ${violation.fix}`);
+    }
+
+    return output.join(os.EOL);
+
   }
 
   /**
    * Transform the report into a JSON object.
    */
-  public toJson(): { header: string; violations: ConstructAwareValidationViolation[]; status: 'success' | 'failure'} {
-    if (!this._status) {
+  public toJson(): ValidationReportJson {
+    if (!this._summary) {
       throw new Error('Unable to determine report result: Report is incomplete. Call \'report.submit\'');
     }
     return {
-      header: `${this._status} | ${this.header}`,
-      violations: this.violations.map(v => ({
-        resourceName: v.resourceName,
-        message: v.message,
-        manifestPath: this.stdout ? 'STDOUT' : v.manifestPath,
-        constructPath: v.constructPath ?? 'N/A',
-      })),
-      status: this._status,
+      title: `Validation Report (${this.pkg}@${this.version})`,
+      violations: this.violations,
+      summary: this._summary,
     };
   }
 
@@ -255,5 +372,17 @@ export class ValidationPlugin {
     return { plugin: plugin.instance as Validation, context };
 
   }
+
+}
+
+/**
+ * Construct related metadata on resources.
+ */
+interface ResourceConstructMetadata {
+
+  /**
+   * The path of the construct in the application.
+   */
+  readonly path: string;
 
 }

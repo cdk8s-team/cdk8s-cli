@@ -21,10 +21,14 @@ class MockValidation {
     }
 
     context.report.addViolation({
-      severity: 'error',
-      resourceName: 'resource',
-      message: 'message',
-      manifestPath: 'path',
+      ruleName: 'Some rule',
+      recommendation: 'Some recommendation',
+      violatingResources: [{
+        manifestPath: 'path',
+        resourceName: 'resource',
+        locations: ['location1', 'location2']
+      }],
+      fix: 'Some fix',
     });
 
     if (this.props.throw ?? false) {
