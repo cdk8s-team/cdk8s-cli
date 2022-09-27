@@ -14,7 +14,10 @@ export class ModuleVersionMismatchError extends Error {
 
   public readonly code: string = MODULE_VERSION_MISMATCH_ERROR_CODE;
 
-  constructor(pkg: string, expected: string, actual: string) {
+  constructor(
+    public readonly pkg: string,
+    public readonly expected: string,
+    public readonly actual: string) {
     super(`Version mismatch for package ${pkg}. Found ${actual} but requested ${expected}`);
   }
 }
