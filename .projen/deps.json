@@ -96,6 +96,16 @@
       "type": "build"
     },
     {
+      "name": "@types/responselike",
+      "version": "1.0.0",
+      "type": "override"
+    },
+    {
+      "name": "got",
+      "version": "12.3.1",
+      "type": "override"
+    },
+    {
       "name": "@types/node",
       "version": "^12",
       "type": "runtime"
