@@ -1,4 +1,4 @@
-import * as fs from 'fs-extra';
+import * as fs from 'fs';
 import * as yaml from 'yaml';
 import * as yargs from 'yargs';
 import { readConfigSync, ValidationConfig } from '../../config';
@@ -33,7 +33,7 @@ class Command implements yargs.CommandModule {
     }
 
     if (outdir) {
-      await fs.remove(outdir);
+      fs.rmSync(outdir, { recursive: true, force: true });
     }
 
     const validations = validate ? await fetchValidations() : undefined;

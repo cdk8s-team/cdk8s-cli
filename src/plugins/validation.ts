@@ -8,15 +8,26 @@ import { PluginManager } from './_manager';
  */
 export class ValidationContext {
 
-  private readonly _report: ValidationReport;
-  private readonly _logger: ValidationLogger;
+  /**
+   * Report emitted by the validation.
+   *
+   * Plugins should interact with this object to generate the report.
+   */
+  public readonly report: ValidationReport;
+
+  /**
+   * Logger for the validation.
+   *
+   * Plugins should interact with this object to log messages during validation.
+   */
+  public readonly logger: ValidationLogger;
 
   constructor(
 
     /**
      * The list of manifests to validate.
      */
-    public readonly manifests: string[],
+    public readonly manifests: readonly string[],
 
     /**
      * The NodeJS package name of the plugin running the validation.
@@ -30,38 +41,16 @@ export class ValidationContext {
 
     /**
      * Construct metadata of resources in the application.
-     *
-     * @default - No metadata. This means construct aware metadata will not be available in the report.
      */
-    public readonly metadata?: {[key: string]: ResourceConstructMetadata},
+    public readonly metadata: {readonly [key: string]: ResourceConstructMetadata} = {},
 
     /**
      * Whether or not the synth command was executed with --stdout.
-     *
-     * @default false
      */
     public readonly stdout?: boolean) {
 
-    this._report = new ValidationReport(this.pkg, this.version, this.metadata ?? {}, stdout ?? false);
-    this._logger = new ValidationLogger();
-  }
-
-  /**
-   * Report emitted by the validation.
-   *
-   * Plugins should interact with this object to generate the report.
-   */
-  public get report(): ValidationReport {
-    return this._report;
-  }
-
-  /**
-   * Logger for the validation.
-   *
-   * Plugins should interact with this object to log messages during validation.
-   */
-  public get logger(): ValidationLogger {
-    return this._logger;
+    this.report = new ValidationReport(this.pkg, this.version, this.metadata ?? {}, stdout ?? false);
+    this.logger = new ValidationLogger();
   }
 }
 
@@ -72,6 +61,8 @@ export class ValidationLogger {
 
   /**
    * Log a message.
+   *
+   * // TODO - talk to romain about this
    */
   public log(message: string) {
     console.log(message);
@@ -108,7 +99,7 @@ export interface ValidationViolatingResource {
   /**
    * The locations in its config that pose the violations.
    */
-  readonly locations: string[];
+  readonly locations: readonly string[];
 
   /**
    * The manifest this resource is defined in.
@@ -152,7 +143,7 @@ export interface ValidationViolation {
   /**
    * The resources violating this rule.
    */
-  readonly violatingResources: ValidationViolatingResource[];
+  readonly violatingResources: readonly ValidationViolatingResource[];
 
 }
 
@@ -164,7 +155,7 @@ export interface ValidationViolationConstructAware extends Omit<ValidationViolat
   /**
    * The constructs violating this rule.
    */
-  readonly violatingConstructs: ValidationViolatingConstruct[];
+  readonly violatingConstructs: readonly ValidationViolatingConstruct[];
 }
 
 // we intentionally don't use an enum so that
@@ -182,7 +173,7 @@ export interface ValidationReportSummary {
 
   readonly version: string;
 
-  readonly metadata?: { [key: string]: string };
+  readonly metadata?: { readonly [key: string]: string };
 
 }
 
@@ -199,7 +190,7 @@ export interface ValidationReportJson {
   /**
    * List of violations in the rerpot.
    */
-  readonly violations: ValidationViolationConstructAware[];
+  readonly violations: readonly ValidationViolationConstructAware[];
 
   /**
    * Report summary.
@@ -220,7 +211,7 @@ export class ValidationReport {
   constructor(
     private readonly pkg: string,
     private readonly version: string,
-    private readonly metadata: {[key: string]: ResourceConstructMetadata},
+    private readonly metadata: {readonly [key: string]: ResourceConstructMetadata},
     private readonly stdout: boolean) {
   }
 
@@ -259,7 +250,7 @@ export class ValidationReport {
   /**
    * Submit the report with a status and additional metadata.
    */
-  public submit(status: ValidationReportStatus, metadata?: { [key: string]: string }) {
+  public submit(status: ValidationReportStatus, metadata?: { readonly [key: string]: string }) {
     this._summary = { status, plugin: this.pkg, version: this.version, metadata };
   }
 
@@ -298,7 +289,7 @@ export class ValidationReport {
     }
     for (const violation of json.violations) {
       const occurrences = violation.violatingConstructs.flatMap(c => c.locations).length;
-      const title = `\x1b[1m\x1b[31m${violation.ruleName} (${occurrences} occurrences)\x1b[0m`;
+      const title = reset(red(bright(`${violation.ruleName} (${occurrences} occurrences)`)));
       output.push('');
       output.push(title);
       output.push('');
@@ -350,7 +341,7 @@ export class ValidationPlugin {
    */
   public static load(
     validation: ValidationConfig,
-    manifests: string[],
+    manifests: readonly string[],
     stdout: boolean,
     pluginManager: PluginManager): { plugin: Validation; context: ValidationContext } {
 
@@ -362,13 +353,14 @@ export class ValidationPlugin {
       installEnv: validation.installEnv,
     });
 
-    if (typeof plugin.instance.validate !== 'function') {
-      throw new Error(`Instance of class ${validation.class} is not a validation plugin. Are you sure you specified the correct class?`);
+    // TODO - talk to romain
+    if (typeof (plugin.instance as any).validate !== 'function') {
+      throw new Error(`Instance of class '${validation.class}' from package '${validation.package}@${validation.version}' is not a validation plugin. Are you sure you specified the correct class?`);
     }
 
     // TODO: parse from manifests
     const metadata = {};
-    const context = new ValidationContext(manifests, plugin.pkg, plugin.version, metadata, stdout);
+    const context = new ValidationContext(manifests, plugin.package.pkg, plugin.package.version, metadata, stdout);
     return { plugin: plugin.instance as Validation, context };
 
   }
@@ -385,4 +377,16 @@ interface ResourceConstructMetadata {
    */
   readonly path: string;
 
+}
+
+function reset(s: string) {
+  return `${s}\x1b[0m`;
+}
+
+function red(s: string) {
+  return `\x1b[31m${s}`;
+}
+
+function bright(s: string) {
+  return `\x1b[1m${s}`;
 }

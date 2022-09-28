@@ -46,6 +46,7 @@
     "@types/glob": "^7.2.0",
     "@types/jest": "^26.0.24",
     "@types/json-schema": "^7.0.11",
+    "@types/semver": "^7.3.12",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "eslint": "^8",
@@ -65,7 +66,7 @@
     "typescript-json-schema": "^0.54.0"
   },
   "dependencies": {
-    "@types/node": "^12",
+    "@types/node": "^14",
     "ajv": "^8.11.0",
     "cdk8s": "^2.4.25",
     "cdk8s-plus-22": "^2.0.0-rc.108",
@@ -76,6 +77,7 @@
     "jsii-pacmak": "^1.67.0",
     "jsii-srcmak": "^0.1.672",
     "json2jsii": "^0.3.120",
+    "semver": "^7.3.7",
     "sscaff": "^1.2.274",
     "table": "^6.8.0",
     "yaml": "2.0.0-11",
