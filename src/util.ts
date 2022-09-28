@@ -40,6 +40,7 @@ export async function mkdtemp(closure: (dir: string) => Promise<void>) {
 }
 
 export async function synthApp(command: string, outdir: string, stdout: boolean): Promise<string[]> {
+  console.log('Synthesizing application');
   await shell(command, [], {
     shell: true,
     env: {
@@ -58,7 +59,7 @@ export async function synthApp(command: string, outdir: string, stdout: boolean)
   if (yamlFiles?.length) {
     if (!stdout) {
       for (const yamlFile of yamlFiles) {
-        console.log(yamlFile);
+        console.log(`  - ${yamlFile}`);
       }
     }
     found = true;
@@ -70,7 +71,11 @@ export async function synthApp(command: string, outdir: string, stdout: boolean)
   return yamlFiles;
 }
 
-export async function validateManifests(manifests: string[], stdout: boolean, validations: ValidationConfig[], pluginManager: PluginManager) {
+export async function validateManifests(
+  manifests: readonly string[],
+  stdout: boolean,
+  validations: ValidationConfig[],
+  pluginManager: PluginManager) {
 
   const validators: { plugin: Validation; context: ValidationContext}[] = [];
 
