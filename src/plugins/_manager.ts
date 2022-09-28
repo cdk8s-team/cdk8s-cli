@@ -173,7 +173,7 @@ export class PluginManager {
 
   private installPackage(pkg: string, version: string, env: { [key: string]: any }) {
 
-    const pluginDir = this.pluginDir(pkg, version);
+    const pluginDir = path.join(this.dir, pkg, version);
     fs.mkdirpSync(pluginDir);
 
     const command = [
