@@ -181,6 +181,32 @@ describe('validations', () => {
 
   });
 
+  test('synth can write the validation reports to a file', async () => {
+
+    const pluginPath = path.join(__dirname, '__resources__', 'validation-plugin');
+    const dirNameRegex = new RegExp(__dirname, 'g');
+    const validations: ValidationConfig[] = [{
+      package: pluginPath,
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: false,
+      },
+    }];
+    await synth({
+      validations,
+      reportsFile: 'reports.json',
+      postSynth: async (dir: string) => {
+        const reports = fs.readFileSync(path.join(dir, 'reports.json'), { encoding: 'utf-8' })
+          // '__dirname' contains environment specific paths, so it needs to be sanitized for consistent
+          // results.
+          .replace(dirNameRegex, '<__dirname-replaced>');
+        expect(reports).toMatchSnapshot();
+      },
+    });
+
+  });
+
   test('can pass environment to installation command', async () => {
 
     const validations: ValidationConfig[] = [{
@@ -220,9 +246,11 @@ describe('validations', () => {
 interface SynthOptions {
 
   readonly validations: string | ValidationConfig[];
-  validate?: boolean;
-  stdout?: boolean;
-  preSynth?: (dir: string) => Promise<void>;
+  readonly validate?: boolean;
+  readonly stdout?: boolean;
+  readonly reportsFile?: string;
+  readonly preSynth?: (dir: string) => Promise<void>;
+  readonly postSynth?: (dir: string) => Promise<void>;
 
 }
 
@@ -278,7 +306,11 @@ app.synth();
         stdout: stdout,
         validate: validate,
         pluginsDir: config.pluginsDirectory,
+        validationReportOutputFile: options.reportsFile ? path.join(dir, options.reportsFile) : undefined,
       });
+      if (options.postSynth) {
+        await options.postSynth(dir);
+      }
       if (validate) {
         // this file is written by our test plugin
         const marker = path.join(dir, 'validation-done.marker');

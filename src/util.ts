@@ -78,7 +78,8 @@ export async function validateApp(
   app: SynthesizedApp,
   stdout: boolean,
   validations: ValidationConfig[],
-  pluginManager: PluginManager) {
+  pluginManager: PluginManager,
+  reportsFile?: string) {
 
   const validators: { plugin: Validation; context: ValidationContext}[] = [];
 
@@ -107,6 +108,13 @@ export async function validateApp(
     console.log('');
     console.log(report.toString());
     console.log('');
+  }
+
+  if (reportsFile) {
+    // write the reports in JSON to a file
+    fs.writeFileSync(reportsFile, JSON.stringify({
+      reports: reports.map(r => r.toJson()),
+    }, null, 2));
   }
 
   // exit with failure if any report resulted in a failure

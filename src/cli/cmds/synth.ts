@@ -17,7 +17,8 @@ class Command implements yargs.CommandModule {
     .option('output', { default: config.output, required: false, desc: 'Output directory', alias: 'o' })
     .option('stdout', { type: 'boolean', required: false, desc: 'Write synthesized manifests to STDOUT instead of the output directory', alias: 'p' })
     .option('plugins-dir', { default: config.pluginsDirectory, required: false, desc: 'Directory to store cdk8s plugins.' })
-    .option('validate', { type: 'boolean', default: true, required: false, desc: 'Apply validation plugins on the resulting manifests (use --no-validate to disable)' });
+    .option('validate', { type: 'boolean', default: true, required: false, desc: 'Apply validation plugins on the resulting manifests (use --no-validate to disable)' })
+    .option('validation-reports-output-file', { required: false, desc: 'File to write a JSON representation of the validation reports to' });
   ;
 
   public async handler(argv: any) {
@@ -27,6 +28,7 @@ class Command implements yargs.CommandModule {
     const stdout = argv.stdout;
     const validate = argv.validate;
     const pluginsDir = argv.pluginsDir;
+    const reportFile = argv.validationReportOutputFile;
 
     if (outdir && outdir !== config.output && stdout) {
       throw new Error('\'--output\' and \'--stdout\' are mutually exclusive. Please only use one.');
@@ -46,14 +48,14 @@ class Command implements yargs.CommandModule {
         }
         if (validations) {
           const pluginManager = new PluginManager(pluginsDir);
-          await validateApp(app, stdout, validations, pluginManager);
+          await validateApp(app, stdout, validations, pluginManager, reportFile);
         }
       });
     } else {
       const manifests = await synthApp(command, outdir, stdout);
       if (validations) {
         const pluginManager = new PluginManager(pluginsDir);
-        await validateApp(manifests, stdout, validations, pluginManager);
+        await validateApp(manifests, stdout, validations, pluginManager, reportFile);
       }
     }
 
