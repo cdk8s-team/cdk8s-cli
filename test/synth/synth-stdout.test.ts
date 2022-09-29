@@ -340,7 +340,7 @@ app.synth();
         stdout: stdout,
         validate: validate,
         pluginsDir: config.pluginsDirectory,
-        validationReportOutputFile: options.reportsFile ? path.join(dir, options.reportsFile) : undefined,
+        validationReportsOutputFile: options.reportsFile ? path.join(dir, options.reportsFile) : undefined,
       });
       if (options.postSynth) {
         await options.postSynth(dir);

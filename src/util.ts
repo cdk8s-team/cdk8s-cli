@@ -39,13 +39,16 @@ export async function mkdtemp(closure: (dir: string) => Promise<void>) {
   }
 }
 
-export async function synthApp(command: string, outdir: string, stdout: boolean): Promise<SynthesizedApp> {
+export async function synthApp(command: string, outdir: string, stdout: boolean, metadata: boolean): Promise<SynthesizedApp> {
   console.log('Synthesizing application');
   await shell(command, [], {
     shell: true,
     env: {
       ...process.env,
       CDK8S_OUTDIR: outdir,
+      // record metadata so that the validation report
+      // has contruct aware context.
+      CDK8S_RECORD_CONSTRUCT_METADATA: process.env.CDK8S_RECORD_CONSTRUCT_METADATA ?? (metadata ? 'true' : 'false'),
     },
   });
 

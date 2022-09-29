@@ -28,7 +28,7 @@ class Command implements yargs.CommandModule {
     const stdout = argv.stdout;
     const validate = argv.validate;
     const pluginsDir = argv.pluginsDir;
-    const reportFile = argv.validationReportOutputFile;
+    const reportFile = argv.validationReportsOutputFile;
 
     if (outdir && outdir !== config.output && stdout) {
       throw new Error('\'--output\' and \'--stdout\' are mutually exclusive. Please only use one.');
@@ -42,7 +42,7 @@ class Command implements yargs.CommandModule {
 
     if (stdout) {
       await mkdtemp(async tempDir => {
-        const app = await synthApp(command, tempDir, stdout);
+        const app = await synthApp(command, tempDir, stdout, validate);
         for (const f of app.manifests) {
           fs.createReadStream(f).pipe(process.stdout);
         }
@@ -52,7 +52,7 @@ class Command implements yargs.CommandModule {
         }
       });
     } else {
-      const manifests = await synthApp(command, outdir, stdout);
+      const manifests = await synthApp(command, outdir, stdout, validate);
       if (validations) {
         const pluginManager = new PluginManager(pluginsDir);
         await validateApp(manifests, stdout, validations, pluginManager, reportFile);
