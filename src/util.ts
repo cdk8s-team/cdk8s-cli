@@ -111,6 +111,10 @@ export async function validateApp(
   }
 
   if (reportsFile) {
+
+    if (fs.existsSync(reportsFile)) {
+      throw new Error(`Unable to write validation reports file. Already exists: ${reportsFile}`);
+    }
     // write the reports in JSON to a file
     fs.writeFileSync(reportsFile, JSON.stringify({
       reports: reports.map(r => r.toJson()),

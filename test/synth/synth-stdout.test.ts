@@ -207,6 +207,40 @@ describe('validations', () => {
 
   });
 
+  test('synth will not write the validation reports to an existing file', async () => {
+
+    const pluginPath = path.join(__dirname, '__resources__', 'validation-plugin');
+    const dirNameRegex = new RegExp(__dirname, 'g');
+    const validations: ValidationConfig[] = [{
+      package: pluginPath,
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: false,
+      },
+    }];
+
+    await expect(async () => {
+
+      await synth({
+        validations,
+        reportsFile: 'reports.json',
+        preSynth: async (dir: string) => {
+          fs.writeFileSync(path.join(dir, 'reports.json'), 'hello');
+        },
+        postSynth: async (dir: string) => {
+          const reports = fs.readFileSync(path.join(dir, 'reports.json'), { encoding: 'utf-8' })
+            // '__dirname' contains environment specific paths, so it needs to be sanitized for consistent
+            // results.
+            .replace(dirNameRegex, '<__dirname-replaced>');
+          expect(reports).toMatchSnapshot();
+        },
+      });
+
+    }).rejects.toThrow(/Unable to write validation reports file. Already exists:/);
+
+  });
+
   test('can pass environment to installation command', async () => {
 
     const validations: ValidationConfig[] = [{
