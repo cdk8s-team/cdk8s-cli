@@ -1,28 +1,10 @@
 import * as child from 'child_process';
-import * as os from 'os';
 import * as path from 'path';
 import * as url from 'url';
 import * as fs from 'fs-extra';
 import * as semver from 'semver';
-import { Validation } from './validation';
 
 const MODULE_NOT_FOUND_ERROR_CODE = 'MODULE_NOT_FOUND'; // TODO is there a known constant we can use here?
-const MODULE_VERSION_MISMATCH_ERROR_CODE = 'MODULE_VERSION_MISMATCH';
-
-/**
- * Error indicating a module was found but with an unexpected version.
- */
-export class ModuleVersionMismatchError extends Error {
-
-  public readonly code: string = MODULE_VERSION_MISMATCH_ERROR_CODE;
-
-  constructor(
-    public readonly pkg: string,
-    public readonly expected: string,
-    public readonly actual: string) {
-    super(`Version mismatch for package ${pkg}. Found ${actual} but requested ${expected}`);
-  }
-}
 
 /**
  * Information about a loaded plugin.
@@ -32,7 +14,7 @@ export interface Plugin {
   /**
    * The instance of the plugin class.
    */
-  readonly instance: Validation;
+  readonly instance: unknown;
 
   /**
    * The plugin class name.
@@ -116,7 +98,6 @@ export class PluginManager {
 
     const pkg = this.loadPackage(options.pkg, options.version, options.installEnv ?? {});
 
-    // TODO - talk about this with romain
     const clazz = pkg.module[options.class];
     if (!clazz) {
       throw new Error(`Unable to locate class '${options.class}' in package '${options.pkg}@${options.version}'. Are you sure you exported it?`);
@@ -155,7 +136,7 @@ export class PluginManager {
       return this.require(modulePath, version);
     } catch (e: any) {
 
-      if (![MODULE_NOT_FOUND_ERROR_CODE, MODULE_VERSION_MISMATCH_ERROR_CODE].includes(e.code)) {
+      if (![MODULE_NOT_FOUND_ERROR_CODE].includes(e.code)) {
         // some unexpected error
         throw e;
       }
@@ -196,34 +177,14 @@ export class PluginManager {
 
     const modulePath = require.resolve(pkg);
 
-    const manifestPath = this.findPackageJson(modulePath, []);
-    const manifest = fs.readJsonSync(manifestPath);
-    if (manifest.version !== version) {
-      throw new ModuleVersionMismatchError(pkg, manifest.version, version);
-    }
-
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const module = require(modulePath);
 
-    return { version: manifest.version, pkg: manifest.name, path: modulePath, module };
+    return { version, pkg, path: modulePath, module };
   }
 
   private pluginDir(pkg: string, version: string) {
     return path.join(this.dir, pkg, version, 'node_modules', pkg);
-  }
-
-  private findPackageJson(fdp: string, searched: string[]): string {
-
-    const packageJsonPath = path.join(fdp, 'package.json');
-    if (fs.existsSync(packageJsonPath)) {
-      return packageJsonPath;
-    }
-
-    if (path.dirname(fdp) === fdp) {
-      throw new Error(`Unable to locate package.json file. Searched in: ${searched.join(os.EOL)}`);
-    }
-
-    return this.findPackageJson(path.dirname(fdp), [...searched, packageJsonPath]);
   }
 
 }

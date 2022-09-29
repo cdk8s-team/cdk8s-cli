@@ -151,21 +151,6 @@ describe('validations', () => {
 
   });
 
-  test('synth fails when validations specify non existing plugin version', async () => {
-
-    const validations: ValidationConfig[] = [{
-      package: path.join(__dirname, '__resources__', 'validation-plugin'),
-      version: '1.0.0',
-      class: 'MockValidation',
-      properties: {
-        fail: true,
-      },
-    }];
-
-    await expect(() => synth({ validations })).rejects.toThrow(/Version mismatch for package/);
-
-  });
-
   test('synth fails when validations specify plugin version range', async () => {
 
     const validations: ValidationConfig[] = [{
