@@ -4,6 +4,7 @@ import * as path from 'path';
 import * as url from 'url';
 import * as fs from 'fs-extra';
 import * as semver from 'semver';
+import { Validation } from './validation';
 
 const MODULE_NOT_FOUND_ERROR_CODE = 'MODULE_NOT_FOUND'; // TODO is there a known constant we can use here?
 const MODULE_VERSION_MISMATCH_ERROR_CODE = 'MODULE_VERSION_MISMATCH';
@@ -31,7 +32,7 @@ export interface Plugin {
   /**
    * The instance of the plugin class.
    */
-  readonly instance: unknown;
+  readonly instance: Validation;
 
   /**
    * The plugin class name.
@@ -53,7 +54,7 @@ export interface Package {
   /**
    * The plugin module.
    */
-  readonly module: unknown;
+  readonly module: ReturnType<NodeRequire>;
 
   /**
     * The npm package of the plugin.
@@ -116,7 +117,7 @@ export class PluginManager {
     const pkg = this.loadPackage(options.pkg, options.version, options.installEnv ?? {});
 
     // TODO - talk about this with romain
-    const clazz = (pkg.module as any)[options.class];
+    const clazz = pkg.module[options.class];
     if (!clazz) {
       throw new Error(`Unable to locate class '${options.class}' in package '${options.pkg}@${options.version}'. Are you sure you exported it?`);
     }
