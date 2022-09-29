@@ -3,7 +3,7 @@ import * as yaml from 'yaml';
 import * as yargs from 'yargs';
 import { readConfigSync, ValidationConfig } from '../../config';
 import { PluginManager } from '../../plugins/_manager';
-import { synthApp, mkdtemp, download, validateManifests } from '../../util';
+import { synthApp, mkdtemp, download, validateApp } from '../../util';
 
 const config = readConfigSync();
 
@@ -40,20 +40,20 @@ class Command implements yargs.CommandModule {
 
     if (stdout) {
       await mkdtemp(async tempDir => {
-        const manifests = await synthApp(command, tempDir, stdout);
-        for (const f of manifests) {
+        const app = await synthApp(command, tempDir, stdout);
+        for (const f of app.manifests) {
           fs.createReadStream(f).pipe(process.stdout);
         }
         if (validations) {
           const pluginManager = new PluginManager(pluginsDir);
-          await validateManifests(manifests, stdout, validations, pluginManager);
+          await validateApp(app, stdout, validations, pluginManager);
         }
       });
     } else {
       const manifests = await synthApp(command, outdir, stdout);
       if (validations) {
         const pluginManager = new PluginManager(pluginsDir);
-        await validateManifests(manifests, stdout, validations, pluginManager);
+        await validateApp(manifests, stdout, validations, pluginManager);
       }
     }
 

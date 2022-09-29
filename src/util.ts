@@ -39,7 +39,7 @@ export async function mkdtemp(closure: (dir: string) => Promise<void>) {
   }
 }
 
-export async function synthApp(command: string, outdir: string, stdout: boolean): Promise<string[]> {
+export async function synthApp(command: string, outdir: string, stdout: boolean): Promise<SynthesizedApp> {
   console.log('Synthesizing application');
   await shell(command, [], {
     shell: true,
@@ -55,7 +55,7 @@ export async function synthApp(command: string, outdir: string, stdout: boolean)
   }
 
   let found = false;
-  const yamlFiles = await getFiles(outdir);
+  const yamlFiles = await findManifests(outdir);
   if (yamlFiles?.length) {
     if (!stdout) {
       for (const yamlFile of yamlFiles) {
@@ -68,11 +68,14 @@ export async function synthApp(command: string, outdir: string, stdout: boolean)
   if (!found) {
     console.error('No manifests synthesized');
   }
-  return yamlFiles;
+
+  const constructMetadata = findConstructMetadata(outdir);
+
+  return { manifests: yamlFiles, constructMetadata };
 }
 
-export async function validateManifests(
-  manifests: readonly string[],
+export async function validateApp(
+  app: SynthesizedApp,
   stdout: boolean,
   validations: ValidationConfig[],
   pluginManager: PluginManager) {
@@ -80,7 +83,7 @@ export async function validateManifests(
   const validators: { plugin: Validation; context: ValidationContext}[] = [];
 
   for (const validation of validations) {
-    const { plugin, context } = ValidationPlugin.load(validation, manifests, stdout, pluginManager);
+    const { plugin, context } = ValidationPlugin.load(validation, app, stdout, pluginManager);
     validators.push({ plugin, context });
   }
 
@@ -189,28 +192,50 @@ export async function download(url: string): Promise<string> {
   });
 }
 
-export async function getFiles(filePath: string): Promise<string[]> {
+export async function findManifests(directory: string): Promise<string[]> {
   // Ensure path is valid
   try {
-    await promises.access(filePath);
+    await promises.access(directory);
   } catch {
     return [];
   }
 
   // Read Path contents
-  const entries = await promises.readdir(filePath, { withFileTypes: true });
+  const entries = await promises.readdir(directory, { withFileTypes: true });
 
   // Get files within the current directory
   const files = entries
     .filter(file => (!file.isDirectory() && file.name.endsWith('.yaml')))
-    .map(file => (filePath + '/' + file.name));
+    .map(file => (directory + '/' + file.name));
 
   // Get sub-folders within the current folder
   const folders = entries.filter(folder => folder.isDirectory());
 
   for (const folder of folders) {
-    files.push(...await getFiles(`${filePath}/${folder.name}`));
+    files.push(...await findManifests(`${directory}/${folder.name}`));
   }
 
   return files;
+}
+
+export function findConstructMetadata(directory: string): string | undefined {
+  // this file is optionally created during synthesis
+  const p = path.join(directory, 'construct-metadata.json');
+  return fs.existsSync(p) ? p : undefined;
+}
+
+/**
+ * Result of synthesizing an application.
+ */
+export interface SynthesizedApp {
+
+  /**
+   * The list of manifests produced by the app.
+   */
+  readonly manifests: readonly string[];
+
+  /**
+   * The construct metadata file (if exists).
+   */
+  readonly constructMetadata?: string;
 }

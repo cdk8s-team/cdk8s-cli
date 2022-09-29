@@ -276,6 +276,7 @@ app.synth();
     const exit = process.exit;
     try {
       process.chdir(dir);
+      process.env.CDK8S_RECORD_CONSTRUCT_METADATA = 'true';
       // our implementation does process.exit(2) so we need
       // to monkey patch it so we can assert on it.
       (process as any).exit = (code: number) => {
@@ -301,6 +302,7 @@ app.synth();
     } finally {
       process.chdir(pwd);
       (process as any).exit = exit;
+      delete process.env.CDK8S_RECORD_CONSTRUCT_METADATA;
     }
 
   });

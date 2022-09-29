@@ -18,18 +18,20 @@ class MockValidation {
   async validate(context) {
     for (const manifest of context.manifests) {
       console.log(`Validating manifest: ${manifest}`);
+      const resources = context.parseManifest(manifest);
+      for (const resource of resources) {
+        context.report.addViolation({
+          ruleName: 'Some rule',
+          recommendation: 'Some recommendation',
+          violatingResources: [{
+            manifestPath: manifest,
+            resourceName: resource.metadata.name,
+            locations: ['location1', 'location2']
+          }],
+          fix: 'Some fix',
+        });
+      }
     }
-
-    context.report.addViolation({
-      ruleName: 'Some rule',
-      recommendation: 'Some recommendation',
-      violatingResources: [{
-        manifestPath: 'path',
-        resourceName: 'resource',
-        locations: ['location1', 'location2']
-      }],
-      fix: 'Some fix',
-    });
 
     if (this.props.throw ?? false) {
       throw new Error('Throwing per request');

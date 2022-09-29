@@ -1,6 +1,9 @@
+import * as fs from 'fs';
 import * as os from 'os';
 import { table } from 'table';
+import * as yaml from 'yaml';
 import { ValidationConfig } from '../config';
+import { SynthesizedApp } from '../util';
 import { PluginManager } from './_manager';
 
 /**
@@ -51,6 +54,12 @@ export class ValidationContext {
 
     this.report = new ValidationReport(this.pkg, this.version, this.metadata ?? {}, stdout ?? false);
     this.logger = new ValidationLogger();
+  }
+
+  public parseManifest(manifestPath: string): any[] {
+    const parsed = yaml.parseAllDocuments(fs.readFileSync(manifestPath, { encoding: 'utf-8' }));
+    const resources = Array.isArray(parsed) ? parsed : [parsed];
+    return resources.map(r => r.toJS());
   }
 }
 
@@ -296,11 +305,11 @@ export class ValidationReport {
       output.push('  Occurrences:');
       for (const construct of violation.violatingConstructs) {
         output.push('');
-        output.push(`    - construct.path: ${construct.constructPath ?? 'N/A'}`);
-        output.push(`    - manifest.path: ${construct.manifestPath}`);
-        output.push(`    - resource.name: ${construct.resourceName}`);
+        output.push(`    - Construct Path: ${construct.constructPath ?? 'N/A'}`);
+        output.push(`    - Manifest Path: ${construct.manifestPath}`);
+        output.push(`    - Resource Name: ${construct.resourceName}`);
         if (construct.locations) {
-          output.push('    - locations:');
+          output.push('    - Locations:');
           for (const location of construct.locations) {
             output.push(`      > ${location}`);
           }
@@ -341,7 +350,7 @@ export class ValidationPlugin {
    */
   public static load(
     validation: ValidationConfig,
-    manifests: readonly string[],
+    app: SynthesizedApp,
     stdout: boolean,
     pluginManager: PluginManager): { plugin: Validation; context: ValidationContext } {
 
@@ -353,15 +362,26 @@ export class ValidationPlugin {
       installEnv: validation.installEnv,
     });
 
-    // TODO - talk to romain
-    if (typeof (plugin.instance as any).validate !== 'function') {
+    if (typeof((plugin.instance as any).validate) !== 'function') {
       throw new Error(`Instance of class '${validation.class}' from package '${validation.package}@${validation.version}' is not a validation plugin. Are you sure you specified the correct class?`);
     }
 
-    // TODO: parse from manifests
-    const metadata = {};
-    const context = new ValidationContext(manifests, plugin.package.pkg, plugin.package.version, metadata, stdout);
+    const metadata = app.constructMetadata ? this.loadConstructMetadata(app.constructMetadata) : {};
+    const context = new ValidationContext(app.manifests, plugin.package.pkg, plugin.package.version, metadata, stdout);
     return { plugin: plugin.instance as Validation, context };
+
+  }
+
+  private static loadConstructMetadata(constructMetadataPath: string): { readonly [key: string]: ResourceConstructMetadata } {
+    const contents = JSON.parse(fs.readFileSync(constructMetadataPath, { encoding: 'utf-8' }));
+    const resources: { [key: string]: ResourceConstructMetadata } = {};
+    if (contents.version !== '1.0.0') {
+      throw new Error(`Unexpected version of construct metadata at ${constructMetadataPath}: ${contents.version}. Supported versions are: [1.0.0]`);
+    }
+    for (const [name, metadata] of Object.entries(contents.resources)) {
+      resources[name] = { path: (metadata as any).path };
+    }
+    return resources;
 
   }
 
