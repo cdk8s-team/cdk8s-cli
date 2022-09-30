@@ -1,9 +1,9 @@
 import { promises } from 'fs';
 import { tmpdir } from 'os';
 import path from 'path';
-import { getFiles } from '../src/util';
+import { findManifests } from '../src/util';
 
-describe('getFiles', () => {
+describe('findManifests', () => {
 
   test('test read files', async () => {
 
@@ -28,9 +28,9 @@ describe('getFiles', () => {
     // THEN
 
     // Get the contents of the different folders
-    const noFiles: string[] = await getFiles(emptySubDir);
-    const yamlFiles: string[] = await getFiles(populatedSubDir);
-    const noFilesEither: string[] = await getFiles(nonDir);
+    const noFiles: string[] = await findManifests(emptySubDir);
+    const yamlFiles: string[] = await findManifests(populatedSubDir);
+    const noFilesEither: string[] = await findManifests(nonDir);
 
     // Empty sub directory should yield empty array
     expect(noFiles).toEqual([]);

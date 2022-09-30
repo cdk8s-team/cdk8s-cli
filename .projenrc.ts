@@ -14,6 +14,9 @@ const project = new typescript.TypeScriptProject({
   authorUrl: 'https://aws.amazon.com',
   minNodeVersion: '14.17.0',
 
+  // no need, we are configuring explicit exports.
+  entrypoint: '',
+
   keywords: [
     'k8s',
     'cdk8s',
@@ -53,11 +56,14 @@ const project = new typescript.TypeScriptProject({
     'json2jsii',
     'colors',
     'ajv',
+    'table',
+    'semver',
   ],
   devDeps: [
     '@cdk8s/projen-common',
     '@types/fs-extra@^8',
     '@types/json-schema',
+    '@types/semver',
     'glob',
     '@types/glob',
     'typescript-json-schema',
@@ -80,6 +86,14 @@ const project = new typescript.TypeScriptProject({
   },
 });
 
+//
+// see https://nodejs.org/api/packages.html#exports
+project.addFields({
+  exports: {
+    './plugins': './lib/plugins/index.js',
+  },
+});
+
 // ignore integration tests since they need to executed after packaging
 // and are defined in a separate tasks.
 project.jest?.addIgnorePattern('/test/integ/');
@@ -91,7 +105,7 @@ new Cdk8sCommon(project);
 // add @types/node as a regular dependency since it's needed to during "import"
 // to compile the generated jsii code.
 project.deps.removeDependency('@types/node', DependencyType.BUILD);
-project.deps.addDependency('@types/node@^12', DependencyType.RUNTIME);
+project.deps.addDependency('@types/node@^14', DependencyType.RUNTIME);
 
 const schemas = project.addTask('schemas');
 schemas.exec('ts-node scripts/crd.schema.ts');
