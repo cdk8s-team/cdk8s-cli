@@ -70,8 +70,6 @@ export class ValidationLogger {
 
   /**
    * Log a message.
-   *
-   * // TODO - talk to romain about this
    */
   public log(message: string) {
     console.log(message);

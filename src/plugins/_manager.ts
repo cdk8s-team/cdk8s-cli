@@ -129,11 +129,11 @@ export class PluginManager {
 
     // local plugins are loaded directly, npm packages are loaded
     // from the plugins directory.
-    // TODO talk to romain about local plugins support.
     const modulePath = local ? path.resolve(process.cwd(), pkg) : this.pluginDir(pkg, version);
+    const pluginName = local ? modulePath : pkg;
 
     try {
-      return this.require(modulePath, version);
+      return this.require(modulePath, version, pluginName);
     } catch (e: any) {
 
       if (![MODULE_NOT_FOUND_ERROR_CODE].includes(e.code)) {
@@ -148,7 +148,7 @@ export class PluginManager {
 
       // otherwise, we install from npm and re-require.
       this.installPackage(pkg, version, installEnv);
-      return this.require(modulePath, version);
+      return this.require(modulePath, version, pluginName);
     }
 
   }
@@ -173,14 +173,14 @@ export class PluginManager {
     child.execSync(command, { stdio: ['ignore', 'pipe', 'pipe'], env: finalEnv });
   }
 
-  private require(pkg: string, version: string): Package {
+  private require(spec: string, version: string, pluginName: string): Package {
 
-    const modulePath = require.resolve(pkg);
+    const modulePath = require.resolve(spec);
 
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const module = require(modulePath);
 
-    return { version, pkg, path: modulePath, module };
+    return { version, pkg: pluginName ?? spec, path: modulePath, module };
   }
 
   private pluginDir(pkg: string, version: string) {
