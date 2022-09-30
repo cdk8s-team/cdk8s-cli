@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validations synth can write the validation reports to a file 1`] = `
+"{
+  \\"reports\\": [
+    {
+      \\"title\\": \\"Validation Report (<__dirname-replaced>/__resources__/validation-plugin@0.0.0)\\",
+      \\"violations\\": [
+        {
+          \\"ruleName\\": \\"Some rule\\",
+          \\"recommendation\\": \\"Some recommendation\\",
+          \\"violatingConstructs\\": [
+            {
+              \\"manifestPath\\": \\"dist/chart-c86185a7.k8s.yaml\\",
+              \\"resourceName\\": \\"config-map\\",
+              \\"locations\\": [
+                \\"location1\\",
+                \\"location2\\"
+              ],
+              \\"constructPath\\": \\"Chart/Object\\"
+            }
+          ],
+          \\"fix\\": \\"Some fix\\"
+        }
+      ],
+      \\"summary\\": {
+        \\"status\\": \\"success\\",
+        \\"plugin\\": \\"<__dirname-replaced>/__resources__/validation-plugin\\",
+        \\"version\\": \\"0.0.0\\"
+      }
+    }
+  ]
+}"
+`;
