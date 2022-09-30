@@ -7,6 +7,9 @@ import * as path from 'path';
 import { parse } from 'url';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
+import { ValidationConfig } from './config';
+import { PluginManager } from './plugins/_manager';
+import { ValidationPlugin, ValidationContext, ValidationReport, Validation } from './plugins/validation';
 import { SafeReviver } from './reviver';
 
 export async function shell(program: string, args: string[] = [], options: SpawnOptions = { }): Promise<string> {
@@ -36,12 +39,16 @@ export async function mkdtemp(closure: (dir: string) => Promise<void>) {
   }
 }
 
-export async function synthApp(command: string, outdir: string) {
+export async function synthApp(command: string, outdir: string, stdout: boolean, metadata: boolean): Promise<SynthesizedApp> {
+  console.log('Synthesizing application');
   await shell(command, [], {
     shell: true,
     env: {
       ...process.env,
       CDK8S_OUTDIR: outdir,
+      // record metadata so that the validation report
+      // has contruct aware context.
+      CDK8S_RECORD_CONSTRUCT_METADATA: process.env.CDK8S_RECORD_CONSTRUCT_METADATA ?? (metadata ? 'true' : 'false'),
     },
   });
 
@@ -51,10 +58,12 @@ export async function synthApp(command: string, outdir: string) {
   }
 
   let found = false;
-  const yamlFiles = await getFiles(outdir);
+  const yamlFiles = await findManifests(outdir);
   if (yamlFiles?.length) {
-    for (const yamlFile of yamlFiles) {
-      console.log(yamlFile);
+    if (!stdout) {
+      for (const yamlFile of yamlFiles) {
+        console.log(`  - ${yamlFile}`);
+      }
     }
     found = true;
   }
@@ -62,6 +71,67 @@ export async function synthApp(command: string, outdir: string) {
   if (!found) {
     console.error('No manifests synthesized');
   }
+
+  const constructMetadata = findConstructMetadata(outdir);
+
+  return { manifests: yamlFiles, constructMetadata };
+}
+
+export async function validateApp(
+  app: SynthesizedApp,
+  stdout: boolean,
+  validations: ValidationConfig[],
+  pluginManager: PluginManager,
+  reportsFile?: string) {
+
+  const validators: { plugin: Validation; context: ValidationContext}[] = [];
+
+  for (const validation of validations) {
+    const { plugin, context } = ValidationPlugin.load(validation, app, stdout, pluginManager);
+    validators.push({ plugin, context });
+  }
+
+  const reports: ValidationReport[] = [];
+  let success = true;
+
+  console.log('Performing validations');
+
+  for (const validator of validators) {
+    await validator.plugin.validate(validator.context);
+    const report = validator.context.report;
+    success = success && report.success;
+    reports.push(report);
+  }
+
+  console.log('Validations finished');
+
+  // now we can print them. we don't incrementally print
+  // so to not clutter the terminal in case of errors.
+  for (const report of reports) {
+    console.log('');
+    console.log(report.toString());
+    console.log('');
+  }
+
+  if (reportsFile) {
+
+    if (fs.existsSync(reportsFile)) {
+      throw new Error(`Unable to write validation reports file. Already exists: ${reportsFile}`);
+    }
+    // write the reports in JSON to a file
+    fs.writeFileSync(reportsFile, JSON.stringify({
+      reports: reports.map(r => r.toJson()),
+    }, null, 2));
+  }
+
+  // exit with failure if any report resulted in a failure
+  if (!success) {
+    console.error('Validation failed. See above reports for details');
+    process.exit(2);
+  }
+
+  console.log('Validations ended succesfully');
+
 }
 
 export function safeParseJson(text: string, reviver: SafeReviver): any {
@@ -86,6 +156,7 @@ export function safeParseYaml(text: string, reviver: SafeReviver): any[] {
 }
 
 export async function download(url: string): Promise<string> {
+
   let client: typeof http | typeof https;
   const proto = parse(url).protocol;
 
@@ -136,28 +207,50 @@ export async function download(url: string): Promise<string> {
   });
 }
 
-export async function getFiles(filePath: string): Promise<string[]> {
+export async function findManifests(directory: string): Promise<string[]> {
   // Ensure path is valid
   try {
-    await promises.access(filePath);
+    await promises.access(directory);
   } catch {
     return [];
   }
 
   // Read Path contents
-  const entries = await promises.readdir(filePath, { withFileTypes: true });
+  const entries = await promises.readdir(directory, { withFileTypes: true });
 
   // Get files within the current directory
   const files = entries
-    .filter(file => (!file.isDirectory() && file.name.endsWith('.k8s.yaml')))
-    .map(file => (filePath + '/' + file.name));
+    .filter(file => (!file.isDirectory() && file.name.endsWith('.yaml')))
+    .map(file => (directory + '/' + file.name));
 
   // Get sub-folders within the current folder
   const folders = entries.filter(folder => folder.isDirectory());
 
   for (const folder of folders) {
-    files.push(...await getFiles(`${filePath}/${folder.name}`));
+    files.push(...await findManifests(`${directory}/${folder.name}`));
   }
 
   return files;
+}
+
+export function findConstructMetadata(directory: string): string | undefined {
+  // this file is optionally created during synthesis
+  const p = path.join(directory, 'construct-metadata.json');
+  return fs.existsSync(p) ? p : undefined;
+}
+
+/**
+ * Result of synthesizing an application.
+ */
+export interface SynthesizedApp {
+
+  /**
+   * The list of manifests produced by the app.
+   */
+  readonly manifests: readonly string[];
+
+  /**
+   * The construct metadata file (if exists).
+   */
+  readonly constructMetadata?: string;
 }
