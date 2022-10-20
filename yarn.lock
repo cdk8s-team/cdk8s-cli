@@ -1569,13 +1569,6 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s-plus-22@^2.0.0-rc.154:
-  version "2.0.0-rc.154"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-22/-/cdk8s-plus-22-2.0.0-rc.154.tgz#a145e5446a9b9ba663733e3bc37ebb996ca2cdec"
-  integrity sha512-vTx/MNkZTRYD5/J/kkevnBmRySHdZi/2Vuse7IQnKimK+g+jUlevlTqSVsKDzQZiqwjpN+fSMzxOAEec1Txe8A==
-  dependencies:
-    minimatch "^3.1.2"
-
 cdk8s@^1.8.20:
   version "1.8.20"
   resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.8.20.tgz#b131c5d66470e985949a6cefb852e31b4ecaa468"

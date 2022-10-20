@@ -14,11 +14,6 @@
       <version>{{ cdk8s_core_version }}</version>
     </dependency>
     <dependency>
-      <groupId>org.cdk8s</groupId>
-      <artifactId>cdk8s-plus-22</artifactId>
-      <version>{{ cdk8s_plus_version }}</version>
-    </dependency>
-    <dependency>
       <groupId>software.constructs</groupId>
       <artifactId>constructs</artifactId>
       <version>{{ constructs_version }}</version>
