@@ -42,7 +42,7 @@ class Command implements yargs.CommandModule {
 
 async function determineDeps(): Promise<Deps> {
   const cdk8s = new ModuleVersion('cdk8s', { jsii: true });
-  const cdk8sPlus = new ModuleVersion('cdk8s-plus-22', { jsii: true });
+  const cdk8sPlus = new ModuleVersion('cdk8s-plus-25', { jsii: true });
   const cdk8sCli = new ModuleVersion('cdk8s-cli');
   const jsii = new ModuleVersion('jsii');
 

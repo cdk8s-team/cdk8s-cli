@@ -15,7 +15,7 @@
     </dependency>
     <dependency>
       <groupId>org.cdk8s</groupId>
-      <artifactId>cdk8s-plus-22</artifactId>
+      <artifactId>cdk8s-plus-25</artifactId>
       <version>{{ cdk8s_plus_version }}</version>
     </dependency>
     <dependency>
