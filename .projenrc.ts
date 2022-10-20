@@ -92,6 +92,7 @@ const project = new typescript.TypeScriptProject({
 project.addFields({
   exports: {
     './plugins': './lib/plugins/index.js',
+    './package.json': './package.json',
   },
 });
 
