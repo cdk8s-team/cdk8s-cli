@@ -139,7 +139,8 @@
     }
   },
   "exports": {
-    "./plugins": "./lib/plugins/index.js"
+    "./plugins": "./lib/plugins/index.js",
+    "./package.json": "./package.json"
   },
   "resolutions": {
     "@types/responselike": "1.0.0",
