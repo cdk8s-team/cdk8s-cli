@@ -15,12 +15,9 @@ exports.pre = () => {
 };
 
 exports.post = options => {
-  const { pypi_cdk8s, pypi_cdk8s_plus } = options;
+  const { pypi_cdk8s } = options;
   if (!pypi_cdk8s) {
     throw new Error(`missing context "pypi_cdk8s"`);
-  }
-  if (!pypi_cdk8s_plus) {
-    throw new Error(`missing context "pypi_cdk8s_plus"`);
   }
 
   execSync('pipenv lock --clear')
@@ -30,7 +27,6 @@ exports.post = options => {
 
   // these are more akward to put in the Pipfile since they can be local wheel files
   execSync(`pipenv install --pre ${pypi_cdk8s}`, { stdio: 'inherit' });
-  execSync(`pipenv install --pre ${pypi_cdk8s_plus}`, { stdio: 'inherit' });
 
   chmodSync('main.py', '700');
 

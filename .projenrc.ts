@@ -45,7 +45,6 @@ const project = new typescript.TypeScriptProject({
   },
   deps: [
     'cdk8s',
-    'cdk8s-plus-22',
     'codemaker',
     'constructs',
     'fs-extra@^8',
@@ -92,6 +91,7 @@ const project = new typescript.TypeScriptProject({
 project.addFields({
   exports: {
     './plugins': './lib/plugins/index.js',
+    './package.json': './package.json',
   },
 });
 

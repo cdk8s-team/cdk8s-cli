@@ -123,10 +123,6 @@
       "type": "runtime"
     },
     {
-      "name": "cdk8s-plus-22",
-      "type": "runtime"
-    },
-    {
       "name": "codemaker",
       "type": "runtime"
     },

@@ -89,7 +89,7 @@ function runSteps(task: string, nodeVersion: string, python: boolean, go: boolea
       name: 'Set up Go',
       uses: 'actions/setup-go@v2',
       with: {
-        'go-version': '1.16',
+        'go-version': '1.18',
       },
     });
   }

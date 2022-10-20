@@ -1569,17 +1569,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s-plus-22@^2.0.0-rc.154:
-  version "2.0.0-rc.154"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-22/-/cdk8s-plus-22-2.0.0-rc.154.tgz#a145e5446a9b9ba663733e3bc37ebb996ca2cdec"
-  integrity sha512-vTx/MNkZTRYD5/J/kkevnBmRySHdZi/2Vuse7IQnKimK+g+jUlevlTqSVsKDzQZiqwjpN+fSMzxOAEec1Txe8A==
-  dependencies:
-    minimatch "^3.1.2"
-
-cdk8s@^2.5.21:
-  version "2.5.21"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.5.21.tgz#791a1d5a5d0db1bd037d87f141d0d85af1465968"
-  integrity sha512-vlRlQbsdGKDbV3xeYa29ow6uRC0PFJCRcU1pQ+n8LsQ7LuqnsRc5JZdCqaeicP8tRl1OaI4QcnYHJxmc/Hhivw==
+cdk8s@^1.8.20:
+  version "1.8.20"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.8.20.tgz#b131c5d66470e985949a6cefb852e31b4ecaa468"
+  integrity sha512-hp+B9+S5Suumwjo+nP8z8sGxQr3NxhVBedUjxnpUpgVhl33IRFKFItC+6LouW/Tiu75LZXH3a14Hs2rQ5/hN1w==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -1810,10 +1803,10 @@ console-control-strings@^1.1.0:
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
   integrity sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==
 
-constructs@^10.1.133:
-  version "10.1.133"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.1.133.tgz#5fb04fa6283bec999fdc27673df442f2a03c5d78"
-  integrity sha512-KZmT2ebsPXZnZnMhqfCd70ufdG7I2JSG2knsar4HdOZYzFnbUQ9oGueM3UL/jAkzQadVR0bArOET5KyixmFbIg==
+constructs@^3.4.129:
+  version "3.4.129"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.4.129.tgz#0cf7273ee96527f251c0a50ae6eba513c3c42435"
+  integrity sha512-/L5Fdhuk9hZ6Y89So/AI8RZ3tu5lihbwbdGnsSO2TMQgpHMbBBiF6tFqom9F+k4B4xOAXlbrUyidAUM2hafGIA==
 
 conventional-changelog-angular@^5.0.12:
   version "5.0.13"
