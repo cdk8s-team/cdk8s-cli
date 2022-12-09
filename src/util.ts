@@ -40,7 +40,9 @@ export async function mkdtemp(closure: (dir: string) => Promise<void>) {
 }
 
 export async function synthApp(command: string, outdir: string, stdout: boolean, metadata: boolean): Promise<SynthesizedApp> {
-  console.log('Synthesizing application');
+  if (!stdout) {
+    console.log('Synthesizing application');
+  }
   await shell(command, [], {
     shell: true,
     env: {
