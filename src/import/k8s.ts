@@ -5,11 +5,11 @@ import { CodeMaker } from 'codemaker';
 import { JSONSchema4 } from 'json-schema';
 
 import { TypeGenerator } from 'json2jsii';
-import { ImportSpec } from '../config';
-import { download } from '../util';
 import { GenerateOptions, ImportBase } from './base';
 import { ApiObjectDefinition, emitHeader, generateConstruct, getPropsTypeName, getTypeName } from './codegen';
 import { parseApiTypeName, safeParseJsonSchema } from './k8s-util';
+import { ImportSpec } from '../config';
+import { download } from '../util';
 
 
 export const DEFAULT_API_VERSION = '1.25.0';
