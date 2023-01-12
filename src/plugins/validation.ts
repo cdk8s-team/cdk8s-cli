@@ -2,9 +2,9 @@ import * as fs from 'fs';
 import * as os from 'os';
 import { table } from 'table';
 import * as yaml from 'yaml';
+import { PluginManager } from './_manager';
 import { ValidationConfig } from '../config';
 import { SynthesizedApp } from '../util';
-import { PluginManager } from './_manager';
 
 /**
  * Context available to plugins during validation.
