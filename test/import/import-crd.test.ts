@@ -2,9 +2,9 @@ import * as os from 'os';
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
+import { testImportMatchSnapshot } from './util';
 import { Language } from '../../src/import/base';
 import { ManifestObjectDefinition, ImportCustomResourceDefinition } from '../../src/import/crd';
-import { testImportMatchSnapshot } from './util';
 
 const fixtures = path.join(__dirname, 'fixtures');
 
