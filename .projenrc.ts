@@ -81,7 +81,7 @@ const project = new Cdk8sTeamTypescriptProject({
     // is a change we are still not willing to make.
     exclude: ['yaml'],
     workflowOptions: {
-      schedule: javascript.UpgradeDependenciesSchedule.expressions(['0 0 * * *']),
+      schedule: javascript.UpgradeDependenciesSchedule.expressions(['0 2 * * *']),
     },
   },
 });
@@ -101,8 +101,8 @@ project.jest?.addIgnorePattern('/test/integ/');
 
 project.gitignore.exclude('.vscode/');
 
-// // add @types/node as a regular dependency since it's needed to during "import"
-// // to compile the generated jsii code.
+// add @types/node as a regular dependency since it's needed to during "import"
+// to compile the generated jsii code.
 project.deps.removeDependency('@types/node', DependencyType.BUILD);
 project.deps.addDependency('@types/node@^14', DependencyType.RUNTIME);
 
