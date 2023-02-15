@@ -45,12 +45,14 @@ junit.xml
 !/.github/workflows/upgrade-1.x.yml
 !/.github/pull_request_template.md
 !/test/
-!/tsconfig.json
 !/tsconfig.dev.json
 !/src/
 /lib
 /dist/
 !/.eslintrc.json
+.jsii
+tsconfig.json
+!/API.md
 .vscode/
 !/.backportrc.json
 !/.github/workflows/backport.yml
