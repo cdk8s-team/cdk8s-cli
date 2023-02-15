@@ -1,11 +1,15 @@
-import { Cdk8sTeamJsiiProject } from '@cdk8s/projen-common';
+import { Cdk8sTeamTypescriptProject } from '@cdk8s/projen-common';
 import { github, javascript, JsonFile, DependencyType } from 'projen';
 import { addIntegTests } from './projenrc/integ';
 
-const project = new Cdk8sTeamJsiiProject({
+const project = new Cdk8sTeamTypescriptProject({
   projenrcTs: true,
   name: 'cdk8s-cli',
   description: 'This is the command line tool for Cloud Development Kit (CDK) for Kubernetes (cdk8s).',
+
+  // no need, we are configuring explicit exports.
+  entrypoint: '',
+
   keywords: [
     'k8s',
     'cdk8s',
@@ -97,8 +101,8 @@ project.jest?.addIgnorePattern('/test/integ/');
 
 project.gitignore.exclude('.vscode/');
 
-// add @types/node as a regular dependency since it's needed to during "import"
-// to compile the generated jsii code.
+// // add @types/node as a regular dependency since it's needed to during "import"
+// // to compile the generated jsii code.
 project.deps.removeDependency('@types/node', DependencyType.BUILD);
 project.deps.addDependency('@types/node@^14', DependencyType.RUNTIME);
 
