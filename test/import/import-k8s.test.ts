@@ -1,5 +1,5 @@
-import { ImportKubernetesApi } from '../../src/import/k8s';
 import { testImportMatchSnapshot } from './util';
+import { ImportKubernetesApi } from '../../src/import/k8s';
 
 const k8s = (v: string) =>
   testImportMatchSnapshot(`k8s@${v}`, async () => new ImportKubernetesApi({ apiVersion: v }));
