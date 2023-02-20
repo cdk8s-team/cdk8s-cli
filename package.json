@@ -1,6 +1,10 @@
 {
   "name": "cdk8s-cli",
   "description": "This is the command line tool for Cloud Development Kit (CDK) for Kubernetes (cdk8s).",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdk8s-team/cdk8s-cli.git"
+  },
   "bin": {
     "cdk8s": "bin/cdk8s"
   },
@@ -36,14 +40,13 @@
   },
   "author": {
     "name": "Amazon Web Services",
-    "url": "https://aws.amazon.com",
     "organization": false
   },
   "devDependencies": {
-    "@cdk8s/projen-common": "^0.0.237",
+    "@cdk8s/projen-common": "^0.0.251",
     "@types/fs-extra": "^8",
     "@types/glob": "^7.2.0",
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27",
     "@types/json-schema": "^7.0.11",
     "@types/semver": "^7.3.13",
     "@typescript-eslint/eslint-plugin": "^5",

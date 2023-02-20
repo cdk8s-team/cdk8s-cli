@@ -1,18 +1,12 @@
-import { Cdk8sCommon } from '@cdk8s/projen-common';
-import { github, typescript, JsonFile, DependencyType } from 'projen';
+import { Cdk8sTeamTypeScriptProject } from '@cdk8s/projen-common';
+import { github, JsonFile, DependencyType } from 'projen';
 import { addIntegTests } from './projenrc/integ';
 
-const project = new typescript.TypeScriptProject({
-  ...Cdk8sCommon.props,
-
+const project = new Cdk8sTeamTypeScriptProject({
   projenrcTs: true,
+  release: true,
   name: 'cdk8s-cli',
   description: 'This is the command line tool for Cloud Development Kit (CDK) for Kubernetes (cdk8s).',
-  repositoryUrl: 'https://github.com/cdk8s-team/cdk8s-cli.git',
-  projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
-  authorName: 'Amazon Web Services',
-  authorUrl: 'https://aws.amazon.com',
-  minNodeVersion: '14.17.0',
 
   // no need, we are configuring explicit exports.
   entrypoint: '',
@@ -26,9 +20,7 @@ const project = new typescript.TypeScriptProject({
     'automation',
     'containers',
   ],
-
   workflowBootstrapSteps: [{ run: 'pip3 install pipenv' }],
-
   defaultReleaseBranch: '2.x',
   majorVersion: 2,
   releaseBranches: {
@@ -37,8 +29,6 @@ const project = new typescript.TypeScriptProject({
       npmDistTag: 'latest-1',
     },
   },
-
-  releaseToNpm: true,
   bin: {
     cdk8s: 'bin/cdk8s',
   },
@@ -69,22 +59,10 @@ const project = new typescript.TypeScriptProject({
     'typescript-json-schema',
   ],
 
-  tsconfig: {
-    include: ['src/schemas/*.json'],
-  },
-
-  // run upgrade-dependencies workflow at a different hour than other cdk8s
-  // repos to decrease flakiness of integration tests caused by new versions of
-  // cdk8s and cdk8s+ being published to different languages at the same time
-  depsUpgradeOptions: {
-    // the latest versions of yaml require node > 12, which
-    // is a change we are still not willing to make.
-    exclude: ['yaml'],
-    workflowOptions: {
-      schedule: Cdk8sCommon.upgradeScheduleFor('cdk8s-cli'),
-    },
-  },
 });
+
+project.tsconfig?.addInclude('src/schemas/*.json');
+project.tsconfigDev.addInclude('src/schemas/*.json');
 
 //
 // see https://nodejs.org/api/packages.html#exports
@@ -100,8 +78,6 @@ project.addFields({
 project.jest?.addIgnorePattern('/test/integ/');
 
 project.gitignore.exclude('.vscode/');
-
-new Cdk8sCommon(project);
 
 // add @types/node as a regular dependency since it's needed to during "import"
 // to compile the generated jsii code.
