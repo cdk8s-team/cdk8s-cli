@@ -43,7 +43,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@cdk8s/projen-common": "^0.0.242",
+    "@cdk8s/projen-common": "^0.0.251",
     "@types/fs-extra": "^8",
     "@types/glob": "^7.2.0",
     "@types/jest": "^27",

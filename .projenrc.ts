@@ -1,9 +1,10 @@
-import { Cdk8sTeamTypescriptProject } from '@cdk8s/projen-common';
-import { github, javascript, JsonFile, DependencyType } from 'projen';
+import { Cdk8sTeamTypeScriptProject } from '@cdk8s/projen-common';
+import { github, JsonFile, DependencyType } from 'projen';
 import { addIntegTests } from './projenrc/integ';
 
-const project = new Cdk8sTeamTypescriptProject({
+const project = new Cdk8sTeamTypeScriptProject({
   projenrcTs: true,
+  release: true,
   name: 'cdk8s-cli',
   description: 'This is the command line tool for Cloud Development Kit (CDK) for Kubernetes (cdk8s).',
 
@@ -58,33 +59,10 @@ const project = new Cdk8sTeamTypescriptProject({
     'typescript-json-schema',
   ],
 
-  tsconfig: {
-    compilerOptions: {
-      declaration: true,
-      esModuleInterop: true,
-      lib: [
-        'es2019',
-      ],
-      noEmitOnError: false,
-      target: 'ES2019',
-    },
-    include: [
-      'src/schemas/*.json',
-    ],
-  },
-
-  // run upgrade-dependencies workflow at a different hour than other cdk8s
-  // repos to decrease flakiness of integration tests caused by new versions of
-  // cdk8s and cdk8s+ being published to different languages at the same time
-  depsUpgradeOptions: {
-    // the latest versions of yaml require node > 12, which
-    // is a change we are still not willing to make.
-    exclude: ['yaml'],
-    workflowOptions: {
-      schedule: javascript.UpgradeDependenciesSchedule.expressions(['0 2 * * *']),
-    },
-  },
 });
+
+project.tsconfig?.addInclude('src/schemas/*.json');
+project.tsconfigDev.addInclude('src/schemas/*.json');
 
 //
 // see https://nodejs.org/api/packages.html#exports
