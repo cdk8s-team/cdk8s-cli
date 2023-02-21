@@ -4,7 +4,7 @@ name: upgrade-1.x
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: 0 2 * * *
+    - cron: 0 0 * * *
 jobs:
   upgrade:
     name: Upgrade
