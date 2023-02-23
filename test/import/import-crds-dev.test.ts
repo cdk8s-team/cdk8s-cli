@@ -1,10 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { mocked } from 'ts-jest/utils';
+import { expectImportMatchSnapshot } from './util';
 import { ImportCustomResourceDefinition } from '../../src/import/crd';
 import { matchCrdsDevUrl } from '../../src/import/crds-dev';
 import { download } from '../../src/util';
-import { expectImportMatchSnapshot } from './util';
 
 jest.mock('../../src/util', () => {
   const mod = jest.requireActual('../../src/util');

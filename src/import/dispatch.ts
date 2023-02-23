@@ -1,8 +1,8 @@
-import { ImportSpec } from '../config';
 import { ImportBase, ImportOptions } from './base';
 import { ImportCustomResourceDefinition } from './crd';
 import { matchCrdsDevUrl } from './crds-dev';
 import { ImportKubernetesApi } from './k8s';
+import { ImportSpec } from '../config';
 
 export async function importDispatch(imports: ImportSpec[], argv: any, options: ImportOptions) {
   for (const importSpec of imports) {
