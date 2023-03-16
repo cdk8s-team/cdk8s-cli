@@ -42,7 +42,7 @@ class Command implements yargs.CommandModule {
 
     if (stdout) {
       await mkdtemp(async tempDir => {
-        const app = await synthApp(command, tempDir, stdout, validate);
+        const app = await synthApp(command, tempDir, stdout, validations != undefined);
         for (const f of app.manifests) {
           fs.createReadStream(f).pipe(process.stdout);
         }
@@ -52,7 +52,7 @@ class Command implements yargs.CommandModule {
         }
       });
     } else {
-      const manifests = await synthApp(command, outdir, stdout, validate);
+      const manifests = await synthApp(command, outdir, stdout, validations != undefined);
       if (validations) {
         const pluginManager = new PluginManager(pluginsDir);
         await validateApp(manifests, stdout, validations, pluginManager, reportFile);
