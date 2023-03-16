@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import { Config, ValidationConfig } from '../../src/config';
-import { mkdtemp } from '../../src/util';
+import { findConstructMetadata, mkdtemp } from '../../src/util';
 
 beforeEach(() => {
   // resetting so that every test can use a different config file,
@@ -207,6 +207,36 @@ describe('validations', () => {
 
   });
 
+  test('construct metadata is recorded by default when there are validations', async () => {
+
+    const pluginPath = path.join(__dirname, '__resources__', 'validation-plugin');
+    const validations: ValidationConfig[] = [{
+      package: pluginPath,
+      version: '0.0.0',
+      class: 'MockValidation',
+      properties: {
+        fail: false,
+      },
+    }];
+    await synth({
+      validations,
+      postSynth: async (dir: string) => {
+        expect(findConstructMetadata(path.join(dir, 'dist/')));
+      },
+    });
+  });
+
+  test('construct metadata is NOT recorded by default when there are no validations', async () => {
+
+    const validations = undefined;
+    await synth({
+      validations,
+      postSynth: async (dir: string) => {
+        expect(findConstructMetadata(path.join(dir, 'dist/'))).toBeUndefined();
+      },
+    });
+  });
+
   test('synth will not write the validation reports to an existing file', async () => {
 
     const pluginPath = path.join(__dirname, '__resources__', 'validation-plugin');
@@ -279,7 +309,7 @@ describe('validations', () => {
 
 interface SynthOptions {
 
-  readonly validations: string | ValidationConfig[];
+  readonly validations?: string | ValidationConfig[];
   readonly validate?: boolean;
   readonly stdout?: boolean;
   readonly reportsFile?: string;
