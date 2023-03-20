@@ -256,7 +256,7 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth({ validations })).rejects.toThrow(/Must be a full url with/);
+    await expect(() => synth({ validations })).rejects.toThrow(/ERR_INVALID_URL/);
 
   });
 
