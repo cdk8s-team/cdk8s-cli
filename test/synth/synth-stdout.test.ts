@@ -256,7 +256,10 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth({ validations })).rejects.toThrow(/Must be a full url with/);
+    // to cover both node18 and below, which have different error messages
+    // in this case.
+    const re = new RegExp('Must be a full url|ERR_INVALID_URL');
+    await expect(() => synth({ validations })).rejects.toThrow(re);
 
   });
 
