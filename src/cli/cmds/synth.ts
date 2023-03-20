@@ -39,10 +39,11 @@ class Command implements yargs.CommandModule {
     }
 
     const validations = validate ? await fetchValidations() : undefined;
+    const recordConstructMetadata = !(validations == undefined || validations.length == 0);
 
     if (stdout) {
       await mkdtemp(async tempDir => {
-        const app = await synthApp(command, tempDir, stdout, validate);
+        const app = await synthApp(command, tempDir, stdout, recordConstructMetadata);
         for (const f of app.manifests) {
           fs.createReadStream(f).pipe(process.stdout);
         }
@@ -52,7 +53,7 @@ class Command implements yargs.CommandModule {
         }
       });
     } else {
-      const manifests = await synthApp(command, outdir, stdout, validate);
+      const manifests = await synthApp(command, outdir, stdout, recordConstructMetadata);
       if (validations) {
         const pluginManager = new PluginManager(pluginsDir);
         await validateApp(manifests, stdout, validations, pluginManager, reportFile);
