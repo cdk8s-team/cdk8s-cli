@@ -17,7 +17,7 @@ exports.post = ctx => {
       '@types/jest@26',
       'jest@26',
       'ts-jest@26',
-      'typescript'
+      'typescript@4.9.5'
   ], true);
 
   const env = { ...process.env };
