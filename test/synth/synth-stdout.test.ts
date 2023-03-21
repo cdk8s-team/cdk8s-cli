@@ -297,9 +297,11 @@ describe('validations', () => {
       },
     }];
 
-    // to cover both node18 and below, which have different error messages
-    // in this case.
-    const re = new RegExp('Must be a full url|ERR_INVALID_URL');
+    const messageNode14 = 'invalid config registry';
+    const messageNode16 = messageNode14;
+    const messageNode18 = 'ERR_INVALID_URL';
+
+    const re = new RegExp(`${messageNode14}|${messageNode18}|${messageNode16}`);
     await expect(() => synth({ validations })).rejects.toThrow(re);
 
   });
