@@ -43,7 +43,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@cdk8s/projen-common": "^0.0.294",
+    "@cdk8s/projen-common": "^0.0.296",
     "@types/fs-extra": "^8",
     "@types/glob": "^7.2.0",
     "@types/jest": "^27",
@@ -93,7 +93,7 @@
     "tools"
   ],
   "engines": {
-    "node": ">= 14.17.0"
+    "node": ">= 14.18.0"
   },
   "license": "Apache-2.0",
   "version": "0.0.0",
