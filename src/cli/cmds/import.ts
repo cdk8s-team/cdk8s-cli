@@ -1,9 +1,9 @@
 import * as yargs from 'yargs';
-import { readConfigSync, ImportSpec } from '../../config';
+import { readConfigSync, ImportSpec, addImportToConfig } from '../../config';
 import { importDispatch } from '../../import/dispatch';
 import { DEFAULT_API_VERSION } from '../../import/k8s';
 
-const config = readConfigSync();
+var config = readConfigSync();
 
 const DEFAULT_OUTDIR = 'imports';
 const LANGUAGES = ['typescript', 'python', 'java', 'go'];
@@ -42,12 +42,13 @@ class Command implements yargs.CommandModule {
 
 function parseImports(spec: string): ImportSpec {
   const splitImport = spec.split(':=');
+  var importSpec = undefined;
 
   // k8s@x.y.z
   // crd.yaml
   // url.com/crd.yaml
   if (splitImport.length === 1) {
-    return {
+    importSpec = {
       source: spec,
     };
   }
@@ -55,10 +56,18 @@ function parseImports(spec: string): ImportSpec {
   // crd=crd.yaml
   // crd=url.com/crd.yaml
   if (splitImport.length === 2) {
-    return {
+    importSpec = {
       moduleNamePrefix: splitImport[0],
       source: splitImport[1],
     };
+  }
+
+  if (importSpec != undefined) {
+    // if the spec is not in the config imports list, add it
+    if (!config.imports?.includes(importSpec.source)) {
+      config = addImportToConfig(importSpec.source);
+    }
+    return importSpec;
   }
 
   throw new Error('Unable to parse import specification. Syntax is [NAME:=]SPEC');

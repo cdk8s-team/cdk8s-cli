@@ -44,3 +44,21 @@ export function readConfigSync(): Config {
   }
   return config;
 }
+
+export function addImportToConfig(newImport: string): Config {
+
+  var config: Config = readConfigSync();
+  var importsList: string[] = config.imports ?? [];
+  importsList.push(newImport);
+
+  if (fs.existsSync(CONFIG_FILE)) {
+    config = {
+      ...config,
+      imports: importsList,
+    };
+
+    void fs.outputFile(CONFIG_FILE, yaml.stringify(config));
+  }
+
+  return readConfigSync();
+}
