@@ -45,19 +45,20 @@ export function readConfigSync(): Config {
   return config;
 }
 
-export function addImportToConfig(newImport: string): Config {
+export function addImportToConfig(source: string): Config {
 
-  var config: Config = readConfigSync();
-  var importsList: string[] = config.imports ?? [];
-  importsList.push(newImport);
+  let config: Config = readConfigSync();
+  let importsList = config.imports ?? [];
 
-  if (fs.existsSync(CONFIG_FILE)) {
-    config = {
-      ...config,
-      imports: importsList,
-    };
-
-    void fs.outputFile(CONFIG_FILE, yaml.stringify(config));
+  if (!config.imports?.includes(source)) {
+    importsList.push(source);
+    if (fs.existsSync(CONFIG_FILE)) {
+      config = {
+        ...config,
+        imports: importsList,
+      };
+      void fs.outputFile(CONFIG_FILE, yaml.stringify(config));
+    }
   }
 
   return readConfigSync();
