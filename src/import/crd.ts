@@ -5,7 +5,7 @@ import { CodeMaker, toPascalCase } from 'codemaker';
 import { TypeGenerator } from 'json2jsii';
 import { GenerateOptions, ImportBase } from './base';
 import { emitHeader, generateConstruct } from './codegen';
-import { ImportSpec } from '../config';
+import { ImportSpec, addImportToConfig } from '../config';
 import { SafeReviver } from '../reviver';
 import { download, safeParseYaml } from '../util';
 
@@ -108,6 +108,9 @@ export class ImportCustomResourceDefinition extends ImportBase {
   public static async fromSpec(importSpec: ImportSpec): Promise<ImportCustomResourceDefinition> {
     const { source } = importSpec;
     const manifest = await download(source);
+
+    // add import to config file if not already there
+    addImportToConfig(source);
     return new ImportCustomResourceDefinition(safeParseCrds(manifest));
   }
 
