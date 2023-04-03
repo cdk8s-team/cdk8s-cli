@@ -40,7 +40,7 @@ class Command implements yargs.CommandModule {
   }
 }
 
-export function parseImports(spec: string): ImportSpec {
+function parseImports(spec: string): ImportSpec {
   const splitImport = spec.split(':=');
 
   // k8s@x.y.z
