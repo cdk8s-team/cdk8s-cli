@@ -32,22 +32,25 @@ export interface Config {
 const DEFAULTS: Config = {
   output: 'dist',
   pluginsDirectory: path.join(os.homedir(), '.cdk8s', 'plugins'),
+  imports: ['k8s'],
 };
 
-export function readConfigSync(): Config {
+export function readConfigSync(filePath?: string): Config {
   let config: Config = DEFAULTS;
-  if (fs.existsSync(CONFIG_FILE)) {
+  const fullFilePath = filePath ? path.join(filePath, CONFIG_FILE) : CONFIG_FILE;
+  if (fs.existsSync(fullFilePath)) {
     config = {
       ...config,
-      ...yaml.parse(fs.readFileSync(CONFIG_FILE, 'utf-8')),
+      ...yaml.parse(fs.readFileSync(fullFilePath, 'utf-8')),
     };
   }
   return config;
 }
 
-export function addImportToConfig(source: string): Config {
+export function addImportToConfig(source: string, filePath?: string): Config {
 
-  let config: Config = readConfigSync();
+  const fullFilePath = filePath ? path.join(filePath, CONFIG_FILE) : CONFIG_FILE;
+  let config: Config = readConfigSync(fullFilePath);
   let importsList = config.imports ?? [];
 
   if (!config.imports?.includes(source)) {
@@ -57,9 +60,9 @@ export function addImportToConfig(source: string): Config {
         ...config,
         imports: importsList,
       };
-      void fs.outputFile(CONFIG_FILE, yaml.stringify(config));
+      void fs.outputFile(fullFilePath, yaml.stringify(config));
     }
   }
 
-  return readConfigSync();
+  return readConfigSync(fullFilePath);
 }
