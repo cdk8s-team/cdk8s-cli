@@ -105,12 +105,12 @@ export class CustomResourceDefinition {
 }
 
 export class ImportCustomResourceDefinition extends ImportBase {
-  public static async fromSpec(importSpec: ImportSpec): Promise<ImportCustomResourceDefinition> {
+  public static async fromSpec(importSpec: ImportSpec, configFilePath?: string): Promise<ImportCustomResourceDefinition> {
     const { source } = importSpec;
     const manifest = await download(source);
 
     // add import to config file if not already there
-    addImportToConfig(source);
+    addImportToConfig(source, configFilePath);
     return new ImportCustomResourceDefinition(safeParseCrds(manifest));
   }
 
