@@ -55,7 +55,7 @@ export function addImportToConfig(source: string, filePath?: string): Config {
 
   if (!config.imports?.includes(source)) {
     importsList.push(source);
-    if (fs.existsSync(CONFIG_FILE)) {
+    if (fs.existsSync(fullFilePath)) {
       config = {
         ...config,
         imports: importsList,
