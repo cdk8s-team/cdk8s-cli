@@ -39,30 +39,35 @@ export function readConfigSync(filePath?: string): Config {
   let config: Config = DEFAULTS;
   const fullFilePath = filePath ? path.join(filePath, CONFIG_FILE) : CONFIG_FILE;
   if (fs.existsSync(fullFilePath)) {
+    const parsedYaml: Config = yaml.parse(fs.readFileSync(fullFilePath, 'utf-8'));
     config = {
+      language: parsedYaml.language,
+      app: parsedYaml.app,
+      imports: parsedYaml.imports,
       ...config,
-      ...yaml.parse(fs.readFileSync(fullFilePath, 'utf-8')),
+      ...parsedYaml,
+      // yaml.parse(fs.readFileSync(fullFilePath, 'utf-8')),
     };
   }
   return config;
 }
 
-export function addImportToConfig(source: string, filePath?: string): Config {
-
+export async function addImportToConfig(source: string, filePath?: string): Promise<Config> {
   const fullFilePath = filePath ? path.join(filePath, CONFIG_FILE) : CONFIG_FILE;
-  let config: Config = readConfigSync(fullFilePath);
-  let importsList = config.imports ?? [];
+  let curConfig = yaml.parse(fs.readFileSync(path.join(filePath ?? '', 'cdk8s.yaml'), 'utf-8'));
 
-  if (!config.imports?.includes(source)) {
+  if (!curConfig.imports?.includes(source)) {
+    const importsList = curConfig.imports;
     importsList.push(source);
-    if (fs.existsSync(fullFilePath)) {
-      config = {
-        ...config,
-        imports: importsList,
-      };
-      void fs.outputFile(fullFilePath, yaml.stringify(config));
-    }
+    let config = {
+      language: curConfig.language,
+      app: curConfig.app,
+      imports: importsList,
+      output: curConfig.outdir ?? DEFAULTS.output,
+      pluginsDirectory: curConfig.pluginsDirectory ?? DEFAULTS.pluginsDirectory,
+    };
+    await fs.outputFile(fullFilePath, yaml.stringify(config));
+    return config;
   }
-
-  return readConfigSync(fullFilePath);
+  return curConfig;
 }
