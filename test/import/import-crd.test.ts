@@ -11,7 +11,6 @@ const fixtures = path.join(__dirname, 'fixtures');
 async function withTempFixture(data: any, test: (fixture: string, cwd: string) => Promise<void>) {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'cdk8s-import-test'));
   const fixture = path.join(tempDir, 'fixture.yaml');
-
   try {
     if (Array.isArray(data)) {
       fs.writeFileSync(fixture, data.map(d => yaml.stringify(d)).join('\n---\n'));
