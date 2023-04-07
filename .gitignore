@@ -63,7 +63,7 @@ junit.xml
 !/.github/workflows/security.yml
 !/.github/workflows/triage.yml
 !/.github/workflows/stale.yml
-.vscode/
 !/.backportrc.json
 !/.github/workflows/backport.yml
+.vscode/
 !/.github/workflows/integ.yml
