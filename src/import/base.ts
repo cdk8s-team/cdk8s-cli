@@ -30,6 +30,11 @@ export interface ImportOptions {
    * k8s imports will add a "Kube" prefix by default.
    */
   readonly classNamePrefix?: string;
+
+  /**
+   * Path that contains the cdk8s.yaml output file.
+   */
+  readonly configFilePath?: string;
 }
 
 export interface GenerateOptions {

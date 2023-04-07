@@ -2,6 +2,3 @@ language: typescript
 app: node main.js
 imports:
   - k8s
-  - https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/deploy/crds/jenkins.io_jenkins_crd.yaml
-output: dist
-pluginsDirectory: /home/runner/.cdk8s/plugins

@@ -18,7 +18,7 @@ export async function importDispatch(imports: ImportSpec[], argv: any, options: 
       moduleNamePrefix: importSpec.moduleNamePrefix,
       ...options,
     });
-    await addImportToConfig(importSpec.source);
+    await addImportToConfig(importSpec.source, options.configFilePath);
   }
 }
 
