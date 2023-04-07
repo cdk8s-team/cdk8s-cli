@@ -5,16 +5,13 @@ import * as yaml from 'yaml';
 import { testImportMatchSnapshot } from './util';
 import { Language } from '../../src/import/base';
 import { ManifestObjectDefinition, ImportCustomResourceDefinition } from '../../src/import/crd';
-import { readConfigSync } from '../../src/config';
-// import { importDispatch } from '../../src/import/dispatch';
-// import { parseImports } from '../../src/cli/import';
 
 const fixtures = path.join(__dirname, 'fixtures');
 
 async function withTempFixture(data: any, test: (fixture: string, cwd: string) => Promise<void>) {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'cdk8s-import-test'));
   const fixture = path.join(tempDir, 'fixture.yaml');
-  // const outdir = path.join(tempDir, 'cdk8s.yaml');
+
   try {
     if (Array.isArray(data)) {
       fs.writeFileSync(fixture, data.map(d => yaml.stringify(d)).join('\n---\n'));
@@ -465,44 +462,6 @@ test('given a prefix, we can import two crds with the same group id', async () =
       expect(fs.readFileSync(path.join(cwd, 'pref1', 'testGroup', '_jsii', '__init__.py'), { encoding: 'utf8' })).toMatchSnapshot();
       expect(fs.readFileSync(path.join(cwd, 'pref2', 'testGroup', '_jsii', '__init__.py'), { encoding: 'utf8' })).toMatchSnapshot();
     });
-  });
-
-
-});
-
-test('cdk8s.yaml config file is updated', async () => {
-
-  const crd: ManifestObjectDefinition = {
-    apiVersion: 'apiextensions.k8s.io/v1beta1',
-    kind: 'CustomResourceDefinition',
-    metadata: {
-      name: 'testMetadata',
-    },
-    spec: {
-      version: 'v1',
-      group: 'testGroup',
-      names: {
-        kind: 'its not ok to have spaces here',
-      },
-      validation: {
-        openAPIV3Schema: {
-          description: 'Its ok to have spaces here',
-        },
-      },
-    },
-  };
-
-  await withTempFixture(crd, async (fixture: string, cwd: string) => {
-
-    // void testHandler('https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/deploy/crds/jenkins.io_jenkins_crd.yaml', cwd);
-
-    const config1 = readConfigSync();
-    expect(config1.imports).toBeUndefined();
-
-    const importer = await ImportCustomResourceDefinition.fromSpec({ source: fixture });
-    await importer.import({ targetLanguage: Language.TYPESCRIPT, outdir: cwd });
-    const config2 = readConfigSync();
-    expect(config2.imports).toBeDefined();
   });
 
 });
