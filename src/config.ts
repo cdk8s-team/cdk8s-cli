@@ -41,33 +41,27 @@ export function readConfigSync(filePath?: string): Config {
   if (fs.existsSync(fullFilePath)) {
     const parsedYaml: Config = yaml.parse(fs.readFileSync(fullFilePath, 'utf-8'));
     config = {
-      language: parsedYaml.language,
-      app: parsedYaml.app,
-      imports: parsedYaml.imports,
       ...config,
       ...parsedYaml,
-      // yaml.parse(fs.readFileSync(fullFilePath, 'utf-8')),
     };
   }
   return config;
 }
 
-export async function addImportToConfig(source: string, filePath?: string): Promise<Config> {
+export async function addImportToConfig(source: string, filePath?: string) {
   const fullFilePath = filePath ? path.join(filePath, CONFIG_FILE) : CONFIG_FILE;
-  let curConfig = yaml.parse(fs.readFileSync(path.join(filePath ?? '', 'cdk8s.yaml'), 'utf-8'));
+  let curConfig = readConfigSync(filePath);
 
   if (!curConfig.imports?.includes(source)) {
-    const importsList = curConfig.imports;
+    const importsList = curConfig.imports ?? [];
     importsList.push(source);
     let config = {
       language: curConfig.language,
       app: curConfig.app,
       imports: importsList,
-      output: curConfig.outdir ?? DEFAULTS.output,
+      output: curConfig.output ?? DEFAULTS.output,
       pluginsDirectory: curConfig.pluginsDirectory ?? DEFAULTS.pluginsDirectory,
     };
     await fs.outputFile(fullFilePath, yaml.stringify(config));
-    return config;
   }
-  return curConfig;
 }
