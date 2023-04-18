@@ -4466,10 +4466,10 @@ jsii-rosetta@^1.80.0:
     workerpool "^6.4.0"
     yargs "^16.2.0"
 
-jsii-srcmak@^0.1.885:
-  version "0.1.885"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.885.tgz#58368e7b1130426c8351f5511c7dd72fb30e9044"
-  integrity sha512-rMqHWwvgKtyOl0RKlb4xKBXbTITHw2MJP/rhxL7FLfggq05Qv8YoD91G8JbBc6RpsMSoiAFODbte1kHxHbKB1Q==
+jsii-srcmak@^0.1.886:
+  version "0.1.886"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.886.tgz#b5273746010c6c8b31d85e73632a1baff618081b"
+  integrity sha512-yAmZ8v+Li6HF/WbPL2On4js+FGiBX+hqV95yheblE0z4p/+94m8CvbEdWPfS8WHeIpfjdgXXLkDKQls2uU/VCw==
   dependencies:
     fs-extra "^9.1.0"
     jsii "^1.80.0"
