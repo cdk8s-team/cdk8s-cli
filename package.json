@@ -58,7 +58,7 @@
     "jest": "^27",
     "jest-junit": "^15",
     "npm-check-updates": "^16",
-    "projen": "^0.71.22",
+    "projen": "^0.71.23",
     "standard-version": "^9",
     "ts-jest": "^27",
     "ts-node": "^10.9.1",
@@ -79,7 +79,7 @@
     "semver": "^7.5.0",
     "sscaff": "^1.2.274",
     "table": "^6.8.1",
-    "yaml": "2.2.1",
+    "yaml": "2.2.2",
     "yargs": "^15"
   },
   "keywords": [
