@@ -22,15 +22,15 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
     }
   }
 
-  // run all init tests on node 14
+  // run all init tests on node 16
   integWorkflow.addJob('init', {
     runsOn: ['ubuntu-latest'],
     permissions: { contents: github.workflows.JobPermission.READ },
-    steps: runSteps(initTask.name, '14', true, true),
+    steps: runSteps(initTask.name, '16', true, true),
   });
 
-  // run typescript app on node 16 and 18 as well
-  const nodeVersions = [16, 18];
+  // run typescript app on node 18 as well
+  const nodeVersions = [18];
   integWorkflow.addJob('init-typescript-app', {
     runsOn: ['ubuntu-latest'],
     strategy: {
@@ -58,10 +58,10 @@ function jest(args: string) {
 
 function runSteps(task: string, nodeVersion: string, python: boolean, go: boolean): github.workflows.JobStep[] {
   const steps: github.workflows.JobStep[] = [
-    { uses: 'actions/checkout@v2' },
+    { uses: 'actions/checkout@v3' },
     {
       name: 'Set up Node.js',
-      uses: 'actions/setup-node@v2',
+      uses: 'actions/setup-node@v3',
       with: { 'node-version': nodeVersion },
     },
     {
@@ -73,7 +73,7 @@ function runSteps(task: string, nodeVersion: string, python: boolean, go: boolea
   if (python) {
     steps.push({
       name: 'Set up Python 3.x',
-      uses: 'actions/setup-python@v2',
+      uses: 'actions/setup-python@v4',
       with: {
         'python-version': '3.x',
       },
@@ -87,7 +87,7 @@ function runSteps(task: string, nodeVersion: string, python: boolean, go: boolea
   if (go) {
     steps.push({
       name: 'Set up Go',
-      uses: 'actions/setup-go@v2',
+      uses: 'actions/setup-go@v4',
       with: {
         'go-version': '1.18',
       },

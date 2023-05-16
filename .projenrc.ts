@@ -84,7 +84,7 @@ project.gitignore.exclude('.vscode/');
 // add @types/node as a regular dependency since it's needed to during "import"
 // to compile the generated jsii code.
 project.deps.removeDependency('@types/node', DependencyType.BUILD);
-project.deps.addDependency('@types/node@^14', DependencyType.RUNTIME);
+project.deps.addDependency('@types/node@^16', DependencyType.RUNTIME);
 
 const schemas = project.addTask('schemas');
 schemas.exec('ts-node scripts/crd.schema.ts');
