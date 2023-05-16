@@ -13,7 +13,7 @@ import { ValidationPlugin, ValidationContext, ValidationReport, Validation } fro
 import { SafeReviver } from './reviver';
 
 export async function shell(program: string, args: string[] = [], options: SpawnOptions = { }): Promise<string> {
-  const command = `"${program} ${args.join(' ')}" at ${path.resolve(options.cwd ?? '.')}`;
+  const command = `"${program} ${args.join(' ')}" at ${path.resolve(options.cwd?.toString() ?? '.')}`;
   return new Promise((ok, ko) => {
     const child = spawn(program, args, { stdio: ['inherit', 'pipe', 'inherit'], ...options });
     const data = new Array<Buffer>();
