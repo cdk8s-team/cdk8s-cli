@@ -97,7 +97,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^14",
+      "version": "^16",
       "type": "runtime"
     },
     {
