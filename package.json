@@ -33,7 +33,8 @@
     "test": "npx projen test",
     "test:watch": "npx projen test:watch",
     "unbump": "npx projen unbump",
-    "upgrade": "npx projen upgrade",
+    "upgrade-configuration": "npx projen upgrade-configuration",
+    "upgrade-dependencies": "npx projen upgrade-dependencies",
     "watch": "npx projen watch",
     "projen": "npx projen"
   },
@@ -42,7 +43,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@cdk8s/projen-common": "^0.0.341",
+    "@cdk8s/projen-common": "^0.0.343",
     "@types/fs-extra": "^8",
     "@types/glob": "^7.2.0",
     "@types/jest": "^27",
@@ -68,7 +69,7 @@
   "dependencies": {
     "@types/node": "^16",
     "ajv": "^8.12.0",
-    "cdk8s": "^2.7.65",
+    "cdk8s": "^2.7.67",
     "cdk8s-plus-25": "^2.7.30",
     "codemaker": "^1.81.0",
     "colors": "1.4.0",
