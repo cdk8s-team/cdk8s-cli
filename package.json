@@ -76,11 +76,11 @@
     "fs-extra": "^8",
     "jsii-pacmak": "^1.82.0",
     "jsii-srcmak": "^0.1.909",
-    "json2jsii": "^0.3.338",
+    "json2jsii": "^0.3.339",
     "semver": "^7.5.1",
     "sscaff": "^1.2.274",
     "table": "^6.8.1",
-    "yaml": "2.2.2",
+    "yaml": "2.3.0",
     "yargs": "^15"
   },
   "keywords": [
