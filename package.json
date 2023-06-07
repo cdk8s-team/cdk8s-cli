@@ -64,7 +64,7 @@
     "ts-jest": "^27",
     "ts-node": "^10.9.1",
     "typescript": "~4.9.5",
-    "typescript-json-schema": "^0.56.0"
+    "typescript-json-schema": "^0.57.0"
   },
   "dependencies": {
     "@types/node": "^16",
@@ -72,11 +72,11 @@
     "cdk8s": "^1.10.75",
     "codemaker": "^1.82.0",
     "colors": "1.4.0",
-    "constructs": "^3.4.317",
+    "constructs": "^3.4.319",
     "fs-extra": "^8",
     "jsii-pacmak": "^1.82.0",
-    "jsii-srcmak": "^0.1.913",
-    "json2jsii": "^0.3.354",
+    "jsii-srcmak": "^0.1.919",
+    "json2jsii": "^0.3.356",
     "semver": "^7.5.1",
     "sscaff": "^1.2.274",
     "table": "^6.8.1",
