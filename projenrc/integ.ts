@@ -12,13 +12,18 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
   initTask.exec(`yarn run ${project.packageTask.name}`);
   initTask.exec(jest('integ/init.test.ts'));
 
+  function addIntegTest(name: string) {
+    const task = project.addTask(`integ:init:${name}`);
+    task.exec(`yarn run ${project.compileTask.name}`);
+    task.exec(`yarn run ${project.packageTask.name}`);
+    task.exec(jest(`integ/init.test.ts -t ${name}`));
+  }
+
   const templatesDir = path.join(__dirname, '..', 'templates');
   for (const template of fs.readdirSync(templatesDir)) {
     if (fs.statSync(path.join(templatesDir, template)).isDirectory()) {
-      const task = project.addTask(`integ:init:${template}`);
-      task.exec(`yarn run ${project.compileTask.name}`);
-      task.exec(`yarn run ${project.packageTask.name}`);
-      task.exec(jest(`integ/init.test.ts -t ${template}`));
+      addIntegTest(`${template}-npm`);
+      addIntegTest(`${template}-yarn`);
     }
   }
 
@@ -26,7 +31,7 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
   integWorkflow.addJob('init', {
     runsOn: ['ubuntu-latest'],
     permissions: { contents: github.workflows.JobPermission.READ },
-    steps: runSteps(initTask.name, '16', true, true),
+    steps: runSteps([initTask.name], '16', true, true),
   });
 
   // run typescript app on node 18 as well
@@ -40,7 +45,7 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
     permissions: {
       contents: github.workflows.JobPermission.READ,
     },
-    steps: runSteps('integ:init:typescript-app', '${{ matrix.nodeVersion }}', false, false),
+    steps: runSteps(['integ:init:typescript-app-npm', 'integ:init:typescript-app-yarn'], '${{ matrix.nodeVersion }}', false, false),
   });
 
   project.autoMerge!.addConditions('status-success=init');
@@ -56,7 +61,7 @@ function jest(args: string) {
   return `jest --testPathIgnorePatterns "^((?!integ).)*$" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 ${args}`;
 };
 
-function runSteps(task: string, nodeVersion: string, python: boolean, go: boolean): github.workflows.JobStep[] {
+function runSteps(tasks: string[], nodeVersion: string, python: boolean, go: boolean): github.workflows.JobStep[] {
   const steps: github.workflows.JobStep[] = [
     { uses: 'actions/checkout@v3' },
     {
@@ -94,10 +99,11 @@ function runSteps(task: string, nodeVersion: string, python: boolean, go: boolea
     });
   }
 
-  steps.push({
-    name: 'Run integration tests',
-    run: `yarn run ${task}`,
-  },
-  );
+  for (const task of tasks) {
+    steps.push({
+      name: 'Run integration tests',
+      run: `yarn run ${task}`,
+    });
+  }
   return steps;
 }
