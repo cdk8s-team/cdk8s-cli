@@ -11,13 +11,16 @@ if (!existsSync(cli)) {
 
 const cliNpmdir = mkdtempSync(join(tmpdir(), 'cdk8s-cli-npm-'));
 const cliYarndir = mkdtempSync(join(tmpdir(), 'cdk8s-cli-yarn-'));
+const yarnCachedir = mkdtempSync(join(tmpdir(), 'cdk8s-cli-yarn-cache'));
 
 execSync(`npm install ${cli}`, {
   cwd: cliNpmdir,
   stdio: ['inherit', 'inherit', 'inherit'],
 });
 
-execSync(`yarn add ${cli}`, {
+// --cache-folder is used and points to an empty dir to prevent
+// yarn from installing cached versions of the built tarball (since the version is the same)
+execSync(`yarn add --cache-folder ${yarnCachedir} ${cli}`, {
   cwd: cliYarndir,
   stdio: ['inherit', 'inherit', 'inherit'],
 });
