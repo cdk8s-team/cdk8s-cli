@@ -99,7 +99,7 @@ function runSteps(tasks: string[], nodeVersion: string, python: boolean, go: boo
     });
   }
 
-  for (const task in tasks) {
+  for (const task of tasks) {
     steps.push({
       name: 'Run integration tests',
       run: `yarn run ${task}`,

@@ -28,7 +28,7 @@ jobs:
         with:
           go-version: "1.18"
       - name: Run integration tests
-        run: yarn run 0
+        run: yarn run integ:init
   init-typescript-app:
     runs-on: ubuntu-latest
     permissions:
@@ -42,9 +42,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Run integration tests
-        run: yarn run 0
+        run: yarn run integ:init:typescript-app-npm
       - name: Run integration tests
-        run: yarn run 1
+        run: yarn run integ:init:typescript-app-yarn
     strategy:
       fail-fast: false
       matrix:
