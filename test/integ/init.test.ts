@@ -9,30 +9,52 @@ if (!existsSync(cli)) {
   throw new Error(`Unable to find cli distribution at: ${cli}. Make sure you run 'npx projen package' before running this test`);
 }
 
-const clidir = mkdtempSync(join(tmpdir(), 'cdk8s-cli-'));
+const cliNpmdir = mkdtempSync(join(tmpdir(), 'cdk8s-cli-npm-'));
+const cliYarndir = mkdtempSync(join(tmpdir(), 'cdk8s-cli-yarn-'));
 
 execSync(`npm install ${cli}`, {
-  cwd: clidir,
+  cwd: cliNpmdir,
   stdio: ['inherit', 'inherit', 'inherit'],
 });
 
-test('typescript-app', () => {
-  init('typescript-app');
+execSync(`yarn add ${cli}`, {
+  cwd: cliYarndir,
+  stdio: ['inherit', 'inherit', 'inherit'],
 });
 
-test('go-app', () => {
-  init('go-app');
+test('typescript-app-npm', () => {
+  init('typescript-app', cliNpmdir);
 });
 
-test('java-app', () => {
-  init('java-app');
+test('go-app-npm', () => {
+  init('go-app', cliNpmdir);
 });
 
-test('python-app', () => {
-  init('python-app');
+test('java-app-npm', () => {
+  init('java-app', cliNpmdir);
 });
 
-function init(template: string) {
+test('python-app-npm', () => {
+  init('python-app', cliNpmdir);
+});
+
+test('typescript-app-yarn', () => {
+  init('typescript-app', cliYarndir);
+});
+
+test('go-app-yarn', () => {
+  init('go-app', cliYarndir);
+});
+
+test('java-app-yarn', () => {
+  init('java-app', cliYarndir);
+});
+
+test('python-app-yarn', () => {
+  init('python-app', cliYarndir);
+});
+
+function init(template: string, clidir: string) {
 
   const workdir = mkdtempSync(join(tmpdir(), 'cdk8s-init-test-'));
   execSync(`${clidir}/node_modules/.bin/cdk8s init ${template}`, {
