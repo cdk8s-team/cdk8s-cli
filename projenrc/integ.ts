@@ -12,13 +12,18 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
   initTask.exec(`yarn run ${project.packageTask.name}`);
   initTask.exec(jest('integ/init.test.ts'));
 
+  function addIntegTest(name: string) {
+    const task = project.addTask(`integ:init:${name}`);
+    task.exec(`yarn run ${project.compileTask.name}`);
+    task.exec(`yarn run ${project.packageTask.name}`);
+    task.exec(jest(`integ/init.test.ts -t ${name}`));
+  }
+
   const templatesDir = path.join(__dirname, '..', 'templates');
   for (const template of fs.readdirSync(templatesDir)) {
     if (fs.statSync(path.join(templatesDir, template)).isDirectory()) {
-      const task = project.addTask(`integ:init:${template}`);
-      task.exec(`yarn run ${project.compileTask.name}`);
-      task.exec(`yarn run ${project.packageTask.name}`);
-      task.exec(jest(`integ/init.test.ts -t ${template}`));
+      addIntegTest(`${template}-npm`);
+      addIntegTest(`${template}-yarn`);
     }
   }
 
