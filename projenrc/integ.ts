@@ -4,6 +4,8 @@ import { typescript, github } from 'projen';
 
 export function addIntegTests(project: typescript.TypeScriptProject) {
 
+  const oses = ['windows-latest', 'macos-latest', 'ubuntu-latest'];
+
   const integWorkflow = project.github!.addWorkflow('integ');
   integWorkflow.on({ pullRequest: {}, workflowDispatch: {} });
 
@@ -29,7 +31,15 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
 
   // run all init tests on node 16
   integWorkflow.addJob('init', {
-    runsOn: ['ubuntu-latest'],
+    runsOn: ['${{ matrix.os }}'],
+    strategy: {
+      failFast: false,
+      matrix: {
+        domain: {
+          os: oses,
+        },
+      },
+    },
     permissions: { contents: github.workflows.JobPermission.READ },
     steps: runSteps([initTask.name], '16', true, true),
   });
@@ -48,10 +58,12 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
     steps: runSteps(['integ:init:typescript-app-npm', 'integ:init:typescript-app-yarn'], '${{ matrix.nodeVersion }}', false, false),
   });
 
-  project.autoMerge!.addConditions('status-success=init');
-
   for (const nodeVersion of nodeVersions) {
     project.autoMerge!.addConditions(`status-success=init-typescript-app (${nodeVersion})`);
+  }
+
+  for (const os of oses) {
+    project.autoMerge!.addConditions(`status-success=init (${os})`);
   }
 
 }
