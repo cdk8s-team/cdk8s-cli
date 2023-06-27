@@ -54,11 +54,8 @@ export async function addImportToConfig(source: string, filePath?: string) {
     const importsList = curConfig.imports ?? [];
     importsList.push(source);
     let config = {
-      language: curConfig.language,
-      app: curConfig.app,
+      ...curConfig,
       imports: importsList,
-      output: curConfig.output ?? DEFAULTS.output,
-      pluginsDirectory: curConfig.pluginsDirectory ?? DEFAULTS.pluginsDirectory,
     };
     await fs.outputFile(fullFilePath, yaml.stringify(config));
   }
