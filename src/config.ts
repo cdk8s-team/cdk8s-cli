@@ -1,4 +1,3 @@
-import * as os from 'os';
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
@@ -31,7 +30,6 @@ export interface Config {
 
 const DEFAULTS: Config = {
   output: 'dist',
-  pluginsDirectory: path.join(os.homedir(), '.cdk8s', 'plugins'),
   imports: ['k8s'],
 };
 
