@@ -3,8 +3,10 @@ import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import { testImportMatchSnapshot } from './util';
-import { Language } from '../../src/import/base';
+import { readConfigSync, ImportSpec } from '../../src/config';
+import { Language, ImportOptions } from '../../src/import/base';
 import { ManifestObjectDefinition, ImportCustomResourceDefinition } from '../../src/import/crd';
+import { importDispatch } from '../../src/import/dispatch';
 
 const fixtures = path.join(__dirname, 'fixtures');
 
@@ -463,5 +465,54 @@ test('given a prefix, we can import two crds with the same group id', async () =
     });
   });
 
+
+});
+
+describe('cdk8s.yaml file', () => {
+  const jenkinsCRD: ImportSpec = {
+    source: 'https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/deploy/crds/jenkins.io_jenkins_crd.yaml',
+  };
+
+  const importOptions: ImportOptions = {
+    targetLanguage: Language.TYPESCRIPT,
+    outdir: path.join(__dirname, 'crd-imports'),
+  };
+
+  beforeEach(async () => {
+    // creates default cdk8s.yaml file at root of the project directory
+    const defaultConfigPath = path.join(__dirname, 'cdk8s-template.yaml');
+    const defaultConfig = yaml.parse(fs.readFileSync(defaultConfigPath, 'utf-8'));
+    await fs.outputFile('cdk8s.yaml', yaml.stringify(defaultConfig));
+  });
+
+  afterAll(async () => {
+    // deletes the cdk8s.yaml file created at the root of the project directory and crd-imports folder
+    await fs.unlink('cdk8s.yaml');
+    await fs.rmSync(path.join(__dirname, 'crd-imports'), { recursive: true, force: true });
+  });
+
+  test('can be read by default', async () => {
+    const config = readConfigSync();
+    expect(config.language).toEqual('typescript');
+    expect(config.app).toEqual('node main.js');
+    expect(config.imports?.length == 1).toBeTruthy();
+    expect(config.imports?.includes('k8s')).toBeTruthy();
+  });
+
+  test('is updated with new imports', async () => {
+    await importDispatch([jenkinsCRD], {}, importOptions);
+
+    const config = readConfigSync();
+    expect(config.imports?.length == 2).toBeTruthy();
+    expect(config.imports?.includes(jenkinsCRD.source)).toBeTruthy();
+  });
+
+  test('does not update with CRD that is imported twice', async () => {
+    await importDispatch([jenkinsCRD], {}, importOptions);
+    await importDispatch([jenkinsCRD], {}, importOptions);
+
+    const config = readConfigSync();
+    expect(config.imports?.length == 2).toBeTruthy();
+  });
 
 });
