@@ -1,3 +1,4 @@
+import * as os from 'os';
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
@@ -30,14 +31,14 @@ export interface Config {
 
 const DEFAULTS: Config = {
   output: 'dist',
+  pluginsDirectory: path.join(os.homedir(), '.cdk8s', 'plugins'),
   imports: ['k8s'],
 };
 
-export function readConfigSync(filePath?: string): Config {
+export function readConfigSync(): Config {
   let config: Config = DEFAULTS;
-  const fullFilePath = filePath ? path.join(filePath, CONFIG_FILE) : CONFIG_FILE;
-  if (fs.existsSync(fullFilePath)) {
-    const parsedYaml: Config = yaml.parse(fs.readFileSync(fullFilePath, 'utf-8'));
+  if (fs.existsSync(CONFIG_FILE)) {
+    const parsedYaml: Config = yaml.parse(fs.readFileSync(CONFIG_FILE, 'utf-8'));
     config = {
       ...config,
       ...parsedYaml,
@@ -46,17 +47,27 @@ export function readConfigSync(filePath?: string): Config {
   return config;
 }
 
-export async function addImportToConfig(source: string, filePath?: string) {
-  const fullFilePath = filePath ? path.join(filePath, CONFIG_FILE) : CONFIG_FILE;
-  let curConfig = readConfigSync(filePath);
+export async function addImportToConfig(source: string) {
+  let curConfig = readConfigSync();
 
   if (!curConfig.imports?.includes(source)) {
+
     const importsList = curConfig.imports ?? [];
     importsList.push(source);
     let config = {
       ...curConfig,
       imports: importsList,
     };
-    await fs.outputFile(fullFilePath, yaml.stringify(config));
+
+    // just adds the new import if the cdk8s.yaml file already exists
+    // if the cdk8s.yaml does not exist, then it creates it from the defaults
+    if (fs.existsSync(CONFIG_FILE)) {
+      const parsedYaml: Config = yaml.parse(fs.readFileSync(CONFIG_FILE, 'utf-8'));
+      config = {
+        ...parsedYaml,
+        imports: importsList,
+      };
+    }
+    await fs.outputFile(CONFIG_FILE, yaml.stringify(config));
   }
 }
