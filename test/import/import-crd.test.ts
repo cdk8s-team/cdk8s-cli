@@ -45,6 +45,101 @@ test('fails if CRDs api version is not supported', async () => {
   });
 });
 
+test('fails if multiple occurrences of the same CRD version exist in same doc', async () => {
+
+  const manifest: ManifestObjectDefinition = {
+    apiVersion: 'apiextensions.k8s.io/v1beta1',
+    kind: 'CustomResourceDefinition',
+    metadata: {
+      name: 'testMetadata',
+    },
+    spec: {
+      group: 'testGroup',
+      names: {
+        kind: 'testNameKind',
+      },
+      versions: [
+        {
+          name: 'v1',
+          schema: {
+            openAPIV3Schema: {
+              type: 'testObject',
+            },
+          },
+        },
+        {
+          name: 'v1',
+          schema: {
+            openAPIV3Schema: {
+              type: 'testObject',
+            },
+          },
+        },
+      ],
+    },
+  };
+  await withTempFixture(manifest, async (fixture: string) => {
+    await expect(() => ImportCustomResourceDefinition.fromSpec({ source: fixture })).rejects.toThrow('Found multiple occurrences of version v1 for testGroup/testnamekind');
+  });
+
+});
+
+test('fails if multiple occurrences of the same CRD version exist in multiple docs', async () => {
+
+  const d1: ManifestObjectDefinition = {
+    apiVersion: 'apiextensions.k8s.io/v1beta1',
+    kind: 'CustomResourceDefinition',
+    metadata: {
+      name: 'testMetadata',
+    },
+    spec: {
+      group: 'testGroup',
+      names: {
+        kind: 'testNameKind',
+      },
+      versions: [
+        {
+          name: 'v1',
+          schema: {
+            openAPIV3Schema: {
+              type: 'testObject',
+            },
+          },
+        },
+      ],
+    },
+  };
+
+  const d2: ManifestObjectDefinition = {
+    apiVersion: 'apiextensions.k8s.io/v1beta1',
+    kind: 'CustomResourceDefinition',
+    metadata: {
+      name: 'testMetadata',
+    },
+    spec: {
+      group: 'testGroup',
+      names: {
+        kind: 'testNameKind',
+      },
+      versions: [
+        {
+          name: 'v1',
+          schema: {
+            openAPIV3Schema: {
+              type: 'testObject',
+            },
+          },
+        },
+      ],
+    },
+  };
+
+  await withTempFixture([d1, d2], async (fixture: string) => {
+    await expect(() => ImportCustomResourceDefinition.fromSpec({ source: fixture })).rejects.toThrow('Found multiple occurrences of version v1 for testGroup/testnamekind');
+  });
+
+});
+
 test('fails if manifest does not have a "spec" field', async () => {
   const manifest = {
     apiVersion: 'apiextensions.k8s.io/v1beta1',
