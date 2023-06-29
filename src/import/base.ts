@@ -72,7 +72,7 @@ export abstract class ImportBase {
 
     for (const module of modules) {
       // output the name of the imported resource
-      // console.log(module.origName);
+      console.log(module.origName);
 
       const fileName = moduleNamePrefix ? `${moduleNamePrefix}-${module.name}.ts` : `${module.name}.ts`;
       code.openFile(fileName);
