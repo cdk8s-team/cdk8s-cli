@@ -50,7 +50,8 @@ export function readConfigSync(): Config {
 export async function addImportToConfig(source: string) {
   let curConfig = readConfigSync();
 
-  if (!curConfig.imports?.includes(source)) {
+  const currImports = curConfig.imports ?? [];
+  if (!currImports.includes(source)) {
 
     const importsList = curConfig.imports ?? [];
     importsList.push(source);
