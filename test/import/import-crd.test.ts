@@ -469,26 +469,25 @@ test('given a prefix, we can import two crds with the same group id', async () =
 });
 
 describe('cdk8s.yaml file', () => {
+
   const jenkinsCRD: ImportSpec = {
     source: 'https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/deploy/crds/jenkins.io_jenkins_crd.yaml',
   };
 
-  const importOptions: ImportOptions = {
-    targetLanguage: Language.TYPESCRIPT,
-    outdir: path.join(__dirname, 'crd-imports'),
-  };
+  let importOptions: ImportOptions;
 
   beforeEach(async () => {
-    // creates default cdk8s.yaml file at root of the project directory
+    // creates temp directory to run each test on
+    const tempDir = fs.mkdtempSync(os.tmpdir() + 'yaml-sync');
+    importOptions = {
+      targetLanguage: Language.TYPESCRIPT,
+      outdir: tempDir,
+    };
+
     const defaultConfigPath = path.join(__dirname, 'cdk8s-template.yaml');
+    process.chdir(tempDir);
     const defaultConfig = yaml.parse(fs.readFileSync(defaultConfigPath, 'utf-8'));
     await fs.outputFile('cdk8s.yaml', yaml.stringify(defaultConfig));
-  });
-
-  afterAll(async () => {
-    // deletes the cdk8s.yaml file created at the root of the project directory and crd-imports folder
-    await fs.unlink('cdk8s.yaml');
-    await fs.rmSync(path.join(__dirname, 'crd-imports'), { recursive: true, force: true });
   });
 
   test('can be read by default', async () => {
