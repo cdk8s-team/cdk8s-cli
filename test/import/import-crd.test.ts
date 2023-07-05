@@ -499,6 +499,12 @@ describe('cdk8s.yaml file', () => {
     expect(config.imports?.includes('k8s')).toBeTruthy();
   });
 
+  afterEach(() => {
+    if (tempDir) {
+      fs.removeSync(tempDir);
+    };
+  });
+
   test('is updated with new imports', async () => {
     await importDispatch([jenkinsCRD], {}, importOptions);
 
