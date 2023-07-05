@@ -50,25 +50,14 @@ export function readConfigSync(): Config {
 export async function addImportToConfig(source: string) {
   let curConfig = readConfigSync();
 
-  const currImports = curConfig.imports ?? [];
-  if (!currImports.includes(source)) {
-
+  const curImports = curConfig.imports ?? [];
+  if (!curImports.includes(source)) {
     const importsList = curConfig.imports ?? [];
     importsList.push(source);
     let config = {
       ...curConfig,
       imports: importsList,
     };
-
-    // just adds the new import if the cdk8s.yaml file already exists
-    // if the cdk8s.yaml does not exist, then it creates it from the defaults
-    if (fs.existsSync(CONFIG_FILE)) {
-      const parsedYaml: Config = yaml.parse(fs.readFileSync(CONFIG_FILE, 'utf-8'));
-      config = {
-        ...parsedYaml,
-        imports: importsList,
-      };
-    }
     await fs.outputFile(CONFIG_FILE, yaml.stringify(config));
   }
 }
