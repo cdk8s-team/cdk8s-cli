@@ -475,10 +475,11 @@ describe('cdk8s.yaml file', () => {
   };
 
   let importOptions: ImportOptions;
+  let tempDir: string;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     // creates temp directory to run each test on
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir() + 'yaml-sync'));
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir() + 'yaml-sync'));
     importOptions = {
       targetLanguage: Language.TYPESCRIPT,
       outdir: tempDir,
@@ -487,7 +488,7 @@ describe('cdk8s.yaml file', () => {
     const defaultConfigPath = path.join(__dirname, 'cdk8s-template.yaml');
     process.chdir(tempDir);
     const defaultConfig = yaml.parse(fs.readFileSync(defaultConfigPath, 'utf-8'));
-    await fs.outputFile('cdk8s.yaml', yaml.stringify(defaultConfig));
+    fs.outputFileSync('cdk8s.yaml', yaml.stringify(defaultConfig));
   });
 
   test('can be read by default', async () => {
