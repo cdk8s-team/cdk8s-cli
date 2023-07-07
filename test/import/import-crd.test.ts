@@ -475,11 +475,31 @@ describe('cdk8s.yaml file', () => {
   };
 
   let importOptions: ImportOptions;
-  let tempDir: string;
+  // let tempDir: string;
 
-  beforeEach(() => {
+  // beforeEach(() => {
+  //   // creates temp directory to run each test on
+  //   tempDir = fs.mkdtempSync(path.join(os.tmpdir() + 'yaml-sync'));
+  //   importOptions = {
+  //     targetLanguage: Language.TYPESCRIPT,
+  //     outdir: tempDir,
+  //   };
+
+  //   const defaultConfigPath = path.join(__dirname, 'cdk8s-template.yaml');
+  //   process.chdir(tempDir);
+  //   const defaultConfig = yaml.parse(fs.readFileSync(defaultConfigPath, 'utf-8'));
+  //   fs.outputFileSync('cdk8s.yaml', yaml.stringify(defaultConfig));
+  // });
+
+  // afterEach(() => {
+  //   if (tempDir) {
+  //     fs.removeSync(tempDir);
+  //   };
+  // });
+
+  test('is updated with new imports', async () => {
     // creates temp directory to run each test on
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir() + 'yaml-sync'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir() + 'yaml-sync'));
     importOptions = {
       targetLanguage: Language.TYPESCRIPT,
       outdir: tempDir,
@@ -489,28 +509,44 @@ describe('cdk8s.yaml file', () => {
     process.chdir(tempDir);
     const defaultConfig = yaml.parse(fs.readFileSync(defaultConfigPath, 'utf-8'));
     fs.outputFileSync('cdk8s.yaml', yaml.stringify(defaultConfig));
-  });
 
-  afterEach(() => {
-    if (tempDir) {
-      fs.removeSync(tempDir);
-    };
-  });
-
-  test('is updated with new imports', async () => {
+    // test
     await importDispatch([jenkinsCRD], {}, importOptions);
 
     const config = readConfigSync();
     expect(config.imports?.length == 2).toBeTruthy();
     expect(config.imports?.includes(jenkinsCRD.source)).toBeTruthy();
+
+    //cleanup
+    if (tempDir) {
+      fs.removeSync(tempDir);
+    };
   });
 
   test('does not update with CRD that is imported twice', async () => {
+    // creates temp directory to run each test on
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir() + 'yaml-sync'));
+    importOptions = {
+      targetLanguage: Language.TYPESCRIPT,
+      outdir: tempDir,
+    };
+
+    const defaultConfigPath = path.join(__dirname, 'cdk8s-template.yaml');
+    process.chdir(tempDir);
+    const defaultConfig = yaml.parse(fs.readFileSync(defaultConfigPath, 'utf-8'));
+    fs.outputFileSync('cdk8s.yaml', yaml.stringify(defaultConfig));
+
+    // test
     await importDispatch([jenkinsCRD], {}, importOptions);
     await importDispatch([jenkinsCRD], {}, importOptions);
 
     const config = readConfigSync();
     expect(config.imports?.length == 2).toBeTruthy();
+
+    //cleaup
+    if (tempDir) {
+      fs.removeSync(tempDir);
+    };
   });
 
 });
