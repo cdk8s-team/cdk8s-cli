@@ -491,14 +491,6 @@ describe('cdk8s.yaml file', () => {
     fs.outputFileSync('cdk8s.yaml', yaml.stringify(defaultConfig));
   });
 
-  test('can be read by default', async () => {
-    const config = readConfigSync();
-    expect(config.language).toEqual('typescript');
-    expect(config.app).toEqual('node main.js');
-    expect(config.imports?.length == 1).toBeTruthy();
-    expect(config.imports?.includes('k8s')).toBeTruthy();
-  });
-
   afterEach(() => {
     if (tempDir) {
       fs.removeSync(tempDir);

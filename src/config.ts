@@ -38,10 +38,9 @@ const DEFAULTS: Config = {
 export function readConfigSync(): Config {
   let config: Config = DEFAULTS;
   if (fs.existsSync(CONFIG_FILE)) {
-    const parsedYaml: Config = yaml.parse(fs.readFileSync(CONFIG_FILE, 'utf-8'));
     config = {
       ...config,
-      ...parsedYaml,
+      ...yaml.parse(fs.readFileSync(CONFIG_FILE, 'utf-8')),
     };
   }
   return config;
