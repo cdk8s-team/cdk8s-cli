@@ -71,11 +71,7 @@ jobs:
 
             Upgrades project dependencies. See details in [workflow run].
 
-<<<<<<< HEAD
-            [Workflow Run]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-=======
             [Workflow Run]: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
->>>>>>> 2.x
 
             ------
 
@@ -86,11 +82,7 @@ jobs:
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 
-<<<<<<< HEAD
-            [Workflow Run]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-=======
             [Workflow Run]: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
->>>>>>> 2.x
 
             ------
 
