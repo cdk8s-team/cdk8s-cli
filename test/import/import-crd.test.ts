@@ -592,7 +592,7 @@ describe('cdk8s.yaml file', () => {
     console.log(`OS temp dir - 3: ${os.tmpdir}`);
     console.log(`ls -A -l - 3: ${execSync(`ls -A -l ${os.tmpdir}`)}`);
 
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir() + 'yaml-sync-'));
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'yaml-sync-'));
 
     console.log(`pwd - 4: ${execSync('pwd')}`);
     console.log(`ls -A -l - 4: ${execSync('ls -A -l')}`);
