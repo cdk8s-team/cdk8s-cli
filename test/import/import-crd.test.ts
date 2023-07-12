@@ -1,3 +1,4 @@
+import { execSync } from 'child_process';
 import * as os from 'os';
 import * as path from 'path';
 import * as fs from 'fs-extra';
@@ -563,30 +564,35 @@ test('given a prefix, we can import two crds with the same group id', async () =
 
 });
 
-function demoTest() {
-  // creates temp directory to run each test on
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir() + 'yaml-sync-'));
-
-  const importOptions = {
-    targetLanguage: Language.TYPESCRIPT,
-    outdir: tempDir,
-  };
-
-  const defaultConfigPath = path.join(__dirname, 'cdk8s-template.yaml');
-  process.chdir(tempDir);
-  const defaultConfig = yaml.parse(fs.readFileSync(defaultConfigPath, 'utf-8'));
-  fs.outputFileSync('cdk8s.yaml', yaml.stringify(defaultConfig));
-
-  return importOptions;
-}
-
 describe('cdk8s.yaml file', () => {
 
   const jenkinsCRD: ImportSpec = {
     source: 'https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/deploy/crds/jenkins.io_jenkins_crd.yaml',
   };
 
-  const importOptions: ImportOptions = demoTest();
+  let importOptions: ImportOptions;
+  let tempDir: string;
+
+  beforeEach(() => {
+    // creates temp directory to run each test on
+
+    console.log(`pwd: ${execSync('pwd')}`);
+    console.log(`ls -A -l: ${execSync('ls -A -l')}`);
+    console.log(`OS temp dir: ${os.tmpdir}`);
+    console.log(`ls -A -l: ${execSync(`ls -A -l ${os.tmpdir}`)}`);
+
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir() + 'yaml-sync-'));
+
+    importOptions = {
+      targetLanguage: Language.TYPESCRIPT,
+      outdir: tempDir,
+    };
+
+    const defaultConfigPath = path.join(__dirname, 'cdk8s-template.yaml');
+    process.chdir(tempDir);
+    const defaultConfig = yaml.parse(fs.readFileSync(defaultConfigPath, 'utf-8'));
+    fs.outputFileSync('cdk8s.yaml', yaml.stringify(defaultConfig));
+  });
 
   test('is updated with new imports', async () => {
     await importDispatch([jenkinsCRD], {}, importOptions);
