@@ -41,10 +41,12 @@ const SUPPORTED_API_VERSIONS = [
   'apiextensions.k8s.io/v1',
 ];
 
+type CustomResourceDefinitionVersion = { name: string; schema?: any };
+
 export class CustomResourceDefinition {
 
   private readonly kind: string;
-  private readonly versions: { name: string; schema?: any }[];
+  private readonly versions: CustomResourceDefinitionVersion[] = [];
 
   public readonly group: string;
 
@@ -58,18 +60,33 @@ export class CustomResourceDefinition {
       throw new Error('manifest does not have a "spec" attribute');
     }
 
+    this.group = spec.group;
+    this.kind = spec.names.kind;
+
     if (spec.version) {
-      this.versions = [{ name: spec.version, schema: spec.validation?.openAPIV3Schema }];
+      this.addVersions([{ name: spec.version, schema: spec.validation?.openAPIV3Schema }]);
     } else {
-      this.versions = (spec.versions ?? []).map(v => ({ name: v.name, schema: v.schema?.openAPIV3Schema ?? spec.validation?.openAPIV3Schema }));
+      this.addVersions((spec.versions ?? []).map(v => ({ name: v.name, schema: v.schema?.openAPIV3Schema ?? spec.validation?.openAPIV3Schema })));
     }
 
     if (this.versions.length === 0) {
       throw new Error('unable to determine CRD versions');
     }
 
-    this.group = spec.group;
-    this.kind = spec.names.kind;
+  }
+
+  public merge(crd: CustomResourceDefinition) {
+    this.addVersions(crd.versions);
+  }
+
+  private addVersions(versions: CustomResourceDefinitionVersion[]) {
+    for (const v of versions) {
+      const existingVersions = this.versions.map(ver => ver.name);
+      if (existingVersions.includes(v.name)) {
+        throw new Error(`Found multiple occurrences of version ${v.name} for ${this.key}`);
+      }
+      this.versions.push({ name: v.name, schema: v.schema });
+    }
   }
 
   public get key() {
@@ -124,9 +141,11 @@ export class ImportCustomResourceDefinition extends ImportBase {
       const key = crd.key;
 
       if (key in crds) {
-        throw new Error(`${key} already exists`);
+        // might contain different versions - lets try to merge them in
+        crds[key].merge(crd);
+      } else {
+        crds[key] = crd;
       }
-      crds[key] = crd;
     }
 
     //sort to ensure consistent ordering for snapshot compare
