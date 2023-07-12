@@ -12,7 +12,18 @@ import { importDispatch } from '../../src/import/dispatch';
 const fixtures = path.join(__dirname, 'fixtures');
 
 async function withTempFixture(data: any, test: (fixture: string, cwd: string) => Promise<void>) {
+  console.log(`pwd - 1: ${execSync('pwd')}`);
+  console.log(`ls -A -l - 1: ${execSync('ls -A -l')}`);
+  console.log(`OS temp dir - 1: ${os.tmpdir}`);
+  console.log(`ls -A -l - 1: ${execSync(`ls -A -l ${os.tmpdir}`)}`);
+
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'cdk8s-import-test'));
+
+  console.log(`pwd - 2: ${execSync('pwd')}`);
+  console.log(`ls -A -l - 2: ${execSync('ls -A -l')}`);
+  console.log(`OS temp dir - 2: ${os.tmpdir}`);
+  console.log(`ls -A -l - 2: ${execSync(`ls -A -l ${os.tmpdir}`)}`);
+
   const fixture = path.join(tempDir, 'fixture.yaml');
   try {
     if (Array.isArray(data)) {
@@ -576,12 +587,17 @@ describe('cdk8s.yaml file', () => {
   beforeEach(() => {
     // creates temp directory to run each test on
 
-    console.log(`pwd: ${execSync('pwd')}`);
-    console.log(`ls -A -l: ${execSync('ls -A -l')}`);
-    console.log(`OS temp dir: ${os.tmpdir}`);
-    console.log(`ls -A -l: ${execSync(`ls -A -l ${os.tmpdir}`)}`);
+    console.log(`pwd - 3: ${execSync('pwd')}`);
+    console.log(`ls -A -l - 3: ${execSync('ls -A -l')}`);
+    console.log(`OS temp dir - 3: ${os.tmpdir}`);
+    console.log(`ls -A -l - 3: ${execSync(`ls -A -l ${os.tmpdir}`)}`);
 
     tempDir = fs.mkdtempSync(path.join(os.tmpdir() + 'yaml-sync-'));
+
+    console.log(`pwd - 4: ${execSync('pwd')}`);
+    console.log(`ls -A -l - 4: ${execSync('ls -A -l')}`);
+    console.log(`OS temp dir - 4: ${os.tmpdir}`);
+    console.log(`ls -A -l - 4: ${execSync(`ls -A -l ${os.tmpdir}`)}`);
 
     importOptions = {
       targetLanguage: Language.TYPESCRIPT,
