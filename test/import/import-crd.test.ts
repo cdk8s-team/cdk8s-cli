@@ -574,11 +574,7 @@ describe('cdk8s.yaml file', () => {
 
   beforeEach(() => {
     // creates temp directory to run each test on
-    const dir = path.join(os.tmpdir() + 'yaml-sync');
-    console.log(`Temp dir: ${dir}`);
-
-    tempDir = fs.mkdtempSync(dir);
-    console.log(`Temp dir: ${tempDir}`);
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir() + 'yaml-sync-'));
 
     importOptions = {
       targetLanguage: Language.TYPESCRIPT,
@@ -606,9 +602,4 @@ describe('cdk8s.yaml file', () => {
     const config = readConfigSync();
     expect(config.imports?.length == 2).toBeTruthy();
   });
-
-  afterEach(() => {
-    fs.removeSync(tempDir);
-  });
-
 });
