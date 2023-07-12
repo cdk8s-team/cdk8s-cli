@@ -574,7 +574,12 @@ describe('cdk8s.yaml file', () => {
 
   beforeEach(() => {
     // creates temp directory to run each test on
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir() + 'yaml-sync'));
+    const dir = path.join(os.tmpdir() + 'yaml-sync');
+    console.log(`Temp dir: ${dir}`);
+
+    tempDir = fs.mkdtempSync(dir);
+    console.log(`Temp dir: ${tempDir}`);
+
     importOptions = {
       targetLanguage: Language.TYPESCRIPT,
       outdir: tempDir,
@@ -584,12 +589,6 @@ describe('cdk8s.yaml file', () => {
     process.chdir(tempDir);
     const defaultConfig = yaml.parse(fs.readFileSync(defaultConfigPath, 'utf-8'));
     fs.outputFileSync('cdk8s.yaml', yaml.stringify(defaultConfig));
-  });
-
-  afterEach(() => {
-    if (tempDir) {
-      fs.removeSync(tempDir);
-    };
   });
 
   test('is updated with new imports', async () => {
@@ -606,6 +605,10 @@ describe('cdk8s.yaml file', () => {
 
     const config = readConfigSync();
     expect(config.imports?.length == 2).toBeTruthy();
+  });
+
+  afterEach(() => {
+    fs.removeSync(tempDir);
   });
 
 });
