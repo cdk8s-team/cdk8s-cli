@@ -1210,9 +1210,9 @@
     eslint-visitor-keys "^3.3.0"
 
 "@xmldom/xmldom@^0.8.8":
-  version "0.8.9"
-  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.9.tgz#b6ef7457e826be8049667ae673eda7876eb049be"
-  integrity sha512-4VSbbcMoxc4KLjb1gs96SRmi7w4h1SF+fCoiK0XaQX62buCc1G5d0DC5bJ9xJBNPDSVCmIrcl8BiYxzjrqaaJA==
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.10.tgz#a1337ca426aa61cef9fe15b5b28e340a72f6fa99"
+  integrity sha512-2WALfTl4xo2SkGCYRt6rDTFfk9R1czmBvUQy12gK2KuRKIpWEhcbbzy8EZXtz/jkRqHX8bFEc6FC1HjX4TUWYw==
 
 JSONStream@^1.0.4:
   version "1.3.5"
@@ -1773,26 +1773,26 @@ camelcase@^7.0.1:
   integrity sha512-xlx1yCK2Oc1APsPXDL2LdlNP6+uu8OCDdhOBSVT279M/S+y75O30C2VuD8T2ogdePBBl7PfPF4504tnLgX3zfw==
 
 caniuse-lite@^1.0.30001503:
-  version "1.0.30001516"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001516.tgz#621b1be7d85a8843ee7d210fd9d87b52e3daab3a"
-  integrity sha512-Wmec9pCBY8CWbmI4HsjBeQLqDTqV91nFVR83DnZpYyRnPI1wePDsTg0bGLPC5VU/3OIZV1fmxEea1b+tFKe86g==
+  version "1.0.30001517"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001517.tgz#90fabae294215c3495807eb24fc809e11dc2f0a8"
+  integrity sha512-Vdhm5S11DaFVLlyiKu4hiUTkpZu+y1KA/rZZqVQfOD5YdDT/eQKlkt7NaE0WGOFgX32diqt9MiP9CAiFeRklaA==
 
 case@^1.6.3:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s-plus-25@^2.8.94:
-  version "2.8.94"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-25/-/cdk8s-plus-25-2.8.94.tgz#93640224123b8a5fba822c2cc8246d7bae3030df"
-  integrity sha512-TN0St3AE3nzazxh1mN/7n5vzLovpubWhEPT7FgDxYDL5RY57oPtQ6KEkw/VD+oTYJBY7UPMRQojnH2Fm4/SEbg==
+cdk8s-plus-25@^2.8.98:
+  version "2.8.98"
+  resolved "https://registry.yarnpkg.com/cdk8s-plus-25/-/cdk8s-plus-25-2.8.98.tgz#129dd96f48f6f41dfa35892381ccfcffc8abe5d8"
+  integrity sha512-xXWHsPVmm6Rb2hzL/1JKRZu1CVMeDKPtxtNKlOe+Om4Wak6tAcgQo8IAmr9HC5jjw0cRoeBa/XE8AyqDcSE9/Q==
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.7.112:
-  version "2.7.112"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.7.112.tgz#297b24d24d0e036efdc25c7ffcfb0b4749dd89a3"
-  integrity sha512-u5IvNzTSXPee3/j0oBbB/MuvBE3+MBuRCAjebCNiudLqb7fMg97ubd2uvQXo+QVvJGHS3xcNTw2egVsILA9Xfg==
+cdk8s@^2.7.115:
+  version "2.7.115"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.7.115.tgz#4d53fbde373dd554b770ea4d5bc93423e64ee670"
+  integrity sha512-AFMF8fUxnH+nlvmQAlj5SHyD3NJuEKQF3k4Lf6O8LPPtI/giYr42mVlK2CGkpvbwoTuakT8g5BSXKT8n1Sm8Cg==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -2543,9 +2543,9 @@ eastasianwidth@^0.2.0:
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 electron-to-chromium@^1.4.431:
-  version "1.4.462"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.462.tgz#4faf5072bb5f55269d35ca9dc7475e7bf91b1ac3"
-  integrity sha512-ux2LqN9JKRBDKXMT+78jtiBLPiXf+rLtYlsrOg5Qn7uv6Cbg7+9JyIalE3wcqkOdB2wPCUYNWAuL7suKRMHe9w==
+  version "1.4.467"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.467.tgz#b0660bf644baff7eedea33b8c742fb53ec60e3c2"
+  integrity sha512-2qI70O+rR4poYeF2grcuS/bCps5KJh6y1jtZMDDEteyKJQrzLOEhFyXCLcHW6DTBjKjWkk26JhWoAi+Ux9A0fg==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -3874,15 +3874,11 @@ is-text-path@^1.0.1:
     text-extensions "^1.0.0"
 
 is-typed-array@^1.1.10, is-typed-array@^1.1.9:
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/is-typed-array/-/is-typed-array-1.1.11.tgz#893621188e6919d4e6a488b9f6557d8c4b051953"
-  integrity sha512-l2SCJk9RflSWHQjOJJgNsV5FnE1pq/RpHnYW6ckSjTCYypv07SMbiRSCmLQD63WOv2eXaEwNsn+7kcn3csvYSw==
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/is-typed-array/-/is-typed-array-1.1.12.tgz#d0bab5686ef4a76f7a73097b95470ab199c57d4a"
+  integrity sha512-Z14TF2JNG8Lss5/HMqt0//T9JeHXttXy5pH/DBU4vi98ozO2btxzq9MwYDZYnKwU8nRsz/+GVFVRDq3DkVuSPg==
   dependencies:
-    available-typed-arrays "^1.0.5"
-    call-bind "^1.0.2"
-    for-each "^0.3.3"
-    gopd "^1.0.1"
-    has-tostringtag "^1.0.0"
+    which-typed-array "^1.1.11"
 
 is-typedarray@^1.0.0:
   version "1.0.0"
@@ -6857,9 +6853,9 @@ typescript-json-schema@^0.59.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.2.0-dev.20230717"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.0-dev.20230717.tgz#e1468ce4983646adc9138de6f07d4c1a617d2783"
-  integrity sha512-T6Jl+oxydjHSfqyak7AeMpeei76VXFdEYdYkFavnQK8cEcw9knjJ8W63cT8IZUBgEIStQcI4zNEuoFUnotysOg==
+  version "5.2.0-dev.20230720"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.0-dev.20230720.tgz#9eb5d0d5a9b935d8d6b496701cfff09d1e6f1bde"
+  integrity sha512-uZPSzgA2ZfMYqCafPbJ67YLwiVXeo93rT2iackGNerTEFs7wRBr2ENVRBIP33g5xCV0fFqN+e0l4oLvQjCZUKw==
 
 typescript@~3.9.10:
   version "3.9.10"
@@ -7112,17 +7108,16 @@ which-module@^2.0.0:
   resolved "https://registry.yarnpkg.com/which-module/-/which-module-2.0.1.tgz#776b1fe35d90aebe99e8ac15eb24093389a4a409"
   integrity sha512-iBdZ57RDvnOR9AGBhML2vFZf7h8vmBjhoaZqODJBFWHVtKkDmKuHai3cx5PgVMrX5YDNp27AofYbAwctSS+vhQ==
 
-which-typed-array@^1.1.10:
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/which-typed-array/-/which-typed-array-1.1.10.tgz#74baa2789991905c2076abb317103b866c64e69e"
-  integrity sha512-uxoA5vLUfRPdjCuJ1h5LlYdmTLbYfums398v3WLkM+i/Wltl2/XyZpQWKbN++ck5L64SR/grOHqtXCUKmlZPNA==
+which-typed-array@^1.1.10, which-typed-array@^1.1.11:
+  version "1.1.11"
+  resolved "https://registry.yarnpkg.com/which-typed-array/-/which-typed-array-1.1.11.tgz#99d691f23c72aab6768680805a271b69761ed61a"
+  integrity sha512-qe9UWWpkeG5yzZ0tNYxDmd7vo58HDBc39mZ0xWWpolAGADdFOzkfamWLDxkOWcvHQKVmdTyQdLD4NOfjLWTKew==
   dependencies:
     available-typed-arrays "^1.0.5"
     call-bind "^1.0.2"
     for-each "^0.3.3"
     gopd "^1.0.1"
     has-tostringtag "^1.0.0"
-    is-typed-array "^1.1.10"
 
 which@^2.0.1, which@^2.0.2:
   version "2.0.2"
