@@ -32,7 +32,6 @@ export interface Config {
 const DEFAULTS: Config = {
   output: 'dist',
   pluginsDirectory: path.join(os.homedir(), '.cdk8s', 'plugins'),
-  imports: ['k8s'],
 };
 
 export function readConfigSync(): Config {
