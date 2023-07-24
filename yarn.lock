@@ -903,9 +903,9 @@
     tuf-js "^1.1.7"
 
 "@sindresorhus/is@^5.2.0":
-  version "5.5.2"
-  resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-5.5.2.tgz#cbfd816d556b941f65d32cfc6d708359b826e7ea"
-  integrity sha512-8ZMK+V6YpeZFfW6hU9uAeWVuq8v3t7BaG276gIO+kVqnAcLrHCXdFUOf7kgouyfAarkZtuavIqY3RsXTsTWviw==
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-5.6.0.tgz#41dd6093d34652cddb5d5bdeee04eafc33826668"
+  integrity sha512-TV7t8GKYaJWsn00tFDqBw8+Uqmr8A0fRU1tvTQhyZzGv0sJCGRQL3JGMI3ucuKo3XIZdUP+Lx7/gh2t3lewy7g==
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.6"
@@ -1782,10 +1782,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.11.0.tgz#4db8c1b4c3b159b47b2d2072157646afececaf86"
-  integrity sha512-9ehD96/iNNiYyjXt6kz//2PPrjT95m8NZHywnd9mMsPJrb9Vyx3OsHCWJvSQNqvSLhRppz+UFDs2Em7Z+IaFtg==
+cdk8s@^1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.12.0.tgz#0e61a354f7a2013777905b4e7a87082dff2cccca"
+  integrity sha512-9vqsXykx7fr8P1loebCCafxmi1jneMlfYmsWn2QdrJECOA69lssreLo6R2gOe2KBf8o+z/nnpd73R77tkqt9LQ==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -6846,9 +6846,9 @@ typescript-json-schema@^0.59.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.2.0-dev.20230722"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.0-dev.20230722.tgz#ae9e2c02402d461e1f8c6898c1fafd395351b257"
-  integrity sha512-4xNgjOKKAWIYxNXlxeEZX+EqD+ve0tugfhkck66/bljxbCknP8fnSdVeiwSZ+q/YvouZEzzuUfFkIlWNnXwhrQ==
+  version "5.2.0-dev.20230723"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.0-dev.20230723.tgz#ab341b18b215e985c46b5baf3592b51756554ab6"
+  integrity sha512-xC5i1s4sexgxAA4OYatFnu20Un4QfEVMs2nOhGbHZf1iNwt3zoQMeZYD2Z3OFvWFqfnMveROpOwiqaN8RvWPyQ==
 
 typescript@~3.9.10:
   version "3.9.10"
