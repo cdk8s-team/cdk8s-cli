@@ -575,16 +575,20 @@ describe('cdk8s.yaml file', () => {
   beforeEach(() => {
     // creates temp directory to run each test on
     tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'yaml-sync'));
-
     importOptions = {
       targetLanguage: Language.TYPESCRIPT,
       outdir: tempDir,
     };
 
-    const defaultConfigPath = path.join(__dirname, 'cdk8s-template.yaml');
     process.chdir(tempDir);
-    const defaultConfig = yaml.parse(fs.readFileSync(defaultConfigPath, 'utf-8'));
-    fs.outputFileSync('cdk8s.yaml', yaml.stringify(defaultConfig));
+
+    // creates default config cdk8s.yaml file in the tempDir
+    const default_config_yaml = {
+      language: 'typescript',
+      app: 'node main.js',
+      imports: ['k8s'],
+    };
+    fs.outputFileSync(path.join(tempDir, 'cdk8s.yaml'), yaml.stringify(default_config_yaml));
   });
 
   test('is updated with new imports', async () => {
