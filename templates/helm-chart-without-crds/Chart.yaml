@@ -1,0 +1,5 @@
+apiVersion: {{ api-version }}
+name: {{ app }}
+version: {{ version }}
+description: Generated chart for {{ app }}
+type: application

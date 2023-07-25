@@ -199,6 +199,62 @@
         }
       ]
     },
+    "integ:init:helm-chart-with-crds-npm": {
+      "name": "integ:init:helm-chart-with-crds-npm",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t helm-chart-with-crds-npm"
+        }
+      ]
+    },
+    "integ:init:helm-chart-with-crds-yarn": {
+      "name": "integ:init:helm-chart-with-crds-yarn",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t helm-chart-with-crds-yarn"
+        }
+      ]
+    },
+    "integ:init:helm-chart-without-crds-npm": {
+      "name": "integ:init:helm-chart-without-crds-npm",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t helm-chart-without-crds-npm"
+        }
+      ]
+    },
+    "integ:init:helm-chart-without-crds-yarn": {
+      "name": "integ:init:helm-chart-without-crds-yarn",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t helm-chart-without-crds-yarn"
+        }
+      ]
+    },
     "integ:init:java-app-npm": {
       "name": "integ:init:java-app-npm",
       "steps": [

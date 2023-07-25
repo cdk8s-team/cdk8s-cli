@@ -9,7 +9,7 @@ import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import { ValidationConfig } from './config';
 import { PluginManager } from './plugins/_manager';
-import { ValidationPlugin, ValidationContext, ValidationReport, Validation } from './plugins/validation';
+import { Validation, ValidationContext, ValidationPlugin, ValidationReport } from './plugins/validation';
 import { SafeReviver } from './reviver';
 
 export async function shell(program: string, args: string[] = [], options: SpawnOptions = { }): Promise<string> {

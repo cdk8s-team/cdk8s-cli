@@ -1,5 +1,5 @@
 import * as yargs from 'yargs';
-import { readConfigSync, ImportSpec } from '../../config';
+import { ImportSpec, readConfigSync } from '../../config';
 import { importDispatch } from '../../import/dispatch';
 import { DEFAULT_API_VERSION } from '../../import/k8s';
 
@@ -40,7 +40,7 @@ class Command implements yargs.CommandModule {
   }
 }
 
-function parseImports(spec: string): ImportSpec {
+export function parseImports(spec: string): ImportSpec {
   const splitImport = spec.split(':=');
 
   // k8s@x.y.z

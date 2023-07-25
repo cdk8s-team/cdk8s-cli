@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
-import { Config, ValidationConfig } from '../../src/config';
+import { Config, HelmChartApiVersion, SynthesisFormat, ValidationConfig } from '../../src/config';
 import { findConstructMetadata, mkdtemp } from '../../src/util';
 
 beforeEach(() => {
@@ -323,12 +323,91 @@ describe('validations', () => {
 
 });
 
+describe('Helm Synthesis', () => {
+  test('throws when synthesis --format is helm and --chart-version is not specified', async () => {
+
+    const synthOptions: SynthOptions = {
+      format: SynthesisFormat.HELM,
+    };
+
+    await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify the \'--chart-version\' when the \'--format\' is set as helm./);
+  });
+
+  test('throws when --chart-version is specified with --format as cdk8s', () => {
+
+  });
+
+  test('throws when --chart-api-version is specified with --format as cdk8s', () => {
+
+  });
+
+  test('throws when --chart-version && --chart-api-version is specified with --format as cdk8s', () => {
+
+  });
+
+  test('throws when --chart-version is not aligned with SemVer2 standards', () => {
+
+  });
+
+  test('throws when --format is helm and mode is stdout', () => {
+
+  });
+
+  test('throws when --chart-api-version is v1 and crds are specified', () => {
+
+  });
+
+  test('--chart-api-version is v1', () => {
+
+  });
+
+
+  test.skip('--chart-api-version is v2', async () => {
+    const synthOptions: SynthOptions = {
+      format: SynthesisFormat.HELM,
+      chartVersion: '1.1.1',
+      validate: false,
+    };
+
+    await synth(synthOptions);
+  });
+
+  // TODO: Test with different types of CRD values
+  test('--chart-api-version is v2 and crds are specified', () => {
+
+  });
+
+  test('--chart-api-version is v2 and validations are performed', () => {
+
+  });
+
+  // TODO: Can we do helm install?
+  test('helm lint succeeds with created chart', () => {
+
+  });
+
+  // test('', () => {
+
+  // });
+
+  // test('', () => {
+
+  // });
+
+  // test('', () => {
+
+  // });
+});
+
 interface SynthOptions {
 
   readonly validations?: string | ValidationConfig[];
   readonly validate?: boolean;
   readonly stdout?: boolean;
   readonly reportsFile?: string;
+  readonly format?: SynthesisFormat;
+  readonly chartApiVersion?: HelmChartApiVersion;
+  readonly chartVersion?: string;
   readonly preSynth?: (dir: string) => Promise<void>;
   readonly postSynth?: (dir: string) => Promise<void>;
 
@@ -354,12 +433,21 @@ app.synth();
 
     const stdout = options.stdout ?? false;
     const validate = options.validate ?? true;
+    const format = options.format ?? SynthesisFormat.CDK8s;
+    const chartApiVersion = format === SynthesisFormat.HELM ? (options.chartApiVersion ?? HelmChartApiVersion.V2) : undefined;
+
+    // TODO I don't think we need to specify format each time. Since, if we mention it in cdk8s.yaml, then that should be picked up
 
     const config: Config = {
       validations: options.validations,
       app: 'node index.js',
       output: stdout ? undefined : 'dist',
       pluginsDirectory: path.join(dir, '.cdk8s', 'plugins'),
+      format: format,
+      helmSynthConfig: {
+        chartApiVersion: chartApiVersion,
+        chartVersion: options.chartVersion,
+      },
     };
 
     fs.writeFileSync(path.join(dir, 'index.js'), app);
@@ -379,6 +467,7 @@ app.synth();
       };
 
       const cmd = requireSynth();
+
       if (options.preSynth) {
         await options.preSynth(dir);
       }
@@ -389,6 +478,9 @@ app.synth();
         validate: validate,
         pluginsDir: config.pluginsDirectory,
         validationReportsOutputFile: options.reportsFile ? path.join(dir, options.reportsFile) : undefined,
+        format: config.format,
+        chartApiVersion: config.helmSynthConfig?.chartApiVersion,
+        chartVersion: config.helmSynthConfig?.chartVersion,
       });
       if (options.postSynth) {
         await options.postSynth(dir);
