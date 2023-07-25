@@ -44,3 +44,18 @@ export function readConfigSync(): Config {
   }
   return config;
 }
+
+export async function addImportToConfig(source: string) {
+  let curConfig = readConfigSync();
+
+  const curImports = curConfig.imports ?? [];
+  if (!curImports.includes(source)) {
+    const importsList = curConfig.imports ?? [];
+    importsList.push(source);
+    let config = {
+      ...curConfig,
+      imports: importsList,
+    };
+    await fs.outputFile(CONFIG_FILE, yaml.stringify(config));
+  }
+}
