@@ -75,8 +75,8 @@
   "dependencies": {
     "@types/node": "^16",
     "ajv": "^8.12.0",
-    "cdk8s": "^2.14.0",
-    "cdk8s-plus-25": "^2.11.0",
+    "cdk8s": "^2.16.0",
+    "cdk8s-plus-25": "^2.12.1",
     "codemaker": "^1.85.0",
     "colors": "1.4.0",
     "constructs": "^10.2.69",
