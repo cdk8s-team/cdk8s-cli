@@ -70,7 +70,7 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
 
 function jest(args: string) {
   // we override 'testPathIgnorePatterns' so that it matches only integration tests
-  return `jest --testPathIgnorePatterns "^((?!integ).)*$" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 ${args}`;
+  return `jest --testPathIgnorePatterns "/node_modules/" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 ${args}`;
 };
 
 function runSteps(tasks: string[], nodeVersion: string, python: boolean, go: boolean): github.workflows.JobStep[] {
