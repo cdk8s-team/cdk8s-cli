@@ -19,6 +19,8 @@ jobs:
         with:
           ref: 2.x
       - run: pip3 install pipenv
+        with:
+          node-version: lts
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -71,7 +73,7 @@ jobs:
 
             Upgrades project dependencies. See details in [workflow run].
 
-            [Workflow Run]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            [Workflow Run]: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
             ------
 
@@ -82,7 +84,7 @@ jobs:
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 
-            [Workflow Run]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            [Workflow Run]: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
             ------
 
