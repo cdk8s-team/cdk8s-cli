@@ -70,6 +70,7 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
 
 function jest(args: string) {
   // we override 'testPathIgnorePatterns' and 'testMatch' so that it matches only integration tests
+  // see https://github.com/jestjs/jest/issues/7914
   return `jest --testMatch "<rootDir>/test/integ/**/*.test.ts" --testPathIgnorePatterns "/node_modules/" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 ${args}`;
 };
 
