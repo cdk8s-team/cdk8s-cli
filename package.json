@@ -18,6 +18,7 @@
     "default": "npx projen default",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
+    "integ": "npx projen integ",
     "integ:init": "npx projen integ:init",
     "integ:init:go-app-npm": "npx projen integ:init:go-app-npm",
     "integ:init:go-app-yarn": "npx projen integ:init:go-app-yarn",

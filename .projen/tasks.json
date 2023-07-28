@@ -158,6 +158,20 @@
         }
       ]
     },
+    "integ": {
+      "name": "integ",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ"
+        }
+      ]
+    },
     "integ:init": {
       "name": "integ:init",
       "steps": [

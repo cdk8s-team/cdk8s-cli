@@ -9,6 +9,11 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
   const integWorkflow = project.github!.addWorkflow('integ');
   integWorkflow.on({ pullRequest: {}, workflowDispatch: {} });
 
+  const integTask = project.addTask('integ');
+  integTask.exec(`yarn run ${project.compileTask.name}`);
+  integTask.exec(`yarn run ${project.packageTask.name}`);
+  integTask.exec(jest('integ'));
+
   const initTask = project.addTask('integ:init');
   initTask.exec(`yarn run ${project.compileTask.name}`);
   initTask.exec(`yarn run ${project.packageTask.name}`);
