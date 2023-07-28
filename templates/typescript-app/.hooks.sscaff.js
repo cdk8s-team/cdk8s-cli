@@ -1,35 +1,34 @@
 const { execSync } = require('child_process');
-const { readFileSync } = require('fs');
-const { dirname } = require('path');
-
-const clibin = dirname(require.resolve('../../bin/cdk8s'));
+const { readFileSync, writeFileSync } = require('fs');
 
 exports.post = ctx => {
-  const npm_cdk8s = ctx.npm_cdk8s;
-  const npm_cdk8s_plus = ctx.npm_cdk8s_plus;
-  const npm_cdk8s_cli = ctx.npm_cdk8s_cli;
-  const constructs_version = ctx.constructs_version;
 
-  if (!npm_cdk8s) { throw new Error(`missing context "npm_cdk8s"`); }
+  const deps = {
+    'cdk8s': `^${ctx.cdk8s_core_version}`,
+    'cdk8s-plus-25': `^${ctx.cdk8s_plus_version}`,
+    'constructs': `^${ctx.constructs_version}`
+  }
 
-  installDeps([ npm_cdk8s, npm_cdk8s_plus, `constructs@^${constructs_version}` ]);
-  installDeps([
-      '@types/node@14',
-      '@types/jest@26',
-      'jest@26',
-      'ts-jest@26',
-      'typescript@4.9.5',
-      'ts-node@10',
-  ], true);
+  const cliSpec = ctx.npm_cdk8s_cli_path ?? `^${ctx.npm_cdk8s_cli_version}`
+
+  const devDeps = {
+    'cdk8s-cli': cliSpec,
+    '@types/node': '^14',
+    '@types/jest': '^26',
+    'jest': '^26',
+    'ts-jest': '^26',
+    'typescript': '^4.9.5',
+    'ts-node': '^10',
+  }
+
+  const packageJson = JSON.parse(readFileSync('package.json', { encoding: 'utf-8' }));
+  packageJson.dependencies = deps;
+  packageJson.devDependencies = devDeps;
+  writeFileSync('package.json', JSON.stringify(packageJson, null, 2));
 
   const env = { ...process.env };
 
-  // install cdk8s cli if defined
-  if (npm_cdk8s_cli) {
-    installDeps([npm_cdk8s_cli], true);
-  } else {
-    env.PATH = `${clibin}:${process.env.PATH}`;
-  }
+  execSync('npm install', { stdio: 'inherit', env });
 
   // import k8s objects
   execSync('npm run import', { stdio: 'inherit', env });
@@ -39,9 +38,3 @@ exports.post = ctx => {
 
   console.log(readFileSync('./help', 'utf-8'));
 };
-
-function installDeps(deps, isDev) {
-  const devDep = isDev ? '-D' : '';
-  execSync(`npm install ${devDep} ${deps.join(' ')}`, { stdio: 'inherit' });
-}
-
