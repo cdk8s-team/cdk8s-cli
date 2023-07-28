@@ -144,6 +144,9 @@
       "ts-jest": {
         "tsconfig": "tsconfig.dev.json"
       }
+    },
+    "haste": {
+      "forceNodeFilesystemAPI": true
     }
   },
   "optionalDependencies": {
