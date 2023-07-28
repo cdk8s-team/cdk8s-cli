@@ -100,14 +100,4 @@ project.packageTask.exec('npm pack --pack-destination dist/js');
 
 addIntegTests(project);
 
-// const integ = project.tryFindObjectFile('.github/workflows/integ.yml');
-// integ!.addOverride('jobs.init.steps.6.shell', 'bash');
-
-// project.package.manifest.jest = {
-//   ...project.package.manifest.jest,
-//   haste: {
-//     forceNodeFilesystemAPI: true,
-//   },
-// };
-
 project.synth();
