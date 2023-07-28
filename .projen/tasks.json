@@ -158,20 +158,6 @@
         }
       ]
     },
-    "integ": {
-      "name": "integ",
-      "steps": [
-        {
-          "exec": "yarn run compile"
-        },
-        {
-          "exec": "yarn run package"
-        },
-        {
-          "exec": "jest --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ"
-        }
-      ]
-    },
     "integ:init": {
       "name": "integ:init",
       "steps": [
@@ -182,7 +168,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts"
         }
       ]
     },
@@ -196,7 +182,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app-npm"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app-npm"
         }
       ]
     },
@@ -210,7 +196,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app-yarn"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app-yarn"
         }
       ]
     },
@@ -224,7 +210,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app-npm"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app-npm"
         }
       ]
     },
@@ -238,7 +224,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app-yarn"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app-yarn"
         }
       ]
     },
@@ -252,7 +238,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app-npm"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app-npm"
         }
       ]
     },
@@ -266,7 +252,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app-yarn"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app-yarn"
         }
       ]
     },
@@ -280,7 +266,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app-npm"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app-npm"
         }
       ]
     },
@@ -294,7 +280,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app-yarn"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app-yarn"
         }
       ]
     },

@@ -9,11 +9,6 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
   const integWorkflow = project.github!.addWorkflow('integ');
   integWorkflow.on({ pullRequest: {}, workflowDispatch: {} });
 
-  const integTask = project.addTask('integ');
-  integTask.exec(`yarn run ${project.compileTask.name}`);
-  integTask.exec(`yarn run ${project.packageTask.name}`);
-  integTask.exec(jest('integ'));
-
   const initTask = project.addTask('integ:init');
   initTask.exec(`yarn run ${project.compileTask.name}`);
   initTask.exec(`yarn run ${project.packageTask.name}`);
@@ -75,7 +70,7 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
 
 function jest(args: string) {
   // we override 'testPathIgnorePatterns' so that it matches only integration tests
-  return `jest --testPathIgnorePatterns "/node_modules/" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 ${args}`;
+  return `jest --testMatch "<rootDir>/test/integ/**/*.test.ts" --testPathIgnorePatterns "/node_modules/" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 ${args}`;
 };
 
 function runSteps(tasks: string[], nodeVersion: string, python: boolean, go: boolean): github.workflows.JobStep[] {
