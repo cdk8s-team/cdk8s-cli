@@ -1,6 +1,7 @@
 import { ImportBase, ImportOptions } from './base';
 import { ImportCustomResourceDefinition } from './crd';
 import { matchCrdsDevUrl } from './crds-dev';
+import { ImportHelm } from './helm';
 import { ImportKubernetesApi } from './k8s';
 import { ImportSpec } from '../config';
 
@@ -27,6 +28,12 @@ async function matchImporter(importSpec: ImportSpec, argv: any): Promise<ImportB
   const k8s = await ImportKubernetesApi.match(importSpec, argv);
   if (k8s) {
     return new ImportKubernetesApi(k8s);
+  }
+
+  const helm = importSpec.source.split(':')[0];
+
+  if (helm === 'helm') {
+    return new ImportHelm(importSpec);
   }
 
   // now check if its a crds.dev import

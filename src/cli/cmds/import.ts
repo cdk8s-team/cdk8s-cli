@@ -21,6 +21,7 @@ class Command implements yargs.CommandModule {
     .example('cdk8s import jenkins.io_jenkins_crd.yaml', 'Imports constructs for the Jenkins custom resource definition from a file')
     .example('cdk8s import mattermost:=mattermost_crd.yaml', 'Imports constructs for the mattermost cluster custom resource definition using a custom module name')
     .example('cdk8s import github:crossplane/crossplane@0.14.0', 'Imports constructs for a GitHub repo using doc.crds.dev')
+    .example('cdk8s import helm:https://airflow.apache.org/airflow@1.8.0', 'Imports the specified version of helm chart')
 
     .option('output', { default: DEFAULT_OUTDIR, type: 'string', desc: 'Output directory', alias: 'o' })
     .option('exclude', { type: 'array', desc: 'Do not import types that match these regular expressions. They will be represented as the "any" type (only for "k8s")' })
@@ -52,8 +53,8 @@ function parseImports(spec: string): ImportSpec {
     };
   }
 
-  // crd=crd.yaml
-  // crd=url.com/crd.yaml
+  // crd:=crd.yaml
+  // crd:=url.com/crd.yaml
   if (splitImport.length === 2) {
     return {
       moduleNamePrefix: splitImport[0],
