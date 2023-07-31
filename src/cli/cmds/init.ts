@@ -55,17 +55,12 @@ async function determineDeps(): Promise<Deps> {
     cdk8s_plus_version: cdk8sPlus.version,
     constructs_version: constructsVersion,
     jsii_version: jsii.version,
-
-    npm_cdk8s_cli_version: cdk8sCli.version,
-    // when running tests, install the tarball created from our source
-    npm_cdk8s_cli_path: process.env.CDK8S_TARBALL,
+    cdk8s_cli_spec: process.env.CDK8S_TARBALL ?? `^${cdk8sCli.version}`,
   };
 }
 
 interface Deps {
-  npm_cdk8s_cli_version: string;
-  // for testing
-  npm_cdk8s_cli_path?: string;
+  cdk8s_cli_spec: string;
   pypi_cdk8s: string;
   pypi_cdk8s_plus: string;
   mvn_cdk8s: string;
