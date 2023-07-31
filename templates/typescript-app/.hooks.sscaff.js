@@ -1,5 +1,5 @@
 const { execSync } = require('child_process');
-const { readFileSync, writeFileSync } = require('fs');
+const { readFileSync } = require('fs');
 
 exports.post = ctx => {
 
