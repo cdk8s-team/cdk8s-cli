@@ -5,6 +5,7 @@ exports.post = ctx => {
 
   const env = { ...process.env };
 
+  console.log(readFileSync('./package.json', 'utf-8'));
   execSync('npm install', { stdio: 'inherit', env });
 
   // import k8s objects
