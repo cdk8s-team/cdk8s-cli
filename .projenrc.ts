@@ -91,6 +91,13 @@ schemas.exec('ts-node scripts/crd.schema.ts');
 
 project.compileTask.spawn(schemas);
 
+// so that it works on windows as well
+// default projen uses $(npm pack) which fails
+project.packageTask.reset();
+project.packageTask.exec('mkdir -p dist/js');
+project.packageTask.exec('npm pack --pack-destination dist/js');
+
+
 addIntegTests(project);
 
 project.synth();
