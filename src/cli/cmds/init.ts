@@ -46,6 +46,9 @@ async function determineDeps(): Promise<Deps> {
   const cdk8sCli = new ModuleVersion('cdk8s-cli');
   const jsii = new ModuleVersion('jsii-pacmak');
 
+  const cdk8sTarball = process.env.CDK8S_TARBALL;
+  const cdk8sTarballEscaped = cdk8sTarball ? (cdk8sTarball.replace(/\\/g, '\\\\')) : undefined;
+
   return {
     pypi_cdk8s: cdk8s.pypiDependency,
     pypi_cdk8s_plus: cdk8sPlus.pypiDependency,
@@ -55,7 +58,7 @@ async function determineDeps(): Promise<Deps> {
     cdk8s_plus_version: cdk8sPlus.version,
     constructs_version: constructsVersion,
     jsii_version: jsii.version,
-    cdk8s_cli_spec: process.env.CDK8S_TARBALL ?? `^${cdk8sCli.version}`,
+    cdk8s_cli_spec: cdk8sTarballEscaped ?? `^${cdk8sCli.version}`,
   };
 }
 
