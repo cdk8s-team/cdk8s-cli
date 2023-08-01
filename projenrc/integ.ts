@@ -4,6 +4,8 @@ import { typescript, github } from 'projen';
 
 export function addIntegTests(project: typescript.TypeScriptProject) {
 
+  const oses = ['windows-latest', 'macos-latest', 'ubuntu-latest'];
+
   const integWorkflow = project.github!.addWorkflow('integ');
   integWorkflow.on({ pullRequest: {}, workflowDispatch: {} });
 
@@ -12,25 +14,38 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
   initTask.exec(`yarn run ${project.packageTask.name}`);
   initTask.exec(jest('integ/init.test.ts'));
 
+  function addIntegTest(name: string) {
+    const task = project.addTask(`integ:init:${name}`);
+    task.exec(`yarn run ${project.compileTask.name}`);
+    task.exec(`yarn run ${project.packageTask.name}`);
+    task.exec(jest(`integ/init.test.ts -t ${name}`));
+  }
+
   const templatesDir = path.join(__dirname, '..', 'templates');
   for (const template of fs.readdirSync(templatesDir)) {
     if (fs.statSync(path.join(templatesDir, template)).isDirectory()) {
-      const task = project.addTask(`integ:init:${template}`);
-      task.exec(`yarn run ${project.compileTask.name}`);
-      task.exec(`yarn run ${project.packageTask.name}`);
-      task.exec(jest(`integ/init.test.ts -t ${template}`));
+      addIntegTest(`${template}-npm`);
+      addIntegTest(`${template}-yarn`);
     }
   }
 
-  // run all init tests on node 14
+  // run all init tests on node 16
   integWorkflow.addJob('init', {
-    runsOn: ['ubuntu-latest'],
+    runsOn: ['${{ matrix.os }}'],
+    strategy: {
+      failFast: false,
+      matrix: {
+        domain: {
+          os: oses,
+        },
+      },
+    },
     permissions: { contents: github.workflows.JobPermission.READ },
-    steps: runSteps(initTask.name, '14', true, true),
+    steps: runSteps([initTask.name], '16', true, true),
   });
 
-  // run typescript app on node 16 and 18 as well
-  const nodeVersions = [16, 18];
+  // run typescript app on node 18 as well
+  const nodeVersions = [18];
   integWorkflow.addJob('init-typescript-app', {
     runsOn: ['ubuntu-latest'],
     strategy: {
@@ -40,28 +55,31 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
     permissions: {
       contents: github.workflows.JobPermission.READ,
     },
-    steps: runSteps('integ:init:typescript-app', '${{ matrix.nodeVersion }}', false, false),
+    steps: runSteps(['integ:init:typescript-app-npm', 'integ:init:typescript-app-yarn'], '${{ matrix.nodeVersion }}', false, false),
   });
-
-  project.autoMerge!.addConditions('status-success=init');
 
   for (const nodeVersion of nodeVersions) {
     project.autoMerge!.addConditions(`status-success=init-typescript-app (${nodeVersion})`);
   }
 
+  for (const os of oses) {
+    project.autoMerge!.addConditions(`status-success=init (${os})`);
+  }
+
 }
 
 function jest(args: string) {
-  // we override 'testPathIgnorePatterns' so that it matches only integration tests
-  return `jest --testPathIgnorePatterns "^((?!integ).)*$" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 ${args}`;
+  // we override 'testPathIgnorePatterns' and 'testMatch' so that it matches only integration tests
+  // see https://github.com/jestjs/jest/issues/7914
+  return `jest --testMatch "<rootDir>/test/integ/**/*.test.ts" --testPathIgnorePatterns "/node_modules/" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 ${args}`;
 };
 
-function runSteps(task: string, nodeVersion: string, python: boolean, go: boolean): github.workflows.JobStep[] {
+function runSteps(tasks: string[], nodeVersion: string, python: boolean, go: boolean): github.workflows.JobStep[] {
   const steps: github.workflows.JobStep[] = [
-    { uses: 'actions/checkout@v2' },
+    { uses: 'actions/checkout@v3' },
     {
       name: 'Set up Node.js',
-      uses: 'actions/setup-node@v2',
+      uses: 'actions/setup-node@v3',
       with: { 'node-version': nodeVersion },
     },
     {
@@ -73,7 +91,7 @@ function runSteps(task: string, nodeVersion: string, python: boolean, go: boolea
   if (python) {
     steps.push({
       name: 'Set up Python 3.x',
-      uses: 'actions/setup-python@v2',
+      uses: 'actions/setup-python@v4',
       with: {
         'python-version': '3.x',
       },
@@ -87,17 +105,18 @@ function runSteps(task: string, nodeVersion: string, python: boolean, go: boolea
   if (go) {
     steps.push({
       name: 'Set up Go',
-      uses: 'actions/setup-go@v2',
+      uses: 'actions/setup-go@v4',
       with: {
         'go-version': '1.18',
       },
     });
   }
 
-  steps.push({
-    name: 'Run integration tests',
-    run: `yarn run ${task}`,
-  },
-  );
+  for (const task of tasks) {
+    steps.push({
+      name: 'Run integration tests',
+      run: `yarn run ${task}`,
+    });
+  }
   return steps;
 }

@@ -3,8 +3,10 @@ import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import { testImportMatchSnapshot } from './util';
-import { Language } from '../../src/import/base';
+import { readConfigSync, ImportSpec } from '../../src/config';
+import { Language, ImportOptions } from '../../src/import/base';
 import { ManifestObjectDefinition, ImportCustomResourceDefinition } from '../../src/import/crd';
+import { importDispatch } from '../../src/import/dispatch';
 
 const fixtures = path.join(__dirname, 'fixtures');
 
@@ -43,6 +45,101 @@ test('fails if CRDs api version is not supported', async () => {
   await withTempFixture(manifest, async (fixture: string) => {
     await expect(() => ImportCustomResourceDefinition.fromSpec({ source: fixture })).rejects.toThrow('invalid CustomResourceDefinition manifest: "apiVersion" is "voo" but it should be one of: "apiextensions.k8s.io/v1beta1", "apiextensions.k8s.io/v1"');
   });
+});
+
+test('fails if multiple occurrences of the same CRD version exist in same doc', async () => {
+
+  const manifest: ManifestObjectDefinition = {
+    apiVersion: 'apiextensions.k8s.io/v1beta1',
+    kind: 'CustomResourceDefinition',
+    metadata: {
+      name: 'testMetadata',
+    },
+    spec: {
+      group: 'testGroup',
+      names: {
+        kind: 'testNameKind',
+      },
+      versions: [
+        {
+          name: 'v1',
+          schema: {
+            openAPIV3Schema: {
+              type: 'testObject',
+            },
+          },
+        },
+        {
+          name: 'v1',
+          schema: {
+            openAPIV3Schema: {
+              type: 'testObject',
+            },
+          },
+        },
+      ],
+    },
+  };
+  await withTempFixture(manifest, async (fixture: string) => {
+    await expect(() => ImportCustomResourceDefinition.fromSpec({ source: fixture })).rejects.toThrow('Found multiple occurrences of version v1 for testGroup/testnamekind');
+  });
+
+});
+
+test('fails if multiple occurrences of the same CRD version exist in multiple docs', async () => {
+
+  const d1: ManifestObjectDefinition = {
+    apiVersion: 'apiextensions.k8s.io/v1beta1',
+    kind: 'CustomResourceDefinition',
+    metadata: {
+      name: 'testMetadata',
+    },
+    spec: {
+      group: 'testGroup',
+      names: {
+        kind: 'testNameKind',
+      },
+      versions: [
+        {
+          name: 'v1',
+          schema: {
+            openAPIV3Schema: {
+              type: 'testObject',
+            },
+          },
+        },
+      ],
+    },
+  };
+
+  const d2: ManifestObjectDefinition = {
+    apiVersion: 'apiextensions.k8s.io/v1beta1',
+    kind: 'CustomResourceDefinition',
+    metadata: {
+      name: 'testMetadata',
+    },
+    spec: {
+      group: 'testGroup',
+      names: {
+        kind: 'testNameKind',
+      },
+      versions: [
+        {
+          name: 'v1',
+          schema: {
+            openAPIV3Schema: {
+              type: 'testObject',
+            },
+          },
+        },
+      ],
+    },
+  };
+
+  await withTempFixture([d1, d2], async (fixture: string) => {
+    await expect(() => ImportCustomResourceDefinition.fromSpec({ source: fixture })).rejects.toThrow('Found multiple occurrences of version v1 for testGroup/testnamekind');
+  });
+
 });
 
 test('fails if manifest does not have a "spec" field', async () => {
@@ -464,4 +561,49 @@ test('given a prefix, we can import two crds with the same group id', async () =
   });
 
 
+});
+
+describe('cdk8s.yaml file', () => {
+
+  const jenkinsCRD: ImportSpec = {
+    source: 'https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/deploy/crds/jenkins.io_jenkins_crd.yaml',
+  };
+
+  let importOptions: ImportOptions;
+  let tempDir: string;
+
+  beforeEach(() => {
+    // creates temp directory to run each test on
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'yaml-sync'));
+    importOptions = {
+      targetLanguage: Language.TYPESCRIPT,
+      outdir: tempDir,
+    };
+
+    process.chdir(tempDir);
+
+    // creates default config cdk8s.yaml file in the tempDir
+    const default_config_yaml = {
+      language: 'typescript',
+      app: 'node main.js',
+      imports: ['k8s'],
+    };
+    fs.outputFileSync(path.join(tempDir, 'cdk8s.yaml'), yaml.stringify(default_config_yaml));
+  });
+
+  test('is updated with new imports', async () => {
+    await importDispatch([jenkinsCRD], {}, importOptions);
+
+    const config = readConfigSync();
+    expect(config.imports?.length == 2).toBeTruthy();
+    expect(config.imports?.includes(jenkinsCRD.source)).toBeTruthy();
+  });
+
+  test('does not update with CRD that is imported twice', async () => {
+    await importDispatch([jenkinsCRD], {}, importOptions);
+    await importDispatch([jenkinsCRD], {}, importOptions);
+
+    const config = readConfigSync();
+    expect(config.imports?.length == 2).toBeTruthy();
+  });
 });

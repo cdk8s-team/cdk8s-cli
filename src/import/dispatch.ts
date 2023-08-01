@@ -3,7 +3,7 @@ import { ImportCustomResourceDefinition } from './crd';
 import { matchCrdsDevUrl } from './crds-dev';
 import { ImportHelm } from './helm';
 import { ImportKubernetesApi } from './k8s';
-import { ImportSpec } from '../config';
+import { ImportSpec, addImportToConfig } from '../config';
 
 export async function importDispatch(imports: ImportSpec[], argv: any, options: ImportOptions) {
   for (const importSpec of imports) {
@@ -19,6 +19,7 @@ export async function importDispatch(imports: ImportSpec[], argv: any, options: 
       moduleNamePrefix: importSpec.moduleNamePrefix,
       ...options,
     });
+    await addImportToConfig(importSpec.source);
   }
 }
 

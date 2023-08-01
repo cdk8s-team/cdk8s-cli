@@ -8,17 +8,7 @@
       ],
       "steps": [
         {
-          "exec": "rm -rf /tmp/.backport/"
-        },
-        {
-          "exec": "mkdir -p /tmp/.backport/"
-        },
-        {
-          "exec": "cp .backportrc.json /tmp/.backport/"
-        },
-        {
-          "exec": "npx backport --accesstoken ${GITHUB_TOKEN} --pr ${BACKPORT_PR_NUMBER} --non-interactive",
-          "cwd": "/tmp/.backport/"
+          "exec": "BACKPORT_HOME=$(mktemp -d) && mkdir -p ${BACKPORT_HOME} && cp .backportrc.json ${BACKPORT_HOME} && cd ${BACKPORT_HOME} && backport --dir ${BACKPORT_HOME}/cdk8s-cli --accesstoken ${GITHUB_TOKEN} --pr ${BACKPORT_PR_NUMBER} --non-interactive"
         }
       ]
     },
@@ -30,39 +20,7 @@
       ],
       "steps": [
         {
-          "exec": "rm -rf /tmp/.backport/"
-        },
-        {
-          "exec": "mkdir -p /tmp/.backport/"
-        },
-        {
-          "exec": "cp .backportrc.json /tmp/.backport/"
-        },
-        {
-          "exec": "npx backport --accesstoken ${GITHUB_TOKEN} --pr ${BACKPORT_PR_NUMBER} --branch 1.x",
-          "cwd": "/tmp/.backport/"
-        }
-      ]
-    },
-    "backport:2.x": {
-      "name": "backport:2.x",
-      "requiredEnv": [
-        "BACKPORT_PR_NUMBER",
-        "GITHUB_TOKEN"
-      ],
-      "steps": [
-        {
-          "exec": "rm -rf /tmp/.backport/"
-        },
-        {
-          "exec": "mkdir -p /tmp/.backport/"
-        },
-        {
-          "exec": "cp .backportrc.json /tmp/.backport/"
-        },
-        {
-          "exec": "npx backport --accesstoken ${GITHUB_TOKEN} --pr ${BACKPORT_PR_NUMBER} --branch 2.x",
-          "cwd": "/tmp/.backport/"
+          "exec": "BACKPORT_HOME=$(mktemp -d) && mkdir -p ${BACKPORT_HOME} && cp .backportrc.json ${BACKPORT_HOME} && cd ${BACKPORT_HOME} && backport --dir ${BACKPORT_HOME}/cdk8s-cli --accesstoken ${GITHUB_TOKEN} --pr ${BACKPORT_PR_NUMBER} --branch 1.x"
         }
       ]
     },
@@ -98,7 +56,8 @@
         "CHANGELOG": "dist/changelog.md",
         "BUMPFILE": "dist/version.txt",
         "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": ""
+        "RELEASE_TAG_PREFIX": "",
+        "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+'"
       },
       "steps": [
         {
@@ -181,6 +140,24 @@
         }
       ]
     },
+    "install": {
+      "name": "install",
+      "description": "Install project dependencies and update lockfile (non-frozen)",
+      "steps": [
+        {
+          "exec": "yarn install --check-files"
+        }
+      ]
+    },
+    "install:ci": {
+      "name": "install:ci",
+      "description": "Install project dependencies using frozen lockfile",
+      "steps": [
+        {
+          "exec": "yarn install --check-files --frozen-lockfile"
+        }
+      ]
+    },
     "integ:init": {
       "name": "integ:init",
       "steps": [
@@ -191,12 +168,12 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts"
         }
       ]
     },
-    "integ:init:go-app": {
-      "name": "integ:init:go-app",
+    "integ:init:go-app-npm": {
+      "name": "integ:init:go-app-npm",
       "steps": [
         {
           "exec": "yarn run compile"
@@ -205,12 +182,12 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app-npm"
         }
       ]
     },
-    "integ:init:java-app": {
-      "name": "integ:init:java-app",
+    "integ:init:go-app-yarn": {
+      "name": "integ:init:go-app-yarn",
       "steps": [
         {
           "exec": "yarn run compile"
@@ -219,12 +196,12 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app-yarn"
         }
       ]
     },
-    "integ:init:python-app": {
-      "name": "integ:init:python-app",
+    "integ:init:java-app-npm": {
+      "name": "integ:init:java-app-npm",
       "steps": [
         {
           "exec": "yarn run compile"
@@ -233,12 +210,12 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app-npm"
         }
       ]
     },
-    "integ:init:typescript-app": {
-      "name": "integ:init:typescript-app",
+    "integ:init:java-app-yarn": {
+      "name": "integ:init:java-app-yarn",
       "steps": [
         {
           "exec": "yarn run compile"
@@ -247,7 +224,63 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app-yarn"
+        }
+      ]
+    },
+    "integ:init:python-app-npm": {
+      "name": "integ:init:python-app-npm",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app-npm"
+        }
+      ]
+    },
+    "integ:init:python-app-yarn": {
+      "name": "integ:init:python-app-yarn",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app-yarn"
+        }
+      ]
+    },
+    "integ:init:typescript-app-npm": {
+      "name": "integ:init:typescript-app-npm",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app-npm"
+        }
+      ]
+    },
+    "integ:init:typescript-app-yarn": {
+      "name": "integ:init:typescript-app-yarn",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app-yarn"
         }
       ]
     },
@@ -259,7 +292,7 @@
           "exec": "mkdir -p dist/js"
         },
         {
-          "exec": "mv $(npm pack) dist/js/"
+          "exec": "npm pack --pack-destination dist/js"
         }
       ]
     },
@@ -363,7 +396,8 @@
         "CHANGELOG": "dist/changelog.md",
         "BUMPFILE": "dist/version.txt",
         "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": ""
+        "RELEASE_TAG_PREFIX": "",
+        "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+'"
       },
       "steps": [
         {
@@ -371,9 +405,9 @@
         }
       ]
     },
-    "upgrade": {
-      "name": "upgrade",
-      "description": "upgrade dependencies",
+    "upgrade-compiler-dependencies": {
+      "name": "upgrade-compiler-dependencies",
+      "description": "upgrade compiler dependencies",
       "env": {
         "CI": "0"
       },
@@ -382,25 +416,115 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --dep dev --upgrade --target=minor"
-        },
-        {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor"
-        },
-        {
-          "exec": "npm-check-updates --dep peer --upgrade --target=minor"
-        },
-        {
-          "exec": "npm-check-updates --dep prod --upgrade --target=minor"
-        },
-        {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor"
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='typescript'"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade"
+          "exec": "yarn upgrade typescript"
+        },
+        {
+          "exec": "npx projen"
+        },
+        {
+          "spawn": "post-upgrade"
+        }
+      ]
+    },
+    "upgrade-configuration": {
+      "name": "upgrade-configuration",
+      "description": "upgrade configuration",
+      "env": {
+        "CI": "0"
+      },
+      "steps": [
+        {
+          "exec": "yarn upgrade npm-check-updates"
+        },
+        {
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'"
+        },
+        {
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'"
+        },
+        {
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'"
+        },
+        {
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'"
+        },
+        {
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'"
+        },
+        {
+          "exec": "yarn install --check-files"
+        },
+        {
+          "exec": "yarn upgrade @cdk8s/projen-common projen"
+        },
+        {
+          "exec": "npx projen"
+        },
+        {
+          "spawn": "post-upgrade"
+        }
+      ]
+    },
+    "upgrade-dev-dependencies": {
+      "name": "upgrade-dev-dependencies",
+      "description": "upgrade dev dependencies",
+      "env": {
+        "CI": "0"
+      },
+      "steps": [
+        {
+          "exec": "yarn upgrade npm-check-updates"
+        },
+        {
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'"
+        },
+        {
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'"
+        },
+        {
+          "exec": "yarn install --check-files"
+        },
+        {
+          "exec": "yarn upgrade @types/fs-extra @types/glob @types/jest @types/json-schema @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint glob jest jest-junit npm-check-updates standard-version ts-jest ts-node typescript-json-schema @types/node ajv cdk8s cdk8s-plus-25 codemaker colors constructs fs-extra jsii-pacmak jsii-srcmak json2jsii semver sscaff table yaml yargs"
+        },
+        {
+          "exec": "npx projen"
+        },
+        {
+          "spawn": "post-upgrade"
+        }
+      ]
+    },
+    "upgrade-runtime-dependencies": {
+      "name": "upgrade-runtime-dependencies",
+      "description": "upgrade runtime dependencies",
+      "env": {
+        "CI": "0"
+      },
+      "steps": [
+        {
+          "exec": "yarn upgrade npm-check-updates"
+        },
+        {
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'"
+        },
+        {
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'"
+        },
+        {
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'"
+        },
+        {
+          "exec": "yarn install --check-files"
+        },
+        {
+          "exec": "yarn upgrade @types/fs-extra @types/glob @types/jest @types/json-schema @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint glob jest jest-junit npm-check-updates standard-version ts-jest ts-node typescript typescript-json-schema @types/node ajv cdk8s cdk8s-plus-25 codemaker colors constructs fs-extra jsii-pacmak jsii-srcmak json2jsii semver sscaff table yaml yargs"
         },
         {
           "exec": "npx projen"
@@ -421,7 +545,7 @@
     }
   },
   "env": {
-    "PATH": "$(npx -c \"node -e \\\"console.log(process.env.PATH)\\\"\")"
+    "PATH": "$(npx -c \"node --print process.env.PATH\")"
   },
-  "//": "~~ Generated by projen. To modify, edit .projenrc.js and run \"npx projen\"."
+  "//": "~~ Generated by projen. To modify, edit .projenrc.ts and run \"npx projen\"."
 }
