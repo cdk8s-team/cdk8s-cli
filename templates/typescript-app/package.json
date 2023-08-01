@@ -14,5 +14,19 @@
     "build": "npm run compile && npm run test && npm run synth",
     "upgrade": "npm i cdk8s@latest cdk8s-cli@latest",
     "upgrade:next": "npm i cdk8s@next cdk8s-cli@next"
+  },
+  "dependencies": {
+    "cdk8s": "^{{ cdk8s_core_version }}",
+    "cdk8s-plus-25": "^{{ cdk8s_plus_version }}",
+    "constructs": "^{{ constructs_version }}"
+  },
+  "devDependencies": {
+    "cdk8s-cli": "{{ cdk8s_cli_spec }}",
+    "@types/node": "^14",
+    "@types/jest": "^26",
+    "jest": "^26",
+    "ts-jest": "^26",
+    "typescript": "^4.9.5",
+    "ts-node": "^10"
   }
 }
