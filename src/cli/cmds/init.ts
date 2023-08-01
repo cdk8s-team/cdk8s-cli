@@ -45,22 +45,21 @@ async function determineDeps(): Promise<Deps> {
   const cdk8sCli = new ModuleVersion('cdk8s-cli');
   const jsii = new ModuleVersion('jsii-pacmak');
 
+  const cdk8sTarball = process.env.CDK8S_TARBALL;
+  const cdk8sTarballEscaped = cdk8sTarball ? (cdk8sTarball.replace(/\\/g, '\\\\')) : undefined;
+
   return {
-    npm_cdk8s: cdk8s.npmDependency,
     pypi_cdk8s: cdk8s.pypiDependency,
     mvn_cdk8s: cdk8s.mavenDependency,
     cdk8s_core_version: cdk8s.version,
     constructs_version: constructsVersion,
     jsii_version: jsii.version,
-
-    // when running tests, install the tarball created from our source
-    npm_cdk8s_cli: process.env.CDK8S_TARBALL ?? cdk8sCli.npmDependency,
+    cdk8s_cli_spec: cdk8sTarballEscaped ?? `^${cdk8sCli.version}`,
   };
 }
 
 interface Deps {
-  npm_cdk8s: string;
-  npm_cdk8s_cli?: string;
+  cdk8s_cli_spec: string;
   pypi_cdk8s: string;
   mvn_cdk8s: string;
   cdk8s_core_version: string;
