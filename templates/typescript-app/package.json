@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "cdk8s": "^{{ cdk8s_core_version }}",
-    "cdk8s-plus-25": "^{{ cdk8s_plus_version }}",
     "constructs": "^{{ constructs_version }}"
   },
   "devDependencies": {
