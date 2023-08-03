@@ -492,7 +492,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/fs-extra @types/glob @types/jest @types/json-schema @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint glob jest jest-junit npm-check-updates standard-version ts-jest ts-node typescript-json-schema @types/node ajv cdk8s codemaker colors constructs fs-extra jsii-pacmak jsii-srcmak json2jsii semver sscaff table yaml yargs"
+          "exec": "yarn upgrade @types/fs-extra @types/glob @types/jest @types/json-schema @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint glob jest jest-junit npm-check-updates standard-version ts-jest ts-node typescript-json-schema"
         },
         {
           "exec": "npx projen"
@@ -525,7 +525,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/fs-extra @types/glob @types/jest @types/json-schema @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint glob jest jest-junit npm-check-updates standard-version ts-jest ts-node typescript typescript-json-schema @types/node ajv cdk8s codemaker colors constructs fs-extra jsii-pacmak jsii-srcmak json2jsii semver sscaff table yaml yargs"
+          "exec": "yarn upgrade @types/node ajv cdk8s codemaker colors constructs fs-extra jsii-pacmak jsii-srcmak json2jsii semver sscaff table yaml yargs"
         },
         {
           "exec": "npx projen"
