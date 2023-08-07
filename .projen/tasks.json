@@ -210,7 +210,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t helm-chart-with-crds-npm"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t helm-chart-with-crds-npm"
         }
       ]
     },
@@ -224,7 +224,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t helm-chart-with-crds-yarn"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t helm-chart-with-crds-yarn"
         }
       ]
     },
@@ -238,7 +238,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t helm-chart-without-crds-npm"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t helm-chart-without-crds-npm"
         }
       ]
     },
@@ -252,7 +252,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t helm-chart-without-crds-yarn"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t helm-chart-without-crds-yarn"
         }
       ]
     },
