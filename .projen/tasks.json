@@ -56,7 +56,8 @@
         "CHANGELOG": "dist/changelog.md",
         "BUMPFILE": "dist/version.txt",
         "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": ""
+        "RELEASE_TAG_PREFIX": "",
+        "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+'"
       },
       "steps": [
         {
@@ -167,7 +168,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts"
         }
       ]
     },
@@ -181,7 +182,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app-npm"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app-npm"
         }
       ]
     },
@@ -195,7 +196,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app-yarn"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t go-app-yarn"
         }
       ]
     },
@@ -265,7 +266,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app-npm"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app-npm"
         }
       ]
     },
@@ -279,7 +280,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app-yarn"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t java-app-yarn"
         }
       ]
     },
@@ -293,7 +294,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app-npm"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app-npm"
         }
       ]
     },
@@ -307,7 +308,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app-yarn"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t python-app-yarn"
         }
       ]
     },
@@ -321,7 +322,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app-npm"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app-npm"
         }
       ]
     },
@@ -335,7 +336,7 @@
           "exec": "yarn run package"
         },
         {
-          "exec": "jest --testPathIgnorePatterns \"^((?!integ).)*$\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app-yarn"
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t typescript-app-yarn"
         }
       ]
     },
@@ -347,7 +348,7 @@
           "exec": "mkdir -p dist/js"
         },
         {
-          "exec": "mv $(npm pack) dist/js/"
+          "exec": "npm pack --pack-destination dist/js"
         }
       ]
     },
@@ -451,11 +452,39 @@
         "CHANGELOG": "dist/changelog.md",
         "BUMPFILE": "dist/version.txt",
         "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": ""
+        "RELEASE_TAG_PREFIX": "",
+        "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+'"
       },
       "steps": [
         {
           "builtin": "release/reset-version"
+        }
+      ]
+    },
+    "upgrade-compiler-dependencies": {
+      "name": "upgrade-compiler-dependencies",
+      "description": "upgrade compiler dependencies",
+      "env": {
+        "CI": "0"
+      },
+      "steps": [
+        {
+          "exec": "yarn upgrade npm-check-updates"
+        },
+        {
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='typescript'"
+        },
+        {
+          "exec": "yarn install --check-files"
+        },
+        {
+          "exec": "yarn upgrade typescript"
+        },
+        {
+          "exec": "npx projen"
+        },
+        {
+          "spawn": "post-upgrade"
         }
       ]
     },
@@ -470,19 +499,19 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='@cdk8s/projen-common,projen'"
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'"
         },
         {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='@cdk8s/projen-common,projen'"
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'"
         },
         {
-          "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='@cdk8s/projen-common,projen'"
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'"
         },
         {
-          "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='@cdk8s/projen-common,projen'"
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'"
         },
         {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='@cdk8s/projen-common,projen'"
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'"
         },
         {
           "exec": "yarn install --check-files"
@@ -498,9 +527,9 @@
         }
       ]
     },
-    "upgrade-dependencies": {
-      "name": "upgrade-dependencies",
-      "description": "upgrade dependencies",
+    "upgrade-dev-dependencies": {
+      "name": "upgrade-dev-dependencies",
+      "description": "upgrade dev dependencies",
       "env": {
         "CI": "0"
       },
@@ -509,25 +538,49 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='@cdk8s/projen-common,projen'"
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'"
         },
         {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='@cdk8s/projen-common,projen'"
-        },
-        {
-          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='@cdk8s/projen-common,projen'"
-        },
-        {
-          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='@cdk8s/projen-common,projen'"
-        },
-        {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='@cdk8s/projen-common,projen'"
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/fs-extra @types/glob @types/jest @types/json-schema @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint glob jest jest-junit npm-check-updates standard-version ts-jest ts-node typescript typescript-json-schema @types/node ajv cdk8s cdk8s-plus-25 codemaker colors constructs fs-extra jsii-pacmak jsii-srcmak json2jsii semver sscaff table yaml yargs"
+          "exec": "yarn upgrade @types/fs-extra @types/glob @types/jest @types/json-schema @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint glob jest jest-junit npm-check-updates standard-version ts-jest ts-node typescript-json-schema"
+        },
+        {
+          "exec": "npx projen"
+        },
+        {
+          "spawn": "post-upgrade"
+        }
+      ]
+    },
+    "upgrade-runtime-dependencies": {
+      "name": "upgrade-runtime-dependencies",
+      "description": "upgrade runtime dependencies",
+      "env": {
+        "CI": "0"
+      },
+      "steps": [
+        {
+          "exec": "yarn upgrade npm-check-updates"
+        },
+        {
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'"
+        },
+        {
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'"
+        },
+        {
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'"
+        },
+        {
+          "exec": "yarn install --check-files"
+        },
+        {
+          "exec": "yarn upgrade @types/node ajv cdk8s cdk8s-plus-25 codemaker colors constructs fs-extra jsii-pacmak jsii-srcmak json2jsii semver sscaff table yaml yargs"
         },
         {
           "exec": "npx projen"
