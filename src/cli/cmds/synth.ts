@@ -125,9 +125,9 @@ async function helmSynthesis(apiVersion: string, chartVersion: string, outdir: s
   let templatePath: string;
 
   const substituteValues = {
-    'api-version': apiVersion,
-    'version': chartVersion,
-    'app': path.basename(path.resolve()),
+    apiVersion: apiVersion,
+    version: chartVersion,
+    app: path.basename(path.resolve()),
   };
 
   // Helm chart structure without CRDs support

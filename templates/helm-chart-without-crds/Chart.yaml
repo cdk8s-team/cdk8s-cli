@@ -1,4 +1,4 @@
-apiVersion: {{ api-version }}
+apiVersion: {{ apiVersion }}
 name: {{ app }}
 version: {{ version }}
 description: Generated chart for {{ app }}
