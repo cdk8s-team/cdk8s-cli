@@ -1,1 +1,0 @@
-This file needs to be there for recursive folder creation to be done. But, we need this folder to be empty. So this file will be deleted as a post hook.
