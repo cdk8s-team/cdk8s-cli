@@ -386,9 +386,9 @@ describe('Helm Synthesis', () => {
 
   });
 
-  // test('', () => {
+  test('only crds are downloaded to the crds folder and rest are ignored', () => {
 
-  // });
+  });
 
   // test('', () => {
 

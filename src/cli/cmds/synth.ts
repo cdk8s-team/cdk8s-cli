@@ -89,9 +89,10 @@ class Command implements yargs.CommandModule {
       let manifests: SynthesizedApp;
 
       if (format === SynthesisFormat.HELM) {
-        const templatesOutdir = await helmSynthesis(chartApiVersion, chartVersion, outdir);
+        await helmSynthesis(chartApiVersion, chartVersion, outdir);
+        const templateDir = path.join(outdir, 'templates');
 
-        manifests = await synthApp(command, templatesOutdir, stdout, recordConstructMetadata);
+        manifests = await synthApp(command, templateDir, stdout, recordConstructMetadata);
       } else {
         manifests = await synthApp(command, outdir, stdout, recordConstructMetadata);
       }
@@ -115,7 +116,7 @@ async function fetchValidations(): Promise<ValidationConfig[] | undefined> {
 }
 
 
-async function helmSynthesis(apiVersion: string, chartVersion: string, outdir: string): Promise<string> {
+async function helmSynthesis(apiVersion: string, chartVersion: string, outdir: string) {
   const TEMPLATE_WITHOUT_CRDS = 'helm-chart-without-crds';
   const TEMPLATE_WITH_CRDS = 'helm-chart-with-crds';
 
@@ -148,9 +149,7 @@ async function helmSynthesis(apiVersion: string, chartVersion: string, outdir: s
     throw new Error(`An error occurred during Helm chart creation: ${error}`);
   }
 
-  await addCrdsToHelmChart(templatePath);
-
-  return templatePath;
+  await addCrdsToHelmChart(outdir);
 }
 
 async function addCrdsToHelmChart(chartDir: string) {
