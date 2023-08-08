@@ -13,6 +13,7 @@ import { ImportSpec } from '../config';
 
 const MAX_HELM_BUFFER = 10 * 1024 * 1024;
 
+// TODO: Validate if chart version follows SemVer
 export class ImportHelm extends ImportBase {
   chartName: string;
   chartUrl: string;
@@ -32,11 +33,15 @@ export class ImportHelm extends ImportBase {
 
     this.tmpDir = pullHelmRepo(chartUrl, chartName, chartVersion);
 
-    if (fs.existsSync(this.tmpDir)) {
-      this.chartSchemaPath = path.join(this.tmpDir, this.chartName, this.schemaFileName);
+    const potentialSchemaPath = path.join(this.tmpDir, this.chartName, this.schemaFileName);
+
+    if (fs.existsSync(potentialSchemaPath)) {
+      this.chartSchemaPath = potentialSchemaPath;
     } else {
       this.chartSchemaPath = undefined;
     }
+
+    console.log(`CHART SCHEMA PATH: ${this.chartSchemaPath}`);
   }
 
   public get moduleNames() {
@@ -49,7 +54,7 @@ export class ImportHelm extends ImportBase {
 
     let schema: JSONSchema4 | undefined;
     if (this.chartSchemaPath !== undefined) {
-      JSON.parse(fs.readFileSync(this.chartSchemaPath, 'utf-8'));
+      schema = JSON.parse(fs.readFileSync(this.chartSchemaPath, 'utf-8'));
     } else {
       schema = undefined;
     }
