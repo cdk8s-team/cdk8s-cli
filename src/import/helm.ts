@@ -82,7 +82,9 @@ export class ImportHelm extends ImportBase {
  * @param url
  */
 function validateHelmUrl(url: string): RegExpExecArray {
-  const helmRegex = /^helm:([A-Za-z0-9_.-:]+)\/([A-Za-z0-9_.-:]+)\@([0-9]+)\.([0-9]+)\.([0-9]+)$/;
+
+  // TODO: Make this better
+  const helmRegex = /^helm:([A-Za-z0-9_.-:\-]+)\/([A-Za-z0-9_.-:\-]+)\@([0-9]+)\.([0-9]+)\.([0-9]+)$/;
   const match = helmRegex.exec(url);
 
   if (match) {
