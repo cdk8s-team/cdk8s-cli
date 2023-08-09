@@ -265,17 +265,29 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
   // Create custom type
   typegen.emitCustomType(chartName, code => {
 
-    // Interface for schema generated props
-    let schemaGenValuesInterface: string = 'SchemaGeneratedValues';
-    if (schema !== undefined) {
-      schemaGenValuesInterface = typegen.emitType(schemaGenValuesInterface, schema, def.fqn);
-    } else {
-      code.openBlock(`export interface ${schemaGenValuesInterface}`);
-    }
-
-    // Creating values interface
     const valuesInterface = `${chartName}ValuesProps`;
-    emitValuesInterface();
+    if (schema !== undefined) {
+      // Interface for schema generated props
+      let schemaGenValuesInterface: string = 'SchemaGeneratedValues';
+      schemaGenValuesInterface = typegen.emitType(schemaGenValuesInterface, schema, def.fqn);
+
+      // Creating values interface
+      emitValuesInterface();
+
+      function emitValuesInterface() {
+        code.openBlock(`export interface ${valuesInterface} extends ${schemaGenValuesInterface}`);
+
+        // Sub charts or dependencies
+        for (const dependency of def.chartDependencies) {
+          code.line(`readonly ${dependency}?: { [key: string]: any };`);
+        }
+
+        // Global values
+        code.line('readonly global?: { [key: string]: any };');
+
+        code.closeBlock();
+      }
+    }
 
     // Creating construct properties
     emitPropsInterface();
@@ -284,20 +296,6 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
 
     // Creating construct for helm chart
     emitConstruct();
-
-    function emitValuesInterface() {
-      code.openBlock(`export interface ${valuesInterface} extends ${schemaGenValuesInterface}`);
-
-      // Sub charts or dependencies
-      for (const dependency of def.chartDependencies) {
-        code.line(`readonly ${dependency}?: { [key: string]: any };`);
-      }
-
-      // Global values
-      code.line('readonly global?: { [key: string]: any };');
-
-      code.closeBlock();
-    }
 
     function emitPropsInterface() {
       code.openBlock(`export interface ${chartName}Props`);
