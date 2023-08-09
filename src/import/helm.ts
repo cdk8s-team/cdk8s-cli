@@ -2,6 +2,7 @@ import { spawnSync } from 'child_process';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
+import { Yaml } from 'cdk8s';
 import { CodeMaker } from 'codemaker';
 // we just need the types from json-schema
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -12,6 +13,8 @@ import { emitHelmHeader, generateHelmConstruct } from './codegen';
 import { ImportSpec } from '../config';
 
 const MAX_HELM_BUFFER = 10 * 1024 * 1024;
+const CHART_SCHEMA = 'values.schema.json';
+const CHART_YAML = 'chart.yaml';
 
 // TODO: Validate if chart version follows SemVer
 export class ImportHelm extends ImportBase {
@@ -19,8 +22,8 @@ export class ImportHelm extends ImportBase {
   chartUrl: string;
   chartVersion: string;
   chartSchemaPath: string | undefined;
+  chartDependencies: string[] = [];
   tmpDir: string;
-  schemaFileName: string = 'values.schema.json';
 
   constructor(importSpec: ImportSpec) {
     super();
@@ -30,10 +33,16 @@ export class ImportHelm extends ImportBase {
     this.chartName = chartName;
     this.chartUrl = chartUrl;
     this.chartVersion = chartVersion;
-
     this.tmpDir = pullHelmRepo(chartUrl, chartName, chartVersion);
 
-    const potentialSchemaPath = path.join(this.tmpDir, this.chartName, this.schemaFileName);
+    const chartYamlFilePath = path.join(this.tmpDir, this.chartName, CHART_YAML);
+    const contents = Yaml.load(chartYamlFilePath)[0];
+
+    for (const dependency of contents.dependencies) {
+      this.chartDependencies.push(dependency.name);
+    }
+
+    const potentialSchemaPath = path.join(this.tmpDir, this.chartName, CHART_SCHEMA);
 
     if (fs.existsSync(potentialSchemaPath)) {
       this.chartSchemaPath = potentialSchemaPath;
@@ -68,6 +77,7 @@ export class ImportHelm extends ImportBase {
       chartName: this.chartName,
       chartUrl: this.chartUrl,
       chartVersion: this.chartVersion,
+      chartDependencies: this.chartDependencies,
       fqn: this.chartName,
     });
 
@@ -153,6 +163,7 @@ function pullHelmRepo(chartUrl: string, chartName: string, chartVersion: string)
   return workdir;
 }
 
+// TODO is this done automatically with a temp dir?
 /**
  * Cleanup temp directory created
  * @param tmpDir Temporary directory path
