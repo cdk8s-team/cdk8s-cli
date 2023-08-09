@@ -302,9 +302,6 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
     function emitPropsInterface() {
       code.openBlock(`export interface ${chartName}Props`);
 
-      code.line('readonly chart?: string;');
-      code.line('readonly repo?: string;');
-      code.line('readonly version?: string;');
       code.line('readonly namespace?: string;');
       code.line('readonly releaseName?: string;');
       code.line('readonly helmExecutable?: string;');
