@@ -1789,10 +1789,10 @@ cdk8s-plus-25@^2.19.0:
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.37.0:
-  version "2.37.0"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.37.0.tgz#78eca3550a001a9094ea377b70ddfef8f133b72a"
-  integrity sha512-Mfy7TqaiT9GCMbHNZJx7GrEIXs26UJnu3adDjYraL62vTsLpYsZ3+7ODApYuDCTO/3DD1njFP/aaNHN0ZgZs1Q==
+cdk8s@^2.38.0:
+  version "2.38.0"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.38.0.tgz#7b06bd504a6a967076d608b3013d0d347095c4e1"
+  integrity sha512-8YQTla19S/xvCptOtrJHNCxCcA704kvibyi1kH3RA1Q/86ZCK1K0Cb4CdFpQp50TbuaAaVdvzIp0v/vv+RurEw==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -3958,9 +3958,9 @@ istanbul-reports@^3.1.3:
     istanbul-lib-report "^3.0.0"
 
 jackspeak@^2.0.3:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/jackspeak/-/jackspeak-2.2.2.tgz#707c62733924b8dc2a0a629dc6248577788b5385"
-  integrity sha512-mgNtVv4vUuaKA97yxUHoA3+FkuhtxkjdXEWOyB/N76fjy0FjezEt34oy3epBtvCvS+7DyKwqCFWx/oJLV5+kCg==
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/jackspeak/-/jackspeak-2.2.3.tgz#ac63c57c18d254dc78a1f4ecd1cdeb4daeb6e616"
+  integrity sha512-pF0kfjmg8DJLxDrizHoCZGUFz4P4czQ3HyfW4BU0ffebYkzAVlBywp5zaxW/TM+r0sGbmrQdi8EQQVTJFxnGsQ==
   dependencies:
     "@isaacs/cliui" "^8.0.2"
   optionalDependencies:
@@ -6877,9 +6877,9 @@ typescript-json-schema@^0.59.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20230808"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230808.tgz#fd05941bd8b19b0c42b9de2bb9da8734bfc807d8"
-  integrity sha512-skwlatDWwjIHttX+Yg1vH1XRyFJWy8m1LxrP+3VEpAso05fW0y61dQbzqDzdtTjPKUDLf5um7IMwWBS6gVx08A==
+  version "5.3.0-dev.20230809"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230809.tgz#09c59d3e855c30ac9ec8f9d41fc62a9231a5b28c"
+  integrity sha512-AhrbSEcL6ar5+jdeqwrmrQrvxCX5iK4Zb/YtlCaft0xEr4HOeKWtixh8FRIqugc83bSHqE7noQ0BhLZa9Biazw==
 
 typescript@~3.9.10:
   version "3.9.10"
