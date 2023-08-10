@@ -25,8 +25,11 @@ export class SafeReviver {
   // - | used in annotation keys (e.g x-kubernetes-group-version-kind)
   // # | used in $ref to point to a definition (e.g #/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery)
   // , | used in values that represent a list (e.g merge,retainKeys)
+  // + | used in values representing MIME types (e.g application/json-patch+json)
+  // : | used in e.g. Prometheus events (e.g run:completed)
+  // * | used in e.g. AWS policies (e.g s3:ObjectCreated:*)
   public static readonly LEGAL_CHARS = /^(\w|\.|\/|-|#|,)*$/;
-  public static readonly LEGAL_CHARS_IN_ENUM = /^( |\w|\.|\/|-|#|,)*$/;
+  public static readonly LEGAL_CHARS_IN_ENUM = /^( |\w|\.|\/|-|#|,|\+|:|\*)*$/;
 
   // the string we use as the stripped value
   public static readonly STRIPPED_VALUE = '__stripped_by_cdk8s__';
