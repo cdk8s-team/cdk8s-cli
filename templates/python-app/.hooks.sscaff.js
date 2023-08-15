@@ -9,7 +9,7 @@ exports.pre = () => {
   try {
     execSync(`${platform() === 'win32' ? 'where' : 'which'} pipenv`);
   } catch {
-    console.error(`Unable to find "pipenv". Install from https://pipenv.kennethreitz.org`);
+    console.error(`Unable to find "pipenv". Install from https://pipenv.pypa.io/en/latest/installation/`);
     process.exit(1);
   }
 };
