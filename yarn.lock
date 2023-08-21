@@ -1798,10 +1798,10 @@ cdk8s-plus-25@^2.20.0:
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.49.0:
-  version "2.49.0"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.49.0.tgz#3a00a385db7912eaabf88ad543314dc8688383ca"
-  integrity sha512-GoIb5UzY2PKHh8T7i71zQaTWmfHGc66fWEFU5s18GEILfw6HSRKj9HyoHOZk1VeqowejbccDcNXz1ur1eHKslg==
+cdk8s@^2.50.0:
+  version "2.50.0"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.50.0.tgz#5278a086f3d5bc08a51b1e30f9a6a125c4d8ace8"
+  integrity sha512-X8yqnMfyQCemsiYdX1sv+nnxwqA26ifxoCA4CW8yDvOm47mVStaorJh3D5zhda3Ss+rkAGWS94OAfUBJnFEz7A==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -6290,9 +6290,9 @@ source-map@^0.7.3:
   integrity sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==
 
 spawn-please@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/spawn-please/-/spawn-please-2.0.1.tgz#13d76566ca5e9ac0537a90853ca4f53f27489ae0"
-  integrity sha512-W+cFbZR2q2mMTfjz5ZGvhBAiX+e/zczFCNlbS9mxiSdYswBXwUuBUT+a0urH+xZZa8f/bs0mXHyZsZHR9hKogA==
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/spawn-please/-/spawn-please-2.0.2.tgz#41912d82fe9504dd5a5424d2b4834e9a6cea56e0"
+  integrity sha512-KM8coezO6ISQ89c1BzyWNtcn2V2kAVtwIXd3cN/V5a0xPYc1F/vydrRc01wsKFEQ/p+V1a4sw4z2yMITIXrgGw==
   dependencies:
     cross-spawn "^7.0.3"
 
@@ -6896,9 +6896,9 @@ typescript-json-schema@^0.59.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20230819"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230819.tgz#2d9dcc12507c459031f7d2c39bdcd8aa6480a0a6"
-  integrity sha512-xFI03/rVF4TqfFun9uM1WLqJxM69zGmALg4vOWFGXLW6W126ay+fBUcCm3xoRVNA8ltwzViJq2dXpZKzckShBQ==
+  version "5.3.0-dev.20230820"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230820.tgz#a8887be8ca21ff3248308a2f250be4aa6909a4a2"
+  integrity sha512-9T+2gAm2cEBpe0K8W7lXEGHHme5Hn44m6CtcxZJlqEpV5nvqkUvj7ANf0XSlJ1anvKzRDireqfKBVUHZGw+vWA==
 
 typescript@~3.9.10:
   version "3.9.10"
@@ -7227,7 +7227,6 @@ workerpool@^6.4.0:
   integrity sha512-zIK7qRgM1Mk+ySxOJl7ZpjX6SlKt5gugxzl8eXHPdbpXX8iDAaVIxYJz4Apn6JdDxP2buY/Ekqg0bOLNSf0u0g==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
-  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
