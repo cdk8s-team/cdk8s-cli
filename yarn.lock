@@ -1791,17 +1791,17 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s-plus-25@^2.20.0:
-  version "2.20.0"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-25/-/cdk8s-plus-25-2.20.0.tgz#d8c76f6a331cfb3b56199a8309d42ceee92a519e"
-  integrity sha512-SM2g/+sVG1crSKbTKySbw4fKUxcN95Srevt9r1gkViZy0pdhVYtcFNSeNCJ/+ROK9ZF/t+k24pgf0UG82aKeag==
+cdk8s-plus-25@^2.21.0:
+  version "2.21.0"
+  resolved "https://registry.yarnpkg.com/cdk8s-plus-25/-/cdk8s-plus-25-2.21.0.tgz#506d4d4b180f42b2eff479c0a7c013ad84371015"
+  integrity sha512-jXKWq1TMxOxJxXAtBvE3UZ0cnhcqYfOK4mO2Dpg8gvTl2fcJrdRD7TFf0uwoeOsSuCDUHG2dJUDP2wyCRW0Upg==
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.57.0:
-  version "2.57.0"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.57.0.tgz#eb89d46e5f3eac541cae75f92daecf146e68cf1e"
-  integrity sha512-D7nsv4Gr4OouTU2ShHfDlepgkInjXhbWaiTxdMDr+blFdi2xpjB/bIBzXo4kD4s3wmLEZDUYagk6CLPc1hSliA==
+cdk8s@^2.58.0:
+  version "2.58.0"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.58.0.tgz#9bd426da816ad8fd7166cae820a52eb8fe39d851"
+  integrity sha512-8Vvy12VbFcyLLH7Z6tMRJ9Chrltpzet7bdH70iRmk5V2PJjxPDyFygqoolYJJJt5ANiDvjGgtrMZyqDABQuL6A==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -6897,9 +6897,9 @@ typescript-json-schema@^0.60.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20230825"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230825.tgz#14c56a699ea2d417fb8e28df8b2698b691ce17b5"
-  integrity sha512-LbxxB17+nHqe7e6oA/240Ha1kOhtrgmLz98Dq3Nbm1sEdkqOnsv3j9XbI0tqd+RWtC/5pgnljHmZRHk/qUeKpQ==
+  version "5.3.0-dev.20230826"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230826.tgz#e987f348563f27d5ffa23f5edfbfbdea478274cb"
+  integrity sha512-2YR1sKozMZdEIf4OQc3c4r3GQI2zF+Hp6D+Llbc6k0KehkpzFcd9RZkDFLj+/bjt6ftY1u3y7M+Mz8uk4Xr/GA==
 
 typescript@~3.9.10:
   version "3.9.10"
