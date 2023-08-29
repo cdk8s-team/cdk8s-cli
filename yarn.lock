@@ -621,14 +621,6 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@jsii/check-node@1.87.0":
-  version "1.87.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.87.0.tgz#5b7e426187f46e3d18159f71ab3f9abd02e36162"
-  integrity sha512-P4mhtFMwntFpqGNanp0L86bskuiNEw1TVKJzhemR3OK2vWb3IyYn1ZHc/o3Sn2xjpwX/OLwVhcuXOOcMFMQViQ==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.5.4"
-
 "@jsii/check-node@1.88.0":
   version "1.88.0"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.88.0.tgz#fa20e012230c692ad36976cde29301be1ed28c67"
@@ -637,7 +629,7 @@
     chalk "^4.1.2"
     semver "^7.5.4"
 
-"@jsii/spec@1.88.0", "@jsii/spec@^1.87.0", "@jsii/spec@^1.88.0":
+"@jsii/spec@1.88.0", "@jsii/spec@^1.88.0":
   version "1.88.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.88.0.tgz#46216d3ca93872b4d878bb81f0cc7b28dc621c28"
   integrity sha512-Q6xirxPM06TRW0GcsHa+tzPZLwe9I+mFYx5BaNMimcv21u6bQnxfynZMgNhHqvLYCmP37HWg0SboUYTa5JROzw==
@@ -1798,10 +1790,10 @@ cdk8s-plus-25@^2.21.0:
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.59.0:
-  version "2.59.0"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.59.0.tgz#edf5dfd76d5dbf37b84b757beeebccfef651ede4"
-  integrity sha512-KNcaNKmsZOrAHwEXoacrznUtHF+dH3Lnf4La3KRz4Bnp+qLYgsV1PLVexMTg+RsORD5G8iOhc4N3jXwyBlFs/g==
+cdk8s@^2.60.0:
+  version "2.60.0"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.60.0.tgz#a299b8ffa7cb33c0c72bdbd99514d10ad7ef72cc"
+  integrity sha512-65hp3sjf61zvBo9r3pna/ed1wIodXa9FynOELwyTYBsVez4jfwI0B8gWNngB16GtklBJ/PKI0DWvJVB0IFE9Kw==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -4542,12 +4534,12 @@ jsii@1.88.0:
     yargs "^16.2.0"
 
 jsii@~5.1.10:
-  version "5.1.11"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.1.11.tgz#6c3faea5d9c2c9a85b06a5b65828e749fd6e437f"
-  integrity sha512-fM7RBmF6DcwVkfRhKZNK5NfPpTWCIoO6zkyPwZL8U8dO7SM1vP2xyUwG9upIHG17fv2BYYqg3wGlTwUE9aYL8w==
+  version "5.1.12"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.1.12.tgz#0ac6d92d52c6732a6e0e3e27f9f07453318715f2"
+  integrity sha512-iY3zLosUEKbeua6IAGJXjFxibiiI0xHFjyYPyewOc56MBRHC7nczWSVGRP+Jgwyo7HWXs4TvJKLG6w8zSuAZrg==
   dependencies:
-    "@jsii/check-node" "1.87.0"
-    "@jsii/spec" "^1.87.0"
+    "@jsii/check-node" "1.88.0"
+    "@jsii/spec" "^1.88.0"
     case "^1.6.3"
     chalk "^4"
     downlevel-dts "^0.11.0"
@@ -6897,9 +6889,9 @@ typescript-json-schema@^0.60.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20230827"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230827.tgz#7950720728e773fb08aaeefa2abc1f5ed885008c"
-  integrity sha512-LXoK1ae7+xCSaRWV+/dKMoq6vasSldbtHxKLaPvcWGKv4yQbxxiA5gwz3PWtuaE5JbVk0NrZiWATIoRgr/Yufg==
+  version "5.3.0-dev.20230828"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230828.tgz#77b37fcd9187a016ac7193d971f29722ff967b38"
+  integrity sha512-uBVHpn+yxJsHMANa01Fn1Ni/3v4HzKcZbbzsbLYxgPKNJTAWQM8FoZWOFh5mrjZmpJcpGtPBcwbeuTUDOCD6QA==
 
 typescript@~3.9.10:
   version "3.9.10"
@@ -7228,7 +7220,6 @@ workerpool@^6.4.2:
   integrity sha512-MrDWwemtC4xNV22kbbZDQQQmxNX+yLm790sgYl2wVD3CWnK7LJY1youI/11wHorAjHjK+GEjUxUh74XoPU71uQ==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
-  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
@@ -7339,6 +7330,11 @@ yaml@2.3.1, yaml@^2.2.2:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.3.1.tgz#02fe0975d23cd441242aa7204e09fc28ac2ac33b"
   integrity sha512-2eHWfjaoXgTBC2jNM1LRef62VQa0umtvRiDSk6HSzW7RvS5YtkabJrwYLLEKWBc8a5U2PTSCs+dJjUTJdlHsWQ==
+
+yaml@2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.3.2.tgz#f522db4313c671a0ca963a75670f1c12ea909144"
+  integrity sha512-N/lyzTPaJasoDmfV7YTrYCI0G/3ivm/9wdG0aHuheKowWQwGTsK0Eoiw6utmzAnI6pkJa0DUVygvp3spqqEKXg==
 
 yargs-parser@20.x, yargs-parser@^20.2.2, yargs-parser@^20.2.3:
   version "20.2.9"
