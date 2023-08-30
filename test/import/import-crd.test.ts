@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import { testImportMatchSnapshot } from './util';
-import { readConfigSync, ImportSpec } from '../../src/config';
+import { ImportSpec } from '../../src/config';
 import { Language, ImportOptions } from '../../src/import/base';
 import { ManifestObjectDefinition, ImportCustomResourceDefinition } from '../../src/import/crd';
 import { importDispatch } from '../../src/import/dispatch';
@@ -581,6 +581,7 @@ describe('cdk8s.yaml file', () => {
     importOptions = {
       targetLanguage: Language.TYPESCRIPT,
       outdir: tempDir,
+      save: true,
     };
 
     process.chdir(tempDir);
@@ -597,16 +598,25 @@ describe('cdk8s.yaml file', () => {
   test('is updated with new imports', async () => {
     await importDispatch([jenkinsCRD], {}, importOptions);
 
-    const config = readConfigSync();
-    expect(config.imports?.length == 2).toBeTruthy();
-    expect(config.imports?.includes(jenkinsCRD.source)).toBeTruthy();
+    const config = yaml.parse(fs.readFileSync('cdk8s.yaml', 'utf-8'));
+    expect(config).toMatchSnapshot();
   });
 
   test('does not update with CRD that is imported twice', async () => {
     await importDispatch([jenkinsCRD], {}, importOptions);
     await importDispatch([jenkinsCRD], {}, importOptions);
 
-    const config = readConfigSync();
-    expect(config.imports?.length == 2).toBeTruthy();
+    const config = yaml.parse(fs.readFileSync('cdk8s.yaml', 'utf-8'));
+    expect(config).toMatchSnapshot();
+  });
+
+  test('is updated with aliased import when used', async () => {
+
+    const spec: ImportSpec = { ...jenkinsCRD, moduleNamePrefix: 'jenk' };
+    await importDispatch([spec], {}, importOptions);
+
+    const config = yaml.parse(fs.readFileSync('cdk8s.yaml', 'utf-8'));
+    expect(config).toMatchSnapshot();
+
   });
 });

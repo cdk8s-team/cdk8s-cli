@@ -4,6 +4,8 @@ import { matchCrdsDevUrl } from './crds-dev';
 import { ImportKubernetesApi } from './k8s';
 import { ImportSpec, addImportToConfig } from '../config';
 
+export const PREFIX_DELIM = ':=';
+
 export async function importDispatch(imports: ImportSpec[], argv: any, options: ImportOptions) {
   for (const importSpec of imports) {
     const importer = await matchImporter(importSpec, argv);
@@ -18,7 +20,11 @@ export async function importDispatch(imports: ImportSpec[], argv: any, options: 
       moduleNamePrefix: importSpec.moduleNamePrefix,
       ...options,
     });
-    await addImportToConfig(importSpec.source);
+
+    if (options.save ?? false) {
+      const spec = importSpec.moduleNamePrefix ? `${importSpec.moduleNamePrefix}${PREFIX_DELIM}${importSpec.source}` : importSpec.source;
+      await addImportToConfig(spec);
+    }
   }
 }
 

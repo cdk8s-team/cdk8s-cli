@@ -1,6 +1,6 @@
 import * as yargs from 'yargs';
 import { readConfigSync, ImportSpec } from '../../config';
-import { importDispatch } from '../../import/dispatch';
+import { PREFIX_DELIM, importDispatch } from '../../import/dispatch';
 import { DEFAULT_API_VERSION } from '../../import/k8s';
 
 const config = readConfigSync();
@@ -22,6 +22,7 @@ class Command implements yargs.CommandModule {
     .example('cdk8s import mattermost:=mattermost_crd.yaml', 'Imports constructs for the mattermost cluster custom resource definition using a custom module name')
     .example('cdk8s import github:crossplane/crossplane@0.14.0', 'Imports constructs for a GitHub repo using doc.crds.dev')
 
+    .option('save', { type: 'boolean', required: false, desc: "Save the import URL in the 'imports' section of the cdk8s.yaml configuration file. Note that any comments made in the file will be lost.", alias: 's' })
     .option('output', { default: DEFAULT_OUTDIR, type: 'string', desc: 'Output directory', alias: 'o' })
     .option('exclude', { type: 'array', desc: 'Do not import types that match these regular expressions. They will be represented as the "any" type (only for "k8s")' })
     .option('class-prefix', { type: 'string', desc: 'A prefix to add to all generated class names. By default, this is "Kube" for "k8s" imports and disabled for CRD imports. Use --no-class-prefix to disable. Must be PascalCase' })
@@ -36,12 +37,13 @@ class Command implements yargs.CommandModule {
       outdir: argv.output,
       targetLanguage: argv.language,
       classNamePrefix,
+      save: argv.save,
     });
   }
 }
 
 function parseImports(spec: string): ImportSpec {
-  const splitImport = spec.split(':=');
+  const splitImport = spec.split(PREFIX_DELIM);
 
   // k8s@x.y.z
   // crd.yaml
