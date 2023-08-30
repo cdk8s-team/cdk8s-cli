@@ -21,7 +21,7 @@ export async function importDispatch(imports: ImportSpec[], argv: any, options: 
       ...options,
     });
 
-    if (options.save ?? false) {
+    if (options.save ?? true) {
       const spec = importSpec.moduleNamePrefix ? `${importSpec.moduleNamePrefix}${PREFIX_DELIM}${importSpec.source}` : importSpec.source;
       await addImportToConfig(spec);
     }
