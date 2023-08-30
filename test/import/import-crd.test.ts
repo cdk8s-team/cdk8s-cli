@@ -581,7 +581,6 @@ describe('cdk8s.yaml file', () => {
     importOptions = {
       targetLanguage: Language.TYPESCRIPT,
       outdir: tempDir,
-      save: true,
     };
 
     process.chdir(tempDir);
@@ -619,4 +618,15 @@ describe('cdk8s.yaml file', () => {
     expect(config).toMatchSnapshot();
 
   });
+
+  test('is not updated with import when used save is false', async () => {
+
+    const spec: ImportSpec = { ...jenkinsCRD, moduleNamePrefix: 'jenk' };
+    await importDispatch([spec], {}, { ...importOptions, save: false });
+
+    const config = yaml.parse(fs.readFileSync('cdk8s.yaml', 'utf-8'));
+    expect(config).toMatchSnapshot();
+
+  });
+
 });
