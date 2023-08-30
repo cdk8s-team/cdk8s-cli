@@ -1790,14 +1790,14 @@ cdk8s-plus-25@^2.21.0:
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.60.0:
-  version "2.60.0"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.60.0.tgz#a299b8ffa7cb33c0c72bdbd99514d10ad7ef72cc"
-  integrity sha512-65hp3sjf61zvBo9r3pna/ed1wIodXa9FynOELwyTYBsVez4jfwI0B8gWNngB16GtklBJ/PKI0DWvJVB0IFE9Kw==
+cdk8s@^2.62.0:
+  version "2.62.0"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.62.0.tgz#0707e9c5dd6fe2658601d7491f53d93f2a1dd323"
+  integrity sha512-WM94ilUCwiiliAGATot9w1v1E87yF47tWBvgBGLTiYzb1QvKVuq+yq0uoJJQD3RGP/zbUQtcHgef2/o+6A9Jaw==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
-    yaml "2.3.1"
+    yaml "2.3.2"
   optionalDependencies:
     backport "8.5.0"
 
@@ -2087,10 +2087,10 @@ console-control-strings@^1.1.0:
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
   integrity sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==
 
-constructs@^10.2.69:
-  version "10.2.69"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.2.69.tgz#5bb06693b317140fe310797ffd52c0d6cc595913"
-  integrity sha512-0AiM/uQe5Uk6JVe/62oolmSN2MjbFQkOlYrM3fFGZLKuT+g7xlAI10EebFhyCcZwI2JAcWuWCmmCAyCothxjuw==
+constructs@^10.2.70:
+  version "10.2.70"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.2.70.tgz#a7d414a717b64a5fab65ff68aaba2ddf73b522bf"
+  integrity sha512-z6zr1E8K/9tzJbCQzY0UGX0/oVKPFKu9C/mzEnghCG6TAJINnvlq0CMKm63XqqeMleadZYm5T3sZGJKcxJS/Pg==
 
 conventional-changelog-angular@^5.0.12:
   version "5.0.13"
@@ -6889,9 +6889,9 @@ typescript-json-schema@^0.60.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20230828"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230828.tgz#77b37fcd9187a016ac7193d971f29722ff967b38"
-  integrity sha512-uBVHpn+yxJsHMANa01Fn1Ni/3v4HzKcZbbzsbLYxgPKNJTAWQM8FoZWOFh5mrjZmpJcpGtPBcwbeuTUDOCD6QA==
+  version "5.3.0-dev.20230829"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230829.tgz#992aa41b87a374b8612e85072af5216957b5c5e2"
+  integrity sha512-2bsH+jTfOtehS2ZMI6RteCCRFk2QTUUY3BijvnyS0+o0CB/xWJDu7+WRbpt/XEZgOcoTLf9evRm/tyGSlPyNgA==
 
 typescript@~3.9.10:
   version "3.9.10"
@@ -7327,15 +7327,15 @@ yallist@^4.0.0:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yaml@2.3.1, yaml@^2.2.2:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.3.1.tgz#02fe0975d23cd441242aa7204e09fc28ac2ac33b"
-  integrity sha512-2eHWfjaoXgTBC2jNM1LRef62VQa0umtvRiDSk6HSzW7RvS5YtkabJrwYLLEKWBc8a5U2PTSCs+dJjUTJdlHsWQ==
-
 yaml@2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.3.2.tgz#f522db4313c671a0ca963a75670f1c12ea909144"
   integrity sha512-N/lyzTPaJasoDmfV7YTrYCI0G/3ivm/9wdG0aHuheKowWQwGTsK0Eoiw6utmzAnI6pkJa0DUVygvp3spqqEKXg==
+
+yaml@^2.2.2:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.3.1.tgz#02fe0975d23cd441242aa7204e09fc28ac2ac33b"
+  integrity sha512-2eHWfjaoXgTBC2jNM1LRef62VQa0umtvRiDSk6HSzW7RvS5YtkabJrwYLLEKWBc8a5U2PTSCs+dJjUTJdlHsWQ==
 
 yargs-parser@20.x, yargs-parser@^20.2.2, yargs-parser@^20.2.3:
   version "20.2.9"
