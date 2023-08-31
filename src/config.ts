@@ -46,7 +46,7 @@ export function readConfigSync(): Config {
 }
 
 export async function addImportToConfig(source: string) {
-  let curConfig = readConfigSync();
+  let curConfig = yaml.parse(fs.readFileSync(CONFIG_FILE, 'utf-8'));
 
   const curImports = curConfig.imports ?? [];
   if (!curImports.includes(source)) {
