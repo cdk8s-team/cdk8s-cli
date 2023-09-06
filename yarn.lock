@@ -1783,17 +1783,19 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s-plus-25@^2.22.1:
-  version "2.22.1"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-25/-/cdk8s-plus-25-2.22.1.tgz#225abe7b56074cf60bb7317118e9a02b8bf4bbc7"
-  integrity sha512-jUWnOE46t75DzdMF0/R+/PyVkcxmiHts0BU+IWv8KzroHhb7p2cI7TbBdTcLoE2tVg7VmLzh+UVvkRRS6fvqDw==
+cdk8s-plus-25@^2.22.3:
+  version "2.22.3"
+  resolved "https://registry.yarnpkg.com/cdk8s-plus-25/-/cdk8s-plus-25-2.22.3.tgz#c176588d5103087d39b4c28b9dfb9a68520e1165"
+  integrity sha512-Add+f8OHhEYvVtbOq9c1a22P8hmqJmtjezEaFYhhs1qaLe6ZPM9X+xlVIiOK3LdO6SB0us95M1nJ0xb2zV7/LQ==
   dependencies:
     minimatch "^3.1.2"
+  optionalDependencies:
+    backport "8.5.0"
 
-cdk8s@^2.64.2:
-  version "2.64.2"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.64.2.tgz#f53cedbe09e12e9170a56e563b34da42c58bd1bc"
-  integrity sha512-dpMFuWePDM0jZyvACZnOhekIA3mrSnx6KP9VsUg2QhcVIYMekN6HW4DfORu35Fms01V9Wg/eL/qhzIwHVeXdsA==
+cdk8s@^2.64.5:
+  version "2.64.5"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.64.5.tgz#706e7291480cab639a8f9b7a777ec20e032967b8"
+  integrity sha512-/7GmobSt/6xoDklualXn4QVfEMtCwoge4M+NXa1V7rr9/omuhtXr/xvr1Mwcq/WaX27/WH1JtzA18Sboi9sftg==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -6889,9 +6891,9 @@ typescript-json-schema@^0.60.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20230903"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230903.tgz#418860c2efe9f85bc9474d9b00db0cf95f14aaac"
-  integrity sha512-E6LOaE+pWeqBPUkvCjVrcgUgk/TrbWcAyL+YbEX1fM7MKdgq71dIqihS8eubBZx5y1oiTgmf6A7xyb+ySHCeaw==
+  version "5.3.0-dev.20230905"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230905.tgz#b88de602ef4afcc3a80a9c38023df82b7529e42a"
+  integrity sha512-Nl9MoKWN0YYlCvQnw850L4ZgqdmqwVGCi9cAoQDw4PsqRGaWAi9HKizS9xu0q4qgKKsEKetWCZHT8dBtJTGaMg==
 
 typescript@~3.9.10:
   version "3.9.10"
