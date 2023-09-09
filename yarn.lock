@@ -1075,7 +1075,12 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.5.9.tgz#a70ec9d8fa0180a314c3ede0e20ea56ff71aed9a"
   integrity sha512-PcGNd//40kHAS3sTlzKB9C9XL4K0sTup8nbG5lC14kzEteTNuAFh9u5nA0o5TWnSG2r/JNPRXFVcHJIIeRlmqQ==
 
-"@types/node@^16", "@types/node@^16.9.2":
+"@types/node@^16":
+  version "16.18.50"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.50.tgz#93003cf0251a2ecd26dad6dc757168d648519805"
+  integrity sha512-OiDU5xRgYTJ203v4cprTs0RwOCd5c5Zjv+K5P8KSqfiCsB1W3LcamTUMcnQarpq5kOYbhHfSOgIEJvdPyb5xyw==
+
+"@types/node@^16.9.2":
   version "16.18.48"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.48.tgz#3bc872236cdb31cb51024d8875d655e25db489a4"
   integrity sha512-mlaecDKQ7rIZrYD7iiKNdzFb6e/qD5I9U1rAhq+Fd+DWvYVs+G2kv74UFHmSOlg5+i/vF3XxuR522V4u8BqO+Q==
@@ -1784,10 +1789,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.61.5:
-  version "1.61.5"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.61.5.tgz#c8d5027208d8dd17b0acac1541cb30ab24d1f694"
-  integrity sha512-McCsZeNW0/fOB0WE7aRK0hEIv+EO7g8nrgSz0lXZLLf4uYn+Y5ERqEgHVxSeiZ3TGOEl2Z34X6XxfCEhrHUp1Q==
+cdk8s@^1.61.6:
+  version "1.61.6"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.61.6.tgz#e5a61a7a3abcdebc3793fe473c8ddab03a42bc54"
+  integrity sha512-c5lTlRyr3qeksPLzpf0QnAAUV65vKcvSsc5tY9LWxYH90//7pxSXOVLm5NZbo4+5qasuQwn0iLIa8f7eWZcKKQ==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -6883,9 +6888,9 @@ typescript-json-schema@^0.60.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20230907"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230907.tgz#286e19386f65eadbea4629f31c396882eb03406e"
-  integrity sha512-8yegC0GyY5ug9184BxLq8fLDt08+g8jRfut0QSraLFoT13c39Z6fVoviDEeqJgbnIGVxzAEiNQLUslpKYCyUsg==
+  version "5.3.0-dev.20230908"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230908.tgz#e77ed4afb4c07ed6da07cb5760eaaf3f28821e1e"
+  integrity sha512-s4fpER8j1Pj58FmFZUmODUx/D9dBwpPf+gb+/lKV6hsXKPPSsFQ4cktq+feqi98Om9RtjyCC+tmndlfmruObBw==
 
 typescript@~3.9.10:
   version "3.9.10"
@@ -7214,7 +7219,6 @@ workerpool@^6.4.2:
   integrity sha512-MrDWwemtC4xNV22kbbZDQQQmxNX+yLm790sgYl2wVD3CWnK7LJY1youI/11wHorAjHjK+GEjUxUh74XoPU71uQ==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
-  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
