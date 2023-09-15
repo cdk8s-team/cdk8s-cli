@@ -1784,10 +1784,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.61.8:
-  version "1.61.8"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.61.8.tgz#c7feec2c726a9544a5e02b6b615cbc9df5aae893"
-  integrity sha512-UwQ5WYsAmMXhHZQBlXtPuaT+aXYqGTpjyEWggverpb/F89NH2TuznQj8Q15CJD/MV8SC6hxKhouV1zEDZtdO5Q==
+cdk8s@^1.61.10:
+  version "1.61.10"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.61.10.tgz#08db1f6a08c6f285d2fafaa91919edebe76f3b30"
+  integrity sha512-Tv6lcr0rwQXa49VEVZzSUnHz+FnRQnA/5VISmmAyGMDSTmiZynXhFOrSthcTOhBeXf8tu8XpQ03fD2ou7Mk2UA==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -5971,7 +5971,16 @@ resolve.exports@^1.1.0:
   resolved "https://registry.yarnpkg.com/resolve.exports/-/resolve.exports-1.1.1.tgz#05cfd5b3edf641571fd46fa608b610dda9ead999"
   integrity sha512-/NtpHNDN7jWhAaQ9BvBUYZ6YTXsRBgfqWFWP7BZBaoMJO/I3G5OFzvTuWNlZC3aPjins1F+TNrLKsGbH4rfsRQ==
 
-resolve@^1.1.6, resolve@^1.10.0, resolve@^1.20.0, resolve@^1.22.0, resolve@^1.22.4:
+resolve@^1.1.6:
+  version "1.22.5"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.22.5.tgz#a83c145cf04ffcd19b1f3f5f9e0ae8b9053f0615"
+  integrity sha512-qWhv7PF1V95QPvRoUGHxOtnAlEvlXBylMZcjUR9pAumMmveFtcHJRXGIr+TkjfNJVQypqv2qcDiiars2y1PsSg==
+  dependencies:
+    is-core-module "^2.13.0"
+    path-parse "^1.0.7"
+    supports-preserve-symlinks-flag "^1.0.0"
+
+resolve@^1.10.0, resolve@^1.20.0, resolve@^1.22.0, resolve@^1.22.4:
   version "1.22.4"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.22.4.tgz#1dc40df46554cdaf8948a486a10f6ba1e2026c34"
   integrity sha512-PXNdCiPqDqeUou+w1C2eTQbNfxKSuMxqTCuvlmmMsk1NWHL5fRrhY6Pl0qEYYc6+QqGClco1Qj8XnjPego4wfg==
@@ -6884,9 +6893,9 @@ typescript-json-schema@^0.61.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20230913"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230913.tgz#555e6030ee3f2051cba5b9e21b877faccae9c374"
-  integrity sha512-+1lrLCj/NdyBbWXK3ifRSzmg0pSg2WLDmzeXf1/vTOb84eV/TCJ1i9eOS4c40T3tzDSAOjP39x9/+unUakbuKA==
+  version "5.3.0-dev.20230914"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230914.tgz#5390b75b300ca955be462deb5bced8d138876d17"
+  integrity sha512-fLOsSwW/WYEdqhxDb4iaJ2IkPmxMM6di8p++ey3SlOTaK0sdczIYVl9tlCxkajWOp0UnvBfO6Bxe+g9xxZMypw==
 
 typescript@~3.9.10:
   version "3.9.10"
