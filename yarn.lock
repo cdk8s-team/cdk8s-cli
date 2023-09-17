@@ -1019,9 +1019,9 @@
     "@types/node" "*"
 
 "@types/http-cache-semantics@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.1.tgz#0ea7b61496902b95890dc4c3a116b60cb8dae812"
-  integrity sha512-SZs7ekbP8CN0txVG2xVRH6EgKmEm31BOxA07vkFaETzZz1xh+cbt8BcI0slpymvwhx5dlFnQG2rTlPVQn+iRPQ==
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.2.tgz#abe102d06ccda1efdf0ed98c10ccf7f36a785a41"
+  integrity sha512-FD+nQWA2zJjh4L9+pFXqWOi0Hs1ryBCfI+985NjluQ1p8EYtoLvjLOKidXBtZ4/IcxDX4o8/E8qDS3540tNliw==
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.4"
@@ -1076,9 +1076,9 @@
   integrity sha512-najjVq5KN2vsH2U/xyh2opaSEz6cZMR2SetLIlxlj08nOcmPOemJmUK2o4kUzfLqfrWE0PIrNeE16XhYDd3nqg==
 
 "@types/node@^16":
-  version "16.18.51"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.51.tgz#f56210dd99e6fd51d8765488c6b8e5684ca47039"
-  integrity sha512-LKA7ZhY30I8PiUOzBzhtnIULQTACpiEpPXLiYMWyS+tPAORf+rmXUadHZXB/KFrFyMjeHeKc1GFvLd+3f7LE3w==
+  version "16.18.52"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.52.tgz#70c56b55d0d7e15fafa875127e95a92605c59c9b"
+  integrity sha512-sm2aph6cRSsTMFYFgI+RpPLunXO9ClJkpizUVdT7KmGeyfQ14xnjTMT/f3MHcfKqevXqGT6BgVFzW8wcEoDUtA==
 
 "@types/node@^16.9.2":
   version "16.18.50"
@@ -1789,19 +1789,19 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s-plus-25@^2.22.11:
-  version "2.22.11"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-25/-/cdk8s-plus-25-2.22.11.tgz#ff6876fd792108b0ee775f3251c876a620b9acc6"
-  integrity sha512-CQGZ2CkjRfhHMjvm5bxX7/1p6SILJdP7OnJQk2VWgfZZ+0jP2kB8jM0M8Gflj0rWgQRneqjropeIgrjQaBeOBQ==
+cdk8s-plus-25@^2.22.12:
+  version "2.22.12"
+  resolved "https://registry.yarnpkg.com/cdk8s-plus-25/-/cdk8s-plus-25-2.22.12.tgz#28d5fad3ed9158edd57d25cac3c44a8130944550"
+  integrity sha512-4G1yVrQ/x1Q2j/2KUi2hLuFWxCPUkPKhUmlk/sCpMmUagRwmH1oAEvGklg7Ab3zvjvuUls8uAyVG07pOtoywGA==
   dependencies:
     minimatch "^3.1.2"
   optionalDependencies:
     backport "8.5.0"
 
-cdk8s@^2.64.11:
-  version "2.64.11"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.64.11.tgz#aad79d4dce9b3560c67c164c0366904cb9ae8204"
-  integrity sha512-n5uVoeuVe/mpCnC3fQX+94NOE35X8I7YwoIlgmfCJ5QCh8XZGkQ7N4Fr+4r4ZJVLEjI54P74T5AYJNd1Zj5U8Q==
+cdk8s@^2.64.13:
+  version "2.64.13"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.64.13.tgz#009f54811972c18341c4686511800a3c2949de52"
+  integrity sha512-1wkJqyo/8jYeWHUKp0jS1vf/2+sG0qUDXBi28/iGpWzdJlM8HfYX5LzPuiu9zq/XXpwrKjhAfXjMvVMFzYzetw==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -3042,9 +3042,9 @@ flat-cache@^3.0.4:
     rimraf "^3.0.2"
 
 flatted@^3.2.7:
-  version "3.2.7"
-  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
-  integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
+  version "3.2.9"
+  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.9.tgz#7eb4c67ca1ba34232ca9d2d93e9886e611ad7daf"
+  integrity sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==
 
 fn.name@1.x.x:
   version "1.1.0"
@@ -6926,9 +6926,9 @@ typescript-json-schema@^0.61.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20230915"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230915.tgz#8f9f92dd1e361a9628c29fe72b3b09bbc2b04911"
-  integrity sha512-GQr8dkpN44ywddczAzV80zSPckUfqUbxmCi2SXJ0SvOMOk7TXMUrcptoHQm7HqFggTUS41AUEr+a8RmyPApw4Q==
+  version "5.3.0-dev.20230916"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230916.tgz#b5ba3e64a12b558485527593959ae6d671165aa0"
+  integrity sha512-X8rf5tDJ3BV2qv7AMPWAKI3+DIt1qzDLI5Ahw27IT1iii/IGNeSBTWYDc4pjD0OgSF30q2wFjNeOJyfeOo0IJQ==
 
 typescript@~3.9.10:
   version "3.9.10"
@@ -7257,7 +7257,6 @@ workerpool@^6.4.2:
   integrity sha512-r64Ea3glXY2RVzMeNxB+4J+0YHAVzUdV4cM5nHi4BBC2LvnO1pWFAIYKYuGcPElbg1/7eEiaPtZ/jzCjIUuGBg==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
-  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
