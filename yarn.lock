@@ -6903,9 +6903,9 @@ typescript-json-schema@^0.61.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20230916"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230916.tgz#b5ba3e64a12b558485527593959ae6d671165aa0"
-  integrity sha512-X8rf5tDJ3BV2qv7AMPWAKI3+DIt1qzDLI5Ahw27IT1iii/IGNeSBTWYDc4pjD0OgSF30q2wFjNeOJyfeOo0IJQ==
+  version "5.3.0-dev.20230917"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230917.tgz#b3d5031c985314eb4fb97ca2b7a909a947346059"
+  integrity sha512-njiSKStDPLFKdkoI/o3vZs9/ywPgQlEvV0SgBQDX/9/c4vg+7N//1X9a0m/6PZpN4BHd8NlK/dRptQ5K4q4k+g==
 
 typescript@~3.9.10:
   version "3.9.10"
@@ -7234,6 +7234,7 @@ workerpool@^6.4.2:
   integrity sha512-r64Ea3glXY2RVzMeNxB+4J+0YHAVzUdV4cM5nHi4BBC2LvnO1pWFAIYKYuGcPElbg1/7eEiaPtZ/jzCjIUuGBg==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
