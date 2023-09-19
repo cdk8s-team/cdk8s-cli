@@ -1,4 +1,3 @@
-import { createHash } from 'crypto';
 import * as os from 'os';
 import path from 'path';
 import * as fs from 'fs-extra';
@@ -9,7 +8,7 @@ import * as yargs from 'yargs';
 import { HelmChartApiVersion, SynthesisFormat, ValidationConfig, readConfigSync } from '../../config';
 import { matchCrdsDevUrl } from '../../import/crds-dev';
 import { PluginManager } from '../../plugins/_manager';
-import { SynthesizedApp, crdsArePresent, download, isK8sImport, mkdtemp, parseImports, synthApp, validateApp } from '../../util';
+import { SynthesizedApp, crdsArePresent, deriveFileName, download, isK8sImport, mkdtemp, parseImports, synthApp, validateApp } from '../../util';
 
 const CHART_YAML_FILE = 'Chart.yaml';
 const README = 'README.md';
@@ -179,27 +178,6 @@ async function createHelmScaffolding(apiVersion: string, chartVersion: string, o
   }
 }
 
-function deriveFileName(url: string) {
-  const devUrl = matchCrdsDevUrl(url);
-  let filename = undefined;
-
-  if (devUrl) {
-    const lastIndexOfSlash = devUrl.lastIndexOf('/');
-    const lastIndexOfAt = devUrl.lastIndexOf('@');
-    filename = devUrl.slice(lastIndexOfSlash+1, lastIndexOfAt);
-  } else {
-    const lastIndexOfSlash = url.lastIndexOf('/');
-    const lastIndexOfYaml = url.lastIndexOf('.yaml');
-    filename = url.slice(lastIndexOfSlash+1, lastIndexOfYaml);
-  }
-
-  if (!filename) {
-    filename = createHash('sha256');
-  }
-
-  return filename;
-}
-
 async function downloadCrds(url: string) {
   const devUrl = matchCrdsDevUrl(url);
   const manifest = devUrl ? await download(devUrl): await download(url);
@@ -230,22 +208,3 @@ async function addCrdsToHelmChart(chartDir: string) {
 }
 
 module.exports = new Command();
-
-// Update config format and code: https://github.com/cdk8s-team/cdk8s-cli/pull/1195#discussion_r1304168534
-// What is happening here: https://github.com/cdk8s-team/cdk8s-cli/pull/1195#discussion_r1304185894
-// Dynamically create folder structure: https://github.com/cdk8s-team/cdk8s-cli/pull/1195#discussion_r1304146586
-// Reafctor to make intent more clear: https://github.com/cdk8s-team/cdk8s-cli/pull/1195#discussion_r1304172122
-// How can we do this: https://github.com/cdk8s-team/cdk8s-cli/pull/1195#discussion_r1304173280, https://github.com/cdk8s-team/cdk8s-cli/pull/1195#discussion_r1304198734
-// Remove parse imports since already exported: https://github.com/cdk8s-team/cdk8s-cli/pull/1195#discussion_r1304182946
-// Validate format: https://github.com/cdk8s-team/cdk8s-cli/pull/1195#discussion_r1304163604.
-// Similar to prior, do the same for Chart Api Version and also add choices to options: https://github.com/cdk8s-team/cdk8s-cli/pull/1195#discussion_r1304164280
-// Improve validation and ignore K8s imports: https://github.com/cdk8s-team/cdk8s-cli/pull/1195#discussion_r1304165021, https://github.com/cdk8s-team/cdk8s-cli/pull/1195#discussion_r1304189554
-
-// Fix linting
-// Remove debugging logic
-// Add tests, unit and integ
-// Manual test deployment on local cluster
-// Review your own PR before submission
-// What happens if I delete an imported file and run synthesis. Does it import it back using cdk8s.yaml config?
-// Make sure documentation reflects defaults to users
-// Add docs to exported functions

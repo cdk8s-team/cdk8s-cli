@@ -1,4 +1,5 @@
 import { spawn, SpawnOptions } from 'child_process';
+import { createHash } from 'crypto';
 import { promises } from 'fs';
 import * as http from 'http';
 import * as https from 'https';
@@ -8,9 +9,12 @@ import { parse } from 'url';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import { ImportSpec, ValidationConfig } from './config';
+import { matchCrdsDevUrl } from './import/crds-dev';
 import { PluginManager } from './plugins/_manager';
 import { Validation, ValidationContext, ValidationPlugin, ValidationReport } from './plugins/validation';
 import { SafeReviver } from './reviver';
+
+export const PREFIX_DELIM = ':=';
 
 export async function shell(program: string, args: string[] = [], options: SpawnOptions = { }): Promise<string> {
   const command = `"${program} ${args.join(' ')}" at ${path.resolve(options.cwd?.toString() ?? '.')}`;
@@ -257,8 +261,6 @@ export interface SynthesizedApp {
   readonly constructMetadata?: string;
 }
 
-export const PREFIX_DELIM = ':=';
-
 export function parseImports(spec: string): ImportSpec {
   const splitImport = spec.split(PREFIX_DELIM);
 
@@ -271,8 +273,8 @@ export function parseImports(spec: string): ImportSpec {
     };
   }
 
-  // crd=crd.yaml
-  // crd=url.com/crd.yaml
+  // crd:=crd.yaml
+  // crd:=url.com/crd.yaml
   if (splitImport.length === 2) {
     return {
       moduleNamePrefix: splitImport[0],
@@ -281,6 +283,27 @@ export function parseImports(spec: string): ImportSpec {
   }
 
   throw new Error('Unable to parse import specification. Syntax is [NAME:=]SPEC');
+}
+
+export function deriveFileName(url: string) {
+  const devUrl = matchCrdsDevUrl(url);
+  let filename = undefined;
+
+  if (devUrl) {
+    const lastIndexOfSlash = devUrl.lastIndexOf('/');
+    const lastIndexOfAt = devUrl.lastIndexOf('@');
+    filename = devUrl.slice(lastIndexOfSlash+1, lastIndexOfAt);
+  } else {
+    const lastIndexOfSlash = url.lastIndexOf('/');
+    const lastIndexOfYaml = url.lastIndexOf('.yaml');
+    filename = url.slice(lastIndexOfSlash+1, lastIndexOfYaml);
+  }
+
+  if (!filename) {
+    filename = createHash('sha256');
+  }
+
+  return filename;
 }
 
 export function isK8sImport(value: string) {

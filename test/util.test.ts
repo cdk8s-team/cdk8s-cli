@@ -1,7 +1,7 @@
 import { promises } from 'fs';
 import { tmpdir } from 'os';
 import path from 'path';
-import { findManifests } from '../src/util';
+import { crdsArePresent, deriveFileName, findManifests, isK8sImport, parseImports } from '../src/util';
 
 describe('findManifests', () => {
 
@@ -46,4 +46,36 @@ describe('findManifests', () => {
     //Bad directory name (non-existent) should yield an empty array
     expect(noFilesEither).toEqual([]);
   });
+});
+
+test('derive file name from url', () => {
+  const devUrl = 'github:crossplane/crossplane@0.14.0';
+  const localFile = './foo/bar/baz/fooz.yaml';
+
+  expect(deriveFileName(devUrl)).toEqual('crossplane');
+  expect(deriveFileName(localFile)).toEqual('fooz');
+});
+
+test('parsing imports', () => {
+  expect(parseImports('k8s@x.y.z').source).toEqual('k8s@x.y.z');
+  expect(parseImports('k8s@x.y.z').moduleNamePrefix).toBeUndefined();
+
+  expect(parseImports('crd:=url.com/crd.yaml').source).toEqual('url.com/crd.yaml');
+  expect(parseImports('crd:=url.com/crd.yaml').moduleNamePrefix).toEqual('crd');
+});
+
+test('import is k8s', () => {
+  expect(isK8sImport('k8s')).toBeTruthy();
+  expect(isK8sImport('foo')).toBeFalsy();
+});
+
+test('are crds presents in imports', () => {
+  const imprts = [
+    'k8s',
+    'foo.yaml',
+    'github:crossplane/crossplane@0.14.0',
+  ];
+
+  expect(crdsArePresent(imprts)).toBeTruthy();
+  expect(crdsArePresent(undefined)).toBeFalsy();
 });

@@ -448,9 +448,6 @@ describe('Helm Synthesis', () => {
 
     await synth(synthOptions);
   });
-
-  // TODO test singlular functions
-  // TODO For instance, derivingFileName
 });
 
 interface SynthOptions {
