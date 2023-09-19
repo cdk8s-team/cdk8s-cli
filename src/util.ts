@@ -7,7 +7,7 @@ import * as path from 'path';
 import { parse } from 'url';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
-import { ValidationConfig } from './config';
+import { ImportSpec, ValidationConfig } from './config';
 import { PluginManager } from './plugins/_manager';
 import { Validation, ValidationContext, ValidationPlugin, ValidationReport } from './plugins/validation';
 import { SafeReviver } from './reviver';
@@ -255,4 +255,47 @@ export interface SynthesizedApp {
    * The construct metadata file (if exists).
    */
   readonly constructMetadata?: string;
+}
+
+export function parseImports(spec: string): ImportSpec {
+  const splitImport = spec.split(':=');
+
+  // k8s@x.y.z
+  // crd.yaml
+  // url.com/crd.yaml
+  if (splitImport.length === 1) {
+    return {
+      source: spec,
+    };
+  }
+
+  // crd=crd.yaml
+  // crd=url.com/crd.yaml
+  if (splitImport.length === 2) {
+    return {
+      moduleNamePrefix: splitImport[0],
+      source: splitImport[1],
+    };
+  }
+
+  throw new Error('Unable to parse import specification. Syntax is [NAME:=]SPEC');
+}
+
+export function isK8sImport(value: string) {
+  if (value !== 'k8s' && !value.startsWith('k8s@')) {
+    return false;
+  }
+
+  return true;
+}
+
+export function crdsArePresent(imprts: string[] | undefined) {
+  if (!imprts) {
+    return false;
+  }
+  if (imprts.length === 0 || (imprts.length === 1 && isK8sImport(imprts[0]))) {
+    return false;
+  }
+
+  return true;
 }

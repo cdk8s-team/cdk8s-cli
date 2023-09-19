@@ -12,7 +12,6 @@ export interface ImportSpec {
 }
 
 export interface ValidationConfig {
-
   readonly package: string;
   readonly version: string;
   readonly class: string;
@@ -21,16 +20,17 @@ export interface ValidationConfig {
 }
 
 export enum SynthesisFormat {
-  'CDK8s' = 'cdk8s',
-  'HELM' = 'helm',
+  PLAIN = 'plain',
+  HELM = 'helm',
 }
 
 export enum HelmChartApiVersion {
-  'V1' = 'v1',
-  'V2' = 'v2',
+  V1 = 'v1',
+  V2 = 'v2',
 }
 
-export interface HelmSynthesis {
+export interface Synth {
+  readonly format?: SynthesisFormat;
   readonly chartApiVersion?: HelmChartApiVersion;
   readonly chartVersion?: string;
 }
@@ -42,14 +42,15 @@ export interface Config {
   readonly imports?: string[];
   readonly pluginsDirectory?: string;
   readonly validations?: string | ValidationConfig[];
-  readonly format?: SynthesisFormat;
-  readonly helmSynthConfig?: HelmSynthesis;
+  readonly synth?: Synth;
 }
 
 const DEFAULTS: Config = {
   output: 'dist',
   pluginsDirectory: path.join(os.homedir(), '.cdk8s', 'plugins'),
-  format: SynthesisFormat.CDK8s,
+  synth: {
+    format: SynthesisFormat.PLAIN,
+  },
 };
 
 export function readConfigSync(): Config {
@@ -62,12 +63,12 @@ export function readConfigSync(): Config {
     };
   }
 
-  if (config.format === SynthesisFormat.HELM && config.helmSynthConfig && !config.helmSynthConfig.chartApiVersion) {
+  if (config.synth?.format === SynthesisFormat.HELM) {
     config = {
       ...config,
-      helmSynthConfig: {
-        ...config.helmSynthConfig,
+      synth: {
         chartApiVersion: HelmChartApiVersion.V2,
+        ...(config.synth ?? {}),
       },
     };
   }

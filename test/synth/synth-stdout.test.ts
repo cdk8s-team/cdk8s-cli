@@ -1,13 +1,18 @@
+import { readdirSync } from 'fs';
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import { Config, HelmChartApiVersion, SynthesisFormat, ValidationConfig } from '../../src/config';
-import { findConstructMetadata, mkdtemp } from '../../src/util';
+import { crdsArePresent, findConstructMetadata, mkdtemp } from '../../src/util';
+
+const imports: string[] = [];
 
 beforeEach(() => {
   // resetting so that every test can use a different config file,
   // which is read on module load.
   jest.resetModules();
+  // Emptying the imports every time a test is run
+  imports.length = 0;
 });
 
 test('synth with both --stdout and --output throws exception', () => {
@@ -324,8 +329,24 @@ describe('validations', () => {
 });
 
 describe('Helm Synthesis', () => {
-  test('throws when synthesis --format is helm and --chart-version is not specified', async () => {
+  test('throws when synthesis --format is not plain or helm', async () => {
+    const synthOptions: SynthOptions = {
+      format: 'foo',
+    };
 
+    await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify synthesis format either as plain or helm but received:/);
+  });
+
+  test('throws when helm chart api version is not v1 or v2', async () => {
+    const synthOptions: SynthOptions = {
+      format: SynthesisFormat.HELM,
+      chartApiVersion: 'foo',
+    };
+
+    await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify helm chart api version either as v1 or v2 but received:/);
+  });
+
+  test('throws when synthesis --format is helm and --chart-version is not specified', async () => {
     const synthOptions: SynthOptions = {
       format: SynthesisFormat.HELM,
     };
@@ -333,70 +354,103 @@ describe('Helm Synthesis', () => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify the \'--chart-version\' when the \'--format\' is set as helm./);
   });
 
-  test('throws when --chart-version is specified with --format as cdk8s', () => {
+  test('throws when --chart-version is not aligned with SemVer2 standards', async () => {
+    const synthOptions: SynthOptions = {
+      format: SynthesisFormat.HELM,
+      chartVersion: 'foo',
+    };
 
+    await expect(() => synth(synthOptions)).rejects.toThrow(/The value specified for '--chart-version': foo does not follow SemVer-2/);
   });
 
-  test('throws when --chart-api-version is specified with --format as cdk8s', () => {
-
-  });
-
-  test('throws when --chart-version && --chart-api-version is specified with --format as cdk8s', () => {
-
-  });
-
-  test('throws when --chart-version is not aligned with SemVer2 standards', () => {
-
-  });
-
-  test('throws when --format is helm and mode is stdout', () => {
-
-  });
-
-  test('throws when --chart-api-version is v1 and crds are specified', () => {
-
-  });
-
-  test('--chart-api-version is v1', () => {
-
-  });
-
-
-  test.skip('--chart-api-version is v2', async () => {
+  test('throws when --format is helm and mode is stdout', async () => {
     const synthOptions: SynthOptions = {
       format: SynthesisFormat.HELM,
       chartVersion: '1.1.1',
-      validate: false,
+      stdout: true,
+    };
+
+    await expect(() => synth(synthOptions)).rejects.toThrow(/Helm format synthesis does not support 'stdout'. Please use 'outdir' instead./);
+  });
+
+  test('throws when --chart-version and/or --chart-api-version is specified with --format as plain', async () => {
+    const synthOptions: SynthOptions = {
+      format: SynthesisFormat.PLAIN,
+      chartVersion: '1.1.1',
+      chartApiVersion: HelmChartApiVersion.V2,
+    };
+
+    await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify '--format' as helm when '--chart-version' and\/or '--chart-api-version' is set./);
+  });
+
+  test('throws when --chart-api-version is v1 and crds are specified', async () => {
+    const synthOptions: SynthOptions = {
+      format: SynthesisFormat.HELM,
+      chartVersion: '1.1.1',
+      chartApiVersion: HelmChartApiVersion.V1,
+    };
+
+    imports.push('k8s');
+    imports.push('foo.yaml');
+
+    await expect(() => synth(synthOptions)).rejects.toThrow(/CRDs are not supported with --format as 'helm' for --chart-api-version: 'v1'. Please use --chart-api-version: 'v2' for using CRDs./);
+  });
+
+  test('--chart-api-version is v1', async () => {
+    // An error should not be thrown since k8s is not a crd
+    imports.push('k8s');
+
+    const synthOptions: SynthOptions = {
+      format: SynthesisFormat.HELM,
+      chartVersion: '1.1.1',
+      chartApiVersion: HelmChartApiVersion.V1,
+      postSynth: async (dir: string) => {
+        expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+      },
     };
 
     await synth(synthOptions);
   });
 
-  // TODO: Test with different types of CRD values
-  test('--chart-api-version is v2 and crds are specified', () => {
 
+  test('--chart-api-version is v2 without crds', async () => {
+    const synthOptions: SynthOptions = {
+      format: SynthesisFormat.HELM,
+      chartVersion: '1.1.1',
+      postSynth: async (dir: string) => {
+        expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+      },
+    };
+
+    await synth(synthOptions);
   });
 
-  test('--chart-api-version is v2 and validations are performed', () => {
+  test('--chart-api-version is v2 and crds are specified', async () => {
+    imports.push('k8s');
+    imports.push(path.join(__dirname, './__resources__/crds/foo.yaml'));
+    imports.push(`bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`);
+    imports.push('github:crossplane/crossplane@0.14.0');
 
+    const synthOptions: SynthOptions = {
+      format: SynthesisFormat.HELM,
+      chartVersion: '1.1.1',
+      postSynth: async (dir: string) => {
+        expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+
+        // K8s import must be ignored
+        const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
+        expect(crdFiles.length).toEqual(3);
+        expect(crdFiles.includes('foo.yaml')).toBeTruthy();
+        expect(crdFiles.includes('bar.yaml')).toBeTruthy();
+        expect(crdFiles.includes('crossplane.yaml')).toBeTruthy();
+      },
+    };
+
+    await synth(synthOptions);
   });
 
-  // TODO: Can we do helm install?
-  test('helm lint succeeds with created chart', () => {
-
-  });
-
-  test('only crds are downloaded to the crds folder and rest are ignored', () => {
-
-  });
-
-  // test('', () => {
-
-  // });
-
-  // test('', () => {
-
-  // });
+  // TODO test singlular functions
+  // TODO For instance, derivingFileName
 });
 
 interface SynthOptions {
@@ -405,8 +459,8 @@ interface SynthOptions {
   readonly validate?: boolean;
   readonly stdout?: boolean;
   readonly reportsFile?: string;
-  readonly format?: SynthesisFormat;
-  readonly chartApiVersion?: HelmChartApiVersion;
+  readonly format?: string;
+  readonly chartApiVersion?: string;
   readonly chartVersion?: string;
   readonly preSynth?: (dir: string) => Promise<void>;
   readonly postSynth?: (dir: string) => Promise<void>;
@@ -433,21 +487,20 @@ app.synth();
 
     const stdout = options.stdout ?? false;
     const validate = options.validate ?? true;
-    const format = options.format ?? SynthesisFormat.CDK8s;
+    const format = options.format ?? SynthesisFormat.PLAIN;
     const chartApiVersion = format === SynthesisFormat.HELM ? (options.chartApiVersion ?? HelmChartApiVersion.V2) : undefined;
-
-    // TODO I don't think we need to specify format each time. Since, if we mention it in cdk8s.yaml, then that should be picked up
 
     const config: Config = {
       validations: options.validations,
       app: 'node index.js',
       output: stdout ? undefined : 'dist',
       pluginsDirectory: path.join(dir, '.cdk8s', 'plugins'),
-      format: format,
-      helmSynthConfig: {
-        chartApiVersion: chartApiVersion,
+      synth: {
+        format: format as SynthesisFormat,
+        chartApiVersion: chartApiVersion as HelmChartApiVersion,
         chartVersion: options.chartVersion,
       },
+      imports: imports,
     };
 
     fs.writeFileSync(path.join(dir, 'index.js'), app);
@@ -478,9 +531,9 @@ app.synth();
         validate: validate,
         pluginsDir: config.pluginsDirectory,
         validationReportsOutputFile: options.reportsFile ? path.join(dir, options.reportsFile) : undefined,
-        format: config.format,
-        chartApiVersion: config.helmSynthConfig?.chartApiVersion,
-        chartVersion: config.helmSynthConfig?.chartVersion,
+        format: config.synth?.format,
+        chartApiVersion: config.synth?.chartApiVersion,
+        chartVersion: config.synth?.chartVersion,
       });
       if (options.postSynth) {
         await options.postSynth(dir);
@@ -504,4 +557,31 @@ function requireSynth() {
   const module = '../../src/cli/cmds/synth';
   // eslint-disable-next-line
   return require(module);
+}
+
+
+function generatedHelmChartExists(dir: string) {
+  const chartYaml = path.join(dir, 'Chart.yaml');
+  const chartYamlExists = fs.existsSync(chartYaml);
+
+  const readme = path.join(dir, 'README.md');
+  const readmeExists = fs.existsSync(readme);
+
+  const templates = path.join(dir, 'templates');
+  const templateDirExists = fs.existsSync(templates);
+
+  const manifestFiles = readdirSync(templates);
+  const manifestFilesExists = manifestFiles.length > 0;
+
+  if (crdsArePresent(imports)) {
+    const crds = path.join(dir, 'crds');
+    const crdsExists = fs.existsSync(crds);
+
+    const crdFiles = readdirSync(crds);
+    const crdFilesExists = crdFiles.length > 0;
+
+    return chartYamlExists && readmeExists && templateDirExists && manifestFilesExists && crdsExists && crdFilesExists;
+  }
+
+  return chartYamlExists && readmeExists && templateDirExists && manifestFilesExists;
 }

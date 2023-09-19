@@ -5,10 +5,6 @@ import { typescript, github } from 'projen';
 export function addIntegTests(project: typescript.TypeScriptProject) {
 
   const oses = ['windows-latest', 'macos-latest', 'ubuntu-latest'];
-  const excludedTemplates = [
-    'helm-chart-with-crds',
-    'helm-chart-without-crds',
-  ];
 
   const integWorkflow = project.github!.addWorkflow('integ');
   integWorkflow.on({ pullRequest: {}, workflowDispatch: {} });
@@ -27,8 +23,7 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
 
   const templatesDir = path.join(__dirname, '..', 'templates');
   for (const template of fs.readdirSync(templatesDir)) {
-    if (fs.statSync(path.join(templatesDir, template)).isDirectory() &&
-      !excludedTemplates.includes(template)) {
+    if (fs.statSync(path.join(templatesDir, template)).isDirectory()) {
       addIntegTest(`${template}-npm`);
       addIntegTest(`${template}-yarn`);
     }
