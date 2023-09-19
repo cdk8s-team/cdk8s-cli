@@ -1,6 +1,6 @@
 import * as yargs from 'yargs';
 import { readConfigSync, ImportSpec } from '../../config';
-import { PREFIX_DELIM, importDispatch } from '../../import/dispatch';
+import { importDispatch } from '../../import/dispatch';
 import { DEFAULT_API_VERSION } from '../../import/k8s';
 import { parseImports } from '../../util';
 
@@ -41,30 +41,6 @@ class Command implements yargs.CommandModule {
       save: argv.save,
     });
   }
-}
-
-function parseImports(spec: string): ImportSpec {
-  const splitImport = spec.split(PREFIX_DELIM);
-
-  // k8s@x.y.z
-  // crd.yaml
-  // url.com/crd.yaml
-  if (splitImport.length === 1) {
-    return {
-      source: spec,
-    };
-  }
-
-  // crd=crd.yaml
-  // crd=url.com/crd.yaml
-  if (splitImport.length === 2) {
-    return {
-      moduleNamePrefix: splitImport[0],
-      source: splitImport[1],
-    };
-  }
-
-  throw new Error('Unable to parse import specification. Syntax is [NAME:=]SPEC');
 }
 
 module.exports = new Command();

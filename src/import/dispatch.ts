@@ -3,8 +3,7 @@ import { ImportCustomResourceDefinition } from './crd';
 import { matchCrdsDevUrl } from './crds-dev';
 import { ImportKubernetesApi } from './k8s';
 import { ImportSpec, addImportToConfig } from '../config';
-
-export const PREFIX_DELIM = ':=';
+import { PREFIX_DELIM } from '../util';
 
 export async function importDispatch(imports: ImportSpec[], argv: any, options: ImportOptions) {
   for (const importSpec of imports) {

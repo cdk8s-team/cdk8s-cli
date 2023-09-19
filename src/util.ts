@@ -257,8 +257,10 @@ export interface SynthesizedApp {
   readonly constructMetadata?: string;
 }
 
+export const PREFIX_DELIM = ':=';
+
 export function parseImports(spec: string): ImportSpec {
-  const splitImport = spec.split(':=');
+  const splitImport = spec.split(PREFIX_DELIM);
 
   // k8s@x.y.z
   // crd.yaml
