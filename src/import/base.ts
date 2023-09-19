@@ -16,6 +16,7 @@ export interface ImportOptions {
   readonly moduleNamePrefix?: string;
   readonly targetLanguage: Language;
   readonly outdir: string;
+  readonly save?: boolean;
 
   /**
    * Path to copy the output .jsii file.
