@@ -11,7 +11,7 @@ import * as yaml from 'yaml';
 import { ImportSpec, ValidationConfig } from './config';
 import { matchCrdsDevUrl } from './import/crds-dev';
 import { PluginManager } from './plugins/_manager';
-import { Validation, ValidationContext, ValidationPlugin, ValidationReport } from './plugins/validation';
+import { ValidationPlugin, ValidationContext, ValidationReport, Validation } from './plugins/validation';
 import { SafeReviver } from './reviver';
 
 export const PREFIX_DELIM = ':=';

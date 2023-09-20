@@ -28,14 +28,14 @@ class Command implements yargs.CommandModule {
     .option('validate', { type: 'boolean', default: true, required: false, desc: 'Apply validation plugins on the resulting manifests (use --no-validate to disable)' })
     .option('validation-reports-output-file', { required: false, desc: 'File to write a JSON representation of the validation reports to' })
     .option('format', {
-      default: config.synth?.format,
+      default: config.synth!.format,
       required: false,
-      desc: 'Synthesis format for Kubernetes manifests.',
+      desc: 'Synthesis format for Kubernetes manifests. The default synthesis format is plain kubernetes manifests.',
       choices: ['plain', 'helm'],
       type: 'string',
     })
-    .option('chart-api-version', { default: config.synth?.chartApiVersion, required: false, desc: 'Chart API version of helm chart. The default value would be \'v2\'.' })
-    .option('chart-version', { required: false, desc: 'Chart version of helm chart. This is required if synthesis format(--format) is helm.' });
+    .option('chart-api-version', { default: config.synth!.chartApiVersion, required: false, desc: 'Chart API version of helm chart. The default value would be \'v2\' api version when synthesis format is helm. There is no default set when synthesis format is plain.' })
+    .option('chart-version', { required: false, desc: 'Chart version of helm chart. This is required if synthesis format is helm.' });
   ;
 
   public async handler(argv: any) {
@@ -67,7 +67,7 @@ class Command implements yargs.CommandModule {
     }
 
     if (format === SynthesisFormat.HELM && !chartVersion) {
-      throw new Error('You need to specify the \'--chart-version\' when the \'--format\' is set as helm.');
+      throw new Error('You need to specify the \'--chart-version\' when the \'--format\' is set as \'helm\'.');
     }
 
     if (chartVersion && !semver.valid(chartVersion)) {
@@ -79,13 +79,11 @@ class Command implements yargs.CommandModule {
     }
 
     if (format === SynthesisFormat.PLAIN && (chartApiVersion || chartVersion || (chartApiVersion && chartVersion))) {
-      throw new Error('You need to specify \'--format\' as helm when \'--chart-version\' and/or \'--chart-api-version\' is set.');
+      throw new Error('You need to specify \'--format\' as \'helm\' when \'--chart-version\' and/or \'--chart-api-version\' is set.');
     }
 
-    if (chartApiVersion === HelmChartApiVersion.V1 && config.imports && config.imports.length > 0) {
-      if (!crdsArePresent(config.imports)) {} else {
-        throw new Error(`CRDs are not supported with --format as 'helm' for --chart-api-version: '${chartApiVersion}'. Please use --chart-api-version: '${HelmChartApiVersion.V2}' for using CRDs.`);
-      }
+    if (chartApiVersion === HelmChartApiVersion.V1 && crdsArePresent(config.imports)) {
+      throw new Error(`CRDs are not supported with '--chart-api-version': '${HelmChartApiVersion.V1}'. Please use '--chart-api-version': '${HelmChartApiVersion.V2}' for using CRDs.`);
     }
 
     const validations = validate ? await fetchValidations() : undefined;

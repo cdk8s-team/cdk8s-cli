@@ -328,7 +328,7 @@ describe('validations', () => {
 
 });
 
-describe('Helm Synthesis', () => {
+describe('Create helm scaffolding', () => {
   test('throws when synthesis --format is not plain or helm', async () => {
     const synthOptions: SynthOptions = {
       format: 'foo',
@@ -351,7 +351,7 @@ describe('Helm Synthesis', () => {
       format: SynthesisFormat.HELM,
     };
 
-    await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify the \'--chart-version\' when the \'--format\' is set as helm./);
+    await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify the \'--chart-version\' when the \'--format\' is set as \'helm\'./);
   });
 
   test('throws when --chart-version is not aligned with SemVer2 standards', async () => {
@@ -380,7 +380,7 @@ describe('Helm Synthesis', () => {
       chartApiVersion: HelmChartApiVersion.V2,
     };
 
-    await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify '--format' as helm when '--chart-version' and\/or '--chart-api-version' is set./);
+    await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify '--format' as \'helm\' when '--chart-version' and\/or '--chart-api-version' is set./);
   });
 
   test('throws when --chart-api-version is v1 and crds are specified', async () => {
@@ -425,7 +425,8 @@ describe('Helm Synthesis', () => {
     await synth(synthOptions);
   });
 
-  test('--chart-api-version is v2 and crds are specified', async () => {
+  test('--chart-api-version is v2 and crds are present', async () => {
+    // Adding imports to config. There are three crds in these.
     imports.push('k8s');
     imports.push(path.join(__dirname, './__resources__/crds/foo.yaml'));
     imports.push(`bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`);
