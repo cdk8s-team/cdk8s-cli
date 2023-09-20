@@ -393,7 +393,7 @@ describe('Create helm scaffolding', () => {
     imports.push('k8s');
     imports.push('foo.yaml');
 
-    await expect(() => synth(synthOptions)).rejects.toThrow(/CRDs are not supported with --format as 'helm' for --chart-api-version: 'v1'. Please use --chart-api-version: 'v2' for using CRDs./);
+    await expect(() => synth(synthOptions)).rejects.toThrow(/CRDs are not supported with \'--chart-api-version\': 'v1'. Please use \'--chart-api-version\': 'v2' for using CRDs./);
   });
 
   test('--chart-api-version is v1', async () => {
