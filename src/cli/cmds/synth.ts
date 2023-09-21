@@ -42,8 +42,8 @@ class Command implements yargs.CommandModule {
     const pluginsDir = argv.pluginsDir;
     const reportFile = argv.validationReportsOutputFile;
     const format = argv.format;
-    const chartApiVersion = argv.chartApiVersion;
     const chartVersion = argv.chartVersion;
+    const chartApiVersion = (!argv.chartApiVersion && format === SynthesisFormat.HELM) ? HelmChartApiVersion.V2: argv.chartApiVersion;
 
     if (outdir && outdir !== config.output && stdout) {
       throw new Error('\'--output\' and \'--stdout\' are mutually exclusive. Please only use one.');
