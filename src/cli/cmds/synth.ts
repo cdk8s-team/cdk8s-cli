@@ -177,7 +177,8 @@ async function addCrdsToHelmChart(chartDir: string) {
 
   for (const crd of crds) {
     const importSpec = parseImports(crd);
-    const manifest = (await matchImporter(importSpec, process.argv) as ImportCustomResourceDefinition).rawManifest;
+    const importedCrdDef = await matchImporter(importSpec, process.argv) as ImportCustomResourceDefinition;
+    const manifest = importedCrdDef.rawManifest;
 
     const filename = deriveFileName(importSpec.source);
 
