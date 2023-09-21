@@ -1,5 +1,5 @@
 import { spawn, SpawnOptions } from 'child_process';
-import { createHash } from 'crypto';
+import { BinaryToTextEncoding, createHash } from 'crypto';
 import { promises } from 'fs';
 import * as http from 'http';
 import * as https from 'https';
@@ -285,28 +285,35 @@ export function parseImports(spec: string): ImportSpec {
   throw new Error('Unable to parse import specification. Syntax is [NAME:=]SPEC');
 }
 
-export function deriveFileName(url: string) {
+export function hashAndEncode(input: string, algorithm: string = 'sha256', encoding: BinaryToTextEncoding = 'hex'): string {
+  const hash = createHash(algorithm);
+  hash.update(input);
+  return hash.digest(encoding);
+}
+
+export function deriveFileName(url: string): string {
   const devUrl = matchCrdsDevUrl(url);
   let filename = undefined;
 
   if (devUrl) {
     const lastIndexOfSlash = devUrl.lastIndexOf('/');
     const lastIndexOfAt = devUrl.lastIndexOf('@');
-    filename = devUrl.slice(lastIndexOfSlash+1, lastIndexOfAt);
+    filename = (lastIndexOfSlash > 0 && lastIndexOfAt > 0) ? devUrl.slice(lastIndexOfSlash+1, lastIndexOfAt): undefined;
   } else {
     const lastIndexOfSlash = url.lastIndexOf('/');
     const lastIndexOfYaml = url.lastIndexOf('.yaml');
-    filename = url.slice(lastIndexOfSlash+1, lastIndexOfYaml);
+
+    filename = (lastIndexOfSlash > 0 && lastIndexOfYaml > 0) ? url.slice(lastIndexOfSlash+1, lastIndexOfYaml): undefined;
   }
 
   if (!filename) {
-    filename = createHash('sha256');
+    filename = hashAndEncode(url);
   }
 
   return filename;
 }
 
-export function isK8sImport(value: string) {
+export function isK8sImport(value: string): boolean {
   if (value !== 'k8s' && !value.startsWith('k8s@')) {
     return false;
   }
@@ -314,13 +321,6 @@ export function isK8sImport(value: string) {
   return true;
 }
 
-export function crdsArePresent(imprts: string[] | undefined) {
-  if (!imprts) {
-    return false;
-  }
-  if (imprts.length === 0 || (imprts.length === 1 && isK8sImport(imprts[0]))) {
-    return false;
-  }
-
-  return true;
+export function crdsArePresent(imprts: string[] | undefined): boolean {
+  return (imprts ?? []).some(imprt => !isK8sImport(imprt));
 }

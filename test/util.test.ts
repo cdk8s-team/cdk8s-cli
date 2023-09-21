@@ -1,7 +1,7 @@
 import { promises } from 'fs';
 import { tmpdir } from 'os';
 import path from 'path';
-import { crdsArePresent, deriveFileName, findManifests, isK8sImport, parseImports } from '../src/util';
+import { crdsArePresent, deriveFileName, findManifests, hashAndEncode, isK8sImport, parseImports } from '../src/util';
 
 describe('findManifests', () => {
 
@@ -72,10 +72,19 @@ test('import is k8s', () => {
 test('are crds presents in imports', () => {
   const imprts = [
     'k8s',
+    'k8s@1.22',
     'foo.yaml',
     'github:crossplane/crossplane@0.14.0',
   ];
 
   expect(crdsArePresent(imprts)).toBeTruthy();
   expect(crdsArePresent(undefined)).toBeFalsy();
+});
+
+test('hash and encoding a string', () => {
+  const testString = 'foo';
+  const first = hashAndEncode(testString);
+  const second = hashAndEncode(testString);
+
+  expect(first === second).toBeTruthy();
 });

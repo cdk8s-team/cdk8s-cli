@@ -67,8 +67,8 @@ export function readConfigSync(): Config {
     config = {
       ...config,
       synth: {
-        chartApiVersion: HelmChartApiVersion.V2,
         ...(config.synth ?? {}),
+        chartApiVersion: config.synth.chartApiVersion ?? HelmChartApiVersion.V2,
       },
     };
   }

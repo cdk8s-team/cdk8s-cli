@@ -27,14 +27,8 @@ class Command implements yargs.CommandModule {
     .option('plugins-dir', { default: config.pluginsDirectory, required: false, desc: 'Directory to store cdk8s plugins.' })
     .option('validate', { type: 'boolean', default: true, required: false, desc: 'Apply validation plugins on the resulting manifests (use --no-validate to disable)' })
     .option('validation-reports-output-file', { required: false, desc: 'File to write a JSON representation of the validation reports to' })
-    .option('format', {
-      default: config.synth!.format,
-      required: false,
-      desc: 'Synthesis format for Kubernetes manifests. The default synthesis format is plain kubernetes manifests.',
-      choices: ['plain', 'helm'],
-      type: 'string',
-    })
-    .option('chart-api-version', { default: config.synth!.chartApiVersion, required: false, desc: 'Chart API version of helm chart. The default value would be \'v2\' api version when synthesis format is helm. There is no default set when synthesis format is plain.' })
+    .option('format', { default: config.synth?.format, required: false, desc: 'Synthesis format for Kubernetes manifests. The default synthesis format is plain kubernetes manifests.', choices: [SynthesisFormat.PLAIN, SynthesisFormat.HELM], type: 'string' })
+    .option('chart-api-version', { default: config.synth?.chartApiVersion, required: false, desc: 'Chart API version of helm chart. The default value would be \'v2\' api version when synthesis format is helm. There is no default set when synthesis format is plain.', choices: [HelmChartApiVersion.V1, HelmChartApiVersion.V2], type: 'string' })
     .option('chart-version', { required: false, desc: 'Chart version of helm chart. This is required if synthesis format is helm.' });
   ;
 
@@ -58,16 +52,8 @@ class Command implements yargs.CommandModule {
       fs.rmSync(outdir, { recursive: true, force: true });
     }
 
-    if (format && (format != SynthesisFormat.PLAIN && format != SynthesisFormat.HELM)) {
-      throw new Error(`You need to specify synthesis format either as ${SynthesisFormat.PLAIN} or ${SynthesisFormat.HELM} but received: ${format}`);
-    }
-
-    if (chartApiVersion && (chartApiVersion != HelmChartApiVersion.V1 && chartApiVersion != HelmChartApiVersion.V2)) {
-      throw new Error(`You need to specify helm chart api version either as ${HelmChartApiVersion.V1} or ${HelmChartApiVersion.V2} but received: ${chartApiVersion}`);
-    }
-
     if (format === SynthesisFormat.HELM && !chartVersion) {
-      throw new Error('You need to specify the \'--chart-version\' when the \'--format\' is set as \'helm\'.');
+      throw new Error('You need to specify \'--chart-version\' when \'--format\' is set as \'helm\'.');
     }
 
     if (chartVersion && !semver.valid(chartVersion)) {
@@ -78,12 +64,20 @@ class Command implements yargs.CommandModule {
       throw new Error('Helm format synthesis does not support \'stdout\'. Please use \'outdir\' instead.');
     }
 
-    if (format === SynthesisFormat.PLAIN && (chartApiVersion || chartVersion || (chartApiVersion && chartVersion))) {
-      throw new Error('You need to specify \'--format\' as \'helm\' when \'--chart-version\' and/or \'--chart-api-version\' is set.');
+    if (format === SynthesisFormat.PLAIN && (chartApiVersion && chartVersion)) {
+      throw new Error('You need to specify \'--format\' as \'helm\' when \'--chart-version\' and \'--chart-api-version\' is set.');
+    }
+
+    if (format === SynthesisFormat.PLAIN && chartApiVersion) {
+      throw new Error('You need to specify \'--format\' as \'helm\' when \'--chart-api-version\' is set.');
+    }
+
+    if (format === SynthesisFormat.PLAIN && chartVersion) {
+      throw new Error('You need to specify \'--format\' as \'helm\' when \'--chart-version\' is set.');
     }
 
     if (chartApiVersion === HelmChartApiVersion.V1 && crdsArePresent(config.imports)) {
-      throw new Error(`CRDs are not supported with '--chart-api-version': '${HelmChartApiVersion.V1}'. Please use '--chart-api-version': '${HelmChartApiVersion.V2}' for using CRDs.`);
+      throw new Error(`Your application uses CRDs, which are not supported with '--chart-api-version': '${HelmChartApiVersion.V1}'. Please either use '--chart-api-version': '${HelmChartApiVersion.V2}' or remove the CRDs from your cdk8s.yaml configuration file`);
     }
 
     const validations = validate ? await fetchValidations() : undefined;
@@ -141,9 +135,10 @@ async function createHelmScaffolding(apiVersion: string, chartVersion: string, o
 
   try {
     await sscaff(tempHelmStructure, outdir, substituteValues);
-  } catch (error) {
-    throw new Error(`An error occurred during Helm chart creation: ${error}`);
+  } finally {
+    fs.rmSync(tempHelmStructure, { recursive: true });
   }
+
 
   if (apiVersion === HelmChartApiVersion.V2 && crdsArePresent(config.imports)) {
     await addCrdsToHelmChart(outdir);
@@ -176,7 +171,7 @@ async function createHelmScaffolding(apiVersion: string, chartVersion: string, o
   }
 }
 
-async function downloadCrds(url: string) {
+async function downloadCrds(url: string): Promise<string> {
   const devUrl = matchCrdsDevUrl(url);
   const manifest = devUrl ? await download(devUrl): await download(url);
 
@@ -184,24 +179,14 @@ async function downloadCrds(url: string) {
 }
 
 async function addCrdsToHelmChart(chartDir: string) {
-  try {
-    if (config.imports) {
-      for (const imprt of config.imports) {
-        if (isK8sImport(imprt)) {
-          continue;
-        }
+  const crds = (config.imports ?? []).filter((imprt) => !isK8sImport(imprt));
 
-        const { source } = parseImports(imprt);
-        const manifest = await downloadCrds(source);
-        const filename = deriveFileName(source);
+  for (const crd of crds) {
+    const { source } = parseImports(crd);
+    const manifest = await downloadCrds(source);
+    const filename = deriveFileName(source);
 
-        fs.outputFileSync(path.join(chartDir, 'crds', `${filename}.yaml`), manifest);
-      }
-    }
-  } catch (er) {
-    const e = er as any;
-
-    throw new Error(`Error during adding custom resource definition to helm chart folder: ${e.stack}\nSTDOUT:\n${e.stdout?.toString()}\nSTDERR:\n${e.stderr?.toString()}. `);
+    fs.outputFileSync(path.join(chartDir, 'crds', `${filename}.yaml`), manifest);
   }
 }
 
