@@ -27,7 +27,7 @@ export async function importDispatch(imports: ImportSpec[], argv: any, options: 
   }
 }
 
-async function matchImporter(importSpec: ImportSpec, argv: any): Promise<ImportBase> {
+export async function matchImporter(importSpec: ImportSpec, argv: any): Promise<ImportBase> {
 
   // first check if its a `k8s@` import
   const k8s = await ImportKubernetesApi.match(importSpec, argv);

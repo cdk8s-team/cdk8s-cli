@@ -452,7 +452,7 @@ describe('Create helm scaffolding', () => {
   });
 
   test('filename url hash remains the same across synthesis', async () => {
-    const filename = 'https://raw.githubusercontent.com/cdk8s-team/cdk8s/master/kubernetes-schemas/v1.14.0/_definitions.json';
+    const filename = path.join(__dirname, './__resources__/crds/baz.json');
     const expectedFilename = hashAndEncode(filename);
 
     imports.push('k8s');

@@ -125,13 +125,17 @@ export class ImportCustomResourceDefinition extends ImportBase {
   public static async fromSpec(importSpec: ImportSpec): Promise<ImportCustomResourceDefinition> {
     const { source } = importSpec;
     const manifest = await download(source);
-    return new ImportCustomResourceDefinition(safeParseCrds(manifest));
+    return new ImportCustomResourceDefinition(manifest);
   }
 
+  rawManifest: string;
   private readonly groups: Record<string, CustomResourceDefinition[]> = { };
 
-  private constructor(manifest: ManifestObjectDefinition[]) {
+  private constructor(rawManifest: string) {
     super();
+
+    this.rawManifest = rawManifest;
+    const manifest = safeParseCrds(rawManifest);
 
     const crds: Record<string, CustomResourceDefinition> = { };
     const groups: Record<string, CustomResourceDefinition[]> = { };

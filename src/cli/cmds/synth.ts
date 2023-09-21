@@ -6,7 +6,8 @@ import { sscaff } from 'sscaff';
 import * as yaml from 'yaml';
 import * as yargs from 'yargs';
 import { HelmChartApiVersion, SynthesisFormat, ValidationConfig, readConfigSync } from '../../config';
-import { matchCrdsDevUrl } from '../../import/crds-dev';
+import { ImportCustomResourceDefinition } from '../../import/crd';
+import { matchImporter } from '../../import/dispatch';
 import { PluginManager } from '../../plugins/_manager';
 import { SynthesizedApp, crdsArePresent, deriveFileName, download, isK8sImport, mkdtemp, parseImports, synthApp, validateApp } from '../../util';
 
@@ -171,20 +172,14 @@ async function createHelmScaffolding(apiVersion: string, chartVersion: string, o
   }
 }
 
-async function downloadCrds(url: string): Promise<string> {
-  const devUrl = matchCrdsDevUrl(url);
-  const manifest = devUrl ? await download(devUrl): await download(url);
-
-  return manifest;
-}
-
 async function addCrdsToHelmChart(chartDir: string) {
   const crds = (config.imports ?? []).filter((imprt) => !isK8sImport(imprt));
 
   for (const crd of crds) {
-    const { source } = parseImports(crd);
-    const manifest = await downloadCrds(source);
-    const filename = deriveFileName(source);
+    const importSpec = parseImports(crd);
+    const manifest = (await matchImporter(importSpec, process.argv) as ImportCustomResourceDefinition).rawManifest;
+
+    const filename = deriveFileName(importSpec.source);
 
     fs.outputFileSync(path.join(chartDir, 'crds', `${filename}.yaml`), manifest);
   }
