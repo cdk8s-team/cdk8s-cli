@@ -329,33 +329,21 @@ describe('validations', () => {
 
 });
 
-// Without a config file present
-// With all inputs from config file
-// With inputs duplicated in cli and config file
-// With different inputs in cli and config file
-
-// [
-//   'without a config file present',
-// ],
-// [
-//   'with all inputs from config file'
-// ],
-// [
-//   'with inputs duplicated in cli and config file'
-// ],
-// [
-//   'with different inputs in cli and config file'
-// ]
-
 describe('Create helm scaffolding', () => {
+  const TEST_SCENARIO_1 = 'with all inputs from cli and no config file is present';
+  const TEST_SCENARIO_2 = 'with all inputs from config file and no related cli inputs';
+  const TEST_SCENARIO_3 = 'with inputs duplicated in cli and config file';
+  const TEST_SCENARIO_4 = 'with different inputs in cli and config file';
+
   test.each([
-    // Without a config file present
     [
-      'without a config file present',
-      { format: 'foo' },
+      TEST_SCENARIO_1,
+      {
+        format: 'foo',
+      },
     ],
     [
-      'with all inputs from config file',
+      TEST_SCENARIO_2,
       {
         config: {
           synth: {
@@ -365,7 +353,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      'with inputs duplicated in cli and config file',
+      TEST_SCENARIO_3,
       {
         format: 'foo',
         config: {
@@ -376,7 +364,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      'with different inputs in cli and config file',
+      TEST_SCENARIO_4,
       {
         format: 'foo',
         config: {
@@ -390,20 +378,94 @@ describe('Create helm scaffolding', () => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify synthesis format either as plain or helm but received:/);
   });
 
-  test('throws when helm chart api version is not v1 or v2', async () => {
-    const synthOptions: SynthOptions = {
-      format: SynthesisFormat.HELM,
-      chartApiVersion: 'foo',
-    };
-
+  test.each([
+    [
+      TEST_SCENARIO_1,
+      {
+        format: SynthesisFormat.HELM,
+        chartApiVersion: 'foo',
+      },
+    ],
+    [
+      TEST_SCENARIO_2,
+      {
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartApiVersion: 'foo' as HelmChartApiVersion,
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_3,
+      {
+        format: SynthesisFormat.HELM,
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartApiVersion: 'foo' as HelmChartApiVersion,
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_4,
+      {
+        format: SynthesisFormat.HELM,
+        chartApiVersion: 'foo' as HelmChartApiVersion,
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartApiVersion: HelmChartApiVersion.V2,
+          },
+        },
+      },
+    ],
+  ])('throws when helm chart api version is not v1 or v2', async (_testName, synthOptions) => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify helm chart api version either as v1 or v2 but received:/);
   });
 
-  test('throws when synthesis --format is helm and --chart-version is not specified', async () => {
-    const synthOptions: SynthOptions = {
-      format: SynthesisFormat.HELM,
-    };
-
+  test.each([
+    [
+      TEST_SCENARIO_1,
+      {
+        format: SynthesisFormat.HELM,
+      },
+    ],
+    [
+      TEST_SCENARIO_2,
+      {
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_3,
+      {
+        format: SynthesisFormat.HELM,
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_4,
+      {
+        format: SynthesisFormat.HELM,
+        config: {
+          synth: {
+            format: SynthesisFormat.PLAIN,
+          },
+        },
+      },
+    ],
+  ])('throws when synthesis --format is helm and --chart-version is not specified', async (_testName, synthOptions) => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify '--chart-version' when '--format' is set as 'helm'./);
   });
 
