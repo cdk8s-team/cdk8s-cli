@@ -329,12 +329,64 @@ describe('validations', () => {
 
 });
 
-describe('Create helm scaffolding', () => {
-  test('throws when synthesis --format is not plain or helm', async () => {
-    const synthOptions: SynthOptions = {
-      format: 'foo',
-    };
+// Without a config file present
+// With all inputs from config file
+// With inputs duplicated in cli and config file
+// With different inputs in cli and config file
 
+// [
+//   'without a config file present',
+// ],
+// [
+//   'with all inputs from config file'
+// ],
+// [
+//   'with inputs duplicated in cli and config file'
+// ],
+// [
+//   'with different inputs in cli and config file'
+// ]
+
+describe('Create helm scaffolding', () => {
+  test.each([
+    // Without a config file present
+    [
+      'without a config file present',
+      { format: 'foo' },
+    ],
+    [
+      'with all inputs from config file',
+      {
+        config: {
+          synth: {
+            format: 'foo' as SynthesisFormat,
+          },
+        },
+      },
+    ],
+    [
+      'with inputs duplicated in cli and config file',
+      {
+        format: 'foo',
+        config: {
+          synth: {
+            format: 'foo' as SynthesisFormat,
+          },
+        },
+      },
+    ],
+    [
+      'with different inputs in cli and config file',
+      {
+        format: 'foo',
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+          },
+        },
+      },
+    ],
+  ])('throws when synthesis --format is not plain or helm %s', async (_testName, synthOptions) => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify synthesis format either as plain or helm but received:/);
   });
 
@@ -403,14 +455,17 @@ describe('Create helm scaffolding', () => {
   });
 
   test('throws when --chart-api-version is v1 and crds are specified', async () => {
+    imports.push('k8s');
+    imports.push('foo.yaml');
+
     const synthOptions: SynthOptions = {
       format: SynthesisFormat.HELM,
       chartVersion: '1.1.1',
       chartApiVersion: HelmChartApiVersion.V1,
+      config: {
+        imports: imports,
+      },
     };
-
-    imports.push('k8s');
-    imports.push('foo.yaml');
 
     await expect(() => synth(synthOptions)).rejects.toThrow(/Your application uses CRDs, which are not supported with \'--chart-api-version\': \'v1\'. Please either use \'--chart-api-version\': \'v2\' or remove the CRDs from your cdk8s.yaml configuration file/);
   });
@@ -454,6 +509,9 @@ describe('Create helm scaffolding', () => {
     const synthOptions: SynthOptions = {
       format: SynthesisFormat.HELM,
       chartVersion: '1.1.1',
+      config: {
+        imports: imports,
+      },
       postSynth: async (dir: string) => {
         expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
 
@@ -481,6 +539,9 @@ describe('Create helm scaffolding', () => {
     const synthOptions: SynthOptions = {
       format: SynthesisFormat.HELM,
       chartVersion: '1.1.1',
+      config: {
+        imports: imports,
+      },
       postSynth: async (dir: string) => {
         expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
 
@@ -542,26 +603,25 @@ app.synth();
     const DEFAULT_PLUGINS_DIR = path.join(dir, '.cdk8s', 'plugins');
 
     // Defined config in cdk8s.yaml file
-    const config: Config = options.config
-      ? {
-        ...getDefaultConfig(),
-        ...options.config,
-      } : getDefaultConfig();
+    const config: Config | undefined = options.config;
 
     // Mimicking defaults passed in synth handler
-    const app = options.app ?? config.app;
+    const app = options.app ?? config?.app;
     const stdout = options.stdout;
-    const output = options.output ?? config.output ?? (!stdout ? DEFAULT_OUTPUT_DIR : undefined);
+    const output = options.output ?? config?.output ?? (!stdout ? DEFAULT_OUTPUT_DIR : undefined);
     const pluginsDir = options.pluginsDir ?? DEFAULT_PLUGINS_DIR;
     const validate = options.validate ?? true;
     const validationReportsOutputFile = options.reportsFile;
-    const format = options.format ?? config.synth?.format ?? SynthesisFormat.PLAIN;
-    const chartApiVersion = options.chartApiVersion ?? config.synth?.chartApiVersion ??
+    const format = options.format ?? config?.synth?.format ?? SynthesisFormat.PLAIN;
+    const chartApiVersion = options.chartApiVersion ?? config?.synth?.chartApiVersion ??
     (format === SynthesisFormat.HELM ? HelmChartApiVersion.V2: undefined);
     const chartVersion = options.chartVersion;
 
     fs.writeFileSync(path.join(dir, 'index.js'), cdk8sApp);
-    fs.writeFileSync(path.join(dir, 'cdk8s.yaml'), yaml.stringify(config));
+
+    if (config) {
+      fs.writeFileSync(path.join(dir, 'cdk8s.yaml'), yaml.stringify(config));
+    }
 
     const recordConstructMetadata = !(options.config?.validations == undefined || options.config?.validations.length == 0);
 
@@ -617,13 +677,6 @@ function requireSynth() {
   const module = '../../src/cli/cmds/synth';
   // eslint-disable-next-line
   return require(module);
-}
-
-function getDefaultConfig(): Config {
-  return {
-    app: DEFAULT_APP,
-    imports: imports,
-  };
 }
 
 function generatedHelmChartExists(dir: string): boolean {
