@@ -422,7 +422,7 @@ describe('Create helm scaffolding', () => {
         },
       },
     ],
-  ])('throws when helm chart api version is not v1 or v2', async (_testName, synthOptions) => {
+  ])('throws when helm chart api version is not v1 or v2 %s', async (_testName, synthOptions) => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify helm chart api version either as v1 or v2 but received:/);
   });
 
@@ -465,157 +465,680 @@ describe('Create helm scaffolding', () => {
         },
       },
     ],
-  ])('throws when synthesis --format is helm and --chart-version is not specified', async (_testName, synthOptions) => {
+  ])('throws when synthesis --format is helm and --chart-version is not specified %s', async (_testName, synthOptions) => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify '--chart-version' when '--format' is set as 'helm'./);
   });
 
-  test('throws when --chart-version is not aligned with SemVer2 standards', async () => {
-    const synthOptions: SynthOptions = {
-      format: SynthesisFormat.HELM,
-      chartVersion: 'foo',
-    };
-
+  test.each([
+    [
+      TEST_SCENARIO_1,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: 'foo',
+      },
+    ],
+    [
+      TEST_SCENARIO_2,
+      {
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: 'foo',
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_3,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: 'foo',
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: 'foo',
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_4,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: 'foo',
+        config: {
+          synth: {
+            format: SynthesisFormat.PLAIN,
+            chartVersion: 'foo',
+          },
+        },
+      },
+    ],
+  ])('throws when --chart-version is not aligned with SemVer2 standards %s', async (_testName, synthOptions) => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/The value specified for '--chart-version': foo does not follow SemVer-2/);
   });
 
-  test('throws when --format is helm and mode is stdout', async () => {
-    const synthOptions: SynthOptions = {
-      format: SynthesisFormat.HELM,
-      chartVersion: '1.1.1',
-      stdout: true,
-    };
-
+  test.each([
+    [
+      TEST_SCENARIO_1,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        stdout: true,
+      },
+    ],
+    [
+      TEST_SCENARIO_2,
+      {
+        stdout: true,
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_3,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        stdout: true,
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_4,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        stdout: true,
+        config: {
+          synth: {
+            format: SynthesisFormat.PLAIN,
+            chartVersion: '1.1.1',
+          },
+        },
+      },
+    ],
+  ])('throws when --format is helm and mode is stdout %s', async (_testName, synthOptions) => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/Helm format synthesis does not support 'stdout'. Please use 'outdir' instead./);
   });
 
-  test('throws when --chart-api-version is specified with --format as plain', async () => {
-    const synthOptions: SynthOptions = {
-      format: SynthesisFormat.PLAIN,
-      chartApiVersion: HelmChartApiVersion.V2,
-    };
-
+  test.each([
+    [
+      TEST_SCENARIO_1,
+      {
+        format: SynthesisFormat.PLAIN,
+        chartApiVersion: HelmChartApiVersion.V2,
+      },
+    ],
+    [
+      TEST_SCENARIO_2,
+      {
+        config: {
+          synth: {
+            format: SynthesisFormat.PLAIN,
+            chartApiVersion: HelmChartApiVersion.V2,
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_3,
+      {
+        format: SynthesisFormat.PLAIN,
+        chartApiVersion: HelmChartApiVersion.V2,
+        config: {
+          synth: {
+            format: SynthesisFormat.PLAIN,
+            chartApiVersion: HelmChartApiVersion.V2,
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_4,
+      {
+        format: SynthesisFormat.PLAIN,
+        chartApiVersion: HelmChartApiVersion.V2,
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartApiVersion: HelmChartApiVersion.V2,
+          },
+        },
+      },
+    ],
+  ])('throws when --chart-api-version is specified with --format as plain %s', async (_testName, synthOptions) => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify '--format' as 'helm' when '--chart-api-version' is set./);
   });
 
-  test('throws when --chart-version is specified with --format as plain', async () => {
-    const synthOptions: SynthOptions = {
-      format: SynthesisFormat.PLAIN,
-      chartVersion: '1.1.1',
-    };
-
+  test.each([
+    [
+      TEST_SCENARIO_1,
+      {
+        format: SynthesisFormat.PLAIN,
+        chartVersion: '1.1.1',
+      },
+    ],
+    [
+      TEST_SCENARIO_2,
+      {
+        config: {
+          synth: {
+            format: SynthesisFormat.PLAIN,
+            chartVersion: '1.1.1',
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_3,
+      {
+        format: SynthesisFormat.PLAIN,
+        chartVersion: '1.1.1',
+        config: {
+          synth: {
+            format: SynthesisFormat.PLAIN,
+            chartVersion: '1.1.1',
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_4,
+      {
+        format: SynthesisFormat.PLAIN,
+        chartVersion: '1.1.1',
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+          },
+        },
+      },
+    ],
+  ])('throws when --chart-version is specified with --format as plain %s', async (_testName, synthOptions) => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify '--format' as 'helm' when '--chart-version' is set./);
   });
 
-  test('throws when --chart-version and --chart-api-version is specified with --format as plain', async () => {
-    const synthOptions: SynthOptions = {
-      format: SynthesisFormat.PLAIN,
-      chartVersion: '1.1.1',
-      chartApiVersion: HelmChartApiVersion.V2,
-    };
-
+  test.each([
+    [
+      TEST_SCENARIO_1,
+      {
+        format: SynthesisFormat.PLAIN,
+        chartVersion: '1.1.1',
+        chartApiVersion: HelmChartApiVersion.V2,
+      },
+    ],
+    [
+      TEST_SCENARIO_2,
+      {
+        config: {
+          synth: {
+            format: SynthesisFormat.PLAIN,
+            chartVersion: '1.1.1',
+            chartApiVersion: HelmChartApiVersion.V2,
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_3,
+      {
+        format: SynthesisFormat.PLAIN,
+        chartVersion: '1.1.1',
+        chartApiVersion: HelmChartApiVersion.V2,
+        config: {
+          synth: {
+            format: SynthesisFormat.PLAIN,
+            chartVersion: '1.1.1',
+            chartApiVersion: HelmChartApiVersion.V2,
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_4,
+      {
+        format: SynthesisFormat.PLAIN,
+        chartVersion: '1.1.1',
+        chartApiVersion: HelmChartApiVersion.V2,
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+            chartApiVersion: HelmChartApiVersion.V2,
+          },
+        },
+      },
+    ],
+  ])('throws when --chart-version and --chart-api-version is specified with --format as plain %s', async (_testName, synthOptions) => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify '--format' as 'helm' when '--chart-version' and '--chart-api-version' is set./);
   });
 
-  test('throws when --chart-api-version is v1 and crds are specified', async () => {
-    imports.push('k8s');
-    imports.push('foo.yaml');
-
-    const synthOptions: SynthOptions = {
-      format: SynthesisFormat.HELM,
-      chartVersion: '1.1.1',
-      chartApiVersion: HelmChartApiVersion.V1,
-      config: {
-        imports: imports,
+  test.each([
+    [
+      TEST_SCENARIO_1,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        chartApiVersion: HelmChartApiVersion.V1,
+        config: {
+          imports: ['k8s', 'foo.yaml'],
+        },
       },
-    };
-
+    ],
+    [
+      TEST_SCENARIO_2,
+      {
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+            chartApiVersion: HelmChartApiVersion.V1,
+          },
+          imports: ['k8s', 'foo.yaml'],
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_3,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        chartApiVersion: HelmChartApiVersion.V1,
+        config: {
+          imports: ['k8s', 'foo.yaml'],
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+            chartApiVersion: HelmChartApiVersion.V1,
+          },
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_4,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        chartApiVersion: HelmChartApiVersion.V1,
+        config: {
+          synth: {
+            chartApiVersion: HelmChartApiVersion.V2,
+          },
+          imports: ['k8s', 'foo.yaml'],
+        },
+      },
+    ],
+  ])('throws when --chart-api-version is v1 and crds are specified %s', async (_testName, synthOptions) => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/Your application uses CRDs, which are not supported with \'--chart-api-version\': \'v1\'. Please either use \'--chart-api-version\': \'v2\' or remove the CRDs from your cdk8s.yaml configuration file/);
   });
 
-  test('--chart-api-version is v1', async () => {
-    // An error should not be thrown since k8s is not a crd
-    imports.push('k8s');
-
-    const synthOptions: SynthOptions = {
-      format: SynthesisFormat.HELM,
-      chartVersion: '1.1.1',
-      chartApiVersion: HelmChartApiVersion.V1,
-      postSynth: async (dir: string) => {
-        expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+  test.each([
+    [
+      TEST_SCENARIO_1,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        chartApiVersion: HelmChartApiVersion.V1,
+        config: {
+          imports: ['k8s'],
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+        },
       },
-    };
-
+    ],
+    [
+      TEST_SCENARIO_2,
+      {
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+            chartApiVersion: HelmChartApiVersion.V1,
+          },
+          imports: ['k8s'],
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_3,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        chartApiVersion: HelmChartApiVersion.V1,
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+            chartApiVersion: HelmChartApiVersion.V1,
+          },
+          imports: ['k8s'],
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_4,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        chartApiVersion: HelmChartApiVersion.V1,
+        config: {
+          synth: {
+            chartApiVersion: HelmChartApiVersion.V2,
+          },
+          imports: ['k8s'],
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+        },
+      },
+    ],
+  ])('--chart-api-version is v1 %s', async (_testName, synthOptions) => {
     await synth(synthOptions);
   });
 
 
-  test('--chart-api-version is v2 without crds', async () => {
-    const synthOptions: SynthOptions = {
-      format: SynthesisFormat.HELM,
-      chartVersion: '1.1.1',
-      postSynth: async (dir: string) => {
-        expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+  test.each([
+    [
+      TEST_SCENARIO_1,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+        },
       },
-    };
-
+    ],
+    [
+      TEST_SCENARIO_2,
+      {
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+          },
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_3,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+          },
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_4,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        config: {
+          synth: {
+            format: SynthesisFormat.PLAIN,
+            chartVersion: '1.1.1',
+          },
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+        },
+      },
+    ],
+  ])('--chart-api-version is v2 without crds %s', async (_testName, synthOptions) => {
     await synth(synthOptions);
   });
 
-  test('--chart-api-version is v2 and crds are present', async () => {
-    // Adding imports to config. There are three crds in these.
-    imports.push('k8s');
-    imports.push(path.join(__dirname, './__resources__/crds/foo.yaml'));
-    imports.push(`bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`);
-    imports.push('github:crossplane/crossplane@0.14.0');
+  test.each([
+    [
+      TEST_SCENARIO_1,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        config: {
+          imports: [
+            'k8s',
+            path.join(__dirname, './__resources__/crds/foo.yaml'),
+            `bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`,
+            'github:crossplane/crossplane@0.14.0',
+          ],
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
 
-    const synthOptions: SynthOptions = {
-      format: SynthesisFormat.HELM,
-      chartVersion: '1.1.1',
-      config: {
-        imports: imports,
+          // K8s import must be ignored
+          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
+          expect(crdFiles.length).toEqual(3);
+          expect(crdFiles.includes('foo.yaml')).toBeTruthy();
+          expect(crdFiles.includes('bar.yaml')).toBeTruthy();
+          expect(crdFiles.includes('crossplane.yaml')).toBeTruthy();
+        },
       },
-      postSynth: async (dir: string) => {
-        expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+    ],
+    [
+      TEST_SCENARIO_2,
+      {
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+          },
+          imports: [
+            'k8s',
+            path.join(__dirname, './__resources__/crds/foo.yaml'),
+            `bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`,
+            'github:crossplane/crossplane@0.14.0',
+          ],
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
 
-        // K8s import must be ignored
-        const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
-        expect(crdFiles.length).toEqual(3);
-        expect(crdFiles.includes('foo.yaml')).toBeTruthy();
-        expect(crdFiles.includes('bar.yaml')).toBeTruthy();
-        expect(crdFiles.includes('crossplane.yaml')).toBeTruthy();
+          // K8s import must be ignored
+          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
+          expect(crdFiles.length).toEqual(3);
+          expect(crdFiles.includes('foo.yaml')).toBeTruthy();
+          expect(crdFiles.includes('bar.yaml')).toBeTruthy();
+          expect(crdFiles.includes('crossplane.yaml')).toBeTruthy();
+        },
       },
-    };
+    ],
+    [
+      TEST_SCENARIO_3,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+          },
+          imports: [
+            'k8s',
+            path.join(__dirname, './__resources__/crds/foo.yaml'),
+            `bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`,
+            'github:crossplane/crossplane@0.14.0',
+          ],
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
 
+          // K8s import must be ignored
+          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
+          expect(crdFiles.length).toEqual(3);
+          expect(crdFiles.includes('foo.yaml')).toBeTruthy();
+          expect(crdFiles.includes('bar.yaml')).toBeTruthy();
+          expect(crdFiles.includes('crossplane.yaml')).toBeTruthy();
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_4,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        config: {
+          synth: {
+            format: SynthesisFormat.PLAIN,
+            chartVersion: '1.1.1',
+          },
+          imports: [
+            'k8s',
+            path.join(__dirname, './__resources__/crds/foo.yaml'),
+            `bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`,
+            'github:crossplane/crossplane@0.14.0',
+          ],
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+
+          // K8s import must be ignored
+          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
+          expect(crdFiles.length).toEqual(3);
+          expect(crdFiles.includes('foo.yaml')).toBeTruthy();
+          expect(crdFiles.includes('bar.yaml')).toBeTruthy();
+          expect(crdFiles.includes('crossplane.yaml')).toBeTruthy();
+        },
+      },
+    ],
+  ])('--chart-api-version is v2 and crds are present %s', async (_testName, synthOptions) => {
     await synth(synthOptions);
   });
 
-  test('filename url hash remains the same across synthesis', async () => {
-    const filename = path.join(__dirname, './__resources__/crds/baz.json');
-    const expectedFilename = hashAndEncode(filename);
 
-    imports.push('k8s');
-    imports.push(filename);
+  const testingFileNames: string[] = [];
+  const filename = path.join(__dirname, './__resources__/crds/baz.json');
+  const expectedFilename = hashAndEncode(filename);
+  test.each([
+    [
+      TEST_SCENARIO_1,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        config: {
+          imports: [
+            'k8s',
+            filename,
+          ],
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
 
-    const testingFileNames: string[] = [];
+          // K8s import must be ignored
+          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
+          expect(crdFiles.length).toEqual(1);
+          expect(crdFiles.includes(`${expectedFilename}.yaml`)).toBeTruthy();
 
-    const synthOptions: SynthOptions = {
-      format: SynthesisFormat.HELM,
-      chartVersion: '1.1.1',
-      config: {
-        imports: imports,
+          testingFileNames.push(crdFiles[0]);
+        },
       },
-      postSynth: async (dir: string) => {
-        expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+    ],
+    [
+      TEST_SCENARIO_2,
+      {
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+          },
+          imports: [
+            'k8s',
+            filename,
+          ],
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
 
-        // K8s import must be ignored
-        const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
-        expect(crdFiles.length).toEqual(1);
-        expect(crdFiles.includes(`${expectedFilename}.yaml`)).toBeTruthy();
+          // K8s import must be ignored
+          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
+          expect(crdFiles.length).toEqual(1);
+          expect(crdFiles.includes(`${expectedFilename}.yaml`)).toBeTruthy();
 
-        testingFileNames.push(crdFiles[0]);
+          testingFileNames.push(crdFiles[0]);
+        },
       },
-    };
+    ],
+    [
+      TEST_SCENARIO_3,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        config: {
+          synth: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+          },
+          imports: [
+            'k8s',
+            filename,
+          ],
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
 
+          // K8s import must be ignored
+          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
+          expect(crdFiles.length).toEqual(1);
+          expect(crdFiles.includes(`${expectedFilename}.yaml`)).toBeTruthy();
+
+          testingFileNames.push(crdFiles[0]);
+        },
+      },
+    ],
+    [
+      TEST_SCENARIO_4,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        config: {
+          synth: {
+            format: SynthesisFormat.PLAIN,
+            chartVersion: '1.1.1',
+          },
+          imports: [
+            'k8s',
+            filename,
+          ],
+        },
+        postSynth: async (dir: string) => {
+          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
+
+          // K8s import must be ignored
+          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
+          expect(crdFiles.length).toEqual(1);
+          expect(crdFiles.includes(`${expectedFilename}.yaml`)).toBeTruthy();
+
+          testingFileNames.push(crdFiles[0]);
+        },
+      },
+    ],
+  ])('filename url hash remains the same across synthesis %s', async (_testName, synthOptions) => {
     await synth(synthOptions);
     await synth(synthOptions);
     await synth(synthOptions);

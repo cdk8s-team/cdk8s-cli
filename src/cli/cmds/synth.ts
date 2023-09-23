@@ -43,7 +43,7 @@ class Command implements yargs.CommandModule {
     const reportFile = argv.validationReportsOutputFile;
     const pluginsDir = argv.pluginsDir ?? config.pluginsDirectory ?? DEFAULT_PLUGINS_DIR;
     const format = argv.format ?? config.synth?.format ?? SynthesisFormat.PLAIN;
-    const chartVersion = argv.chartVersion;
+    const chartVersion = argv.chartVersion ?? config.synth?.chartVersion;
     const chartApiVersion = argv.chartApiVersion ?? config.synth?.chartApiVersion ?? getDefaultChartApiVersion(format);
 
     if (outdir && outdir !== config.output && stdout) {
