@@ -24,7 +24,7 @@ class Command implements yargs.CommandModule {
   public readonly aliases = ['synthesize'];
 
   public readonly builder = (args: yargs.Argv) => args
-    .option('app', { required: true, desc: 'Command to use in order to execute cdk8s app', alias: 'a' })
+    .option('app', { required: true, default: config.app, desc: 'Command to use in order to execute cdk8s app', alias: 'a' })
     .option('output', { required: false, desc: 'Output directory', alias: 'o' })
     .option('stdout', { type: 'boolean', required: false, desc: 'Write synthesized manifests to STDOUT instead of the output directory', alias: 'p' })
     .option('plugins-dir', { required: false, desc: 'Directory to store cdk8s plugins.' })
@@ -36,7 +36,7 @@ class Command implements yargs.CommandModule {
 
   public async handler(argv: any) {
 
-    const command = argv.app ?? config.app;
+    const command = argv.app;
     const stdout = argv.stdout;
     const outdir = argv.output ?? config.output ?? (!stdout ? DEFAULT_OUTPUT_DIR : undefined);
     const validate = argv.validate ?? true;
