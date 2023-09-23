@@ -13,6 +13,8 @@ import { SynthesizedApp, crdsArePresent, deriveFileName, download, isK8sImport, 
 
 const CHART_YAML_FILE = 'Chart.yaml';
 const README = 'README.md';
+const DEFAULT_OUTPUT_DIR = 'dist';
+const DEFAULT_PLUGINS_DIR = path.join(os.homedir(), '.cdk8s', 'plugins');
 
 const config = readConfigSync();
 
@@ -22,28 +24,27 @@ class Command implements yargs.CommandModule {
   public readonly aliases = ['synthesize'];
 
   public readonly builder = (args: yargs.Argv) => args
-    .option('app', { default: config.app, required: true, desc: 'Command to use in order to execute cdk8s app', alias: 'a' })
-    .option('output', { default: config.output, required: false, desc: 'Output directory', alias: 'o' })
+    .option('app', { required: true, desc: 'Command to use in order to execute cdk8s app', alias: 'a' })
+    .option('output', { required: false, desc: 'Output directory', alias: 'o' })
     .option('stdout', { type: 'boolean', required: false, desc: 'Write synthesized manifests to STDOUT instead of the output directory', alias: 'p' })
-    .option('plugins-dir', { default: config.pluginsDirectory, required: false, desc: 'Directory to store cdk8s plugins.' })
-    .option('validate', { type: 'boolean', default: true, required: false, desc: 'Apply validation plugins on the resulting manifests (use --no-validate to disable)' })
+    .option('plugins-dir', { required: false, desc: 'Directory to store cdk8s plugins.' })
+    .option('validate', { type: 'boolean', required: false, desc: 'Apply validation plugins on the resulting manifests (use --no-validate to disable)' })
     .option('validation-reports-output-file', { required: false, desc: 'File to write a JSON representation of the validation reports to' })
-    .option('format', { default: config.synth?.format, required: false, desc: 'Synthesis format for Kubernetes manifests. The default synthesis format is plain kubernetes manifests.', choices: [SynthesisFormat.PLAIN, SynthesisFormat.HELM], type: 'string' })
-    .option('chart-api-version', { default: config.synth?.chartApiVersion, required: false, desc: 'Chart API version of helm chart. The default value would be \'v2\' api version when synthesis format is helm. There is no default set when synthesis format is plain.', choices: [HelmChartApiVersion.V1, HelmChartApiVersion.V2], type: 'string' })
+    .option('format', { required: false, desc: 'Synthesis format for Kubernetes manifests. The default synthesis format is plain kubernetes manifests.', choices: [SynthesisFormat.PLAIN, SynthesisFormat.HELM], type: 'string' })
+    .option('chart-api-version', { required: false, desc: 'Chart API version of helm chart. The default value would be \'v2\' api version when synthesis format is helm. There is no default set when synthesis format is plain.', choices: [HelmChartApiVersion.V1, HelmChartApiVersion.V2], type: 'string' })
     .option('chart-version', { required: false, desc: 'Chart version of helm chart. This is required if synthesis format is helm.' });
-  ;
 
   public async handler(argv: any) {
 
-    const command = argv.app;
-    const outdir = argv.output;
+    const command = argv.app ?? config.app;
     const stdout = argv.stdout;
-    const validate = argv.validate;
-    const pluginsDir = argv.pluginsDir;
+    const outdir = argv.output ?? config.output ?? (!stdout ? DEFAULT_OUTPUT_DIR : undefined);
+    const validate = argv.validate ?? true;
     const reportFile = argv.validationReportsOutputFile;
-    const format = argv.format;
+    const pluginsDir = argv.pluginsDir ?? config.pluginsDirectory ?? DEFAULT_PLUGINS_DIR;
+    const format = argv.format ?? config.synth?.format ?? SynthesisFormat.PLAIN;
     const chartVersion = argv.chartVersion;
-    const chartApiVersion = (!argv.chartApiVersion && format === SynthesisFormat.HELM) ? HelmChartApiVersion.V2: argv.chartApiVersion;
+    const chartApiVersion = argv.chartApiVersion ?? config.synth?.chartApiVersion ?? getDefaultChartApiVersion(format);
 
     if (outdir && outdir !== config.output && stdout) {
       throw new Error('\'--output\' and \'--stdout\' are mutually exclusive. Please only use one.');
@@ -51,6 +52,14 @@ class Command implements yargs.CommandModule {
 
     if (outdir) {
       fs.rmSync(outdir, { recursive: true, force: true });
+    }
+
+    if (format != SynthesisFormat.PLAIN && format != SynthesisFormat.HELM) {
+      throw new Error(`You need to specify synthesis format either as ${SynthesisFormat.PLAIN} or ${SynthesisFormat.HELM} but received: ${format}`);
+    }
+
+    if (chartApiVersion && (chartApiVersion != HelmChartApiVersion.V1 && chartApiVersion != HelmChartApiVersion.V2)) {
+      throw new Error(`You need to specify helm chart api version either as ${HelmChartApiVersion.V1} or ${HelmChartApiVersion.V2} but received: ${chartApiVersion}`);
     }
 
     if (format === SynthesisFormat.HELM && !chartVersion) {
@@ -184,6 +193,10 @@ async function addCrdsToHelmChart(chartDir: string) {
 
     fs.outputFileSync(path.join(chartDir, 'crds', `${filename}.yaml`), manifest);
   }
+}
+
+function getDefaultChartApiVersion(synthFormat: string): string | undefined {
+  return (synthFormat === SynthesisFormat.HELM) ? HelmChartApiVersion.V2: undefined;
 }
 
 module.exports = new Command();

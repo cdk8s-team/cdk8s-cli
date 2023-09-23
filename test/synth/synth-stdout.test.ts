@@ -2,9 +2,10 @@ import { readdirSync } from 'fs';
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
-import { Config, HelmChartApiVersion, SynthesisFormat, ValidationConfig, readConfigSync } from '../../src/config';
+import { Config, HelmChartApiVersion, SynthesisFormat, ValidationConfig } from '../../src/config';
 import { crdsArePresent, findConstructMetadata, hashAndEncode, mkdtemp } from '../../src/util';
 
+const DEFAULT_APP = 'node index.js';
 const imports: string[] = [];
 
 beforeEach(() => {
@@ -36,7 +37,7 @@ describe('validations', () => {
       },
     }];
 
-    await synth({ validations });
+    await synth({ config: { validations: validations } });
   });
 
   test('synth with local validations file', async () => {
@@ -53,7 +54,7 @@ describe('validations', () => {
     }];
 
     await synth({
-      validations: validationsFile,
+      config: { validations: validationsFile },
       preSynth: async (dir: string) => {
         fs.writeFileSync(path.join(dir, validationsFile), yaml.stringify(validations));
       },
@@ -73,7 +74,7 @@ describe('validations', () => {
     }];
 
     await synth({
-      validations,
+      config: { validations: validations },
       preSynth: async (dir: string) => {
         fs.copySync(path.join(__dirname, '__resources__', 'validation-plugin'), path.join(dir, 'validation-plugin'));
       },
@@ -92,7 +93,7 @@ describe('validations', () => {
       },
     }];
 
-    await synth({ validations });
+    await synth({ config: { validations: validations } });
 
   });
 
@@ -107,7 +108,7 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth({ validations })).rejects.toThrow(/Unsupported package reference/);
+    await expect(() => synth({ config: { validations: validations } })).rejects.toThrow(/Unsupported package reference/);
 
   });
 
@@ -122,7 +123,7 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth({ validations })).rejects.toThrow('Code: 2');
+    await expect(() => synth({ config: { validations: validations } })).rejects.toThrow('Code: 2');
 
   });
 
@@ -137,7 +138,7 @@ describe('validations', () => {
       },
     }];
 
-    await synth({ validations, validate: false });
+    await synth({ config: { validations: validations }, validate: false });
   });
 
   test('synth fails when validations specify non existing local plugin', async () => {
@@ -152,7 +153,7 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth({ validations })).rejects.toThrow(/Cannot find module/);
+    await expect(() => synth({ config: { validations: validations } })).rejects.toThrow(/Cannot find module/);
 
   });
 
@@ -167,7 +168,7 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth({ validations })).rejects.toThrow(/Unsupported version spec/);
+    await expect(() => synth({ config: { validations: validations } })).rejects.toThrow(/Unsupported version spec/);
 
   });
 
@@ -182,7 +183,7 @@ describe('validations', () => {
       },
     }];
 
-    await expect(() => synth({ validations })).rejects.toThrow(/Throwing per request/);
+    await expect(() => synth({ config: { validations: validations } })).rejects.toThrow(/Throwing per request/);
 
   });
 
@@ -199,7 +200,7 @@ describe('validations', () => {
       },
     }];
     await synth({
-      validations,
+      config: { validations: validations },
       reportsFile: 'reports.json',
       postSynth: async (dir: string) => {
         const reports = fs.readFileSync(path.join(dir, 'reports.json'), { encoding: 'utf-8' })
@@ -224,7 +225,7 @@ describe('validations', () => {
       },
     }];
     await synth({
-      validations,
+      config: { validations: validations },
       postSynth: async (dir: string) => {
         expect(findConstructMetadata(path.join(dir, 'dist/'))).toContain('construct-metadata.json');
       },
@@ -235,7 +236,7 @@ describe('validations', () => {
 
     const validations: ValidationConfig[] = [];
     await synth({
-      validations,
+      config: { validations: validations },
       postSynth: async (dir: string) => {
         expect(findConstructMetadata(path.join(dir, 'dist/'))).toBeUndefined();
       },
@@ -246,7 +247,7 @@ describe('validations', () => {
 
     const validations = undefined;
     await synth({
-      validations,
+      config: { validations: validations },
       postSynth: async (dir: string) => {
         expect(findConstructMetadata(path.join(dir, 'dist/'))).toBeUndefined();
       },
@@ -269,7 +270,7 @@ describe('validations', () => {
     await expect(async () => {
 
       await synth({
-        validations,
+        config: { validations: validations },
         reportsFile: 'reports.json',
         preSynth: async (dir: string) => {
           fs.writeFileSync(path.join(dir, 'reports.json'), 'hello');
@@ -307,7 +308,7 @@ describe('validations', () => {
     const messageNode18 = 'ERR_INVALID_URL';
 
     const re = new RegExp(`${messageNode14}|${messageNode18}|${messageNode16}`);
-    await expect(() => synth({ validations })).rejects.toThrow(re);
+    await expect(() => synth({ config: { validations: validations } })).rejects.toThrow(re);
 
   });
 
@@ -322,13 +323,30 @@ describe('validations', () => {
       },
     }];
 
-    await synth({ validations, stdout: true });
+    await synth({ config: { validations: validations }, stdout: true });
 
   });
 
 });
 
 describe('Create helm scaffolding', () => {
+  test('throws when synthesis --format is not plain or helm', async () => {
+    const synthOptions: SynthOptions = {
+      format: 'foo',
+    };
+
+    await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify synthesis format either as plain or helm but received:/);
+  });
+
+  test('throws when helm chart api version is not v1 or v2', async () => {
+    const synthOptions: SynthOptions = {
+      format: SynthesisFormat.HELM,
+      chartApiVersion: 'foo',
+    };
+
+    await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify helm chart api version either as v1 or v2 but received:/);
+  });
+
   test('throws when synthesis --format is helm and --chart-version is not specified', async () => {
     const synthOptions: SynthOptions = {
       format: SynthesisFormat.HELM,
@@ -484,22 +502,27 @@ describe('Create helm scaffolding', () => {
   });
 });
 
-interface SynthOptions {
-  readonly validations?: string | ValidationConfig[];
-  readonly validate?: boolean;
+interface SynthCliOptions {
+  readonly app?: string;
+  readonly output?: string;
   readonly stdout?: boolean;
+  readonly pluginsDir?: string;
+  readonly validate?: boolean;
   readonly reportsFile?: string;
   readonly format?: string;
   readonly chartApiVersion?: string;
   readonly chartVersion?: string;
+}
+
+interface SynthOptions extends SynthCliOptions {
+  readonly config?: Config;
   readonly preSynth?: (dir: string) => Promise<void>;
   readonly postSynth?: (dir: string) => Promise<void>;
-
 }
 
 async function synth(options: SynthOptions) {
 
-  const app = `
+  const cdk8sApp = `
 const cdk8s = require('${require.resolve('cdk8s')}');
 const app = new cdk8s.App();
 const chart = new cdk8s.Chart(app, 'Chart');
@@ -514,26 +537,33 @@ app.synth();
 `;
 
   await mkdtemp(async (dir: string) => {
-    const stdout = options.stdout ?? false;
+
+    const DEFAULT_OUTPUT_DIR = 'dist';
+    const DEFAULT_PLUGINS_DIR = path.join(dir, '.cdk8s', 'plugins');
+
+    // Defined config in cdk8s.yaml file
+    const config: Config = options.config
+      ? {
+        ...getDefaultConfig(),
+        ...options.config,
+      } : getDefaultConfig();
+
+    // Mimicking defaults passed in synth handler
+    const app = options.app ?? config.app;
+    const stdout = options.stdout;
+    const output = options.output ?? config.output ?? (!stdout ? DEFAULT_OUTPUT_DIR : undefined);
+    const pluginsDir = options.pluginsDir ?? DEFAULT_PLUGINS_DIR;
     const validate = options.validate ?? true;
+    const validationReportsOutputFile = options.reportsFile;
+    const format = options.format ?? config.synth?.format ?? SynthesisFormat.PLAIN;
+    const chartApiVersion = options.chartApiVersion ?? config.synth?.chartApiVersion ??
+    (format === SynthesisFormat.HELM ? HelmChartApiVersion.V2: undefined);
+    const chartVersion = options.chartVersion;
 
-    const config: Config = {
-      validations: options.validations,
-      app: 'node index.js',
-      output: stdout ? undefined : 'dist',
-      pluginsDirectory: path.join(dir, '.cdk8s', 'plugins'),
-      synth: {
-        format: options.format as SynthesisFormat,
-        chartApiVersion: options.chartApiVersion as HelmChartApiVersion,
-        chartVersion: options.chartVersion,
-      },
-      imports: imports,
-    };
-
-    fs.writeFileSync(path.join(dir, 'index.js'), app);
+    fs.writeFileSync(path.join(dir, 'index.js'), cdk8sApp);
     fs.writeFileSync(path.join(dir, 'cdk8s.yaml'), yaml.stringify(config));
 
-    const recordConstructMetadata = !(options.validations == undefined || options.validations.length == 0);
+    const recordConstructMetadata = !(options.config?.validations == undefined || options.config?.validations.length == 0);
 
     const pwd = process.cwd();
     const exit = process.exit;
@@ -552,20 +582,17 @@ app.synth();
         await options.preSynth(dir);
       }
 
-      // Config defaults being added gets lost after module is loaded.
-      // Passing what the config would look like to the handler.
-      const updatedConfig = readConfigSync();
-
+      // Specifiying defaults specific to running tests
       await cmd.handler({
-        app: updatedConfig.app,
-        output: updatedConfig.output,
+        app: app ?? DEFAULT_APP,
+        output: output,
         stdout: stdout,
+        pluginsDir: pluginsDir,
         validate: validate,
-        pluginsDir: updatedConfig.pluginsDirectory,
-        validationReportsOutputFile: options.reportsFile ? path.join(dir, options.reportsFile) : undefined,
-        format: updatedConfig.synth?.format,
-        chartApiVersion: updatedConfig.synth?.chartApiVersion,
-        chartVersion: updatedConfig.synth?.chartVersion,
+        validationReportsOutputFile: validationReportsOutputFile ? path.join(dir, validationReportsOutputFile) : undefined,
+        format: format,
+        chartApiVersion: chartApiVersion,
+        chartVersion: chartVersion,
       });
 
       if (options.postSynth) {
@@ -592,8 +619,14 @@ function requireSynth() {
   return require(module);
 }
 
+function getDefaultConfig(): Config {
+  return {
+    app: DEFAULT_APP,
+    imports: imports,
+  };
+}
 
-function generatedHelmChartExists(dir: string) {
+function generatedHelmChartExists(dir: string): boolean {
   const chartYaml = path.join(dir, 'Chart.yaml');
   const chartYamlExists = fs.existsSync(chartYaml);
 

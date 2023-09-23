@@ -1,5 +1,3 @@
-import * as os from 'os';
-import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import { Language } from './import/base';
@@ -45,31 +43,12 @@ export interface Config {
   readonly synth?: Synth;
 }
 
-const DEFAULTS: Config = {
-  output: 'dist',
-  pluginsDirectory: path.join(os.homedir(), '.cdk8s', 'plugins'),
-  synth: {
-    format: SynthesisFormat.PLAIN,
-  },
-};
-
 export function readConfigSync(): Config {
-  let config: Config = DEFAULTS;
+  let config: Config = {};
 
   if (fs.existsSync(CONFIG_FILE)) {
     config = {
-      ...config,
       ...yaml.parse(fs.readFileSync(CONFIG_FILE, 'utf-8')),
-    };
-  }
-
-  if (config.synth?.format === SynthesisFormat.HELM) {
-    config = {
-      ...config,
-      synth: {
-        ...(config.synth ?? {}),
-        chartApiVersion: config.synth.chartApiVersion ?? HelmChartApiVersion.V2,
-      },
     };
   }
 
