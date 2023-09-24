@@ -1073,6 +1073,10 @@ describe('Create helm scaffolding', () => {
 
     const allEqual = (arr: string[]) => arr.every(item => item === arr[0]);
     expect(allEqual(testingFileNames)).toBeTruthy();
+
+    expect(testingFileNames.length).toEqual(3);
+    // Emptying list since multiple tests are run for different inputs
+    testingFileNames.length = 0;
   });
 });
 
