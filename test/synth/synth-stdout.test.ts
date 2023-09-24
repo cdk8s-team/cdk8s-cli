@@ -330,20 +330,20 @@ describe('validations', () => {
 });
 
 describe('Create helm scaffolding', () => {
-  const TEST_SCENARIO_1 = 'with all inputs from cli and no config file is present';
-  const TEST_SCENARIO_2 = 'with all inputs from config file and no related cli inputs';
-  const TEST_SCENARIO_3 = 'with inputs duplicated in cli and config file';
-  const TEST_SCENARIO_4 = 'with different inputs in cli and config file';
+  const WITH_ONLY_CLI_INPUTS = 'with all inputs from cli and no config file is present';
+  const WITH_ONLY_CONFIG_INPUTS = 'with all inputs from config file and no related cli inputs';
+  const WITH_SAME_INPUTS_IN_BOTH = 'with inputs duplicated in cli and config file';
+  const WITH_DIFFERENT_INPUTS_IN_BOTH = 'with different inputs in cli and config file';
 
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: 'foo',
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         config: {
           synth: {
@@ -353,7 +353,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: 'foo',
         config: {
@@ -364,7 +364,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: 'foo',
         config: {
@@ -380,14 +380,14 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: SynthesisFormat.HELM,
         chartApiVersion: 'foo',
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         config: {
           synth: {
@@ -398,9 +398,10 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
+        chartApiVersion: 'foo',
         config: {
           synth: {
             format: SynthesisFormat.HELM,
@@ -410,7 +411,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartApiVersion: 'foo' as HelmChartApiVersion,
@@ -428,13 +429,13 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: SynthesisFormat.HELM,
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         config: {
           synth: {
@@ -444,7 +445,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         config: {
@@ -455,7 +456,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         config: {
@@ -471,14 +472,14 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: SynthesisFormat.HELM,
         chartVersion: 'foo',
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         config: {
           synth: {
@@ -489,7 +490,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: 'foo',
@@ -502,7 +503,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: 'foo',
@@ -520,7 +521,7 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -528,7 +529,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         stdout: true,
         config: {
@@ -540,7 +541,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -554,7 +555,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -573,14 +574,14 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: SynthesisFormat.PLAIN,
         chartApiVersion: HelmChartApiVersion.V2,
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         config: {
           synth: {
@@ -591,7 +592,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.PLAIN,
         chartApiVersion: HelmChartApiVersion.V2,
@@ -604,7 +605,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.PLAIN,
         chartApiVersion: HelmChartApiVersion.V2,
@@ -622,14 +623,14 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: SynthesisFormat.PLAIN,
         chartVersion: '1.1.1',
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         config: {
           synth: {
@@ -640,7 +641,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.PLAIN,
         chartVersion: '1.1.1',
@@ -653,7 +654,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.PLAIN,
         chartVersion: '1.1.1',
@@ -671,7 +672,7 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: SynthesisFormat.PLAIN,
         chartVersion: '1.1.1',
@@ -679,7 +680,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         config: {
           synth: {
@@ -691,7 +692,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.PLAIN,
         chartVersion: '1.1.1',
@@ -706,7 +707,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.PLAIN,
         chartVersion: '1.1.1',
@@ -726,7 +727,7 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -737,7 +738,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         config: {
           synth: {
@@ -750,7 +751,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -766,7 +767,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -783,9 +784,13 @@ describe('Create helm scaffolding', () => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/Your application uses CRDs, which are not supported with \'--chart-api-version\': \'v1\'. Please either use \'--chart-api-version\': \'v2\' or remove the CRDs from your cdk8s.yaml configuration file/);
   });
 
+  const synthWorksForChartAPIv1 = async (dir: string) => {
+    expect(generatedHelmChartExists(dir.concat('/dist'), HelmChartApiVersion.V1, '1.1.1')).toBeTruthy();
+  };
+
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -793,13 +798,11 @@ describe('Create helm scaffolding', () => {
         config: {
           imports: ['k8s'],
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-        },
+        postSynth: synthWorksForChartAPIv1,
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         config: {
           synth: {
@@ -809,13 +812,11 @@ describe('Create helm scaffolding', () => {
           },
           imports: ['k8s'],
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-        },
+        postSynth: synthWorksForChartAPIv1,
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -828,13 +829,11 @@ describe('Create helm scaffolding', () => {
           },
           imports: ['k8s'],
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-        },
+        postSynth: synthWorksForChartAPIv1,
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -845,29 +844,28 @@ describe('Create helm scaffolding', () => {
           },
           imports: ['k8s'],
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-        },
+        postSynth: synthWorksForChartAPIv1,
       },
     ],
   ])('--chart-api-version is v1 %s', async (_testName, synthOptions) => {
     await synth(synthOptions);
   });
 
+  const synthWorksForChartAPIv2 = async (dir: string) => {
+    expect(generatedHelmChartExists(dir.concat('/dist'), HelmChartApiVersion.V2, '1.1.1')).toBeTruthy();
+  };
 
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-        },
+        postSynth: synthWorksForChartAPIv2,
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         config: {
           synth: {
@@ -875,13 +873,11 @@ describe('Create helm scaffolding', () => {
             chartVersion: '1.1.1',
           },
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-        },
+        postSynth: synthWorksForChartAPIv2,
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -891,13 +887,11 @@ describe('Create helm scaffolding', () => {
             chartVersion: '1.1.1',
           },
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-        },
+        postSynth: synthWorksForChartAPIv2,
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -907,70 +901,58 @@ describe('Create helm scaffolding', () => {
             chartVersion: '1.1.1',
           },
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-        },
+        postSynth: synthWorksForChartAPIv2,
       },
     ],
   ])('--chart-api-version is v2 without crds %s', async (_testName, synthOptions) => {
     await synth(synthOptions);
   });
 
+  const importsForChartApiv2 = [
+    'k8s',
+    path.join(__dirname, './__resources__/crds/foo.yaml'),
+    `bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`,
+    'github:crossplane/crossplane@0.14.0',
+  ];
+
+  const synthWorksForChartAPIv2WithCrds = async (dir: string) => {
+    expect(generatedHelmChartExists(dir.concat('/dist'), HelmChartApiVersion.V2, '1.1.1')).toBeTruthy();
+
+    // K8s import must be ignored
+    const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
+    expect(crdFiles.length).toEqual(3);
+    expect(crdFiles.includes('foo.yaml')).toBeTruthy();
+    expect(crdFiles.includes('bar.yaml')).toBeTruthy();
+    expect(crdFiles.includes('crossplane.yaml')).toBeTruthy();
+  };
+
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         config: {
-          imports: [
-            'k8s',
-            path.join(__dirname, './__resources__/crds/foo.yaml'),
-            `bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`,
-            'github:crossplane/crossplane@0.14.0',
-          ],
+          imports: importsForChartApiv2,
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-
-          // K8s import must be ignored
-          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
-          expect(crdFiles.length).toEqual(3);
-          expect(crdFiles.includes('foo.yaml')).toBeTruthy();
-          expect(crdFiles.includes('bar.yaml')).toBeTruthy();
-          expect(crdFiles.includes('crossplane.yaml')).toBeTruthy();
-        },
+        postSynth: synthWorksForChartAPIv2WithCrds,
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         config: {
           synth: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
           },
-          imports: [
-            'k8s',
-            path.join(__dirname, './__resources__/crds/foo.yaml'),
-            `bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`,
-            'github:crossplane/crossplane@0.14.0',
-          ],
+          imports: importsForChartApiv2,
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-
-          // K8s import must be ignored
-          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
-          expect(crdFiles.length).toEqual(3);
-          expect(crdFiles.includes('foo.yaml')).toBeTruthy();
-          expect(crdFiles.includes('bar.yaml')).toBeTruthy();
-          expect(crdFiles.includes('crossplane.yaml')).toBeTruthy();
-        },
+        postSynth: synthWorksForChartAPIv2WithCrds,
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -979,27 +961,13 @@ describe('Create helm scaffolding', () => {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
           },
-          imports: [
-            'k8s',
-            path.join(__dirname, './__resources__/crds/foo.yaml'),
-            `bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`,
-            'github:crossplane/crossplane@0.14.0',
-          ],
+          imports: importsForChartApiv2,
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-
-          // K8s import must be ignored
-          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
-          expect(crdFiles.length).toEqual(3);
-          expect(crdFiles.includes('foo.yaml')).toBeTruthy();
-          expect(crdFiles.includes('bar.yaml')).toBeTruthy();
-          expect(crdFiles.includes('crossplane.yaml')).toBeTruthy();
-        },
+        postSynth: synthWorksForChartAPIv2WithCrds,
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -1008,36 +976,32 @@ describe('Create helm scaffolding', () => {
             format: SynthesisFormat.PLAIN,
             chartVersion: '1.1.1',
           },
-          imports: [
-            'k8s',
-            path.join(__dirname, './__resources__/crds/foo.yaml'),
-            `bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`,
-            'github:crossplane/crossplane@0.14.0',
-          ],
+          imports: importsForChartApiv2,
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-
-          // K8s import must be ignored
-          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
-          expect(crdFiles.length).toEqual(3);
-          expect(crdFiles.includes('foo.yaml')).toBeTruthy();
-          expect(crdFiles.includes('bar.yaml')).toBeTruthy();
-          expect(crdFiles.includes('crossplane.yaml')).toBeTruthy();
-        },
+        postSynth: synthWorksForChartAPIv2WithCrds,
       },
     ],
   ])('--chart-api-version is v2 and crds are present %s', async (_testName, synthOptions) => {
     await synth(synthOptions);
   });
 
-
   const testingFileNames: string[] = [];
   const filename = path.join(__dirname, './__resources__/crds/baz.json');
   const expectedFilename = hashAndEncode(filename);
+  const checkSameHashForFilename = async (dir: string) => {
+    expect(generatedHelmChartExists(dir.concat('/dist'), HelmChartApiVersion.V2, '1.1.1')).toBeTruthy();
+
+    // K8s import must be ignored
+    const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
+    expect(crdFiles.length).toEqual(1);
+    expect(crdFiles.includes(`${expectedFilename}.yaml`)).toBeTruthy();
+
+    testingFileNames.push(crdFiles[0]);
+  };
+
   test.each([
     [
-      TEST_SCENARIO_1,
+      WITH_ONLY_CLI_INPUTS,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -1047,20 +1011,11 @@ describe('Create helm scaffolding', () => {
             filename,
           ],
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-
-          // K8s import must be ignored
-          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
-          expect(crdFiles.length).toEqual(1);
-          expect(crdFiles.includes(`${expectedFilename}.yaml`)).toBeTruthy();
-
-          testingFileNames.push(crdFiles[0]);
-        },
+        postSynth: checkSameHashForFilename,
       },
     ],
     [
-      TEST_SCENARIO_2,
+      WITH_ONLY_CONFIG_INPUTS,
       {
         config: {
           synth: {
@@ -1072,20 +1027,11 @@ describe('Create helm scaffolding', () => {
             filename,
           ],
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-
-          // K8s import must be ignored
-          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
-          expect(crdFiles.length).toEqual(1);
-          expect(crdFiles.includes(`${expectedFilename}.yaml`)).toBeTruthy();
-
-          testingFileNames.push(crdFiles[0]);
-        },
+        postSynth: checkSameHashForFilename,
       },
     ],
     [
-      TEST_SCENARIO_3,
+      WITH_SAME_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -1099,20 +1045,11 @@ describe('Create helm scaffolding', () => {
             filename,
           ],
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-
-          // K8s import must be ignored
-          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
-          expect(crdFiles.length).toEqual(1);
-          expect(crdFiles.includes(`${expectedFilename}.yaml`)).toBeTruthy();
-
-          testingFileNames.push(crdFiles[0]);
-        },
+        postSynth: checkSameHashForFilename,
       },
     ],
     [
-      TEST_SCENARIO_4,
+      WITH_DIFFERENT_INPUTS_IN_BOTH,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -1126,16 +1063,7 @@ describe('Create helm scaffolding', () => {
             filename,
           ],
         },
-        postSynth: async (dir: string) => {
-          expect(generatedHelmChartExists(dir.concat('/dist'))).toBeTruthy();
-
-          // K8s import must be ignored
-          const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
-          expect(crdFiles.length).toEqual(1);
-          expect(crdFiles.includes(`${expectedFilename}.yaml`)).toBeTruthy();
-
-          testingFileNames.push(crdFiles[0]);
-        },
+        postSynth: checkSameHashForFilename,
       },
     ],
   ])('filename url hash remains the same across synthesis %s', async (_testName, synthOptions) => {
@@ -1189,6 +1117,10 @@ app.synth();
 
     // Defined config in cdk8s.yaml file
     const config: Config | undefined = options.config;
+
+    if (config?.imports) {
+      imports.push(...config.imports);
+    }
 
     // Mimicking defaults passed in synth handler
     const app = options.app ?? config?.app;
@@ -1264,9 +1196,16 @@ function requireSynth() {
   return require(module);
 }
 
-function generatedHelmChartExists(dir: string): boolean {
+function generatedHelmChartExists(dir: string, chartApiVersion: string, chartVersion: string): boolean {
   const chartYaml = path.join(dir, 'Chart.yaml');
   const chartYamlExists = fs.existsSync(chartYaml);
+  const file = fs.readFileSync(chartYaml, 'utf8');
+  const contents = yaml.parse(file);
+
+  const isChartApiVersionSame = contents.apiVersion === chartApiVersion;
+  const isChartVersionSame = contents.version === chartVersion;
+  const isChartNameSame = contents.name === path.basename(path.resolve());
+  const isChartYamlValid = isChartApiVersionSame && isChartVersionSame && isChartNameSame;
 
   const readme = path.join(dir, 'README.md');
   const readmeExists = fs.existsSync(readme);
@@ -1278,14 +1217,18 @@ function generatedHelmChartExists(dir: string): boolean {
   const manifestFilesExists = manifestFiles.length > 0;
 
   if (crdsArePresent(imports)) {
+    if (chartApiVersion === HelmChartApiVersion.V1) {
+      return false;
+    }
+
     const crds = path.join(dir, 'crds');
     const crdsExists = fs.existsSync(crds);
 
     const crdFiles = readdirSync(crds);
     const crdFilesExists = crdFiles.length > 0;
 
-    return chartYamlExists && readmeExists && templateDirExists && manifestFilesExists && crdsExists && crdFilesExists;
+    return chartYamlExists && isChartYamlValid && readmeExists && templateDirExists && manifestFilesExists && crdsExists && crdFilesExists;
   }
 
-  return chartYamlExists && readmeExists && templateDirExists && manifestFilesExists;
+  return chartYamlExists && isChartYamlValid && readmeExists && templateDirExists && manifestFilesExists;
 }

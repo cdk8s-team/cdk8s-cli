@@ -24,7 +24,7 @@ class Command implements yargs.CommandModule {
   public readonly aliases = ['synthesize'];
 
   public readonly builder = (args: yargs.Argv) => args
-    .option('app', { required: true, default: config.app, desc: 'Command to use in order to execute cdk8s app', alias: 'a' })
+    .option('app', { required: true, default: config?.app, desc: 'Command to use in order to execute cdk8s app', alias: 'a' })
     .option('output', { required: false, desc: 'Output directory', alias: 'o' })
     .option('stdout', { type: 'boolean', required: false, desc: 'Write synthesized manifests to STDOUT instead of the output directory', alias: 'p' })
     .option('plugins-dir', { required: false, desc: 'Directory to store cdk8s plugins.' })
@@ -38,15 +38,15 @@ class Command implements yargs.CommandModule {
 
     const command = argv.app;
     const stdout = argv.stdout;
-    const outdir = argv.output ?? config.output ?? (!stdout ? DEFAULT_OUTPUT_DIR : undefined);
+    const outdir = argv.output ?? config?.output ?? (!stdout ? DEFAULT_OUTPUT_DIR : undefined);
     const validate = argv.validate ?? true;
     const reportFile = argv.validationReportsOutputFile;
-    const pluginsDir = argv.pluginsDir ?? config.pluginsDirectory ?? DEFAULT_PLUGINS_DIR;
-    const format = argv.format ?? config.synth?.format ?? SynthesisFormat.PLAIN;
-    const chartVersion = argv.chartVersion ?? config.synth?.chartVersion;
-    const chartApiVersion = argv.chartApiVersion ?? config.synth?.chartApiVersion ?? getDefaultChartApiVersion(format);
+    const pluginsDir = argv.pluginsDir ?? config?.pluginsDirectory ?? DEFAULT_PLUGINS_DIR;
+    const format = argv.format ?? config?.synth?.format ?? SynthesisFormat.PLAIN;
+    const chartVersion = argv.chartVersion ?? config?.synth?.chartVersion;
+    const chartApiVersion = argv.chartApiVersion ?? config?.synth?.chartApiVersion ?? getDefaultChartApiVersion(format);
 
-    if (outdir && outdir !== config.output && stdout) {
+    if (outdir && outdir !== config?.output && stdout) {
       throw new Error('\'--output\' and \'--stdout\' are mutually exclusive. Please only use one.');
     }
 
@@ -86,7 +86,7 @@ class Command implements yargs.CommandModule {
       throw new Error('You need to specify \'--format\' as \'helm\' when \'--chart-version\' is set.');
     }
 
-    if (chartApiVersion === HelmChartApiVersion.V1 && crdsArePresent(config.imports)) {
+    if (chartApiVersion === HelmChartApiVersion.V1 && crdsArePresent(config?.imports)) {
       throw new Error(`Your application uses CRDs, which are not supported with '--chart-api-version': '${HelmChartApiVersion.V1}'. Please either use '--chart-api-version': '${HelmChartApiVersion.V2}' or remove the CRDs from your cdk8s.yaml configuration file`);
     }
 
@@ -126,11 +126,11 @@ class Command implements yargs.CommandModule {
 }
 
 async function fetchValidations(): Promise<ValidationConfig[] | undefined> {
-  if (typeof(config.validations) === 'string') {
+  if (typeof(config?.validations) === 'string') {
     const content = await download(config.validations);
     return yaml.parse(content) as ValidationConfig[];
   } else {
-    return config.validations;
+    return config?.validations;
   }
 }
 
@@ -150,7 +150,7 @@ async function createHelmScaffolding(apiVersion: string, chartVersion: string, o
   }
 
 
-  if (apiVersion === HelmChartApiVersion.V2 && crdsArePresent(config.imports)) {
+  if (apiVersion === HelmChartApiVersion.V2 && crdsArePresent(config?.imports)) {
     await addCrdsToHelmChart(outdir);
   }
 
@@ -173,7 +173,7 @@ async function createHelmScaffolding(apiVersion: string, chartVersion: string, o
 
     fs.outputFileSync(path.join(root, README), readmeFile);
 
-    if (config.synth?.chartApiVersion === HelmChartApiVersion.V2 && crdsArePresent(config.imports)) {
+    if (config?.synth?.chartApiVersion === HelmChartApiVersion.V2 && crdsArePresent(config.imports)) {
       fs.mkdirSync(path.join(root, 'crds'));
     }
 
@@ -182,7 +182,7 @@ async function createHelmScaffolding(apiVersion: string, chartVersion: string, o
 }
 
 async function addCrdsToHelmChart(chartDir: string) {
-  const crds = (config.imports ?? []).filter((imprt) => !isK8sImport(imprt));
+  const crds = (config?.imports ?? []).filter((imprt) => !isK8sImport(imprt));
 
   for (const crd of crds) {
     const importSpec = parseImports(crd);

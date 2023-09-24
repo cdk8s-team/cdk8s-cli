@@ -43,16 +43,16 @@ export interface Config {
   readonly synth?: Synth;
 }
 
-export function readConfigSync(): Config {
-  let config: Config = {};
-
+export function readConfigSync(): Config | undefined {
   if (fs.existsSync(CONFIG_FILE)) {
-    config = {
+    const config = {
       ...yaml.parse(fs.readFileSync(CONFIG_FILE, 'utf-8')),
     };
+
+    return config;
   }
 
-  return config;
+  return undefined;
 }
 
 export async function addImportToConfig(source: string) {
