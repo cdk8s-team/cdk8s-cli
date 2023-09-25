@@ -6916,9 +6916,9 @@ typescript-json-schema@^0.61.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20230923"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230923.tgz#f1896761de69736d725e5a3e094ca1a8637219ea"
-  integrity sha512-tGKB6aAp4/hIdxkdfTZ1Fz/WgX35AsHANB5BN58HPoOiE4H8BPRZc6mWksdiu3HpEcLbK4hiYrIO4vslbr4iFA==
+  version "5.3.0-dev.20230924"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230924.tgz#364b2d6cab2a609d955bc62d7cff019a410ca5bb"
+  integrity sha512-eoURpy2KdMkio8jVtNbZp5BOuoOJV1FEQyaWK8gqq+8EzVoBKWyt50tDsblDeSIcstigCWujQGhVhOPu5bkDbg==
 
 typescript@~3.9.10:
   version "3.9.10"
