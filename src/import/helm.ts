@@ -8,6 +8,7 @@ import { CodeMaker } from 'codemaker';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { JSONSchema4 } from 'json-schema';
 import { TypeGenerator } from 'json2jsii';
+import * as semver from 'semver';
 import { ImportBase } from './base';
 import { emitHelmHeader, generateHelmConstruct } from './codegen';
 import { ImportSpec } from '../config';
@@ -16,7 +17,6 @@ const MAX_HELM_BUFFER = 10 * 1024 * 1024;
 const CHART_SCHEMA = 'values.schema.json';
 const CHART_YAML = 'chart.yaml';
 
-// TODO: Validate if chart version follows SemVer
 export class ImportHelm extends ImportBase {
   readonly chartName: string;
   readonly chartUrl: string;
@@ -93,9 +93,7 @@ export class ImportHelm extends ImportBase {
  * @param url
  */
 function validateHelmUrl(url: string): RegExpExecArray {
-
-  // TODO: Make this better
-  const helmRegex = /^helm:([A-Za-z0-9_.-:\-]+)\/([A-Za-z0-9_.-:\-]+)\@([0-9]+)\.([0-9]+)\.([0-9]+)$/;
+  const helmRegex = /^helm:([A-Za-z0-9_.-:\-]+)\/([A-Za-z0-9_.-:\-]+)\@([0-9]+)\.([0-9]+)\.([A-Za-z0-9-+]+)$/;
   const match = helmRegex.exec(url);
 
   if (match) {
@@ -120,6 +118,10 @@ function getHelmChartDetails(url: string) {
   const patch = helmDetails[5];
 
   const chartVersion = `${major}.${minor}.${patch}`;
+
+  if (!semver.valid(chartVersion)) {
+    throw new Error(`The value specified in '${url}' for chart version: '${chartVersion}' does not follow SemVer-2(https://semver.org/).`);
+  }
 
   return [chartUrl, chartName, chartVersion];
 }
@@ -171,6 +173,3 @@ function pullHelmRepo(chartUrl: string, chartName: string, chartVersion: string)
 function cleanup(tmpDir: string) {
   fs.rmSync(tmpDir, { recursive: true });
 }
-
-
-// Remove TODOs and Console.logs
