@@ -85,7 +85,7 @@ export function generateConstruct(typegen: TypeGenerator, def: ApiObjectDefiniti
     // `propsTypeName` could also be "any" if we can't parse the schema for some reason
     const propsTypeName = emitPropsStruct();
     const groupPrefix = def.group ? `${def.group}/` : '';
-    const hasRequired = schema?.required && Array.isArray(schema.required) && schema.required.length > 0;
+    const hasRequired = hasRequiredProps(schema);
     const defaultProps = hasRequired ? '' : ' = {}';
     emitConstruct();
 
@@ -265,27 +265,40 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
   // Create custom type
   typegen.emitCustomType(chartName, code => {
 
-    const valuesInterface = `${chartName}ValuesProps`;
+    const valuesInterface = `${chartName}Values`;
     if (schema !== undefined) {
-      // Interface for schema generated props
-      let schemaGenValuesInterface: string = 'SchemaGeneratedValues';
-      schemaGenValuesInterface = typegen.emitType(schemaGenValuesInterface, schema, def.fqn);
-
       // Creating values interface
       emitValuesInterface();
 
       function emitValuesInterface() {
-        code.openBlock(`export interface ${valuesInterface} extends ${schemaGenValuesInterface}`);
+        const copyOfSchema = schema;
 
-        // Sub charts or dependencies
-        for (const dependency of def.chartDependencies) {
-          code.line(`readonly ${dependency}?: { [key: string]: any };`);
+        if (copyOfSchema && copyOfSchema.properties) {
+          // Sub charts or dependencies
+          for (const dependency of def.chartDependencies) {
+            copyOfSchema.properties[dependency] = { type: 'object', additionalProperties: { type: 'object' } };
+          }
+
+          copyOfSchema.properties.global = { type: 'object', additionalProperties: { type: 'object' } };
         }
 
-        // Global values
-        code.line('readonly global?: { [key: string]: any };');
+        typegen.emitType(valuesInterface, copyOfSchema, def.fqn);
 
-        code.closeBlock();
+
+        // code.openBlock(`export interface ${valuesInterface}`);
+
+        // typegen.renderToCode;
+        // typegen.emitType('Values', schema, def.fqn);
+
+        // // Sub charts or dependencies
+        // for (const dependency of def.chartDependencies) {
+        //   code.line(`readonly ${dependency}?: { [key: string]: any };`);
+        // }
+
+        // // Global values
+        // code.line('readonly global?: { [key: string]: any };');
+
+        // code.closeBlock();
       }
     }
 
@@ -308,14 +321,15 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       if (schema === undefined) {
         code.line('readonly values?: { [key: string]: any };');
       } else {
-        code.line(`readonly values?: ${valuesInterface};`);
+        const doValuesHaveReqProps = hasRequiredProps(schema) ? '' : '?';
+        code.line(`readonly values${doValuesHaveReqProps}: ${valuesInterface};`);
       }
 
       code.closeBlock();
     }
 
     function emitConstruct() {
-      code.openBlock(`export class ${chartName} extends Helm`);
+      code.openBlock(`export class ${chartName} extends Construct`);
 
       emitInitializer();
 
@@ -332,11 +346,15 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.line('...props,');
       code.close('};');
 
-      code.open('super(scope, id, {');
-      code.line('...finalProps,');
-      code.close('});');
+      code.line('super(scope, id)');
+
+      code.line('new Helm(scope, \'Helm\', finalProps)');
 
       code.closeBlock();
     }
   });
+}
+
+function hasRequiredProps(schema: JSONSchema4):boolean | undefined {
+  return schema?.required && Array.isArray(schema.required) && schema.required.length > 0;
 }

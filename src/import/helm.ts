@@ -18,12 +18,12 @@ const CHART_YAML = 'chart.yaml';
 
 // TODO: Validate if chart version follows SemVer
 export class ImportHelm extends ImportBase {
-  chartName: string;
-  chartUrl: string;
-  chartVersion: string;
-  chartSchemaPath: string | undefined;
-  chartDependencies: string[] = [];
-  tmpDir: string;
+  readonly chartName: string;
+  readonly chartUrl: string;
+  readonly chartVersion: string;
+  readonly chartSchemaPath: string | undefined;
+  readonly chartDependencies: string[] = [];
+  readonly tmpDir: string;
 
   constructor(importSpec: ImportSpec) {
     super();
@@ -36,10 +36,11 @@ export class ImportHelm extends ImportBase {
     this.tmpDir = pullHelmRepo(chartUrl, chartName, chartVersion);
 
     const chartYamlFilePath = path.join(this.tmpDir, this.chartName, CHART_YAML);
-    const contents = Yaml.load(chartYamlFilePath)[0];
-
-    for (const dependency of contents.dependencies) {
-      this.chartDependencies.push(dependency.name);
+    const contents = Yaml.load(chartYamlFilePath);
+    if (contents && contents.length === 1) {
+      for (const dependency of contents[0].dependencies) {
+        this.chartDependencies.push(dependency.name);
+      }
     }
 
     const potentialSchemaPath = path.join(this.tmpDir, this.chartName, CHART_SCHEMA);
@@ -163,7 +164,6 @@ function pullHelmRepo(chartUrl: string, chartName: string, chartVersion: string)
   return workdir;
 }
 
-// TODO is this done automatically with a temp dir?
 /**
  * Cleanup temp directory created
  * @param tmpDir Temporary directory path
@@ -171,3 +171,6 @@ function pullHelmRepo(chartUrl: string, chartName: string, chartVersion: string)
 function cleanup(tmpDir: string) {
   fs.rmSync(tmpDir, { recursive: true });
 }
+
+
+// Remove TODOs and Console.logs

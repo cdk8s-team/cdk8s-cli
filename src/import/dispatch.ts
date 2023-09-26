@@ -31,9 +31,9 @@ async function matchImporter(importSpec: ImportSpec, argv: any): Promise<ImportB
     return new ImportKubernetesApi(k8s);
   }
 
-  const helm = importSpec.source.split(':')[0];
+  const prefix = importSpec.source.split(':')[0];
 
-  if (helm === 'helm') {
+  if (prefix === 'helm') {
     return new ImportHelm(importSpec);
   }
 
