@@ -5,10 +5,9 @@ import { parseImports } from '../../src/util';
 
 const testChartUrl = 'helm:https://charts.bitnami.com/bitnami/mysql@9.10.10';
 
-
-// without schema
 describe('importing helm chart', () => {
   // TODO add multiple chart urls to test. Especially after fixing Json2Jsii issues
+  // TODO add charts without schema
   const spec = parseImports(testChartUrl);
 
   testImportMatchSnapshot('with typescript lanugage', async () => new ImportHelm(spec));
