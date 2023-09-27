@@ -27,7 +27,7 @@ export enum HelmChartApiVersion {
   V2 = 'v2',
 }
 
-export interface Synth {
+export interface SynthConfig {
   readonly format?: SynthesisFormat;
   readonly chartApiVersion?: HelmChartApiVersion;
   readonly chartVersion?: string;
@@ -40,7 +40,7 @@ export interface Config {
   readonly imports?: string[];
   readonly pluginsDirectory?: string;
   readonly validations?: string | ValidationConfig[];
-  readonly synth?: Synth;
+  readonly synthConfig?: SynthConfig;
 }
 
 export function readConfigSync(): Config | undefined {

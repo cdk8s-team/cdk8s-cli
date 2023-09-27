@@ -128,7 +128,7 @@ export class ImportCustomResourceDefinition extends ImportBase {
     return new ImportCustomResourceDefinition(manifest);
   }
 
-  rawManifest: string;
+  public readonly rawManifest: string;
   private readonly groups: Record<string, CustomResourceDefinition[]> = { };
 
   private constructor(rawManifest: string) {

@@ -30,8 +30,8 @@ class Command implements yargs.CommandModule {
     .option('plugins-dir', { required: false, desc: 'Directory to store cdk8s plugins.' })
     .option('validate', { type: 'boolean', required: false, desc: 'Apply validation plugins on the resulting manifests (use --no-validate to disable)' })
     .option('validation-reports-output-file', { required: false, desc: 'File to write a JSON representation of the validation reports to' })
-    .option('format', { required: false, desc: 'Synthesis format for Kubernetes manifests. The default synthesis format is plain kubernetes manifests.', choices: [SynthesisFormat.PLAIN, SynthesisFormat.HELM], type: 'string' })
-    .option('chart-api-version', { required: false, desc: 'Chart API version of helm chart. The default value would be \'v2\' api version when synthesis format is helm. There is no default set when synthesis format is plain.', choices: [HelmChartApiVersion.V1, HelmChartApiVersion.V2], type: 'string' })
+    .option('format', { required: false, desc: 'Synthesis format for Kubernetes manifests. The default synthesis format is plain kubernetes manifests.', type: 'string' })
+    .option('chart-api-version', { required: false, desc: 'Chart API version of helm chart. The default value would be \'v2\' api version when synthesis format is helm. There is no default set when synthesis format is plain.', type: 'string' })
     .option('chart-version', { required: false, desc: 'Chart version of helm chart. This is required if synthesis format is helm.' });
 
   public async handler(argv: any) {
@@ -42,9 +42,9 @@ class Command implements yargs.CommandModule {
     const validate = argv.validate ?? true;
     const reportFile = argv.validationReportsOutputFile;
     const pluginsDir = argv.pluginsDir ?? config?.pluginsDirectory ?? DEFAULT_PLUGINS_DIR;
-    const format = argv.format ?? config?.synth?.format ?? SynthesisFormat.PLAIN;
-    const chartVersion = argv.chartVersion ?? config?.synth?.chartVersion;
-    const chartApiVersion = argv.chartApiVersion ?? config?.synth?.chartApiVersion ?? getDefaultChartApiVersion(format);
+    const format = argv.format ?? config?.synthConfig?.format ?? SynthesisFormat.PLAIN;
+    const chartVersion = argv.chartVersion ?? config?.synthConfig?.chartVersion;
+    const chartApiVersion = argv.chartApiVersion ?? config?.synthConfig?.chartApiVersion ?? getDefaultChartApiVersion(format);
 
     if (outdir && outdir !== config?.output && stdout) {
       throw new Error('\'--output\' and \'--stdout\' are mutually exclusive. Please only use one.');
@@ -74,10 +74,6 @@ class Command implements yargs.CommandModule {
       throw new Error('Helm format synthesis does not support \'stdout\'. Please use \'outdir\' instead.');
     }
 
-    if (format === SynthesisFormat.PLAIN && (chartApiVersion && chartVersion)) {
-      throw new Error('You need to specify \'--format\' as \'helm\' when \'--chart-version\' and \'--chart-api-version\' is set.');
-    }
-
     if (format === SynthesisFormat.PLAIN && chartApiVersion) {
       throw new Error('You need to specify \'--format\' as \'helm\' when \'--chart-api-version\' is set.');
     }
@@ -87,7 +83,7 @@ class Command implements yargs.CommandModule {
     }
 
     if (chartApiVersion === HelmChartApiVersion.V1 && crdsArePresent(config?.imports)) {
-      throw new Error(`Your application uses CRDs, which are not supported with '--chart-api-version': '${HelmChartApiVersion.V1}'. Please either use '--chart-api-version': '${HelmChartApiVersion.V2}' or remove the CRDs from your cdk8s.yaml configuration file`);
+      throw new Error(`Your application uses CRDs, which are not supported when '--chart-api-version' is set to ${HelmChartApiVersion.V1}. Please either set '--chart-api-version' to ${HelmChartApiVersion.V2}, or remove the CRDs from your cdk8s.yaml configuration file`);
     }
 
     const validations = validate ? await fetchValidations() : undefined;
@@ -172,10 +168,6 @@ async function createHelmScaffolding(apiVersion: string, chartVersion: string, o
     const readmeFile = 'This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with `--format helm`.';
 
     fs.outputFileSync(path.join(root, README), readmeFile);
-
-    if (config?.synth?.chartApiVersion === HelmChartApiVersion.V2 && crdsArePresent(config.imports)) {
-      fs.mkdirSync(path.join(root, 'crds'));
-    }
 
     return root;
   }

@@ -329,46 +329,46 @@ describe('validations', () => {
 
 });
 
-describe('Create helm scaffolding', () => {
-  const WITH_ONLY_CLI_INPUTS = 'with all inputs from cli and no config file is present';
-  const WITH_ONLY_CONFIG_INPUTS = 'with all inputs from config file and no related cli inputs';
-  const WITH_SAME_INPUTS_IN_BOTH = 'with inputs duplicated in cli and config file';
-  const WITH_DIFFERENT_INPUTS_IN_BOTH = 'with different inputs in cli and config file';
+describe('Helm synthesis', () => {
+  const withOnlyCliInputs = 'with all inputs from cli and no config file is present';
+  const withOnlyConfigInputs = 'with all inputs from config file and no related cli inputs';
+  const withSameInputsInBoth = 'with inputs duplicated in cli and config file';
+  const withDifferentInputsInBoth = 'with different inputs in cli and config file';
 
   test.each([
     [
-      WITH_ONLY_CLI_INPUTS,
+      withOnlyCliInputs,
       {
         format: 'foo',
       },
     ],
     [
-      WITH_ONLY_CONFIG_INPUTS,
+      withOnlyConfigInputs,
       {
         config: {
-          synth: {
+          synthConfig: {
             format: 'foo' as SynthesisFormat,
           },
         },
       },
     ],
     [
-      WITH_SAME_INPUTS_IN_BOTH,
+      withSameInputsInBoth,
       {
         format: 'foo',
         config: {
-          synth: {
+          synthConfig: {
             format: 'foo' as SynthesisFormat,
           },
         },
       },
     ],
     [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
+      withDifferentInputsInBoth,
       {
         format: 'foo',
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
           },
         },
@@ -380,17 +380,17 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      WITH_ONLY_CLI_INPUTS,
+      withOnlyCliInputs,
       {
         format: SynthesisFormat.HELM,
         chartApiVersion: 'foo',
       },
     ],
     [
-      WITH_ONLY_CONFIG_INPUTS,
+      withOnlyConfigInputs,
       {
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartApiVersion: 'foo' as HelmChartApiVersion,
           },
@@ -398,12 +398,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_SAME_INPUTS_IN_BOTH,
+      withSameInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartApiVersion: 'foo',
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartApiVersion: 'foo' as HelmChartApiVersion,
           },
@@ -411,12 +411,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
+      withDifferentInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartApiVersion: 'foo' as HelmChartApiVersion,
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartApiVersion: HelmChartApiVersion.V2,
           },
@@ -429,38 +429,38 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      WITH_ONLY_CLI_INPUTS,
+      withOnlyCliInputs,
       {
         format: SynthesisFormat.HELM,
       },
     ],
     [
-      WITH_ONLY_CONFIG_INPUTS,
+      withOnlyConfigInputs,
       {
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
           },
         },
       },
     ],
     [
-      WITH_SAME_INPUTS_IN_BOTH,
+      withSameInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
           },
         },
       },
     ],
     [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
+      withDifferentInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.PLAIN,
           },
         },
@@ -472,17 +472,17 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      WITH_ONLY_CLI_INPUTS,
+      withOnlyCliInputs,
       {
         format: SynthesisFormat.HELM,
         chartVersion: 'foo',
       },
     ],
     [
-      WITH_ONLY_CONFIG_INPUTS,
+      withOnlyConfigInputs,
       {
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: 'foo',
           },
@@ -490,12 +490,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_SAME_INPUTS_IN_BOTH,
+      withSameInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: 'foo',
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: 'foo',
           },
@@ -503,12 +503,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
+      withDifferentInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: 'foo',
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.PLAIN,
             chartVersion: 'foo',
           },
@@ -521,7 +521,7 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      WITH_ONLY_CLI_INPUTS,
+      withOnlyCliInputs,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -529,11 +529,11 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_ONLY_CONFIG_INPUTS,
+      withOnlyConfigInputs,
       {
         stdout: true,
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
           },
@@ -541,13 +541,13 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_SAME_INPUTS_IN_BOTH,
+      withSameInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         stdout: true,
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
           },
@@ -555,13 +555,13 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
+      withDifferentInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         stdout: true,
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.PLAIN,
             chartVersion: '1.1.1',
           },
@@ -574,17 +574,17 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      WITH_ONLY_CLI_INPUTS,
+      withOnlyCliInputs,
       {
         format: SynthesisFormat.PLAIN,
         chartApiVersion: HelmChartApiVersion.V2,
       },
     ],
     [
-      WITH_ONLY_CONFIG_INPUTS,
+      withOnlyConfigInputs,
       {
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.PLAIN,
             chartApiVersion: HelmChartApiVersion.V2,
           },
@@ -592,12 +592,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_SAME_INPUTS_IN_BOTH,
+      withSameInputsInBoth,
       {
         format: SynthesisFormat.PLAIN,
         chartApiVersion: HelmChartApiVersion.V2,
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.PLAIN,
             chartApiVersion: HelmChartApiVersion.V2,
           },
@@ -605,12 +605,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
+      withDifferentInputsInBoth,
       {
         format: SynthesisFormat.PLAIN,
         chartApiVersion: HelmChartApiVersion.V2,
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartApiVersion: HelmChartApiVersion.V2,
           },
@@ -623,17 +623,17 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      WITH_ONLY_CLI_INPUTS,
+      withOnlyCliInputs,
       {
         format: SynthesisFormat.PLAIN,
         chartVersion: '1.1.1',
       },
     ],
     [
-      WITH_ONLY_CONFIG_INPUTS,
+      withOnlyConfigInputs,
       {
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.PLAIN,
             chartVersion: '1.1.1',
           },
@@ -641,12 +641,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_SAME_INPUTS_IN_BOTH,
+      withSameInputsInBoth,
       {
         format: SynthesisFormat.PLAIN,
         chartVersion: '1.1.1',
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.PLAIN,
             chartVersion: '1.1.1',
           },
@@ -654,12 +654,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
+      withDifferentInputsInBoth,
       {
         format: SynthesisFormat.PLAIN,
         chartVersion: '1.1.1',
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
           },
@@ -672,62 +672,7 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      WITH_ONLY_CLI_INPUTS,
-      {
-        format: SynthesisFormat.PLAIN,
-        chartVersion: '1.1.1',
-        chartApiVersion: HelmChartApiVersion.V2,
-      },
-    ],
-    [
-      WITH_ONLY_CONFIG_INPUTS,
-      {
-        config: {
-          synth: {
-            format: SynthesisFormat.PLAIN,
-            chartVersion: '1.1.1',
-            chartApiVersion: HelmChartApiVersion.V2,
-          },
-        },
-      },
-    ],
-    [
-      WITH_SAME_INPUTS_IN_BOTH,
-      {
-        format: SynthesisFormat.PLAIN,
-        chartVersion: '1.1.1',
-        chartApiVersion: HelmChartApiVersion.V2,
-        config: {
-          synth: {
-            format: SynthesisFormat.PLAIN,
-            chartVersion: '1.1.1',
-            chartApiVersion: HelmChartApiVersion.V2,
-          },
-        },
-      },
-    ],
-    [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
-      {
-        format: SynthesisFormat.PLAIN,
-        chartVersion: '1.1.1',
-        chartApiVersion: HelmChartApiVersion.V2,
-        config: {
-          synth: {
-            format: SynthesisFormat.HELM,
-            chartVersion: '1.1.1',
-            chartApiVersion: HelmChartApiVersion.V2,
-          },
-        },
-      },
-    ],
-  ])('throws when --chart-version and --chart-api-version is specified with --format as plain %s', async (_testName, synthOptions) => {
-    await expect(() => synth(synthOptions)).rejects.toThrow(/You need to specify '--format' as 'helm' when '--chart-version' and '--chart-api-version' is set./);
-  });
-
-  test.each([
-    [
-      WITH_ONLY_CLI_INPUTS,
+      withOnlyCliInputs,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -738,10 +683,10 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_ONLY_CONFIG_INPUTS,
+      withOnlyConfigInputs,
       {
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
             chartApiVersion: HelmChartApiVersion.V1,
@@ -751,14 +696,14 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_SAME_INPUTS_IN_BOTH,
+      withSameInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         chartApiVersion: HelmChartApiVersion.V1,
         config: {
           imports: ['k8s', 'foo.yaml'],
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
             chartApiVersion: HelmChartApiVersion.V1,
@@ -767,13 +712,13 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
+      withDifferentInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         chartApiVersion: HelmChartApiVersion.V1,
         config: {
-          synth: {
+          synthConfig: {
             chartApiVersion: HelmChartApiVersion.V2,
           },
           imports: ['k8s', 'foo.yaml'],
@@ -781,7 +726,7 @@ describe('Create helm scaffolding', () => {
       },
     ],
   ])('throws when --chart-api-version is v1 and crds are specified %s', async (_testName, synthOptions) => {
-    await expect(() => synth(synthOptions)).rejects.toThrow(/Your application uses CRDs, which are not supported with \'--chart-api-version\': \'v1\'. Please either use \'--chart-api-version\': \'v2\' or remove the CRDs from your cdk8s.yaml configuration file/);
+    await expect(() => synth(synthOptions)).rejects.toThrow(/Your application uses CRDs, which are not supported when '--chart-api-version' is set to v1. Please either set '--chart-api-version' to v2, or remove the CRDs from your cdk8s.yaml configuration file/);
   });
 
   const synthWorksForChartAPIv1 = async (dir: string) => {
@@ -790,7 +735,7 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      WITH_ONLY_CLI_INPUTS,
+      withOnlyCliInputs,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -802,10 +747,10 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_ONLY_CONFIG_INPUTS,
+      withOnlyConfigInputs,
       {
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
             chartApiVersion: HelmChartApiVersion.V1,
@@ -816,13 +761,13 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_SAME_INPUTS_IN_BOTH,
+      withSameInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         chartApiVersion: HelmChartApiVersion.V1,
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
             chartApiVersion: HelmChartApiVersion.V1,
@@ -833,13 +778,13 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
+      withDifferentInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         chartApiVersion: HelmChartApiVersion.V1,
         config: {
-          synth: {
+          synthConfig: {
             chartApiVersion: HelmChartApiVersion.V2,
           },
           imports: ['k8s'],
@@ -857,7 +802,7 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      WITH_ONLY_CLI_INPUTS,
+      withOnlyCliInputs,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -865,10 +810,10 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_ONLY_CONFIG_INPUTS,
+      withOnlyConfigInputs,
       {
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
           },
@@ -877,12 +822,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_SAME_INPUTS_IN_BOTH,
+      withSameInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
           },
@@ -891,12 +836,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
+      withDifferentInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.PLAIN,
             chartVersion: '1.1.1',
           },
@@ -928,7 +873,7 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      WITH_ONLY_CLI_INPUTS,
+      withOnlyCliInputs,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -939,10 +884,10 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_ONLY_CONFIG_INPUTS,
+      withOnlyConfigInputs,
       {
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
           },
@@ -952,12 +897,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_SAME_INPUTS_IN_BOTH,
+      withSameInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
           },
@@ -967,12 +912,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
+      withDifferentInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.PLAIN,
             chartVersion: '1.1.1',
           },
@@ -1001,7 +946,7 @@ describe('Create helm scaffolding', () => {
 
   test.each([
     [
-      WITH_ONLY_CLI_INPUTS,
+      withOnlyCliInputs,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
@@ -1015,10 +960,10 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_ONLY_CONFIG_INPUTS,
+      withOnlyConfigInputs,
       {
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
           },
@@ -1031,12 +976,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_SAME_INPUTS_IN_BOTH,
+      withSameInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
           },
@@ -1049,12 +994,12 @@ describe('Create helm scaffolding', () => {
       },
     ],
     [
-      WITH_DIFFERENT_INPUTS_IN_BOTH,
+      withDifferentInputsInBoth,
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
         config: {
-          synth: {
+          synthConfig: {
             format: SynthesisFormat.PLAIN,
             chartVersion: '1.1.1',
           },
@@ -1133,8 +1078,8 @@ app.synth();
     const pluginsDir = options.pluginsDir ?? DEFAULT_PLUGINS_DIR;
     const validate = options.validate ?? true;
     const validationReportsOutputFile = options.reportsFile;
-    const format = options.format ?? config?.synth?.format ?? SynthesisFormat.PLAIN;
-    const chartApiVersion = options.chartApiVersion ?? config?.synth?.chartApiVersion ??
+    const format = options.format ?? config?.synthConfig?.format ?? SynthesisFormat.PLAIN;
+    const chartApiVersion = options.chartApiVersion ?? config?.synthConfig?.chartApiVersion ??
     (format === SynthesisFormat.HELM ? HelmChartApiVersion.V2: undefined);
     const chartVersion = options.chartVersion;
 
