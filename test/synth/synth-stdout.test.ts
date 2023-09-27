@@ -1060,28 +1060,12 @@ app.synth();
 `;
 
   await mkdtemp(async (dir: string) => {
-
-    const DEFAULT_OUTPUT_DIR = 'dist';
-    const DEFAULT_PLUGINS_DIR = path.join(dir, '.cdk8s', 'plugins');
-
     // Defined config in cdk8s.yaml file
     const config: Config | undefined = options.config;
 
     if (config?.imports) {
       imports.push(...config.imports);
     }
-
-    // Mimicking defaults passed in synth handler
-    const app = options.app ?? config?.app;
-    const stdout = options.stdout;
-    const output = options.output ?? config?.output ?? (!stdout ? DEFAULT_OUTPUT_DIR : undefined);
-    const pluginsDir = options.pluginsDir ?? DEFAULT_PLUGINS_DIR;
-    const validate = options.validate ?? true;
-    const validationReportsOutputFile = options.reportsFile;
-    const format = options.format ?? config?.synthConfig?.format ?? SynthesisFormat.PLAIN;
-    const chartApiVersion = options.chartApiVersion ?? config?.synthConfig?.chartApiVersion ??
-    (format === SynthesisFormat.HELM ? HelmChartApiVersion.V2: undefined);
-    const chartVersion = options.chartVersion;
 
     fs.writeFileSync(path.join(dir, 'index.js'), cdk8sApp);
 
@@ -1110,21 +1094,21 @@ app.synth();
 
       // Specifiying defaults specific to running tests
       await cmd.handler({
-        app: app ?? DEFAULT_APP,
-        output: output,
-        stdout: stdout,
-        pluginsDir: pluginsDir,
-        validate: validate,
-        validationReportsOutputFile: validationReportsOutputFile ? path.join(dir, validationReportsOutputFile) : undefined,
-        format: format,
-        chartApiVersion: chartApiVersion,
-        chartVersion: chartVersion,
+        app: options.app ?? DEFAULT_APP,
+        output: options.output,
+        stdout: options.stdout,
+        pluginsDir: options.pluginsDir,
+        validate: options.validate,
+        validationReportsOutputFile: options.reportsFile ? path.join(dir, options.reportsFile) : undefined,
+        format: options.format,
+        chartApiVersion: options.chartApiVersion,
+        chartVersion: options.chartVersion,
       });
 
       if (options.postSynth) {
         await options.postSynth(dir);
       }
-      if (validate && findConstructMetadata(path.join(dir, 'dist/'))) {
+      if (options.validate && findConstructMetadata(path.join(dir, 'dist/'))) {
         // this file is written by our test plugin
         const marker = path.join(dir, 'validation-done.marker');
         expect(fs.existsSync(marker)).toBeTruthy();
