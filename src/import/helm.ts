@@ -35,6 +35,12 @@ export class ImportHelm extends ImportBase {
     this.chartVersion = chartVersion;
     this.tmpDir = pullHelmRepo(chartUrl, chartName, chartVersion);
 
+    if (fs.existsSync(this.tmpDir)) {
+      console.log(`The temp dir path is: ${this.tmpDir}`);
+    } else {
+      throw new Error('Temp Dir was not created');
+    }
+
     const chartYamlFilePath = path.join(this.tmpDir, this.chartName, CHART_YAML);
     const contents = Yaml.load(chartYamlFilePath);
     if (contents && contents.length === 1) {
