@@ -1,0 +1,1428 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`importing helm chart helm:https://charts.bitnami.com/bitnami/mysql@9.10.10 1`] = `
+Object {
+  "author": Object {
+    "name": "generated@generated.com",
+    "roles": Array [
+      "author",
+    ],
+  },
+  "dependencies": "__omitted__",
+  "dependencyClosure": Object {
+    "cdk8s": Object {
+      "targets": Object {
+        "dotnet": Object {
+          "namespace": "Org.Cdk8s",
+          "packageId": "Org.Cdk8s",
+        },
+        "go": Object {
+          "moduleName": "github.com/cdk8s-team/cdk8s-core-go",
+        },
+        "java": Object {
+          "maven": Object {
+            "artifactId": "cdk8s",
+            "groupId": "org.cdk8s",
+          },
+          "package": "org.cdk8s",
+        },
+        "js": Object {
+          "npm": "cdk8s",
+        },
+        "python": Object {
+          "distName": "cdk8s",
+          "module": "cdk8s",
+        },
+      },
+    },
+    "constructs": Object {
+      "targets": Object {
+        "dotnet": Object {
+          "namespace": "Constructs",
+          "packageId": "Constructs",
+        },
+        "go": Object {
+          "moduleName": "github.com/aws/constructs-go",
+        },
+        "java": Object {
+          "maven": Object {
+            "artifactId": "constructs",
+            "groupId": "software.constructs",
+          },
+          "package": "software.constructs",
+        },
+        "js": Object {
+          "npm": "constructs",
+        },
+        "python": Object {
+          "distName": "constructs",
+          "module": "constructs",
+        },
+      },
+    },
+  },
+  "description": "mysql",
+  "fingerprint": "<fingerprint>",
+  "homepage": "http://generated",
+  "jsiiVersion": "__omitted__",
+  "license": "UNLICENSED",
+  "metadata": Object {
+    "jsii": Object {
+      "pacmak": Object {
+        "hasDefaultInterfaces": true,
+      },
+    },
+  },
+  "name": "mysql",
+  "repository": Object {
+    "type": "git",
+    "url": "http://generated",
+  },
+  "schema": "jsii/0.10.0",
+  "targets": Object {
+    "js": Object {
+      "npm": "mysql",
+    },
+  },
+  "types": Object {
+    "mysql.Mysql": Object {
+      "assembly": "mysql",
+      "base": "constructs.Construct",
+      "fqn": "mysql.Mysql",
+      "initializer": Object {
+        "locationInModule": Object {
+          "filename": "mysql.ts",
+          "line": 14,
+        },
+        "parameters": Array [
+          Object {
+            "name": "scope",
+            "type": Object {
+              "fqn": "constructs.Construct",
+            },
+          },
+          Object {
+            "name": "id",
+            "type": Object {
+              "primitive": "string",
+            },
+          },
+          Object {
+            "name": "props",
+            "optional": true,
+            "type": Object {
+              "fqn": "mysql.MysqlProps",
+            },
+          },
+        ],
+      },
+      "kind": "class",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 13,
+      },
+      "name": "Mysql",
+      "symbolId": "mysql:Mysql",
+    },
+    "mysql.MysqlArchitecture": Object {
+      "assembly": "mysql",
+      "docs": Object {
+        "custom": Object {
+          "schema": "MysqlArchitecture",
+        },
+        "summary": "Allowed values: \`standalone\` or \`replication\`.",
+      },
+      "fqn": "mysql.MysqlArchitecture",
+      "kind": "enum",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 88,
+      },
+      "members": Array [
+        Object {
+          "docs": Object {
+            "summary": "standalone.",
+          },
+          "name": "STANDALONE",
+        },
+        Object {
+          "docs": Object {
+            "summary": "replication.",
+          },
+          "name": "REPLICATION",
+        },
+      ],
+      "name": "MysqlArchitecture",
+      "symbolId": "mysql:MysqlArchitecture",
+    },
+    "mysql.MysqlAuth": Object {
+      "assembly": "mysql",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "MysqlAuth",
+        },
+      },
+      "fqn": "mysql.MysqlAuth",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 98,
+      },
+      "name": "MysqlAuth",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlAuth#password",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 120,
+          },
+          "name": "password",
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlAuth#username",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 115,
+          },
+          "name": "username",
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlAuth#createDatabase",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 135,
+          },
+          "name": "createDatabase",
+          "optional": true,
+          "type": Object {
+            "primitive": "boolean",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlAuth#database",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 110,
+          },
+          "name": "database",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlAuth#replicationPassword",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 130,
+          },
+          "name": "replicationPassword",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlAuth#replicationUser",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 125,
+          },
+          "name": "replicationUser",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlAuth#rootPassword",
+            },
+            "default": "a random 10-character alphanumeric string if not set",
+            "summary": "Defaults to a random 10-character alphanumeric string if not set.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 105,
+          },
+          "name": "rootPassword",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+      ],
+      "symbolId": "mysql:MysqlAuth",
+    },
+    "mysql.MysqlPrimary": Object {
+      "assembly": "mysql",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "MysqlPrimary",
+        },
+      },
+      "fqn": "mysql.MysqlPrimary",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 162,
+      },
+      "name": "MysqlPrimary",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimary#containerSecurityContext",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 171,
+          },
+          "name": "containerSecurityContext",
+          "optional": true,
+          "type": Object {
+            "fqn": "mysql.MysqlPrimaryContainerSecurityContext",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimary#persistence",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 176,
+          },
+          "name": "persistence",
+          "optional": true,
+          "type": Object {
+            "fqn": "mysql.MysqlPrimaryPersistence",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimary#podSecurityContext",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 166,
+          },
+          "name": "podSecurityContext",
+          "optional": true,
+          "type": Object {
+            "fqn": "mysql.MysqlPrimaryPodSecurityContext",
+          },
+        },
+      ],
+      "symbolId": "mysql:MysqlPrimary",
+    },
+    "mysql.MysqlPrimaryContainerSecurityContext": Object {
+      "assembly": "mysql",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "MysqlPrimaryContainerSecurityContext",
+        },
+      },
+      "fqn": "mysql.MysqlPrimaryContainerSecurityContext",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 267,
+      },
+      "name": "MysqlPrimaryContainerSecurityContext",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimaryContainerSecurityContext#enabled",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 271,
+          },
+          "name": "enabled",
+          "optional": true,
+          "type": Object {
+            "primitive": "boolean",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimaryContainerSecurityContext#runAsUser",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 276,
+          },
+          "name": "runAsUser",
+          "optional": true,
+          "type": Object {
+            "primitive": "number",
+          },
+        },
+      ],
+      "symbolId": "mysql:MysqlPrimaryContainerSecurityContext",
+    },
+    "mysql.MysqlPrimaryPersistence": Object {
+      "assembly": "mysql",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "MysqlPrimaryPersistence",
+        },
+      },
+      "fqn": "mysql.MysqlPrimaryPersistence",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 298,
+      },
+      "name": "MysqlPrimaryPersistence",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimaryPersistence#enabled",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 302,
+          },
+          "name": "enabled",
+          "optional": true,
+          "type": Object {
+            "primitive": "boolean",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimaryPersistence#size",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 307,
+          },
+          "name": "size",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+      ],
+      "symbolId": "mysql:MysqlPrimaryPersistence",
+    },
+    "mysql.MysqlPrimaryPodSecurityContext": Object {
+      "assembly": "mysql",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "MysqlPrimaryPodSecurityContext",
+        },
+      },
+      "fqn": "mysql.MysqlPrimaryPodSecurityContext",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 236,
+      },
+      "name": "MysqlPrimaryPodSecurityContext",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimaryPodSecurityContext#enabled",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 240,
+          },
+          "name": "enabled",
+          "optional": true,
+          "type": Object {
+            "primitive": "boolean",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimaryPodSecurityContext#fsGroup",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 245,
+          },
+          "name": "fsGroup",
+          "optional": true,
+          "type": Object {
+            "primitive": "number",
+          },
+        },
+      ],
+      "symbolId": "mysql:MysqlPrimaryPodSecurityContext",
+    },
+    "mysql.MysqlProps": Object {
+      "assembly": "mysql",
+      "datatype": true,
+      "fqn": "mysql.MysqlProps",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 5,
+      },
+      "name": "MysqlProps",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 8,
+          },
+          "name": "helmExecutable",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 9,
+          },
+          "name": "helmFlags",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "string",
+              },
+              "kind": "array",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 6,
+          },
+          "name": "namespace",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 7,
+          },
+          "name": "releaseName",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 10,
+          },
+          "name": "values",
+          "optional": true,
+          "type": Object {
+            "fqn": "mysql.MysqlValues",
+          },
+        },
+      ],
+      "symbolId": "mysql:MysqlProps",
+    },
+    "mysql.MysqlSecondary": Object {
+      "assembly": "mysql",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "MysqlSecondary",
+        },
+      },
+      "fqn": "mysql.MysqlSecondary",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 199,
+      },
+      "name": "MysqlSecondary",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondary#containerSecurityContext",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 208,
+          },
+          "name": "containerSecurityContext",
+          "optional": true,
+          "type": Object {
+            "fqn": "mysql.MysqlSecondaryContainerSecurityContext",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondary#persistence",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 213,
+          },
+          "name": "persistence",
+          "optional": true,
+          "type": Object {
+            "fqn": "mysql.MysqlSecondaryPersistence",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondary#podSecurityContext",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 203,
+          },
+          "name": "podSecurityContext",
+          "optional": true,
+          "type": Object {
+            "fqn": "mysql.MysqlSecondaryPodSecurityContext",
+          },
+        },
+      ],
+      "symbolId": "mysql:MysqlSecondary",
+    },
+    "mysql.MysqlSecondaryContainerSecurityContext": Object {
+      "assembly": "mysql",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "MysqlSecondaryContainerSecurityContext",
+        },
+      },
+      "fqn": "mysql.MysqlSecondaryContainerSecurityContext",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 360,
+      },
+      "name": "MysqlSecondaryContainerSecurityContext",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondaryContainerSecurityContext#enabled",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 364,
+          },
+          "name": "enabled",
+          "optional": true,
+          "type": Object {
+            "primitive": "boolean",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondaryContainerSecurityContext#runAsUser",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 369,
+          },
+          "name": "runAsUser",
+          "optional": true,
+          "type": Object {
+            "primitive": "number",
+          },
+        },
+      ],
+      "symbolId": "mysql:MysqlSecondaryContainerSecurityContext",
+    },
+    "mysql.MysqlSecondaryPersistence": Object {
+      "assembly": "mysql",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "MysqlSecondaryPersistence",
+        },
+      },
+      "fqn": "mysql.MysqlSecondaryPersistence",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 391,
+      },
+      "name": "MysqlSecondaryPersistence",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondaryPersistence#enabled",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 395,
+          },
+          "name": "enabled",
+          "optional": true,
+          "type": Object {
+            "primitive": "boolean",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondaryPersistence#size",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 400,
+          },
+          "name": "size",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+      ],
+      "symbolId": "mysql:MysqlSecondaryPersistence",
+    },
+    "mysql.MysqlSecondaryPodSecurityContext": Object {
+      "assembly": "mysql",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "MysqlSecondaryPodSecurityContext",
+        },
+      },
+      "fqn": "mysql.MysqlSecondaryPodSecurityContext",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 329,
+      },
+      "name": "MysqlSecondaryPodSecurityContext",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondaryPodSecurityContext#enabled",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 333,
+          },
+          "name": "enabled",
+          "optional": true,
+          "type": Object {
+            "primitive": "boolean",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondaryPodSecurityContext#fsGroup",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 338,
+          },
+          "name": "fsGroup",
+          "optional": true,
+          "type": Object {
+            "primitive": "number",
+          },
+        },
+      ],
+      "symbolId": "mysql:MysqlSecondaryPodSecurityContext",
+    },
+    "mysql.MysqlValues": Object {
+      "assembly": "mysql",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "mysql",
+        },
+      },
+      "fqn": "mysql.MysqlValues",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "mysql.ts",
+        "line": 29,
+      },
+      "name": "MysqlValues",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "mysql#architecture",
+            },
+            "summary": "Allowed values: \`standalone\` or \`replication\`.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 35,
+          },
+          "name": "architecture",
+          "optional": true,
+          "type": Object {
+            "fqn": "mysql.MysqlArchitecture",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "mysql#auth",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 40,
+          },
+          "name": "auth",
+          "optional": true,
+          "type": Object {
+            "fqn": "mysql.MysqlAuth",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "mysql#common",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 55,
+          },
+          "name": "common",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "mysql#global",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 60,
+          },
+          "name": "global",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "mysql#primary",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 45,
+          },
+          "name": "primary",
+          "optional": true,
+          "type": Object {
+            "fqn": "mysql.MysqlPrimary",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "mysql#secondary",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 50,
+          },
+          "name": "secondary",
+          "optional": true,
+          "type": Object {
+            "fqn": "mysql.MysqlSecondary",
+          },
+        },
+      ],
+      "symbolId": "mysql:MysqlValues",
+    },
+  },
+  "version": "0.0.0",
+}
+`;
+
+exports[`importing helm chart helm:https://charts.bitnami.com/bitnami/mysql@9.10.10 2`] = `
+Object {
+  "mysql.ts": "// generated by cdk8s
+import { Helm } from 'cdk8s';
+import { Construct } from 'constructs';
+
+export interface MysqlProps {
+  readonly namespace?: string;
+  readonly releaseName?: string;
+  readonly helmExecutable?: string;
+  readonly helmFlags?: string[];
+  readonly values?: MysqlValues;
+}
+
+export class Mysql extends Construct {
+  public constructor(scope: Construct, id: string, props: MysqlProps = {}) {
+    const finalProps = {
+      chart: 'mysql',
+      repo: 'https://charts.bitnami.com/bitnami',
+      version: '9.10.10',
+      ...props,
+    };
+    super(scope, id)
+    new Helm(scope, 'Helm', finalProps)
+  }
+}
+
+/**
+ * @schema mysql
+ */
+export interface MysqlValues {
+  /**
+   * Allowed values: \`standalone\` or \`replication\`
+   *
+   * @schema mysql#architecture
+   */
+  readonly architecture?: MysqlArchitecture;
+
+  /**
+   * @schema mysql#auth
+   */
+  readonly auth?: MysqlAuth;
+
+  /**
+   * @schema mysql#primary
+   */
+  readonly primary?: MysqlPrimary;
+
+  /**
+   * @schema mysql#secondary
+   */
+  readonly secondary?: MysqlSecondary;
+
+  /**
+   * @schema mysql#common
+   */
+  readonly common?: { [key: string]: any };
+
+  /**
+   * @schema mysql#global
+   */
+  readonly global?: { [key: string]: any };
+
+}
+
+/**
+ * Converts an object of type 'MysqlValues' to JSON representation.
+ */
+/* eslint-disable max-len, quote-props */
+export function toJson_MysqlValues(obj: MysqlValues | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'architecture': obj.architecture,
+    'auth': toJson_MysqlAuth(obj.auth),
+    'primary': toJson_MysqlPrimary(obj.primary),
+    'secondary': toJson_MysqlSecondary(obj.secondary),
+    'common': ((obj.common) === undefined) ? undefined : (Object.entries(obj.common).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
+    'global': ((obj.global) === undefined) ? undefined : (Object.entries(obj.global).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, quote-props */
+
+/**
+ * Allowed values: \`standalone\` or \`replication\`
+ *
+ * @schema MysqlArchitecture
+ */
+export enum MysqlArchitecture {
+  /** standalone */
+  STANDALONE = \\"standalone\\",
+  /** replication */
+  REPLICATION = \\"replication\\",
+}
+
+/**
+ * @schema MysqlAuth
+ */
+export interface MysqlAuth {
+  /**
+   * Defaults to a random 10-character alphanumeric string if not set
+   *
+   * @default a random 10-character alphanumeric string if not set
+   * @schema MysqlAuth#rootPassword
+   */
+  readonly rootPassword?: string;
+
+  /**
+   * @schema MysqlAuth#database
+   */
+  readonly database?: string;
+
+  /**
+   * @schema MysqlAuth#username
+   */
+  readonly username: string;
+
+  /**
+   * @schema MysqlAuth#password
+   */
+  readonly password: string;
+
+  /**
+   * @schema MysqlAuth#replicationUser
+   */
+  readonly replicationUser?: string;
+
+  /**
+   * @schema MysqlAuth#replicationPassword
+   */
+  readonly replicationPassword?: string;
+
+  /**
+   * @schema MysqlAuth#createDatabase
+   */
+  readonly createDatabase?: boolean;
+
+}
+
+/**
+ * Converts an object of type 'MysqlAuth' to JSON representation.
+ */
+/* eslint-disable max-len, quote-props */
+export function toJson_MysqlAuth(obj: MysqlAuth | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'rootPassword': obj.rootPassword,
+    'database': obj.database,
+    'username': obj.username,
+    'password': obj.password,
+    'replicationUser': obj.replicationUser,
+    'replicationPassword': obj.replicationPassword,
+    'createDatabase': obj.createDatabase,
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, quote-props */
+
+/**
+ * @schema MysqlPrimary
+ */
+export interface MysqlPrimary {
+  /**
+   * @schema MysqlPrimary#podSecurityContext
+   */
+  readonly podSecurityContext?: MysqlPrimaryPodSecurityContext;
+
+  /**
+   * @schema MysqlPrimary#containerSecurityContext
+   */
+  readonly containerSecurityContext?: MysqlPrimaryContainerSecurityContext;
+
+  /**
+   * @schema MysqlPrimary#persistence
+   */
+  readonly persistence?: MysqlPrimaryPersistence;
+
+}
+
+/**
+ * Converts an object of type 'MysqlPrimary' to JSON representation.
+ */
+/* eslint-disable max-len, quote-props */
+export function toJson_MysqlPrimary(obj: MysqlPrimary | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'podSecurityContext': toJson_MysqlPrimaryPodSecurityContext(obj.podSecurityContext),
+    'containerSecurityContext': toJson_MysqlPrimaryContainerSecurityContext(obj.containerSecurityContext),
+    'persistence': toJson_MysqlPrimaryPersistence(obj.persistence),
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, quote-props */
+
+/**
+ * @schema MysqlSecondary
+ */
+export interface MysqlSecondary {
+  /**
+   * @schema MysqlSecondary#podSecurityContext
+   */
+  readonly podSecurityContext?: MysqlSecondaryPodSecurityContext;
+
+  /**
+   * @schema MysqlSecondary#containerSecurityContext
+   */
+  readonly containerSecurityContext?: MysqlSecondaryContainerSecurityContext;
+
+  /**
+   * @schema MysqlSecondary#persistence
+   */
+  readonly persistence?: MysqlSecondaryPersistence;
+
+}
+
+/**
+ * Converts an object of type 'MysqlSecondary' to JSON representation.
+ */
+/* eslint-disable max-len, quote-props */
+export function toJson_MysqlSecondary(obj: MysqlSecondary | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'podSecurityContext': toJson_MysqlSecondaryPodSecurityContext(obj.podSecurityContext),
+    'containerSecurityContext': toJson_MysqlSecondaryContainerSecurityContext(obj.containerSecurityContext),
+    'persistence': toJson_MysqlSecondaryPersistence(obj.persistence),
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, quote-props */
+
+/**
+ * @schema MysqlPrimaryPodSecurityContext
+ */
+export interface MysqlPrimaryPodSecurityContext {
+  /**
+   * @schema MysqlPrimaryPodSecurityContext#enabled
+   */
+  readonly enabled?: boolean;
+
+  /**
+   * @schema MysqlPrimaryPodSecurityContext#fsGroup
+   */
+  readonly fsGroup?: number;
+
+}
+
+/**
+ * Converts an object of type 'MysqlPrimaryPodSecurityContext' to JSON representation.
+ */
+/* eslint-disable max-len, quote-props */
+export function toJson_MysqlPrimaryPodSecurityContext(obj: MysqlPrimaryPodSecurityContext | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'enabled': obj.enabled,
+    'fsGroup': obj.fsGroup,
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, quote-props */
+
+/**
+ * @schema MysqlPrimaryContainerSecurityContext
+ */
+export interface MysqlPrimaryContainerSecurityContext {
+  /**
+   * @schema MysqlPrimaryContainerSecurityContext#enabled
+   */
+  readonly enabled?: boolean;
+
+  /**
+   * @schema MysqlPrimaryContainerSecurityContext#runAsUser
+   */
+  readonly runAsUser?: number;
+
+}
+
+/**
+ * Converts an object of type 'MysqlPrimaryContainerSecurityContext' to JSON representation.
+ */
+/* eslint-disable max-len, quote-props */
+export function toJson_MysqlPrimaryContainerSecurityContext(obj: MysqlPrimaryContainerSecurityContext | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'enabled': obj.enabled,
+    'runAsUser': obj.runAsUser,
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, quote-props */
+
+/**
+ * @schema MysqlPrimaryPersistence
+ */
+export interface MysqlPrimaryPersistence {
+  /**
+   * @schema MysqlPrimaryPersistence#enabled
+   */
+  readonly enabled?: boolean;
+
+  /**
+   * @schema MysqlPrimaryPersistence#size
+   */
+  readonly size?: string;
+
+}
+
+/**
+ * Converts an object of type 'MysqlPrimaryPersistence' to JSON representation.
+ */
+/* eslint-disable max-len, quote-props */
+export function toJson_MysqlPrimaryPersistence(obj: MysqlPrimaryPersistence | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'enabled': obj.enabled,
+    'size': obj.size,
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, quote-props */
+
+/**
+ * @schema MysqlSecondaryPodSecurityContext
+ */
+export interface MysqlSecondaryPodSecurityContext {
+  /**
+   * @schema MysqlSecondaryPodSecurityContext#enabled
+   */
+  readonly enabled?: boolean;
+
+  /**
+   * @schema MysqlSecondaryPodSecurityContext#fsGroup
+   */
+  readonly fsGroup?: number;
+
+}
+
+/**
+ * Converts an object of type 'MysqlSecondaryPodSecurityContext' to JSON representation.
+ */
+/* eslint-disable max-len, quote-props */
+export function toJson_MysqlSecondaryPodSecurityContext(obj: MysqlSecondaryPodSecurityContext | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'enabled': obj.enabled,
+    'fsGroup': obj.fsGroup,
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, quote-props */
+
+/**
+ * @schema MysqlSecondaryContainerSecurityContext
+ */
+export interface MysqlSecondaryContainerSecurityContext {
+  /**
+   * @schema MysqlSecondaryContainerSecurityContext#enabled
+   */
+  readonly enabled?: boolean;
+
+  /**
+   * @schema MysqlSecondaryContainerSecurityContext#runAsUser
+   */
+  readonly runAsUser?: number;
+
+}
+
+/**
+ * Converts an object of type 'MysqlSecondaryContainerSecurityContext' to JSON representation.
+ */
+/* eslint-disable max-len, quote-props */
+export function toJson_MysqlSecondaryContainerSecurityContext(obj: MysqlSecondaryContainerSecurityContext | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'enabled': obj.enabled,
+    'runAsUser': obj.runAsUser,
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, quote-props */
+
+/**
+ * @schema MysqlSecondaryPersistence
+ */
+export interface MysqlSecondaryPersistence {
+  /**
+   * @schema MysqlSecondaryPersistence#enabled
+   */
+  readonly enabled?: boolean;
+
+  /**
+   * @schema MysqlSecondaryPersistence#size
+   */
+  readonly size?: string;
+
+}
+
+/**
+ * Converts an object of type 'MysqlSecondaryPersistence' to JSON representation.
+ */
+/* eslint-disable max-len, quote-props */
+export function toJson_MysqlSecondaryPersistence(obj: MysqlSecondaryPersistence | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'enabled': obj.enabled,
+    'size': obj.size,
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, quote-props */
+
+",
+}
+`;

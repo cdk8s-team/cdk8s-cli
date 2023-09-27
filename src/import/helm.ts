@@ -50,8 +50,6 @@ export class ImportHelm extends ImportBase {
     } else {
       this.chartSchemaPath = undefined;
     }
-
-    console.log(`CHART SCHEMA PATH: ${this.chartSchemaPath}`);
   }
 
   public get moduleNames() {

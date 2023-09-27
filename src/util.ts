@@ -7,7 +7,7 @@ import * as path from 'path';
 import { parse } from 'url';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
-import { ValidationConfig } from './config';
+import { ImportSpec, ValidationConfig } from './config';
 import { PluginManager } from './plugins/_manager';
 import { ValidationPlugin, ValidationContext, ValidationReport, Validation } from './plugins/validation';
 import { SafeReviver } from './reviver';
@@ -255,4 +255,28 @@ export interface SynthesizedApp {
    * The construct metadata file (if exists).
    */
   readonly constructMetadata?: string;
+}
+
+export function parseImports(spec: string): ImportSpec {
+  const splitImport = spec.split(':=');
+
+  // k8s@x.y.z
+  // crd.yaml
+  // url.com/crd.yaml
+  if (splitImport.length === 1) {
+    return {
+      source: spec,
+    };
+  }
+
+  // crd:=crd.yaml
+  // crd:=url.com/crd.yaml
+  if (splitImport.length === 2) {
+    return {
+      moduleNamePrefix: splitImport[0],
+      source: splitImport[1],
+    };
+  }
+
+  throw new Error('Unable to parse import specification. Syntax is [NAME:=]SPEC');
 }
