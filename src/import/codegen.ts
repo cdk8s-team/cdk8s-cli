@@ -283,22 +283,6 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
         }
 
         typegen.emitType(valuesInterface, copyOfSchema, def.fqn);
-
-
-        // code.openBlock(`export interface ${valuesInterface}`);
-
-        // typegen.renderToCode;
-        // typegen.emitType('Values', schema, def.fqn);
-
-        // // Sub charts or dependencies
-        // for (const dependency of def.chartDependencies) {
-        //   code.line(`readonly ${dependency}?: { [key: string]: any };`);
-        // }
-
-        // // Global values
-        // code.line('readonly global?: { [key: string]: any };');
-
-        // code.closeBlock();
       }
     }
 
