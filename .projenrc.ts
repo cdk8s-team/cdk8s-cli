@@ -20,13 +20,7 @@ const project = new Cdk8sTeamTypeScriptProject({
     'automation',
     'containers',
   ],
-  workflowBootstrapSteps: [
-    { run: 'pip3 install pipenv' },
-    {
-      name: 'Installing helm for tests',
-      uses: 'azure/setup-helm@v3',
-    },
-  ],
+  workflowBootstrapSteps: [{ run: 'pip3 install pipenv' }],
   defaultReleaseBranch: '2.x',
   majorVersion: 2,
   releaseBranches: {

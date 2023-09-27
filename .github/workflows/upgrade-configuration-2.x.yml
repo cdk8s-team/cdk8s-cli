@@ -21,8 +21,6 @@ jobs:
       - run: pip3 install pipenv
         with:
           node-version: lts
-      - name: Installing helm for tests
-        uses: azure/setup-helm@v3
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
