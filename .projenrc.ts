@@ -20,7 +20,13 @@ const project = new Cdk8sTeamTypeScriptProject({
     'automation',
     'containers',
   ],
-  workflowBootstrapSteps: [{ run: 'pip3 install pipenv' }],
+  workflowBootstrapSteps: [
+    { run: 'pip3 install pipenv' },
+    {
+      name: 'Installing helm for tests',
+      uses: 'azure/setup-helm@v3',
+    },
+  ],
   defaultReleaseBranch: '2.x',
   majorVersion: 2,
   releaseBranches: {
@@ -60,7 +66,6 @@ const project = new Cdk8sTeamTypeScriptProject({
   ],
   backport: true,
   backportBranches: ['1.x'],
-
 });
 
 project.tsconfig?.addInclude('src/schemas/*.json');

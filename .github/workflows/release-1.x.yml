@@ -25,6 +25,8 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
       - run: pip3 install pipenv
+      - name: Installing helm for tests
+        uses: azure/setup-helm@v3
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
