@@ -2,13 +2,13 @@ import { spawnSync } from 'child_process';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
-import { Yaml } from 'cdk8s';
 import { CodeMaker } from 'codemaker';
 // we just need the types from json-schema
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { JSONSchema4 } from 'json-schema';
 import { TypeGenerator } from 'json2jsii';
 import * as semver from 'semver';
+import * as yaml from 'yaml';
 import { ImportBase } from './base';
 import { emitHelmHeader, generateHelmConstruct } from './codegen';
 import { ImportSpec } from '../config';
@@ -51,7 +51,8 @@ export class ImportHelm extends ImportBase {
     }
 
     const chartYamlFilePath = path.join(this.tmpDir, this.chartName, CHART_YAML);
-    const contents = Yaml.load(chartYamlFilePath);
+    // const contents = Yaml.load(chartYamlFilePath);
+    const contents = yaml.parse(fs.readFileSync(chartYamlFilePath, 'utf-8'));
     if (contents && contents.length === 1) {
       for (const dependency of contents[0].dependencies) {
         this.chartDependencies.push(dependency.name);
