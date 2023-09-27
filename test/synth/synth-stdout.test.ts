@@ -1,9 +1,11 @@
 import { readdirSync } from 'fs';
 import * as path from 'path';
+import { promisify } from 'util';
 import * as fs from 'fs-extra';
+import { glob } from 'glob';
 import * as yaml from 'yaml';
 import { Config, HelmChartApiVersion, SynthesisFormat, ValidationConfig } from '../../src/config';
-import { crdsArePresent, findConstructMetadata, hashAndEncode, mkdtemp } from '../../src/util';
+import { findConstructMetadata, hashAndEncode, mkdtemp } from '../../src/util';
 
 const DEFAULT_APP = 'node index.js';
 const imports: string[] = [];
@@ -12,8 +14,6 @@ beforeEach(() => {
   // resetting so that every test can use a different config file,
   // which is read on module load.
   jest.resetModules();
-  // Emptying the imports every time a test is run
-  imports.length = 0;
 });
 
 test('synth with both --stdout and --output throws exception', () => {
@@ -730,7 +730,7 @@ describe('Helm synthesis', () => {
   });
 
   const synthWorksForChartAPIv1 = async (dir: string) => {
-    expect(generatedHelmChartExists(dir.concat('/dist'), HelmChartApiVersion.V1, '1.1.1')).toBeTruthy();
+    await expectSynthMatchSnapshot(dir.concat('/dist'));
   };
 
   test.each([
@@ -797,7 +797,7 @@ describe('Helm synthesis', () => {
   });
 
   const synthWorksForChartAPIv2 = async (dir: string) => {
-    expect(generatedHelmChartExists(dir.concat('/dist'), HelmChartApiVersion.V2, '1.1.1')).toBeTruthy();
+    await expectSynthMatchSnapshot(dir.concat('/dist'));
   };
 
   test.each([
@@ -861,7 +861,7 @@ describe('Helm synthesis', () => {
   ];
 
   const synthWorksForChartAPIv2WithCrds = async (dir: string) => {
-    expect(generatedHelmChartExists(dir.concat('/dist'), HelmChartApiVersion.V2, '1.1.1')).toBeTruthy();
+    await expectSynthMatchSnapshot(dir.concat('/dist'));
 
     // K8s import must be ignored
     const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
@@ -930,18 +930,16 @@ describe('Helm synthesis', () => {
     await synth(synthOptions);
   });
 
-  const testingFileNames: string[] = [];
   const filename = path.join(__dirname, './__resources__/crds/baz.json');
   const expectedFilename = hashAndEncode(filename);
+
   const checkSameHashForFilename = async (dir: string) => {
-    expect(generatedHelmChartExists(dir.concat('/dist'), HelmChartApiVersion.V2, '1.1.1')).toBeTruthy();
+    await expectSynthMatchSnapshot(dir.concat('/dist'));
 
     // K8s import must be ignored
     const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
     expect(crdFiles.length).toEqual(1);
     expect(crdFiles.includes(`${expectedFilename}.yaml`)).toBeTruthy();
-
-    testingFileNames.push(crdFiles[0]);
   };
 
   test.each([
@@ -1012,16 +1010,8 @@ describe('Helm synthesis', () => {
       },
     ],
   ])('filename url hash remains the same across synthesis %s', async (_testName, synthOptions) => {
+    // This would be run 4 times with test.each
     await synth(synthOptions);
-    await synth(synthOptions);
-    await synth(synthOptions);
-
-    const allEqual = (arr: string[]) => arr.every(item => item === arr[0]);
-    expect(allEqual(testingFileNames)).toBeTruthy();
-
-    expect(testingFileNames.length).toEqual(3);
-    // Emptying list since multiple tests are run for different inputs
-    testingFileNames.length = 0;
   });
 });
 
@@ -1129,39 +1119,18 @@ function requireSynth() {
   return require(module);
 }
 
-function generatedHelmChartExists(dir: string, chartApiVersion: string, chartVersion: string): boolean {
-  const chartYaml = path.join(dir, 'Chart.yaml');
-  const chartYamlExists = fs.existsSync(chartYaml);
-  const file = fs.readFileSync(chartYaml, 'utf8');
-  const contents = yaml.parse(file);
+async function expectSynthMatchSnapshot(workdir: string) {
+  const files = await promisify(glob)('**', {
+    cwd: workdir,
+    ignore: ['**/*.tgz'],
+    nodir: true,
+  });
 
-  const isChartApiVersionSame = contents.apiVersion === chartApiVersion;
-  const isChartVersionSame = contents.version === chartVersion;
-  const isChartNameSame = contents.name === path.basename(path.resolve());
-  const isChartYamlValid = isChartApiVersionSame && isChartVersionSame && isChartNameSame;
-
-  const readme = path.join(dir, 'README.md');
-  const readmeExists = fs.existsSync(readme);
-
-  const templates = path.join(dir, 'templates');
-  const templateDirExists = fs.existsSync(templates);
-
-  const manifestFiles = readdirSync(templates);
-  const manifestFilesExists = manifestFiles.length > 0;
-
-  if (crdsArePresent(imports)) {
-    if (chartApiVersion === HelmChartApiVersion.V1) {
-      return false;
-    }
-
-    const crds = path.join(dir, 'crds');
-    const crdsExists = fs.existsSync(crds);
-
-    const crdFiles = readdirSync(crds);
-    const crdFilesExists = crdFiles.length > 0;
-
-    return chartYamlExists && isChartYamlValid && readmeExists && templateDirExists && manifestFilesExists && crdsExists && crdFilesExists;
+  const map: Record<string, string> = {};
+  for (const file of files) {
+    const source = fs.readFileSync(path.join(workdir, file), 'utf-8');
+    map[file] = source;
   }
 
-  return chartYamlExists && isChartYamlValid && readmeExists && templateDirExists && manifestFilesExists;
+  expect(map).toMatchSnapshot();
 }
