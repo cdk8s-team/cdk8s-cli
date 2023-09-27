@@ -37,6 +37,10 @@ export class ImportHelm extends ImportBase {
 
     if (fs.existsSync(this.tmpDir)) {
       console.log(`The temp dir path is: ${this.tmpDir}`);
+      const contents = fs.readdirSync(this.tmpDir);
+      contents.forEach((file) => {
+        console.log(file);
+      });
     } else {
       throw new Error('Temp Dir was not created');
     }
