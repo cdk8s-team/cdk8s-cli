@@ -1,14 +1,14 @@
-import { readdirSync } from 'fs';
+import { existsSync, readdirSync, rmSync } from 'fs';
+import * as os from 'os';
 import * as path from 'path';
 import { promisify } from 'util';
 import * as fs from 'fs-extra';
 import { glob } from 'glob';
 import * as yaml from 'yaml';
 import { Config, HelmChartApiVersion, SynthesisFormat, ValidationConfig } from '../../src/config';
-import { findConstructMetadata, hashAndEncode, mkdtemp } from '../../src/util';
+import { findConstructMetadata, hashAndEncode } from '../../src/util';
 
 const DEFAULT_APP = 'node index.js';
-const CHART_YAML = 'Chart.yaml';
 
 beforeEach(() => {
   // resetting so that every test can use a different config file,
@@ -1049,64 +1049,66 @@ new cdk8s.ApiObject(chart, 'Object', {
 app.synth();
 `;
 
-  await mkdtemp(async (dir: string) => {
-    // Defined config in cdk8s.yaml file
-    const config: Config | undefined = options.config;
+  const dir = path.join(os.tmpdir(), 'cdk8s-synth-test');
 
-    fs.writeFileSync(path.join(dir, 'index.js'), app);
+  // Defined config in cdk8s.yaml file
+  const config: Config | undefined = options.config;
 
-    if (config) {
-      fs.writeFileSync(path.join(dir, 'cdk8s.yaml'), yaml.stringify(config));
+  fs.outputFileSync(path.join(dir, 'index.js'), app);
+
+  if (config) {
+    fs.outputFileSync(path.join(dir, 'cdk8s.yaml'), yaml.stringify(config));
+  }
+
+  const recordConstructMetadata = !(options.config?.validations == undefined || options.config?.validations.length == 0);
+
+  const pwd = process.cwd();
+  const exit = process.exit;
+  try {
+    process.chdir(dir);
+    process.env.CDK8S_RECORD_CONSTRUCT_METADATA = recordConstructMetadata ? 'true' : 'false';
+    // our implementation does process.exit(2) so we need
+    // to monkey patch it so we can assert on it.
+    (process as any).exit = (code: number) => {
+      throw new Error(`Code: ${code}`);
+    };
+
+    const cmd = requireSynth();
+
+    if (options.preSynth) {
+      await options.preSynth(dir);
     }
 
-    const recordConstructMetadata = !(options.config?.validations == undefined || options.config?.validations.length == 0);
+    // Specifiying defaults specific to running tests
+    await cmd.handler({
+      app: options.app ?? DEFAULT_APP,
+      output: options.output,
+      stdout: options.stdout,
+      pluginsDir: options.pluginsDir,
+      validate: options.validate,
+      validationReportsOutputFile: options.reportsFile ? path.join(dir, options.reportsFile) : undefined,
+      format: options.format,
+      chartApiVersion: options.chartApiVersion,
+      chartVersion: options.chartVersion,
+    });
 
-    const pwd = process.cwd();
-    const exit = process.exit;
-    try {
-      process.chdir(dir);
-      process.env.CDK8S_RECORD_CONSTRUCT_METADATA = recordConstructMetadata ? 'true' : 'false';
-      // our implementation does process.exit(2) so we need
-      // to monkey patch it so we can assert on it.
-      (process as any).exit = (code: number) => {
-        throw new Error(`Code: ${code}`);
-      };
-
-      const cmd = requireSynth();
-
-      if (options.preSynth) {
-        await options.preSynth(dir);
-      }
-
-      // Specifiying defaults specific to running tests
-      await cmd.handler({
-        app: options.app ?? DEFAULT_APP,
-        output: options.output,
-        stdout: options.stdout,
-        pluginsDir: options.pluginsDir,
-        validate: options.validate,
-        validationReportsOutputFile: options.reportsFile ? path.join(dir, options.reportsFile) : undefined,
-        format: options.format,
-        chartApiVersion: options.chartApiVersion,
-        chartVersion: options.chartVersion,
-      });
-
-      if (options.postSynth) {
-        await options.postSynth(dir);
-      }
-      if (options.validate && findConstructMetadata(path.join(dir, 'dist/'))) {
-        // this file is written by our test plugin
-        const marker = path.join(dir, 'validation-done.marker');
-        expect(fs.existsSync(marker)).toBeTruthy();
-      }
-    } finally {
-      process.chdir(pwd);
-      (process as any).exit = exit;
-      delete process.env.CDK8S_RECORD_CONSTRUCT_METADATA;
+    if (options.postSynth) {
+      await options.postSynth(dir);
     }
+    if (options.validate && findConstructMetadata(path.join(dir, 'dist/'))) {
+      // this file is written by our test plugin
+      const marker = path.join(dir, 'validation-done.marker');
+      expect(fs.existsSync(marker)).toBeTruthy();
+    }
+  } finally {
+    process.chdir(pwd);
+    (process as any).exit = exit;
+    delete process.env.CDK8S_RECORD_CONSTRUCT_METADATA;
 
-  });
-
+    if (existsSync(dir)) {
+      rmSync(dir, { recursive: true });
+    }
+  }
 }
 
 function requireSynth() {
@@ -1116,8 +1118,6 @@ function requireSynth() {
 }
 
 async function expectSynthMatchSnapshot(workdir: string) {
-  const omitted = '__omitted__';
-
   const files = await promisify(glob)('**', {
     cwd: workdir,
     nodir: true,
@@ -1127,30 +1127,6 @@ async function expectSynthMatchSnapshot(workdir: string) {
 
   for (const file of files) {
     const filePath = path.join(workdir, file);
-
-    if (file === CHART_YAML) {
-      const source = fs.readFileSync(filePath, 'utf-8');
-      const yamlContents = yaml.parse(source);
-
-      expect(yamlContents.name).toMatch(/cdk8s-/);
-      expect(yamlContents.description).toMatch(/Generated chart for cdk8s-/);
-
-      // These values are not stable
-      yamlContents.name = omitted;
-      yamlContents.description = omitted;
-
-      map[file] = yaml.stringify(yamlContents);
-      continue;
-    }
-
-    if (file.includes('crds/')) {
-      // crds/encodedFileName are not stable
-      const omittedName = `crds/${omitted}`;
-      const source = fs.readFileSync(filePath, 'utf-8');
-
-      map[omittedName] = source;
-      continue;
-    }
 
     const source = fs.readFileSync(filePath, 'utf-8');
     map[file] = source;
