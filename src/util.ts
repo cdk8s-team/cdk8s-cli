@@ -1,6 +1,6 @@
 import { spawn, SpawnOptions } from 'child_process';
 import { BinaryToTextEncoding, createHash } from 'crypto';
-import { promises } from 'fs';
+import { existsSync, promises } from 'fs';
 import * as http from 'http';
 import * as https from 'https';
 import * as os from 'os';
@@ -307,7 +307,11 @@ export function deriveFileName(url: string): string {
   }
 
   if (!filename) {
-    filename = hashAndEncode(url);
+    // If the url if for a local file, then just encode the filename and not the entire path
+    // Since path can depend on platform
+    let file = existsSync(url) ? path.basename(url) : url;
+
+    filename = hashAndEncode(file);
   }
 
   return filename;

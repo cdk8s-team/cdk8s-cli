@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, rmSync } from 'fs';
+import { existsSync, rmSync } from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import { promisify } from 'util';
@@ -6,7 +6,7 @@ import * as fs from 'fs-extra';
 import { glob } from 'glob';
 import * as yaml from 'yaml';
 import { Config, HelmChartApiVersion, SynthesisFormat, ValidationConfig } from '../../src/config';
-import { findConstructMetadata, hashAndEncode } from '../../src/util';
+import { findConstructMetadata } from '../../src/util';
 
 const DEFAULT_APP = 'node index.js';
 
@@ -729,7 +729,7 @@ describe('Helm synthesis', () => {
     await expect(() => synth(synthOptions)).rejects.toThrow(/Your application uses CRDs, which are not supported when '--chart-api-version' is set to v1. Please either set '--chart-api-version' to v2, or remove the CRDs from your cdk8s.yaml configuration file/);
   });
 
-  const synthWorksForChartAPIv1 = async (dir: string) => {
+  const matchSynthSnapshot = async (dir: string) => {
     await expectSynthMatchSnapshot(dir.concat('/dist'));
   };
 
@@ -743,7 +743,7 @@ describe('Helm synthesis', () => {
         config: {
           imports: ['k8s'],
         },
-        postSynth: synthWorksForChartAPIv1,
+        postSynth: matchSynthSnapshot,
       },
     ],
     [
@@ -757,7 +757,7 @@ describe('Helm synthesis', () => {
           },
           imports: ['k8s'],
         },
-        postSynth: synthWorksForChartAPIv1,
+        postSynth: matchSynthSnapshot,
       },
     ],
     [
@@ -774,7 +774,7 @@ describe('Helm synthesis', () => {
           },
           imports: ['k8s'],
         },
-        postSynth: synthWorksForChartAPIv1,
+        postSynth: matchSynthSnapshot,
       },
     ],
     [
@@ -789,16 +789,12 @@ describe('Helm synthesis', () => {
           },
           imports: ['k8s'],
         },
-        postSynth: synthWorksForChartAPIv1,
+        postSynth: matchSynthSnapshot,
       },
     ],
   ])('--chart-api-version is v1 %s', async (_testName, synthOptions) => {
     await synth(synthOptions);
   });
-
-  const synthWorksForChartAPIv2 = async (dir: string) => {
-    await expectSynthMatchSnapshot(dir.concat('/dist'));
-  };
 
   test.each([
     [
@@ -806,7 +802,7 @@ describe('Helm synthesis', () => {
       {
         format: SynthesisFormat.HELM,
         chartVersion: '1.1.1',
-        postSynth: synthWorksForChartAPIv2,
+        postSynth: matchSynthSnapshot,
       },
     ],
     [
@@ -818,7 +814,7 @@ describe('Helm synthesis', () => {
             chartVersion: '1.1.1',
           },
         },
-        postSynth: synthWorksForChartAPIv2,
+        postSynth: matchSynthSnapshot,
       },
     ],
     [
@@ -832,7 +828,7 @@ describe('Helm synthesis', () => {
             chartVersion: '1.1.1',
           },
         },
-        postSynth: synthWorksForChartAPIv2,
+        postSynth: matchSynthSnapshot,
       },
     ],
     [
@@ -846,7 +842,7 @@ describe('Helm synthesis', () => {
             chartVersion: '1.1.1',
           },
         },
-        postSynth: synthWorksForChartAPIv2,
+        postSynth: matchSynthSnapshot,
       },
     ],
   ])('--chart-api-version is v2 without crds %s', async (_testName, synthOptions) => {
@@ -860,17 +856,6 @@ describe('Helm synthesis', () => {
     'github:crossplane/crossplane@0.14.0',
   ];
 
-  const synthWorksForChartAPIv2WithCrds = async (dir: string) => {
-    await expectSynthMatchSnapshot(dir.concat('/dist'));
-
-    // K8s import must be ignored
-    const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
-    expect(crdFiles.length).toEqual(3);
-    expect(crdFiles.includes('foo.yaml')).toBeTruthy();
-    expect(crdFiles.includes('bar.yaml')).toBeTruthy();
-    expect(crdFiles.includes('crossplane.yaml')).toBeTruthy();
-  };
-
   test.each([
     [
       withOnlyCliInputs,
@@ -880,7 +865,7 @@ describe('Helm synthesis', () => {
         config: {
           imports: importsForChartApiv2,
         },
-        postSynth: synthWorksForChartAPIv2WithCrds,
+        postSynth: matchSynthSnapshot,
       },
     ],
     [
@@ -893,7 +878,7 @@ describe('Helm synthesis', () => {
           },
           imports: importsForChartApiv2,
         },
-        postSynth: synthWorksForChartAPIv2WithCrds,
+        postSynth: matchSynthSnapshot,
       },
     ],
     [
@@ -908,7 +893,7 @@ describe('Helm synthesis', () => {
           },
           imports: importsForChartApiv2,
         },
-        postSynth: synthWorksForChartAPIv2WithCrds,
+        postSynth: matchSynthSnapshot,
       },
     ],
     [
@@ -923,7 +908,7 @@ describe('Helm synthesis', () => {
           },
           imports: importsForChartApiv2,
         },
-        postSynth: synthWorksForChartAPIv2WithCrds,
+        postSynth: matchSynthSnapshot,
       },
     ],
   ])('--chart-api-version is v2 and crds are present %s', async (_testName, synthOptions) => {
@@ -931,16 +916,6 @@ describe('Helm synthesis', () => {
   });
 
   const filename = path.join(__dirname, './__resources__/crds/baz.json');
-  const expectedFilename = hashAndEncode(filename);
-
-  const checkSameHashForFilename = async (dir: string) => {
-    await expectSynthMatchSnapshot(dir.concat('/dist'));
-
-    // K8s import must be ignored
-    const crdFiles = readdirSync(path.join(dir, 'dist', 'crds'));
-    expect(crdFiles.length).toEqual(1);
-    expect(crdFiles.includes(`${expectedFilename}.yaml`)).toBeTruthy();
-  };
 
   test.each([
     [
@@ -954,7 +929,7 @@ describe('Helm synthesis', () => {
             filename,
           ],
         },
-        postSynth: checkSameHashForFilename,
+        postSynth: matchSynthSnapshot,
       },
     ],
     [
@@ -970,7 +945,7 @@ describe('Helm synthesis', () => {
             filename,
           ],
         },
-        postSynth: checkSameHashForFilename,
+        postSynth: matchSynthSnapshot,
       },
     ],
     [
@@ -988,7 +963,7 @@ describe('Helm synthesis', () => {
             filename,
           ],
         },
-        postSynth: checkSameHashForFilename,
+        postSynth: matchSynthSnapshot,
       },
     ],
     [
@@ -1006,7 +981,7 @@ describe('Helm synthesis', () => {
             filename,
           ],
         },
-        postSynth: checkSameHashForFilename,
+        postSynth: matchSynthSnapshot,
       },
     ],
   ])('filename url hash remains the same across synthesis %s', async (_testName, synthOptions) => {
