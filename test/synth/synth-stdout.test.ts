@@ -9,7 +9,6 @@ import { findConstructMetadata, hashAndEncode, mkdtemp } from '../../src/util';
 
 const DEFAULT_APP = 'node index.js';
 const CHART_YAML = 'Chart.yaml';
-const imports: string[] = [];
 
 beforeEach(() => {
   // resetting so that every test can use a different config file,
@@ -1036,7 +1035,7 @@ interface SynthOptions extends SynthCliOptions {
 
 async function synth(options: SynthOptions) {
 
-  const cdk8sApp = `
+  const app = `
 const cdk8s = require('${require.resolve('cdk8s')}');
 const app = new cdk8s.App();
 const chart = new cdk8s.Chart(app, 'Chart');
@@ -1054,11 +1053,7 @@ app.synth();
     // Defined config in cdk8s.yaml file
     const config: Config | undefined = options.config;
 
-    if (config?.imports) {
-      imports.push(...config.imports);
-    }
-
-    fs.writeFileSync(path.join(dir, 'index.js'), cdk8sApp);
+    fs.writeFileSync(path.join(dir, 'index.js'), app);
 
     if (config) {
       fs.writeFileSync(path.join(dir, 'cdk8s.yaml'), yaml.stringify(config));
