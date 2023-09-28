@@ -1122,7 +1122,6 @@ function requireSynth() {
 async function expectSynthMatchSnapshot(workdir: string) {
   const files = await promisify(glob)('**', {
     cwd: workdir,
-    ignore: ['**/*.tgz'],
     nodir: true,
   });
 
