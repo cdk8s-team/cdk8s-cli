@@ -280,6 +280,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
           }
 
           copyOfSchema.properties.global = { type: 'object', additionalProperties: { type: 'object' } };
+          copyOfSchema.properties.additionalValues = { type: 'object', additionalProperties: { type: 'object' } };
         }
 
         typegen.emitType(valuesInterface, copyOfSchema, def.fqn);
@@ -323,17 +324,27 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
     function emitInitializer() {
       code.openBlock(`public constructor(scope: Construct, id: string, props: ${chartName}Props = {})`);
 
+      code.line('let updatedProps = undefined;');
+      code.line();
+      code.openBlock('if (props.values && \'additionalValues\' in props.values)');
+      code.line('const { additionalValues, ...withoutAdditionalValues } = props.values;');
+      code.open('updatedProps = {');
+      code.line('...withoutAdditionalValues,');
+      code.line('...additionalValues,');
+      code.close('};');
+      code.closeBlock();
+      code.line();
+
       code.open('const finalProps = {');
       code.line(`chart: \'${def.chartName}\',`);
       code.line(`repo: \'${repoUrl}\',`);
       code.line(`version: \'${chartVersion}\',`);
-      code.line('...props,');
+      code.line('values: (updatedProps ?? props),');
       code.close('};');
 
+      code.line();
       code.line('super(scope, id)');
-
       code.line('new Helm(scope, \'Helm\', finalProps)');
-
       code.closeBlock();
     }
   });
