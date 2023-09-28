@@ -2,10 +2,10 @@
 
 exports[`Helm synthesis --chart-api-version is v1 with all inputs from cli and no config file is present 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v1\\"
-name: \\"cdk8s-0aCYga\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-0aCYga
+  "Chart.yaml": "apiVersion: v1
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -19,10 +19,10 @@ metadata:
 
 exports[`Helm synthesis --chart-api-version is v1 with all inputs from config file and no related cli inputs 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v1\\"
-name: \\"cdk8s-5r8au7\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-5r8au7
+  "Chart.yaml": "apiVersion: v1
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -36,10 +36,10 @@ metadata:
 
 exports[`Helm synthesis --chart-api-version is v1 with different inputs in cli and config file 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v1\\"
-name: \\"cdk8s-5Fk2Xj\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-5Fk2Xj
+  "Chart.yaml": "apiVersion: v1
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -53,10 +53,10 @@ metadata:
 
 exports[`Helm synthesis --chart-api-version is v1 with inputs duplicated in cli and config file 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v1\\"
-name: \\"cdk8s-d7ABoX\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-d7ABoX
+  "Chart.yaml": "apiVersion: v1
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -70,10 +70,10 @@ metadata:
 
 exports[`Helm synthesis --chart-api-version is v2 and crds are present with all inputs from cli and no config file is present 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-jgJE8f\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-jgJE8f
+  "Chart.yaml": "apiVersion: v2
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -4062,10 +4062,10 @@ metadata:
 
 exports[`Helm synthesis --chart-api-version is v2 and crds are present with all inputs from config file and no related cli inputs 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-o2nt6A\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-o2nt6A
+  "Chart.yaml": "apiVersion: v2
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -8054,10 +8054,10 @@ metadata:
 
 exports[`Helm synthesis --chart-api-version is v2 and crds are present with different inputs in cli and config file 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-vasghx\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-vasghx
+  "Chart.yaml": "apiVersion: v2
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -12046,10 +12046,10 @@ metadata:
 
 exports[`Helm synthesis --chart-api-version is v2 and crds are present with inputs duplicated in cli and config file 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-URk4CE\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-URk4CE
+  "Chart.yaml": "apiVersion: v2
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -16038,10 +16038,10 @@ metadata:
 
 exports[`Helm synthesis --chart-api-version is v2 without crds with all inputs from cli and no config file is present 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-be8dbn\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-be8dbn
+  "Chart.yaml": "apiVersion: v2
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -16055,10 +16055,10 @@ metadata:
 
 exports[`Helm synthesis --chart-api-version is v2 without crds with all inputs from config file and no related cli inputs 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-NoB5tY\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-NoB5tY
+  "Chart.yaml": "apiVersion: v2
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -16072,10 +16072,10 @@ metadata:
 
 exports[`Helm synthesis --chart-api-version is v2 without crds with different inputs in cli and config file 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-kwNrqo\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-kwNrqo
+  "Chart.yaml": "apiVersion: v2
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -16089,10 +16089,10 @@ metadata:
 
 exports[`Helm synthesis --chart-api-version is v2 without crds with inputs duplicated in cli and config file 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-fUqlUa\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-fUqlUa
+  "Chart.yaml": "apiVersion: v2
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -16106,10 +16106,10 @@ metadata:
 
 exports[`Helm synthesis filename url hash remains the same across synthesis with all inputs from cli and no config file is present 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-jxX9w8\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-jxX9w8
+  "Chart.yaml": "apiVersion: v2
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -16170,10 +16170,10 @@ metadata:
 
 exports[`Helm synthesis filename url hash remains the same across synthesis with all inputs from config file and no related cli inputs 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-U5l3hF\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-U5l3hF
+  "Chart.yaml": "apiVersion: v2
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -16234,10 +16234,10 @@ metadata:
 
 exports[`Helm synthesis filename url hash remains the same across synthesis with different inputs in cli and config file 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-rfGosP\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-rfGosP
+  "Chart.yaml": "apiVersion: v2
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
@@ -16298,10 +16298,10 @@ metadata:
 
 exports[`Helm synthesis filename url hash remains the same across synthesis with inputs duplicated in cli and config file 1`] = `
 Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-1GYSwv\\"
-version: \\"1.1.1\\"
-description: Generated chart for cdk8s-1GYSwv
+  "Chart.yaml": "apiVersion: v2
+name: __omitted__
+version: 1.1.1
+description: __omitted__
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",

@@ -8,6 +8,7 @@ import { Config, HelmChartApiVersion, SynthesisFormat, ValidationConfig } from '
 import { findConstructMetadata, hashAndEncode, mkdtemp } from '../../src/util';
 
 const DEFAULT_APP = 'node index.js';
+const CHART_YAML = 'Chart.yaml';
 const imports: string[] = [];
 
 beforeEach(() => {
@@ -1126,8 +1127,26 @@ async function expectSynthMatchSnapshot(workdir: string) {
   });
 
   const map: Record<string, string> = {};
+
   for (const file of files) {
-    const source = fs.readFileSync(path.join(workdir, file), 'utf-8');
+    const filePath = path.join(workdir, file);
+
+    if (file === CHART_YAML) {
+      const source = fs.readFileSync(filePath, 'utf-8');
+      const yamlContents = yaml.parse(source);
+
+      expect(yamlContents.name).toMatch(/cdk8s-/);
+      expect(yamlContents.description).toMatch(/Generated chart for cdk8s-/);
+
+      // These values are not stable
+      yamlContents.name = '__omitted__';
+      yamlContents.description = '__omitted__';
+
+      map[file] = yaml.stringify(yamlContents);
+      continue;
+    }
+
+    const source = fs.readFileSync(filePath, 'utf-8');
     map[file] = source;
   }
 
