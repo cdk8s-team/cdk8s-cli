@@ -16113,7 +16113,7 @@ description: Generated chart for cdk8s-synth-test
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
-  "crds/9c78f932937e29bc032d782e274a3ad40140956954dd4515c424977aa01bf263.yaml": "{
+  "crds/c5a3fb3a7d3be748ee905eefb8976541f39c208fa5bb03da5dad1b0057bd96fa.yaml": "{
   \\"apiVersion\\": \\"apiextensions.k8s.io/v1\\",
   \\"kind\\": \\"CustomResourceDefinition\\",
   \\"metadata\\": {
@@ -16177,7 +16177,7 @@ description: Generated chart for cdk8s-synth-test
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
-  "crds/9c78f932937e29bc032d782e274a3ad40140956954dd4515c424977aa01bf263.yaml": "{
+  "crds/c5a3fb3a7d3be748ee905eefb8976541f39c208fa5bb03da5dad1b0057bd96fa.yaml": "{
   \\"apiVersion\\": \\"apiextensions.k8s.io/v1\\",
   \\"kind\\": \\"CustomResourceDefinition\\",
   \\"metadata\\": {
@@ -16241,7 +16241,7 @@ description: Generated chart for cdk8s-synth-test
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
-  "crds/9c78f932937e29bc032d782e274a3ad40140956954dd4515c424977aa01bf263.yaml": "{
+  "crds/c5a3fb3a7d3be748ee905eefb8976541f39c208fa5bb03da5dad1b0057bd96fa.yaml": "{
   \\"apiVersion\\": \\"apiextensions.k8s.io/v1\\",
   \\"kind\\": \\"CustomResourceDefinition\\",
   \\"metadata\\": {
@@ -16305,7 +16305,7 @@ description: Generated chart for cdk8s-synth-test
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
-  "crds/9c78f932937e29bc032d782e274a3ad40140956954dd4515c424977aa01bf263.yaml": "{
+  "crds/c5a3fb3a7d3be748ee905eefb8976541f39c208fa5bb03da5dad1b0057bd96fa.yaml": "{
   \\"apiVersion\\": \\"apiextensions.k8s.io/v1\\",
   \\"kind\\": \\"CustomResourceDefinition\\",
   \\"metadata\\": {
