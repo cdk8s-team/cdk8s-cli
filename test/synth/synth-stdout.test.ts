@@ -1121,6 +1121,8 @@ function requireSynth() {
 }
 
 async function expectSynthMatchSnapshot(workdir: string) {
+  const omitted = '__omitted__';
+
   const files = await promisify(glob)('**', {
     cwd: workdir,
     nodir: true,
@@ -1139,10 +1141,19 @@ async function expectSynthMatchSnapshot(workdir: string) {
       expect(yamlContents.description).toMatch(/Generated chart for cdk8s-/);
 
       // These values are not stable
-      yamlContents.name = '__omitted__';
-      yamlContents.description = '__omitted__';
+      yamlContents.name = omitted;
+      yamlContents.description = omitted;
 
       map[file] = yaml.stringify(yamlContents);
+      continue;
+    }
+
+    if (file.includes('crds/')) {
+      // crds/encodedFileName are not stable
+      const omittedName = `crds/${omitted}`;
+      const source = fs.readFileSync(filePath, 'utf-8');
+
+      map[omittedName] = source;
       continue;
     }
 
