@@ -18,17 +18,22 @@ const CHART_SCHEMA = 'values.schema.json';
 const CHART_YAML = 'Chart.yaml';
 
 export class ImportHelm extends ImportBase {
-  readonly chartName: string;
-  readonly chartUrl: string;
-  readonly chartVersion: string;
-  readonly chartSchemaPath: string | undefined;
-  readonly chartDependencies: string[] = [];
-  readonly tmpDir: string;
+  public static async fromSpec(importSpec: ImportSpec): Promise<ImportHelm> {
+    const { source } = importSpec;
+    return new ImportHelm(source);
+  }
 
-  constructor(importSpec: ImportSpec) {
+  public readonly chartName: string;
+  public readonly chartUrl: string;
+  public readonly chartVersion: string;
+  public readonly chartSchemaPath: string | undefined;
+  public readonly chartDependencies: string[] = [];
+  public readonly tmpDir: string;
+
+  private constructor(source: string) {
     super();
 
-    const [chartUrl, chartName, chartVersion] = getHelmChartDetails(importSpec.source);
+    const [chartUrl, chartName, chartVersion] = getHelmChartDetails(source);
 
     this.chartName = chartName;
     this.chartUrl = chartUrl;
@@ -38,7 +43,7 @@ export class ImportHelm extends ImportBase {
     const chartYamlFilePath = path.join(this.tmpDir, this.chartName, CHART_YAML);
     const contents = Yaml.load(chartYamlFilePath);
 
-    if (contents && contents.length === 1) {
+    if (contents && contents.length === 1 && contents[0].dependencies) {
       for (const dependency of contents[0].dependencies) {
         this.chartDependencies.push(dependency.name);
       }

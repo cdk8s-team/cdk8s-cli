@@ -40,7 +40,7 @@ async function matchImporter(importSpec: ImportSpec, argv: any): Promise<ImportB
   const prefix = importSpec.source.split(':')[0];
 
   if (prefix === 'helm') {
-    return new ImportHelm(importSpec);
+    return ImportHelm.fromSpec(importSpec);
   }
 
   // now check if its a crds.dev import
