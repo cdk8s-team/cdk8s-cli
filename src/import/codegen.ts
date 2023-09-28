@@ -324,13 +324,16 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
     function emitInitializer() {
       code.openBlock(`public constructor(scope: Construct, id: string, props: ${chartName}Props = {})`);
 
-      code.line('let updatedProps = undefined;');
+      code.line(`let updatedProps: ${chartName}Props = {};`);
       code.line();
       code.openBlock('if (props.values && \'additionalValues\' in props.values)');
-      code.line('const { additionalValues, ...withoutAdditionalValues } = props.values;');
+      code.line('const { additionalValues, ...valuesWithoutAdditionalValues } = props.values;');
       code.open('updatedProps = {');
-      code.line('...withoutAdditionalValues,');
+      code.line('...props,');
+      code.open('values: {');
+      code.line('...valuesWithoutAdditionalValues,');
       code.line('...additionalValues,');
+      code.close('}');
       code.close('};');
       code.closeBlock();
       code.line();
@@ -339,7 +342,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.line(`chart: \'${def.chartName}\',`);
       code.line(`repo: \'${repoUrl}\',`);
       code.line(`version: \'${chartVersion}\',`);
-      code.line('values: (updatedProps ?? props),');
+      code.line('...(updatedProps ?? props),');
       code.close('};');
 
       code.line();

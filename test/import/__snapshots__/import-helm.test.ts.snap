@@ -140,7 +140,7 @@ Object {
       "kind": "enum",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 105,
+        "line": 108,
       },
       "members": Array [
         Object {
@@ -171,7 +171,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 115,
+        "line": 118,
       },
       "name": "MysqlAuth",
       "properties": Array [
@@ -185,7 +185,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 137,
+            "line": 140,
           },
           "name": "password",
           "type": Object {
@@ -202,7 +202,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 132,
+            "line": 135,
           },
           "name": "username",
           "type": Object {
@@ -219,7 +219,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 152,
+            "line": 155,
           },
           "name": "createDatabase",
           "optional": true,
@@ -237,7 +237,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 127,
+            "line": 130,
           },
           "name": "database",
           "optional": true,
@@ -255,7 +255,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 147,
+            "line": 150,
           },
           "name": "replicationPassword",
           "optional": true,
@@ -273,7 +273,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 142,
+            "line": 145,
           },
           "name": "replicationUser",
           "optional": true,
@@ -293,7 +293,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 122,
+            "line": 125,
           },
           "name": "rootPassword",
           "optional": true,
@@ -316,7 +316,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 179,
+        "line": 182,
       },
       "name": "MysqlPrimary",
       "properties": Array [
@@ -330,7 +330,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 188,
+            "line": 191,
           },
           "name": "containerSecurityContext",
           "optional": true,
@@ -348,7 +348,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 193,
+            "line": 196,
           },
           "name": "persistence",
           "optional": true,
@@ -366,7 +366,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 183,
+            "line": 186,
           },
           "name": "podSecurityContext",
           "optional": true,
@@ -389,7 +389,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 284,
+        "line": 287,
       },
       "name": "MysqlPrimaryContainerSecurityContext",
       "properties": Array [
@@ -403,7 +403,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 288,
+            "line": 291,
           },
           "name": "enabled",
           "optional": true,
@@ -421,7 +421,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 293,
+            "line": 296,
           },
           "name": "runAsUser",
           "optional": true,
@@ -444,7 +444,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 315,
+        "line": 318,
       },
       "name": "MysqlPrimaryPersistence",
       "properties": Array [
@@ -458,7 +458,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 319,
+            "line": 322,
           },
           "name": "enabled",
           "optional": true,
@@ -476,7 +476,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 324,
+            "line": 327,
           },
           "name": "size",
           "optional": true,
@@ -499,7 +499,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 253,
+        "line": 256,
       },
       "name": "MysqlPrimaryPodSecurityContext",
       "properties": Array [
@@ -513,7 +513,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 257,
+            "line": 260,
           },
           "name": "enabled",
           "optional": true,
@@ -531,7 +531,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 262,
+            "line": 265,
           },
           "name": "fsGroup",
           "optional": true,
@@ -638,7 +638,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 216,
+        "line": 219,
       },
       "name": "MysqlSecondary",
       "properties": Array [
@@ -652,7 +652,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 225,
+            "line": 228,
           },
           "name": "containerSecurityContext",
           "optional": true,
@@ -670,7 +670,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 230,
+            "line": 233,
           },
           "name": "persistence",
           "optional": true,
@@ -688,7 +688,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 220,
+            "line": 223,
           },
           "name": "podSecurityContext",
           "optional": true,
@@ -711,7 +711,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 377,
+        "line": 380,
       },
       "name": "MysqlSecondaryContainerSecurityContext",
       "properties": Array [
@@ -725,7 +725,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 381,
+            "line": 384,
           },
           "name": "enabled",
           "optional": true,
@@ -743,7 +743,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 386,
+            "line": 389,
           },
           "name": "runAsUser",
           "optional": true,
@@ -766,7 +766,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 408,
+        "line": 411,
       },
       "name": "MysqlSecondaryPersistence",
       "properties": Array [
@@ -780,7 +780,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 412,
+            "line": 415,
           },
           "name": "enabled",
           "optional": true,
@@ -798,7 +798,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 417,
+            "line": 420,
           },
           "name": "size",
           "optional": true,
@@ -821,7 +821,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 346,
+        "line": 349,
       },
       "name": "MysqlSecondaryPodSecurityContext",
       "properties": Array [
@@ -835,7 +835,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 350,
+            "line": 353,
           },
           "name": "enabled",
           "optional": true,
@@ -853,7 +853,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 355,
+            "line": 358,
           },
           "name": "fsGroup",
           "optional": true,
@@ -876,7 +876,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 40,
+        "line": 43,
       },
       "name": "MysqlValues",
       "properties": Array [
@@ -890,7 +890,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 76,
+            "line": 79,
           },
           "name": "additionalValues",
           "optional": true,
@@ -914,7 +914,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 46,
+            "line": 49,
           },
           "name": "architecture",
           "optional": true,
@@ -932,7 +932,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 51,
+            "line": 54,
           },
           "name": "auth",
           "optional": true,
@@ -950,7 +950,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 66,
+            "line": 69,
           },
           "name": "common",
           "optional": true,
@@ -973,7 +973,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 71,
+            "line": 74,
           },
           "name": "global",
           "optional": true,
@@ -996,7 +996,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 56,
+            "line": 59,
           },
           "name": "primary",
           "optional": true,
@@ -1014,7 +1014,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 61,
+            "line": 64,
           },
           "name": "secondary",
           "optional": true,
@@ -2259,7 +2259,7 @@ Object {
       "kind": "enum",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 105,
+        "line": 108,
       },
       "members": Array [
         Object {
@@ -2290,7 +2290,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 115,
+        "line": 118,
       },
       "name": "MysqlAuth",
       "properties": Array [
@@ -2304,7 +2304,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 137,
+            "line": 140,
           },
           "name": "password",
           "type": Object {
@@ -2321,7 +2321,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 132,
+            "line": 135,
           },
           "name": "username",
           "type": Object {
@@ -2338,7 +2338,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 152,
+            "line": 155,
           },
           "name": "createDatabase",
           "optional": true,
@@ -2356,7 +2356,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 127,
+            "line": 130,
           },
           "name": "database",
           "optional": true,
@@ -2374,7 +2374,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 147,
+            "line": 150,
           },
           "name": "replicationPassword",
           "optional": true,
@@ -2392,7 +2392,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 142,
+            "line": 145,
           },
           "name": "replicationUser",
           "optional": true,
@@ -2412,7 +2412,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 122,
+            "line": 125,
           },
           "name": "rootPassword",
           "optional": true,
@@ -2435,7 +2435,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 179,
+        "line": 182,
       },
       "name": "MysqlPrimary",
       "properties": Array [
@@ -2449,7 +2449,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 188,
+            "line": 191,
           },
           "name": "containerSecurityContext",
           "optional": true,
@@ -2467,7 +2467,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 193,
+            "line": 196,
           },
           "name": "persistence",
           "optional": true,
@@ -2485,7 +2485,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 183,
+            "line": 186,
           },
           "name": "podSecurityContext",
           "optional": true,
@@ -2508,7 +2508,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 284,
+        "line": 287,
       },
       "name": "MysqlPrimaryContainerSecurityContext",
       "properties": Array [
@@ -2522,7 +2522,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 288,
+            "line": 291,
           },
           "name": "enabled",
           "optional": true,
@@ -2540,7 +2540,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 293,
+            "line": 296,
           },
           "name": "runAsUser",
           "optional": true,
@@ -2563,7 +2563,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 315,
+        "line": 318,
       },
       "name": "MysqlPrimaryPersistence",
       "properties": Array [
@@ -2577,7 +2577,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 319,
+            "line": 322,
           },
           "name": "enabled",
           "optional": true,
@@ -2595,7 +2595,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 324,
+            "line": 327,
           },
           "name": "size",
           "optional": true,
@@ -2618,7 +2618,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 253,
+        "line": 256,
       },
       "name": "MysqlPrimaryPodSecurityContext",
       "properties": Array [
@@ -2632,7 +2632,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 257,
+            "line": 260,
           },
           "name": "enabled",
           "optional": true,
@@ -2650,7 +2650,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 262,
+            "line": 265,
           },
           "name": "fsGroup",
           "optional": true,
@@ -2757,7 +2757,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 216,
+        "line": 219,
       },
       "name": "MysqlSecondary",
       "properties": Array [
@@ -2771,7 +2771,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 225,
+            "line": 228,
           },
           "name": "containerSecurityContext",
           "optional": true,
@@ -2789,7 +2789,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 230,
+            "line": 233,
           },
           "name": "persistence",
           "optional": true,
@@ -2807,7 +2807,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 220,
+            "line": 223,
           },
           "name": "podSecurityContext",
           "optional": true,
@@ -2830,7 +2830,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 377,
+        "line": 380,
       },
       "name": "MysqlSecondaryContainerSecurityContext",
       "properties": Array [
@@ -2844,7 +2844,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 381,
+            "line": 384,
           },
           "name": "enabled",
           "optional": true,
@@ -2862,7 +2862,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 386,
+            "line": 389,
           },
           "name": "runAsUser",
           "optional": true,
@@ -2885,7 +2885,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 408,
+        "line": 411,
       },
       "name": "MysqlSecondaryPersistence",
       "properties": Array [
@@ -2899,7 +2899,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 412,
+            "line": 415,
           },
           "name": "enabled",
           "optional": true,
@@ -2917,7 +2917,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 417,
+            "line": 420,
           },
           "name": "size",
           "optional": true,
@@ -2940,7 +2940,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 346,
+        "line": 349,
       },
       "name": "MysqlSecondaryPodSecurityContext",
       "properties": Array [
@@ -2954,7 +2954,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 350,
+            "line": 353,
           },
           "name": "enabled",
           "optional": true,
@@ -2972,7 +2972,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 355,
+            "line": 358,
           },
           "name": "fsGroup",
           "optional": true,
@@ -2995,7 +2995,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 40,
+        "line": 43,
       },
       "name": "MysqlValues",
       "properties": Array [
@@ -3009,7 +3009,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 76,
+            "line": 79,
           },
           "name": "additionalValues",
           "optional": true,
@@ -3033,7 +3033,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 46,
+            "line": 49,
           },
           "name": "architecture",
           "optional": true,
@@ -3051,7 +3051,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 51,
+            "line": 54,
           },
           "name": "auth",
           "optional": true,
@@ -3069,7 +3069,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 66,
+            "line": 69,
           },
           "name": "common",
           "optional": true,
@@ -3092,7 +3092,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 71,
+            "line": 74,
           },
           "name": "global",
           "optional": true,
@@ -3115,7 +3115,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 56,
+            "line": 59,
           },
           "name": "primary",
           "optional": true,
@@ -3133,7 +3133,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 61,
+            "line": 64,
           },
           "name": "secondary",
           "optional": true,
@@ -3165,13 +3165,16 @@ export interface MysqlProps {
 
 export class Mysql extends Construct {
   public constructor(scope: Construct, id: string, props: MysqlProps = {}) {
-    let updatedProps = undefined;
+    let updatedProps: MysqlProps = {};
 
     if (props.values && 'additionalValues' in props.values) {
-      const { additionalValues, ...withoutAdditionalValues } = props.values;
+      const { additionalValues, ...valuesWithoutAdditionalValues } = props.values;
       updatedProps = {
-        ...withoutAdditionalValues,
-        ...additionalValues,
+        ...props,
+        values: {
+          ...valuesWithoutAdditionalValues,
+          ...additionalValues,
+        }
       };
     }
 
@@ -3179,7 +3182,7 @@ export class Mysql extends Construct {
       chart: 'mysql',
       repo: 'https://charts.bitnami.com/bitnami',
       version: '9.10.10',
-      values: (updatedProps ?? props),
+      ...(updatedProps ?? props),
     };
 
     super(scope, id)
@@ -4250,13 +4253,16 @@ export interface IngressnginxProps {
 
 export class Ingressnginx extends Construct {
   public constructor(scope: Construct, id: string, props: IngressnginxProps = {}) {
-    let updatedProps = undefined;
+    let updatedProps: IngressnginxProps = {};
 
     if (props.values && 'additionalValues' in props.values) {
-      const { additionalValues, ...withoutAdditionalValues } = props.values;
+      const { additionalValues, ...valuesWithoutAdditionalValues } = props.values;
       updatedProps = {
-        ...withoutAdditionalValues,
-        ...additionalValues,
+        ...props,
+        values: {
+          ...valuesWithoutAdditionalValues,
+          ...additionalValues,
+        }
       };
     }
 
@@ -4264,7 +4270,7 @@ export class Ingressnginx extends Construct {
       chart: 'ingress-nginx',
       repo: 'https://kubernetes.github.io/ingress-nginx',
       version: '4.8.0',
-      values: (updatedProps ?? props),
+      ...(updatedProps ?? props),
     };
 
     super(scope, id)
