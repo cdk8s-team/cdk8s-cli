@@ -342,7 +342,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.line(`chart: \'${def.chartName}\',`);
       code.line(`repo: \'${repoUrl}\',`);
       code.line(`version: \'${chartVersion}\',`);
-      code.line('...(updatedProps ?? props),');
+      code.line('...(Object.keys(updatedProps).length !== 0 ? updatedProps : props),');
       code.close('};');
 
       code.line();
