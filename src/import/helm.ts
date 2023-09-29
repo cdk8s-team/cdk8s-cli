@@ -26,7 +26,7 @@ export class ImportHelm extends ImportBase {
   private readonly chartVersion: string;
   private readonly chartSchemaPath: string | undefined;
   private readonly chartDependencies: string[] = [];
-  private readonly tmpDir: string;
+  private readonly schema: JSONSchema4 | undefined;
 
   private constructor(source: string) {
     super();
@@ -36,19 +36,22 @@ export class ImportHelm extends ImportBase {
     this.chartName = chartName;
     this.chartUrl = chartUrl;
     this.chartVersion = chartVersion;
-    this.tmpDir = pullHelmRepo(chartUrl, chartName, chartVersion);
+    const tmpDir = pullHelmRepo(chartUrl, chartName, chartVersion);
 
-    const chartYamlFilePath = path.join(this.tmpDir, this.chartName, CHART_YAML);
+    const chartYamlFilePath = path.join(tmpDir, this.chartName, CHART_YAML);
     const contents = Yaml.load(chartYamlFilePath);
 
-    if (contents && contents.length === 1 && contents[0].dependencies) {
+    if (contents.length === 1 && contents[0].dependencies) {
       for (const dependency of contents[0].dependencies) {
         this.chartDependencies.push(dependency.name);
       }
     }
 
-    const potentialSchemaPath = path.join(this.tmpDir, this.chartName, CHART_SCHEMA);
+    const potentialSchemaPath = path.join(tmpDir, this.chartName, CHART_SCHEMA);
     this.chartSchemaPath = fs.existsSync(potentialSchemaPath) ? potentialSchemaPath : undefined;
+    this.schema = this.chartSchemaPath ? JSON.parse(fs.readFileSync(this.chartSchemaPath, 'utf-8')) : undefined;
+
+    cleanup(tmpDir);
   }
 
   public get moduleNames() {
@@ -56,22 +59,14 @@ export class ImportHelm extends ImportBase {
   }
 
   protected async generateTypeScript(code: CodeMaker) {
-
     emitHelmHeader(code);
 
-    let schema: JSONSchema4 | undefined;
-    if (this.chartSchemaPath !== undefined) {
-      schema = JSON.parse(fs.readFileSync(this.chartSchemaPath, 'utf-8'));
-    } else {
-      schema = undefined;
-    }
-
     const types = new TypeGenerator({
-      definitions: schema?.definitions,
+      definitions: this.schema?.definitions,
     });
 
     generateHelmConstruct(types, {
-      schema: schema,
+      schema: this.schema,
       chartName: this.chartName,
       chartUrl: this.chartUrl,
       chartVersion: this.chartVersion,
@@ -80,8 +75,6 @@ export class ImportHelm extends ImportBase {
     });
 
     code.line(types.render());
-
-    cleanup(this.tmpDir);
   }
 }
 
