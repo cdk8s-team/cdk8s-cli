@@ -4,9 +4,7 @@ import * as os from 'os';
 import * as path from 'path';
 import { Yaml } from 'cdk8s';
 import { CodeMaker } from 'codemaker';
-// we just need the types from json-schema
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { JSONSchema4 } from 'json-schema';
+import type { JSONSchema4 } from 'json-schema';
 import { TypeGenerator } from 'json2jsii';
 import * as semver from 'semver';
 import { ImportBase } from './base';
@@ -23,17 +21,17 @@ export class ImportHelm extends ImportBase {
     return new ImportHelm(source);
   }
 
-  public readonly chartName: string;
-  public readonly chartUrl: string;
-  public readonly chartVersion: string;
-  public readonly chartSchemaPath: string | undefined;
-  public readonly chartDependencies: string[] = [];
-  public readonly tmpDir: string;
+  private readonly chartName: string;
+  private readonly chartUrl: string;
+  private readonly chartVersion: string;
+  private readonly chartSchemaPath: string | undefined;
+  private readonly chartDependencies: string[] = [];
+  private readonly tmpDir: string;
 
   private constructor(source: string) {
     super();
 
-    const [chartUrl, chartName, chartVersion] = getHelmChartDetails(source);
+    const [chartUrl, chartName, chartVersion] = extractHelmChartDetails(source);
 
     this.chartName = chartName;
     this.chartUrl = chartUrl;
@@ -50,12 +48,7 @@ export class ImportHelm extends ImportBase {
     }
 
     const potentialSchemaPath = path.join(this.tmpDir, this.chartName, CHART_SCHEMA);
-
-    if (fs.existsSync(potentialSchemaPath)) {
-      this.chartSchemaPath = potentialSchemaPath;
-    } else {
-      this.chartSchemaPath = undefined;
-    }
+    this.chartSchemaPath = fs.existsSync(potentialSchemaPath) ? potentialSchemaPath : undefined;
   }
 
   public get moduleNames() {
@@ -93,28 +86,18 @@ export class ImportHelm extends ImportBase {
 }
 
 /**
- * Validating if a helm chart url is in an expected format
- * @param url
- */
-function validateHelmUrl(url: string): RegExpExecArray {
-  const helmRegex = /^helm:([A-Za-z0-9_.-:\-]+)\/([A-Za-z0-9_.-:\-]+)\@([0-9]+)\.([0-9]+)\.([A-Za-z0-9-+]+)$/;
-  const match = helmRegex.exec(url);
-
-  if (match) {
-    return match;
-  } else {
-    throw Error(`There was an error processing the helm chart url you passed in: ${url}. Make sure it matches the format of 'helm:<repo-url>/<chart-name>@<chart-version>'.`);
-  }
-}
-
-/**
  * Gets information about the helm chart from the helm url
  * @param url
  * @returns chartUrl, chartName and chartVersion
  */
-function getHelmChartDetails(url: string) {
+function extractHelmChartDetails(url: string) {
+  const helmRegex = /^helm:([A-Za-z0-9_.-:\-]+)\/([A-Za-z0-9_.-:\-]+)\@([0-9]+)\.([0-9]+)\.([A-Za-z0-9-+]+)$/;
+  const helmDetails = helmRegex.exec(url);
 
-  const helmDetails = validateHelmUrl(url);
+  if (!helmDetails) {
+    throw Error(`Invalid helm URL: ${url}. Must match the format: 'helm:<repo-url>/<chart-name>@<chart-version>'.`);
+  }
+
   const chartUrl = helmDetails[1];
   const chartName = helmDetails[2];
   const major = helmDetails[3];
@@ -124,7 +107,7 @@ function getHelmChartDetails(url: string) {
   const chartVersion = `${major}.${minor}.${patch}`;
 
   if (!semver.valid(chartVersion)) {
-    throw new Error(`The value specified in '${url}' for chart version: '${chartVersion}' does not follow SemVer-2(https://semver.org/).`);
+    throw new Error(`Invalid chart version (${chartVersion}) in URL: ${url}. Must follow SemVer-2 (see https://semver.org/).`);
   }
 
   return [chartUrl, chartName, chartVersion];
@@ -157,10 +140,10 @@ function pullHelmRepo(chartUrl: string, chartName: string, chartVersion: string)
   if (helm.error) {
     const err = helm.error.message;
     if (err.includes('ENOENT')) {
-      throw new Error(`unable to execute '${command}' to pull the Helm chart. Is it installed on your system?`);
+      throw new Error(`Unable to execute '${command}' to pull the Helm chart. Is helm installed on your system?`);
     }
 
-    throw new Error(`error while pulling a helm chart: ${err}`);
+    throw new Error(`Failed pulling helm chart from URL (${chartUrl}): ${err}`);
   }
 
   if (helm.status !== 0) {
