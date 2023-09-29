@@ -1792,10 +1792,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.61.23:
-  version "1.61.23"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.61.23.tgz#d7adb6793cced27f2ed909d55571c80826ba1730"
-  integrity sha512-1FaA8wSL/2IFP9lniHQ+r8xhUSPTQaruC++4I0PzyA9Hx34ZzTpn2unIxRQGw+DbW5KGJ68ih+caeAYvxIzhNQ==
+cdk8s@^1.61.24:
+  version "1.61.24"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.61.24.tgz#a8e6354480cd81f983860435aa0859b35647beed"
+  integrity sha512-L/UZZEfmXuph3DHP1eBivIz6j2ROuvijmWFbIscRvkDQYkgNWpLut1ECmB1uOJe/bnztGLKqCCbJmBAT9ocF+A==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -5076,9 +5076,9 @@ minipass@^5.0.0:
   integrity sha512-3FnjYuehv9k6ovOEbyOswadCDPX1piCfhV8ncmYtHOjuPwylVWsghTLo7rabjC3Rx5xD4HDx8Wm1xnMF7S5qFQ==
 
 "minipass@^5.0.0 || ^6.0.2 || ^7.0.0", minipass@^7.0.3:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/minipass/-/minipass-7.0.3.tgz#05ea638da44e475037ed94d1c7efcc76a25e1974"
-  integrity sha512-LhbbwCfz3vsb12j/WkWQPZfKTsgqIe1Nf/ti1pKjYESGLHIVjWU96G9/ljLH4F9mWNVhlQOm0VySdAWzf05dpg==
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/minipass/-/minipass-7.0.4.tgz#dbce03740f50a4786ba994c1fb908844d27b038c"
+  integrity sha512-jYofLM5Dam9279rdkWzqHozUo4ybjdZmCsDHePy5V/PbBcVMiSZR97gmAy45aqi8CK1lG2ECd356FU86avfwUQ==
 
 minizlib@^2.1.1, minizlib@^2.1.2:
   version "2.1.2"
@@ -6916,9 +6916,9 @@ typescript-json-schema@^0.61.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20230927"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230927.tgz#339a6ccc58a5ae6b0606be2ae8bcc1bcf88270d2"
-  integrity sha512-FHoT/nbOZjlXfK1yYTtCVT6yOp7Y9Vab/8Do4KiEGl3jI6rxPD7d1ssB/5vlH4ZXZ//0DW96vsvp/OUyjxCqgA==
+  version "5.3.0-dev.20230928"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20230928.tgz#6fc17ac2d0771b9fe2ec278e3b4076d64f7c33ae"
+  integrity sha512-s1YWephleBssMVVMHux7sjeC3hREYXcsXg1srPToovO5p9QrDzkulpKmGx3Q7fJz1z2jcptYzrMRlPO7udDMzQ==
 
 typescript@~3.9.10:
   version "3.9.10"
