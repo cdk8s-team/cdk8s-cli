@@ -46,6 +46,12 @@ export function readConfigSync(): Config {
 }
 
 export async function addImportToConfig(source: string) {
+
+  if (!fs.existsSync(CONFIG_FILE)) {
+    // cdk8s import might be executed outside of an application (i.e without a config file)
+    return;
+  }
+
   let curConfig = yaml.parse(fs.readFileSync(CONFIG_FILE, 'utf-8'));
 
   const curImports = curConfig.imports ?? [];
