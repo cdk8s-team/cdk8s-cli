@@ -60,7 +60,6 @@ const project = new Cdk8sTeamTypeScriptProject({
   ],
   backport: true,
   backportBranches: ['1.x'],
-
 });
 
 project.tsconfig?.addInclude('src/schemas/*.json');

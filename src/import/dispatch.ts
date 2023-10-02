@@ -3,8 +3,7 @@ import { ImportCustomResourceDefinition } from './crd';
 import { matchCrdsDevUrl } from './crds-dev';
 import { ImportKubernetesApi } from './k8s';
 import { ImportSpec, addImportToConfig } from '../config';
-
-export const PREFIX_DELIM = ':=';
+import { PREFIX_DELIM } from '../util';
 
 export async function importDispatch(imports: ImportSpec[], argv: any, options: ImportOptions) {
   for (const importSpec of imports) {
@@ -28,7 +27,7 @@ export async function importDispatch(imports: ImportSpec[], argv: any, options: 
   }
 }
 
-async function matchImporter(importSpec: ImportSpec, argv: any): Promise<ImportBase> {
+export async function matchImporter(importSpec: ImportSpec, argv: any): Promise<ImportBase> {
 
   // first check if its a `k8s@` import
   const k8s = await ImportKubernetesApi.match(importSpec, argv);
