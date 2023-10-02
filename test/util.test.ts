@@ -50,10 +50,14 @@ describe('findManifests', () => {
 
 test('derive file name from url', () => {
   const devUrl = 'github:crossplane/crossplane@0.14.0';
-  const localFile = './foo/bar/baz/fooz.yaml';
+  const rawUrl = 'https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart/jenkins-operator/crds/jenkins-crd.yaml';
+  const YamlFile = './foo/bar/baz/fooz.yaml';
+  const YmlFile = './foo/bar/baz/fooz.yml';
 
   expect(deriveFileName(devUrl)).toEqual('crossplane');
-  expect(deriveFileName(localFile)).toEqual('fooz');
+  expect(deriveFileName(rawUrl)).toEqual('jenkins-crd');
+  expect(deriveFileName(YamlFile)).toEqual('fooz');
+  expect(deriveFileName(YmlFile)).toEqual('fooz');
 });
 
 test('parsing imports', () => {

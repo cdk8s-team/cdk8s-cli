@@ -301,7 +301,7 @@ export function deriveFileName(url: string): string {
     filename = (lastIndexOfSlash > 0 && lastIndexOfAt > 0) ? devUrl.slice(lastIndexOfSlash+1, lastIndexOfAt): undefined;
   } else {
     const lastIndexOfSlash = url.lastIndexOf('/');
-    const lastIndexOfYaml = url.lastIndexOf('.yaml');
+    const lastIndexOfYaml = url.lastIndexOf('.yaml') > 0 ? url.lastIndexOf('.yaml') : url.lastIndexOf('.yml');
 
     filename = (lastIndexOfSlash > 0 && lastIndexOfYaml > 0) ? url.slice(lastIndexOfSlash+1, lastIndexOfYaml): undefined;
   }
