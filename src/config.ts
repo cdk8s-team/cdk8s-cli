@@ -1,5 +1,3 @@
-import * as os from 'os';
-import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import { Language } from './import/base';
@@ -12,12 +10,27 @@ export interface ImportSpec {
 }
 
 export interface ValidationConfig {
-
   readonly package: string;
   readonly version: string;
   readonly class: string;
   readonly installEnv?: { [key: string]: any };
   readonly properties?: { [key: string]: any };
+}
+
+export enum SynthesisFormat {
+  PLAIN = 'plain',
+  HELM = 'helm',
+}
+
+export enum HelmChartApiVersion {
+  V1 = 'v1',
+  V2 = 'v2',
+}
+
+export interface SynthConfig {
+  readonly format?: SynthesisFormat;
+  readonly chartApiVersion?: HelmChartApiVersion;
+  readonly chartVersion?: string;
 }
 
 export interface Config {
@@ -27,22 +40,19 @@ export interface Config {
   readonly imports?: string[];
   readonly pluginsDirectory?: string;
   readonly validations?: string | ValidationConfig[];
+  readonly synthConfig?: SynthConfig;
 }
 
-const DEFAULTS: Config = {
-  output: 'dist',
-  pluginsDirectory: path.join(os.homedir(), '.cdk8s', 'plugins'),
-};
-
-export function readConfigSync(): Config {
-  let config: Config = DEFAULTS;
+export function readConfigSync(): Config | undefined {
   if (fs.existsSync(CONFIG_FILE)) {
-    config = {
-      ...config,
+    const config = {
       ...yaml.parse(fs.readFileSync(CONFIG_FILE, 'utf-8')),
     };
+
+    return config;
   }
-  return config;
+
+  return undefined;
 }
 
 export async function addImportToConfig(source: string) {

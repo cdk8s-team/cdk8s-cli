@@ -1,5 +1,6 @@
 import { spawn, SpawnOptions } from 'child_process';
-import { promises } from 'fs';
+import { BinaryToTextEncoding, createHash } from 'crypto';
+import { existsSync, promises } from 'fs';
 import * as http from 'http';
 import * as https from 'https';
 import * as os from 'os';
@@ -8,9 +9,12 @@ import { parse } from 'url';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';
 import { ImportSpec, ValidationConfig } from './config';
+import { matchCrdsDevUrl } from './import/crds-dev';
 import { PluginManager } from './plugins/_manager';
 import { ValidationPlugin, ValidationContext, ValidationReport, Validation } from './plugins/validation';
 import { SafeReviver } from './reviver';
+
+export const PREFIX_DELIM = ':=';
 
 export async function shell(program: string, args: string[] = [], options: SpawnOptions = { }): Promise<string> {
   const command = `"${program} ${args.join(' ')}" at ${path.resolve(options.cwd?.toString() ?? '.')}`;
@@ -258,7 +262,7 @@ export interface SynthesizedApp {
 }
 
 export function parseImports(spec: string): ImportSpec {
-  const splitImport = spec.split(':=');
+  const splitImport = spec.split(PREFIX_DELIM);
 
   // k8s@x.y.z
   // crd.yaml
@@ -279,4 +283,48 @@ export function parseImports(spec: string): ImportSpec {
   }
 
   throw new Error('Unable to parse import specification. Syntax is [NAME:=]SPEC');
+}
+
+export function hashAndEncode(input: string, algorithm: string = 'sha256', encoding: BinaryToTextEncoding = 'hex'): string {
+  const hash = createHash(algorithm);
+  hash.update(input);
+  return hash.digest(encoding);
+}
+
+export function deriveFileName(url: string): string {
+  const devUrl = matchCrdsDevUrl(url);
+  let filename = undefined;
+
+  if (devUrl) {
+    const lastIndexOfSlash = devUrl.lastIndexOf('/');
+    const lastIndexOfAt = devUrl.lastIndexOf('@');
+    filename = (lastIndexOfSlash > 0 && lastIndexOfAt > 0) ? devUrl.slice(lastIndexOfSlash+1, lastIndexOfAt): undefined;
+  } else {
+    const lastIndexOfSlash = url.lastIndexOf('/');
+    const lastIndexOfYaml = url.lastIndexOf('.yaml') > 0 ? url.lastIndexOf('.yaml') : url.lastIndexOf('.yml');
+
+    filename = (lastIndexOfSlash > 0 && lastIndexOfYaml > 0) ? url.slice(lastIndexOfSlash+1, lastIndexOfYaml): undefined;
+  }
+
+  if (!filename) {
+    // If the url if for a local file, then just encode the filename and not the entire path
+    // Since path can depend on platform
+    let file = existsSync(url) ? path.basename(url) : url;
+
+    filename = hashAndEncode(file);
+  }
+
+  return filename;
+}
+
+export function isK8sImport(value: string): boolean {
+  if (value !== 'k8s' && !value.startsWith('k8s@')) {
+    return false;
+  }
+
+  return true;
+}
+
+export function crdsArePresent(imprts: string[] | undefined): boolean {
+  return (imprts ?? []).some(imprt => !isK8sImport(imprt));
 }
