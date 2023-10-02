@@ -629,4 +629,14 @@ describe('cdk8s.yaml file', () => {
 
   });
 
+  test('doesnt have to exist when importing', async () => {
+
+    const spec: ImportSpec = { ...jenkinsCRD, moduleNamePrefix: 'jenk' };
+
+    fs.removeSync('cdk8s.yaml');
+
+    await importDispatch([spec], {}, { ...importOptions });
+
+  });
+
 });
