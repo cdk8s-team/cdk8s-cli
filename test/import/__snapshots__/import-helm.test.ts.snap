@@ -140,7 +140,7 @@ Object {
       "kind": "enum",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 110,
+        "line": 125,
       },
       "members": Array [
         Object {
@@ -171,7 +171,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 120,
+        "line": 135,
       },
       "name": "MysqlAuth",
       "properties": Array [
@@ -185,7 +185,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 142,
+            "line": 157,
           },
           "name": "password",
           "type": Object {
@@ -202,11 +202,35 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 137,
+            "line": 152,
           },
           "name": "username",
           "type": Object {
             "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlAuth#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 179,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
           },
         },
         Object {
@@ -219,7 +243,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 157,
+            "line": 172,
           },
           "name": "createDatabase",
           "optional": true,
@@ -237,7 +261,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 132,
+            "line": 147,
           },
           "name": "database",
           "optional": true,
@@ -255,7 +279,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 152,
+            "line": 167,
           },
           "name": "replicationPassword",
           "optional": true,
@@ -273,7 +297,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 147,
+            "line": 162,
           },
           "name": "replicationUser",
           "optional": true,
@@ -293,7 +317,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 127,
+            "line": 142,
           },
           "name": "rootPassword",
           "optional": true,
@@ -316,10 +340,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 184,
+        "line": 207,
       },
       "name": "MysqlPrimary",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimary#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 228,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -330,7 +378,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 193,
+            "line": 216,
           },
           "name": "containerSecurityContext",
           "optional": true,
@@ -348,7 +396,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 198,
+            "line": 221,
           },
           "name": "persistence",
           "optional": true,
@@ -366,7 +414,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 188,
+            "line": 211,
           },
           "name": "podSecurityContext",
           "optional": true,
@@ -389,10 +437,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 289,
+        "line": 336,
       },
       "name": "MysqlPrimaryContainerSecurityContext",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimaryContainerSecurityContext#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 352,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -403,7 +475,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 293,
+            "line": 340,
           },
           "name": "enabled",
           "optional": true,
@@ -421,7 +493,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 298,
+            "line": 345,
           },
           "name": "runAsUser",
           "optional": true,
@@ -444,10 +516,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 320,
+        "line": 375,
       },
       "name": "MysqlPrimaryPersistence",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimaryPersistence#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 391,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -458,7 +554,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 324,
+            "line": 379,
           },
           "name": "enabled",
           "optional": true,
@@ -476,7 +572,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 329,
+            "line": 384,
           },
           "name": "size",
           "optional": true,
@@ -499,10 +595,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 258,
+        "line": 297,
       },
       "name": "MysqlPrimaryPodSecurityContext",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimaryPodSecurityContext#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 313,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -513,7 +633,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 262,
+            "line": 301,
           },
           "name": "enabled",
           "optional": true,
@@ -531,7 +651,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 267,
+            "line": 306,
           },
           "name": "fsGroup",
           "optional": true,
@@ -638,10 +758,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 221,
+        "line": 252,
       },
       "name": "MysqlSecondary",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondary#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 273,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -652,7 +796,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 230,
+            "line": 261,
           },
           "name": "containerSecurityContext",
           "optional": true,
@@ -670,7 +814,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 235,
+            "line": 266,
           },
           "name": "persistence",
           "optional": true,
@@ -688,7 +832,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 225,
+            "line": 256,
           },
           "name": "podSecurityContext",
           "optional": true,
@@ -711,10 +855,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 382,
+        "line": 453,
       },
       "name": "MysqlSecondaryContainerSecurityContext",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondaryContainerSecurityContext#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 469,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -725,7 +893,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 386,
+            "line": 457,
           },
           "name": "enabled",
           "optional": true,
@@ -743,7 +911,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 391,
+            "line": 462,
           },
           "name": "runAsUser",
           "optional": true,
@@ -766,10 +934,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 413,
+        "line": 492,
       },
       "name": "MysqlSecondaryPersistence",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondaryPersistence#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 508,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -780,7 +972,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 417,
+            "line": 496,
           },
           "name": "enabled",
           "optional": true,
@@ -798,7 +990,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 422,
+            "line": 501,
           },
           "name": "size",
           "optional": true,
@@ -821,10 +1013,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 351,
+        "line": 414,
       },
       "name": "MysqlSecondaryPodSecurityContext",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondaryPodSecurityContext#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 430,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -835,7 +1051,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 355,
+            "line": 418,
           },
           "name": "enabled",
           "optional": true,
@@ -853,7 +1069,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 360,
+            "line": 423,
           },
           "name": "fsGroup",
           "optional": true,
@@ -876,7 +1092,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 43,
+        "line": 58,
       },
       "name": "MysqlValues",
       "properties": Array [
@@ -891,7 +1107,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 81,
+            "line": 96,
           },
           "name": "additionalValues",
           "optional": true,
@@ -915,7 +1131,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 49,
+            "line": 64,
           },
           "name": "architecture",
           "optional": true,
@@ -933,7 +1149,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 54,
+            "line": 69,
           },
           "name": "auth",
           "optional": true,
@@ -951,7 +1167,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 69,
+            "line": 84,
           },
           "name": "common",
           "optional": true,
@@ -974,7 +1190,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 74,
+            "line": 89,
           },
           "name": "global",
           "optional": true,
@@ -997,7 +1213,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 59,
+            "line": 74,
           },
           "name": "primary",
           "optional": true,
@@ -1015,7 +1231,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 64,
+            "line": 79,
           },
           "name": "secondary",
           "optional": true,
@@ -1109,6 +1325,7 @@ class MysqlArchitecture(enum.Enum):
     name_mapping={
         \\"password\\": \\"password\\",
         \\"username\\": \\"username\\",
+        \\"additional_values\\": \\"additionalValues\\",
         \\"create_database\\": \\"createDatabase\\",
         \\"database\\": \\"database\\",
         \\"replication_password\\": \\"replicationPassword\\",
@@ -1122,6 +1339,7 @@ class MysqlAuth:
         *,
         password: builtins.str,
         username: builtins.str,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
         create_database: typing.Optional[builtins.bool] = None,
         database: typing.Optional[builtins.str] = None,
         replication_password: typing.Optional[builtins.str] = None,
@@ -1131,6 +1349,7 @@ class MysqlAuth:
         '''
         :param password: 
         :param username: 
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
         :param create_database: 
         :param database: 
         :param replication_password: 
@@ -1143,6 +1362,7 @@ class MysqlAuth:
             type_hints = typing.get_type_hints(_typecheckingstub__ee06bc5fa81868398bad26c41946af017c8765bcca5abe66e5d88d360a20e315)
             check_type(argname=\\"argument password\\", value=password, expected_type=type_hints[\\"password\\"])
             check_type(argname=\\"argument username\\", value=username, expected_type=type_hints[\\"username\\"])
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument create_database\\", value=create_database, expected_type=type_hints[\\"create_database\\"])
             check_type(argname=\\"argument database\\", value=database, expected_type=type_hints[\\"database\\"])
             check_type(argname=\\"argument replication_password\\", value=replication_password, expected_type=type_hints[\\"replication_password\\"])
@@ -1152,6 +1372,8 @@ class MysqlAuth:
             \\"password\\": password,
             \\"username\\": username,
         }
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
         if create_database is not None:
             self._values[\\"create_database\\"] = create_database
         if database is not None:
@@ -1180,6 +1402,17 @@ class MysqlAuth:
         result = self._values.get(\\"username\\")
         assert result is not None, \\"Required property 'username' is missing\\"
         return typing.cast(builtins.str, result)
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: MysqlAuth#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
 
     @builtins.property
     def create_database(self) -> typing.Optional[builtins.bool]:
@@ -1240,6 +1473,7 @@ class MysqlAuth:
     jsii_type=\\"mysql.MysqlPrimary\\",
     jsii_struct_bases=[],
     name_mapping={
+        \\"additional_values\\": \\"additionalValues\\",
         \\"container_security_context\\": \\"containerSecurityContext\\",
         \\"persistence\\": \\"persistence\\",
         \\"pod_security_context\\": \\"podSecurityContext\\",
@@ -1249,11 +1483,13 @@ class MysqlPrimary:
     def __init__(
         self,
         *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
         container_security_context: typing.Optional[typing.Union[\\"MysqlPrimaryContainerSecurityContext\\", typing.Dict[builtins.str, typing.Any]]] = None,
         persistence: typing.Optional[typing.Union[\\"MysqlPrimaryPersistence\\", typing.Dict[builtins.str, typing.Any]]] = None,
         pod_security_context: typing.Optional[typing.Union[\\"MysqlPrimaryPodSecurityContext\\", typing.Dict[builtins.str, typing.Any]]] = None,
     ) -> None:
         '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
         :param container_security_context: 
         :param persistence: 
         :param pod_security_context: 
@@ -1268,16 +1504,30 @@ class MysqlPrimary:
             pod_security_context = MysqlPrimaryPodSecurityContext(**pod_security_context)
         if __debug__:
             type_hints = typing.get_type_hints(_typecheckingstub__5f80f16db85307f6e2dc2fd18749079a45e96857945ee617d44938b1e1fa49dd)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument container_security_context\\", value=container_security_context, expected_type=type_hints[\\"container_security_context\\"])
             check_type(argname=\\"argument persistence\\", value=persistence, expected_type=type_hints[\\"persistence\\"])
             check_type(argname=\\"argument pod_security_context\\", value=pod_security_context, expected_type=type_hints[\\"pod_security_context\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
         if container_security_context is not None:
             self._values[\\"container_security_context\\"] = container_security_context
         if persistence is not None:
             self._values[\\"persistence\\"] = persistence
         if pod_security_context is not None:
             self._values[\\"pod_security_context\\"] = pod_security_context
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: MysqlPrimary#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
 
     @builtins.property
     def container_security_context(
@@ -1320,16 +1570,22 @@ class MysqlPrimary:
 @jsii.data_type(
     jsii_type=\\"mysql.MysqlPrimaryContainerSecurityContext\\",
     jsii_struct_bases=[],
-    name_mapping={\\"enabled\\": \\"enabled\\", \\"run_as_user\\": \\"runAsUser\\"},
+    name_mapping={
+        \\"additional_values\\": \\"additionalValues\\",
+        \\"enabled\\": \\"enabled\\",
+        \\"run_as_user\\": \\"runAsUser\\",
+    },
 )
 class MysqlPrimaryContainerSecurityContext:
     def __init__(
         self,
         *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
         enabled: typing.Optional[builtins.bool] = None,
         run_as_user: typing.Optional[jsii.Number] = None,
     ) -> None:
         '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
         :param enabled: 
         :param run_as_user: 
 
@@ -1337,13 +1593,27 @@ class MysqlPrimaryContainerSecurityContext:
         '''
         if __debug__:
             type_hints = typing.get_type_hints(_typecheckingstub__b6c44d7f91b4cf3cb542cb1506165f060a9a15243f09931b735b74af15eaf7ae)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument run_as_user\\", value=run_as_user, expected_type=type_hints[\\"run_as_user\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
         if enabled is not None:
             self._values[\\"enabled\\"] = enabled
         if run_as_user is not None:
             self._values[\\"run_as_user\\"] = run_as_user
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: MysqlPrimaryContainerSecurityContext#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
 
     @builtins.property
     def enabled(self) -> typing.Optional[builtins.bool]:
@@ -1376,16 +1646,22 @@ class MysqlPrimaryContainerSecurityContext:
 @jsii.data_type(
     jsii_type=\\"mysql.MysqlPrimaryPersistence\\",
     jsii_struct_bases=[],
-    name_mapping={\\"enabled\\": \\"enabled\\", \\"size\\": \\"size\\"},
+    name_mapping={
+        \\"additional_values\\": \\"additionalValues\\",
+        \\"enabled\\": \\"enabled\\",
+        \\"size\\": \\"size\\",
+    },
 )
 class MysqlPrimaryPersistence:
     def __init__(
         self,
         *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
         enabled: typing.Optional[builtins.bool] = None,
         size: typing.Optional[builtins.str] = None,
     ) -> None:
         '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
         :param enabled: 
         :param size: 
 
@@ -1393,13 +1669,27 @@ class MysqlPrimaryPersistence:
         '''
         if __debug__:
             type_hints = typing.get_type_hints(_typecheckingstub__da573ccf5d6dca82a8d1cb770a6c85bd0dd98f4b5fe00a7260e815a7140dc9ba)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument size\\", value=size, expected_type=type_hints[\\"size\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
         if enabled is not None:
             self._values[\\"enabled\\"] = enabled
         if size is not None:
             self._values[\\"size\\"] = size
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: MysqlPrimaryPersistence#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
 
     @builtins.property
     def enabled(self) -> typing.Optional[builtins.bool]:
@@ -1432,16 +1722,22 @@ class MysqlPrimaryPersistence:
 @jsii.data_type(
     jsii_type=\\"mysql.MysqlPrimaryPodSecurityContext\\",
     jsii_struct_bases=[],
-    name_mapping={\\"enabled\\": \\"enabled\\", \\"fs_group\\": \\"fsGroup\\"},
+    name_mapping={
+        \\"additional_values\\": \\"additionalValues\\",
+        \\"enabled\\": \\"enabled\\",
+        \\"fs_group\\": \\"fsGroup\\",
+    },
 )
 class MysqlPrimaryPodSecurityContext:
     def __init__(
         self,
         *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
         enabled: typing.Optional[builtins.bool] = None,
         fs_group: typing.Optional[jsii.Number] = None,
     ) -> None:
         '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
         :param enabled: 
         :param fs_group: 
 
@@ -1449,13 +1745,27 @@ class MysqlPrimaryPodSecurityContext:
         '''
         if __debug__:
             type_hints = typing.get_type_hints(_typecheckingstub__f093d2c1e555d5d67dfb226a625b4abd2741a6b3333a3f12627a45d66a375c7c)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument fs_group\\", value=fs_group, expected_type=type_hints[\\"fs_group\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
         if enabled is not None:
             self._values[\\"enabled\\"] = enabled
         if fs_group is not None:
             self._values[\\"fs_group\\"] = fs_group
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: MysqlPrimaryPodSecurityContext#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
 
     @builtins.property
     def enabled(self) -> typing.Optional[builtins.bool]:
@@ -1575,6 +1885,7 @@ class MysqlProps:
     jsii_type=\\"mysql.MysqlSecondary\\",
     jsii_struct_bases=[],
     name_mapping={
+        \\"additional_values\\": \\"additionalValues\\",
         \\"container_security_context\\": \\"containerSecurityContext\\",
         \\"persistence\\": \\"persistence\\",
         \\"pod_security_context\\": \\"podSecurityContext\\",
@@ -1584,11 +1895,13 @@ class MysqlSecondary:
     def __init__(
         self,
         *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
         container_security_context: typing.Optional[typing.Union[\\"MysqlSecondaryContainerSecurityContext\\", typing.Dict[builtins.str, typing.Any]]] = None,
         persistence: typing.Optional[typing.Union[\\"MysqlSecondaryPersistence\\", typing.Dict[builtins.str, typing.Any]]] = None,
         pod_security_context: typing.Optional[typing.Union[\\"MysqlSecondaryPodSecurityContext\\", typing.Dict[builtins.str, typing.Any]]] = None,
     ) -> None:
         '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
         :param container_security_context: 
         :param persistence: 
         :param pod_security_context: 
@@ -1603,16 +1916,30 @@ class MysqlSecondary:
             pod_security_context = MysqlSecondaryPodSecurityContext(**pod_security_context)
         if __debug__:
             type_hints = typing.get_type_hints(_typecheckingstub__9f5e9436f8b23b1168f49948e6f47f206871fa357437067fe13eb80a1e4844f2)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument container_security_context\\", value=container_security_context, expected_type=type_hints[\\"container_security_context\\"])
             check_type(argname=\\"argument persistence\\", value=persistence, expected_type=type_hints[\\"persistence\\"])
             check_type(argname=\\"argument pod_security_context\\", value=pod_security_context, expected_type=type_hints[\\"pod_security_context\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
         if container_security_context is not None:
             self._values[\\"container_security_context\\"] = container_security_context
         if persistence is not None:
             self._values[\\"persistence\\"] = persistence
         if pod_security_context is not None:
             self._values[\\"pod_security_context\\"] = pod_security_context
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: MysqlSecondary#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
 
     @builtins.property
     def container_security_context(
@@ -1657,16 +1984,22 @@ class MysqlSecondary:
 @jsii.data_type(
     jsii_type=\\"mysql.MysqlSecondaryContainerSecurityContext\\",
     jsii_struct_bases=[],
-    name_mapping={\\"enabled\\": \\"enabled\\", \\"run_as_user\\": \\"runAsUser\\"},
+    name_mapping={
+        \\"additional_values\\": \\"additionalValues\\",
+        \\"enabled\\": \\"enabled\\",
+        \\"run_as_user\\": \\"runAsUser\\",
+    },
 )
 class MysqlSecondaryContainerSecurityContext:
     def __init__(
         self,
         *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
         enabled: typing.Optional[builtins.bool] = None,
         run_as_user: typing.Optional[jsii.Number] = None,
     ) -> None:
         '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
         :param enabled: 
         :param run_as_user: 
 
@@ -1674,13 +2007,27 @@ class MysqlSecondaryContainerSecurityContext:
         '''
         if __debug__:
             type_hints = typing.get_type_hints(_typecheckingstub__1ae0b9a8b2ed30dd59da81691df3e07509c48d79c4bae3cf246ab40221c987b1)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument run_as_user\\", value=run_as_user, expected_type=type_hints[\\"run_as_user\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
         if enabled is not None:
             self._values[\\"enabled\\"] = enabled
         if run_as_user is not None:
             self._values[\\"run_as_user\\"] = run_as_user
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: MysqlSecondaryContainerSecurityContext#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
 
     @builtins.property
     def enabled(self) -> typing.Optional[builtins.bool]:
@@ -1713,16 +2060,22 @@ class MysqlSecondaryContainerSecurityContext:
 @jsii.data_type(
     jsii_type=\\"mysql.MysqlSecondaryPersistence\\",
     jsii_struct_bases=[],
-    name_mapping={\\"enabled\\": \\"enabled\\", \\"size\\": \\"size\\"},
+    name_mapping={
+        \\"additional_values\\": \\"additionalValues\\",
+        \\"enabled\\": \\"enabled\\",
+        \\"size\\": \\"size\\",
+    },
 )
 class MysqlSecondaryPersistence:
     def __init__(
         self,
         *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
         enabled: typing.Optional[builtins.bool] = None,
         size: typing.Optional[builtins.str] = None,
     ) -> None:
         '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
         :param enabled: 
         :param size: 
 
@@ -1730,13 +2083,27 @@ class MysqlSecondaryPersistence:
         '''
         if __debug__:
             type_hints = typing.get_type_hints(_typecheckingstub__948c5c8f94b41fa54e53ae6a34ae87281865e016dcca8ad5308b1666738cbd56)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument size\\", value=size, expected_type=type_hints[\\"size\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
         if enabled is not None:
             self._values[\\"enabled\\"] = enabled
         if size is not None:
             self._values[\\"size\\"] = size
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: MysqlSecondaryPersistence#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
 
     @builtins.property
     def enabled(self) -> typing.Optional[builtins.bool]:
@@ -1769,16 +2136,22 @@ class MysqlSecondaryPersistence:
 @jsii.data_type(
     jsii_type=\\"mysql.MysqlSecondaryPodSecurityContext\\",
     jsii_struct_bases=[],
-    name_mapping={\\"enabled\\": \\"enabled\\", \\"fs_group\\": \\"fsGroup\\"},
+    name_mapping={
+        \\"additional_values\\": \\"additionalValues\\",
+        \\"enabled\\": \\"enabled\\",
+        \\"fs_group\\": \\"fsGroup\\",
+    },
 )
 class MysqlSecondaryPodSecurityContext:
     def __init__(
         self,
         *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
         enabled: typing.Optional[builtins.bool] = None,
         fs_group: typing.Optional[jsii.Number] = None,
     ) -> None:
         '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
         :param enabled: 
         :param fs_group: 
 
@@ -1786,13 +2159,27 @@ class MysqlSecondaryPodSecurityContext:
         '''
         if __debug__:
             type_hints = typing.get_type_hints(_typecheckingstub__c3d21a01f61c5c4594bfd80de49afce454aa452afa8cc380cf0792cf29872ce7)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument fs_group\\", value=fs_group, expected_type=type_hints[\\"fs_group\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
         if enabled is not None:
             self._values[\\"enabled\\"] = enabled
         if fs_group is not None:
             self._values[\\"fs_group\\"] = fs_group
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: MysqlSecondaryPodSecurityContext#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
 
     @builtins.property
     def enabled(self) -> typing.Optional[builtins.bool]:
@@ -1996,6 +2383,7 @@ def _typecheckingstub__ee06bc5fa81868398bad26c41946af017c8765bcca5abe66e5d88d360
     *,
     password: builtins.str,
     username: builtins.str,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
     create_database: typing.Optional[builtins.bool] = None,
     database: typing.Optional[builtins.str] = None,
     replication_password: typing.Optional[builtins.str] = None,
@@ -2007,6 +2395,7 @@ def _typecheckingstub__ee06bc5fa81868398bad26c41946af017c8765bcca5abe66e5d88d360
 
 def _typecheckingstub__5f80f16db85307f6e2dc2fd18749079a45e96857945ee617d44938b1e1fa49dd(
     *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
     container_security_context: typing.Optional[typing.Union[MysqlPrimaryContainerSecurityContext, typing.Dict[builtins.str, typing.Any]]] = None,
     persistence: typing.Optional[typing.Union[MysqlPrimaryPersistence, typing.Dict[builtins.str, typing.Any]]] = None,
     pod_security_context: typing.Optional[typing.Union[MysqlPrimaryPodSecurityContext, typing.Dict[builtins.str, typing.Any]]] = None,
@@ -2016,6 +2405,7 @@ def _typecheckingstub__5f80f16db85307f6e2dc2fd18749079a45e96857945ee617d44938b1e
 
 def _typecheckingstub__b6c44d7f91b4cf3cb542cb1506165f060a9a15243f09931b735b74af15eaf7ae(
     *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
     enabled: typing.Optional[builtins.bool] = None,
     run_as_user: typing.Optional[jsii.Number] = None,
 ) -> None:
@@ -2024,6 +2414,7 @@ def _typecheckingstub__b6c44d7f91b4cf3cb542cb1506165f060a9a15243f09931b735b74af1
 
 def _typecheckingstub__da573ccf5d6dca82a8d1cb770a6c85bd0dd98f4b5fe00a7260e815a7140dc9ba(
     *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
     enabled: typing.Optional[builtins.bool] = None,
     size: typing.Optional[builtins.str] = None,
 ) -> None:
@@ -2032,6 +2423,7 @@ def _typecheckingstub__da573ccf5d6dca82a8d1cb770a6c85bd0dd98f4b5fe00a7260e815a71
 
 def _typecheckingstub__f093d2c1e555d5d67dfb226a625b4abd2741a6b3333a3f12627a45d66a375c7c(
     *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
     enabled: typing.Optional[builtins.bool] = None,
     fs_group: typing.Optional[jsii.Number] = None,
 ) -> None:
@@ -2051,6 +2443,7 @@ def _typecheckingstub__e0f01c3bcbff3f33dcd5e42ea1dca1754a4ffa560d4ed4393b91bf816
 
 def _typecheckingstub__9f5e9436f8b23b1168f49948e6f47f206871fa357437067fe13eb80a1e4844f2(
     *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
     container_security_context: typing.Optional[typing.Union[MysqlSecondaryContainerSecurityContext, typing.Dict[builtins.str, typing.Any]]] = None,
     persistence: typing.Optional[typing.Union[MysqlSecondaryPersistence, typing.Dict[builtins.str, typing.Any]]] = None,
     pod_security_context: typing.Optional[typing.Union[MysqlSecondaryPodSecurityContext, typing.Dict[builtins.str, typing.Any]]] = None,
@@ -2060,6 +2453,7 @@ def _typecheckingstub__9f5e9436f8b23b1168f49948e6f47f206871fa357437067fe13eb80a1
 
 def _typecheckingstub__1ae0b9a8b2ed30dd59da81691df3e07509c48d79c4bae3cf246ab40221c987b1(
     *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
     enabled: typing.Optional[builtins.bool] = None,
     run_as_user: typing.Optional[jsii.Number] = None,
 ) -> None:
@@ -2068,6 +2462,7 @@ def _typecheckingstub__1ae0b9a8b2ed30dd59da81691df3e07509c48d79c4bae3cf246ab4022
 
 def _typecheckingstub__948c5c8f94b41fa54e53ae6a34ae87281865e016dcca8ad5308b1666738cbd56(
     *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
     enabled: typing.Optional[builtins.bool] = None,
     size: typing.Optional[builtins.str] = None,
 ) -> None:
@@ -2076,6 +2471,7 @@ def _typecheckingstub__948c5c8f94b41fa54e53ae6a34ae87281865e016dcca8ad5308b16667
 
 def _typecheckingstub__c3d21a01f61c5c4594bfd80de49afce454aa452afa8cc380cf0792cf29872ce7(
     *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
     enabled: typing.Optional[builtins.bool] = None,
     fs_group: typing.Optional[jsii.Number] = None,
 ) -> None:
@@ -2261,7 +2657,7 @@ Object {
       "kind": "enum",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 110,
+        "line": 125,
       },
       "members": Array [
         Object {
@@ -2292,7 +2688,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 120,
+        "line": 135,
       },
       "name": "MysqlAuth",
       "properties": Array [
@@ -2306,7 +2702,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 142,
+            "line": 157,
           },
           "name": "password",
           "type": Object {
@@ -2323,11 +2719,35 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 137,
+            "line": 152,
           },
           "name": "username",
           "type": Object {
             "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlAuth#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 179,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
           },
         },
         Object {
@@ -2340,7 +2760,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 157,
+            "line": 172,
           },
           "name": "createDatabase",
           "optional": true,
@@ -2358,7 +2778,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 132,
+            "line": 147,
           },
           "name": "database",
           "optional": true,
@@ -2376,7 +2796,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 152,
+            "line": 167,
           },
           "name": "replicationPassword",
           "optional": true,
@@ -2394,7 +2814,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 147,
+            "line": 162,
           },
           "name": "replicationUser",
           "optional": true,
@@ -2414,7 +2834,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 127,
+            "line": 142,
           },
           "name": "rootPassword",
           "optional": true,
@@ -2437,10 +2857,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 184,
+        "line": 207,
       },
       "name": "MysqlPrimary",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimary#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 228,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -2451,7 +2895,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 193,
+            "line": 216,
           },
           "name": "containerSecurityContext",
           "optional": true,
@@ -2469,7 +2913,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 198,
+            "line": 221,
           },
           "name": "persistence",
           "optional": true,
@@ -2487,7 +2931,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 188,
+            "line": 211,
           },
           "name": "podSecurityContext",
           "optional": true,
@@ -2510,10 +2954,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 289,
+        "line": 336,
       },
       "name": "MysqlPrimaryContainerSecurityContext",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimaryContainerSecurityContext#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 352,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -2524,7 +2992,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 293,
+            "line": 340,
           },
           "name": "enabled",
           "optional": true,
@@ -2542,7 +3010,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 298,
+            "line": 345,
           },
           "name": "runAsUser",
           "optional": true,
@@ -2565,10 +3033,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 320,
+        "line": 375,
       },
       "name": "MysqlPrimaryPersistence",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimaryPersistence#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 391,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -2579,7 +3071,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 324,
+            "line": 379,
           },
           "name": "enabled",
           "optional": true,
@@ -2597,7 +3089,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 329,
+            "line": 384,
           },
           "name": "size",
           "optional": true,
@@ -2620,10 +3112,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 258,
+        "line": 297,
       },
       "name": "MysqlPrimaryPodSecurityContext",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlPrimaryPodSecurityContext#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 313,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -2634,7 +3150,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 262,
+            "line": 301,
           },
           "name": "enabled",
           "optional": true,
@@ -2652,7 +3168,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 267,
+            "line": 306,
           },
           "name": "fsGroup",
           "optional": true,
@@ -2759,10 +3275,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 221,
+        "line": 252,
       },
       "name": "MysqlSecondary",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondary#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 273,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -2773,7 +3313,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 230,
+            "line": 261,
           },
           "name": "containerSecurityContext",
           "optional": true,
@@ -2791,7 +3331,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 235,
+            "line": 266,
           },
           "name": "persistence",
           "optional": true,
@@ -2809,7 +3349,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 225,
+            "line": 256,
           },
           "name": "podSecurityContext",
           "optional": true,
@@ -2832,10 +3372,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 382,
+        "line": 453,
       },
       "name": "MysqlSecondaryContainerSecurityContext",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondaryContainerSecurityContext#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 469,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -2846,7 +3410,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 386,
+            "line": 457,
           },
           "name": "enabled",
           "optional": true,
@@ -2864,7 +3428,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 391,
+            "line": 462,
           },
           "name": "runAsUser",
           "optional": true,
@@ -2887,10 +3451,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 413,
+        "line": 492,
       },
       "name": "MysqlSecondaryPersistence",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondaryPersistence#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 508,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -2901,7 +3489,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 417,
+            "line": 496,
           },
           "name": "enabled",
           "optional": true,
@@ -2919,7 +3507,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 422,
+            "line": 501,
           },
           "name": "size",
           "optional": true,
@@ -2942,10 +3530,34 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 351,
+        "line": 414,
       },
       "name": "MysqlSecondaryPodSecurityContext",
       "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "MysqlSecondaryPodSecurityContext#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "mysql.ts",
+            "line": 430,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
         Object {
           "abstract": true,
           "docs": Object {
@@ -2956,7 +3568,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 355,
+            "line": 418,
           },
           "name": "enabled",
           "optional": true,
@@ -2974,7 +3586,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 360,
+            "line": 423,
           },
           "name": "fsGroup",
           "optional": true,
@@ -2997,7 +3609,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "mysql.ts",
-        "line": 43,
+        "line": 58,
       },
       "name": "MysqlValues",
       "properties": Array [
@@ -3012,7 +3624,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 81,
+            "line": 96,
           },
           "name": "additionalValues",
           "optional": true,
@@ -3036,7 +3648,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 49,
+            "line": 64,
           },
           "name": "architecture",
           "optional": true,
@@ -3054,7 +3666,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 54,
+            "line": 69,
           },
           "name": "auth",
           "optional": true,
@@ -3072,7 +3684,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 69,
+            "line": 84,
           },
           "name": "common",
           "optional": true,
@@ -3095,7 +3707,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 74,
+            "line": 89,
           },
           "name": "global",
           "optional": true,
@@ -3118,7 +3730,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 59,
+            "line": 74,
           },
           "name": "primary",
           "optional": true,
@@ -3136,7 +3748,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "mysql.ts",
-            "line": 64,
+            "line": 79,
           },
           "name": "secondary",
           "optional": true,
@@ -3168,6 +3780,7 @@ export interface MysqlProps {
 
 export class Mysql extends Construct {
   public constructor(scope: Construct, id: string, props: MysqlProps = {}) {
+    super(scope, id)
     let updatedProps: MysqlProps = {};
 
     if (props.values && 'additionalValues' in props.values) {
@@ -3175,7 +3788,7 @@ export class Mysql extends Construct {
       updatedProps = {
         ...props,
         values: {
-          ...valuesWithoutAdditionalValues,
+          ...this.flattenAdditionalValues(valuesWithoutAdditionalValues),
           ...additionalValues,
         }
       };
@@ -3188,8 +3801,22 @@ export class Mysql extends Construct {
       ...(Object.keys(updatedProps).length !== 0 ? updatedProps : props),
     };
 
-    super(scope, id)
     new Helm(scope, 'Helm', finalProps)
+  }
+
+  private flattenAdditionalValues(props: any): any {
+    for (let prop in props) {
+      if (typeof(props[prop]) === 'object' && prop !== 'additionalValues') {
+        props[prop] = this.flattenAdditionalValues(props[prop]);
+      }
+    }
+
+    const { additionalValues, ...valuesWithoutAdditionalValues } = props;
+
+    return {
+      ...valuesWithoutAdditionalValues,
+      ...additionalValues,
+    };
   }
 }
 
@@ -3312,6 +3939,13 @@ export interface MysqlAuth {
    */
   readonly createDatabase?: boolean;
 
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema MysqlAuth#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+
 }
 
 /**
@@ -3328,6 +3962,7 @@ export function toJson_MysqlAuth(obj: MysqlAuth | undefined): Record<string, any
     'replicationUser': obj.replicationUser,
     'replicationPassword': obj.replicationPassword,
     'createDatabase': obj.createDatabase,
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -3353,6 +3988,13 @@ export interface MysqlPrimary {
    */
   readonly persistence?: MysqlPrimaryPersistence;
 
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema MysqlPrimary#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+
 }
 
 /**
@@ -3365,6 +4007,7 @@ export function toJson_MysqlPrimary(obj: MysqlPrimary | undefined): Record<strin
     'podSecurityContext': toJson_MysqlPrimaryPodSecurityContext(obj.podSecurityContext),
     'containerSecurityContext': toJson_MysqlPrimaryContainerSecurityContext(obj.containerSecurityContext),
     'persistence': toJson_MysqlPrimaryPersistence(obj.persistence),
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -3390,6 +4033,13 @@ export interface MysqlSecondary {
    */
   readonly persistence?: MysqlSecondaryPersistence;
 
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema MysqlSecondary#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+
 }
 
 /**
@@ -3402,6 +4052,7 @@ export function toJson_MysqlSecondary(obj: MysqlSecondary | undefined): Record<s
     'podSecurityContext': toJson_MysqlSecondaryPodSecurityContext(obj.podSecurityContext),
     'containerSecurityContext': toJson_MysqlSecondaryContainerSecurityContext(obj.containerSecurityContext),
     'persistence': toJson_MysqlSecondaryPersistence(obj.persistence),
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -3422,6 +4073,13 @@ export interface MysqlPrimaryPodSecurityContext {
    */
   readonly fsGroup?: number;
 
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema MysqlPrimaryPodSecurityContext#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+
 }
 
 /**
@@ -3433,6 +4091,7 @@ export function toJson_MysqlPrimaryPodSecurityContext(obj: MysqlPrimaryPodSecuri
   const result = {
     'enabled': obj.enabled,
     'fsGroup': obj.fsGroup,
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -3453,6 +4112,13 @@ export interface MysqlPrimaryContainerSecurityContext {
    */
   readonly runAsUser?: number;
 
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema MysqlPrimaryContainerSecurityContext#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+
 }
 
 /**
@@ -3464,6 +4130,7 @@ export function toJson_MysqlPrimaryContainerSecurityContext(obj: MysqlPrimaryCon
   const result = {
     'enabled': obj.enabled,
     'runAsUser': obj.runAsUser,
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -3484,6 +4151,13 @@ export interface MysqlPrimaryPersistence {
    */
   readonly size?: string;
 
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema MysqlPrimaryPersistence#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+
 }
 
 /**
@@ -3495,6 +4169,7 @@ export function toJson_MysqlPrimaryPersistence(obj: MysqlPrimaryPersistence | un
   const result = {
     'enabled': obj.enabled,
     'size': obj.size,
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -3515,6 +4190,13 @@ export interface MysqlSecondaryPodSecurityContext {
    */
   readonly fsGroup?: number;
 
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema MysqlSecondaryPodSecurityContext#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+
 }
 
 /**
@@ -3526,6 +4208,7 @@ export function toJson_MysqlSecondaryPodSecurityContext(obj: MysqlSecondaryPodSe
   const result = {
     'enabled': obj.enabled,
     'fsGroup': obj.fsGroup,
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -3546,6 +4229,13 @@ export interface MysqlSecondaryContainerSecurityContext {
    */
   readonly runAsUser?: number;
 
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema MysqlSecondaryContainerSecurityContext#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+
 }
 
 /**
@@ -3557,6 +4247,7 @@ export function toJson_MysqlSecondaryContainerSecurityContext(obj: MysqlSecondar
   const result = {
     'enabled': obj.enabled,
     'runAsUser': obj.runAsUser,
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -3577,6 +4268,13 @@ export interface MysqlSecondaryPersistence {
    */
   readonly size?: string;
 
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema MysqlSecondaryPersistence#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+
 }
 
 /**
@@ -3588,6 +4286,7 @@ export function toJson_MysqlSecondaryPersistence(obj: MysqlSecondaryPersistence 
   const result = {
     'enabled': obj.enabled,
     'size': obj.size,
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -4258,6 +4957,7 @@ export interface IngressnginxProps {
 
 export class Ingressnginx extends Construct {
   public constructor(scope: Construct, id: string, props: IngressnginxProps = {}) {
+    super(scope, id)
     let updatedProps: IngressnginxProps = {};
 
     if (props.values && 'additionalValues' in props.values) {
@@ -4265,7 +4965,7 @@ export class Ingressnginx extends Construct {
       updatedProps = {
         ...props,
         values: {
-          ...valuesWithoutAdditionalValues,
+          ...this.flattenAdditionalValues(valuesWithoutAdditionalValues),
           ...additionalValues,
         }
       };
@@ -4278,8 +4978,22 @@ export class Ingressnginx extends Construct {
       ...(Object.keys(updatedProps).length !== 0 ? updatedProps : props),
     };
 
-    super(scope, id)
     new Helm(scope, 'Helm', finalProps)
+  }
+
+  private flattenAdditionalValues(props: any): any {
+    for (let prop in props) {
+      if (typeof(props[prop]) === 'object' && prop !== 'additionalValues') {
+        props[prop] = this.flattenAdditionalValues(props[prop]);
+      }
+    }
+
+    const { additionalValues, ...valuesWithoutAdditionalValues } = props;
+
+    return {
+      ...valuesWithoutAdditionalValues,
+      ...additionalValues,
+    };
   }
 }
 

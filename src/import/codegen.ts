@@ -271,7 +271,8 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       emitValuesInterface();
 
       function emitValuesInterface() {
-        const copyOfSchema = schema;
+
+        const copyOfSchema = schema ? addAdditionalValuesToProps(schema) : undefined;
 
         if (copyOfSchema && copyOfSchema.properties) {
           // Sub charts or dependencies
@@ -288,6 +289,32 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
         }
 
         typegen.emitType(valuesInterface, copyOfSchema, def.fqn);
+      }
+
+      function addAdditionalValuesToProps(schma: JSONSchema4): JSONSchema4 {
+        const tempSchema = schma;
+
+        if (!tempSchema.properties) {
+          return tempSchema;
+        }
+
+        Object.values(tempSchema.properties).forEach((prop) => {
+          if (prop.type !== 'object') {
+            return;
+          }
+
+          if (prop.properties) {
+            prop.properties.additionalValues = {
+              type: 'object',
+              description: 'Values that are not available in values.schema.json will not be code generated. You can add such values to this property.',
+              additionalProperties: { type: 'object' },
+            };
+
+            addAdditionalValuesToProps(prop);
+          }
+        });
+
+        return tempSchema;
       }
     }
 
@@ -322,11 +349,16 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
 
       emitInitializer();
 
+      code.line();
+
+      emitAdditionalValuesFlattenFunc();
+
       code.closeBlock();
     }
 
     function emitInitializer() {
       code.openBlock(`public constructor(scope: Construct, id: string, props: ${chartName}Props = {})`);
+      code.line('super(scope, id)');
 
       code.line(`let updatedProps: ${chartName}Props = {};`);
       code.line();
@@ -335,7 +367,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.open('updatedProps = {');
       code.line('...props,');
       code.open('values: {');
-      code.line('...valuesWithoutAdditionalValues,');
+      code.line('...this.flattenAdditionalValues(valuesWithoutAdditionalValues),');
       code.line('...additionalValues,');
       code.close('}');
       code.close('};');
@@ -350,8 +382,24 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.close('};');
 
       code.line();
-      code.line('super(scope, id)');
       code.line('new Helm(scope, \'Helm\', finalProps)');
+      code.closeBlock();
+    }
+
+    function emitAdditionalValuesFlattenFunc() {
+      code.openBlock('private flattenAdditionalValues(props: any): any');
+      code.open('for (let prop in props) {');
+      code.open('if (typeof(props[prop]) === \'object\' && prop !== \'additionalValues\') {');
+      code.line('props[prop] = this.flattenAdditionalValues(props[prop]);');
+      code.close('}');
+      code.close('}');
+      code.line();
+      code.line('const { additionalValues, ...valuesWithoutAdditionalValues } = props;');
+      code.line();
+      code.open('return {');
+      code.line('...valuesWithoutAdditionalValues,');
+      code.line('...additionalValues,');
+      code.close('};');
       code.closeBlock();
     }
   });
