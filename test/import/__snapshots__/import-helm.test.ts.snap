@@ -3783,7 +3783,7 @@ export class Mysql extends Construct {
     super(scope, id)
     let updatedProps: MysqlProps = {};
 
-    if (props.values && 'additionalValues' in props.values) {
+    if (props.values) {
       const { additionalValues, ...valuesWithoutAdditionalValues } = props.values;
       updatedProps = {
         ...props,
@@ -4960,7 +4960,7 @@ export class Ingressnginx extends Construct {
     super(scope, id)
     let updatedProps: IngressnginxProps = {};
 
-    if (props.values && 'additionalValues' in props.values) {
+    if (props.values) {
       const { additionalValues, ...valuesWithoutAdditionalValues } = props.values;
       updatedProps = {
         ...props,

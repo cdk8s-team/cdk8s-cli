@@ -362,7 +362,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
 
       code.line(`let updatedProps: ${chartName}Props = {};`);
       code.line();
-      code.openBlock('if (props.values && \'additionalValues\' in props.values)');
+      code.openBlock('if (props.values)');
       code.line('const { additionalValues, ...valuesWithoutAdditionalValues } = props.values;');
       code.open('updatedProps = {');
       code.line('...props,');
