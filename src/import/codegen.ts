@@ -387,7 +387,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
     }
 
     function emitAdditionalValuesFlattenFunc() {
-      code.openBlock('private flattenAdditionalValues(props: any): any');
+      code.openBlock('private flattenAdditionalValues(props: { [key: string]: any }): { [key: string]: any }');
       code.open('for (let prop in props) {');
       code.open('if (typeof(props[prop]) === \'object\' && prop !== \'additionalValues\') {');
       code.line('props[prop] = this.flattenAdditionalValues(props[prop]);');

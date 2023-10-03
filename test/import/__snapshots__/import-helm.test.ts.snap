@@ -3804,7 +3804,7 @@ export class Mysql extends Construct {
     new Helm(scope, 'Helm', finalProps)
   }
 
-  private flattenAdditionalValues(props: any): any {
+  private flattenAdditionalValues(props: { [key: string]: any }): { [key: string]: any } {
     for (let prop in props) {
       if (typeof(props[prop]) === 'object' && prop !== 'additionalValues') {
         props[prop] = this.flattenAdditionalValues(props[prop]);
@@ -4981,7 +4981,7 @@ export class Ingressnginx extends Construct {
     new Helm(scope, 'Helm', finalProps)
   }
 
-  private flattenAdditionalValues(props: any): any {
+  private flattenAdditionalValues(props: { [key: string]: any }): { [key: string]: any } {
     for (let prop in props) {
       if (typeof(props[prop]) === 'object' && prop !== 'additionalValues') {
         props[prop] = this.flattenAdditionalValues(props[prop]);
