@@ -3781,7 +3781,7 @@ export interface MysqlProps {
 export class Mysql extends Construct {
   public constructor(scope: Construct, id: string, props: MysqlProps = {}) {
     super(scope, id)
-    let updatedProps: MysqlProps = {};
+    let updatedProps = {};
 
     if (props.values) {
       const { additionalValues, ...valuesWithoutAdditionalValues } = props.values;
@@ -4787,7 +4787,7 @@ export interface IngressnginxProps {
 export class Ingressnginx extends Construct {
   public constructor(scope: Construct, id: string, props: IngressnginxProps = {}) {
     super(scope, id)
-    let updatedProps: IngressnginxProps = {};
+    let updatedProps = {};
 
     if (props.values) {
       const { additionalValues, ...valuesWithoutAdditionalValues } = props.values;

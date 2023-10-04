@@ -357,10 +357,12 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
     }
 
     function emitInitializer() {
-      code.openBlock(`public constructor(scope: Construct, id: string, props: ${chartName}Props = {})`);
+      const propsDefinition = schema && hasRequiredProps(schema) ? `${chartName}Props` : `${chartName}Props = {}`;
+
+      code.openBlock(`public constructor(scope: Construct, id: string, props: ${propsDefinition})`);
       code.line('super(scope, id)');
 
-      code.line(`let updatedProps: ${chartName}Props = {};`);
+      code.line('let updatedProps = {};');
       code.line();
       code.openBlock('if (props.values)');
       code.line('const { additionalValues, ...valuesWithoutAdditionalValues } = props.values;');
