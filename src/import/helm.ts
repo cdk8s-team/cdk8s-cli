@@ -64,6 +64,7 @@ export class ImportHelm extends ImportBase {
     const types = new TypeGenerator({
       definitions: this.schema?.definitions,
       toJson: false,
+      sanitizeEnums: true,
     });
 
     generateHelmConstruct(types, {
