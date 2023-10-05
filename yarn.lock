@@ -2574,9 +2574,9 @@ eastasianwidth@^0.2.0:
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 electron-to-chromium@^1.4.535:
-  version "1.4.540"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.540.tgz#c685f2f035e93eb21dd6a9cfe2c735bad8f77401"
-  integrity sha512-aoCqgU6r9+o9/S7wkcSbmPRFi7OWZWiXS9rtjEd+Ouyu/Xyw5RSq2XN8s5Qp8IaFOLiRrhQCphCIjAxgG3eCAg==
+  version "1.4.541"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.541.tgz#3bb71c41fd3775d7b3a64c80152b67efe45ab462"
+  integrity sha512-do9EfdtgtowzRNdnUhFtc0wMjazMHiXBNP/848cNa22dmmRSVE2JuBKfcjt0tg2+FN90OIE4E6MbcQ2bzDRawg==
 
 emittery@^0.8.1:
   version "0.8.1"
