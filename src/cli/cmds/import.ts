@@ -22,6 +22,7 @@ class Command implements yargs.CommandModule {
     .example('cdk8s import jenkins.io_jenkins_crd.yaml', 'Imports constructs for the Jenkins custom resource definition from a file')
     .example('cdk8s import mattermost:=mattermost_crd.yaml', 'Imports constructs for the mattermost cluster custom resource definition using a custom module name')
     .example('cdk8s import github:crossplane/crossplane@0.14.0', 'Imports constructs for a GitHub repo using doc.crds.dev')
+    .example('cdk8s import helm:https://charts.bitnami.com/bitnami/mysql@9.10.10', 'Imports the specified version of helm chart')
 
     .option('save', { type: 'boolean', required: false, default: true, desc: "Dont save the import URL in the 'imports' section of the cdk8s.yaml configuration file.", alias: 's' })
     .option('output', { default: DEFAULT_OUTDIR, type: 'string', desc: 'Output directory', alias: 'o' })

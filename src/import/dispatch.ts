@@ -1,6 +1,7 @@
 import { ImportBase, ImportOptions } from './base';
 import { ImportCustomResourceDefinition } from './crd';
 import { matchCrdsDevUrl } from './crds-dev';
+import { ImportHelm } from './helm';
 import { ImportKubernetesApi } from './k8s';
 import { ImportSpec, addImportToConfig } from '../config';
 import { PREFIX_DELIM } from '../util';
@@ -33,6 +34,12 @@ export async function matchImporter(importSpec: ImportSpec, argv: any): Promise<
   const k8s = await ImportKubernetesApi.match(importSpec, argv);
   if (k8s) {
     return new ImportKubernetesApi(k8s);
+  }
+
+  const prefix = importSpec.source.split(':')[0];
+
+  if (prefix === 'helm') {
+    return ImportHelm.fromSpec(importSpec);
   }
 
   // now check if its a crds.dev import
