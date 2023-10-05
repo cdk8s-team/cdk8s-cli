@@ -1792,10 +1792,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.62.3:
-  version "1.62.3"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.62.3.tgz#c590d4a70c7e52988e6960d6e231a48047d6067b"
-  integrity sha512-fDTt0zZNlfGMO6ZzBzA304bBmDpjvpVVSer5R+pxuND7M4DRFBWLn7RhX4EwshPvjcGGPDKvH8nlBWR9anUoPw==
+cdk8s@^1.62.4:
+  version "1.62.4"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.62.4.tgz#d2f2cb6e18a610137400425275ba075a49c41e6c"
+  integrity sha512-cBAx01Mu40OqH6fAGyFohHxbXbTS8m/1y2KtbWiJXXnmbDBMNIv0TekfLSPTeYPvKv080VPwtTqC8rxKoepDiQ==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -6914,9 +6914,9 @@ typescript-json-schema@^0.61.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20231003"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20231003.tgz#f10d59245a339d25571527d708553e7e87ca5012"
-  integrity sha512-OyUdPjo1wNYs+PVDr9ARcEPs0aOqdxterOFzQzWK6DR4tsadKPbrOx8JgTOvSUwhkNOxBOEh7BonqV2uNsTxvA==
+  version "5.3.0-dev.20231004"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20231004.tgz#d35b20c8a2dbfee5c6baa2a51a47374949b25d5c"
+  integrity sha512-deMSPmvpUJCz9hHInrVQeHJoYCI1tFP7qeUEKh6WouazlvGnLMbyyAHyKNfOBDjU2die9qfjwqtch3DF2aV4vQ==
 
 typescript@~3.9.10:
   version "3.9.10"
