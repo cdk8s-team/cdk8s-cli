@@ -9,7 +9,7 @@ import { HelmChartApiVersion, SynthesisFormat, ValidationConfig, readConfigSync 
 import { ImportCustomResourceDefinition } from '../../import/crd';
 import { matchImporter } from '../../import/dispatch';
 import { PluginManager } from '../../plugins/_manager';
-import { SynthesizedApp, crdsArePresent, deriveFileName, download, isK8sImport, mkdtemp, parseImports, synthApp, validateApp } from '../../util';
+import { SynthesizedApp, crdsArePresent, deriveFileName, download, isHelmImport, isK8sImport, mkdtemp, parseImports, synthApp, validateApp } from '../../util';
 
 const CHART_YAML_FILE = 'Chart.yaml';
 const README = 'README.md';
@@ -174,7 +174,7 @@ async function createHelmScaffolding(apiVersion: string, chartVersion: string, o
 }
 
 async function addCrdsToHelmChart(chartDir: string) {
-  const crds = (config?.imports ?? []).filter((imprt) => !isK8sImport(imprt));
+  const crds = (config?.imports ?? []).filter((imprt) => (!isK8sImport(imprt) && !isHelmImport(imprt)));
 
   for (const crd of crds) {
     const importSpec = parseImports(crd);
