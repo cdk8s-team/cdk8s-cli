@@ -325,6 +325,14 @@ export function isK8sImport(value: string): boolean {
   return true;
 }
 
+export function isHelmImport(value: string): boolean {
+  if (!value.startsWith('helm:')) {
+    return false;
+  }
+
+  return true;
+}
+
 export function crdsArePresent(imprts: string[] | undefined): boolean {
-  return (imprts ?? []).some(imprt => !isK8sImport(imprt));
+  return (imprts ?? []).some(imprt => (!isK8sImport(imprt) && !isHelmImport(imprt)));
 }

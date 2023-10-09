@@ -1,7 +1,7 @@
 import { promises } from 'fs';
 import { tmpdir } from 'os';
 import path from 'path';
-import { crdsArePresent, deriveFileName, findManifests, hashAndEncode, isK8sImport, parseImports } from '../src/util';
+import { crdsArePresent, deriveFileName, findManifests, hashAndEncode, isHelmImport, isK8sImport, parseImports } from '../src/util';
 
 describe('findManifests', () => {
 
@@ -73,12 +73,22 @@ test('import is k8s', () => {
   expect(isK8sImport('foo')).toBeFalsy();
 });
 
+test('import is helm', () => {
+  expect(isHelmImport('helm:https://charts.bitnami.com/bitnami/mysql@9.10.10')).toBeTruthy();
+  expect(isHelmImport('helm:https://kubernetes.github.io/ingress-nginx/ingress-nginx@4.8.0')).toBeTruthy();
+  expect(isHelmImport('helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0')).toBeTruthy();
+  expect(isHelmImport('foo')).toBeFalsy();
+});
+
 test('are crds presents in imports', () => {
   const imprts = [
     'k8s',
     'k8s@1.22',
     'foo.yaml',
     'github:crossplane/crossplane@0.14.0',
+    'helm:https://charts.bitnami.com/bitnami/mysql@9.10.10',
+    'helm:https://kubernetes.github.io/ingress-nginx/ingress-nginx@4.8.0',
+    'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0',
   ];
 
   expect(crdsArePresent(imprts)).toBeTruthy();

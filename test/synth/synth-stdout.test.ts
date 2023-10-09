@@ -678,7 +678,11 @@ describe('Helm synthesis', () => {
         chartVersion: '1.1.1',
         chartApiVersion: HelmChartApiVersion.V1,
         config: {
-          imports: ['k8s', 'foo.yaml'],
+          imports: [
+            'k8s',
+            'foo.yaml',
+            'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0',
+          ],
         },
       },
     ],
@@ -691,7 +695,11 @@ describe('Helm synthesis', () => {
             chartVersion: '1.1.1',
             chartApiVersion: HelmChartApiVersion.V1,
           },
-          imports: ['k8s', 'foo.yaml'],
+          imports: [
+            'k8s',
+            'foo.yaml',
+            'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0',
+          ],
         },
       },
     ],
@@ -702,7 +710,11 @@ describe('Helm synthesis', () => {
         chartVersion: '1.1.1',
         chartApiVersion: HelmChartApiVersion.V1,
         config: {
-          imports: ['k8s', 'foo.yaml'],
+          imports: [
+            'k8s',
+            'foo.yaml',
+            'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0',
+          ],
           synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
@@ -721,7 +733,11 @@ describe('Helm synthesis', () => {
           synthConfig: {
             chartApiVersion: HelmChartApiVersion.V2,
           },
-          imports: ['k8s', 'foo.yaml'],
+          imports: [
+            'k8s',
+            'foo.yaml',
+            'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0',
+          ],
         },
       },
     ],
@@ -741,7 +757,7 @@ describe('Helm synthesis', () => {
         chartVersion: '1.1.1',
         chartApiVersion: HelmChartApiVersion.V1,
         config: {
-          imports: ['k8s'],
+          imports: ['k8s', 'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0'],
         },
         postSynth: matchSynthSnapshot,
       },
@@ -755,7 +771,7 @@ describe('Helm synthesis', () => {
             chartVersion: '1.1.1',
             chartApiVersion: HelmChartApiVersion.V1,
           },
-          imports: ['k8s'],
+          imports: ['k8s', 'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0'],
         },
         postSynth: matchSynthSnapshot,
       },
@@ -772,7 +788,7 @@ describe('Helm synthesis', () => {
             chartVersion: '1.1.1',
             chartApiVersion: HelmChartApiVersion.V1,
           },
-          imports: ['k8s'],
+          imports: ['k8s', 'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0'],
         },
         postSynth: matchSynthSnapshot,
       },
@@ -787,7 +803,7 @@ describe('Helm synthesis', () => {
           synthConfig: {
             chartApiVersion: HelmChartApiVersion.V2,
           },
-          imports: ['k8s'],
+          imports: ['k8s', 'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0'],
         },
         postSynth: matchSynthSnapshot,
       },
@@ -851,6 +867,7 @@ describe('Helm synthesis', () => {
 
   const importsForChartApiv2 = [
     'k8s',
+    'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0',
     path.join(__dirname, './__resources__/crds/foo.yaml'),
     `bar:=${path.join(__dirname, './__resources__/crds/bar.yaml')}`,
     'github:crossplane/crossplane@0.14.0',
@@ -926,6 +943,7 @@ describe('Helm synthesis', () => {
         config: {
           imports: [
             'k8s',
+            'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0',
             filename,
           ],
         },
@@ -942,6 +960,7 @@ describe('Helm synthesis', () => {
           },
           imports: [
             'k8s',
+            'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0',
             filename,
           ],
         },
@@ -960,6 +979,7 @@ describe('Helm synthesis', () => {
           },
           imports: [
             'k8s',
+            'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0',
             filename,
           ],
         },
@@ -978,6 +998,7 @@ describe('Helm synthesis', () => {
           },
           imports: [
             'k8s',
+            'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0',
             filename,
           ],
         },
