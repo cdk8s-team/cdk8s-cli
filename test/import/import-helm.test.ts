@@ -7,6 +7,7 @@ import { parseImports } from '../../src/util';
 describe.each([
   'helm:https://charts.bitnami.com/bitnami/mysql@9.10.10', // Contains schema and dependencies
   'helm:https://kubernetes.github.io/ingress-nginx/ingress-nginx@4.8.0', // Does not contain schema
+  'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0', //
 ])('importing helm chart %s', (testChartUrl) => {
   const spec = parseImports(testChartUrl);
 
