@@ -158,8 +158,6 @@ function pullHelmRepo(chartUrl: string, chartName: string, chartVersion: string)
   args.push('--untar');
   args.push('--untardir', workdir);
 
-  args.forEach((item) => console.log(`ITEM: ----> ${item}`));
-
   const command = 'helm';
 
   const helm = spawnSync(command, args, {
