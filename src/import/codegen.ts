@@ -377,8 +377,12 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.line();
 
       code.open('const finalProps: HelmProps = {');
-      code.line(`chart: \'${def.chartName}\',`);
-      code.line(`repo: \'${repoUrl}\',`);
+      if (repoUrl.startsWith('oci://')) {
+        code.line(`chart: \'${repoUrl}\',`);
+      } else {
+        code.line(`chart: \'${def.chartName}\',`);
+        code.line(`repo: \'${repoUrl}\',`);
+      }
       code.line(`version: \'${chartVersion}\',`);
       code.line('...(Object.keys(updatedProps).length !== 0 ? updatedProps : props),');
       code.close('};');

@@ -86,20 +86,46 @@ export class ImportHelm extends ImportBase {
  * @returns chartUrl, chartName and chartVersion
  */
 function extractHelmChartDetails(url: string) {
-  const helmRegex = /^helm:([A-Za-z0-9_.-:\-]+)\/([A-Za-z0-9_.-:\-]+)\@([0-9]+)\.([0-9]+)\.([A-Za-z0-9-+]+)$/;
-  const helmDetails = helmRegex.exec(url);
 
-  if (!helmDetails) {
-    throw Error(`Invalid helm URL: ${url}. Must match the format: 'helm:<repo-url>/<chart-name>@<chart-version>'.`);
+  let chartUrl;
+  let chartName;
+  let chartVersion;
+
+  if (url.startsWith('helm:oci://')) {
+    // URL: helm:oci://registry-1.docker.io/bitnamicharts/wordpress@17.1.17
+    const helmRegex = /^helm:(oci:\/\/[A-Za-z0-9_.-:\-]+)\@([0-9]+)\.([0-9]+)\.([A-Za-z0-9-+]+)$/;
+    const helmDetails = helmRegex.exec(url);
+
+    if (!helmDetails) {
+      throw Error(`Invalid helm URL: ${url}. Must match the format: 'helm:<oci-registry-url>@<chart-version>'.`);
+    }
+
+    chartUrl = helmDetails[1];
+    const lastIndexOfSlash = chartUrl.lastIndexOf('/');
+    chartName = chartUrl.substring(lastIndexOfSlash + 1);
+
+    const major = helmDetails[2];
+    const minor = helmDetails[3];
+    const patch = helmDetails[4];
+    chartVersion = `${major}.${minor}.${patch}`;
+
+  } else {
+    // URL: helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0
+    const helmRegex = /^helm:([A-Za-z0-9_.-:\-]+)\/([A-Za-z0-9_.-:\-]+)\@([0-9]+)\.([0-9]+)\.([A-Za-z0-9-+]+)$/;
+    const helmDetails = helmRegex.exec(url);
+
+    if (!helmDetails) {
+      throw Error(`Invalid helm URL: ${url}. Must match the format: 'helm:<repo-url>/<chart-name>@<chart-version>'.`);
+    }
+
+    chartUrl = helmDetails[1];
+    chartName = helmDetails[2];
+
+    const major = helmDetails[3];
+    const minor = helmDetails[4];
+    const patch = helmDetails[5];
+    chartVersion = `${major}.${minor}.${patch}`;
   }
-
-  const chartUrl = helmDetails[1];
-  const chartName = helmDetails[2];
-  const major = helmDetails[3];
-  const minor = helmDetails[4];
-  const patch = helmDetails[5];
-
-  const chartVersion = `${major}.${minor}.${patch}`;
 
   if (!semver.valid(chartVersion)) {
     throw new Error(`Invalid chart version (${chartVersion}) in URL: ${url}. Must follow SemVer-2 (see https://semver.org/).`);
@@ -120,11 +146,19 @@ function pullHelmRepo(chartUrl: string, chartName: string, chartVersion: string)
 
   const args = new Array<string>();
   args.push('pull');
-  args.push(chartName);
-  args.push('--repo', chartUrl);
+
+  if (!chartUrl.startsWith('oci://')) {
+    args.push(chartName);
+    args.push('--repo', chartUrl);
+  } else {
+    args.push(chartUrl);
+  }
+
   args.push('--version', chartVersion);
   args.push('--untar');
   args.push('--untardir', workdir);
+
+  args.forEach((item) => console.log(`ITEM: ----> ${item}`));
 
   const command = 'helm';
 
