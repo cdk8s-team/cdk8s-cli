@@ -326,7 +326,7 @@ export function isK8sImport(value: string): boolean {
 }
 
 export function isHelmImport(value: string): boolean {
-  if (!value.startsWith('helm:')) {
+  if (!value.startsWith('helm:') && !value.includes(':=helm:')) {
     return false;
   }
 
