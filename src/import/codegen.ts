@@ -384,7 +384,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.close('};');
 
       code.line();
-      code.line('new Helm(scope, `Helm${id`f}`, finalProps)');
+      code.line('new Helm(scope, `Helm${id}`, finalProps)');
       code.closeBlock();
     }
 
