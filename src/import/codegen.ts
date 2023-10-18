@@ -360,7 +360,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       const propsDefinition = schema && hasRequiredProps(schema) ? `${chartName}Props` : `${chartName}Props = {}`;
 
       code.openBlock(`public constructor(scope: Construct, id: string, props: ${propsDefinition})`);
-      code.line('super(scope, id)');
+      code.line('super(scope, id);');
 
       code.line('let updatedProps = {};');
       code.line();
@@ -371,7 +371,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.open('values: {');
       code.line('...this.flattenAdditionalValues(valuesWithoutAdditionalValues),');
       code.line('...additionalValues,');
-      code.close('}');
+      code.close('},');
       code.close('};');
       code.closeBlock();
       code.line();
@@ -388,14 +388,22 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.close('};');
 
       code.line();
-      code.line('new Helm(scope, \'Helm\', finalProps)');
+      code.line('new Helm(this, \'Helm\', finalProps);');
       code.closeBlock();
     }
 
     function emitAdditionalValuesFlattenFunc() {
       code.openBlock('private flattenAdditionalValues(props: { [key: string]: any }): { [key: string]: any }');
       code.open('for (let prop in props) {');
-      code.open('if (typeof(props[prop]) === \'object\' && prop !== \'additionalValues\') {');
+      code.open('if (Array.isArray(props[prop])) {');
+      code.open('props[prop].map((item: any) => {');
+      code.open('if (typeof item === \'object\' && prop !== \'additionalValues\') {');
+      code.line('return this.flattenAdditionalValues(item);');
+      code.close('}');
+      code.line('return item;');
+      code.close('});');
+      code.close('}');
+      code.open('else if (typeof props[prop] === \'object\' && prop !== \'additionalValues\') {');
       code.line('props[prop] = this.flattenAdditionalValues(props[prop]);');
       code.close('}');
       code.close('}');

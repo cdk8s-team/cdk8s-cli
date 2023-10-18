@@ -77,6 +77,7 @@ test('import is helm', () => {
   expect(isHelmImport('helm:https://charts.bitnami.com/bitnami/mysql@9.10.10')).toBeTruthy();
   expect(isHelmImport('helm:https://kubernetes.github.io/ingress-nginx/ingress-nginx@4.8.0')).toBeTruthy();
   expect(isHelmImport('helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0')).toBeTruthy();
+  expect(isHelmImport('minio:=helm:https://operator.min.io/operator@5.0.9')).toBeTruthy();
   expect(isHelmImport('foo')).toBeFalsy();
 });
 
