@@ -1090,7 +1090,12 @@
   dependencies:
     undici-types "~5.25.1"
 
-"@types/node@^16", "@types/node@^16.9.2":
+"@types/node@^16":
+  version "16.18.59"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.59.tgz#4cdbd631be6d9be266a96fb17b5d0d7ad6bbe26c"
+  integrity sha512-PJ1w2cNeKUEdey4LiPra0ZuxZFOGvetswE8qHRriV/sUkL5Al4tTmPV9D2+Y/TPIxTHHgxTfRjZVKWhPw/ORhQ==
+
+"@types/node@^16.9.2":
   version "16.18.58"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.58.tgz#bf66f63983104ed57c754f4e84ccaf16f8235adb"
   integrity sha512-YGncyA25/MaVtQkjWW9r0EFBukZ+JulsLcVZBlGUfIb96OBMjkoRWwQo5IEWJ8Fj06Go3GHw+bjYDitv6BaGsA==
@@ -1116,9 +1121,9 @@
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
 
 "@types/triple-beam@^1.3.2":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@types/triple-beam/-/triple-beam-1.3.3.tgz#726ae98a5f6418c8f24f9b0f2a9f81a8664876ae"
-  integrity sha512-6tOUG+nVHn0cJbVp25JFayS5UE6+xlbcNF9Lo9mU7U0zk3zeUShZied4YEQZjy1JBF043FSkdXw8YkUJuVtB5g==
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@types/triple-beam/-/triple-beam-1.3.4.tgz#a1d5f480245db86e2f4777000065d4fe7467a012"
+  integrity sha512-HlJjF3wxV4R2VQkFpKe0YqJLilYNgtRtsqqZtby7RkVsSs+i+vbyzjtUwpFEdUCKcrGzCiEJE7F/0mKjh0sunA==
 
 "@types/yargs-parser@*":
   version "21.0.1"
@@ -1799,10 +1804,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.62.12:
-  version "1.62.12"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.62.12.tgz#89785180b582a4b8fc97fd60727e59e6b4bc77b4"
-  integrity sha512-U+BnduhWtQqeyApvMHjUBTJQV5/mB1jx6QtSutxkoSKRkk2mCNuIglXUrOv065gzaP/LVdbdRAVC6BTHOiooEA==
+cdk8s@^1.62.14:
+  version "1.62.14"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.62.14.tgz#a935bacd85d5375a0918a321a23d80a17e2742c3"
+  integrity sha512-9n0S1HhmfCMqNXd0WWVzK1vZEgyxCmHe6Zks4vGkPLY7ahm/8rN0HGbXmSFq2VK/ciyG4a6FyBD+d2RK5U4Rhw==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -6921,9 +6926,9 @@ typescript-json-schema@^0.62.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20231017"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20231017.tgz#f28f04bf21877bf4a04919657f78fce44a04ce7f"
-  integrity sha512-Gb9CxdHEnJBcghPIdgmYT+j30pAGX44Uvwc22Z9WoWMollP+5jf6VqUdmiF+PXjarjFWuo6HbQAnWoH9zWQwdQ==
+  version "5.3.0-dev.20231018"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20231018.tgz#dac802766153f690c6b6b90e19a239ba7821ae17"
+  integrity sha512-qBPaVi+ntB9Ys4T3uP1ZYCtxFWIV/1ieooBDhFEd8nw4IqAoB/Us7XobF3xb756bnX8cS/zIt9fgukde4MG4bA==
 
 typescript@~3.9.10:
   version "3.9.10"
