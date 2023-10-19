@@ -1032,9 +1032,9 @@
     "@types/node" "*"
 
 "@types/http-cache-semantics@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.2.tgz#abe102d06ccda1efdf0ed98c10ccf7f36a785a41"
-  integrity sha512-FD+nQWA2zJjh4L9+pFXqWOi0Hs1ryBCfI+985NjluQ1p8EYtoLvjLOKidXBtZ4/IcxDX4o8/E8qDS3540tNliw==
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.3.tgz#a3ff232bf7d5c55f38e4e45693eda2ebb545794d"
+  integrity sha512-V46MYLFp08Wf2mmaBhvgjStM3tPa+2GAdy/iqoX+noX1//zje2x4XmrIU0cAwyClATsTmahbtoQ2EwP7I5WSiA==
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.4"
@@ -1090,7 +1090,12 @@
   dependencies:
     undici-types "~5.25.1"
 
-"@types/node@^16", "@types/node@^16.9.2":
+"@types/node@^16":
+  version "16.18.59"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.59.tgz#4cdbd631be6d9be266a96fb17b5d0d7ad6bbe26c"
+  integrity sha512-PJ1w2cNeKUEdey4LiPra0ZuxZFOGvetswE8qHRriV/sUkL5Al4tTmPV9D2+Y/TPIxTHHgxTfRjZVKWhPw/ORhQ==
+
+"@types/node@^16.9.2":
   version "16.18.58"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.58.tgz#bf66f63983104ed57c754f4e84ccaf16f8235adb"
   integrity sha512-YGncyA25/MaVtQkjWW9r0EFBukZ+JulsLcVZBlGUfIb96OBMjkoRWwQo5IEWJ8Fj06Go3GHw+bjYDitv6BaGsA==
@@ -1116,9 +1121,9 @@
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
 
 "@types/triple-beam@^1.3.2":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@types/triple-beam/-/triple-beam-1.3.3.tgz#726ae98a5f6418c8f24f9b0f2a9f81a8664876ae"
-  integrity sha512-6tOUG+nVHn0cJbVp25JFayS5UE6+xlbcNF9Lo9mU7U0zk3zeUShZied4YEQZjy1JBF043FSkdXw8YkUJuVtB5g==
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@types/triple-beam/-/triple-beam-1.3.4.tgz#a1d5f480245db86e2f4777000065d4fe7467a012"
+  integrity sha512-HlJjF3wxV4R2VQkFpKe0YqJLilYNgtRtsqqZtby7RkVsSs+i+vbyzjtUwpFEdUCKcrGzCiEJE7F/0mKjh0sunA==
 
 "@types/yargs-parser@*":
   version "21.0.1"
@@ -1799,19 +1804,19 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s-plus-25@^2.22.36:
-  version "2.22.36"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-25/-/cdk8s-plus-25-2.22.36.tgz#30f003a09cc669d5e968689429d1ac666723ba64"
-  integrity sha512-3Zj/3QtccV9hWfchjDaMa5GAvpGptPuGWm5kl+Age5ygpAWb8OCHfY2V0nof7316TX/BJ5Elomifm00mHj8iZA==
+cdk8s-plus-25@^2.22.38:
+  version "2.22.38"
+  resolved "https://registry.yarnpkg.com/cdk8s-plus-25/-/cdk8s-plus-25-2.22.38.tgz#599edbae2daa2e3588baab3549a19453b862c72e"
+  integrity sha512-lyj4FTtS7+vPEyF51nsEq60qIesSi1tg0aYJwMzBpzZDzW/xL5HooGhPs2fMzmsiVhai1fPpFeVCM3ggNjo83A==
   dependencies:
     minimatch "^3.1.2"
   optionalDependencies:
     backport "8.5.0"
 
-cdk8s@^2.66.11:
-  version "2.66.11"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.66.11.tgz#9f37dad6d70fd32cce03d069f1751930e17fd88c"
-  integrity sha512-7S+WDL9h6wtoXjq9odXad9UursYmOvkz408H3VUSuyFPp+E8JHY/XJDfEwa909tf2YoC95pdODjzv3b0Zl1LJQ==
+cdk8s@^2.67.0:
+  version "2.67.0"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.67.0.tgz#316e0144b31aa526c1887a1117d4c6ee8faffb7c"
+  integrity sha512-BLjWGhiScI7ehkjGW4dbXT4pEfD9n9qazBwASBv0CPlM7euUKzhkVo0wBWadkOKJ0gDO5fSjLMhum91ilCS87g==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -6930,9 +6935,9 @@ typescript-json-schema@^0.62.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.3.0-dev.20231016"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20231016.tgz#3f3349e8931ca047b2183fe8a34a7c65cf210f7c"
-  integrity sha512-1NaopFFSKTDFUHEkuN7xJfPMwXZFd1g+wKuMu2eh3rDHN7lhQMGDU08D2CnlLYK2xfNjgeb5qAWXQAdMbRLn3A==
+  version "5.3.0-dev.20231018"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.0-dev.20231018.tgz#dac802766153f690c6b6b90e19a239ba7821ae17"
+  integrity sha512-qBPaVi+ntB9Ys4T3uP1ZYCtxFWIV/1ieooBDhFEd8nw4IqAoB/Us7XobF3xb756bnX8cS/zIt9fgukde4MG4bA==
 
 typescript@~3.9.10:
   version "3.9.10"
@@ -7266,7 +7271,6 @@ workerpool@^6.5.0:
   integrity sha512-Fs4dNYcsdpYSAfVxhnl1L5zTksjvOJxtC5hzMNl+1t9B8hTJTdKDyZ5ju7ztgPy+ft9tBFXoOlDNiOT9WUXZlA==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
-  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
