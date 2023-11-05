@@ -4585,10 +4585,10 @@ jsii-rosetta@^1.91.0:
     workerpool "^6.5.1"
     yargs "^16.2.0"
 
-jsii-srcmak@^0.1.955:
-  version "0.1.955"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.955.tgz#f5910974de54241b11262cc025cd6fc55e93c81f"
-  integrity sha512-Ek/VoLov+ChsHMIQ/pSDWYjJmclfmyZTP2xReR1Wwv9Hr3fieObKQ+eio9hBUefYg3OHV7qM2XsXyihl8CBT4g==
+jsii-srcmak@^0.1.956:
+  version "0.1.956"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.956.tgz#074bbfccf39666b697a91e86ed784a8ba753925e"
+  integrity sha512-9V5OOxORDa8vcRZv7avURUUrUDAsOv99LKuXo+SIhP7LG4YMu0jtNdq91oJe0h8qp30luTVBS5h7G1uSXMR7VQ==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.2.23"
@@ -7031,9 +7031,9 @@ typescript-json-schema@^0.62.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.4.0-dev.20231103"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20231103.tgz#5135fb3747521823248e636cabc328b4b157c503"
-  integrity sha512-XOrpoRg1DWN7ei3AFomL+UrpRBseaODTiWWRfZd6AVeT7ODLjQZ+CDUxK6Aj2XPvEthIOaqijvwIxZe6vlNwlQ==
+  version "5.4.0-dev.20231104"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20231104.tgz#8039d52c0dfda5e2e3ed975c30b3f1fce8f96c55"
+  integrity sha512-D+2hisYDB+vxSVJaZQYh+/jhBtJMsMbCPFshfsGbyp/OeHtkMyYtJ7+/EeclHcuUVui6IjRfKZ0lhvTEck278w==
 
 typescript@~3.9.10:
   version "3.9.10"
@@ -7111,9 +7111,9 @@ unique-string@^3.0.0:
     crypto-random-string "^4.0.0"
 
 universal-user-agent@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/universal-user-agent/-/universal-user-agent-6.0.0.tgz#3381f8503b251c0d9cd21bc1de939ec9df5480ee"
-  integrity sha512-isyNax3wXoKaulPDZWHQqbmIx1k2tb9fb3GGDBRxCscfYV2Ch7WxPArBsFEG8s/safwXTT7H4QGhaIkTp9447w==
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/universal-user-agent/-/universal-user-agent-6.0.1.tgz#15f20f55da3c930c57bddbf1734c6654d5fd35aa"
+  integrity sha512-yCzhz6FN2wU1NiiQRogkTQszlQSlpWaw8SvVegAc+bDxbzHgh1vX8uIe8OYyMH6DwH+sdTJsgMl36+mSMdRJIQ==
 
 universalify@^0.1.0:
   version "0.1.2"
