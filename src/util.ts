@@ -44,9 +44,14 @@ export async function mkdtemp(closure: (dir: string) => Promise<void>) {
 }
 
 export async function synthApp(command: string, outdir: string, stdout: boolean, metadata: boolean): Promise<SynthesizedApp> {
+  if (!await fs.pathExists(outdir)) {
+    console.log('wARNING: specified outdir does not exist, synth command could fail')
+  }
+
   if (!stdout) {
     console.log('Synthesizing application');
   }
+
   await shell(command, [], {
     shell: true,
     env: {
@@ -57,11 +62,6 @@ export async function synthApp(command: string, outdir: string, stdout: boolean,
       CDK8S_RECORD_CONSTRUCT_METADATA: process.env.CDK8S_RECORD_CONSTRUCT_METADATA ?? (metadata ? 'true' : 'false'),
     },
   });
-
-  if (!await fs.pathExists(outdir)) {
-    console.error(`ERROR: synthesis failed, app expected to create "${outdir}"`);
-    process.exit(1);
-  }
 
   let found = false;
   const yamlFiles = await findManifests(outdir);
@@ -76,6 +76,8 @@ export async function synthApp(command: string, outdir: string, stdout: boolean,
 
   if (!found) {
     console.error('No manifests synthesized');
+  } else {
+    console.log('Manifests synthesized!')
   }
 
   const constructMetadata = findConstructMetadata(outdir);
