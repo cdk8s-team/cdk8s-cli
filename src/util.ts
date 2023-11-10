@@ -45,7 +45,7 @@ export async function mkdtemp(closure: (dir: string) => Promise<void>) {
 
 export async function synthApp(command: string, outdir: string, stdout: boolean, metadata: boolean): Promise<SynthesizedApp> {
   if (!await fs.pathExists(outdir)) {
-    console.log('wARNING: specified outdir does not exist, synth command could fail')
+    console.log('WARNING: specified outdir does not exist, synth command could fail')
   }
 
   if (!stdout) {
