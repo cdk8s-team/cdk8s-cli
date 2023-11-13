@@ -1842,10 +1842,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s-plus-25@^2.22.56:
-  version "2.22.56"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-25/-/cdk8s-plus-25-2.22.56.tgz#68d5d4d24e774101ab36a8dadb0438d1f360206d"
-  integrity sha512-0rUJSOV0owVpjubbKJWX0Gt6s158vGrqyKYD1cd51z1L0HmAsTUbvQ1q7WpbSCla1yFD7x4FOlvaFYmOcVQKdQ==
+cdk8s-plus-25@^2.22.57:
+  version "2.22.57"
+  resolved "https://registry.yarnpkg.com/cdk8s-plus-25/-/cdk8s-plus-25-2.22.57.tgz#340f139439e06df28cadc4c3ebaa2e26aa42ea88"
+  integrity sha512-gPL350Kfzg2k2NvNja7wAij0ruGAVzQF849RdR/t6eO1BkDzQQPwAzucUs1al3tfNdHJog/hfsbObUsCqVB6+w==
   dependencies:
     minimatch "^3.1.2"
   optionalDependencies:
@@ -4585,10 +4585,10 @@ jsii-rosetta@^1.91.0:
     workerpool "^6.5.1"
     yargs "^16.2.0"
 
-jsii-srcmak@^0.1.963:
-  version "0.1.963"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.963.tgz#2d0a7c4b522c146b5008471aa6873f170b6e1244"
-  integrity sha512-w/4cltckqfQm6U5hGh9UwXkFzjYhqVH7t9w4nQewrV56+xvR1uL6De3hDviuI2Qo7YMrcVrAPuIk8/WBZ7Szxg==
+jsii-srcmak@^0.1.964:
+  version "0.1.964"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.964.tgz#52796d2d2c3683943f9e1f59449903cebc266bfc"
+  integrity sha512-2PUsYCWbkLdkFjT1MMcuurzVudd8SULxUBCwKNoMA2BY6SoQp2UiwFqjT5EBUcw4/0GRvmSnwQSnUsfi0C/DEg==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.2.26"
@@ -7033,9 +7033,9 @@ typescript-json-schema@^0.62.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.4.0-dev.20231111"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20231111.tgz#3317689150db75a46330fa202533f75f5db51200"
-  integrity sha512-/ebfj4mLRvOEfuewrM6DrZOxBXosLKqFVUU6NPZuOiy0XtMDt0KRfaLhLLZXEoyNNyQd9P6bmZTnNYeTs9hlyA==
+  version "5.4.0-dev.20231112"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20231112.tgz#be39b23eec8f22e2057ccc8459b94c21be8fb789"
+  integrity sha512-K7RH4eFyxJG7LkKWU0m7WdQrNRNz8yVkt2zW2tT2zfiUzIN2jbh2JLuztSqCsfqMNU5KduO7NvKaKK4QIvGY/Q==
 
 typescript@~3.9.10:
   version "3.9.10"
