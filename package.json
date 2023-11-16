@@ -19,6 +19,8 @@
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
     "integ:init": "npx projen integ:init",
+    "integ:init:deno-app-npm": "npx projen integ:init:deno-app-npm",
+    "integ:init:deno-app-yarn": "npx projen integ:init:deno-app-yarn",
     "integ:init:go-app-npm": "npx projen integ:init:go-app-npm",
     "integ:init:go-app-yarn": "npx projen integ:init:go-app-yarn",
     "integ:init:java-app-npm": "npx projen integ:init:java-app-npm",

@@ -1,0 +1,4 @@
+language: typescript
+app: deno run --allow-env --allow-write --allow-read main.ts
+imports:
+  - k8s

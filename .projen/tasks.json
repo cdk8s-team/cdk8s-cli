@@ -172,6 +172,34 @@
         }
       ]
     },
+    "integ:init:deno-app-npm": {
+      "name": "integ:init:deno-app-npm",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t deno-app-npm"
+        }
+      ]
+    },
+    "integ:init:deno-app-yarn": {
+      "name": "integ:init:deno-app-yarn",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t deno-app-yarn"
+        }
+      ]
+    },
     "integ:init:go-app-npm": {
       "name": "integ:init:go-app-npm",
       "steps": [
