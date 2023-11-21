@@ -256,7 +256,7 @@ export interface HelmObjectDefinition {
 }
 
 export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDefinition) {
-  const noSpecialChars = def.chartName.replace(/([^\w ]|_)/g, '');
+  const noSpecialChars = def.chartName.replace(/([^a-zA-Z0-9- ])/g, '');
   const chartName = TypeGenerator.normalizeTypeName(noSpecialChars);
   const schema = def.schema;
   const repoUrl = def.chartUrl;
