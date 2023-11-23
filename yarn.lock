@@ -1097,21 +1097,16 @@
   integrity sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==
 
 "@types/node@*":
-  version "20.9.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.9.3.tgz#e089e1634436f676ff299596c9531bd2b59fffc6"
-  integrity sha512-nk5wXLAXGBKfrhLB0cyHGbSqopS+nz0BUgZkUQqSHSSgdee0kssp1IAqlQOu333bW+gMNs2QREx7iynm19Abxw==
+  version "20.9.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.9.4.tgz#cc8f970e869c26834bdb7ed480b30ede622d74c7"
+  integrity sha512-wmyg8HUhcn6ACjsn8oKYjkN/zUzQeNtMy44weTJSM6p4MMzEOuKbA3OjJ267uPCOW7Xex9dyrNTful8XTQYoDA==
   dependencies:
     undici-types "~5.26.4"
 
-"@types/node@^16":
-  version "16.18.62"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.62.tgz#5b80d7a800f86842c5fadc066a63d6312208805c"
-  integrity sha512-/zbPnIBkef8sT+6vw6BxdvU3dCxRI0v6rBu/6IvXnRNtOPILucigqhUBPYxtQ/8JdAna0JLTAcNTCDmQ77QYkQ==
-
-"@types/node@^16.9.2":
-  version "16.18.63"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.63.tgz#17703190b6f623cf2dfb4cc624b1db9b60b4c634"
-  integrity sha512-Q2VSI/lVKza0Z5qeY/JrHcwi9fxzBktDvNHthr0TVA/D3yMdHDw9syggng+wJPlsBLgx4jPpOrcJ100wnpniTg==
+"@types/node@^16", "@types/node@^16.9.2":
+  version "16.18.64"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.64.tgz#cd4e41420b77b346695def5a342f6dea0f9d9329"
+  integrity sha512-TiY2gIDob8+QOPIcVpS0ZY+H1DVTfplBW6UgL2b4gOYbigIlKVIh6Lcv+7YDUciUTqhVLG91PrZBXW10IoBhtw==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.4"
@@ -1838,19 +1833,19 @@ camelcase@^7.0.1:
   integrity sha512-xlx1yCK2Oc1APsPXDL2LdlNP6+uu8OCDdhOBSVT279M/S+y75O30C2VuD8T2ogdePBBl7PfPF4504tnLgX3zfw==
 
 caniuse-lite@^1.0.30001541:
-  version "1.0.30001563"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001563.tgz#aa68a64188903e98f36eb9c56e48fba0c1fe2a32"
-  integrity sha512-na2WUmOxnwIZtwnFI2CZ/3er0wdNzU7hN+cPYz/z2ajHThnkWjNBOpEPP4n+4r2WPM847JaMotaJE3bnfzjyKw==
+  version "1.0.30001564"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001564.tgz#eaa8bbc58c0cbccdcb7b41186df39dd2ba591889"
+  integrity sha512-DqAOf+rhof+6GVx1y+xzbFPeOumfQnhYzVnZD6LAXijR77yPtm9mfOcqOnT3mpnJiZVT+kwLAFnRlZcIz+c6bg==
 
 case@^1.6.3:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.63.15:
-  version "1.63.15"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.15.tgz#dc3a202aade136a85dc2dbe22091fa245df93c8c"
-  integrity sha512-NflV89B7NiNE6ck+i/xmA/kOYFubKng1N99nVUBOYfBtEH7QP5OJJ2CTtRW/yDEWB8uCcChP6lcwSSWYP+5thg==
+cdk8s@^1.63.17:
+  version "1.63.17"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.17.tgz#44895a0e70dd7e49495881f465aa9c95fa8a8ae8"
+  integrity sha512-lBwuf5ecAxtTCcjurqW/AHH6BmAkqoTz0CnST/1CR23MgyTkf2SAnr4d+TrruxUIbcYWP5PxGsZ0pQ/S/L9YYg==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -2620,9 +2615,9 @@ eastasianwidth@^0.2.0:
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 electron-to-chromium@^1.4.535:
-  version "1.4.590"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.590.tgz#85a428fbabb77265a4804040837ed4f2538e3300"
-  integrity sha512-hohItzsQcG7/FBsviCYMtQwUSWvVF7NVqPOnJCErWsAshsP/CR2LAXdmq276RbESNdhxiAq5/vRo1g2pxGXVww==
+  version "1.4.592"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.592.tgz#1ffd49ba3da3da3077ea20014b066c910d50c913"
+  integrity sha512-D3NOkROIlF+d5ixnz7pAf3Lu/AuWpd6AYgI9O67GQXMXTcCP1gJQRotOq35eQy5Sb4hez33XH1YdTtILA7Udww==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -4581,10 +4576,10 @@ jsii-rosetta@^1.92.0:
     workerpool "^6.5.1"
     yargs "^16.2.0"
 
-jsii-srcmak@^0.1.972:
-  version "0.1.972"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.972.tgz#8a7d5af11d08419abb23cc965a257d942158dc5a"
-  integrity sha512-4rdxujs2DUXZbJ6cr7L7yW1rD4jn8228qmq+GRzOkI8P/DzkeMeyO89Vk7MB8JTjUtbYAU50fIEZyFElPzwdxA==
+jsii-srcmak@^0.1.974:
+  version "0.1.974"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.974.tgz#662a4d7642c304a48920952325f79f5adb3a93c2"
+  integrity sha512-QLCc3WZowp0QMWmRspzx7NPJ7Satw6X6TCdAPeX7n08Dj/VTJ2oebp85LB5k7HzoGJj2FCWl5rWv1RgsTmoCfQ==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.2.32"
@@ -4682,10 +4677,10 @@ json-stringify-safe@^5.0.1:
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==
 
-json2jsii@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/json2jsii/-/json2jsii-0.4.0.tgz#62f245385da1a8de86be90eeef132e798e87788d"
-  integrity sha512-4I5ip2aG7e7LN1pa1aiFgUYAGXmhq4Ggbk6KJRXlaAdewGfYyOK2YlpUI0Dqpfs84kuEsbSTwDO4P6oEs2YEdQ==
+json2jsii@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/json2jsii/-/json2jsii-0.4.1.tgz#501967dedb95e28a84e17dba81d03919ee9ef089"
+  integrity sha512-oXvOm6LeHHjzuWJTyHsxbHt5UyUNkQYaq/84ir5QMF2AyfvWfYoPqWL5uSaaRepLOKxIMn9DADlO+G9SQ//KCA==
   dependencies:
     camelcase "^6.3.0"
     json-schema "^0.4.0"
@@ -7027,9 +7022,9 @@ typescript-json-schema@^0.62.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.4.0-dev.20231120"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20231120.tgz#b6c59314c431a92bd21cfc17616be6c76a481f82"
-  integrity sha512-MG4Zg5HXb8bnvGdZrMeLBekqbCjHjaMPewXh3wVrNgTF+toQ4BrdhXnYiqMU0pLLxcsxRSMPB5MzB7YHgr67Cg==
+  version "5.4.0-dev.20231123"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20231123.tgz#d11e62ed47d03c2abd289c3da140a0292860e099"
+  integrity sha512-1GVUhgKMReyH9AycWDCzAWFgL/0lhNajKlU37LYZjAzVsIDks8eW8kv9NEkXMk5HrN1Nb+7cO+QqZDC20u3lvQ==
 
 typescript@~3.9.10:
   version "3.9.10"
