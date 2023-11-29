@@ -4576,10 +4576,10 @@ jsii-rosetta@^1.92.0:
     workerpool "^6.5.1"
     yargs "^16.2.0"
 
-jsii-srcmak@^0.1.979:
-  version "0.1.979"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.979.tgz#81b4d113963a05287462d8190dbd301b59647ce5"
-  integrity sha512-x6WDftxfcsynbtTi34PzgO8OmQVgplq4KHDXCwP5/fmydmD04EXO1TwN/0MRsFdVjXSyoxMix4IcFpbQqYEP2A==
+jsii-srcmak@^0.1.980:
+  version "0.1.980"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.980.tgz#7dd0e7ad8869f6d83a93e3755877eec5c163e591"
+  integrity sha512-EYvnQRHVV1YFRh7+bRKN8xLuocS618661lOB9/ixrb7QE6aPJWM/nZN+6AdLbVCrxUSbipQW3IfmQ4cV6uzNEQ==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.2.35"
@@ -7022,9 +7022,9 @@ typescript-json-schema@^0.62.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.4.0-dev.20231127"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20231127.tgz#944c1e3be13da87c83ccde78d691823c8c30241d"
-  integrity sha512-uMH221WFT99TGfR5vMcI1AaoMc9CnpzMFps1zxzLkdweS+IKrF6SlMK0y5fYztaf0BdNOHcdpyyET9cEoJy8+w==
+  version "5.4.0-dev.20231128"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20231128.tgz#75f9f65ef22730d348385cf24f7787543ec763f2"
+  integrity sha512-9qkF438icXJz8XXZ38mDJfUTTAvVZptHGBEkwqB2QaO8p6cQuiYvghMHk5o2bZFHS5VcrAwYtpEuekd1iSTmBQ==
 
 typescript@~3.9.10:
   version "3.9.10"
@@ -7377,7 +7377,6 @@ workerpool@^6.5.1:
   integrity sha512-Fs4dNYcsdpYSAfVxhnl1L5zTksjvOJxtC5hzMNl+1t9B8hTJTdKDyZ5ju7ztgPy+ft9tBFXoOlDNiOT9WUXZlA==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
-  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
