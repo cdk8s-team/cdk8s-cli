@@ -4,7 +4,7 @@ name: upgrade-configuration-1.x
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: 0 0 * * *
+    - cron: 0 15 * * *
 jobs:
   upgrade:
     name: Upgrade
@@ -19,12 +19,10 @@ jobs:
         with:
           ref: 1.x
       - run: pip3 install pipenv
-        with:
-          node-version: lts
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16.20.0
+          node-version: lts/*
       - name: Install dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
