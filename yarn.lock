@@ -924,12 +924,7 @@
   dependencies:
     undici-types "~5.26.4"
 
-"@types/node@^16":
-  version "16.18.67"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.67.tgz#518feb681958dedf2d187b8b4d20bf3530afe1fb"
-  integrity sha512-gUa0tDO9oxyAYO9V9tqxDJguVMDpqUwH5I5Q9ASYBCso+8CUdJlKPKDYS1YSS9kyZWIduDafZvucGM0zGNKFjg==
-
-"@types/node@^16.9.2":
+"@types/node@^16", "@types/node@^16.9.2":
   version "16.18.68"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.68.tgz#3155f64a961b3d8d10246c80657f9a7292e3421a"
   integrity sha512-sG3hPIQwJLoewrN7cr0dwEy+yF5nD4D/4FxtQpFciRD/xwUzgD+G05uxZHv5mhfXo4F9Jkp13jjn0CC2q325sg==
@@ -1550,10 +1545,10 @@ cdk8s-plus-25@^2.22.67:
   optionalDependencies:
     backport "8.5.0"
 
-cdk8s@^2.68.15:
-  version "2.68.15"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.68.15.tgz#dfb250271e7f440757e52c85034b709636396798"
-  integrity sha512-YLJ5aG9g2N7bwhQ4QfBhAGHdxRPl8dJ9BsuYD/zGFSxeCRtpC6/Z9LNRrUeZDiOEHFfUlqhb4sydCht6HHqNyA==
+cdk8s@^2.68.16:
+  version "2.68.16"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.68.16.tgz#542a796238de5fa34161a78f03e9ba36c4300905"
+  integrity sha512-l0wOsJyxMuM4fTMsTy7rViwtu32NyQBy2CTD8dJxHRb4RP2DNY/YYIP+TdRx0NhXARW85thZifFbx/UP6I/g9w==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -3904,10 +3899,10 @@ jsii-rosetta@^1.92.0:
     workerpool "^6.5.1"
     yargs "^16.2.0"
 
-jsii-srcmak@^0.1.988:
-  version "0.1.988"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.988.tgz#d478bd9bd1e41d0dcc35e3e368d01926629cde9c"
-  integrity sha512-igNS8sTAzBhX+twerHdX6o7SaJLT3F07YDhu43rLJzjkYhsDBeipIfXpJ5TGHyCMEARzmAPj6ZzEeK2quaQI7g==
+jsii-srcmak@^0.1.989:
+  version "0.1.989"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.989.tgz#c05d7e118254a6ab4dbffae6b83278bef4ed17ea"
+  integrity sha512-nBWxeL+ZZ/5WaAjh7DMFh5dpyS+KRE1Pe14v1cc2K4H8YDePyDuUn/rVTq2rg8coDkvRW/e6iTdN6HP/y7Zx+g==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.2.38"
@@ -5692,9 +5687,9 @@ typescript-json-schema@^0.62.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.4.0-dev.20231206"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20231206.tgz#222631e1241de9e833ed2dbd8bc0853c3f43250a"
-  integrity sha512-bKJ5+3jwj4qTzNg7C97rCVLgyyYuzjYh/Pf0zlpOyyq9vpI3TVLO09d1gQ8jS5M+BSLONojTijei0KHmFoBezw==
+  version "5.4.0-dev.20231207"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20231207.tgz#a4b22bb6f47251d2000c0a7cebedd6d6be1bf4ac"
+  integrity sha512-9OsUooJnRMwemgmnZVwLewnl3XzbEj61obef4BbooBr9w9L7i0ILMDYHAwQnYsxx/LLpw1+mvbDl30jO48mReA==
 
 typescript@~3.9.10:
   version "3.9.10"
