@@ -10662,7 +10662,7 @@ Possible enum values:
           "docs": Object {
             "summary": "cri-o.",
           },
-          "name": "CRI_O",
+          "name": "CRI_HYPHEN_O",
         },
         Object {
           "docs": Object {
@@ -16124,7 +16124,7 @@ class LaceworkAgentLaceworkConfigContainerRuntime(enum.Enum):
 
     CONTAINERD = \\"CONTAINERD\\"
     '''containerd.'''
-    CRI_O = \\"CRI_O\\"
+    CRI_HYPHEN_O = \\"CRI_HYPHEN_O\\"
     '''cri-o.'''
     DOCKER = \\"DOCKER\\"
     '''docker.'''
@@ -22563,7 +22563,7 @@ Possible enum values:
           "docs": Object {
             "summary": "cri-o.",
           },
-          "name": "CRI_O",
+          "name": "CRI_HYPHEN_O",
         },
         Object {
           "docs": Object {
@@ -24178,7 +24178,7 @@ export enum LaceworkAgentLaceworkConfigContainerRuntime {
   /** containerd */
   CONTAINERD = \\"containerd\\",
   /** cri-o */
-  CRI_O = \\"cri-o\\",
+  CRI_HYPHEN_O = \\"cri-o\\",
   /** docker */
   DOCKER = \\"docker\\",
 }
