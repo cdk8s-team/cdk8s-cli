@@ -29,7 +29,7 @@ export class SafeReviver {
   // : | used in e.g. Prometheus events (e.g run:completed)
   // * | used in e.g. AWS policies (e.g s3:ObjectCreated:*)
   public static readonly LEGAL_CHARS = /^(\w|\.|\/|-|#|,)*$/;
-  public static readonly LEGAL_CHARS_IN_ENUM = /^( |\w|\.|\/|-|#|,|\+|:|\*)*$/;
+  public static readonly LEGAL_CHARS_IN_ENUM = /^( |\w|\.|\/|-|#|,|\+|:|\*|!|=|~)*$/;
 
   // the string we use as the stripped value
   public static readonly STRIPPED_VALUE = '__stripped_by_cdk8s__';
