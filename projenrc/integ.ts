@@ -41,7 +41,7 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
       },
     },
     permissions: { contents: github.workflows.JobPermission.READ },
-    steps: runSteps([initTask.name], '16', true, true),
+    steps: runSteps([initTask.name], 'lts/*', true, true),
   });
 
   // run typescript app on node 18 as well
