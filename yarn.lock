@@ -1546,10 +1546,10 @@ cdk8s-plus-25@^2.22.71:
   optionalDependencies:
     backport "8.5.0"
 
-cdk8s@^2.68.27:
-  version "2.68.27"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.68.27.tgz#e07a0597ac41167cd3d35a2c9f9912c234678627"
-  integrity sha512-dWOjsgNtP2zR1Tap81kLpxkEO76zqSFtzdD9xbo9wGhhOrDv26NmW7jjMSingYemll4l7OUON6NO5Kz46dVXWQ==
+cdk8s@^2.68.28:
+  version "2.68.28"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.68.28.tgz#d71064fedb062869db7e63370f768f96b060858a"
+  integrity sha512-ry3JImY1ZINnOYpmkPJcbXZdDOPt2vXubMUXgrxit20qfnfENtAQfHI1INIpvBAR4NGaG9UdSelO6wdyV7ZPlQ==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -3905,10 +3905,10 @@ jsii-rosetta@^1.94.0:
     workerpool "^6.5.1"
     yargs "^16.2.0"
 
-jsii-srcmak@^0.1.1010:
-  version "0.1.1010"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1010.tgz#4949a6bed11aa1f13065b05c4dbf5d5a68a47507"
-  integrity sha512-rdeVlJUqxJsP0lvQr6Q2Ghu2Ujhvthx4cTpTWXOgUTKQX/L9BvdcU1tSBVKTyZ5SB19ffnH4rxcjhekLZ5lYRQ==
+jsii-srcmak@^0.1.1011:
+  version "0.1.1011"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1011.tgz#5b814c88d750cf6dc9882f180004bcca252d0344"
+  integrity sha512-8OcSSgpC9NcNsqk6LK9IVKK8MwMccrRcwTLswkJJwqbKOPhf5bmqqseh35OEuxzRQajmqa2yozBgVdg5CvRj0A==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.3.7"
@@ -5701,9 +5701,9 @@ typescript-json-schema@^0.62.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.4.0-dev.20240119"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20240119.tgz#93e2bf67e5be79210532be2ce78cf5946da04db3"
-  integrity sha512-I+Uge2+WNFs91q42WVrqTwxmq3NQwQlrL0MLora9zXhizbsKIGApE7LGcEJIbG+0yk6gpDilGaDH1pU4VUAKzw==
+  version "5.4.0-dev.20240120"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20240120.tgz#8ea9fa7ef5e2ddbac687272ac7f9c4ef77954521"
+  integrity sha512-fHbDnLnKZmZlU/m3fhS41GM/JIXAASrMUKLYhh4AGKauOpMgIlvikSEq0gWGkjjs/7NS69V698Mx4QErKfL9wA==
 
 typescript@~3.9.10:
   version "3.9.10"
