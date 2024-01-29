@@ -1537,10 +1537,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.63.35:
-  version "1.63.35"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.35.tgz#b418ae369ee6472cce210ccc442f6a22f8a634ff"
-  integrity sha512-/iB7C5sk41tNtVhgq0k5gBOWzEE0WOTBC2DZjXyjGbE4sTalP/ymO2T7DSFzmJJuXRvgs/ct7ruZcvGmx9dViw==
+cdk8s@^1.63.36:
+  version "1.63.36"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.36.tgz#4ff9ad847f87e5811ecce9789d08095ac5afef68"
+  integrity sha512-fHA1Me3r+UxQA3mczCxXRlfoxVyjw+s3+hSHLiq4DBJ1evhTLl/Hje+KlBR0zvtpNlPZMByQMeTCySa9qIrjqA==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -3901,10 +3901,10 @@ jsii-rosetta@^1.94.0:
     workerpool "^6.5.1"
     yargs "^16.2.0"
 
-jsii-srcmak@^0.1.1018:
-  version "0.1.1018"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1018.tgz#f4380e8b7c3128df289a7c8881e4535b60590137"
-  integrity sha512-4ZZZ0BsnVJHMg79+rEZuSY0rIpIC3esG0zTDSsTqa/fSUsU+4lF0CD6owl9FAxQcvuEfoyhltGKXYSdAIQvKSA==
+jsii-srcmak@^0.1.1019:
+  version "0.1.1019"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1019.tgz#09747c6cd0ec1a01b0913b1e6d5030e1a4c85e0e"
+  integrity sha512-qgwLpgAJiFEMmnlmuZ3ZI1fUN3htDD9CgvATISDFIdQ5SQO5XTIfyrD2hjbKhiyb9ijKOhNZzncgI7cnhzvZAg==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.3.11"
@@ -5697,9 +5697,9 @@ typescript-json-schema@^0.62.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.4.0-dev.20240127"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20240127.tgz#6837dd2491f21d29443e5b71a4cbb23123afdc63"
-  integrity sha512-coslE2k7bNdtY/r3dJ8vYqoUzoGrmM6G3F8mSSgmPbNyFot1xivp+PggWlUL3dVZwToF9VNgfqh1aU9O2hGUEQ==
+  version "5.4.0-dev.20240128"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20240128.tgz#d3b4204a4f2ec66eae72d4d969307858c014b24d"
+  integrity sha512-SfSvvhZKrpjP/LSfkjpg/VUFMXElCXEtU7SzfHoPph8e3PBlbjZlQdLczkEr95M7wj8V/iiXWyqAoPuQ6nuI4A==
 
 typescript@~3.9.10:
   version "3.9.10"
