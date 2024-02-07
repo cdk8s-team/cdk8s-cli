@@ -1550,10 +1550,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.63.39:
-  version "1.63.39"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.39.tgz#849aa78ec1de3d1733c963ea3d4a026325562283"
-  integrity sha512-vd2M/ljt6xnEydj+Mae1TyapwuZdjupWtahyKeB7I8oDhF2HqhTFZwNvHbphKDnqnb+prLWRxNhuW+PorxkR7w==
+cdk8s@^1.63.40:
+  version "1.63.40"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.40.tgz#f5aaab781b297a01fcfbf068df59db007f72d2b2"
+  integrity sha512-sXBF3NsgftKeRiPm2YB8r6ITcOvwJCSZak/OD5gnxLOuWTOMoby4a4PJY1LdUtWKNI7xy8ygL+pjzEuVgCnWOA==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -3925,10 +3925,10 @@ jsii-rosetta@^1.94.0:
     workerpool "^6.5.1"
     yargs "^16.2.0"
 
-jsii-srcmak@^0.1.1027:
-  version "0.1.1027"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1027.tgz#cbee1cc15766fe53354c021088fe998fa74908cd"
-  integrity sha512-cRejDeQiXgImTldxmFnaNVBjuPR86xHJAkb1z7IoFKPoxovhp6bJCPu4wqdnhhEF2kmvNZwgm8PJ7uEgY9CAtQ==
+jsii-srcmak@^0.1.1028:
+  version "0.1.1028"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1028.tgz#4d9505e0daa3f29aafac6d4876edf7d3b30527e9"
+  integrity sha512-wR/yaOWJQuHI0iZsZsIixmBWq9kdnHj27sCcqTnqZo0UXCw57VJIRB043iMqrQAwDq+qGyh9NhZhqgKgvkhekA==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.3.15"
@@ -5722,9 +5722,9 @@ typescript-json-schema@^0.62.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.4.0-dev.20240205"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20240205.tgz#fce86576386b25ce899cbcec92e3d36cc68ad8aa"
-  integrity sha512-waxaX9QSNlTxyhaeS398h73fWzOr0DOq2rV6ZQSDywcabZjxeiCv18hYDIZXRk4dT0Q0DxhbNAL/THzjKjtDlQ==
+  version "5.4.0-dev.20240206"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20240206.tgz#75755acb115e1176958d511d11eb018694e74987"
+  integrity sha512-8P1XYxDbG/AyGE5tB8+JpeiQfS5ye1BTvIVDZaHhoK9nJuCn4nkB0L66lvfwYB+46hA4rLo3vE3WkIToSYtqQA==
 
 typescript@~3.9.10:
   version "3.9.10"
