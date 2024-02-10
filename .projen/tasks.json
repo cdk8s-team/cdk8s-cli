@@ -462,7 +462,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@types/fs-extra,@types/glob,@types/jest,@types/json-schema,@types/semver,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,glob,jest,jest-junit,standard-version,ts-jest,ts-node,typescript-json-schema"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@types/glob,@types/jest,@types/json-schema,@types/semver,eslint-import-resolver-typescript,eslint-plugin-import,glob,jest,ts-jest,ts-node,typescript-json-schema"
         },
         {
           "exec": "yarn install --check-files"
@@ -486,7 +486,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=prod,optional --filter=@types/node,ajv,cdk8s,cdk8s-plus-25,codemaker,colors,constructs,fs-extra,jsii-pacmak,jsii-srcmak,json2jsii,semver,sscaff,table,yaml,yargs"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=prod,optional --filter=ajv,cdk8s,cdk8s-plus-25,codemaker,colors,constructs,jsii-pacmak,jsii-srcmak,json2jsii,semver,sscaff,table,yaml"
         },
         {
           "exec": "yarn install --check-files"
