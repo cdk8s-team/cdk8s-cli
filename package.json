@@ -81,7 +81,7 @@
     "constructs": "^10.3.0",
     "fs-extra": "^8",
     "jsii-pacmak": "^1.94.0",
-    "jsii-srcmak": "^0.1.1032",
+    "jsii-srcmak": "^0.1.1033",
     "json2jsii": "^0.4.3",
     "semver": "^7.6.0",
     "sscaff": "^1.2.274",
