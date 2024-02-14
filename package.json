@@ -64,7 +64,7 @@
     "glob": "^7.2.3",
     "jest": "^27",
     "jest-junit": "^15",
-    "projen": "^0.79.19",
+    "projen": "^0.79.21",
     "standard-version": "^9",
     "ts-jest": "^27",
     "ts-node": "^10.9.2",
