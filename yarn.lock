@@ -1560,10 +1560,10 @@ cdk8s-plus-25@^2.22.75:
   optionalDependencies:
     backport "8.5.0"
 
-cdk8s@^2.68.36:
-  version "2.68.36"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.68.36.tgz#602918210ab28b166d9ada273671f5a88217e271"
-  integrity sha512-+FS2zlorg7Cw6pVFUpIF/TQAefwAOUev+9Mr5Zz5WuW5E90XfQrE2wSLY626UGR92wBuAtQZBDpOB3Sfv94pDw==
+cdk8s@^2.68.37:
+  version "2.68.37"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.68.37.tgz#2710553e072e372bbe01ec419107ecbe9cc18c74"
+  integrity sha512-7wGgsdK28S0Qms2FQ1dxe+zVRprYiCgT24QVsnZYrrOU9xJHjMX2NyW4qRVdruyJBClKw14jPfPKiDCdiGyjBg==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -3939,10 +3939,10 @@ jsii-rosetta@^1.94.0:
     workerpool "^6.5.1"
     yargs "^16.2.0"
 
-jsii-srcmak@^0.1.1035:
-  version "0.1.1035"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1035.tgz#3b838ee1186937977ad18533f28ead192df0f923"
-  integrity sha512-P3vtNJT1O2IkG4aDU8UZVLeU9EjEvdDbRuruFWwteDNIQdU6fP0fb+N6pmcvHqaTwZGchaLDkwBz9yDKGxkirg==
+jsii-srcmak@^0.1.1036:
+  version "0.1.1036"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1036.tgz#2187f2accd785327ebf5a7fef0cbf3313c02da8d"
+  integrity sha512-llINoIE76IzpifuwR0BW2ifDW6CHjRVmlpuR/A2KTGp7vv63WajJeQsI1LhH4gyEABX+ZXJ6mAQ5JMgiEb5bEA==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.3.18"
@@ -5739,9 +5739,9 @@ typescript-json-schema@^0.62.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.4.0-dev.20240213"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20240213.tgz#887490a3a99986d55d52b8601c51edf2d8634540"
-  integrity sha512-nukKZr0iBKxjWgEm1N2/oS+XTNI6LlBOi9tRrjbInv0sYS52mlSuDv5f1jAtjHSVhi5mk4jsYJ4DvypJXylP/w==
+  version "5.4.0-dev.20240214"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20240214.tgz#7412fc712e698c6c3bd36d2d336d75eb7ef2c614"
+  integrity sha512-JXOvFnlY/tw/adrzpfOUIrdf8PeIsfW7ljice9bP7dK/dBo/F0VcHr98QA5KtPG1ECsYi2Sl/d9AnucpUCgAaw==
 
 typescript@~3.9.10:
   version "3.9.10"
