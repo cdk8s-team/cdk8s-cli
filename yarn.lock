@@ -924,7 +924,12 @@
   dependencies:
     undici-types "~5.26.4"
 
-"@types/node@^16", "@types/node@^16.9.2":
+"@types/node@^16":
+  version "16.18.83"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.83.tgz#681d1a20676d24fc47e2da3934536304097a81d8"
+  integrity sha512-TmBqzDY/GeCEmLob/31SunOQnqYE3ZiiuEh1U9o3HqE1E2cqKZQA5RQg4krEguCY3StnkXyDmCny75qyFLx/rA==
+
+"@types/node@^16.9.2":
   version "16.18.82"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.82.tgz#58d734b4acaa5be339864bbec9cd8024dd0b43d5"
   integrity sha512-pcDZtkx9z8XYV+ius2P3Ot2VVrcYOfXffBQUBuiszrlUzKSmoDYqo+mV+IoL8iIiIjjtOMvNSmH1hwJ+Q+f96Q==
@@ -1553,10 +1558,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.63.45:
-  version "1.63.45"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.45.tgz#b196d14a1b129dd53b90de3b5b20267219adf54d"
-  integrity sha512-CUiABXzgHu5JML3N0uJBGNDUJ8gAYseCSI/3ueivZC42fa0MrOCG8VhvQzQV87twGUt+q9vLfS+AT6rrGATfKw==
+cdk8s@^1.63.47:
+  version "1.63.47"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.47.tgz#ef18deb51bfb1fe601106aa13adc8a2c6a612d72"
+  integrity sha512-04CwNDHnwG79r+ATdMHxmFK2X25E8rjqsvEd3TV/Nq1eTESM7DKwyVpOCnB8e4qONGZqCLh6QJMUwUB/iQ8big==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.2"
@@ -2668,7 +2673,12 @@ flat-cache@^3.0.4:
     keyv "^4.5.3"
     rimraf "^3.0.2"
 
-flatted@^3.2.7, flatted@^3.2.9:
+flatted@^3.2.7:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.3.1.tgz#21db470729a6734d4997002f439cb308987f567a"
+  integrity sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==
+
+flatted@^3.2.9:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.3.0.tgz#5fdca2b5e671cd38d1537427a10e02a2caa8257e"
   integrity sha512-noqGuLw158+DuD9UPRKHpJ2hGxpFyDlYYrfM0mWt4XhT4n0lwzTLh70Tkdyy4kyTmyTT9Bv7bWAJqw7cgkEXDg==
@@ -5241,9 +5251,9 @@ spdx-license-ids@^3.0.0:
   integrity sha512-sh8PWc/ftMqAAdFiBu6Fy6JUOYjqDJBJvIhpfDMyHrr0Rbp5liZqd4TjtQ/RgfLjKFZb+LMx5hpml5qOWy0qvg==
 
 spdx-license-list@^6.8.0:
-  version "6.8.0"
-  resolved "https://registry.yarnpkg.com/spdx-license-list/-/spdx-license-list-6.8.0.tgz#92a99cd6c8b97fe98ae83c54deaffd4d9d503f74"
-  integrity sha512-5UdM7r9yJ1EvsPQZWfa41AZjLQngl9iMMysm9XBW7Lqhq7aF8cllfqjS+rFCHB8FFMGSM0yFWue2LUV9mR0QzQ==
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/spdx-license-list/-/spdx-license-list-6.9.0.tgz#5543abb3a15f985a12808f642a622d2721c372ad"
+  integrity sha512-L2jl5vc2j6jxWcNCvcVj/BW9A8yGIG02Dw+IUw0ZxDM70f7Ylf5Hq39appV1BI9yxyWQRpq2TQ1qaXvf+yjkqA==
 
 split2@^3.0.0:
   version "3.2.2"
@@ -5748,9 +5758,9 @@ typescript-json-schema@^0.63.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.4.0-dev.20240220"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.0-dev.20240220.tgz#eace77e5b4fd613d17dd0e49d2aa924b2d9a3c89"
-  integrity sha512-mUiEcRGUeqXn0/xKi0K01LrBOJ4D1zbn5oVpvofeuo/QUTS/y4+r46h34STyDGMc2KnMYJcWUt2XMalady2J1A==
+  version "5.5.0-dev.20240222"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.0-dev.20240222.tgz#143e6e3ca3af0932aab3720acaaab8b90bbfdf3c"
+  integrity sha512-wTT3hD6G2Nx+KZEDA8HvHbCsnLqtr+ye+OfVEtFARqUKtLcZVnHJhGk99OYhuPUhkAv9UgwAUQREBcyZupPhYg==
 
 typescript@~3.9.10:
   version "3.9.10"
