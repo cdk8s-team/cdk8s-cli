@@ -4935,10 +4935,10 @@ Object {
     },
   },
   "types": Object {
-    "ingress-nginx.Ingressnginx": Object {
+    "ingress-nginx.IngressNginx": Object {
       "assembly": "ingress-nginx",
       "base": "constructs.Construct",
-      "fqn": "ingress-nginx.Ingressnginx",
+      "fqn": "ingress-nginx.IngressNginx",
       "initializer": Object {
         "locationInModule": Object {
           "filename": "ingress-nginx.ts",
@@ -4961,7 +4961,7 @@ Object {
             "name": "props",
             "optional": true,
             "type": Object {
-              "fqn": "ingress-nginx.IngressnginxProps",
+              "fqn": "ingress-nginx.IngressNginxProps",
             },
           },
         ],
@@ -4971,19 +4971,19 @@ Object {
         "filename": "ingress-nginx.ts",
         "line": 13,
       },
-      "name": "Ingressnginx",
-      "symbolId": "ingress-nginx:Ingressnginx",
+      "name": "IngressNginx",
+      "symbolId": "ingress-nginx:IngressNginx",
     },
-    "ingress-nginx.IngressnginxProps": Object {
+    "ingress-nginx.IngressNginxProps": Object {
       "assembly": "ingress-nginx",
       "datatype": true,
-      "fqn": "ingress-nginx.IngressnginxProps",
+      "fqn": "ingress-nginx.IngressNginxProps",
       "kind": "interface",
       "locationInModule": Object {
         "filename": "ingress-nginx.ts",
         "line": 5,
       },
-      "name": "IngressnginxProps",
+      "name": "IngressNginxProps",
       "properties": Array [
         Object {
           "abstract": true,
@@ -5061,7 +5061,7 @@ Object {
           },
         },
       ],
-      "symbolId": "ingress-nginx:IngressnginxProps",
+      "symbolId": "ingress-nginx:IngressNginxProps",
     },
   },
   "version": "0.0.0",
@@ -5087,10 +5087,10 @@ from ._jsii import *
 import constructs as _constructs_77d1e7e8
 
 
-class Ingressnginx(
+class IngressNginx(
     _constructs_77d1e7e8.Construct,
     metaclass=jsii.JSIIMeta,
-    jsii_type=\\"ingress-nginx.Ingressnginx\\",
+    jsii_type=\\"ingress-nginx.IngressNginx\\",
 ):
     def __init__(
         self,
@@ -5113,10 +5113,10 @@ class Ingressnginx(
         :param values: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__85396a67490dbbfcd10c31b9f9ce68b754adb55bb50faf2fe76992886bfef5be)
+            type_hints = typing.get_type_hints(_typecheckingstub__45b0366c982454dda75ec7b3c4f4b0edf925261d6ae50d25c84ec696545df8bf)
             check_type(argname=\\"argument scope\\", value=scope, expected_type=type_hints[\\"scope\\"])
             check_type(argname=\\"argument id\\", value=id, expected_type=type_hints[\\"id\\"])
-        props = IngressnginxProps(
+        props = IngressNginxProps(
             helm_executable=helm_executable,
             helm_flags=helm_flags,
             namespace=namespace,
@@ -5128,7 +5128,7 @@ class Ingressnginx(
 
 
 @jsii.data_type(
-    jsii_type=\\"ingress-nginx.IngressnginxProps\\",
+    jsii_type=\\"ingress-nginx.IngressNginxProps\\",
     jsii_struct_bases=[],
     name_mapping={
         \\"helm_executable\\": \\"helmExecutable\\",
@@ -5138,7 +5138,7 @@ class Ingressnginx(
         \\"values\\": \\"values\\",
     },
 )
-class IngressnginxProps:
+class IngressNginxProps:
     def __init__(
         self,
         *,
@@ -5156,7 +5156,7 @@ class IngressnginxProps:
         :param values: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__85110f2d73c16d180cff3964310561744c0306d72b234ccd18c0a1c76fb41d18)
+            type_hints = typing.get_type_hints(_typecheckingstub__fa1ad20aee8506867d7a9a951634bb1e075e978d51060ca2245cb7a42fd16877)
             check_type(argname=\\"argument helm_executable\\", value=helm_executable, expected_type=type_hints[\\"helm_executable\\"])
             check_type(argname=\\"argument helm_flags\\", value=helm_flags, expected_type=type_hints[\\"helm_flags\\"])
             check_type(argname=\\"argument namespace\\", value=namespace, expected_type=type_hints[\\"namespace\\"])
@@ -5206,19 +5206,19 @@ class IngressnginxProps:
         return not (rhs == self)
 
     def __repr__(self) -> str:
-        return \\"IngressnginxProps(%s)\\" % \\", \\".join(
+        return \\"IngressNginxProps(%s)\\" % \\", \\".join(
             k + \\"=\\" + repr(v) for k, v in self._values.items()
         )
 
 
 __all__ = [
-    \\"Ingressnginx\\",
-    \\"IngressnginxProps\\",
+    \\"IngressNginx\\",
+    \\"IngressNginxProps\\",
 ]
 
 publication.publish()
 
-def _typecheckingstub__85396a67490dbbfcd10c31b9f9ce68b754adb55bb50faf2fe76992886bfef5be(
+def _typecheckingstub__45b0366c982454dda75ec7b3c4f4b0edf925261d6ae50d25c84ec696545df8bf(
     scope: _constructs_77d1e7e8.Construct,
     id: builtins.str,
     *,
@@ -5231,7 +5231,7 @@ def _typecheckingstub__85396a67490dbbfcd10c31b9f9ce68b754adb55bb50faf2fe76992886
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 
-def _typecheckingstub__85110f2d73c16d180cff3964310561744c0306d72b234ccd18c0a1c76fb41d18(
+def _typecheckingstub__fa1ad20aee8506867d7a9a951634bb1e075e978d51060ca2245cb7a42fd16877(
     *,
     helm_executable: typing.Optional[builtins.str] = None,
     helm_flags: typing.Optional[typing.Sequence[builtins.str]] = None,
@@ -5357,10 +5357,10 @@ Object {
     },
   },
   "types": Object {
-    "ingress-nginx.Ingressnginx": Object {
+    "ingress-nginx.IngressNginx": Object {
       "assembly": "ingress-nginx",
       "base": "constructs.Construct",
-      "fqn": "ingress-nginx.Ingressnginx",
+      "fqn": "ingress-nginx.IngressNginx",
       "initializer": Object {
         "locationInModule": Object {
           "filename": "ingress-nginx.ts",
@@ -5383,7 +5383,7 @@ Object {
             "name": "props",
             "optional": true,
             "type": Object {
-              "fqn": "ingress-nginx.IngressnginxProps",
+              "fqn": "ingress-nginx.IngressNginxProps",
             },
           },
         ],
@@ -5393,19 +5393,19 @@ Object {
         "filename": "ingress-nginx.ts",
         "line": 13,
       },
-      "name": "Ingressnginx",
-      "symbolId": "ingress-nginx:Ingressnginx",
+      "name": "IngressNginx",
+      "symbolId": "ingress-nginx:IngressNginx",
     },
-    "ingress-nginx.IngressnginxProps": Object {
+    "ingress-nginx.IngressNginxProps": Object {
       "assembly": "ingress-nginx",
       "datatype": true,
-      "fqn": "ingress-nginx.IngressnginxProps",
+      "fqn": "ingress-nginx.IngressNginxProps",
       "kind": "interface",
       "locationInModule": Object {
         "filename": "ingress-nginx.ts",
         "line": 5,
       },
-      "name": "IngressnginxProps",
+      "name": "IngressNginxProps",
       "properties": Array [
         Object {
           "abstract": true,
@@ -5483,7 +5483,7 @@ Object {
           },
         },
       ],
-      "symbolId": "ingress-nginx:IngressnginxProps",
+      "symbolId": "ingress-nginx:IngressNginxProps",
     },
   },
   "version": "0.0.0",
@@ -5496,7 +5496,7 @@ Object {
 import { Helm, HelmProps } from 'cdk8s';
 import { Construct } from 'constructs';
 
-export interface IngressnginxProps {
+export interface IngressNginxProps {
   readonly namespace?: string;
   readonly releaseName?: string;
   readonly helmExecutable?: string;
@@ -5504,8 +5504,8 @@ export interface IngressnginxProps {
   readonly values?: { [key: string]: any };
 }
 
-export class Ingressnginx extends Construct {
-  public constructor(scope: Construct, id: string, props: IngressnginxProps = {}) {
+export class IngressNginx extends Construct {
+  public constructor(scope: Construct, id: string, props: IngressNginxProps = {}) {
     super(scope, id);
     let updatedProps = {};
 
@@ -9027,6 +9027,44 @@ Possible enum values:
       "name": "IoK8SApiCoreV1TolerationOperator",
       "symbolId": "lacework-agent:IoK8SApiCoreV1TolerationOperator",
     },
+    "lacework-agent.LaceworkAgent": Object {
+      "assembly": "lacework-agent",
+      "base": "constructs.Construct",
+      "fqn": "lacework-agent.LaceworkAgent",
+      "initializer": Object {
+        "locationInModule": Object {
+          "filename": "lacework-agent.ts",
+          "line": 14,
+        },
+        "parameters": Array [
+          Object {
+            "name": "scope",
+            "type": Object {
+              "fqn": "constructs.Construct",
+            },
+          },
+          Object {
+            "name": "id",
+            "type": Object {
+              "primitive": "string",
+            },
+          },
+          Object {
+            "name": "props",
+            "type": Object {
+              "fqn": "lacework-agent.LaceworkAgentProps",
+            },
+          },
+        ],
+      },
+      "kind": "class",
+      "locationInModule": Object {
+        "filename": "lacework-agent.ts",
+        "line": 13,
+      },
+      "name": "LaceworkAgent",
+      "symbolId": "lacework-agent:LaceworkAgent",
+    },
     "lacework-agent.LaceworkAgentCloudservice": Object {
       "assembly": "lacework-agent",
       "datatype": true,
@@ -11026,54 +11064,16 @@ Possible enum values:
       ],
       "symbolId": "lacework-agent:LaceworkAgentLaceworkConfigProcscan",
     },
-    "lacework-agent.Laceworkagent": Object {
-      "assembly": "lacework-agent",
-      "base": "constructs.Construct",
-      "fqn": "lacework-agent.Laceworkagent",
-      "initializer": Object {
-        "locationInModule": Object {
-          "filename": "lacework-agent.ts",
-          "line": 14,
-        },
-        "parameters": Array [
-          Object {
-            "name": "scope",
-            "type": Object {
-              "fqn": "constructs.Construct",
-            },
-          },
-          Object {
-            "name": "id",
-            "type": Object {
-              "primitive": "string",
-            },
-          },
-          Object {
-            "name": "props",
-            "type": Object {
-              "fqn": "lacework-agent.LaceworkagentProps",
-            },
-          },
-        ],
-      },
-      "kind": "class",
-      "locationInModule": Object {
-        "filename": "lacework-agent.ts",
-        "line": 13,
-      },
-      "name": "Laceworkagent",
-      "symbolId": "lacework-agent:Laceworkagent",
-    },
-    "lacework-agent.LaceworkagentProps": Object {
+    "lacework-agent.LaceworkAgentProps": Object {
       "assembly": "lacework-agent",
       "datatype": true,
-      "fqn": "lacework-agent.LaceworkagentProps",
+      "fqn": "lacework-agent.LaceworkAgentProps",
       "kind": "interface",
       "locationInModule": Object {
         "filename": "lacework-agent.ts",
         "line": 5,
       },
-      "name": "LaceworkagentProps",
+      "name": "LaceworkAgentProps",
       "properties": Array [
         Object {
           "abstract": true,
@@ -11084,7 +11084,7 @@ Possible enum values:
           },
           "name": "values",
           "type": Object {
-            "fqn": "lacework-agent.LaceworkagentValues",
+            "fqn": "lacework-agent.LaceworkAgentValues",
           },
         },
         Object {
@@ -11145,9 +11145,9 @@ Possible enum values:
           },
         },
       ],
-      "symbolId": "lacework-agent:LaceworkagentProps",
+      "symbolId": "lacework-agent:LaceworkAgentProps",
     },
-    "lacework-agent.LaceworkagentValues": Object {
+    "lacework-agent.LaceworkAgentValues": Object {
       "assembly": "lacework-agent",
       "datatype": true,
       "docs": Object {
@@ -11155,13 +11155,13 @@ Possible enum values:
           "schema": "lacework-agent",
         },
       },
-      "fqn": "lacework-agent.LaceworkagentValues",
+      "fqn": "lacework-agent.LaceworkAgentValues",
       "kind": "interface",
       "locationInModule": Object {
         "filename": "lacework-agent.ts",
         "line": 66,
       },
-      "name": "LaceworkagentValues",
+      "name": "LaceworkAgentValues",
       "properties": Array [
         Object {
           "abstract": true,
@@ -11457,7 +11457,7 @@ Possible enum values:
           },
         },
       ],
-      "symbolId": "lacework-agent:LaceworkagentValues",
+      "symbolId": "lacework-agent:LaceworkAgentValues",
     },
   },
   "version": "0.0.0",
@@ -14692,6 +14692,46 @@ class IoK8SApiCoreV1TolerationOperator(enum.Enum):
     '''Exists.'''
 
 
+class LaceworkAgent(
+    _constructs_77d1e7e8.Construct,
+    metaclass=jsii.JSIIMeta,
+    jsii_type=\\"lacework-agent.LaceworkAgent\\",
+):
+    def __init__(
+        self,
+        scope: _constructs_77d1e7e8.Construct,
+        id: builtins.str,
+        *,
+        values: typing.Union[\\"LaceworkAgentValues\\", typing.Dict[builtins.str, typing.Any]],
+        helm_executable: typing.Optional[builtins.str] = None,
+        helm_flags: typing.Optional[typing.Sequence[builtins.str]] = None,
+        namespace: typing.Optional[builtins.str] = None,
+        release_name: typing.Optional[builtins.str] = None,
+    ) -> None:
+        '''
+        :param scope: -
+        :param id: -
+        :param values: -
+        :param helm_executable: -
+        :param helm_flags: -
+        :param namespace: -
+        :param release_name: -
+        '''
+        if __debug__:
+            type_hints = typing.get_type_hints(_typecheckingstub__538ed41add4cf5a0b3aca9fc59ee30dae09743d95432eb21a3ce0b9acfbe4e21)
+            check_type(argname=\\"argument scope\\", value=scope, expected_type=type_hints[\\"scope\\"])
+            check_type(argname=\\"argument id\\", value=id, expected_type=type_hints[\\"id\\"])
+        props = LaceworkAgentProps(
+            values=values,
+            helm_executable=helm_executable,
+            helm_flags=helm_flags,
+            namespace=namespace,
+            release_name=release_name,
+        )
+
+        jsii.create(self.__class__, self, [scope, id, props])
+
+
 @jsii.data_type(
     jsii_type=\\"lacework-agent.LaceworkAgentCloudservice\\",
     jsii_struct_bases=[],
@@ -16415,48 +16455,8 @@ class LaceworkAgentLaceworkConfigProcscan:
         )
 
 
-class Laceworkagent(
-    _constructs_77d1e7e8.Construct,
-    metaclass=jsii.JSIIMeta,
-    jsii_type=\\"lacework-agent.Laceworkagent\\",
-):
-    def __init__(
-        self,
-        scope: _constructs_77d1e7e8.Construct,
-        id: builtins.str,
-        *,
-        values: typing.Union[\\"LaceworkagentValues\\", typing.Dict[builtins.str, typing.Any]],
-        helm_executable: typing.Optional[builtins.str] = None,
-        helm_flags: typing.Optional[typing.Sequence[builtins.str]] = None,
-        namespace: typing.Optional[builtins.str] = None,
-        release_name: typing.Optional[builtins.str] = None,
-    ) -> None:
-        '''
-        :param scope: -
-        :param id: -
-        :param values: -
-        :param helm_executable: -
-        :param helm_flags: -
-        :param namespace: -
-        :param release_name: -
-        '''
-        if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__114ea5fe7e7841a5303933808db33ffb935e37c0ef8577589791a696f226951d)
-            check_type(argname=\\"argument scope\\", value=scope, expected_type=type_hints[\\"scope\\"])
-            check_type(argname=\\"argument id\\", value=id, expected_type=type_hints[\\"id\\"])
-        props = LaceworkagentProps(
-            values=values,
-            helm_executable=helm_executable,
-            helm_flags=helm_flags,
-            namespace=namespace,
-            release_name=release_name,
-        )
-
-        jsii.create(self.__class__, self, [scope, id, props])
-
-
 @jsii.data_type(
-    jsii_type=\\"lacework-agent.LaceworkagentProps\\",
+    jsii_type=\\"lacework-agent.LaceworkAgentProps\\",
     jsii_struct_bases=[],
     name_mapping={
         \\"values\\": \\"values\\",
@@ -16466,11 +16466,11 @@ class Laceworkagent(
         \\"release_name\\": \\"releaseName\\",
     },
 )
-class LaceworkagentProps:
+class LaceworkAgentProps:
     def __init__(
         self,
         *,
-        values: typing.Union[\\"LaceworkagentValues\\", typing.Dict[builtins.str, typing.Any]],
+        values: typing.Union[\\"LaceworkAgentValues\\", typing.Dict[builtins.str, typing.Any]],
         helm_executable: typing.Optional[builtins.str] = None,
         helm_flags: typing.Optional[typing.Sequence[builtins.str]] = None,
         namespace: typing.Optional[builtins.str] = None,
@@ -16484,9 +16484,9 @@ class LaceworkagentProps:
         :param release_name: -
         '''
         if isinstance(values, dict):
-            values = LaceworkagentValues(**values)
+            values = LaceworkAgentValues(**values)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__42b286772f6a0399931871ddfc86cb3edc039392ac6d0608f2b4d7f1d1dc28fb)
+            type_hints = typing.get_type_hints(_typecheckingstub__ea49c8097c79e425efc522f130af588a0f59b5954b4b8e97db8870d745183bad)
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
             check_type(argname=\\"argument helm_executable\\", value=helm_executable, expected_type=type_hints[\\"helm_executable\\"])
             check_type(argname=\\"argument helm_flags\\", value=helm_flags, expected_type=type_hints[\\"helm_flags\\"])
@@ -16505,10 +16505,10 @@ class LaceworkagentProps:
             self._values[\\"release_name\\"] = release_name
 
     @builtins.property
-    def values(self) -> \\"LaceworkagentValues\\":
+    def values(self) -> \\"LaceworkAgentValues\\":
         result = self._values.get(\\"values\\")
         assert result is not None, \\"Required property 'values' is missing\\"
-        return typing.cast(\\"LaceworkagentValues\\", result)
+        return typing.cast(\\"LaceworkAgentValues\\", result)
 
     @builtins.property
     def helm_executable(self) -> typing.Optional[builtins.str]:
@@ -16537,13 +16537,13 @@ class LaceworkagentProps:
         return not (rhs == self)
 
     def __repr__(self) -> str:
-        return \\"LaceworkagentProps(%s)\\" % \\", \\".join(
+        return \\"LaceworkAgentProps(%s)\\" % \\", \\".join(
             k + \\"=\\" + repr(v) for k, v in self._values.items()
         )
 
 
 @jsii.data_type(
-    jsii_type=\\"lacework-agent.LaceworkagentValues\\",
+    jsii_type=\\"lacework-agent.LaceworkAgentValues\\",
     jsii_struct_bases=[],
     name_mapping={
         \\"lacework_config\\": \\"laceworkConfig\\",
@@ -16563,7 +16563,7 @@ class LaceworkagentProps:
         \\"tolerations\\": \\"tolerations\\",
     },
 )
-class LaceworkagentValues:
+class LaceworkAgentValues:
     def __init__(
         self,
         *,
@@ -16619,7 +16619,7 @@ class LaceworkagentValues:
         if isinstance(resources, dict):
             resources = IoK8SApiCoreV1ResourceRequirements(**resources)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__75de6b5286dea4b274a90e031e8b30635c9eeb0419b57e7aeb0962ead8d548b7)
+            type_hints = typing.get_type_hints(_typecheckingstub__8e0e9f6d5d81f49593ed890c033cf700aa6b75418e1ea88ea8696f534add6024)
             check_type(argname=\\"argument lacework_config\\", value=lacework_config, expected_type=type_hints[\\"lacework_config\\"])
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument cloudservice\\", value=cloudservice, expected_type=type_hints[\\"cloudservice\\"])
@@ -16808,7 +16808,7 @@ class LaceworkagentValues:
         return not (rhs == self)
 
     def __repr__(self) -> str:
-        return \\"LaceworkagentValues(%s)\\" % \\", \\".join(
+        return \\"LaceworkAgentValues(%s)\\" % \\", \\".join(
             k + \\"=\\" + repr(v) for k, v in self._values.items()
         )
 
@@ -16860,6 +16860,7 @@ __all__ = [
     \\"IoK8SApiCoreV1Toleration\\",
     \\"IoK8SApiCoreV1TolerationEffect\\",
     \\"IoK8SApiCoreV1TolerationOperator\\",
+    \\"LaceworkAgent\\",
     \\"LaceworkAgentCloudservice\\",
     \\"LaceworkAgentCloudserviceGke\\",
     \\"LaceworkAgentClusterAgent\\",
@@ -16882,9 +16883,8 @@ __all__ = [
     \\"LaceworkAgentLaceworkConfigPackagescan\\",
     \\"LaceworkAgentLaceworkConfigPerfmode\\",
     \\"LaceworkAgentLaceworkConfigProcscan\\",
-    \\"Laceworkagent\\",
-    \\"LaceworkagentProps\\",
-    \\"LaceworkagentValues\\",
+    \\"LaceworkAgentProps\\",
+    \\"LaceworkAgentValues\\",
 ]
 
 publication.publish()
@@ -17223,6 +17223,19 @@ def _typecheckingstub__8961b249a3bd11e4645f57459dc73620f46a774c6a01af2d7b27f6d83
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 
+def _typecheckingstub__538ed41add4cf5a0b3aca9fc59ee30dae09743d95432eb21a3ce0b9acfbe4e21(
+    scope: _constructs_77d1e7e8.Construct,
+    id: builtins.str,
+    *,
+    values: typing.Union[LaceworkAgentValues, typing.Dict[builtins.str, typing.Any]],
+    helm_executable: typing.Optional[builtins.str] = None,
+    helm_flags: typing.Optional[typing.Sequence[builtins.str]] = None,
+    namespace: typing.Optional[builtins.str] = None,
+    release_name: typing.Optional[builtins.str] = None,
+) -> None:
+    \\"\\"\\"Type checking stubs\\"\\"\\"
+    pass
+
 def _typecheckingstub__a00c30cb766c4ce3670ed7fa040a7194f0cc005e50f492fee71a1d7221fdbc73(
     *,
     gke: typing.Optional[typing.Union[LaceworkAgentCloudserviceGke, typing.Dict[builtins.str, typing.Any]]] = None,
@@ -17388,11 +17401,9 @@ def _typecheckingstub__574fdc26e474c6dcbd22d3b5de880518aa899c6e4ac43317fce728e59
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 
-def _typecheckingstub__114ea5fe7e7841a5303933808db33ffb935e37c0ef8577589791a696f226951d(
-    scope: _constructs_77d1e7e8.Construct,
-    id: builtins.str,
+def _typecheckingstub__ea49c8097c79e425efc522f130af588a0f59b5954b4b8e97db8870d745183bad(
     *,
-    values: typing.Union[LaceworkagentValues, typing.Dict[builtins.str, typing.Any]],
+    values: typing.Union[LaceworkAgentValues, typing.Dict[builtins.str, typing.Any]],
     helm_executable: typing.Optional[builtins.str] = None,
     helm_flags: typing.Optional[typing.Sequence[builtins.str]] = None,
     namespace: typing.Optional[builtins.str] = None,
@@ -17401,18 +17412,7 @@ def _typecheckingstub__114ea5fe7e7841a5303933808db33ffb935e37c0ef8577589791a696f
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 
-def _typecheckingstub__42b286772f6a0399931871ddfc86cb3edc039392ac6d0608f2b4d7f1d1dc28fb(
-    *,
-    values: typing.Union[LaceworkagentValues, typing.Dict[builtins.str, typing.Any]],
-    helm_executable: typing.Optional[builtins.str] = None,
-    helm_flags: typing.Optional[typing.Sequence[builtins.str]] = None,
-    namespace: typing.Optional[builtins.str] = None,
-    release_name: typing.Optional[builtins.str] = None,
-) -> None:
-    \\"\\"\\"Type checking stubs\\"\\"\\"
-    pass
-
-def _typecheckingstub__75de6b5286dea4b274a90e031e8b30635c9eeb0419b57e7aeb0962ead8d548b7(
+def _typecheckingstub__8e0e9f6d5d81f49593ed890c033cf700aa6b75418e1ea88ea8696f534add6024(
     *,
     lacework_config: typing.Union[LaceworkAgentLaceworkConfig, typing.Dict[builtins.str, typing.Any]],
     additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
@@ -20928,6 +20928,44 @@ Possible enum values:
       "name": "IoK8SApiCoreV1TolerationOperator",
       "symbolId": "lacework-agent:IoK8SApiCoreV1TolerationOperator",
     },
+    "lacework-agent.LaceworkAgent": Object {
+      "assembly": "lacework-agent",
+      "base": "constructs.Construct",
+      "fqn": "lacework-agent.LaceworkAgent",
+      "initializer": Object {
+        "locationInModule": Object {
+          "filename": "lacework-agent.ts",
+          "line": 14,
+        },
+        "parameters": Array [
+          Object {
+            "name": "scope",
+            "type": Object {
+              "fqn": "constructs.Construct",
+            },
+          },
+          Object {
+            "name": "id",
+            "type": Object {
+              "primitive": "string",
+            },
+          },
+          Object {
+            "name": "props",
+            "type": Object {
+              "fqn": "lacework-agent.LaceworkAgentProps",
+            },
+          },
+        ],
+      },
+      "kind": "class",
+      "locationInModule": Object {
+        "filename": "lacework-agent.ts",
+        "line": 13,
+      },
+      "name": "LaceworkAgent",
+      "symbolId": "lacework-agent:LaceworkAgent",
+    },
     "lacework-agent.LaceworkAgentCloudservice": Object {
       "assembly": "lacework-agent",
       "datatype": true,
@@ -22927,54 +22965,16 @@ Possible enum values:
       ],
       "symbolId": "lacework-agent:LaceworkAgentLaceworkConfigProcscan",
     },
-    "lacework-agent.Laceworkagent": Object {
-      "assembly": "lacework-agent",
-      "base": "constructs.Construct",
-      "fqn": "lacework-agent.Laceworkagent",
-      "initializer": Object {
-        "locationInModule": Object {
-          "filename": "lacework-agent.ts",
-          "line": 14,
-        },
-        "parameters": Array [
-          Object {
-            "name": "scope",
-            "type": Object {
-              "fqn": "constructs.Construct",
-            },
-          },
-          Object {
-            "name": "id",
-            "type": Object {
-              "primitive": "string",
-            },
-          },
-          Object {
-            "name": "props",
-            "type": Object {
-              "fqn": "lacework-agent.LaceworkagentProps",
-            },
-          },
-        ],
-      },
-      "kind": "class",
-      "locationInModule": Object {
-        "filename": "lacework-agent.ts",
-        "line": 13,
-      },
-      "name": "Laceworkagent",
-      "symbolId": "lacework-agent:Laceworkagent",
-    },
-    "lacework-agent.LaceworkagentProps": Object {
+    "lacework-agent.LaceworkAgentProps": Object {
       "assembly": "lacework-agent",
       "datatype": true,
-      "fqn": "lacework-agent.LaceworkagentProps",
+      "fqn": "lacework-agent.LaceworkAgentProps",
       "kind": "interface",
       "locationInModule": Object {
         "filename": "lacework-agent.ts",
         "line": 5,
       },
-      "name": "LaceworkagentProps",
+      "name": "LaceworkAgentProps",
       "properties": Array [
         Object {
           "abstract": true,
@@ -22985,7 +22985,7 @@ Possible enum values:
           },
           "name": "values",
           "type": Object {
-            "fqn": "lacework-agent.LaceworkagentValues",
+            "fqn": "lacework-agent.LaceworkAgentValues",
           },
         },
         Object {
@@ -23046,9 +23046,9 @@ Possible enum values:
           },
         },
       ],
-      "symbolId": "lacework-agent:LaceworkagentProps",
+      "symbolId": "lacework-agent:LaceworkAgentProps",
     },
-    "lacework-agent.LaceworkagentValues": Object {
+    "lacework-agent.LaceworkAgentValues": Object {
       "assembly": "lacework-agent",
       "datatype": true,
       "docs": Object {
@@ -23056,13 +23056,13 @@ Possible enum values:
           "schema": "lacework-agent",
         },
       },
-      "fqn": "lacework-agent.LaceworkagentValues",
+      "fqn": "lacework-agent.LaceworkAgentValues",
       "kind": "interface",
       "locationInModule": Object {
         "filename": "lacework-agent.ts",
         "line": 66,
       },
-      "name": "LaceworkagentValues",
+      "name": "LaceworkAgentValues",
       "properties": Array [
         Object {
           "abstract": true,
@@ -23358,7 +23358,7 @@ Possible enum values:
           },
         },
       ],
-      "symbolId": "lacework-agent:LaceworkagentValues",
+      "symbolId": "lacework-agent:LaceworkAgentValues",
     },
   },
   "version": "0.0.0",
@@ -23371,16 +23371,16 @@ Object {
 import { Helm, HelmProps } from 'cdk8s';
 import { Construct } from 'constructs';
 
-export interface LaceworkagentProps {
+export interface LaceworkAgentProps {
   readonly namespace?: string;
   readonly releaseName?: string;
   readonly helmExecutable?: string;
   readonly helmFlags?: string[];
-  readonly values: LaceworkagentValues;
+  readonly values: LaceworkAgentValues;
 }
 
-export class Laceworkagent extends Construct {
-  public constructor(scope: Construct, id: string, props: LaceworkagentProps) {
+export class LaceworkAgent extends Construct {
+  public constructor(scope: Construct, id: string, props: LaceworkAgentProps) {
     super(scope, id);
     let updatedProps = {};
 
@@ -23432,7 +23432,7 @@ export class Laceworkagent extends Construct {
 /**
  * @schema lacework-agent
  */
-export interface LaceworkagentValues {
+export interface LaceworkAgentValues {
   /**
    * @schema lacework-agent#global
    */
