@@ -94,6 +94,7 @@ class Command implements yargs.CommandModule {
         const app = await synthApp(command, tempDir, stdout, recordConstructMetadata);
         for (const f of app.manifests) {
           fs.createReadStream(f).pipe(process.stdout);
+          process.stdout.write('---\n');
         }
         if (validations) {
           const pluginManager = new PluginManager(pluginsDir);
