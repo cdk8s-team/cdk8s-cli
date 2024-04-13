@@ -31,7 +31,6 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
-!/.projenrc.js
 /test-reports/
 junit.xml
 /coverage/
@@ -73,3 +72,4 @@ junit.xml
 !/.github/workflows/backport.yml
 .vscode/
 !/.github/workflows/integ.yml
+!/.projenrc.ts

@@ -1249,7 +1249,10 @@ Object {
 
 exports[`importing helm chart helm:https://charts.bitnami.com/bitnami/mysql@9.10.10 with python lanugage 2`] = `
 Object {
-  "mysql/__init__.py": "import abc
+  "mysql/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -2491,7 +2494,10 @@ def _typecheckingstub__ba4b7249d1a1862400c9b19cff8ae48324c2ce9cf5eddeb6ee91753a0
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 ",
-  "mysql/_jsii/__init__.py": "import abc
+  "mysql/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -4358,7 +4364,10 @@ Object {
 
 exports[`importing helm chart helm:https://grafana.github.io/helm-charts/loki@5.27.0 with python lanugage 2`] = `
 Object {
-  "loki/__init__.py": "import abc
+  "loki/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -4530,7 +4539,10 @@ def _typecheckingstub__c8e7d6706b1656a9b1ed96c19860786a777f4336504fed38f4230700c
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 ",
-  "loki/_jsii/__init__.py": "import abc
+  "loki/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -5070,7 +5082,10 @@ Object {
 
 exports[`importing helm chart helm:https://kubernetes.github.io/ingress-nginx/ingress-nginx@4.8.0 with python lanugage 2`] = `
 Object {
-  "ingress_nginx/__init__.py": "import abc
+  "ingress_nginx/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -5242,7 +5257,10 @@ def _typecheckingstub__85110f2d73c16d180cff3964310561744c0306d72b234ccd18c0a1c76
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 ",
-  "ingress_nginx/_jsii/__init__.py": "import abc
+  "ingress_nginx/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -10662,7 +10680,7 @@ Possible enum values:
           "docs": Object {
             "summary": "cri-o.",
           },
-          "name": "CRI_O",
+          "name": "CRI_HYPHEN_O",
         },
         Object {
           "docs": Object {
@@ -11466,7 +11484,10 @@ Possible enum values:
 
 exports[`importing helm chart helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0 with python lanugage 2`] = `
 Object {
-  "lacework_agent/__init__.py": "import abc
+  "lacework_agent/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -16124,7 +16145,7 @@ class LaceworkAgentLaceworkConfigContainerRuntime(enum.Enum):
 
     CONTAINERD = \\"CONTAINERD\\"
     '''containerd.'''
-    CRI_O = \\"CRI_O\\"
+    CRI_HYPHEN_O = \\"CRI_HYPHEN_O\\"
     '''cri-o.'''
     DOCKER = \\"DOCKER\\"
     '''docker.'''
@@ -17433,7 +17454,10 @@ def _typecheckingstub__75de6b5286dea4b274a90e031e8b30635c9eeb0419b57e7aeb0962ead
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 ",
-  "lacework_agent/_jsii/__init__.py": "import abc
+  "lacework_agent/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -22563,7 +22587,7 @@ Possible enum values:
           "docs": Object {
             "summary": "cri-o.",
           },
-          "name": "CRI_O",
+          "name": "CRI_HYPHEN_O",
         },
         Object {
           "docs": Object {
@@ -24178,7 +24202,7 @@ export enum LaceworkAgentLaceworkConfigContainerRuntime {
   /** containerd */
   CONTAINERD = \\"containerd\\",
   /** cri-o */
-  CRI_O = \\"cri-o\\",
+  CRI_HYPHEN_O = \\"cri-o\\",
   /** docker */
   DOCKER = \\"docker\\",
 }
@@ -26632,7 +26656,10 @@ Object {
 
 exports[`importing helm chart helm:oci://registry-1.docker.io/bitnamicharts/mysql@9.12.5 with python lanugage 2`] = `
 Object {
-  "mysql/__init__.py": "import abc
+  "mysql/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -27874,7 +27901,10 @@ def _typecheckingstub__ba4b7249d1a1862400c9b19cff8ae48324c2ce9cf5eddeb6ee91753a0
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 ",
-  "mysql/_jsii/__init__.py": "import abc
+  "mysql/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -29740,7 +29770,10 @@ Object {
 
 exports[`importing helm chart minio:=helm:https://operator.min.io/operator@5.0.9 with python lanugage 2`] = `
 Object {
-  "operator/__init__.py": "import abc
+  "operator/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -29912,7 +29945,10 @@ def _typecheckingstub__1ba6cfa05344ec1eb73016e5b58b05d2a9a2e22bf82546647dd2d6dac
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 ",
-  "operator/_jsii/__init__.py": "import abc
+  "operator/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
