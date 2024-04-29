@@ -5783,9 +5783,9 @@ typescript-json-schema@^0.63.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.5.0-dev.20240427"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.0-dev.20240427.tgz#09958be59d0a93c6191036ee6cb6ffb091bfdba0"
-  integrity sha512-vm3WnPi2ZVIJib+bLBXzoakaw/1F4X+C+Uycboz2B6k4y0LS1JflVySjUfNthvjFRqtDbKFOzXdyCXkuGbytWg==
+  version "5.5.0-dev.20240428"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.0-dev.20240428.tgz#d40edc89e41dd118ba4cfb82788223b7f3e7b063"
+  integrity sha512-CJeSji05UX6V7wZYqDivyYE2aUTjmWun7iGp8n0cQnM773e9ZboeYt6Wx14OBIhVzbwf2ot1Y5jUwTw80hStTg==
 
 typescript@~3.9.10:
   version "3.9.10"
@@ -6152,7 +6152,7 @@ yaml@2.4.1:
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.4.1.tgz#2e57e0b5e995292c25c75d2658f0664765210eed"
   integrity sha512-pIXzoImaqmfOrL7teGUBt/T7ZDnyeGBWyXQBvOVhLkWLN37GXv8NMLK406UY6dS51JfcQHsmcW5cJ441bHg6Lg==
 
-yaml@^2.2.2:
+yaml@2.4.2, yaml@^2.2.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.4.2.tgz#7a2b30f2243a5fc299e1f14ca58d475ed4bc5362"
   integrity sha512-B3VqDZ+JAg1nZpaEmWtTXUlBneoGx6CPM9b0TENK6aoSu5t73dItudwdgmi6tHlIZZId4dZ9skcAQ2UbcyAeVA==
