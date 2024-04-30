@@ -146,7 +146,7 @@
     }
   },
   "optionalDependencies": {
-    "backport": "8.5.0"
+    "backport": "9.5.0"
   },
   "exports": {
     "./plugins": "./lib/plugins/index.js",
