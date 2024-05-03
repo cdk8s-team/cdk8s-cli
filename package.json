@@ -49,7 +49,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@cdk8s/projen-common": "^0.0.516",
+    "@cdk8s/projen-common": "^0.0.518",
     "@types/fs-extra": "^8",
     "@types/glob": "^7.2.0",
     "@types/jest": "^27",
@@ -81,6 +81,7 @@
     "constructs": "^10.3.0",
     "fs-extra": "^8",
     "jsii-pacmak": "^1.97.0",
+    "jsii-rosetta": "^5.4.10",
     "jsii-srcmak": "^0.1.1108",
     "json2jsii": "^0.4.3",
     "semver": "^7.6.0",
