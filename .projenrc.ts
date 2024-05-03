@@ -40,6 +40,7 @@ const project = new Cdk8sTeamTypeScriptProject({
     'fs-extra@^8',
     'jsii-srcmak',
     'jsii-pacmak',
+    'jsii-rosetta',
     'sscaff',
     'yaml',
     'yargs@^15',

@@ -126,6 +126,10 @@
       "type": "runtime"
     },
     {
+      "name": "jsii-rosetta",
+      "type": "runtime"
+    },
+    {
       "name": "jsii-srcmak",
       "type": "runtime"
     },
