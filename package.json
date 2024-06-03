@@ -80,13 +80,13 @@
     "constructs": "^3.4.344",
     "fs-extra": "^8",
     "jsii-pacmak": "^1.98.0",
-    "jsii-rosetta": "^5.4.20",
-    "jsii-srcmak": "^0.1.1141",
+    "jsii-rosetta": "^5.4.21",
+    "jsii-srcmak": "^0.1.1142",
     "json2jsii": "^0.4.3",
     "semver": "^7.6.2",
     "sscaff": "^1.2.274",
     "table": "^6.8.2",
-    "yaml": "2.4.2",
+    "yaml": "2.4.3",
     "yargs": "^15"
   },
   "keywords": [
