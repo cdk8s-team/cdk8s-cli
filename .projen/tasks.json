@@ -462,7 +462,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@types/glob,@types/jest,@types/json-schema,@types/semver,eslint-import-resolver-typescript,eslint-plugin-import,glob,jest,ts-jest,ts-node,typescript-json-schema"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@types/glob,@types/jest,@types/json-schema,@types/semver,backport,eslint-import-resolver-typescript,eslint-plugin-import,glob,jest,ts-jest,ts-node,typescript-json-schema"
         },
         {
           "exec": "yarn install --check-files"
