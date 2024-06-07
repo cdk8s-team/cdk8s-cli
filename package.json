@@ -75,7 +75,7 @@
   "dependencies": {
     "@types/node": "^16",
     "ajv": "^8.16.0",
-    "cdk8s": "^2.68.75",
+    "cdk8s": "^2.68.76",
     "cdk8s-plus-25": "^2.22.79",
     "codemaker": "^1.99.0",
     "colors": "1.4.0",
@@ -83,7 +83,7 @@
     "fs-extra": "^8",
     "jsii-pacmak": "^1.99.0",
     "jsii-rosetta": "^5.4.21",
-    "jsii-srcmak": "^0.1.1145",
+    "jsii-srcmak": "^0.1.1146",
     "json2jsii": "^0.4.3",
     "semver": "^7.6.2",
     "sscaff": "^1.2.274",
