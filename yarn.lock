@@ -1551,16 +1551,14 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.63.82:
-  version "1.63.82"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.82.tgz#15637c794d2322d86a881692b6dc4fa0d99e86c9"
-  integrity sha512-3I3cBIwrd3zIaRWVA3yHer60YxOwS/CAnpwcOYcUrCKNf1osFBY+bJ5rZiVx5MkRVET2yyGMEs9XDaoWEtW3Ow==
+cdk8s@^1.63.83:
+  version "1.63.83"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.83.tgz#775fde8f4d0b523fdedc9bcf0708407d032d742d"
+  integrity sha512-oeCejvoXgO1y2kKqeIaz3u9Raf4aDPRUbn+99EGSzbeaoaj7X/zeCrCpatvsVeD2lo+zP/7A093hkAswx9iW6Q==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.6"
     yaml "2.4.3"
-  optionalDependencies:
-    backport "8.5.0"
 
 chalk@^2.4.2:
   version "2.4.2"
@@ -3972,10 +3970,10 @@ jsii-rosetta@^5.4.21:
     workerpool "^6.5.1"
     yargs "^17.7.2"
 
-jsii-srcmak@^0.1.1145:
-  version "0.1.1145"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1145.tgz#4782253d21af8e1de0dc27feb837d031e2598466"
-  integrity sha512-WvS9fAs1rhLtojjN5vAiXTqFvXEcUNvAE7pzRM9SgojVFLqG+UqqsLSixYiiqrXehoCsZ56SXCDnZaaukFFtVA==
+jsii-srcmak@^0.1.1146:
+  version "0.1.1146"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1146.tgz#be19b0912fca96d11d891f0cde6f1852ca7c3ea8"
+  integrity sha512-lzeS9OvkMVHF1PbJ68cUCzgin08POuV4MTTEE8ie5kMrE1ZBXy5Q0pce40cPVCg0CR89iRkmygQbWSApj1+/rA==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.4.20"
@@ -5766,9 +5764,9 @@ typescript-json-schema@^0.63.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.6.0-dev.20240605"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.6.0-dev.20240605.tgz#da0175383eb38829771b81ac62cf3c028fd3c0e5"
-  integrity sha512-T6LUM8t7yOOvOZSJ1CX+yG6u2ijKRPzhICi3GMv5hA4wWQz/fd54zkZLABkSH67DAHIJUFDtDAEt98Hnd30RJg==
+  version "5.6.0-dev.20240606"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.6.0-dev.20240606.tgz#2305c0fafb700558f9053173d623493a7874cbf2"
+  integrity sha512-q7dle76No7lsX4VV/pRjSFZOlCqaOwJaVW0AS9PWKr9rLsxTHPuUC9EmGiiERQnODfh/c2gN+wiNK525JOtemw==
 
 typescript@~4.9.5:
   version "4.9.5"
