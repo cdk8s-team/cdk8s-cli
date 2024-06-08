@@ -2479,12 +2479,7 @@ dot-prop@^5.1.0:
   dependencies:
     is-obj "^2.0.0"
 
-dotenv@^16.0.1:
-  version "16.3.1"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.3.1.tgz#369034de7d7e5b120972693352a3bf112172cc3e"
-  integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
-
-dotenv@^16.0.3:
+dotenv@^16.0.1, dotenv@^16.0.3:
   version "16.4.5"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.5.tgz#cdd3b3b604cb327e286b4762e13502f717cb099f"
   integrity sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==
@@ -4370,10 +4365,10 @@ jsii-rosetta@^5.4.21:
     workerpool "^6.5.1"
     yargs "^17.7.2"
 
-jsii-srcmak@^0.1.1146:
-  version "0.1.1146"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1146.tgz#be19b0912fca96d11d891f0cde6f1852ca7c3ea8"
-  integrity sha512-lzeS9OvkMVHF1PbJ68cUCzgin08POuV4MTTEE8ie5kMrE1ZBXy5Q0pce40cPVCg0CR89iRkmygQbWSApj1+/rA==
+jsii-srcmak@^0.1.1147:
+  version "0.1.1147"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1147.tgz#8f320213fd2531af51158b6be537722b71b5533a"
+  integrity sha512-865nKQZwJdTvNgW3XSQSnmkkqAPq9zxyXdoJ2ugiNEePgJAijLW7s/1PBJp7AKZnP7674HTlbS+mNnoORpntVw==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.4.20"
@@ -4441,10 +4436,10 @@ json-stringify-safe@^5.0.1:
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==
 
-json2jsii@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/json2jsii/-/json2jsii-0.4.3.tgz#70ba13fb3a88cc12fbee83555d305315c892f3ae"
-  integrity sha512-9PNmX7v94XVR5RiblCvtoCbFy3HALnRqZWLT8LSXEE7wujudmMXzdSFyyK0YwYd7dxpzNXirPf6eoQG5xL9N5A==
+json2jsii@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/json2jsii/-/json2jsii-0.4.4.tgz#8f0191478ae9630e0e5b6ad1b2995389d0497fe5"
+  integrity sha512-jTbmFuxivo20zb/JOKc2U5/qSFWsobJmglvmWVdQoWdR2Ip9KtY9t679QLs7TV/oYSY3VnJU83IWL1QH0eI/4w==
   dependencies:
     camelcase "^6.3.0"
     json-schema "^0.4.0"
@@ -6351,9 +6346,9 @@ typescript-json-schema@^0.63.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.6.0-dev.20240606"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.6.0-dev.20240606.tgz#2305c0fafb700558f9053173d623493a7874cbf2"
-  integrity sha512-q7dle76No7lsX4VV/pRjSFZOlCqaOwJaVW0AS9PWKr9rLsxTHPuUC9EmGiiERQnODfh/c2gN+wiNK525JOtemw==
+  version "5.6.0-dev.20240607"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.6.0-dev.20240607.tgz#c2c8d51ca89eeca524cb4914d6540ea76da753fc"
+  integrity sha512-yy+XEQJEu/S3zEkTYTPv/sq3WIh2IIa19WD6+JAZxV+ndNZaalF84Tw742YJXnZEU37SYpgfFVhWCKi0E9Kmtw==
 
 typescript@~4.9.5:
   version "4.9.5"
@@ -6603,15 +6598,6 @@ which@^2.0.1:
   dependencies:
     isexe "^2.0.0"
 
-winston-transport@^4.5.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/winston-transport/-/winston-transport-4.6.0.tgz#f1c1a665ad1b366df72199e27892721832a19e1b"
-  integrity sha512-wbBA9PbPAHxKiygo7ub7BYRiKxms0tpfU2ljtWzb3SjRjv5yl6Ozuy/TkXf00HTAt+Uylo3gSkNwzc4ME0wiIg==
-  dependencies:
-    logform "^2.3.2"
-    readable-stream "^3.6.0"
-    triple-beam "^1.3.0"
-
 winston-transport@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/winston-transport/-/winston-transport-4.7.0.tgz#e302e6889e6ccb7f383b926df6936a5b781bd1f0"
@@ -6621,24 +6607,7 @@ winston-transport@^4.7.0:
     readable-stream "^3.6.0"
     triple-beam "^1.3.0"
 
-winston@^3.7.2:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/winston/-/winston-3.11.0.tgz#2d50b0a695a2758bb1c95279f0a88e858163ed91"
-  integrity sha512-L3yR6/MzZAOl0DsysUXHVjOwv8mKZ71TrA/41EIduGpOOV5LQVodqN+QdQ6BS6PJ/RdIshZhq84P/fStEZkk7g==
-  dependencies:
-    "@colors/colors" "^1.6.0"
-    "@dabh/diagnostics" "^2.0.2"
-    async "^3.2.3"
-    is-stream "^2.0.0"
-    logform "^2.4.0"
-    one-time "^1.0.0"
-    readable-stream "^3.4.0"
-    safe-stable-stringify "^2.3.1"
-    stack-trace "0.0.x"
-    triple-beam "^1.3.0"
-    winston-transport "^4.5.0"
-
-winston@^3.8.2:
+winston@^3.7.2, winston@^3.8.2:
   version "3.13.0"
   resolved "https://registry.yarnpkg.com/winston/-/winston-3.13.0.tgz#e76c0d722f78e04838158c61adc1287201de7ce3"
   integrity sha512-rwidmA1w3SE4j0E5MuIufFhyJPBDG7Nu71RkZor1p2+qHvJSZ9GYDA81AyleQcZbh/+V6HjeBdfnTZJm9rSeQQ==
