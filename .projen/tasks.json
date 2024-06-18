@@ -150,6 +150,16 @@
         }
       ]
     },
+    "install-helm": {
+      "name": "install-helm",
+      "description": "Install helm3",
+      "steps": [
+        {
+          "exec": "curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash"
+        }
+      ],
+      "condition": "! (helm version | grep \"v3.\")"
+    },
     "install:ci": {
       "name": "install:ci",
       "description": "Install project dependencies using frozen lockfile",
@@ -372,6 +382,9 @@
       "name": "test",
       "description": "Run tests",
       "steps": [
+        {
+          "spawn": "install-helm"
+        },
         {
           "exec": "jest --passWithNoTests --updateSnapshot",
           "receiveArgs": true
