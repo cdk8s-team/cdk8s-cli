@@ -83,7 +83,7 @@
     "fs-extra": "^8",
     "jsii-pacmak": "^1.100.0",
     "jsii-rosetta": "^5.4.22",
-    "jsii-srcmak": "^0.1.1157",
+    "jsii-srcmak": "^0.1.1158",
     "json2jsii": "^0.4.4",
     "semver": "^7.6.2",
     "sscaff": "^1.2.274",
