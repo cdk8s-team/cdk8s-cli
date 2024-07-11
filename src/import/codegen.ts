@@ -408,7 +408,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.close('}');
       code.close('}');
       code.line();
-      code.line('const { additionalValues, ...valuesWithoutAdditionalValues } = props;');
+      code.line('const { additionalValues, ...valuesWithoutAdditionalValues } = props || {};');
       code.line();
       code.open('return {');
       code.line('...valuesWithoutAdditionalValues,');
