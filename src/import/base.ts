@@ -7,8 +7,8 @@ import { mkdtemp } from '../util';
 export enum Language {
   TYPESCRIPT = 'typescript',
   PYTHON = 'python',
-  DOTNET = 'dotnet',
   JAVA = 'java',
+  DOTNET = 'csharp',
   GO = 'go',
 }
 
@@ -59,6 +59,7 @@ export abstract class ImportBase {
       switch (options.targetLanguage) {
         case Language.PYTHON:
         case Language.JAVA:
+        case Language.DOTNET:
           name = name.split('.').reverse().join('.');
           break;
       }
@@ -125,6 +126,19 @@ export abstract class ImportBase {
             opts.java = {
               outdir: '.',
               package: `imports.${moduleNamePrefix ? moduleNamePrefix + '.' + javaName : javaName}`,
+            };
+          }
+
+          // dotnet!
+          if (options.targetLanguage === Language.DOTNET) {
+            const dotnetNamespace = `${moduleNamePrefix ? `${moduleNamePrefix}.${module.name}` : module.name}`
+              .replace(/-/g, '_')
+              .split('.')
+              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+              .join('.');
+            opts.csharp = {
+              outdir: outdir,
+              namespace: dotnetNamespace,
             };
           }
 

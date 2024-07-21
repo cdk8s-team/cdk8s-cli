@@ -7,7 +7,7 @@ import { parseImports } from '../../util';
 const config = readConfigSync();
 
 const DEFAULT_OUTDIR = 'imports';
-const LANGUAGES = ['typescript', 'python', 'java', 'go'];
+const LANGUAGES = ['typescript', 'python', 'java', 'csharp', 'go'];
 
 class Command implements yargs.CommandModule {
   public readonly command = 'import [SPEC]';
