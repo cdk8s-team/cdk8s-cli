@@ -145,6 +145,15 @@ export abstract class ImportBase {
             };
           }
 
+          // csharp!
+          if (options.targetLanguage === Language.DOTNET) {
+            const csharpName = module.name.replace(/\//g, '.').replace(/-/g, '_').replace(/(?:^|_)([a-z])/g, (_, char) => char.toUpperCase());
+            opts.csharp = {
+              outdir: outdir,
+              namespace: `Imports.${moduleNamePrefix ? moduleNamePrefix + '.' + csharpName : csharpName}`,
+            };
+          }
+
           await srcmak.srcmak(staging, opts);
         });
       }
