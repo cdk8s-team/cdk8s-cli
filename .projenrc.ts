@@ -34,7 +34,7 @@ const project = new Cdk8sTeamTypeScriptProject({
   },
   deps: [
     'cdk8s',
-    'cdk8s-plus-25',
+    'cdk8s-plus-28',
     'codemaker',
     'constructs',
     'fs-extra@^8',
