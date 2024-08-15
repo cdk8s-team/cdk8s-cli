@@ -1651,10 +1651,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.63.101:
-  version "1.63.101"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.101.tgz#ed3a0c6b4e5152744b96fe6b10a314cea8433e34"
-  integrity sha512-yuAH8SExzwbNtBjxbjH3YKlIAsrn5ou2IoccY0M010fuCichMNu2LlHFS5OTDDnmBmUwzOqCae2BqeBQlrL9Bw==
+cdk8s@^1.63.102:
+  version "1.63.102"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.102.tgz#9b2ff13e922660ddd0c28bff3c1effd49838f64d"
+  integrity sha512-CHWnEgEYPZQgsGVSbmqORtBQP/G5AFIunFLjRFx6fdWekup5ZgzmSNPx5RGtTodRdbOMhe/vrrQk8AQwIqwf2Q==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.6"
@@ -4223,10 +4223,10 @@ jsii-rosetta@^5.4.30:
     workerpool "^6.5.1"
     yargs "^17.7.2"
 
-jsii-srcmak@^0.1.1213:
-  version "0.1.1213"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1213.tgz#42ffef421d559b26bb8d9e37032b742ec8fc2ff5"
-  integrity sha512-rsU9+V7+sMTw/oTvKVhrRkx+gCoKUSBhUkYkJbGbxhb5g9wu+kM95LxShQoD4WMbf9ykvx4iZiFxWPldBNvJyA==
+jsii-srcmak@^0.1.1214:
+  version "0.1.1214"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1214.tgz#71625ecaa2d0dd1d1d716acd26c03a97e8b1374d"
+  integrity sha512-odVU0X+RBBJjykq/LcxFKPjZ34nbEbQ5fDCzO9HzibtYJuNuxgT4MJNz+T+OJQSd74fI6LFi6km73YaNsbirKg==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.4.32"
@@ -6196,9 +6196,9 @@ typescript-json-schema@^0.64.0:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.6.0-dev.20240813"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.6.0-dev.20240813.tgz#14e059865cac05a7a1572efddc12f7325f061f9f"
-  integrity sha512-McNeLEHipa5j8HBxMoN8geftDXyyMHKiN0fGefa+4KzUTR/ZhDbIskwMhYxB159cFZ/sXfy7mzyPhLWyN5IQ5Q==
+  version "5.6.0-dev.20240814"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.6.0-dev.20240814.tgz#55f6eb373301a6fd987e6b70c28bd72f4a73332b"
+  integrity sha512-7N6qhxVbJ3E1LdEZ68/WbvZMwlXp9bErVUs2yNA7XaSVDkg+iAYPM24ba0VeGkpR105+e5gaGhAYShD274qBWQ==
 
 typescript@~4.9.5:
   version "4.9.5"
