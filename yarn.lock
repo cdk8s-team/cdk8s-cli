@@ -982,9 +982,9 @@
     undici-types "~6.19.2"
 
 "@types/node@^16":
-  version "16.18.107"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.107.tgz#9185eaebaf7d002a67976d61ae8a9a808fc84829"
-  integrity sha512-VSha8UIBpCpETub8FZ1nXkODXm+k+YRwpuVQsF3zOuD6QyPQeuIdPRm6IBVa2E5en58CUFJfaw6GmYHP2q/vkQ==
+  version "16.18.108"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.108.tgz#b794e2b2a85b4c12935ea7d0f18641be68b352f9"
+  integrity sha512-fj42LD82fSv6yN9C6Q4dzS+hujHj+pTv0IpRR3kI20fnYeS0ytBpjFO9OjmDowSPPt4lNKN46JLaKbCyP+BW2A==
 
 "@types/node@^18.11.9":
   version "18.19.49"
@@ -1677,14 +1677,14 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.63.111:
-  version "1.63.111"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.111.tgz#a9e35666f6965d0941b310199649d1edc1b69b90"
-  integrity sha512-+XlzxuAtuT1J3zv89dDqF625OnEfYN629rFsJs4J5DZ7+RomEd9a4Gl3S6gnVw73k6Wt5z1vJ2HCV8ZXfB6nCg==
+cdk8s@^1.63.112:
+  version "1.63.112"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.112.tgz#05081b1c915ea59e5820293238bd9907cd147fe0"
+  integrity sha512-h1vlr4pplh31ROUKxMAQ9ihPmvOrGxar5C1fCLC1CoOcT/xCiDugI6lE5uhHircZJQwqIVtsmkfz511is+sbmw==
   dependencies:
     fast-json-patch "^3.1.1"
-    follow-redirects "^1.15.6"
-    yaml "2.5.0"
+    follow-redirects "^1.15.8"
+    yaml "2.5.1"
 
 chalk@^2.4.2:
   version "2.4.2"
@@ -2952,7 +2952,7 @@ fn.name@1.x.x:
   resolved "https://registry.yarnpkg.com/fn.name/-/fn.name-1.1.0.tgz#26cad8017967aea8731bc42961d04a3d5988accc"
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
-follow-redirects@^1.15.6:
+follow-redirects@^1.15.6, follow-redirects@^1.15.8:
   version "1.15.8"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.8.tgz#ae67b97ae32e0a7b36066a5448938374ec18d13d"
   integrity sha512-xgrmBhBToVKay1q2Tao5LI26B83UhrB/vM1avwVSDzt8rx3rO6AizBAaF46EgksTVr+rFTQaqZZ9MVBfUe4nig==
@@ -4323,10 +4323,10 @@ jsii-rosetta@^5.5.4:
     workerpool "^6.5.1"
     yargs "^17.7.2"
 
-jsii-srcmak@^0.1.1233:
-  version "0.1.1233"
-  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1233.tgz#c92f4688f93b7da82eeb409b0387babb92923699"
-  integrity sha512-KVJ1b7fc3oJLFjwsWqyP4/nzoJ+bl5IKs5LcjoMTEHm2hPUH8TZxWBVLWvZIKNtLeBQO24O4TvZZ6jwJtHwliQ==
+jsii-srcmak@^0.1.1234:
+  version "0.1.1234"
+  resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1234.tgz#623c67c5a6e6930079825468ea78497f70b35a80"
+  integrity sha512-ny6Z/matIBs2IkBekOD0EoR672ueaKu1Yi/6jmQW6ZrdHOJCeHeFDFptBecnoaBNRGiTXxXNm1zh8qO6juegUQ==
   dependencies:
     fs-extra "^9.1.0"
     jsii "~5.5.2"
@@ -6290,9 +6290,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.7.0-dev.20240903"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.7.0-dev.20240903.tgz#864c2460c823ab33328378124462be8b166d5437"
-  integrity sha512-XTUc5uVwBbLlT0v3FqTx9sDN1MLQnT5mwSC3JefCrcKT6Zv+rPcQE7HLKM9IsrNiM1tiaQvamJTgVH0S+UMH2A==
+  version "5.7.0-dev.20240904"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.7.0-dev.20240904.tgz#20e43f65f4ca7d1135d3d2636ab057f815ce317f"
+  integrity sha512-iGi6VWFGOuxPvDfwfK1/8C172NWzC5gtC4G2dxqCQehrr86WTfFkc9aWucynaxZdwQNMqG1Iu83bmXD7CNHCmg==
 
 typescript@~4.9.5:
   version "4.9.5"
@@ -6722,11 +6722,6 @@ yallist@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
-
-yaml@2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.5.0.tgz#c6165a721cf8000e91c36490a41d7be25176cf5d"
-  integrity sha512-2wWLbGbYDiSqqIKoPjar3MPgB94ErzCtrNE1FdqGuaO0pi2JGjmE8aW8TDZwzU7vuxcGRdL/4gPQwQ7hD5AMSw==
 
 yaml@2.5.1, yaml@^2.2.2, yaml@^2.4.1:
   version "2.5.1"
