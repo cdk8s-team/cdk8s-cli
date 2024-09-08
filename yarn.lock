@@ -1684,13 +1684,13 @@ cdk8s-plus-28@^2.5.5:
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.68.105:
-  version "2.68.105"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.68.105.tgz#1a57f6e06e502bdefadf0f6852cf7b0c803a2a8f"
-  integrity sha512-P51SSnxEgvYLKDqyEy4OoxmVArOcNFGf5eYju9x79cUcGzNudc7sMsWCNEdtOHpvA5dnOsPsOpOF+itF0c5Vpw==
+cdk8s@^2.68.106:
+  version "2.68.106"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.68.106.tgz#423de8e9a0e93f4cfb3d92286975812b98dbcb60"
+  integrity sha512-Uk5dGWkN2uFAkZAtvcrc+koWTs8+kZrlhe8H1elfMjoLZ/VDBD/R9BYBL4rtvDnysn8afktGzcGtAUkxiVoSzQ==
   dependencies:
     fast-json-patch "^3.1.1"
-    follow-redirects "^1.15.8"
+    follow-redirects "^1.15.9"
     yaml "2.5.1"
 
 chalk@^2.4.2:
@@ -2954,7 +2954,7 @@ fn.name@1.x.x:
   resolved "https://registry.yarnpkg.com/fn.name/-/fn.name-1.1.0.tgz#26cad8017967aea8731bc42961d04a3d5988accc"
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
-follow-redirects@^1.15.6, follow-redirects@^1.15.8:
+follow-redirects@^1.15.6, follow-redirects@^1.15.9:
   version "1.15.9"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.9.tgz#a604fa10e443bf98ca94228d9eebcc2e8a2c8ee1"
   integrity sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==
