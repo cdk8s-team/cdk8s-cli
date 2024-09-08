@@ -1677,13 +1677,13 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.63.112:
-  version "1.63.112"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.112.tgz#05081b1c915ea59e5820293238bd9907cd147fe0"
-  integrity sha512-h1vlr4pplh31ROUKxMAQ9ihPmvOrGxar5C1fCLC1CoOcT/xCiDugI6lE5uhHircZJQwqIVtsmkfz511is+sbmw==
+cdk8s@^1.63.113:
+  version "1.63.113"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.113.tgz#dfa2be8f16d45ec043459b4f8abfdf7354b4b48f"
+  integrity sha512-YjtyGP7ZgyXmZ9YE7cruu19P0M9SDOwjlzZQQ77i79YT6WuILJ4CoyJybqNf29x7MNWU4S5O8Ha7QbJkCwqBvQ==
   dependencies:
     fast-json-patch "^3.1.1"
-    follow-redirects "^1.15.8"
+    follow-redirects "^1.15.9"
     yaml "2.5.1"
 
 chalk@^2.4.2:
@@ -2952,7 +2952,7 @@ fn.name@1.x.x:
   resolved "https://registry.yarnpkg.com/fn.name/-/fn.name-1.1.0.tgz#26cad8017967aea8731bc42961d04a3d5988accc"
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
-follow-redirects@^1.15.6, follow-redirects@^1.15.8:
+follow-redirects@^1.15.6, follow-redirects@^1.15.9:
   version "1.15.9"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.9.tgz#a604fa10e443bf98ca94228d9eebcc2e8a2c8ee1"
   integrity sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==
