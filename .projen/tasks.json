@@ -501,7 +501,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=prod,optional --filter=ajv,cdk8s,cdk8s-plus-28,codemaker,colors,constructs,jsii-pacmak,jsii-rosetta,jsii-srcmak,json2jsii,semver,sscaff,table,yaml"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=prod,optional --filter=ajv,cdk8s,cdk8s-plus-28,codemaker,colors,constructs,jsii-pacmak,jsii-rosetta,semver,sscaff,table,yaml"
         },
         {
           "exec": "yarn install --check-files"
