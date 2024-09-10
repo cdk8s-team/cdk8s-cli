@@ -1,6 +1,14 @@
-import { yellow } from 'colors';
+import { yellow, red } from 'colors';
 import * as yargs from 'yargs';
 import { upgradeAvailable } from '../upgrades';
+
+if (new Date() < new Date('2025-01-01')) {
+  console.warn(yellow('⚠️ Version 1.x of the cdk8s toolchain is deprecated and will become end-of-life on 01/01/25.'));
+  console.warn(yellow('We strongly recommend migrating to 2.x. See https://cdk8s.io/docs/latest/migrating-from-1.x/'));
+} else {
+  console.warn(red('⚠️ Version 1.x of the cdk8s toolchain is end-of-life (since 01/01/25).'));
+  console.warn(red('We strongly recommend migrating to 2.x. See https://cdk8s.io/docs/latest/migrating-from-1.x/'));
+}
 
 async function main() {
   const ya = yargs
