@@ -27,12 +27,21 @@
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
-      "version": "^6",
+      "version": "^7",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
-      "version": "^6",
+      "version": "^7",
+      "type": "build"
+    },
+    {
+      "name": "backport",
+      "type": "build"
+    },
+    {
+      "name": "commit-and-tag-version",
+      "version": "^12",
       "type": "build"
     },
     {
@@ -71,11 +80,6 @@
       "type": "build"
     },
     {
-      "name": "standard-version",
-      "version": "^9",
-      "type": "build"
-    },
-    {
       "name": "ts-jest",
       "type": "build"
     },
@@ -105,7 +109,7 @@
       "type": "runtime"
     },
     {
-      "name": "cdk8s-plus-25",
+      "name": "cdk8s-plus-28",
       "type": "runtime"
     },
     {
@@ -127,6 +131,10 @@
     },
     {
       "name": "jsii-pacmak",
+      "type": "runtime"
+    },
+    {
+      "name": "jsii-rosetta",
       "type": "runtime"
     },
     {

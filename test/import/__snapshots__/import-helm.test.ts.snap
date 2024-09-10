@@ -1249,7 +1249,10 @@ Object {
 
 exports[`importing helm chart helm:https://charts.bitnami.com/bitnami/mysql@9.10.10 with python lanugage 2`] = `
 Object {
-  "mysql/__init__.py": "import abc
+  "mysql/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -1259,7 +1262,22 @@ import jsii
 import publication
 import typing_extensions
 
-from typeguard import check_type
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
 
 from ._jsii import *
 
@@ -2491,7 +2509,10 @@ def _typecheckingstub__ba4b7249d1a1862400c9b19cff8ae48324c2ce9cf5eddeb6ee91753a0
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 ",
-  "mysql/_jsii/__init__.py": "import abc
+  "mysql/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -2501,7 +2522,22 @@ import jsii
 import publication
 import typing_extensions
 
-from typeguard import check_type
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
 
 import cdk8s._jsii
 import constructs._jsii
@@ -4358,7 +4394,10 @@ Object {
 
 exports[`importing helm chart helm:https://grafana.github.io/helm-charts/loki@5.27.0 with python lanugage 2`] = `
 Object {
-  "loki/__init__.py": "import abc
+  "loki/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -4368,7 +4407,22 @@ import jsii
 import publication
 import typing_extensions
 
-from typeguard import check_type
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
 
 from ._jsii import *
 
@@ -4530,7 +4584,10 @@ def _typecheckingstub__c8e7d6706b1656a9b1ed96c19860786a777f4336504fed38f4230700c
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 ",
-  "loki/_jsii/__init__.py": "import abc
+  "loki/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -4540,7 +4597,22 @@ import jsii
 import publication
 import typing_extensions
 
-from typeguard import check_type
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
 
 import cdk8s._jsii
 import constructs._jsii
@@ -5070,7 +5142,10 @@ Object {
 
 exports[`importing helm chart helm:https://kubernetes.github.io/ingress-nginx/ingress-nginx@4.8.0 with python lanugage 2`] = `
 Object {
-  "ingress_nginx/__init__.py": "import abc
+  "ingress_nginx/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -5080,7 +5155,22 @@ import jsii
 import publication
 import typing_extensions
 
-from typeguard import check_type
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
 
 from ._jsii import *
 
@@ -5242,7 +5332,10 @@ def _typecheckingstub__fa1ad20aee8506867d7a9a951634bb1e075e978d51060ca2245cb7a42
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 ",
-  "ingress_nginx/_jsii/__init__.py": "import abc
+  "ingress_nginx/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -5252,7 +5345,22 @@ import jsii
 import publication
 import typing_extensions
 
-from typeguard import check_type
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
 
 import cdk8s._jsii
 import constructs._jsii
@@ -11466,7 +11574,10 @@ Possible enum values:
 
 exports[`importing helm chart helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0 with python lanugage 2`] = `
 Object {
-  "lacework_agent/__init__.py": "import abc
+  "lacework_agent/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -11476,7 +11587,22 @@ import jsii
 import publication
 import typing_extensions
 
-from typeguard import check_type
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
 
 from ._jsii import *
 
@@ -17433,7 +17559,10 @@ def _typecheckingstub__8e0e9f6d5d81f49593ed890c033cf700aa6b75418e1ea88ea8696f534
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 ",
-  "lacework_agent/_jsii/__init__.py": "import abc
+  "lacework_agent/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -17443,7 +17572,22 @@ import jsii
 import publication
 import typing_extensions
 
-from typeguard import check_type
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
 
 import cdk8s._jsii
 import constructs._jsii
@@ -26632,7 +26776,10 @@ Object {
 
 exports[`importing helm chart helm:oci://registry-1.docker.io/bitnamicharts/mysql@9.12.5 with python lanugage 2`] = `
 Object {
-  "mysql/__init__.py": "import abc
+  "mysql/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -26642,7 +26789,22 @@ import jsii
 import publication
 import typing_extensions
 
-from typeguard import check_type
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
 
 from ._jsii import *
 
@@ -27874,7 +28036,10 @@ def _typecheckingstub__ba4b7249d1a1862400c9b19cff8ae48324c2ce9cf5eddeb6ee91753a0
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 ",
-  "mysql/_jsii/__init__.py": "import abc
+  "mysql/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -27884,7 +28049,22 @@ import jsii
 import publication
 import typing_extensions
 
-from typeguard import check_type
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
 
 import cdk8s._jsii
 import constructs._jsii
@@ -29740,7 +29920,10 @@ Object {
 
 exports[`importing helm chart minio:=helm:https://operator.min.io/operator@5.0.9 with python lanugage 2`] = `
 Object {
-  "operator/__init__.py": "import abc
+  "operator/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -29750,7 +29933,22 @@ import jsii
 import publication
 import typing_extensions
 
-from typeguard import check_type
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
 
 from ._jsii import *
 
@@ -29912,7 +30110,10 @@ def _typecheckingstub__1ba6cfa05344ec1eb73016e5b58b05d2a9a2e22bf82546647dd2d6dac
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
 ",
-  "operator/_jsii/__init__.py": "import abc
+  "operator/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
 import builtins
 import datetime
 import enum
@@ -29922,7 +30123,22 @@ import jsii
 import publication
 import typing_extensions
 
-from typeguard import check_type
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
 
 import cdk8s._jsii
 import constructs._jsii

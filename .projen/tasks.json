@@ -57,14 +57,15 @@
         "BUMPFILE": "dist/version.txt",
         "RELEASETAG": "dist/releasetag.txt",
         "RELEASE_TAG_PREFIX": "",
-        "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'"
+        "BUMP_PACKAGE": "commit-and-tag-version@^12",
+        "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \"^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+\" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'"
       },
       "steps": [
         {
           "builtin": "release/bump-version"
         }
       ],
-      "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
+      "condition": "git log --oneline -1 | grep -qv \"chore(release):\""
     },
     "clobber": {
       "name": "clobber",
@@ -136,7 +137,8 @@
       "description": "Runs eslint against the codebase",
       "steps": [
         {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools projenrc .projenrc.ts"
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ src test build-tools projenrc .projenrc.ts",
+          "receiveArgs": true
         }
       ]
     },
@@ -148,6 +150,16 @@
           "exec": "yarn install --check-files"
         }
       ]
+    },
+    "install-helm": {
+      "name": "install-helm",
+      "description": "Install helm3",
+      "steps": [
+        {
+          "exec": "curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash"
+        }
+      ],
+      "condition": "! (helm version | grep \"v3.\")"
     },
     "install:ci": {
       "name": "install:ci",
@@ -371,7 +383,10 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+          "spawn": "install-helm"
+        },
+        {
+          "exec": "jest --passWithNoTests --updateSnapshot",
           "receiveArgs": true
         },
         {
@@ -397,7 +412,8 @@
         "BUMPFILE": "dist/version.txt",
         "RELEASETAG": "dist/releasetag.txt",
         "RELEASE_TAG_PREFIX": "",
-        "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'"
+        "BUMP_PACKAGE": "commit-and-tag-version@^12",
+        "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \"^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+\" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'"
       },
       "steps": [
         {
@@ -437,7 +453,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common"
         },
         {
           "exec": "yarn install --check-files"
@@ -461,13 +477,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@types/fs-extra,@types/glob,@types/jest,@types/json-schema,@types/semver,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,glob,jest,jest-junit,standard-version,ts-jest,ts-node,typescript-json-schema"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@types/glob,@types/jest,@types/json-schema,@types/semver,backport,eslint-import-resolver-typescript,eslint-plugin-import,glob,jest,ts-jest,ts-node,typescript-json-schema"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/fs-extra @types/glob @types/jest @types/json-schema @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint glob jest jest-junit standard-version ts-jest ts-node typescript-json-schema"
+          "exec": "yarn upgrade @types/fs-extra @types/glob @types/jest @types/json-schema @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser backport commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint glob jest jest-junit ts-jest ts-node typescript-json-schema"
         },
         {
           "exec": "npx projen"
@@ -485,13 +501,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=prod,optional --filter=@types/node,ajv,cdk8s,cdk8s-plus-25,codemaker,colors,constructs,fs-extra,jsii-pacmak,jsii-srcmak,json2jsii,semver,sscaff,table,yaml,yargs"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=prod,optional --filter=ajv,cdk8s,cdk8s-plus-28,codemaker,colors,constructs,jsii-pacmak,jsii-rosetta,jsii-srcmak,json2jsii,semver,sscaff,table,yaml"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/node ajv cdk8s cdk8s-plus-25 codemaker colors constructs fs-extra jsii-pacmak jsii-srcmak json2jsii semver sscaff table yaml yargs"
+          "exec": "yarn upgrade @types/node ajv cdk8s cdk8s-plus-28 codemaker colors constructs fs-extra jsii-pacmak jsii-rosetta jsii-srcmak json2jsii semver sscaff table yaml yargs"
         },
         {
           "exec": "npx projen"
