@@ -4325,7 +4325,7 @@ jsii-rosetta@^5.5.4:
     workerpool "^6.5.1"
     yargs "^17.7.2"
 
-jsii-srcmak@^0.1.1236:
+jsii-srcmak@0.1.1236:
   version "0.1.1236"
   resolved "https://registry.yarnpkg.com/jsii-srcmak/-/jsii-srcmak-0.1.1236.tgz#0b0d46dde060c7572458fbfca4e9423984c08ee3"
   integrity sha512-tnVMEbT1m8KdUgky56KZXT7vdLJjLmAclzSo2H59MCNUcp6eHfBxFQFyHJpXsS0B77vc8tHTMUlo4qoISuts3A==
@@ -4396,7 +4396,7 @@ json-stringify-safe@^5.0.1:
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==
 
-json2jsii@^0.4.5:
+json2jsii@0.4.5:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/json2jsii/-/json2jsii-0.4.5.tgz#b91414a2a9a89e2308a7132ce63eb07ae7a79d2a"
   integrity sha512-dliaHMKhY5UW9AvzyE+Rd6sdMM0a6aF0bl/4zYFGajhXrCV0WOnnx298gyIVhwbcvGcqkTXs99cfB7iV6xnG5w==

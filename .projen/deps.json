@@ -139,10 +139,12 @@
     },
     {
       "name": "jsii-srcmak",
+      "version": "0.1.1236",
       "type": "runtime"
     },
     {
       "name": "json2jsii",
+      "version": "0.4.5",
       "type": "runtime"
     },
     {
