@@ -24,12 +24,6 @@ const project = new Cdk8sTeamTypeScriptProject({
   defaultReleaseBranch: '2.x',
   majorVersion: 2,
   prerelease: 'rc',
-  releaseBranches: {
-    '1.x': {
-      majorVersion: 1,
-      npmDistTag: 'latest-1',
-    },
-  },
   bin: {
     cdk8s: 'bin/cdk8s',
   },
@@ -59,8 +53,6 @@ const project = new Cdk8sTeamTypeScriptProject({
     '@types/glob',
     'typescript-json-schema',
   ],
-  backport: true,
-  backportBranches: ['1.x'],
 });
 
 project.tsconfig?.addInclude('src/schemas/*.json');
