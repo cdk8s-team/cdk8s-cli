@@ -33,18 +33,20 @@ const project = new Cdk8sTeamTypeScriptProject({
   bin: {
     cdk8s: 'bin/cdk8s',
   },
+  // note that 0.x dependencies are intentionally pinned because
+  // upgrading them may introduce breaking changes to our API.
   deps: [
     'cdk8s',
     'codemaker',
     'constructs',
     'fs-extra@^8',
-    'jsii-srcmak',
+    'jsii-srcmak@0.1.1236',
     'jsii-pacmak',
     'jsii-rosetta',
     'sscaff',
     'yaml',
     'yargs@^15',
-    'json2jsii',
+    'json2jsii@0.4.5',
     'colors',
     'ajv',
     'table',
