@@ -2,6 +2,9 @@ import { yellow } from 'colors';
 import * as yargs from 'yargs';
 import { upgradeAvailable } from '../upgrades';
 
+console.warn(yellow('⚠️ Version 1.x of the cdk8s toolchain is deprecated and will become end-of-life on 01/01/25.'));
+console.warn(yellow('We strongly recommend migrating to 2.x. See https://cdk8s.io/docs/latest/migrating-from-1.x/'));
+
 async function main() {
   const ya = yargs
     .option('check-upgrade', { type: 'boolean', desc: 'Check for cdk8s-cli upgrade', default: true })
