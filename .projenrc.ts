@@ -32,19 +32,21 @@ const project = new Cdk8sTeamTypeScriptProject({
   bin: {
     cdk8s: 'bin/cdk8s',
   },
+  // note that 0.x dependencies are intentionally pinned because
+  // upgrading them may introduce breaking changes to our API.
   deps: [
     'cdk8s',
-    'cdk8s-plus-25',
+    'cdk8s-plus-28',
     'codemaker',
     'constructs',
     'fs-extra@^8',
-    'jsii-srcmak',
+    'jsii-srcmak@0.1.1236',
     'jsii-pacmak',
     'jsii-rosetta',
     'sscaff',
     'yaml',
     'yargs@^15',
-    'json2jsii',
+    'json2jsii@0.4.5',
     'colors',
     'ajv',
     'table',
@@ -88,6 +90,16 @@ project.deps.addDependency('@types/node@^16', DependencyType.RUNTIME);
 
 const schemas = project.addTask('schemas');
 schemas.exec('ts-node scripts/crd.schema.ts');
+
+const installHelm = project.addTask('install-helm', {
+  exec: 'curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash',
+  description: 'Install helm3',
+
+  // will exit with non-zero if helm is not installed or has the wrong version
+  condition: '! (helm version | grep "v3.")',
+});
+
+project.testTask.prependSpawn(installHelm);
 
 project.compileTask.spawn(schemas);
 
