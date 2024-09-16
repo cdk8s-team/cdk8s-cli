@@ -6,6 +6,9 @@ on:
     branches:
       - 1.x
   workflow_dispatch: {}
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -110,6 +113,3 @@ jobs:
           NPM_CONFIG_PROVENANCE: "true"
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx -p publib@latest publib-npm
-concurrency:
-  group: ${{ github.workflow }}
-  cancel-in-progress: false
