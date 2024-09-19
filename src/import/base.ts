@@ -7,7 +7,7 @@ import { mkdtemp } from '../util';
 export enum Language {
   TYPESCRIPT = 'typescript',
   PYTHON = 'python',
-  DOTNET = 'dotnet',
+  CSHARP = 'csharp',
   JAVA = 'java',
   GO = 'go',
 }
@@ -146,7 +146,7 @@ export abstract class ImportBase {
           }
 
           // csharp!
-          if (options.targetLanguage === Language.DOTNET) {
+          if (options.targetLanguage === Language.CSHARP) {
             const csharpName = module.name.replace(/\//g, '.').replace(/-/g, '_').replace(/(?:^|_)([a-z])/g, (_, char) => char.toUpperCase());
             opts.csharp = {
               outdir: outdir,

@@ -183,6 +183,34 @@
         }
       ]
     },
+    "integ:init:csharp-app-npm": {
+      "name": "integ:init:csharp-app-npm",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t csharp-app-npm"
+        }
+      ]
+    },
+    "integ:init:csharp-app-yarn": {
+      "name": "integ:init:csharp-app-yarn",
+      "steps": [
+        {
+          "exec": "yarn run compile"
+        },
+        {
+          "exec": "yarn run package"
+        },
+        {
+          "exec": "jest --testMatch \"<rootDir>/test/integ/**/*.test.ts\" --testPathIgnorePatterns \"/node_modules/\" --passWithNoTests --all --updateSnapshot --coverageProvider=v8 integ/init.test.ts -t csharp-app-yarn"
+        }
+      ]
+    },
     "integ:init:go-app-npm": {
       "name": "integ:init:go-app-npm",
       "steps": [
