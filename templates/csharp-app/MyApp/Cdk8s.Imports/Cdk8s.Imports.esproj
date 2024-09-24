@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <BuildCommand>npm run import</BuildCommand>
-        <SolutionPath>$(SolutionDir)Strive.Platform.Automation.sln</SolutionPath>
+        <SolutionPath>$(SolutionDir)MyApp.sln</SolutionPath>
     </PropertyGroup>
 
     <Target Name="RemoveProjectsFromSolution" BeforeTargets="Build">
