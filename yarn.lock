@@ -974,9 +974,9 @@
     undici-types "~6.19.2"
 
 "@types/node@^16":
-  version "16.18.109"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.109.tgz#3d2c2ac102b3e8707f2512bb9609c00b2566f5f5"
-  integrity sha512-PxPCTJDDwBrigapKYIRHegNOMfKTeQUkZMJt+mkEwHf2rskRylueIqaHyAHfcpmFIFi7wq7f/X8Se/5hIVREvg==
+  version "16.18.111"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.111.tgz#db44583d67b747f1a3150e7e6f12ea0324b27a2c"
+  integrity sha512-U1l6itlxU+vrJ9KyowQLKV9X+UuQBRhBF9v/XkGhAGgNHHRWzyY7FfTYRXt3vYOXPrd8UGlbYFK5HdneKCwXPQ==
 
 "@types/node@^18.11.9":
   version "18.19.51"
@@ -6293,9 +6293,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.7.0-dev.20240924"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.7.0-dev.20240924.tgz#bf97ed5c8c7bddcd8d178a9d74913d1e37b21b92"
-  integrity sha512-Ij5R6dGDoRwlwMv0YAF0DSKOp2gGIv0SZNybFpAm05zZ/tktjetR7IrwuurvRlDEz7v91AC3ehs2lF7lJ8F/QA==
+  version "5.7.0-dev.20240925"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.7.0-dev.20240925.tgz#72554a8ed9f97fa8a9c19e251cf0e29cd5ccd444"
+  integrity sha512-k43Yzt0H2VwIvVJzSKaMUKSnAOWkAitSB+Zioc340LCsh4kSwCbyHCJSAJmAdFH0QuNIL3AuSybTfwOys8tqZw==
 
 typescript@~4.9.5:
   version "4.9.5"
