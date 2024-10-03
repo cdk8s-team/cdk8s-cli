@@ -85,19 +85,19 @@ Object {
     },
   },
   "types": Object {
-    "metapkgcrossplaneio.Configuration": Object {
+    "metapkgcrossplaneio.ConfigurationV1Alpha1": Object {
       "assembly": "metapkgcrossplaneio",
       "base": "cdk8s.ApiObject",
       "docs": Object {
         "custom": Object {
-          "schema": "Configuration",
+          "schema": "ConfigurationV1Alpha1",
         },
         "summary": "A Configuration is the description of a Crossplane Configuration package.",
       },
-      "fqn": "metapkgcrossplaneio.Configuration",
+      "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1",
       "initializer": Object {
         "docs": Object {
-          "summary": "Defines a \\"Configuration\\" API object.",
+          "summary": "Defines a \\"ConfigurationV1Alpha1\\" API object.",
         },
         "locationInModule": Object {
           "filename": "meta.pkg.crossplane.io.ts",
@@ -128,7 +128,7 @@ Object {
             },
             "name": "props",
             "type": Object {
-              "fqn": "metapkgcrossplaneio.ConfigurationProps",
+              "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1Props",
             },
           },
         ],
@@ -142,7 +142,7 @@ Object {
         Object {
           "docs": Object {
             "remarks": "This can be used to inline resource manifests inside other objects (e.g. as templates).",
-            "summary": "Renders a Kubernetes manifest for \\"Configuration\\".",
+            "summary": "Renders a Kubernetes manifest for \\"ConfigurationV1Alpha1\\".",
           },
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
@@ -156,7 +156,7 @@ Object {
               },
               "name": "props",
               "type": Object {
-                "fqn": "metapkgcrossplaneio.ConfigurationProps",
+                "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1Props",
               },
             },
           ],
@@ -184,12 +184,12 @@ Object {
           },
         },
       ],
-      "name": "Configuration",
+      "name": "ConfigurationV1Alpha1",
       "properties": Array [
         Object {
           "const": true,
           "docs": Object {
-            "summary": "Returns the apiVersion and kind for \\"Configuration\\".",
+            "summary": "Returns the apiVersion and kind for \\"ConfigurationV1Alpha1\\".",
           },
           "immutable": true,
           "locationInModule": Object {
@@ -203,30 +203,30 @@ Object {
           },
         },
       ],
-      "symbolId": "meta.pkg.crossplane.io:Configuration",
+      "symbolId": "meta.pkg.crossplane.io:ConfigurationV1Alpha1",
     },
-    "metapkgcrossplaneio.ConfigurationProps": Object {
+    "metapkgcrossplaneio.ConfigurationV1Alpha1Props": Object {
       "assembly": "metapkgcrossplaneio",
       "datatype": true,
       "docs": Object {
         "custom": Object {
-          "schema": "Configuration",
+          "schema": "ConfigurationV1Alpha1",
         },
         "summary": "A Configuration is the description of a Crossplane Configuration package.",
       },
-      "fqn": "metapkgcrossplaneio.ConfigurationProps",
+      "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1Props",
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
         "line": 65,
       },
-      "name": "ConfigurationProps",
+      "name": "ConfigurationV1Alpha1Props",
       "properties": Array [
         Object {
           "abstract": true,
           "docs": Object {
             "custom": Object {
-              "schema": "Configuration#spec",
+              "schema": "ConfigurationV1Alpha1#spec",
             },
             "summary": "ConfigurationSpec specifies the configuration of a Configuration.",
           },
@@ -237,14 +237,14 @@ Object {
           },
           "name": "spec",
           "type": Object {
-            "fqn": "metapkgcrossplaneio.ConfigurationSpec",
+            "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1Spec",
           },
         },
         Object {
           "abstract": true,
           "docs": Object {
             "custom": Object {
-              "schema": "Configuration#metadata",
+              "schema": "ConfigurationV1Alpha1#metadata",
             },
           },
           "immutable": true,
@@ -259,30 +259,30 @@ Object {
           },
         },
       ],
-      "symbolId": "meta.pkg.crossplane.io:ConfigurationProps",
+      "symbolId": "meta.pkg.crossplane.io:ConfigurationV1Alpha1Props",
     },
-    "metapkgcrossplaneio.ConfigurationSpec": Object {
+    "metapkgcrossplaneio.ConfigurationV1Alpha1Spec": Object {
       "assembly": "metapkgcrossplaneio",
       "datatype": true,
       "docs": Object {
         "custom": Object {
-          "schema": "ConfigurationSpec",
+          "schema": "ConfigurationV1Alpha1Spec",
         },
         "summary": "ConfigurationSpec specifies the configuration of a Configuration.",
       },
-      "fqn": "metapkgcrossplaneio.ConfigurationSpec",
+      "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1Spec",
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
         "line": 100,
       },
-      "name": "ConfigurationSpec",
+      "name": "ConfigurationV1Alpha1Spec",
       "properties": Array [
         Object {
           "abstract": true,
           "docs": Object {
             "custom": Object {
-              "schema": "ConfigurationSpec#crossplane",
+              "schema": "ConfigurationV1Alpha1Spec#crossplane",
             },
             "summary": "Semantic version constraints of Crossplane that package is compatible with.",
           },
@@ -294,14 +294,14 @@ Object {
           "name": "crossplane",
           "optional": true,
           "type": Object {
-            "fqn": "metapkgcrossplaneio.ConfigurationSpecCrossplane",
+            "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1SpecCrossplane",
           },
         },
         Object {
           "abstract": true,
           "docs": Object {
             "custom": Object {
-              "schema": "ConfigurationSpec#dependsOn",
+              "schema": "ConfigurationV1Alpha1Spec#dependsOn",
             },
             "summary": "Dependencies on other packages.",
           },
@@ -315,37 +315,37 @@ Object {
           "type": Object {
             "collection": Object {
               "elementtype": Object {
-                "fqn": "metapkgcrossplaneio.ConfigurationSpecDependsOn",
+                "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1SpecDependsOn",
               },
               "kind": "array",
             },
           },
         },
       ],
-      "symbolId": "meta.pkg.crossplane.io:ConfigurationSpec",
+      "symbolId": "meta.pkg.crossplane.io:ConfigurationV1Alpha1Spec",
     },
-    "metapkgcrossplaneio.ConfigurationSpecCrossplane": Object {
+    "metapkgcrossplaneio.ConfigurationV1Alpha1SpecCrossplane": Object {
       "assembly": "metapkgcrossplaneio",
       "datatype": true,
       "docs": Object {
         "custom": Object {
-          "schema": "ConfigurationSpecCrossplane",
+          "schema": "ConfigurationV1Alpha1SpecCrossplane",
         },
         "summary": "Semantic version constraints of Crossplane that package is compatible with.",
       },
-      "fqn": "metapkgcrossplaneio.ConfigurationSpecCrossplane",
+      "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1SpecCrossplane",
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
         "line": 137,
       },
-      "name": "ConfigurationSpecCrossplane",
+      "name": "ConfigurationV1Alpha1SpecCrossplane",
       "properties": Array [
         Object {
           "abstract": true,
           "docs": Object {
             "custom": Object {
-              "schema": "ConfigurationSpecCrossplane#version",
+              "schema": "ConfigurationV1Alpha1SpecCrossplane#version",
             },
             "summary": "Semantic version constraints of Crossplane that package is compatible with.",
           },
@@ -360,31 +360,31 @@ Object {
           },
         },
       ],
-      "symbolId": "meta.pkg.crossplane.io:ConfigurationSpecCrossplane",
+      "symbolId": "meta.pkg.crossplane.io:ConfigurationV1Alpha1SpecCrossplane",
     },
-    "metapkgcrossplaneio.ConfigurationSpecDependsOn": Object {
+    "metapkgcrossplaneio.ConfigurationV1Alpha1SpecDependsOn": Object {
       "assembly": "metapkgcrossplaneio",
       "datatype": true,
       "docs": Object {
         "custom": Object {
-          "schema": "ConfigurationSpecDependsOn",
+          "schema": "ConfigurationV1Alpha1SpecDependsOn",
         },
         "remarks": "One of Provider or Configuration may be supplied.",
         "summary": "Dependency is a dependency on another package.",
       },
-      "fqn": "metapkgcrossplaneio.ConfigurationSpecDependsOn",
+      "fqn": "metapkgcrossplaneio.ConfigurationV1Alpha1SpecDependsOn",
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
         "line": 166,
       },
-      "name": "ConfigurationSpecDependsOn",
+      "name": "ConfigurationV1Alpha1SpecDependsOn",
       "properties": Array [
         Object {
           "abstract": true,
           "docs": Object {
             "custom": Object {
-              "schema": "ConfigurationSpecDependsOn#version",
+              "schema": "ConfigurationV1Alpha1SpecDependsOn#version",
             },
             "summary": "Version is the semantic version constraints of the dependency image.",
           },
@@ -402,7 +402,7 @@ Object {
           "abstract": true,
           "docs": Object {
             "custom": Object {
-              "schema": "ConfigurationSpecDependsOn#configuration",
+              "schema": "ConfigurationV1Alpha1SpecDependsOn#configuration",
             },
             "summary": "Configuration is the name of a Configuration package image.",
           },
@@ -421,7 +421,7 @@ Object {
           "abstract": true,
           "docs": Object {
             "custom": Object {
-              "schema": "ConfigurationSpecDependsOn#provider",
+              "schema": "ConfigurationV1Alpha1SpecDependsOn#provider",
             },
             "summary": "Provider is the name of a Provider package image.",
           },
@@ -437,7 +437,7 @@ Object {
           },
         },
       ],
-      "symbolId": "meta.pkg.crossplane.io:ConfigurationSpecDependsOn",
+      "symbolId": "meta.pkg.crossplane.io:ConfigurationV1Alpha1SpecDependsOn",
     },
   },
   "version": "0.0.0",
@@ -454,11 +454,11 @@ import { Construct } from 'constructs';
 /**
  * An CompositeResourceDefinition defines a new kind of composite infrastructure resource. The new resource is composed of other composite or managed infrastructure resources.
  *
- * @schema CompositeResourceDefinition
+ * @schema CompositeResourceDefinitionV1Alpha1
  */
-export class CompositeResourceDefinition extends ApiObject {
+export class CompositeResourceDefinitionV1Alpha1 extends ApiObject {
   /**
-   * Returns the apiVersion and kind for \\"CompositeResourceDefinition\\"
+   * Returns the apiVersion and kind for \\"CompositeResourceDefinitionV1Alpha1\\"
    */
   public static readonly GVK: GroupVersionKind = {
     apiVersion: 'apiextensions.crossplane.io/v1alpha1',
@@ -466,28 +466,28 @@ export class CompositeResourceDefinition extends ApiObject {
   }
 
   /**
-   * Renders a Kubernetes manifest for \\"CompositeResourceDefinition\\".
+   * Renders a Kubernetes manifest for \\"CompositeResourceDefinitionV1Alpha1\\".
    *
    * This can be used to inline resource manifests inside other objects (e.g. as templates).
    *
    * @param props initialization props
    */
-  public static manifest(props: CompositeResourceDefinitionProps = {}): any {
+  public static manifest(props: CompositeResourceDefinitionV1Alpha1Props = {}): any {
     return {
-      ...CompositeResourceDefinition.GVK,
-      ...toJson_CompositeResourceDefinitionProps(props),
+      ...CompositeResourceDefinitionV1Alpha1.GVK,
+      ...toJson_CompositeResourceDefinitionV1Alpha1Props(props),
     };
   }
 
   /**
-   * Defines a \\"CompositeResourceDefinition\\" API object
+   * Defines a \\"CompositeResourceDefinitionV1Alpha1\\" API object
    * @param scope the scope in which to define this object
    * @param id a scope-local name for the object
    * @param props initialization props
    */
-  public constructor(scope: Construct, id: string, props: CompositeResourceDefinitionProps = {}) {
+  public constructor(scope: Construct, id: string, props: CompositeResourceDefinitionV1Alpha1Props = {}) {
     super(scope, id, {
-      ...CompositeResourceDefinition.GVK,
+      ...CompositeResourceDefinitionV1Alpha1.GVK,
       ...props,
     });
   }
@@ -499,8 +499,8 @@ export class CompositeResourceDefinition extends ApiObject {
     const resolved = super.toJson();
 
     return {
-      ...CompositeResourceDefinition.GVK,
-      ...toJson_CompositeResourceDefinitionProps(resolved),
+      ...CompositeResourceDefinitionV1Alpha1.GVK,
+      ...toJson_CompositeResourceDefinitionV1Alpha1Props(resolved),
     };
   }
 }
@@ -508,32 +508,32 @@ export class CompositeResourceDefinition extends ApiObject {
 /**
  * An CompositeResourceDefinition defines a new kind of composite infrastructure resource. The new resource is composed of other composite or managed infrastructure resources.
  *
- * @schema CompositeResourceDefinition
+ * @schema CompositeResourceDefinitionV1Alpha1
  */
-export interface CompositeResourceDefinitionProps {
+export interface CompositeResourceDefinitionV1Alpha1Props {
   /**
-   * @schema CompositeResourceDefinition#metadata
+   * @schema CompositeResourceDefinitionV1Alpha1#metadata
    */
   readonly metadata?: ApiObjectMetadata;
 
   /**
    * CompositeResourceDefinitionSpec specifies the desired state of the definition.
    *
-   * @schema CompositeResourceDefinition#spec
+   * @schema CompositeResourceDefinitionV1Alpha1#spec
    */
-  readonly spec?: CompositeResourceDefinitionSpec;
+  readonly spec?: CompositeResourceDefinitionV1Alpha1Spec;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionProps' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionV1Alpha1Props' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionProps(obj: CompositeResourceDefinitionProps | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionV1Alpha1Props(obj: CompositeResourceDefinitionV1Alpha1Props | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'metadata': obj.metadata,
-    'spec': toJson_CompositeResourceDefinitionSpec(obj.spec),
+    'spec': toJson_CompositeResourceDefinitionV1Alpha1Spec(obj.spec),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -543,74 +543,74 @@ export function toJson_CompositeResourceDefinitionProps(obj: CompositeResourceDe
 /**
  * CompositeResourceDefinitionSpec specifies the desired state of the definition.
  *
- * @schema CompositeResourceDefinitionSpec
+ * @schema CompositeResourceDefinitionV1Alpha1Spec
  */
-export interface CompositeResourceDefinitionSpec {
+export interface CompositeResourceDefinitionV1Alpha1Spec {
   /**
    * ClaimNames specifies the names of an optional composite resource claim. When claim names are specified Crossplane will create a namespaced 'composite resource claim' CRD that corresponds to the defined composite resource. This composite resource claim acts as a namespaced proxy for the composite resource; creating, updating, or deleting the claim will create, update, or delete a corresponding composite resource. You may add claim names to an existing CompositeResourceDefinition, but they cannot be changed or removed once they have been set.
    *
-   * @schema CompositeResourceDefinitionSpec#claimNames
+   * @schema CompositeResourceDefinitionV1Alpha1Spec#claimNames
    */
-  readonly claimNames?: CompositeResourceDefinitionSpecClaimNames;
+  readonly claimNames?: CompositeResourceDefinitionV1Alpha1SpecClaimNames;
 
   /**
    * ConnectionSecretKeys is the list of keys that will be exposed to the end user of the defined kind.
    *
-   * @schema CompositeResourceDefinitionSpec#connectionSecretKeys
+   * @schema CompositeResourceDefinitionV1Alpha1Spec#connectionSecretKeys
    */
   readonly connectionSecretKeys?: string[];
 
   /**
    * DefaultCompositionRef refers to the Composition resource that will be used in case no composition selector is given.
    *
-   * @schema CompositeResourceDefinitionSpec#defaultCompositionRef
+   * @schema CompositeResourceDefinitionV1Alpha1Spec#defaultCompositionRef
    */
-  readonly defaultCompositionRef?: CompositeResourceDefinitionSpecDefaultCompositionRef;
+  readonly defaultCompositionRef?: CompositeResourceDefinitionV1Alpha1SpecDefaultCompositionRef;
 
   /**
    * EnforcedCompositionRef refers to the Composition resource that will be used by all composite instances whose schema is defined by this definition.
    *
-   * @schema CompositeResourceDefinitionSpec#enforcedCompositionRef
+   * @schema CompositeResourceDefinitionV1Alpha1Spec#enforcedCompositionRef
    */
-  readonly enforcedCompositionRef?: CompositeResourceDefinitionSpecEnforcedCompositionRef;
+  readonly enforcedCompositionRef?: CompositeResourceDefinitionV1Alpha1SpecEnforcedCompositionRef;
 
   /**
    * Group specifies the API group of the defined composite resource. Composite resources are served under \`/apis/<group>/...\`. Must match the name of the XRD (in the form \`<names.plural>.<group>\`).
    *
-   * @schema CompositeResourceDefinitionSpec#group
+   * @schema CompositeResourceDefinitionV1Alpha1Spec#group
    */
   readonly group: string;
 
   /**
    * Names specifies the resource and kind names of the defined composite resource.
    *
-   * @schema CompositeResourceDefinitionSpec#names
+   * @schema CompositeResourceDefinitionV1Alpha1Spec#names
    */
-  readonly names: CompositeResourceDefinitionSpecNames;
+  readonly names: CompositeResourceDefinitionV1Alpha1SpecNames;
 
   /**
    * Versions is the list of all API versions of the defined composite resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is \\"kube-like\\", it will sort above non \\"kube-like\\" version strings, which are ordered lexicographically. \\"Kube-like\\" versions start with a \\"v\\", then are followed by a number (the major version), then optionally the string \\"alpha\\" or \\"beta\\" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10. Note that all versions must have identical schemas; Crossplane does not currently support conversion between different version schemas.
    *
-   * @schema CompositeResourceDefinitionSpec#versions
+   * @schema CompositeResourceDefinitionV1Alpha1Spec#versions
    */
-  readonly versions: CompositeResourceDefinitionSpecVersions[];
+  readonly versions: CompositeResourceDefinitionV1Alpha1SpecVersions[];
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpec' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionV1Alpha1Spec' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpec(obj: CompositeResourceDefinitionSpec | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionV1Alpha1Spec(obj: CompositeResourceDefinitionV1Alpha1Spec | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
-    'claimNames': toJson_CompositeResourceDefinitionSpecClaimNames(obj.claimNames),
+    'claimNames': toJson_CompositeResourceDefinitionV1Alpha1SpecClaimNames(obj.claimNames),
     'connectionSecretKeys': obj.connectionSecretKeys?.map(y => y),
-    'defaultCompositionRef': toJson_CompositeResourceDefinitionSpecDefaultCompositionRef(obj.defaultCompositionRef),
-    'enforcedCompositionRef': toJson_CompositeResourceDefinitionSpecEnforcedCompositionRef(obj.enforcedCompositionRef),
+    'defaultCompositionRef': toJson_CompositeResourceDefinitionV1Alpha1SpecDefaultCompositionRef(obj.defaultCompositionRef),
+    'enforcedCompositionRef': toJson_CompositeResourceDefinitionV1Alpha1SpecEnforcedCompositionRef(obj.enforcedCompositionRef),
     'group': obj.group,
-    'names': toJson_CompositeResourceDefinitionSpecNames(obj.names),
-    'versions': obj.versions?.map(y => toJson_CompositeResourceDefinitionSpecVersions(y)),
+    'names': toJson_CompositeResourceDefinitionV1Alpha1SpecNames(obj.names),
+    'versions': obj.versions?.map(y => toJson_CompositeResourceDefinitionV1Alpha1SpecVersions(y)),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -620,20 +620,20 @@ export function toJson_CompositeResourceDefinitionSpec(obj: CompositeResourceDef
 /**
  * ClaimNames specifies the names of an optional composite resource claim. When claim names are specified Crossplane will create a namespaced 'composite resource claim' CRD that corresponds to the defined composite resource. This composite resource claim acts as a namespaced proxy for the composite resource; creating, updating, or deleting the claim will create, update, or delete a corresponding composite resource. You may add claim names to an existing CompositeResourceDefinition, but they cannot be changed or removed once they have been set.
  *
- * @schema CompositeResourceDefinitionSpecClaimNames
+ * @schema CompositeResourceDefinitionV1Alpha1SpecClaimNames
  */
-export interface CompositeResourceDefinitionSpecClaimNames {
+export interface CompositeResourceDefinitionV1Alpha1SpecClaimNames {
   /**
    * categories is a list of grouped resources this custom resource belongs to (e.g. 'all'). This is published in API discovery documents, and used by clients to support invocations like \`kubectl get all\`.
    *
-   * @schema CompositeResourceDefinitionSpecClaimNames#categories
+   * @schema CompositeResourceDefinitionV1Alpha1SpecClaimNames#categories
    */
   readonly categories?: string[];
 
   /**
    * kind is the serialized kind of the resource. It is normally CamelCase and singular. Custom resource instances will use this value as the \`kind\` attribute in API calls.
    *
-   * @schema CompositeResourceDefinitionSpecClaimNames#kind
+   * @schema CompositeResourceDefinitionV1Alpha1SpecClaimNames#kind
    */
   readonly kind: string;
 
@@ -641,21 +641,21 @@ export interface CompositeResourceDefinitionSpecClaimNames {
    * listKind is the serialized kind of the list for this resource. Defaults to \\"\`kind\`List\\".
    *
    * @default kind\`List\\".
-   * @schema CompositeResourceDefinitionSpecClaimNames#listKind
+   * @schema CompositeResourceDefinitionV1Alpha1SpecClaimNames#listKind
    */
   readonly listKind?: string;
 
   /**
    * plural is the plural name of the resource to serve. The custom resources are served under \`/apis/<group>/<version>/.../<plural>\`. Must match the name of the CustomResourceDefinition (in the form \`<names.plural>.<group>\`). Must be all lowercase.
    *
-   * @schema CompositeResourceDefinitionSpecClaimNames#plural
+   * @schema CompositeResourceDefinitionV1Alpha1SpecClaimNames#plural
    */
   readonly plural: string;
 
   /**
    * shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like \`kubectl get <shortname>\`. It must be all lowercase.
    *
-   * @schema CompositeResourceDefinitionSpecClaimNames#shortNames
+   * @schema CompositeResourceDefinitionV1Alpha1SpecClaimNames#shortNames
    */
   readonly shortNames?: string[];
 
@@ -663,17 +663,17 @@ export interface CompositeResourceDefinitionSpecClaimNames {
    * singular is the singular name of the resource. It must be all lowercase. Defaults to lowercased \`kind\`.
    *
    * @default lowercased \`kind\`.
-   * @schema CompositeResourceDefinitionSpecClaimNames#singular
+   * @schema CompositeResourceDefinitionV1Alpha1SpecClaimNames#singular
    */
   readonly singular?: string;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecClaimNames' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionV1Alpha1SpecClaimNames' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecClaimNames(obj: CompositeResourceDefinitionSpecClaimNames | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionV1Alpha1SpecClaimNames(obj: CompositeResourceDefinitionV1Alpha1SpecClaimNames | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'categories': obj.categories?.map(y => y),
@@ -691,23 +691,23 @@ export function toJson_CompositeResourceDefinitionSpecClaimNames(obj: CompositeR
 /**
  * DefaultCompositionRef refers to the Composition resource that will be used in case no composition selector is given.
  *
- * @schema CompositeResourceDefinitionSpecDefaultCompositionRef
+ * @schema CompositeResourceDefinitionV1Alpha1SpecDefaultCompositionRef
  */
-export interface CompositeResourceDefinitionSpecDefaultCompositionRef {
+export interface CompositeResourceDefinitionV1Alpha1SpecDefaultCompositionRef {
   /**
    * Name of the referenced object.
    *
-   * @schema CompositeResourceDefinitionSpecDefaultCompositionRef#name
+   * @schema CompositeResourceDefinitionV1Alpha1SpecDefaultCompositionRef#name
    */
   readonly name: string;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecDefaultCompositionRef' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionV1Alpha1SpecDefaultCompositionRef' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecDefaultCompositionRef(obj: CompositeResourceDefinitionSpecDefaultCompositionRef | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionV1Alpha1SpecDefaultCompositionRef(obj: CompositeResourceDefinitionV1Alpha1SpecDefaultCompositionRef | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'name': obj.name,
@@ -720,23 +720,23 @@ export function toJson_CompositeResourceDefinitionSpecDefaultCompositionRef(obj:
 /**
  * EnforcedCompositionRef refers to the Composition resource that will be used by all composite instances whose schema is defined by this definition.
  *
- * @schema CompositeResourceDefinitionSpecEnforcedCompositionRef
+ * @schema CompositeResourceDefinitionV1Alpha1SpecEnforcedCompositionRef
  */
-export interface CompositeResourceDefinitionSpecEnforcedCompositionRef {
+export interface CompositeResourceDefinitionV1Alpha1SpecEnforcedCompositionRef {
   /**
    * Name of the referenced object.
    *
-   * @schema CompositeResourceDefinitionSpecEnforcedCompositionRef#name
+   * @schema CompositeResourceDefinitionV1Alpha1SpecEnforcedCompositionRef#name
    */
   readonly name: string;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecEnforcedCompositionRef' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionV1Alpha1SpecEnforcedCompositionRef' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecEnforcedCompositionRef(obj: CompositeResourceDefinitionSpecEnforcedCompositionRef | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionV1Alpha1SpecEnforcedCompositionRef(obj: CompositeResourceDefinitionV1Alpha1SpecEnforcedCompositionRef | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'name': obj.name,
@@ -749,20 +749,20 @@ export function toJson_CompositeResourceDefinitionSpecEnforcedCompositionRef(obj
 /**
  * Names specifies the resource and kind names of the defined composite resource.
  *
- * @schema CompositeResourceDefinitionSpecNames
+ * @schema CompositeResourceDefinitionV1Alpha1SpecNames
  */
-export interface CompositeResourceDefinitionSpecNames {
+export interface CompositeResourceDefinitionV1Alpha1SpecNames {
   /**
    * categories is a list of grouped resources this custom resource belongs to (e.g. 'all'). This is published in API discovery documents, and used by clients to support invocations like \`kubectl get all\`.
    *
-   * @schema CompositeResourceDefinitionSpecNames#categories
+   * @schema CompositeResourceDefinitionV1Alpha1SpecNames#categories
    */
   readonly categories?: string[];
 
   /**
    * kind is the serialized kind of the resource. It is normally CamelCase and singular. Custom resource instances will use this value as the \`kind\` attribute in API calls.
    *
-   * @schema CompositeResourceDefinitionSpecNames#kind
+   * @schema CompositeResourceDefinitionV1Alpha1SpecNames#kind
    */
   readonly kind: string;
 
@@ -770,21 +770,21 @@ export interface CompositeResourceDefinitionSpecNames {
    * listKind is the serialized kind of the list for this resource. Defaults to \\"\`kind\`List\\".
    *
    * @default kind\`List\\".
-   * @schema CompositeResourceDefinitionSpecNames#listKind
+   * @schema CompositeResourceDefinitionV1Alpha1SpecNames#listKind
    */
   readonly listKind?: string;
 
   /**
    * plural is the plural name of the resource to serve. The custom resources are served under \`/apis/<group>/<version>/.../<plural>\`. Must match the name of the CustomResourceDefinition (in the form \`<names.plural>.<group>\`). Must be all lowercase.
    *
-   * @schema CompositeResourceDefinitionSpecNames#plural
+   * @schema CompositeResourceDefinitionV1Alpha1SpecNames#plural
    */
   readonly plural: string;
 
   /**
    * shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like \`kubectl get <shortname>\`. It must be all lowercase.
    *
-   * @schema CompositeResourceDefinitionSpecNames#shortNames
+   * @schema CompositeResourceDefinitionV1Alpha1SpecNames#shortNames
    */
   readonly shortNames?: string[];
 
@@ -792,17 +792,17 @@ export interface CompositeResourceDefinitionSpecNames {
    * singular is the singular name of the resource. It must be all lowercase. Defaults to lowercased \`kind\`.
    *
    * @default lowercased \`kind\`.
-   * @schema CompositeResourceDefinitionSpecNames#singular
+   * @schema CompositeResourceDefinitionV1Alpha1SpecNames#singular
    */
   readonly singular?: string;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecNames' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionV1Alpha1SpecNames' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecNames(obj: CompositeResourceDefinitionSpecNames | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionV1Alpha1SpecNames(obj: CompositeResourceDefinitionV1Alpha1SpecNames | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'categories': obj.categories?.map(y => y),
@@ -820,57 +820,57 @@ export function toJson_CompositeResourceDefinitionSpecNames(obj: CompositeResour
 /**
  * CompositeResourceDefinitionVersion describes a version of an XR.
  *
- * @schema CompositeResourceDefinitionSpecVersions
+ * @schema CompositeResourceDefinitionV1Alpha1SpecVersions
  */
-export interface CompositeResourceDefinitionSpecVersions {
+export interface CompositeResourceDefinitionV1Alpha1SpecVersions {
   /**
    * AdditionalPrinterColumns specifies additional columns returned in Table output. If no columns are specified, a single column displaying the age of the custom resource is used. See the following link for details: https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables
    *
-   * @schema CompositeResourceDefinitionSpecVersions#additionalPrinterColumns
+   * @schema CompositeResourceDefinitionV1Alpha1SpecVersions#additionalPrinterColumns
    */
-  readonly additionalPrinterColumns?: CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns[];
+  readonly additionalPrinterColumns?: CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns[];
 
   /**
    * Name of this version, e.g. “v1”, “v2beta1”, etc. Composite resources are served under this version at \`/apis/<group>/<version>/...\` if \`served\` is true.
    *
-   * @schema CompositeResourceDefinitionSpecVersions#name
+   * @schema CompositeResourceDefinitionV1Alpha1SpecVersions#name
    */
   readonly name: string;
 
   /**
    * Referenceable specifies that this version may be referenced by a Composition in order to configure which resources an XR may be composed of. Exactly one version must be marked as referenceable; all Compositions must target only the referenceable version. The referenceable version must be served.
    *
-   * @schema CompositeResourceDefinitionSpecVersions#referenceable
+   * @schema CompositeResourceDefinitionV1Alpha1SpecVersions#referenceable
    */
   readonly referenceable: boolean;
 
   /**
    * Schema describes the schema used for validation, pruning, and defaulting of this version of the defined composite resource. Fields required by all composite resources will be injected into this schema automatically, and will override equivalently named fields in this schema. Omitting this schema results in a schema that contains only the fields required by all composite resources.
    *
-   * @schema CompositeResourceDefinitionSpecVersions#schema
+   * @schema CompositeResourceDefinitionV1Alpha1SpecVersions#schema
    */
-  readonly schema?: CompositeResourceDefinitionSpecVersionsSchema;
+  readonly schema?: CompositeResourceDefinitionV1Alpha1SpecVersionsSchema;
 
   /**
    * Served specifies that this version should be served via REST APIs.
    *
-   * @schema CompositeResourceDefinitionSpecVersions#served
+   * @schema CompositeResourceDefinitionV1Alpha1SpecVersions#served
    */
   readonly served: boolean;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecVersions' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionV1Alpha1SpecVersions' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecVersions(obj: CompositeResourceDefinitionSpecVersions | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionV1Alpha1SpecVersions(obj: CompositeResourceDefinitionV1Alpha1SpecVersions | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
-    'additionalPrinterColumns': obj.additionalPrinterColumns?.map(y => toJson_CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns(y)),
+    'additionalPrinterColumns': obj.additionalPrinterColumns?.map(y => toJson_CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns(y)),
     'name': obj.name,
     'referenceable': obj.referenceable,
-    'schema': toJson_CompositeResourceDefinitionSpecVersionsSchema(obj.schema),
+    'schema': toJson_CompositeResourceDefinitionV1Alpha1SpecVersionsSchema(obj.schema),
     'served': obj.served,
   };
   // filter undefined values
@@ -881,58 +881,58 @@ export function toJson_CompositeResourceDefinitionSpecVersions(obj: CompositeRes
 /**
  * CustomResourceColumnDefinition specifies a column for server side printing.
  *
- * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns
+ * @schema CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns
  */
-export interface CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns {
+export interface CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns {
   /**
    * description is a human readable description of this column.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#description
+   * @schema CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns#description
    */
   readonly description?: string;
 
   /**
    * format is an optional OpenAPI type definition for this column. The 'name' format is applied to the primary identifier column to assist in clients identifying column is the resource name. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#format
+   * @schema CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns#format
    */
   readonly format?: string;
 
   /**
    * jsonPath is a simple JSON path (i.e. with array notation) which is evaluated against each custom resource to produce the value for this column.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#jsonPath
+   * @schema CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns#jsonPath
    */
   readonly jsonPath: string;
 
   /**
    * name is a human readable name for the column.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#name
+   * @schema CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns#name
    */
   readonly name: string;
 
   /**
    * priority is an integer defining the relative importance of this column compared to others. Lower numbers are considered higher priority. Columns that may be omitted in limited space scenarios should be given a priority greater than 0.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#priority
+   * @schema CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns#priority
    */
   readonly priority?: number;
 
   /**
    * type is an OpenAPI type definition for this column. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#type
+   * @schema CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns#type
    */
   readonly type: string;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns(obj: CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns(obj: CompositeResourceDefinitionV1Alpha1SpecVersionsAdditionalPrinterColumns | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'description': obj.description,
@@ -950,23 +950,23 @@ export function toJson_CompositeResourceDefinitionSpecVersionsAdditionalPrinterC
 /**
  * Schema describes the schema used for validation, pruning, and defaulting of this version of the defined composite resource. Fields required by all composite resources will be injected into this schema automatically, and will override equivalently named fields in this schema. Omitting this schema results in a schema that contains only the fields required by all composite resources.
  *
- * @schema CompositeResourceDefinitionSpecVersionsSchema
+ * @schema CompositeResourceDefinitionV1Alpha1SpecVersionsSchema
  */
-export interface CompositeResourceDefinitionSpecVersionsSchema {
+export interface CompositeResourceDefinitionV1Alpha1SpecVersionsSchema {
   /**
    * OpenAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
    *
-   * @schema CompositeResourceDefinitionSpecVersionsSchema#openAPIV3Schema
+   * @schema CompositeResourceDefinitionV1Alpha1SpecVersionsSchema#openAPIV3Schema
    */
   readonly openApiv3Schema?: any;
 
 }
 
 /**
- * Converts an object of type 'CompositeResourceDefinitionSpecVersionsSchema' to JSON representation.
+ * Converts an object of type 'CompositeResourceDefinitionV1Alpha1SpecVersionsSchema' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositeResourceDefinitionSpecVersionsSchema(obj: CompositeResourceDefinitionSpecVersionsSchema | undefined): Record<string, any> | undefined {
+export function toJson_CompositeResourceDefinitionV1Alpha1SpecVersionsSchema(obj: CompositeResourceDefinitionV1Alpha1SpecVersionsSchema | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'openAPIV3Schema': obj.openApiv3Schema,
@@ -1506,11 +1506,11 @@ export function toJson_CompositeResourceDefinitionV1Beta1SpecVersionsSchema(obj:
 /**
  * Composition defines the group of resources to be created when a compatible type is created with reference to the composition.
  *
- * @schema Composition
+ * @schema CompositionV1Alpha1
  */
-export class Composition extends ApiObject {
+export class CompositionV1Alpha1 extends ApiObject {
   /**
-   * Returns the apiVersion and kind for \\"Composition\\"
+   * Returns the apiVersion and kind for \\"CompositionV1Alpha1\\"
    */
   public static readonly GVK: GroupVersionKind = {
     apiVersion: 'apiextensions.crossplane.io/v1alpha1',
@@ -1518,28 +1518,28 @@ export class Composition extends ApiObject {
   }
 
   /**
-   * Renders a Kubernetes manifest for \\"Composition\\".
+   * Renders a Kubernetes manifest for \\"CompositionV1Alpha1\\".
    *
    * This can be used to inline resource manifests inside other objects (e.g. as templates).
    *
    * @param props initialization props
    */
-  public static manifest(props: CompositionProps = {}): any {
+  public static manifest(props: CompositionV1Alpha1Props = {}): any {
     return {
-      ...Composition.GVK,
-      ...toJson_CompositionProps(props),
+      ...CompositionV1Alpha1.GVK,
+      ...toJson_CompositionV1Alpha1Props(props),
     };
   }
 
   /**
-   * Defines a \\"Composition\\" API object
+   * Defines a \\"CompositionV1Alpha1\\" API object
    * @param scope the scope in which to define this object
    * @param id a scope-local name for the object
    * @param props initialization props
    */
-  public constructor(scope: Construct, id: string, props: CompositionProps = {}) {
+  public constructor(scope: Construct, id: string, props: CompositionV1Alpha1Props = {}) {
     super(scope, id, {
-      ...Composition.GVK,
+      ...CompositionV1Alpha1.GVK,
       ...props,
     });
   }
@@ -1551,8 +1551,8 @@ export class Composition extends ApiObject {
     const resolved = super.toJson();
 
     return {
-      ...Composition.GVK,
-      ...toJson_CompositionProps(resolved),
+      ...CompositionV1Alpha1.GVK,
+      ...toJson_CompositionV1Alpha1Props(resolved),
     };
   }
 }
@@ -1560,32 +1560,32 @@ export class Composition extends ApiObject {
 /**
  * Composition defines the group of resources to be created when a compatible type is created with reference to the composition.
  *
- * @schema Composition
+ * @schema CompositionV1Alpha1
  */
-export interface CompositionProps {
+export interface CompositionV1Alpha1Props {
   /**
-   * @schema Composition#metadata
+   * @schema CompositionV1Alpha1#metadata
    */
   readonly metadata?: ApiObjectMetadata;
 
   /**
    * CompositionSpec specifies the desired state of the definition.
    *
-   * @schema Composition#spec
+   * @schema CompositionV1Alpha1#spec
    */
-  readonly spec?: CompositionSpec;
+  readonly spec?: CompositionV1Alpha1Spec;
 
 }
 
 /**
- * Converts an object of type 'CompositionProps' to JSON representation.
+ * Converts an object of type 'CompositionV1Alpha1Props' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionProps(obj: CompositionProps | undefined): Record<string, any> | undefined {
+export function toJson_CompositionV1Alpha1Props(obj: CompositionV1Alpha1Props | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'metadata': obj.metadata,
-    'spec': toJson_CompositionSpec(obj.spec),
+    'spec': toJson_CompositionV1Alpha1Spec(obj.spec),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -1595,41 +1595,41 @@ export function toJson_CompositionProps(obj: CompositionProps | undefined): Reco
 /**
  * CompositionSpec specifies the desired state of the definition.
  *
- * @schema CompositionSpec
+ * @schema CompositionV1Alpha1Spec
  */
-export interface CompositionSpec {
+export interface CompositionV1Alpha1Spec {
   /**
    * CompositeTypeRef specifies the type of composite resource that this composition is compatible with.
    *
-   * @schema CompositionSpec#compositeTypeRef
+   * @schema CompositionV1Alpha1Spec#compositeTypeRef
    */
-  readonly compositeTypeRef: CompositionSpecCompositeTypeRef;
+  readonly compositeTypeRef: CompositionV1Alpha1SpecCompositeTypeRef;
 
   /**
    * Resources is the list of resource templates that will be used when a composite resource referring to this composition is created.
    *
-   * @schema CompositionSpec#resources
+   * @schema CompositionV1Alpha1Spec#resources
    */
-  readonly resources: CompositionSpecResources[];
+  readonly resources: CompositionV1Alpha1SpecResources[];
 
   /**
    * WriteConnectionSecretsToNamespace specifies the namespace in which the connection secrets of composite resource dynamically provisioned using this composition will be created.
    *
-   * @schema CompositionSpec#writeConnectionSecretsToNamespace
+   * @schema CompositionV1Alpha1Spec#writeConnectionSecretsToNamespace
    */
   readonly writeConnectionSecretsToNamespace?: string;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpec' to JSON representation.
+ * Converts an object of type 'CompositionV1Alpha1Spec' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpec(obj: CompositionSpec | undefined): Record<string, any> | undefined {
+export function toJson_CompositionV1Alpha1Spec(obj: CompositionV1Alpha1Spec | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
-    'compositeTypeRef': toJson_CompositionSpecCompositeTypeRef(obj.compositeTypeRef),
-    'resources': obj.resources?.map(y => toJson_CompositionSpecResources(y)),
+    'compositeTypeRef': toJson_CompositionV1Alpha1SpecCompositeTypeRef(obj.compositeTypeRef),
+    'resources': obj.resources?.map(y => toJson_CompositionV1Alpha1SpecResources(y)),
     'writeConnectionSecretsToNamespace': obj.writeConnectionSecretsToNamespace,
   };
   // filter undefined values
@@ -1640,30 +1640,30 @@ export function toJson_CompositionSpec(obj: CompositionSpec | undefined): Record
 /**
  * CompositeTypeRef specifies the type of composite resource that this composition is compatible with.
  *
- * @schema CompositionSpecCompositeTypeRef
+ * @schema CompositionV1Alpha1SpecCompositeTypeRef
  */
-export interface CompositionSpecCompositeTypeRef {
+export interface CompositionV1Alpha1SpecCompositeTypeRef {
   /**
    * APIVersion of the type.
    *
-   * @schema CompositionSpecCompositeTypeRef#apiVersion
+   * @schema CompositionV1Alpha1SpecCompositeTypeRef#apiVersion
    */
   readonly apiVersion: string;
 
   /**
    * Kind of the type.
    *
-   * @schema CompositionSpecCompositeTypeRef#kind
+   * @schema CompositionV1Alpha1SpecCompositeTypeRef#kind
    */
   readonly kind: string;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecCompositeTypeRef' to JSON representation.
+ * Converts an object of type 'CompositionV1Alpha1SpecCompositeTypeRef' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecCompositeTypeRef(obj: CompositionSpecCompositeTypeRef | undefined): Record<string, any> | undefined {
+export function toJson_CompositionV1Alpha1SpecCompositeTypeRef(obj: CompositionV1Alpha1SpecCompositeTypeRef | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'apiVersion': obj.apiVersion,
@@ -1677,50 +1677,50 @@ export function toJson_CompositionSpecCompositeTypeRef(obj: CompositionSpecCompo
 /**
  * ComposedTemplate is used to provide information about how the composed resource should be processed.
  *
- * @schema CompositionSpecResources
+ * @schema CompositionV1Alpha1SpecResources
  */
-export interface CompositionSpecResources {
+export interface CompositionV1Alpha1SpecResources {
   /**
    * Base is the target resource that the patches will be applied on.
    *
-   * @schema CompositionSpecResources#base
+   * @schema CompositionV1Alpha1SpecResources#base
    */
   readonly base: any;
 
   /**
    * ConnectionDetails lists the propagation secret keys from this target resource to the composition instance connection secret.
    *
-   * @schema CompositionSpecResources#connectionDetails
+   * @schema CompositionV1Alpha1SpecResources#connectionDetails
    */
-  readonly connectionDetails?: CompositionSpecResourcesConnectionDetails[];
+  readonly connectionDetails?: CompositionV1Alpha1SpecResourcesConnectionDetails[];
 
   /**
    * Patches will be applied as overlay to the base resource.
    *
-   * @schema CompositionSpecResources#patches
+   * @schema CompositionV1Alpha1SpecResources#patches
    */
-  readonly patches?: CompositionSpecResourcesPatches[];
+  readonly patches?: CompositionV1Alpha1SpecResourcesPatches[];
 
   /**
    * ReadinessChecks allows users to define custom readiness checks. All checks have to return true in order for resource to be considered ready. The default readiness check is to have the \\"Ready\\" condition to be \\"True\\".
    *
-   * @schema CompositionSpecResources#readinessChecks
+   * @schema CompositionV1Alpha1SpecResources#readinessChecks
    */
-  readonly readinessChecks?: CompositionSpecResourcesReadinessChecks[];
+  readonly readinessChecks?: CompositionV1Alpha1SpecResourcesReadinessChecks[];
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResources' to JSON representation.
+ * Converts an object of type 'CompositionV1Alpha1SpecResources' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResources(obj: CompositionSpecResources | undefined): Record<string, any> | undefined {
+export function toJson_CompositionV1Alpha1SpecResources(obj: CompositionV1Alpha1SpecResources | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'base': obj.base,
-    'connectionDetails': obj.connectionDetails?.map(y => toJson_CompositionSpecResourcesConnectionDetails(y)),
-    'patches': obj.patches?.map(y => toJson_CompositionSpecResourcesPatches(y)),
-    'readinessChecks': obj.readinessChecks?.map(y => toJson_CompositionSpecResourcesReadinessChecks(y)),
+    'connectionDetails': obj.connectionDetails?.map(y => toJson_CompositionV1Alpha1SpecResourcesConnectionDetails(y)),
+    'patches': obj.patches?.map(y => toJson_CompositionV1Alpha1SpecResourcesPatches(y)),
+    'readinessChecks': obj.readinessChecks?.map(y => toJson_CompositionV1Alpha1SpecResourcesReadinessChecks(y)),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -1730,37 +1730,37 @@ export function toJson_CompositionSpecResources(obj: CompositionSpecResources | 
 /**
  * ConnectionDetail includes the information about the propagation of the connection information from one secret to another.
  *
- * @schema CompositionSpecResourcesConnectionDetails
+ * @schema CompositionV1Alpha1SpecResourcesConnectionDetails
  */
-export interface CompositionSpecResourcesConnectionDetails {
+export interface CompositionV1Alpha1SpecResourcesConnectionDetails {
   /**
    * FromConnectionSecretKey is the key that will be used to fetch the value from the given target resource.
    *
-   * @schema CompositionSpecResourcesConnectionDetails#fromConnectionSecretKey
+   * @schema CompositionV1Alpha1SpecResourcesConnectionDetails#fromConnectionSecretKey
    */
   readonly fromConnectionSecretKey?: string;
 
   /**
    * Name of the connection secret key that will be propagated to the connection secret of the composition instance. Leave empty if you'd like to use the same key name.
    *
-   * @schema CompositionSpecResourcesConnectionDetails#name
+   * @schema CompositionV1Alpha1SpecResourcesConnectionDetails#name
    */
   readonly name?: string;
 
   /**
    * Value that will be propagated to the connection secret of the composition instance. Typically you should use FromConnectionSecretKey instead, but an explicit value may be set to inject a fixed, non-sensitive connection secret values, for example a well-known port. Supercedes FromConnectionSecretKey when set.
    *
-   * @schema CompositionSpecResourcesConnectionDetails#value
+   * @schema CompositionV1Alpha1SpecResourcesConnectionDetails#value
    */
   readonly value?: string;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesConnectionDetails' to JSON representation.
+ * Converts an object of type 'CompositionV1Alpha1SpecResourcesConnectionDetails' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesConnectionDetails(obj: CompositionSpecResourcesConnectionDetails | undefined): Record<string, any> | undefined {
+export function toJson_CompositionV1Alpha1SpecResourcesConnectionDetails(obj: CompositionV1Alpha1SpecResourcesConnectionDetails | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'fromConnectionSecretKey': obj.fromConnectionSecretKey,
@@ -1775,42 +1775,42 @@ export function toJson_CompositionSpecResourcesConnectionDetails(obj: Compositio
 /**
  * Patch is used to patch the field on the base resource at ToFieldPath after piping the value that is at FromFieldPath of the target resource through transformers.
  *
- * @schema CompositionSpecResourcesPatches
+ * @schema CompositionV1Alpha1SpecResourcesPatches
  */
-export interface CompositionSpecResourcesPatches {
+export interface CompositionV1Alpha1SpecResourcesPatches {
   /**
    * FromFieldPath is the path of the field on the upstream resource whose value to be used as input.
    *
-   * @schema CompositionSpecResourcesPatches#fromFieldPath
+   * @schema CompositionV1Alpha1SpecResourcesPatches#fromFieldPath
    */
   readonly fromFieldPath: string;
 
   /**
    * ToFieldPath is the path of the field on the base resource whose value will be changed with the result of transforms. Leave empty if you'd like to propagate to the same path on the target resource.
    *
-   * @schema CompositionSpecResourcesPatches#toFieldPath
+   * @schema CompositionV1Alpha1SpecResourcesPatches#toFieldPath
    */
   readonly toFieldPath?: string;
 
   /**
    * Transforms are the list of functions that are used as a FIFO pipe for the input to be transformed.
    *
-   * @schema CompositionSpecResourcesPatches#transforms
+   * @schema CompositionV1Alpha1SpecResourcesPatches#transforms
    */
-  readonly transforms?: CompositionSpecResourcesPatchesTransforms[];
+  readonly transforms?: CompositionV1Alpha1SpecResourcesPatchesTransforms[];
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesPatches' to JSON representation.
+ * Converts an object of type 'CompositionV1Alpha1SpecResourcesPatches' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesPatches(obj: CompositionSpecResourcesPatches | undefined): Record<string, any> | undefined {
+export function toJson_CompositionV1Alpha1SpecResourcesPatches(obj: CompositionV1Alpha1SpecResourcesPatches | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'fromFieldPath': obj.fromFieldPath,
     'toFieldPath': obj.toFieldPath,
-    'transforms': obj.transforms?.map(y => toJson_CompositionSpecResourcesPatchesTransforms(y)),
+    'transforms': obj.transforms?.map(y => toJson_CompositionV1Alpha1SpecResourcesPatchesTransforms(y)),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -1820,44 +1820,44 @@ export function toJson_CompositionSpecResourcesPatches(obj: CompositionSpecResou
 /**
  * ReadinessCheck is used to indicate how to tell whether a resource is ready for consumption
  *
- * @schema CompositionSpecResourcesReadinessChecks
+ * @schema CompositionV1Alpha1SpecResourcesReadinessChecks
  */
-export interface CompositionSpecResourcesReadinessChecks {
+export interface CompositionV1Alpha1SpecResourcesReadinessChecks {
   /**
    * FieldPath shows the path of the field whose value will be used.
    *
-   * @schema CompositionSpecResourcesReadinessChecks#fieldPath
+   * @schema CompositionV1Alpha1SpecResourcesReadinessChecks#fieldPath
    */
   readonly fieldPath?: string;
 
   /**
    * MatchInt is the value you'd like to match if you're using \\"MatchInt\\" type.
    *
-   * @schema CompositionSpecResourcesReadinessChecks#matchInteger
+   * @schema CompositionV1Alpha1SpecResourcesReadinessChecks#matchInteger
    */
   readonly matchInteger?: number;
 
   /**
    * MatchString is the value you'd like to match if you're using \\"MatchString\\" type.
    *
-   * @schema CompositionSpecResourcesReadinessChecks#matchString
+   * @schema CompositionV1Alpha1SpecResourcesReadinessChecks#matchString
    */
   readonly matchString?: string;
 
   /**
    * Type indicates the type of probe you'd like to use.
    *
-   * @schema CompositionSpecResourcesReadinessChecks#type
+   * @schema CompositionV1Alpha1SpecResourcesReadinessChecks#type
    */
-  readonly type: CompositionSpecResourcesReadinessChecksType;
+  readonly type: CompositionV1Alpha1SpecResourcesReadinessChecksType;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesReadinessChecks' to JSON representation.
+ * Converts an object of type 'CompositionV1Alpha1SpecResourcesReadinessChecks' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesReadinessChecks(obj: CompositionSpecResourcesReadinessChecks | undefined): Record<string, any> | undefined {
+export function toJson_CompositionV1Alpha1SpecResourcesReadinessChecks(obj: CompositionV1Alpha1SpecResourcesReadinessChecks | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'fieldPath': obj.fieldPath,
@@ -1873,49 +1873,49 @@ export function toJson_CompositionSpecResourcesReadinessChecks(obj: CompositionS
 /**
  * Transform is a unit of process whose input is transformed into an output with the supplied configuration.
  *
- * @schema CompositionSpecResourcesPatchesTransforms
+ * @schema CompositionV1Alpha1SpecResourcesPatchesTransforms
  */
-export interface CompositionSpecResourcesPatchesTransforms {
+export interface CompositionV1Alpha1SpecResourcesPatchesTransforms {
   /**
    * Map uses the input as a key in the given map and returns the value.
    *
-   * @schema CompositionSpecResourcesPatchesTransforms#map
+   * @schema CompositionV1Alpha1SpecResourcesPatchesTransforms#map
    */
   readonly map?: { [key: string]: string };
 
   /**
    * Math is used to transform the input via mathematical operations such as multiplication.
    *
-   * @schema CompositionSpecResourcesPatchesTransforms#math
+   * @schema CompositionV1Alpha1SpecResourcesPatchesTransforms#math
    */
-  readonly math?: CompositionSpecResourcesPatchesTransformsMath;
+  readonly math?: CompositionV1Alpha1SpecResourcesPatchesTransformsMath;
 
   /**
    * String is used to transform the input into a string or a different kind of string. Note that the input does not necessarily need to be a string.
    *
-   * @schema CompositionSpecResourcesPatchesTransforms#string
+   * @schema CompositionV1Alpha1SpecResourcesPatchesTransforms#string
    */
-  readonly string?: CompositionSpecResourcesPatchesTransformsString;
+  readonly string?: CompositionV1Alpha1SpecResourcesPatchesTransformsString;
 
   /**
    * Type of the transform to be run.
    *
-   * @schema CompositionSpecResourcesPatchesTransforms#type
+   * @schema CompositionV1Alpha1SpecResourcesPatchesTransforms#type
    */
   readonly type: string;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesPatchesTransforms' to JSON representation.
+ * Converts an object of type 'CompositionV1Alpha1SpecResourcesPatchesTransforms' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesPatchesTransforms(obj: CompositionSpecResourcesPatchesTransforms | undefined): Record<string, any> | undefined {
+export function toJson_CompositionV1Alpha1SpecResourcesPatchesTransforms(obj: CompositionV1Alpha1SpecResourcesPatchesTransforms | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'map': ((obj.map) === undefined) ? undefined : (Object.entries(obj.map).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
-    'math': toJson_CompositionSpecResourcesPatchesTransformsMath(obj.math),
-    'string': toJson_CompositionSpecResourcesPatchesTransformsString(obj.string),
+    'math': toJson_CompositionV1Alpha1SpecResourcesPatchesTransformsMath(obj.math),
+    'string': toJson_CompositionV1Alpha1SpecResourcesPatchesTransformsString(obj.string),
     'type': obj.type,
   };
   // filter undefined values
@@ -1926,9 +1926,9 @@ export function toJson_CompositionSpecResourcesPatchesTransforms(obj: Compositio
 /**
  * Type indicates the type of probe you'd like to use.
  *
- * @schema CompositionSpecResourcesReadinessChecksType
+ * @schema CompositionV1Alpha1SpecResourcesReadinessChecksType
  */
-export enum CompositionSpecResourcesReadinessChecksType {
+export enum CompositionV1Alpha1SpecResourcesReadinessChecksType {
   /** MatchString */
   MATCH_STRING = \\"MatchString\\",
   /** MatchInteger */
@@ -1942,23 +1942,23 @@ export enum CompositionSpecResourcesReadinessChecksType {
 /**
  * Math is used to transform the input via mathematical operations such as multiplication.
  *
- * @schema CompositionSpecResourcesPatchesTransformsMath
+ * @schema CompositionV1Alpha1SpecResourcesPatchesTransformsMath
  */
-export interface CompositionSpecResourcesPatchesTransformsMath {
+export interface CompositionV1Alpha1SpecResourcesPatchesTransformsMath {
   /**
    * Multiply the value.
    *
-   * @schema CompositionSpecResourcesPatchesTransformsMath#multiply
+   * @schema CompositionV1Alpha1SpecResourcesPatchesTransformsMath#multiply
    */
   readonly multiply?: number;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesPatchesTransformsMath' to JSON representation.
+ * Converts an object of type 'CompositionV1Alpha1SpecResourcesPatchesTransformsMath' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesPatchesTransformsMath(obj: CompositionSpecResourcesPatchesTransformsMath | undefined): Record<string, any> | undefined {
+export function toJson_CompositionV1Alpha1SpecResourcesPatchesTransformsMath(obj: CompositionV1Alpha1SpecResourcesPatchesTransformsMath | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'multiply': obj.multiply,
@@ -1971,23 +1971,23 @@ export function toJson_CompositionSpecResourcesPatchesTransformsMath(obj: Compos
 /**
  * String is used to transform the input into a string or a different kind of string. Note that the input does not necessarily need to be a string.
  *
- * @schema CompositionSpecResourcesPatchesTransformsString
+ * @schema CompositionV1Alpha1SpecResourcesPatchesTransformsString
  */
-export interface CompositionSpecResourcesPatchesTransformsString {
+export interface CompositionV1Alpha1SpecResourcesPatchesTransformsString {
   /**
    * Format the input using a Go format string. See https://golang.org/pkg/fmt/ for details.
    *
-   * @schema CompositionSpecResourcesPatchesTransformsString#fmt
+   * @schema CompositionV1Alpha1SpecResourcesPatchesTransformsString#fmt
    */
   readonly fmt: string;
 
 }
 
 /**
- * Converts an object of type 'CompositionSpecResourcesPatchesTransformsString' to JSON representation.
+ * Converts an object of type 'CompositionV1Alpha1SpecResourcesPatchesTransformsString' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_CompositionSpecResourcesPatchesTransformsString(obj: CompositionSpecResourcesPatchesTransformsString | undefined): Record<string, any> | undefined {
+export function toJson_CompositionV1Alpha1SpecResourcesPatchesTransformsString(obj: CompositionV1Alpha1SpecResourcesPatchesTransformsString | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'fmt': obj.fmt,
@@ -2501,11 +2501,11 @@ import { Construct } from 'constructs';
 /**
  * A Configuration is the description of a Crossplane Configuration package.
  *
- * @schema Configuration
+ * @schema ConfigurationV1Alpha1
  */
-export class Configuration extends ApiObject {
+export class ConfigurationV1Alpha1 extends ApiObject {
   /**
-   * Returns the apiVersion and kind for \\"Configuration\\"
+   * Returns the apiVersion and kind for \\"ConfigurationV1Alpha1\\"
    */
   public static readonly GVK: GroupVersionKind = {
     apiVersion: 'meta.pkg.crossplane.io/v1alpha1',
@@ -2513,28 +2513,28 @@ export class Configuration extends ApiObject {
   }
 
   /**
-   * Renders a Kubernetes manifest for \\"Configuration\\".
+   * Renders a Kubernetes manifest for \\"ConfigurationV1Alpha1\\".
    *
    * This can be used to inline resource manifests inside other objects (e.g. as templates).
    *
    * @param props initialization props
    */
-  public static manifest(props: ConfigurationProps): any {
+  public static manifest(props: ConfigurationV1Alpha1Props): any {
     return {
-      ...Configuration.GVK,
-      ...toJson_ConfigurationProps(props),
+      ...ConfigurationV1Alpha1.GVK,
+      ...toJson_ConfigurationV1Alpha1Props(props),
     };
   }
 
   /**
-   * Defines a \\"Configuration\\" API object
+   * Defines a \\"ConfigurationV1Alpha1\\" API object
    * @param scope the scope in which to define this object
    * @param id a scope-local name for the object
    * @param props initialization props
    */
-  public constructor(scope: Construct, id: string, props: ConfigurationProps) {
+  public constructor(scope: Construct, id: string, props: ConfigurationV1Alpha1Props) {
     super(scope, id, {
-      ...Configuration.GVK,
+      ...ConfigurationV1Alpha1.GVK,
       ...props,
     });
   }
@@ -2546,8 +2546,8 @@ export class Configuration extends ApiObject {
     const resolved = super.toJson();
 
     return {
-      ...Configuration.GVK,
-      ...toJson_ConfigurationProps(resolved),
+      ...ConfigurationV1Alpha1.GVK,
+      ...toJson_ConfigurationV1Alpha1Props(resolved),
     };
   }
 }
@@ -2555,32 +2555,32 @@ export class Configuration extends ApiObject {
 /**
  * A Configuration is the description of a Crossplane Configuration package.
  *
- * @schema Configuration
+ * @schema ConfigurationV1Alpha1
  */
-export interface ConfigurationProps {
+export interface ConfigurationV1Alpha1Props {
   /**
-   * @schema Configuration#metadata
+   * @schema ConfigurationV1Alpha1#metadata
    */
   readonly metadata?: ApiObjectMetadata;
 
   /**
    * ConfigurationSpec specifies the configuration of a Configuration.
    *
-   * @schema Configuration#spec
+   * @schema ConfigurationV1Alpha1#spec
    */
-  readonly spec: ConfigurationSpec;
+  readonly spec: ConfigurationV1Alpha1Spec;
 
 }
 
 /**
- * Converts an object of type 'ConfigurationProps' to JSON representation.
+ * Converts an object of type 'ConfigurationV1Alpha1Props' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_ConfigurationProps(obj: ConfigurationProps | undefined): Record<string, any> | undefined {
+export function toJson_ConfigurationV1Alpha1Props(obj: ConfigurationV1Alpha1Props | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'metadata': obj.metadata,
-    'spec': toJson_ConfigurationSpec(obj.spec),
+    'spec': toJson_ConfigurationV1Alpha1Spec(obj.spec),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -2590,34 +2590,34 @@ export function toJson_ConfigurationProps(obj: ConfigurationProps | undefined): 
 /**
  * ConfigurationSpec specifies the configuration of a Configuration.
  *
- * @schema ConfigurationSpec
+ * @schema ConfigurationV1Alpha1Spec
  */
-export interface ConfigurationSpec {
+export interface ConfigurationV1Alpha1Spec {
   /**
    * Semantic version constraints of Crossplane that package is compatible with.
    *
-   * @schema ConfigurationSpec#crossplane
+   * @schema ConfigurationV1Alpha1Spec#crossplane
    */
-  readonly crossplane?: ConfigurationSpecCrossplane;
+  readonly crossplane?: ConfigurationV1Alpha1SpecCrossplane;
 
   /**
    * Dependencies on other packages.
    *
-   * @schema ConfigurationSpec#dependsOn
+   * @schema ConfigurationV1Alpha1Spec#dependsOn
    */
-  readonly dependsOn?: ConfigurationSpecDependsOn[];
+  readonly dependsOn?: ConfigurationV1Alpha1SpecDependsOn[];
 
 }
 
 /**
- * Converts an object of type 'ConfigurationSpec' to JSON representation.
+ * Converts an object of type 'ConfigurationV1Alpha1Spec' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_ConfigurationSpec(obj: ConfigurationSpec | undefined): Record<string, any> | undefined {
+export function toJson_ConfigurationV1Alpha1Spec(obj: ConfigurationV1Alpha1Spec | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
-    'crossplane': toJson_ConfigurationSpecCrossplane(obj.crossplane),
-    'dependsOn': obj.dependsOn?.map(y => toJson_ConfigurationSpecDependsOn(y)),
+    'crossplane': toJson_ConfigurationV1Alpha1SpecCrossplane(obj.crossplane),
+    'dependsOn': obj.dependsOn?.map(y => toJson_ConfigurationV1Alpha1SpecDependsOn(y)),
   };
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
@@ -2627,23 +2627,23 @@ export function toJson_ConfigurationSpec(obj: ConfigurationSpec | undefined): Re
 /**
  * Semantic version constraints of Crossplane that package is compatible with.
  *
- * @schema ConfigurationSpecCrossplane
+ * @schema ConfigurationV1Alpha1SpecCrossplane
  */
-export interface ConfigurationSpecCrossplane {
+export interface ConfigurationV1Alpha1SpecCrossplane {
   /**
    * Semantic version constraints of Crossplane that package is compatible with.
    *
-   * @schema ConfigurationSpecCrossplane#version
+   * @schema ConfigurationV1Alpha1SpecCrossplane#version
    */
   readonly version: string;
 
 }
 
 /**
- * Converts an object of type 'ConfigurationSpecCrossplane' to JSON representation.
+ * Converts an object of type 'ConfigurationV1Alpha1SpecCrossplane' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_ConfigurationSpecCrossplane(obj: ConfigurationSpecCrossplane | undefined): Record<string, any> | undefined {
+export function toJson_ConfigurationV1Alpha1SpecCrossplane(obj: ConfigurationV1Alpha1SpecCrossplane | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'version': obj.version,
@@ -2656,37 +2656,37 @@ export function toJson_ConfigurationSpecCrossplane(obj: ConfigurationSpecCrosspl
 /**
  * Dependency is a dependency on another package. One of Provider or Configuration may be supplied.
  *
- * @schema ConfigurationSpecDependsOn
+ * @schema ConfigurationV1Alpha1SpecDependsOn
  */
-export interface ConfigurationSpecDependsOn {
+export interface ConfigurationV1Alpha1SpecDependsOn {
   /**
    * Configuration is the name of a Configuration package image.
    *
-   * @schema ConfigurationSpecDependsOn#configuration
+   * @schema ConfigurationV1Alpha1SpecDependsOn#configuration
    */
   readonly configuration?: string;
 
   /**
    * Provider is the name of a Provider package image.
    *
-   * @schema ConfigurationSpecDependsOn#provider
+   * @schema ConfigurationV1Alpha1SpecDependsOn#provider
    */
   readonly provider?: string;
 
   /**
    * Version is the semantic version constraints of the dependency image.
    *
-   * @schema ConfigurationSpecDependsOn#version
+   * @schema ConfigurationV1Alpha1SpecDependsOn#version
    */
   readonly version: string;
 
 }
 
 /**
- * Converts an object of type 'ConfigurationSpecDependsOn' to JSON representation.
+ * Converts an object of type 'ConfigurationV1Alpha1SpecDependsOn' to JSON representation.
  */
 /* eslint-disable max-len, quote-props */
-export function toJson_ConfigurationSpecDependsOn(obj: ConfigurationSpecDependsOn | undefined): Record<string, any> | undefined {
+export function toJson_ConfigurationV1Alpha1SpecDependsOn(obj: ConfigurationV1Alpha1SpecDependsOn | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
     'configuration': obj.configuration,
