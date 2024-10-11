@@ -80,7 +80,7 @@
     "cdk8s-plus-28": "^2.5.6",
     "codemaker": "^1.103.1",
     "colors": "1.4.0",
-    "constructs": "^10.3.0",
+    "constructs": "^10.3.1",
     "fs-extra": "^8",
     "jsii-pacmak": "^1.103.1",
     "jsii-rosetta": "^5.5.5",
