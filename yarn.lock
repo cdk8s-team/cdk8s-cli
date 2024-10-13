@@ -1699,10 +1699,10 @@ cdk8s-plus-28@^2.5.6:
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.69.7:
-  version "2.69.7"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.69.7.tgz#e52f7acf4b63a48b1d9fa41d29e45d0341cc4d7c"
-  integrity sha512-jc90kB8bd/2by+mEBthD+bAydhaYOjMoL5atjZoVvq7wTEVXJq5ohPW9OV8Sk69Nuj4URpFLdvQcOxenDtWZAQ==
+cdk8s@^2.69.8:
+  version "2.69.8"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.69.8.tgz#eb509b044675c6e74967b1e17bda20d62e7282c7"
+  integrity sha512-x649zZj7rynnJMrttRKi/brHHTtuWED2zPYJrMAyOIiJZHCDzSu0IzPIpF0T35r7OLM3hAEjb1CnCh0m74iB8w==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.9"
@@ -6343,9 +6343,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.7.0-dev.20241011"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.7.0-dev.20241011.tgz#6a0134dbb2ab5b81a336ee2c33134b2efa108515"
-  integrity sha512-Me/2UCToH+LYWCR0E/wd1ugAU+PQ/kP+rVt40RyZfOCXL5Lyd0ZfJwndQRM140RGdKhOVhv80BpvN5mpVdA7Cg==
+  version "5.7.0-dev.20241012"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.7.0-dev.20241012.tgz#4886bd2c5a7d60ac358906a2f2b2d410cb65e28a"
+  integrity sha512-xUN6gQ9zYVFBgF0nO37e2juz5Mjc9qWbxN0D0j2vryVZlAonSNufOR/DCjqKAk5YRICIGbim8BFT4ePSu2bOHg==
 
 typescript@~4.9.5:
   version "4.9.5"
