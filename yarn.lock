@@ -1692,14 +1692,14 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.63.122:
-  version "1.63.122"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.122.tgz#1bb258c1818ea1b0230e36219fda869e1c7faf89"
-  integrity sha512-9RyAWw5bgsaKY2VH+GqFAQ+bCyKehMcIjydcpjqNi29n5glKiSXCHNai1Q1zDbn5UCktE8VBAs1HrvOUY4+OmQ==
+cdk8s@^1.63.124:
+  version "1.63.124"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.124.tgz#e69613f9f701b2e98f29b1ce041aab808f646447"
+  integrity sha512-lJ8uV4zxa84zJiGlWMuG6cH7GMD2XKWIYDb8nMQlQmPbogrShkL7MBVPUrvuAuEA95TDAodwPW0I0qu3EF1MGQ==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.9"
-    yaml "2.5.1"
+    yaml "2.6.0"
 
 chalk@^2.4.2:
   version "2.4.2"
@@ -6341,9 +6341,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.7.0-dev.20241013"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.7.0-dev.20241013.tgz#8ecdfc7eb1e6cb39d8ef69600ea423bfb496b01b"
-  integrity sha512-cRj/qZ4vG7KbpT6Y5EYEZBIYrDbvs6y1nFWZ7YGHnddo9klZtvTpkNlJNvbQiQfc1uDV9LEOMxCPXbXIbnVTpQ==
+  version "5.7.0-dev.20241014"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.7.0-dev.20241014.tgz#56856ece68a68d811290dfee73eb49d6bfde02c9"
+  integrity sha512-PY5H3pSW0SnGEBmG7QD5x/E83NW7degEqsjMZ1FVdwy2yMq/2dol1RvSW6ltRR+d2QH3LdsXbxO+gE+1X1Mepg==
 
 typescript@~4.9.5:
   version "4.9.5"
@@ -6773,11 +6773,6 @@ yallist@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
-
-yaml@2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.5.1.tgz#c9772aacf62cb7494a95b0c4f1fb065b563db130"
-  integrity sha512-bLQOjaX/ADgQ20isPJRvF0iRUHIxVhYvr53Of7wGcWlO2jvtUlH5m87DsmulFVxRpNLOnI4tB6p/oh8D7kpn9Q==
 
 yaml@2.6.0, yaml@^2.2.2, yaml@^2.4.1:
   version "2.6.0"
