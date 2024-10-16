@@ -41,6 +41,10 @@ test('python-app-npm', () => {
   init('python-app', cliNpmdir);
 });
 
+test('csharp-app-npm', () => {
+  init('csharp-app', cliNpmdir);
+});
+
 test('typescript-app-yarn', () => {
   init('typescript-app', cliYarndir);
 });
@@ -55,6 +59,10 @@ test('java-app-yarn', () => {
 
 test('python-app-yarn', () => {
   init('python-app', cliYarndir);
+});
+
+test('csharp-app-yarn', () => {
+  init('csharp-app', cliYarndir);
 });
 
 function init(template: string, clidir: string) {

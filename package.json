@@ -20,6 +20,8 @@
     "eslint": "npx projen eslint",
     "install-helm": "npx projen install-helm",
     "integ:init": "npx projen integ:init",
+    "integ:init:csharp-app-npm": "npx projen integ:init:csharp-app-npm",
+    "integ:init:csharp-app-yarn": "npx projen integ:init:csharp-app-yarn",
     "integ:init:go-app-npm": "npx projen integ:init:go-app-npm",
     "integ:init:go-app-yarn": "npx projen integ:init:go-app-yarn",
     "integ:init:java-app-npm": "npx projen integ:init:java-app-npm",
