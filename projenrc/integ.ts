@@ -7,7 +7,11 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
   const oses = ['windows-latest', 'macos-latest', 'ubuntu-latest'];
 
   const integWorkflow = project.github!.addWorkflow('integ');
-  integWorkflow.on({ pullRequest: {}, workflowDispatch: {} });
+  integWorkflow.on({
+    pullRequest: {},
+    workflowDispatch: {},
+    mergeGroup: {},
+  });
 
   const initTask = project.addTask('integ:init');
   initTask.exec(`yarn run ${project.compileTask.name}`);
@@ -57,15 +61,6 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
     },
     steps: runSteps(['integ:init:typescript-app-npm', 'integ:init:typescript-app-yarn'], '${{ matrix.nodeVersion }}', false, false),
   });
-
-  for (const nodeVersion of nodeVersions) {
-    project.autoMerge!.addConditions(`status-success=init-typescript-app (${nodeVersion})`);
-  }
-
-  for (const os of oses) {
-    project.autoMerge!.addConditions(`status-success=init (${os})`);
-  }
-
 }
 
 function jest(args: string) {
