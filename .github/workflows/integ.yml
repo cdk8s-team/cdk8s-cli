@@ -4,6 +4,7 @@ name: integ
 on:
   pull_request: {}
   workflow_dispatch: {}
+  merge_group: {}
 jobs:
   init:
     runs-on: ${{ matrix.os }}
