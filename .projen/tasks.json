@@ -429,7 +429,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=typescript"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript"
         },
         {
           "exec": "yarn install --check-files"
@@ -453,7 +453,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common"
         },
         {
           "exec": "yarn install --check-files"
@@ -477,7 +477,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@types/glob,@types/jest,@types/json-schema,@types/semver,backport,eslint-import-resolver-typescript,eslint-plugin-import,glob,jest,ts-jest,ts-node,typescript-json-schema"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/glob,@types/jest,@types/json-schema,@types/semver,backport,eslint-import-resolver-typescript,eslint-plugin-import,glob,jest,ts-jest,ts-node,typescript-json-schema"
         },
         {
           "exec": "yarn install --check-files"
@@ -501,7 +501,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=prod,optional --filter=ajv,cdk8s,cdk8s-plus-28,codemaker,colors,constructs,jsii-pacmak,jsii-rosetta,semver,sscaff,table,yaml"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=prod,optional --filter=ajv,cdk8s,cdk8s-plus-28,codemaker,colors,constructs,jsii-pacmak,jsii-rosetta,semver,sscaff,table,yaml"
         },
         {
           "exec": "yarn install --check-files"
