@@ -1712,10 +1712,10 @@ cdk8s-plus-28@^2.5.6:
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.69.15:
-  version "2.69.15"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.69.15.tgz#19e267780bc0253eda390b3b4bced31bc720a5b9"
-  integrity sha512-CStRJX0Qmp8C+beemXSlm+6BGBpIkCXImQ6rUjRGjC0c7ni19asIinLTnEeTBSU8W4Mai+JkO2xcQ5MuXlBPmg==
+cdk8s@^2.69.16:
+  version "2.69.16"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.69.16.tgz#623580ca7dd0597ad4101b9f3015861f5fd96b55"
+  integrity sha512-Im63aOj/KDtm3XTKd6wx4XjuyJuXF3ongoJlZPKz9ljDJ+2CFZVX7BPfkLOgOrzc/Sk8zLThqcyN59WxRH0GNg==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.9"
@@ -4327,7 +4327,7 @@ jsii-reflect@^1.105.0:
     oo-ascii-tree "^1.105.0"
     yargs "^16.2.0"
 
-jsii-rosetta@^5.5.13, jsii-rosetta@^5.5.4:
+jsii-rosetta@^5.5.4, jsii-rosetta@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-5.6.0.tgz#7435a9aa83d41abe2d3a5a54dceeb6ffb3443ea9"
   integrity sha512-PSt2PFK1ssLcRAiGnK+k0On61Idh8uTCJcofC+vPr3dOgbVNbtIVI70z9Uw2bOwByrJ+ApHewubi7cWhybEcrA==
@@ -6337,9 +6337,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.8.0-dev.20241114"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.8.0-dev.20241114.tgz#3765ad130591c423dec3a1c3b70705732738d839"
-  integrity sha512-FCT0wJBcmIXGSTij0CscfHzyI8aOtjnknnrKcSQZ8mzvQ9fQgvpqeIFToCyXkfaHmObw0Lom+J45w7NDh5WIAg==
+  version "5.8.0-dev.20241115"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.8.0-dev.20241115.tgz#b60fb97a8c1c53717394e55d8175bdc76fdd5680"
+  integrity sha512-2gG4vlFoRzqih4P6nbz0ko5cdHMlSxZxTPJPw/YFQOnTHMRI+yP7MXaQZ8zqNHu0Ql/Y55zORybuYS9lehL6kA==
 
 typescript@~4.9.5:
   version "4.9.5"
