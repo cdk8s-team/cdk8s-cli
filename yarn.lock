@@ -1139,9 +1139,9 @@
     eslint-visitor-keys "^4.2.0"
 
 "@xmldom/xmldom@^0.9.5":
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.9.5.tgz#a2c08c3a0c5931daae67dd0385edf2f464d1fee4"
-  integrity sha512-6g1EwSs8cr8JhP1iBxzyVAWM6BIDvx9Y3FZRIQiMDzgG43Pxi8YkWOZ0nQj2NHgNzgXDZbJewFx/n+YAvMZrfg==
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.9.6.tgz#3eaefb585c1f920e06fb35e6dcb8d505445621c0"
+  integrity sha512-Su4xcxR0CPGwlDHNmVP09fqET9YxbyDXHaSob6JlBH7L6reTYaeim6zbk9o08UarO0L5GTRo3uzl0D+9lSxmvw==
 
 JSONStream@^1.3.5:
   version "1.3.5"
@@ -1706,10 +1706,10 @@ cdk8s-plus-28@^2.5.6:
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.69.23:
-  version "2.69.23"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.69.23.tgz#33861afeb3f58f2eb2663167797e69bbdc3aed36"
-  integrity sha512-qCfuJV/5p7v1llaNgfmA2Nf7yjpkrmQsnypKz7OrLXYFo1ns7F2KXlpCQpWcpL1tA21iYHaZlMYwR5Z3VVEtvQ==
+cdk8s@^2.69.24:
+  version "2.69.24"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.69.24.tgz#a71216ad15f3bba80b4d16451ca28a981c3f0c8c"
+  integrity sha512-Qd8QL7zzqIZWkF4Rwo/2OJ7r2Gkg2ctKuCmbYVVO+0RT2hg2sy14U9dHS+o2w8pvFoxbXEJ25FtqIFumngNjMw==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.9"
@@ -6389,9 +6389,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.8.0-dev.20241204"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.8.0-dev.20241204.tgz#2c7e294a1c53a33fcd126f67c0ea0ee3ddaad0db"
-  integrity sha512-UK6ysqPu2ZobQlSUBtxyKSUrPQplZgxNeq8TUB3pXmi/OvIcq1Ua5rpQNg07EYgGY2rotPKz7b+L27ZzFRwV/g==
+  version "5.8.0-dev.20241205"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.8.0-dev.20241205.tgz#786c955388d90f91b4bcd9fb231c7d98d65d948d"
+  integrity sha512-r+L8y2DCxn0dd+SpTt9vatokMxihxaYVc1JMxHhQnl5WN56g1F3s0Q98DSaFzTs8feUj7NevGlunsjayPxvXoQ==
 
 typescript@~4.9.5:
   version "4.9.5"
