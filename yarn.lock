@@ -839,9 +839,9 @@
     undici-types "~6.20.0"
 
 "@types/node@^16":
-  version "16.18.122"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.122.tgz#54948ddbe2ddef8144ee16b37f160e3f99c32397"
-  integrity sha512-rF6rUBS80n4oK16EW8nE75U+9fw0SSUgoPtWSvHhPXdT7itbvmS7UjB/jyM8i3AkvI6yeSM5qCwo+xN0npGDHg==
+  version "16.18.123"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.123.tgz#9073e454ee52ce9e2de038e7e0cf90f65c9abd56"
+  integrity sha512-/n7I6V/4agSpJtFDKKFEa763Hc1z3hmvchobHS1TisCOTKD5nxq8NJ2iK7SRIMYL276Q9mgWOx2AWp5n2XI6eA==
 
 "@types/node@^18.11.9":
   version "18.19.68"
@@ -1396,14 +1396,14 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s@^1.63.142:
-  version "1.63.142"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.142.tgz#8777a1010c0dcf2cb1a59eac90d90077771df6a4"
-  integrity sha512-fNvNl3y4DXB0Ok/sRQe8jAYHNNXJulHz5wVAY6VouG3keEvCM0/tZTgy8HRItHwwJmN6gP4SK93ztncZuO0zXA==
+cdk8s@^1.63.143:
+  version "1.63.143"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-1.63.143.tgz#cca9bb0e4028329a248834d3be38752486c9f147"
+  integrity sha512-/oG2QsPE9YPSB0aXDdWj/yW8etx1suTL/z2WqHnVMeHrAPXty66tq4QRB5ybdj2TeQ5SG+A5c0CE4UrtR+KwPw==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.9"
-    yaml "2.6.1"
+    yaml "2.7.0"
 
 chalk@^2.4.2:
   version "2.4.2"
@@ -5485,9 +5485,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.8.0-dev.20241230"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.8.0-dev.20241230.tgz#2a345d5d5c8e8f519bfd2c0962406e9a687e95fd"
-  integrity sha512-cs631S0kQoinvsMJN2vwUNpROxcosWSk5dVr9OSRwpNpyffpA13juQS3bC5hn8UThuFBPobFkrj0p0pW9RxYmg==
+  version "5.8.0-dev.20241231"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.8.0-dev.20241231.tgz#420b51907783bd9e1c3bdb9b784c4771be1d4fcd"
+  integrity sha512-k2jhdgGd17z5DO2KGlHPJRB/hB6UOuufCZmRuXPHE0/7UaRdM3T8yo5RjH/vjUX9siMtmhXe8TfTTxAM+cC29w==
 
 typescript@~4.9.5:
   version "4.9.5"
@@ -5864,11 +5864,6 @@ yallist@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
-
-yaml@2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.6.1.tgz#42f2b1ba89203f374609572d5349fb8686500773"
-  integrity sha512-7r0XPzioN/Q9kXBro/XPnA6kznR73DHq+GXh5ON7ZozRO6aMjbmiBuKste2wslTFkC5d1dw0GooOCepZXJ2SAg==
 
 yaml@2.7.0, yaml@^2.2.2, yaml@^2.4.1:
   version "2.7.0"
