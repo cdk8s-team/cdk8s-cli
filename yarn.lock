@@ -839,9 +839,9 @@
     undici-types "~6.20.0"
 
 "@types/node@^16":
-  version "16.18.122"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.122.tgz#54948ddbe2ddef8144ee16b37f160e3f99c32397"
-  integrity sha512-rF6rUBS80n4oK16EW8nE75U+9fw0SSUgoPtWSvHhPXdT7itbvmS7UjB/jyM8i3AkvI6yeSM5qCwo+xN0npGDHg==
+  version "16.18.123"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.123.tgz#9073e454ee52ce9e2de038e7e0cf90f65c9abd56"
+  integrity sha512-/n7I6V/4agSpJtFDKKFEa763Hc1z3hmvchobHS1TisCOTKD5nxq8NJ2iK7SRIMYL276Q9mgWOx2AWp5n2XI6eA==
 
 "@types/node@^18.11.9":
   version "18.19.70"
@@ -1403,14 +1403,14 @@ cdk8s-plus-28@^2.5.6:
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.69.28:
-  version "2.69.28"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.69.28.tgz#28b079d063c9b87276d4c3a265f51a42d09be104"
-  integrity sha512-TRlUvqBCrZMGU9um5kU/z9qMjCp3r0di93QgY0+cVAcbOEPFm3u11nZWGkUyZDUmPVRptkG3SQTID5ZmciFY6Q==
+cdk8s@^2.69.31:
+  version "2.69.31"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.69.31.tgz#e6830d60f80ccfdc5a59935db7dc0d41e85241fe"
+  integrity sha512-6HAdtcZfmqLBg/1HbMYkI1NB7aLrThStf/DfuMZ3zNvEMgjdoeG05/GvH0pmhds092sZ9vT2IOH0be2smzloug==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.9"
-    yaml "2.6.1"
+    yaml "2.7.0"
 
 chalk@^2.4.2:
   version "2.4.2"
@@ -2385,9 +2385,9 @@ fast-levenshtein@^2.0.6:
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
 
 fast-uri@^3.0.1:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/fast-uri/-/fast-uri-3.0.3.tgz#892a1c91802d5d7860de728f18608a0573142241"
-  integrity sha512-aLrHthzCjH5He4Z2H9YZ+v6Ujb9ocRuW6ZzkJQOrTxleEijANq4v1TsaPaVG1PZcuurEzrLcWRyYBYXD5cEiaw==
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/fast-uri/-/fast-uri-3.0.5.tgz#19f5f9691d0dab9b85861a7bb5d98fca961da9cd"
+  integrity sha512-5JnBCWpFlMo0a3ciDy/JckMzzv1U9coZrIhedq+HXxxUfDTAiS0LA8OKVao4G9BxmCVck/jtA5r3KAtRWEyD8Q==
 
 fastq@^1.6.0:
   version "1.18.0"
@@ -3785,9 +3785,9 @@ jsii-srcmak@0.1.1236:
     yargs "^17.7.2"
 
 jsii@~5.5.3:
-  version "5.5.16"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.5.16.tgz#8a2cc3ac9d9c24de54f2c809aefaf94656262704"
-  integrity sha512-g1IvXlHgVme4IWZ4CZrOklrtbQbkv0R7g6KL/c5UFFUvfInDRPv/a4oaLvWKyRtA7xRcBEc83QGIrz9MoQnA8Q==
+  version "5.5.17"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.5.17.tgz#4e3184cc0caee4e86380f84878b7c56c59602610"
+  integrity sha512-m96OHVpJJfhRueSdFrySJ2dTmWVZH2D4jjviaRorqo+fuxR4gqggbwsatIInW0H/lvRYndG1ZAjTso9JUvWyoQ==
   dependencies:
     "@jsii/check-node" "1.106.0"
     "@jsii/spec" "^1.106.0"
@@ -5515,9 +5515,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.8.0-dev.20241229"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.8.0-dev.20241229.tgz#d16e5ad155edfc258a522473420cb4baf4bed254"
-  integrity sha512-FM/uJa1H8qasChw1XfjuLeVVHdM+wzoGkRApmjsY8wKT6NnESk1T9RgE9FA945uQ538t0qXqP7z9H4eVKKxN8w==
+  version "5.8.0-dev.20250107"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.8.0-dev.20250107.tgz#7900846367948e27f1f79190148ad52c7df05305"
+  integrity sha512-5S8fQVAfikyl3niFOaTOxfF281giwdT8CLPe1yaZFvzS1p6Az4sTCZsiap9sX6pQ5Kn+7L6SxhjPjFFT5iCVMw==
 
 typescript@~4.9.5:
   version "4.9.5"
@@ -5895,12 +5895,7 @@ yallist@^4.0.0:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yaml@2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.6.1.tgz#42f2b1ba89203f374609572d5349fb8686500773"
-  integrity sha512-7r0XPzioN/Q9kXBro/XPnA6kznR73DHq+GXh5ON7ZozRO6aMjbmiBuKste2wslTFkC5d1dw0GooOCepZXJ2SAg==
-
-yaml@^2.2.2, yaml@^2.4.1:
+yaml@2.7.0, yaml@^2.2.2, yaml@^2.4.1:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.7.0.tgz#aef9bb617a64c937a9a748803786ad8d3ffe1e98"
   integrity sha512-+hSoy/QHluxmC9kCIJyL/uyFmLmc+e5CFR5Wa+bpIhIj85LVb9ZH2nVnqrHoSvKogwODv0ClqZkmiSSaIH5LTA==
