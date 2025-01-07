@@ -30,7 +30,6 @@
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
-    "release:1.x": "npx projen release:1.x",
     "release:2.x": "npx projen release:2.x",
     "schemas": "npx projen schemas",
     "test": "npx projen test",
