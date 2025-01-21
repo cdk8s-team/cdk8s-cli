@@ -97,7 +97,7 @@ project.compileTask.spawn(schemas);
 
 // Allow skipping tests in build based on an env variable
 // This is only used by the package integrity check running outside the repo
-// While this check needs to replicate the release, it does not need to run tests 
+// While this check needs to replicate the release, it does not need to run tests
 project.testTask.addCondition("node -e \"if (process.env.SKIP_TESTS==='1') process.exit(1)\"");
 
 
