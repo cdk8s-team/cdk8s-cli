@@ -95,11 +95,10 @@ project.testTask.prependSpawn(installHelm);
 
 project.compileTask.spawn(schemas);
 
-// so that it works on windows as well
-// default projen uses $(npm pack) which fails
-project.packageTask.reset();
-project.packageTask.exec('mkdir -p dist/js');
-project.packageTask.exec('npm pack --pack-destination dist/js');
+// Allow skipping tests in build based on an env variable
+// This is only used by the package integrity check running outside the repo
+// While this check needs to replicate the release, it does not need to run tests
+project.testTask.addCondition("node -e \"if (process.env.SKIP_TESTS==='1') process.exit(1)\"");
 
 
 addIntegTests(project);
