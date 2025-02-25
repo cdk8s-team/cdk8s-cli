@@ -20,7 +20,6 @@ dist
 /.projenrc.js
 tsconfig.tsbuildinfo
 /.eslintrc.json
-.backportrc.json
 /.gitattributes
 /.projenrc.ts
 /projenrc
