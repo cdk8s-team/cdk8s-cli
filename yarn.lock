@@ -1456,10 +1456,10 @@ cdk8s-plus-28@^2.5.6:
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.69.45:
-  version "2.69.45"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.69.45.tgz#6e6842b2ccbb17f554cf1aef64008765761a3f08"
-  integrity sha512-SsQ08Oxjgl0G9OTSJOcwQOlETumoB1Kqq0UH9yqEmiwDN7TbWoNgdNcPO6+PasWqrYqY1JG6LGrLOlQgqNzGkw==
+cdk8s@^2.69.46:
+  version "2.69.46"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.69.46.tgz#629485490a28cdc66b7d51cbe4508dcf2e8bbdf7"
+  integrity sha512-VXVuCqIJVCZGan4RHr+Ag89fy1+N1OpAUa7fIviwYSsv6H/Kmm4LnLapzxWWF+2g6UFyKnwUwatnVr489H+Iwg==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.9"
@@ -2444,9 +2444,9 @@ fast-uri@^3.0.1:
   integrity sha512-Atfo14OibSv5wAp4VWNsFYE1AchQRTv9cBGWET4pZWHzYshFSS9NQI6I57rdKn9croWVMbYFbLhJ+yJvmZIIHw==
 
 fastq@^1.6.0:
-  version "1.19.0"
-  resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.19.0.tgz#a82c6b7c2bb4e44766d865f07997785fecfdcb89"
-  integrity sha512-7SFSRCNjBQIZH/xZR3iy5iQYR8aGBE0h3VG6/cwlbrpdciNYBMotQav8c1XI3HjHH+NikUpP53nPdlZSdWmFzA==
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.19.1.tgz#d50eaba803c8846a883c16492821ebcd2cda55f5"
+  integrity sha512-GwLTyxkCXjXbxqIhTsMI2Nui8huMPtnxg7krajPJAjnEG/iiOS7i+zCtWGZR9G0NBKbXKh6X9m9UIsYX/N6vvQ==
   dependencies:
     reusify "^1.0.4"
 
@@ -5582,9 +5582,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.9.0-dev.20250225"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.0-dev.20250225.tgz#36b7e9c80d8f07da33bae83794cb12e8a3b12573"
-  integrity sha512-rOzayxhA6eEpXSqW3kiHMgNC7G3a/bqw2k6ls23L4abPMqrUlGiRB3q0haKfI1Le+8eXjzhP3GwsZCMpEKDDLw==
+  version "5.9.0-dev.20250226"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.0-dev.20250226.tgz#e7515a1ece8f113f7112f425f2148d9bd4296e8d"
+  integrity sha512-5mIqZ5ilcOYPZ+EXcOo5hpXJt51N7fPlkjxX5e9hbM+Ao7gd+t+XN5trQk3iWyvBNEPMn7950rAE0Kxl4thnCA==
 
 typescript@~4.9.5:
   version "4.9.5"
