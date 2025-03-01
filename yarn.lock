@@ -1012,9 +1012,9 @@
     eslint-visitor-keys "^4.2.0"
 
 "@xmldom/xmldom@^0.9.7":
-  version "0.9.7"
-  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.9.7.tgz#f21bebdcde4af682a810062b14585c89bb7fab07"
-  integrity sha512-syvR8iIJjpTZ/stv7l89UAViwGFh6lbheeOaqSxkYx9YNmIVvPTRH+CT/fpykFtUx5N+8eSMDRvggF9J8GEPzQ==
+  version "0.9.8"
+  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.9.8.tgz#1471e82bdff9e8f20ee8bbe60d4ffa8a516e78d8"
+  integrity sha512-p96FSY54r+WJ50FIOsCOjyj/wavs8921hG5+kVMmZgKcvIKxMXHTrjNJvRgWa/zuX3B6t2lijLNFaOyuxUH+2A==
 
 JSONStream@^1.3.5:
   version "1.3.5"
@@ -5582,9 +5582,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.9.0-dev.20250227"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.0-dev.20250227.tgz#ffcd405a81c6608500be31a7032ff99076924034"
-  integrity sha512-lv9IWTed2sumK+b44crXjNlL/jgnTXTrxB5aqNj2igTjqR6MkLrBig0Zw+qMDcVNPUGUhgOHaRC5Eehf07km2Q==
+  version "5.9.0-dev.20250228"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.0-dev.20250228.tgz#94ca55bd60d6adaea5ab05181ccac38bcf6b7345"
+  integrity sha512-/paYJcBiXhWWyL0USAnX+/JyULz6Tc++rjhqRjfRRqrgRoJ4Epu19XTUT6XQMQDjvtXspFNe2cL2S3QCBsBFUg==
 
 typescript@~4.9.5:
   version "4.9.5"
