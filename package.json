@@ -82,7 +82,7 @@
     "constructs": "^10.4.2",
     "fs-extra": "^8",
     "jsii-pacmak": "^1.108.0",
-    "jsii-rosetta": "^5.7.6",
+    "jsii-rosetta": "^5.7.7",
     "jsii-srcmak": "0.1.1236",
     "json2jsii": "0.5.0",
     "semver": "^7.7.1",
