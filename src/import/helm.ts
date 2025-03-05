@@ -93,7 +93,7 @@ function extractHelmChartDetails(url: string) {
 
   if (url.startsWith('helm:oci://')) {
     // URL: helm:oci://registry-1.docker.io/bitnamicharts/wordpress@17.1.17
-    const helmRegex = /^helm:(oci:\/\/[A-Za-z0-9_.-:\-]+)\@([0-9]+)\.([0-9]+)\.([A-Za-z0-9-+]+)$/;
+    const helmRegex = /^helm:(oci:\/\/[A-Za-z0-9_.-:\-]+)\@([0-9]+)\.([v0-9]+)\.([A-Za-z0-9-+]+)$/;
     const helmDetails = helmRegex.exec(url);
 
     if (!helmDetails) {
