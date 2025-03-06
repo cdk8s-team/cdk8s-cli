@@ -202,7 +202,7 @@ export function generateConstruct(typegen: TypeGenerator, def: ApiObjectDefiniti
       code.line('/**');
       code.line(' * Renders the object to Kubernetes JSON.');
       code.line(' */');
-      code.openBlock('public toJson(): any');
+      code.openBlock('public override toJson(): any');
       code.line('const resolved = super.toJson();');
       code.line();
       code.open('return {');
