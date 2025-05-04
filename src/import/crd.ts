@@ -98,11 +98,7 @@ export class CustomResourceDefinition {
     for (let i = 0; i < this.versions.length; i++) {
 
       const version = this.versions[i];
-
-      // to preseve backwards compatiblity, only append a suffix for
-      // the second version onwards.
-      const suffix = i === 0 ? '' : toPascalCase(version.name);
-
+      const suffix = toPascalCase(version.name);
       const types = new TypeGenerator({});
 
       generateConstruct(types, {
