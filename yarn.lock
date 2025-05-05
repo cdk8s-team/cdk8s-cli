@@ -4046,10 +4046,10 @@ jsii-reflect@^1.111.0:
     oo-ascii-tree "^1.111.0"
     yargs "^16.2.0"
 
-jsii-rosetta@^5.5.4, jsii-rosetta@^5.8.6:
-  version "5.8.6"
-  resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-5.8.6.tgz#d4c5526c7f58035ba17eb1d4d9020645ab98275d"
-  integrity sha512-Hc3ISSZPODFjuS8SFIPnr2klwWgi6VMwE8YgGNAAVVInIrAqw3/SlfdGKJBcGEMLEPBAXLTu8yPSWbD7Gsu/zw==
+jsii-rosetta@^5.5.4, jsii-rosetta@^5.8.7:
+  version "5.8.7"
+  resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-5.8.7.tgz#c88d7dedf51bb5068ac6d69e4dd9bf6a27451c84"
+  integrity sha512-8Ecl+BcCUXgRvqx9wqnVRqTlADuwdjS35sYSrKuXyAyLntdwlqn1NP3kMLLn20PBGjTkeqbCt8VmRox4hBASNA==
   dependencies:
     "@jsii/check-node" "1.111.0"
     "@jsii/spec" "^1.111.0"
@@ -4078,9 +4078,9 @@ jsii-srcmak@0.1.1236:
     yargs "^17.7.2"
 
 jsii@~5.5.3:
-  version "5.5.31"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.5.31.tgz#ac90c020189e6cb6be336d3abc1c25185907b213"
-  integrity sha512-COF3/8YD+rCKthmeq5KRb2nPv38NmJXv9VJWToj0a9+4PkJ66ak32ks2U+QYjbh4BWfyYWmrSm4PJ1j812Y/+Q==
+  version "5.5.32"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.5.32.tgz#00f8891ef641356e7a9ba6d1179a95fa267fedc3"
+  integrity sha512-4W4786lIeqJCFMWdCEv2mYYQGwMlcpL0bjPgWut3qbWBrZL08asPMwKHQhBGsRofjn7dO9ymH89ctdhtIkXd4A==
   dependencies:
     "@jsii/check-node" "1.111.0"
     "@jsii/spec" "^1.111.0"
@@ -4097,9 +4097,9 @@ jsii@~5.5.3:
     yargs "^17.7.2"
 
 jsii@~5.8.0:
-  version "5.8.7"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.8.7.tgz#b38280e71d32440f5f20fa18561dd4911ef4a8ad"
-  integrity sha512-q0XwDDM7CIQUdgB7yhUtTA8gh0XZogRobBD8ovG+PUw5eYLco7KTAG1NoW2NktxX/YiaibDALfFrsV0Pb1S4BQ==
+  version "5.8.8"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.8.8.tgz#72b03fe4a1a2461f4e00a3a2d7a64a9ff74d1af7"
+  integrity sha512-TSgHsnYNJq1W5ILdIE3tUJ3lLjSbp2VhDolBZ4SU7IYfEbW1dg9kpFLe7J/XPgQXfHlf5eUzOPVXyV/9rXft1w==
   dependencies:
     "@jsii/check-node" "1.111.0"
     "@jsii/spec" "^1.111.0"
@@ -6046,9 +6046,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.9.0-dev.20250503"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.0-dev.20250503.tgz#4b3e10a1409e1804c1853ad3eb5408383d228329"
-  integrity sha512-91TijWPubqcACvWr9n8qTZJPioEsP/Jo/X8c6v+JQYwHs9sKOb85CVYo5FinBGc/g7J+yNIv699ysphzaiI0xw==
+  version "5.9.0-dev.20250504"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.0-dev.20250504.tgz#f561549a41b50702ee85b6e999cc6f0a8c9295ba"
+  integrity sha512-tdJ5/k+fpLlZbGlvpY9BM54lLu4W7kSG42hKbZokiKM+IahMjv7JgLo3qb/vH0o0khhM9C6e7eES5Yh0Zewx8w==
 
 typescript@~4.9.5:
   version "4.9.5"
