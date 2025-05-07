@@ -90,7 +90,7 @@ export async function validateApp(
   pluginManager: PluginManager,
   reportsFile?: string) {
 
-  const validators: { plugin: Validation; context: ValidationContext}[] = [];
+  const validators: { plugin: Validation; context: ValidationContext }[] = [];
 
   for (const validation of validations) {
     const { plugin, context } = ValidationPlugin.load(validation, app, stdout, pluginManager);

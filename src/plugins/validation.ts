@@ -45,7 +45,7 @@ export class ValidationContext {
     /**
      * Construct metadata of resources in the application.
      */
-    public readonly metadata: {readonly [key: string]: ResourceConstructMetadata} = {},
+    public readonly metadata: { readonly [key: string]: ResourceConstructMetadata } = {},
 
     /**
      * Whether or not the synth command was executed with --stdout.
@@ -218,7 +218,7 @@ export class ValidationReport {
   constructor(
     private readonly pkg: string,
     private readonly version: string,
-    private readonly metadata: {readonly [key: string]: ResourceConstructMetadata},
+    private readonly metadata: { readonly [key: string]: ResourceConstructMetadata },
     private readonly stdout: boolean) {
   }
 
