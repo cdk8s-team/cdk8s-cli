@@ -4086,12 +4086,12 @@ jsii-srcmak@0.1.1236:
     yargs "^17.7.2"
 
 jsii@~5.5.3:
-  version "5.5.32"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.5.32.tgz#00f8891ef641356e7a9ba6d1179a95fa267fedc3"
-  integrity sha512-4W4786lIeqJCFMWdCEv2mYYQGwMlcpL0bjPgWut3qbWBrZL08asPMwKHQhBGsRofjn7dO9ymH89ctdhtIkXd4A==
+  version "5.5.33"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.5.33.tgz#f1ede658b0cb7d2f75937d1bffcedd4e0175525a"
+  integrity sha512-Tb4p25mpnbBXQs8aHOsJxMFzH4vqM1yTPiAXnq8w4G1yqipPlrX8OsqzU+NHx1alOUd5vZSUauMgc98fpWOWcQ==
   dependencies:
-    "@jsii/check-node" "1.111.0"
-    "@jsii/spec" "^1.111.0"
+    "@jsii/check-node" "1.112.0"
+    "@jsii/spec" "^1.112.0"
     case "^1.6.3"
     chalk "^4"
     downlevel-dts "^0.11.0"
@@ -6054,9 +6054,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.9.0-dev.20250510"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.0-dev.20250510.tgz#514b661e2f273e7575d0c1f66ac13d07d6ba0218"
-  integrity sha512-mca3N2tPnqgPuZCNTVNGw2vaQNVLtyKbdwkKoZxmImmJkTKTyvUIxdNcwMUUOmk+SANyEzEWsXOQ21W0szkRng==
+  version "5.9.0-dev.20250511"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.0-dev.20250511.tgz#d4581f6f5b07057224bf9e5bc0654a73d05736c3"
+  integrity sha512-Bi2tZAqJ5wzQgj/gUIVSlGaqmejGzAacdX0gBuIvn/DwlydVBeWdbFERk7UynqG4fRdapMaWiHkMxFU8H1IhFw==
 
 typescript@~4.9.5:
   version "4.9.5"
