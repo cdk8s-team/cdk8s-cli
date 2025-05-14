@@ -528,7 +528,7 @@ export interface CompositeResourceDefinitionProps {
 /**
  * Converts an object of type 'CompositeResourceDefinitionProps' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionProps(obj: CompositeResourceDefinitionProps | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -538,7 +538,7 @@ export function toJson_CompositeResourceDefinitionProps(obj: CompositeResourceDe
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * CompositeResourceDefinitionSpec specifies the desired state of the definition.
@@ -600,7 +600,7 @@ export interface CompositeResourceDefinitionSpec {
 /**
  * Converts an object of type 'CompositeResourceDefinitionSpec' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionSpec(obj: CompositeResourceDefinitionSpec | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -615,7 +615,7 @@ export function toJson_CompositeResourceDefinitionSpec(obj: CompositeResourceDef
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * ClaimNames specifies the names of an optional composite resource claim. When claim names are specified Crossplane will create a namespaced 'composite resource claim' CRD that corresponds to the defined composite resource. This composite resource claim acts as a namespaced proxy for the composite resource; creating, updating, or deleting the claim will create, update, or delete a corresponding composite resource. You may add claim names to an existing CompositeResourceDefinition, but they cannot be changed or removed once they have been set.
@@ -672,7 +672,7 @@ export interface CompositeResourceDefinitionSpecClaimNames {
 /**
  * Converts an object of type 'CompositeResourceDefinitionSpecClaimNames' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionSpecClaimNames(obj: CompositeResourceDefinitionSpecClaimNames | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -686,7 +686,7 @@ export function toJson_CompositeResourceDefinitionSpecClaimNames(obj: CompositeR
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * DefaultCompositionRef refers to the Composition resource that will be used in case no composition selector is given.
@@ -706,7 +706,7 @@ export interface CompositeResourceDefinitionSpecDefaultCompositionRef {
 /**
  * Converts an object of type 'CompositeResourceDefinitionSpecDefaultCompositionRef' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionSpecDefaultCompositionRef(obj: CompositeResourceDefinitionSpecDefaultCompositionRef | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -715,7 +715,7 @@ export function toJson_CompositeResourceDefinitionSpecDefaultCompositionRef(obj:
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * EnforcedCompositionRef refers to the Composition resource that will be used by all composite instances whose schema is defined by this definition.
@@ -735,7 +735,7 @@ export interface CompositeResourceDefinitionSpecEnforcedCompositionRef {
 /**
  * Converts an object of type 'CompositeResourceDefinitionSpecEnforcedCompositionRef' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionSpecEnforcedCompositionRef(obj: CompositeResourceDefinitionSpecEnforcedCompositionRef | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -744,7 +744,7 @@ export function toJson_CompositeResourceDefinitionSpecEnforcedCompositionRef(obj
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * Names specifies the resource and kind names of the defined composite resource.
@@ -801,7 +801,7 @@ export interface CompositeResourceDefinitionSpecNames {
 /**
  * Converts an object of type 'CompositeResourceDefinitionSpecNames' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionSpecNames(obj: CompositeResourceDefinitionSpecNames | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -815,7 +815,7 @@ export function toJson_CompositeResourceDefinitionSpecNames(obj: CompositeResour
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * CompositeResourceDefinitionVersion describes a version of an XR.
@@ -863,7 +863,7 @@ export interface CompositeResourceDefinitionSpecVersions {
 /**
  * Converts an object of type 'CompositeResourceDefinitionSpecVersions' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionSpecVersions(obj: CompositeResourceDefinitionSpecVersions | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -876,7 +876,7 @@ export function toJson_CompositeResourceDefinitionSpecVersions(obj: CompositeRes
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * CustomResourceColumnDefinition specifies a column for server side printing.
@@ -931,7 +931,7 @@ export interface CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns
 /**
  * Converts an object of type 'CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns(obj: CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -945,7 +945,7 @@ export function toJson_CompositeResourceDefinitionSpecVersionsAdditionalPrinterC
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * Schema describes the schema used for validation, pruning, and defaulting of this version of the defined composite resource. Fields required by all composite resources will be injected into this schema automatically, and will override equivalently named fields in this schema. Omitting this schema results in a schema that contains only the fields required by all composite resources.
@@ -965,7 +965,7 @@ export interface CompositeResourceDefinitionSpecVersionsSchema {
 /**
  * Converts an object of type 'CompositeResourceDefinitionSpecVersionsSchema' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionSpecVersionsSchema(obj: CompositeResourceDefinitionSpecVersionsSchema | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -974,7 +974,7 @@ export function toJson_CompositeResourceDefinitionSpecVersionsSchema(obj: Compos
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 
 /**
@@ -1054,7 +1054,7 @@ export interface CompositeResourceDefinitionV1Beta1Props {
 /**
  * Converts an object of type 'CompositeResourceDefinitionV1Beta1Props' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionV1Beta1Props(obj: CompositeResourceDefinitionV1Beta1Props | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1064,7 +1064,7 @@ export function toJson_CompositeResourceDefinitionV1Beta1Props(obj: CompositeRes
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * CompositeResourceDefinitionSpec specifies the desired state of the definition.
@@ -1126,7 +1126,7 @@ export interface CompositeResourceDefinitionV1Beta1Spec {
 /**
  * Converts an object of type 'CompositeResourceDefinitionV1Beta1Spec' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionV1Beta1Spec(obj: CompositeResourceDefinitionV1Beta1Spec | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1141,7 +1141,7 @@ export function toJson_CompositeResourceDefinitionV1Beta1Spec(obj: CompositeReso
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * ClaimNames specifies the names of an optional composite resource claim. When claim names are specified Crossplane will create a namespaced 'composite resource claim' CRD that corresponds to the defined composite resource. This composite resource claim acts as a namespaced proxy for the composite resource; creating, updating, or deleting the claim will create, update, or delete a corresponding composite resource. You may add claim names to an existing CompositeResourceDefinition, but they cannot be changed or removed once they have been set.
@@ -1198,7 +1198,7 @@ export interface CompositeResourceDefinitionV1Beta1SpecClaimNames {
 /**
  * Converts an object of type 'CompositeResourceDefinitionV1Beta1SpecClaimNames' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionV1Beta1SpecClaimNames(obj: CompositeResourceDefinitionV1Beta1SpecClaimNames | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1212,7 +1212,7 @@ export function toJson_CompositeResourceDefinitionV1Beta1SpecClaimNames(obj: Com
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * DefaultCompositionRef refers to the Composition resource that will be used in case no composition selector is given.
@@ -1232,7 +1232,7 @@ export interface CompositeResourceDefinitionV1Beta1SpecDefaultCompositionRef {
 /**
  * Converts an object of type 'CompositeResourceDefinitionV1Beta1SpecDefaultCompositionRef' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionV1Beta1SpecDefaultCompositionRef(obj: CompositeResourceDefinitionV1Beta1SpecDefaultCompositionRef | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1241,7 +1241,7 @@ export function toJson_CompositeResourceDefinitionV1Beta1SpecDefaultCompositionR
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * EnforcedCompositionRef refers to the Composition resource that will be used by all composite instances whose schema is defined by this definition.
@@ -1261,7 +1261,7 @@ export interface CompositeResourceDefinitionV1Beta1SpecEnforcedCompositionRef {
 /**
  * Converts an object of type 'CompositeResourceDefinitionV1Beta1SpecEnforcedCompositionRef' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionV1Beta1SpecEnforcedCompositionRef(obj: CompositeResourceDefinitionV1Beta1SpecEnforcedCompositionRef | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1270,7 +1270,7 @@ export function toJson_CompositeResourceDefinitionV1Beta1SpecEnforcedComposition
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * Names specifies the resource and kind names of the defined composite resource.
@@ -1327,7 +1327,7 @@ export interface CompositeResourceDefinitionV1Beta1SpecNames {
 /**
  * Converts an object of type 'CompositeResourceDefinitionV1Beta1SpecNames' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionV1Beta1SpecNames(obj: CompositeResourceDefinitionV1Beta1SpecNames | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1341,7 +1341,7 @@ export function toJson_CompositeResourceDefinitionV1Beta1SpecNames(obj: Composit
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * CompositeResourceDefinitionVersion describes a version of an XR.
@@ -1389,7 +1389,7 @@ export interface CompositeResourceDefinitionV1Beta1SpecVersions {
 /**
  * Converts an object of type 'CompositeResourceDefinitionV1Beta1SpecVersions' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionV1Beta1SpecVersions(obj: CompositeResourceDefinitionV1Beta1SpecVersions | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1402,7 +1402,7 @@ export function toJson_CompositeResourceDefinitionV1Beta1SpecVersions(obj: Compo
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * CustomResourceColumnDefinition specifies a column for server side printing.
@@ -1457,7 +1457,7 @@ export interface CompositeResourceDefinitionV1Beta1SpecVersionsAdditionalPrinter
 /**
  * Converts an object of type 'CompositeResourceDefinitionV1Beta1SpecVersionsAdditionalPrinterColumns' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionV1Beta1SpecVersionsAdditionalPrinterColumns(obj: CompositeResourceDefinitionV1Beta1SpecVersionsAdditionalPrinterColumns | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1471,7 +1471,7 @@ export function toJson_CompositeResourceDefinitionV1Beta1SpecVersionsAdditionalP
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * Schema describes the schema used for validation, pruning, and defaulting of this version of the defined composite resource. Fields required by all composite resources will be injected into this schema automatically, and will override equivalently named fields in this schema. Omitting this schema results in a schema that contains only the fields required by all composite resources.
@@ -1491,7 +1491,7 @@ export interface CompositeResourceDefinitionV1Beta1SpecVersionsSchema {
 /**
  * Converts an object of type 'CompositeResourceDefinitionV1Beta1SpecVersionsSchema' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositeResourceDefinitionV1Beta1SpecVersionsSchema(obj: CompositeResourceDefinitionV1Beta1SpecVersionsSchema | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1500,7 +1500,7 @@ export function toJson_CompositeResourceDefinitionV1Beta1SpecVersionsSchema(obj:
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 
 /**
@@ -1580,7 +1580,7 @@ export interface CompositionProps {
 /**
  * Converts an object of type 'CompositionProps' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionProps(obj: CompositionProps | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1590,7 +1590,7 @@ export function toJson_CompositionProps(obj: CompositionProps | undefined): Reco
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * CompositionSpec specifies the desired state of the definition.
@@ -1624,7 +1624,7 @@ export interface CompositionSpec {
 /**
  * Converts an object of type 'CompositionSpec' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionSpec(obj: CompositionSpec | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1635,7 +1635,7 @@ export function toJson_CompositionSpec(obj: CompositionSpec | undefined): Record
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * CompositeTypeRef specifies the type of composite resource that this composition is compatible with.
@@ -1662,7 +1662,7 @@ export interface CompositionSpecCompositeTypeRef {
 /**
  * Converts an object of type 'CompositionSpecCompositeTypeRef' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionSpecCompositeTypeRef(obj: CompositionSpecCompositeTypeRef | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1672,7 +1672,7 @@ export function toJson_CompositionSpecCompositeTypeRef(obj: CompositionSpecCompo
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * ComposedTemplate is used to provide information about how the composed resource should be processed.
@@ -1713,7 +1713,7 @@ export interface CompositionSpecResources {
 /**
  * Converts an object of type 'CompositionSpecResources' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionSpecResources(obj: CompositionSpecResources | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1725,7 +1725,7 @@ export function toJson_CompositionSpecResources(obj: CompositionSpecResources | 
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * ConnectionDetail includes the information about the propagation of the connection information from one secret to another.
@@ -1759,7 +1759,7 @@ export interface CompositionSpecResourcesConnectionDetails {
 /**
  * Converts an object of type 'CompositionSpecResourcesConnectionDetails' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionSpecResourcesConnectionDetails(obj: CompositionSpecResourcesConnectionDetails | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1770,7 +1770,7 @@ export function toJson_CompositionSpecResourcesConnectionDetails(obj: Compositio
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * Patch is used to patch the field on the base resource at ToFieldPath after piping the value that is at FromFieldPath of the target resource through transformers.
@@ -1804,7 +1804,7 @@ export interface CompositionSpecResourcesPatches {
 /**
  * Converts an object of type 'CompositionSpecResourcesPatches' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionSpecResourcesPatches(obj: CompositionSpecResourcesPatches | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1815,7 +1815,7 @@ export function toJson_CompositionSpecResourcesPatches(obj: CompositionSpecResou
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * ReadinessCheck is used to indicate how to tell whether a resource is ready for consumption
@@ -1856,7 +1856,7 @@ export interface CompositionSpecResourcesReadinessChecks {
 /**
  * Converts an object of type 'CompositionSpecResourcesReadinessChecks' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionSpecResourcesReadinessChecks(obj: CompositionSpecResourcesReadinessChecks | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1868,7 +1868,7 @@ export function toJson_CompositionSpecResourcesReadinessChecks(obj: CompositionS
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * Transform is a unit of process whose input is transformed into an output with the supplied configuration.
@@ -1909,7 +1909,7 @@ export interface CompositionSpecResourcesPatchesTransforms {
 /**
  * Converts an object of type 'CompositionSpecResourcesPatchesTransforms' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionSpecResourcesPatchesTransforms(obj: CompositionSpecResourcesPatchesTransforms | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1921,7 +1921,7 @@ export function toJson_CompositionSpecResourcesPatchesTransforms(obj: Compositio
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * Type indicates the type of probe you'd like to use.
@@ -1957,7 +1957,7 @@ export interface CompositionSpecResourcesPatchesTransformsMath {
 /**
  * Converts an object of type 'CompositionSpecResourcesPatchesTransformsMath' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionSpecResourcesPatchesTransformsMath(obj: CompositionSpecResourcesPatchesTransformsMath | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1966,7 +1966,7 @@ export function toJson_CompositionSpecResourcesPatchesTransformsMath(obj: Compos
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * String is used to transform the input into a string or a different kind of string. Note that the input does not necessarily need to be a string.
@@ -1986,7 +1986,7 @@ export interface CompositionSpecResourcesPatchesTransformsString {
 /**
  * Converts an object of type 'CompositionSpecResourcesPatchesTransformsString' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionSpecResourcesPatchesTransformsString(obj: CompositionSpecResourcesPatchesTransformsString | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -1995,7 +1995,7 @@ export function toJson_CompositionSpecResourcesPatchesTransformsString(obj: Comp
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 
 /**
@@ -2075,7 +2075,7 @@ export interface CompositionV1Beta1Props {
 /**
  * Converts an object of type 'CompositionV1Beta1Props' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionV1Beta1Props(obj: CompositionV1Beta1Props | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2085,7 +2085,7 @@ export function toJson_CompositionV1Beta1Props(obj: CompositionV1Beta1Props | un
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * CompositionSpec specifies the desired state of the definition.
@@ -2119,7 +2119,7 @@ export interface CompositionV1Beta1Spec {
 /**
  * Converts an object of type 'CompositionV1Beta1Spec' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionV1Beta1Spec(obj: CompositionV1Beta1Spec | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2130,7 +2130,7 @@ export function toJson_CompositionV1Beta1Spec(obj: CompositionV1Beta1Spec | unde
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * CompositeTypeRef specifies the type of composite resource that this composition is compatible with.
@@ -2157,7 +2157,7 @@ export interface CompositionV1Beta1SpecCompositeTypeRef {
 /**
  * Converts an object of type 'CompositionV1Beta1SpecCompositeTypeRef' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionV1Beta1SpecCompositeTypeRef(obj: CompositionV1Beta1SpecCompositeTypeRef | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2167,7 +2167,7 @@ export function toJson_CompositionV1Beta1SpecCompositeTypeRef(obj: CompositionV1
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * ComposedTemplate is used to provide information about how the composed resource should be processed.
@@ -2208,7 +2208,7 @@ export interface CompositionV1Beta1SpecResources {
 /**
  * Converts an object of type 'CompositionV1Beta1SpecResources' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionV1Beta1SpecResources(obj: CompositionV1Beta1SpecResources | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2220,7 +2220,7 @@ export function toJson_CompositionV1Beta1SpecResources(obj: CompositionV1Beta1Sp
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * ConnectionDetail includes the information about the propagation of the connection information from one secret to another.
@@ -2254,7 +2254,7 @@ export interface CompositionV1Beta1SpecResourcesConnectionDetails {
 /**
  * Converts an object of type 'CompositionV1Beta1SpecResourcesConnectionDetails' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionV1Beta1SpecResourcesConnectionDetails(obj: CompositionV1Beta1SpecResourcesConnectionDetails | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2265,7 +2265,7 @@ export function toJson_CompositionV1Beta1SpecResourcesConnectionDetails(obj: Com
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * Patch is used to patch the field on the base resource at ToFieldPath after piping the value that is at FromFieldPath of the target resource through transformers.
@@ -2299,7 +2299,7 @@ export interface CompositionV1Beta1SpecResourcesPatches {
 /**
  * Converts an object of type 'CompositionV1Beta1SpecResourcesPatches' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionV1Beta1SpecResourcesPatches(obj: CompositionV1Beta1SpecResourcesPatches | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2310,7 +2310,7 @@ export function toJson_CompositionV1Beta1SpecResourcesPatches(obj: CompositionV1
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * ReadinessCheck is used to indicate how to tell whether a resource is ready for consumption
@@ -2351,7 +2351,7 @@ export interface CompositionV1Beta1SpecResourcesReadinessChecks {
 /**
  * Converts an object of type 'CompositionV1Beta1SpecResourcesReadinessChecks' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionV1Beta1SpecResourcesReadinessChecks(obj: CompositionV1Beta1SpecResourcesReadinessChecks | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2363,7 +2363,7 @@ export function toJson_CompositionV1Beta1SpecResourcesReadinessChecks(obj: Compo
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * Transform is a unit of process whose input is transformed into an output with the supplied configuration.
@@ -2404,7 +2404,7 @@ export interface CompositionV1Beta1SpecResourcesPatchesTransforms {
 /**
  * Converts an object of type 'CompositionV1Beta1SpecResourcesPatchesTransforms' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionV1Beta1SpecResourcesPatchesTransforms(obj: CompositionV1Beta1SpecResourcesPatchesTransforms | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2416,7 +2416,7 @@ export function toJson_CompositionV1Beta1SpecResourcesPatchesTransforms(obj: Com
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * Type indicates the type of probe you'd like to use.
@@ -2452,7 +2452,7 @@ export interface CompositionV1Beta1SpecResourcesPatchesTransformsMath {
 /**
  * Converts an object of type 'CompositionV1Beta1SpecResourcesPatchesTransformsMath' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionV1Beta1SpecResourcesPatchesTransformsMath(obj: CompositionV1Beta1SpecResourcesPatchesTransformsMath | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2461,7 +2461,7 @@ export function toJson_CompositionV1Beta1SpecResourcesPatchesTransformsMath(obj:
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * String is used to transform the input into a string or a different kind of string. Note that the input does not necessarily need to be a string.
@@ -2481,7 +2481,7 @@ export interface CompositionV1Beta1SpecResourcesPatchesTransformsString {
 /**
  * Converts an object of type 'CompositionV1Beta1SpecResourcesPatchesTransformsString' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_CompositionV1Beta1SpecResourcesPatchesTransformsString(obj: CompositionV1Beta1SpecResourcesPatchesTransformsString | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2490,7 +2490,7 @@ export function toJson_CompositionV1Beta1SpecResourcesPatchesTransformsString(ob
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 ",
   "meta.pkg.crossplane.io.ts": "// generated by cdk8s
@@ -2575,7 +2575,7 @@ export interface ConfigurationProps {
 /**
  * Converts an object of type 'ConfigurationProps' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_ConfigurationProps(obj: ConfigurationProps | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2585,7 +2585,7 @@ export function toJson_ConfigurationProps(obj: ConfigurationProps | undefined): 
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * ConfigurationSpec specifies the configuration of a Configuration.
@@ -2612,7 +2612,7 @@ export interface ConfigurationSpec {
 /**
  * Converts an object of type 'ConfigurationSpec' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_ConfigurationSpec(obj: ConfigurationSpec | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2622,7 +2622,7 @@ export function toJson_ConfigurationSpec(obj: ConfigurationSpec | undefined): Re
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * Semantic version constraints of Crossplane that package is compatible with.
@@ -2642,7 +2642,7 @@ export interface ConfigurationSpecCrossplane {
 /**
  * Converts an object of type 'ConfigurationSpecCrossplane' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_ConfigurationSpecCrossplane(obj: ConfigurationSpecCrossplane | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2651,7 +2651,7 @@ export function toJson_ConfigurationSpecCrossplane(obj: ConfigurationSpecCrosspl
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 /**
  * Dependency is a dependency on another package. One of Provider or Configuration may be supplied.
@@ -2685,7 +2685,7 @@ export interface ConfigurationSpecDependsOn {
 /**
  * Converts an object of type 'ConfigurationSpecDependsOn' to JSON representation.
  */
-/* eslint-disable max-len, quote-props */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 export function toJson_ConfigurationSpecDependsOn(obj: ConfigurationSpecDependsOn | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
@@ -2696,7 +2696,7 @@ export function toJson_ConfigurationSpecDependsOn(obj: ConfigurationSpecDependsO
   // filter undefined values
   return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
 }
-/* eslint-enable max-len, quote-props */
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 ",
 }

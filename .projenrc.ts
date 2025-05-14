@@ -40,7 +40,7 @@ const project = new Cdk8sTeamTypeScriptProject({
     'sscaff',
     'yaml',
     'yargs@^15',
-    'json2jsii@0.5.0',
+    'json2jsii@0.5.3',
     'colors',
     'ajv',
     'table',

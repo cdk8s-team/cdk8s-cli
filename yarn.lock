@@ -4179,10 +4179,10 @@ json-stringify-safe@^5.0.1:
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==
 
-json2jsii@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/json2jsii/-/json2jsii-0.5.0.tgz#373dc870bf0556a6c384e5d51876a220368390b0"
-  integrity sha512-KU1W63OO4hKK5mhYxRmoVY8qbw3igOLlPsq8o6nFZBHdD0ZQEghVbV604wB/pY0ofZPp1Hy92jkFjo6xsMUNEA==
+json2jsii@0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/json2jsii/-/json2jsii-0.5.3.tgz#2639c9409d2add57769691f3b07fa4c5f680ffb4"
+  integrity sha512-AZQp65rhuZvyVBJF4SEPLcq+HEakvPk8fH5GqgrflNjCOChT7Fm2Z0vPu//PUvwm1BPw1XcGbppjZ1DHa4bUTQ==
   dependencies:
     camelcase "^6.3.0"
     json-schema "^0.4.0"
