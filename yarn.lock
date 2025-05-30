@@ -877,9 +877,9 @@
   integrity sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==
 
 "@types/node@*":
-  version "22.15.24"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.15.24.tgz#3b31f1650571c0123388db29d95c12e6f6761744"
-  integrity sha512-w9CZGm9RDjzTh/D+hFwlBJ3ziUaVw7oufKA3vOFSOZlzmW9AkZnfjPb+DLnrV6qtgL/LNmP0/2zBNCFHL3F0ng==
+  version "22.15.27"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.15.27.tgz#b99cd64129c4c85a69edca903af9b3aa72c3b4f7"
+  integrity sha512-5fF+eu5mwihV2BeVtX5vijhdaZOfkQTATrePEaXTcKqI16LhJ7gi2/Vhd9OZM0UojcdmiOCVg5rrax+i1MdoQQ==
   dependencies:
     undici-types "~6.21.0"
 
@@ -889,9 +889,9 @@
   integrity sha512-OTcgaiwfGFBKacvfwuHzzn1KLxH/er8mluiy8/uM3sGXHaRe73RrSIj01jow9t4kJEW633Ov+cOexXeiApTyAw==
 
 "@types/node@^18.11.9":
-  version "18.19.105"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.105.tgz#44bae77ea9832da4357e1d35df37cb86927e1405"
-  integrity sha512-a+DrwD2VyzqQR2W0EVF8EaCh6Em4ilQAYLEPZnMNkQHXR7ziWW7RUhZMWZAgRpkDDAdUIcJOXSPJT/zBEwz3sA==
+  version "18.19.108"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.108.tgz#13c4f2863e7e62a1e6524259c9145c367b600fb5"
+  integrity sha512-JZv9uwGYYtfcsO7B99KszTlNhvrIWqsRy7Xjp5Hr7ZFj7DSlsxIi0zJfibe/1xtPn6kEEbfMjH2lbsubwa81pQ==
   dependencies:
     undici-types "~5.26.4"
 
