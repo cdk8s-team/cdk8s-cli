@@ -3881,10 +3881,10 @@ jsii-reflect@^1.112.0:
     oo-ascii-tree "^1.112.0"
     yargs "^16.2.0"
 
-jsii-rosetta@^5.5.4, jsii-rosetta@^5.8.8:
-  version "5.8.8"
-  resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-5.8.8.tgz#129d8499187b9039aba05a8df479641db067579f"
-  integrity sha512-zhLu75CwQFAYDiOffMXKLmEiw8QAmgMjDHStgd9z5k91Wt4EGrSI5AG2UNV3N9QLkOWdQCCuYjdyaH4BPRvwEg==
+jsii-rosetta@^5.5.4, jsii-rosetta@^5.8.9:
+  version "5.8.9"
+  resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-5.8.9.tgz#6ca9437efd34a383791dc3cd9c089e6e63eeea34"
+  integrity sha512-bVVi4638FUeRHzHYu13yZGqgaaWeegHIPs2Sx+F8bvicWWtC8BQlQvKIsnErnd4+yRKxC+J0g+7EQrHA+8qT8w==
   dependencies:
     "@jsii/check-node" "1.112.0"
     "@jsii/spec" "^1.112.0"
@@ -3932,9 +3932,9 @@ jsii@~5.5.3:
     yargs "^17.7.2"
 
 jsii@~5.8.0:
-  version "5.8.10"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.8.10.tgz#95d1d8574a2c542c7558b3ef649c2fe293e3b477"
-  integrity sha512-6rpXNvtUa+NUfI3efkPkJ1HXnNAlPzLu30jIckLdZLTXj91h4XZbXmGxnyCckhKYSuDHDUV932Ag/r16yQD51g==
+  version "5.8.11"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.8.11.tgz#3c3feab45190d3490de9e56e098f757a0bea328b"
+  integrity sha512-ga00MSW4ZTk5kuPAilxw0l4/g52XM5Dw+THDMXHKnYcgxtNsFnj9ffVjnIBpcD+Ufridjxobnqf9t0WuOSvrww==
   dependencies:
     "@jsii/check-node" "1.112.0"
     "@jsii/spec" "^1.112.0"
@@ -5743,9 +5743,9 @@ typescript-json-schema@^0.65.1:
     yargs "^17.1.1"
 
 typescript@next:
-  version "5.9.0-dev.20250531"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.0-dev.20250531.tgz#8cb9ef384fad63b30207337f94b2aaffa6b1f829"
-  integrity sha512-my0nFL3dnyyAIina0fAVRdd0vHwtJURBNLlGpXvQY558cXlK2+MhiUtK912D01WVxstQPyf+FqMTM2UX6JzIrw==
+  version "5.9.0-dev.20250601"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.0-dev.20250601.tgz#f2c3505e08363890f9a9a5f7217568b92bd394ef"
+  integrity sha512-SY5EzBm1LhXSXXcHNp6QTAQqJ3+cE1ocZHiaejNCjNuQ4OjwyQrG+1eD/KHjfvpf9xXbWyTDQqYeUReWownp9Q==
 
 typescript@~4.9.5:
   version "4.9.5"
