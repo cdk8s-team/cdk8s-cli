@@ -31,6 +31,7 @@ export interface SynthConfig {
   readonly format?: SynthesisFormat;
   readonly chartApiVersion?: HelmChartApiVersion;
   readonly chartVersion?: string;
+  readonly chartName?: string;
 }
 
 export interface Config {

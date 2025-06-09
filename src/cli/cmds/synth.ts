@@ -32,7 +32,8 @@ class Command implements yargs.CommandModule {
     .option('validation-reports-output-file', { required: false, desc: 'File to write a JSON representation of the validation reports to' })
     .option('format', { required: false, desc: 'Synthesis format for Kubernetes manifests. The default synthesis format is plain kubernetes manifests.', type: 'string' })
     .option('chart-api-version', { required: false, desc: 'Chart API version of helm chart. The default value would be \'v2\' api version when synthesis format is helm. There is no default set when synthesis format is plain.', type: 'string' })
-    .option('chart-version', { required: false, desc: 'Chart version of helm chart. This is required if synthesis format is helm.' });
+    .option('chart-version', { required: false, desc: 'Chart version of helm chart. This is required if synthesis format is helm.' })
+    .option('chart-name', { required: false, desc: 'Chart name of helm chart. Use when synthesis format is helm. The default is the applications base directory name.' });
 
   public async handler(argv: any) {
 
@@ -45,6 +46,7 @@ class Command implements yargs.CommandModule {
     const format = argv.format ?? config?.synthConfig?.format ?? SynthesisFormat.PLAIN;
     const chartVersion = argv.chartVersion ?? config?.synthConfig?.chartVersion;
     const chartApiVersion = argv.chartApiVersion ?? config?.synthConfig?.chartApiVersion ?? getDefaultChartApiVersion(format);
+    const chartName = argv.chartName ?? config?.synthConfig?.chartName ?? path.basename(path.resolve());
 
     if (outdir && outdir !== config?.output && stdout) {
       throw new Error('\'--output\' and \'--stdout\' are mutually exclusive. Please only use one.');
@@ -104,7 +106,7 @@ class Command implements yargs.CommandModule {
       let manifests: SynthesizedApp;
 
       if (format === SynthesisFormat.HELM) {
-        await createHelmScaffolding(chartApiVersion, chartVersion, outdir);
+        await createHelmScaffolding(chartApiVersion, chartVersion, chartName, outdir);
         const templateDir = path.join(outdir, 'templates');
 
         manifests = await synthApp(command, templateDir, stdout, recordConstructMetadata);
@@ -130,13 +132,13 @@ async function fetchValidations(): Promise<ValidationConfig[] | undefined> {
   }
 }
 
-async function createHelmScaffolding(apiVersion: string, chartVersion: string, outdir: string) {
+async function createHelmScaffolding(apiVersion: string, chartVersion: string, chartName: string, outdir: string) {
   const tempHelmStructure = createFolderStructure();
 
   const substituteValues = {
     apiVersion: apiVersion,
     version: chartVersion,
-    app: path.basename(path.resolve()),
+    app: chartName,
   };
 
   try {
