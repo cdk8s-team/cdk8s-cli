@@ -16104,6 +16104,142 @@ metadata:
 }
 `;
 
+exports[`Helm synthesis --chart-name is used when specified with all inputs from cli and no config file is present 1`] = `
+Object {
+  "Chart.yaml": "apiVersion: \\"v2\\"
+name: \\"cdk8s-synth-test\\"
+version: \\"1.1.1\\"
+description: Generated chart for cdk8s-synth-test
+type: application
+",
+  "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
+  "templates/chart-c86185a7.k8s.yaml": "apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+",
+}
+`;
+
+exports[`Helm synthesis --chart-name is used when specified with all inputs from config file and no related cli inputs 1`] = `
+Object {
+  "Chart.yaml": "apiVersion: \\"v2\\"
+name: \\"custom-chart-name\\"
+version: \\"1.1.1\\"
+description: Generated chart for custom-chart-name
+type: application
+",
+  "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
+  "templates/chart-c86185a7.k8s.yaml": "apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+",
+}
+`;
+
+exports[`Helm synthesis --chart-name is used when specified with different inputs in cli and config file 1`] = `
+Object {
+  "Chart.yaml": "apiVersion: \\"v2\\"
+name: \\"config-chart-name\\"
+version: \\"1.1.1\\"
+description: Generated chart for config-chart-name
+type: application
+",
+  "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
+  "templates/chart-c86185a7.k8s.yaml": "apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+",
+}
+`;
+
+exports[`Helm synthesis --chart-name is used when specified with inputs duplicated in cli and config file 1`] = `
+Object {
+  "Chart.yaml": "apiVersion: \\"v2\\"
+name: \\"custom-chart-name\\"
+version: \\"1.1.1\\"
+description: Generated chart for custom-chart-name
+type: application
+",
+  "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
+  "templates/chart-c86185a7.k8s.yaml": "apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+",
+}
+`;
+
+exports[`Helm synthesis default chart name is used when --chart-name is not specified with all inputs from cli and no config file is present 1`] = `
+Object {
+  "Chart.yaml": "apiVersion: \\"v2\\"
+name: \\"cdk8s-synth-test\\"
+version: \\"1.1.1\\"
+description: Generated chart for cdk8s-synth-test
+type: application
+",
+  "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
+  "templates/chart-c86185a7.k8s.yaml": "apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+",
+}
+`;
+
+exports[`Helm synthesis default chart name is used when --chart-name is not specified with all inputs from config file and no related cli inputs 1`] = `
+Object {
+  "Chart.yaml": "apiVersion: \\"v2\\"
+name: \\"cdk8s-synth-test\\"
+version: \\"1.1.1\\"
+description: Generated chart for cdk8s-synth-test
+type: application
+",
+  "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
+  "templates/chart-c86185a7.k8s.yaml": "apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+",
+}
+`;
+
+exports[`Helm synthesis default chart name is used when --chart-name is not specified with different inputs in cli and config file 1`] = `
+Object {
+  "Chart.yaml": "apiVersion: \\"v2\\"
+name: \\"cdk8s-synth-test\\"
+version: \\"1.1.1\\"
+description: Generated chart for cdk8s-synth-test
+type: application
+",
+  "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
+  "templates/chart-c86185a7.k8s.yaml": "apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+",
+}
+`;
+
+exports[`Helm synthesis default chart name is used when --chart-name is not specified with inputs duplicated in cli and config file 1`] = `
+Object {
+  "Chart.yaml": "apiVersion: \\"v2\\"
+name: \\"cdk8s-synth-test\\"
+version: \\"1.1.1\\"
+description: Generated chart for cdk8s-synth-test
+type: application
+",
+  "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
+  "templates/chart-c86185a7.k8s.yaml": "apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+",
+}
+`;
+
 exports[`Helm synthesis filename url hash remains the same across synthesis with all inputs from cli and no config file is present 1`] = `
 Object {
   "Chart.yaml": "apiVersion: \\"v2\\"

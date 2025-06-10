@@ -1009,6 +1009,118 @@ describe('Helm synthesis', () => {
     // This would be run 4 times with test.each
     await synth(synthOptions);
   });
+
+  test.each([
+    [
+      withOnlyCliInputs,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        chartName: 'custom-chart-name',
+        postSynth: matchSynthSnapshot,
+      },
+    ],
+    [
+      withOnlyConfigInputs,
+      {
+        config: {
+          synthConfig: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+            chartName: 'custom-chart-name',
+          },
+        },
+        postSynth: matchSynthSnapshot,
+      },
+    ],
+    [
+      withSameInputsInBoth,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        chartName: 'custom-chart-name',
+        config: {
+          synthConfig: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+            chartName: 'custom-chart-name',
+          },
+        },
+        postSynth: matchSynthSnapshot,
+      },
+    ],
+    [
+      withDifferentInputsInBoth,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        chartName: 'cli-chart-name',
+        config: {
+          synthConfig: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+            chartName: 'config-chart-name',
+          },
+        },
+        postSynth: matchSynthSnapshot,
+      },
+    ],
+  ])('--chart-name is used when specified %s', async (_testName, synthOptions) => {
+    await synth(synthOptions);
+  });
+
+  test.each([
+    [
+      withOnlyCliInputs,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        postSynth: matchSynthSnapshot,
+      },
+    ],
+    [
+      withOnlyConfigInputs,
+      {
+        config: {
+          synthConfig: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+          },
+        },
+        postSynth: matchSynthSnapshot,
+      },
+    ],
+    [
+      withSameInputsInBoth,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        config: {
+          synthConfig: {
+            format: SynthesisFormat.HELM,
+            chartVersion: '1.1.1',
+          },
+        },
+        postSynth: matchSynthSnapshot,
+      },
+    ],
+    [
+      withDifferentInputsInBoth,
+      {
+        format: SynthesisFormat.HELM,
+        chartVersion: '1.1.1',
+        config: {
+          synthConfig: {
+            format: SynthesisFormat.PLAIN,
+            chartVersion: '1.1.1',
+          },
+        },
+        postSynth: matchSynthSnapshot,
+      },
+    ],
+  ])('default chart name is used when --chart-name is not specified %s', async (_testName, synthOptions) => {
+    await synth(synthOptions);
+  });
 });
 
 interface SynthCliOptions {
