@@ -1085,6 +1085,7 @@ describe('Helm synthesis', () => {
           synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
+            chartName: 'custom-chart-name',
           },
         },
         postSynth: matchSynthSnapshot,
