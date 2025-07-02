@@ -1085,7 +1085,6 @@ describe('Helm synthesis', () => {
           synthConfig: {
             format: SynthesisFormat.HELM,
             chartVersion: '1.1.1',
-            chartName: 'custom-chart-name',
           },
         },
         postSynth: matchSynthSnapshot,
@@ -1134,6 +1133,7 @@ interface SynthCliOptions {
   readonly format?: string;
   readonly chartApiVersion?: string;
   readonly chartVersion?: string;
+  readonly chartName?: string;
 }
 
 interface SynthOptions extends SynthCliOptions {
@@ -1199,6 +1199,7 @@ app.synth();
       format: options.format,
       chartApiVersion: options.chartApiVersion,
       chartVersion: options.chartVersion,
+      chartName: options.chartName,
     });
 
     if (options.postSynth) {
