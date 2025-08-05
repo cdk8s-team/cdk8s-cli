@@ -1,7 +1,6 @@
 import * as path from 'path';
-import { promisify } from 'util';
+import { async as glob } from 'fast-glob';
 import * as fs from 'fs-extra';
-import { glob } from 'glob';
 import { ImportBase, ImportOptions, Language } from '../../src/import/base';
 import { mkdtemp } from '../../src/util';
 
@@ -45,10 +44,10 @@ export async function expectImportMatchSnapshot(fn: () => Promise<ImportBase>, o
         expect(manifest).toMatchSnapshot();
       }
 
-      const files = await promisify(glob)('**', {
+      const files = await glob('**', {
         cwd: workdir,
         ignore: ['**/*.tgz'],
-        nodir: true,
+        onlyFiles: true,
       });
 
       const map: Record<string, string> = {};
