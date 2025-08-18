@@ -460,13 +460,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/glob,@types/jest,@types/json-schema,@types/semver,eslint-import-resolver-typescript,eslint-plugin-import,glob,jest,ts-jest,ts-node,typescript-json-schema"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,@types/json-schema,@types/semver,eslint-import-resolver-typescript,eslint-plugin-import,fast-glob,jest,ts-jest,ts-node,typescript-json-schema"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @stylistic/eslint-plugin @types/fs-extra @types/glob @types/jest @types/json-schema @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint glob jest jest-junit ts-jest ts-node typescript-json-schema"
+          "exec": "yarn upgrade @stylistic/eslint-plugin @types/fs-extra @types/jest @types/json-schema @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint fast-glob jest jest-junit ts-jest ts-node typescript-json-schema"
         },
         {
           "exec": "npx projen"

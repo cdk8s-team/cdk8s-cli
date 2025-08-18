@@ -1,9 +1,8 @@
 import { existsSync, rmSync } from 'fs';
 import * as os from 'os';
 import * as path from 'path';
-import { promisify } from 'util';
+import { async as glob } from 'fast-glob';
 import * as fs from 'fs-extra';
-import { glob } from 'glob';
 import * as yaml from 'yaml';
 import { Config, HelmChartApiVersion, SynthesisFormat, ValidationConfig } from '../../src/config';
 import { findConstructMetadata } from '../../src/util';
@@ -1114,9 +1113,9 @@ function requireSynth() {
 }
 
 async function expectSynthMatchSnapshot(workdir: string) {
-  const files = await promisify(glob)('**', {
+  const files = await glob('**', {
     cwd: workdir,
-    nodir: true,
+    onlyFiles: true,
   });
 
   const map: Record<string, string> = {};
