@@ -365,7 +365,13 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.line('let updatedProps = {};');
       code.line();
       code.openBlock('if (props.values)');
-      code.line('const { additionalValues, ...valuesWithoutAdditionalValues } = props.values;');
+      if (schema) {
+        code.line(`const values = toJson_${valuesInterface}(props.values);`);
+      } else {
+        code.line('const values = props.values;');
+      }
+      code.openBlock('if (values)');
+      code.line('const { additionalValues, ...valuesWithoutAdditionalValues } = values;');
       code.open('updatedProps = {');
       code.line('...props,');
       code.open('values: {');
@@ -373,6 +379,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.line('...additionalValues,');
       code.close('},');
       code.close('};');
+      code.closeBlock();
       code.closeBlock();
       code.line();
 
