@@ -15,10 +15,6 @@
       "type": "build"
     },
     {
-      "name": "@types/glob",
-      "type": "build"
-    },
-    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -64,7 +60,7 @@
       "type": "build"
     },
     {
-      "name": "glob",
+      "name": "fast-glob",
       "type": "build"
     },
     {
