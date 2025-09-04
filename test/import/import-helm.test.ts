@@ -9,6 +9,7 @@ describe.each([
   'helm:https://kubernetes.github.io/ingress-nginx/ingress-nginx@4.8.0', // Does not contain schema
   'helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0',
   'helm:oci://registry-1.docker.io/bitnamicharts/mysql@9.12.5',
+  'helm:oci://ghcr.io/grafana/helm-charts/grafana-operator:v5.19.4', // OCI with 'v' in version
   'minio:=helm:https://operator.min.io/operator@5.0.9',
   'helm:https://grafana.github.io/helm-charts/loki@5.27.0',
 ])('importing helm chart %s', (testChartUrl) => {
