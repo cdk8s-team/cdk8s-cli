@@ -1,5 +1,1820 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`importing helm chart helm:./test/import/fixtures/test-helm-chart with python lanugage 1`] = `
+Object {
+  "author": Object {
+    "name": "generated@generated.com",
+    "roles": Array [
+      "author",
+    ],
+  },
+  "dependencies": "__omitted__",
+  "dependencyClosure": Object {
+    "cdk8s": Object {
+      "targets": Object {
+        "dotnet": Object {
+          "namespace": "Org.Cdk8s",
+          "packageId": "Org.Cdk8s",
+        },
+        "go": Object {
+          "moduleName": "github.com/cdk8s-team/cdk8s-core-go",
+        },
+        "java": Object {
+          "maven": Object {
+            "artifactId": "cdk8s",
+            "groupId": "org.cdk8s",
+          },
+          "package": "org.cdk8s",
+        },
+        "js": Object {
+          "npm": "cdk8s",
+        },
+        "python": Object {
+          "distName": "cdk8s",
+          "module": "cdk8s",
+        },
+      },
+    },
+    "constructs": Object {
+      "targets": Object {
+        "dotnet": Object {
+          "namespace": "Constructs",
+          "packageId": "Constructs",
+        },
+        "go": Object {
+          "moduleName": "github.com/aws/constructs-go",
+        },
+        "java": Object {
+          "maven": Object {
+            "artifactId": "constructs",
+            "groupId": "software.constructs",
+          },
+          "package": "software.constructs",
+        },
+        "js": Object {
+          "npm": "constructs",
+        },
+        "python": Object {
+          "distName": "constructs",
+          "module": "constructs",
+        },
+      },
+    },
+  },
+  "description": "test-chart",
+  "fingerprint": "<fingerprint>",
+  "homepage": "http://generated",
+  "jsiiVersion": "__omitted__",
+  "license": "UNLICENSED",
+  "metadata": Object {
+    "jsii": Object {
+      "pacmak": Object {
+        "hasDefaultInterfaces": true,
+      },
+    },
+  },
+  "name": "test-chart",
+  "repository": Object {
+    "type": "git",
+    "url": "http://generated",
+  },
+  "schema": "jsii/0.10.0",
+  "targets": Object {
+    "js": Object {
+      "npm": "test-chart",
+    },
+    "python": Object {
+      "distName": "generated",
+      "module": "test_chart",
+    },
+  },
+  "types": Object {
+    "test-chart.TestChartImage": Object {
+      "assembly": "test-chart",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "TestChartImage",
+        },
+      },
+      "fqn": "test-chart.TestChartImage",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 118,
+      },
+      "name": "TestChartImage",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartImage#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 134,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartImage#repository",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 122,
+          },
+          "name": "repository",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartImage#tag",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 127,
+          },
+          "name": "tag",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+      ],
+      "symbolId": "test-chart:TestChartImage",
+    },
+    "test-chart.TestChartService": Object {
+      "assembly": "test-chart",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "TestChartService",
+        },
+      },
+      "fqn": "test-chart.TestChartService",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 156,
+      },
+      "name": "TestChartService",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartService#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 172,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartService#port",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 165,
+          },
+          "name": "port",
+          "optional": true,
+          "type": Object {
+            "primitive": "number",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartService#type",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 160,
+          },
+          "name": "type",
+          "optional": true,
+          "type": Object {
+            "fqn": "test-chart.TestChartServiceType",
+          },
+        },
+      ],
+      "symbolId": "test-chart:TestChartService",
+    },
+    "test-chart.TestChartServiceType": Object {
+      "assembly": "test-chart",
+      "docs": Object {
+        "custom": Object {
+          "schema": "TestChartServiceType",
+        },
+      },
+      "fqn": "test-chart.TestChartServiceType",
+      "kind": "enum",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 194,
+      },
+      "members": Array [
+        Object {
+          "docs": Object {
+            "summary": "ClusterIP.",
+          },
+          "name": "CLUSTER_IP",
+        },
+        Object {
+          "docs": Object {
+            "summary": "NodePort.",
+          },
+          "name": "NODE_PORT",
+        },
+        Object {
+          "docs": Object {
+            "summary": "LoadBalancer.",
+          },
+          "name": "LOAD_BALANCER",
+        },
+      ],
+      "name": "TestChartServiceType",
+      "symbolId": "test-chart:TestChartServiceType",
+    },
+    "test-chart.Testchart": Object {
+      "assembly": "test-chart",
+      "base": "constructs.Construct",
+      "fqn": "test-chart.Testchart",
+      "initializer": Object {
+        "locationInModule": Object {
+          "filename": "test-chart.ts",
+          "line": 14,
+        },
+        "parameters": Array [
+          Object {
+            "name": "scope",
+            "type": Object {
+              "fqn": "constructs.Construct",
+            },
+          },
+          Object {
+            "name": "id",
+            "type": Object {
+              "primitive": "string",
+            },
+          },
+          Object {
+            "name": "props",
+            "optional": true,
+            "type": Object {
+              "fqn": "test-chart.TestchartProps",
+            },
+          },
+        ],
+      },
+      "kind": "class",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 13,
+      },
+      "name": "Testchart",
+      "symbolId": "test-chart:Testchart",
+    },
+    "test-chart.TestchartProps": Object {
+      "assembly": "test-chart",
+      "datatype": true,
+      "fqn": "test-chart.TestchartProps",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 5,
+      },
+      "name": "TestchartProps",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 8,
+          },
+          "name": "helmExecutable",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 9,
+          },
+          "name": "helmFlags",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "string",
+              },
+              "kind": "array",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 6,
+          },
+          "name": "namespace",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 7,
+          },
+          "name": "releaseName",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 10,
+          },
+          "name": "values",
+          "optional": true,
+          "type": Object {
+            "fqn": "test-chart.TestchartValues",
+          },
+        },
+      ],
+      "symbolId": "test-chart:TestchartProps",
+    },
+    "test-chart.TestchartValues": Object {
+      "assembly": "test-chart",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "test-chart",
+        },
+      },
+      "fqn": "test-chart.TestchartValues",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 68,
+      },
+      "name": "TestchartValues",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "test-chart#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 94,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "test-chart#global",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 87,
+          },
+          "name": "global",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "test-chart#image",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 72,
+          },
+          "name": "image",
+          "optional": true,
+          "type": Object {
+            "fqn": "test-chart.TestChartImage",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "test-chart#replicas",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 82,
+          },
+          "name": "replicas",
+          "optional": true,
+          "type": Object {
+            "primitive": "number",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "test-chart#service",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 77,
+          },
+          "name": "service",
+          "optional": true,
+          "type": Object {
+            "fqn": "test-chart.TestChartService",
+          },
+        },
+      ],
+      "symbolId": "test-chart:TestchartValues",
+    },
+  },
+  "version": "0.0.0",
+}
+`;
+
+exports[`importing helm chart helm:./test/import/fixtures/test-helm-chart with python lanugage 2`] = `
+Object {
+  "test_chart/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
+import builtins
+import datetime
+import enum
+import typing
+
+import jsii
+import publication
+import typing_extensions
+
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
+
+from ._jsii import *
+
+import constructs as _constructs_77d1e7e8
+
+
+@jsii.data_type(
+    jsii_type=\\"test-chart.TestChartImage\\",
+    jsii_struct_bases=[],
+    name_mapping={
+        \\"additional_values\\": \\"additionalValues\\",
+        \\"repository\\": \\"repository\\",
+        \\"tag\\": \\"tag\\",
+    },
+)
+class TestChartImage:
+    def __init__(
+        self,
+        *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+        repository: typing.Optional[builtins.str] = None,
+        tag: typing.Optional[builtins.str] = None,
+    ) -> None:
+        '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+        :param repository: 
+        :param tag: 
+
+        :schema: TestChartImage
+        '''
+        if __debug__:
+            type_hints = typing.get_type_hints(_typecheckingstub__96e16d659bde96d82fe9f689c47ca239222a4f9489a7c031555cc89406bf0b91)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
+            check_type(argname=\\"argument repository\\", value=repository, expected_type=type_hints[\\"repository\\"])
+            check_type(argname=\\"argument tag\\", value=tag, expected_type=type_hints[\\"tag\\"])
+        self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
+        if repository is not None:
+            self._values[\\"repository\\"] = repository
+        if tag is not None:
+            self._values[\\"tag\\"] = tag
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: TestChartImage#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
+
+    @builtins.property
+    def repository(self) -> typing.Optional[builtins.str]:
+        '''
+        :schema: TestChartImage#repository
+        '''
+        result = self._values.get(\\"repository\\")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def tag(self) -> typing.Optional[builtins.str]:
+        '''
+        :schema: TestChartImage#tag
+        '''
+        result = self._values.get(\\"tag\\")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    def __eq__(self, rhs: typing.Any) -> builtins.bool:
+        return isinstance(rhs, self.__class__) and rhs._values == self._values
+
+    def __ne__(self, rhs: typing.Any) -> builtins.bool:
+        return not (rhs == self)
+
+    def __repr__(self) -> str:
+        return \\"TestChartImage(%s)\\" % \\", \\".join(
+            k + \\"=\\" + repr(v) for k, v in self._values.items()
+        )
+
+
+@jsii.data_type(
+    jsii_type=\\"test-chart.TestChartService\\",
+    jsii_struct_bases=[],
+    name_mapping={
+        \\"additional_values\\": \\"additionalValues\\",
+        \\"port\\": \\"port\\",
+        \\"type\\": \\"type\\",
+    },
+)
+class TestChartService:
+    def __init__(
+        self,
+        *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+        port: typing.Optional[jsii.Number] = None,
+        type: typing.Optional[\\"TestChartServiceType\\"] = None,
+    ) -> None:
+        '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+        :param port: 
+        :param type: 
+
+        :schema: TestChartService
+        '''
+        if __debug__:
+            type_hints = typing.get_type_hints(_typecheckingstub__e25ac3c4b7af79bbe767b2ed147e2c3b46234c9092660eb925362153c7a0cd6f)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
+            check_type(argname=\\"argument port\\", value=port, expected_type=type_hints[\\"port\\"])
+            check_type(argname=\\"argument type\\", value=type, expected_type=type_hints[\\"type\\"])
+        self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
+        if port is not None:
+            self._values[\\"port\\"] = port
+        if type is not None:
+            self._values[\\"type\\"] = type
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: TestChartService#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
+
+    @builtins.property
+    def port(self) -> typing.Optional[jsii.Number]:
+        '''
+        :schema: TestChartService#port
+        '''
+        result = self._values.get(\\"port\\")
+        return typing.cast(typing.Optional[jsii.Number], result)
+
+    @builtins.property
+    def type(self) -> typing.Optional[\\"TestChartServiceType\\"]:
+        '''
+        :schema: TestChartService#type
+        '''
+        result = self._values.get(\\"type\\")
+        return typing.cast(typing.Optional[\\"TestChartServiceType\\"], result)
+
+    def __eq__(self, rhs: typing.Any) -> builtins.bool:
+        return isinstance(rhs, self.__class__) and rhs._values == self._values
+
+    def __ne__(self, rhs: typing.Any) -> builtins.bool:
+        return not (rhs == self)
+
+    def __repr__(self) -> str:
+        return \\"TestChartService(%s)\\" % \\", \\".join(
+            k + \\"=\\" + repr(v) for k, v in self._values.items()
+        )
+
+
+@jsii.enum(jsii_type=\\"test-chart.TestChartServiceType\\")
+class TestChartServiceType(enum.Enum):
+    '''
+    :schema: TestChartServiceType
+    '''
+
+    CLUSTER_IP = \\"CLUSTER_IP\\"
+    '''ClusterIP.'''
+    NODE_PORT = \\"NODE_PORT\\"
+    '''NodePort.'''
+    LOAD_BALANCER = \\"LOAD_BALANCER\\"
+    '''LoadBalancer.'''
+
+
+class Testchart(
+    _constructs_77d1e7e8.Construct,
+    metaclass=jsii.JSIIMeta,
+    jsii_type=\\"test-chart.Testchart\\",
+):
+    def __init__(
+        self,
+        scope: _constructs_77d1e7e8.Construct,
+        id: builtins.str,
+        *,
+        helm_executable: typing.Optional[builtins.str] = None,
+        helm_flags: typing.Optional[typing.Sequence[builtins.str]] = None,
+        namespace: typing.Optional[builtins.str] = None,
+        release_name: typing.Optional[builtins.str] = None,
+        values: typing.Optional[typing.Union[\\"TestchartValues\\", typing.Dict[builtins.str, typing.Any]]] = None,
+    ) -> None:
+        '''
+        :param scope: -
+        :param id: -
+        :param helm_executable: -
+        :param helm_flags: -
+        :param namespace: -
+        :param release_name: -
+        :param values: -
+        '''
+        if __debug__:
+            type_hints = typing.get_type_hints(_typecheckingstub__a94d4cc6ded4283bb13f9ec7bf5c5bea04c59d18599a4b71ee1bddba8085df39)
+            check_type(argname=\\"argument scope\\", value=scope, expected_type=type_hints[\\"scope\\"])
+            check_type(argname=\\"argument id\\", value=id, expected_type=type_hints[\\"id\\"])
+        props = TestchartProps(
+            helm_executable=helm_executable,
+            helm_flags=helm_flags,
+            namespace=namespace,
+            release_name=release_name,
+            values=values,
+        )
+
+        jsii.create(self.__class__, self, [scope, id, props])
+
+
+@jsii.data_type(
+    jsii_type=\\"test-chart.TestchartProps\\",
+    jsii_struct_bases=[],
+    name_mapping={
+        \\"helm_executable\\": \\"helmExecutable\\",
+        \\"helm_flags\\": \\"helmFlags\\",
+        \\"namespace\\": \\"namespace\\",
+        \\"release_name\\": \\"releaseName\\",
+        \\"values\\": \\"values\\",
+    },
+)
+class TestchartProps:
+    def __init__(
+        self,
+        *,
+        helm_executable: typing.Optional[builtins.str] = None,
+        helm_flags: typing.Optional[typing.Sequence[builtins.str]] = None,
+        namespace: typing.Optional[builtins.str] = None,
+        release_name: typing.Optional[builtins.str] = None,
+        values: typing.Optional[typing.Union[\\"TestchartValues\\", typing.Dict[builtins.str, typing.Any]]] = None,
+    ) -> None:
+        '''
+        :param helm_executable: -
+        :param helm_flags: -
+        :param namespace: -
+        :param release_name: -
+        :param values: -
+        '''
+        if isinstance(values, dict):
+            values = TestchartValues(**values)
+        if __debug__:
+            type_hints = typing.get_type_hints(_typecheckingstub__ccefddf4edf9004c9d8a5f37470f96d7d9a2d3cd446153b027e4b4b276151f0c)
+            check_type(argname=\\"argument helm_executable\\", value=helm_executable, expected_type=type_hints[\\"helm_executable\\"])
+            check_type(argname=\\"argument helm_flags\\", value=helm_flags, expected_type=type_hints[\\"helm_flags\\"])
+            check_type(argname=\\"argument namespace\\", value=namespace, expected_type=type_hints[\\"namespace\\"])
+            check_type(argname=\\"argument release_name\\", value=release_name, expected_type=type_hints[\\"release_name\\"])
+            check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
+        self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if helm_executable is not None:
+            self._values[\\"helm_executable\\"] = helm_executable
+        if helm_flags is not None:
+            self._values[\\"helm_flags\\"] = helm_flags
+        if namespace is not None:
+            self._values[\\"namespace\\"] = namespace
+        if release_name is not None:
+            self._values[\\"release_name\\"] = release_name
+        if values is not None:
+            self._values[\\"values\\"] = values
+
+    @builtins.property
+    def helm_executable(self) -> typing.Optional[builtins.str]:
+        result = self._values.get(\\"helm_executable\\")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def helm_flags(self) -> typing.Optional[typing.List[builtins.str]]:
+        result = self._values.get(\\"helm_flags\\")
+        return typing.cast(typing.Optional[typing.List[builtins.str]], result)
+
+    @builtins.property
+    def namespace(self) -> typing.Optional[builtins.str]:
+        result = self._values.get(\\"namespace\\")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def release_name(self) -> typing.Optional[builtins.str]:
+        result = self._values.get(\\"release_name\\")
+        return typing.cast(typing.Optional[builtins.str], result)
+
+    @builtins.property
+    def values(self) -> typing.Optional[\\"TestchartValues\\"]:
+        result = self._values.get(\\"values\\")
+        return typing.cast(typing.Optional[\\"TestchartValues\\"], result)
+
+    def __eq__(self, rhs: typing.Any) -> builtins.bool:
+        return isinstance(rhs, self.__class__) and rhs._values == self._values
+
+    def __ne__(self, rhs: typing.Any) -> builtins.bool:
+        return not (rhs == self)
+
+    def __repr__(self) -> str:
+        return \\"TestchartProps(%s)\\" % \\", \\".join(
+            k + \\"=\\" + repr(v) for k, v in self._values.items()
+        )
+
+
+@jsii.data_type(
+    jsii_type=\\"test-chart.TestchartValues\\",
+    jsii_struct_bases=[],
+    name_mapping={
+        \\"additional_values\\": \\"additionalValues\\",
+        \\"global_\\": \\"global\\",
+        \\"image\\": \\"image\\",
+        \\"replicas\\": \\"replicas\\",
+        \\"service\\": \\"service\\",
+    },
+)
+class TestchartValues:
+    def __init__(
+        self,
+        *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+        global_: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+        image: typing.Optional[typing.Union[TestChartImage, typing.Dict[builtins.str, typing.Any]]] = None,
+        replicas: typing.Optional[jsii.Number] = None,
+        service: typing.Optional[typing.Union[TestChartService, typing.Dict[builtins.str, typing.Any]]] = None,
+    ) -> None:
+        '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+        :param global_: 
+        :param image: 
+        :param replicas: 
+        :param service: 
+
+        :schema: test-chart
+        '''
+        if isinstance(image, dict):
+            image = TestChartImage(**image)
+        if isinstance(service, dict):
+            service = TestChartService(**service)
+        if __debug__:
+            type_hints = typing.get_type_hints(_typecheckingstub__7686da7c768cf17ae81f66d52ce621ab2036ed6c62af7b1b3cb693162fc67a35)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
+            check_type(argname=\\"argument global_\\", value=global_, expected_type=type_hints[\\"global_\\"])
+            check_type(argname=\\"argument image\\", value=image, expected_type=type_hints[\\"image\\"])
+            check_type(argname=\\"argument replicas\\", value=replicas, expected_type=type_hints[\\"replicas\\"])
+            check_type(argname=\\"argument service\\", value=service, expected_type=type_hints[\\"service\\"])
+        self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
+        if global_ is not None:
+            self._values[\\"global_\\"] = global_
+        if image is not None:
+            self._values[\\"image\\"] = image
+        if replicas is not None:
+            self._values[\\"replicas\\"] = replicas
+        if service is not None:
+            self._values[\\"service\\"] = service
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: test-chart#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
+
+    @builtins.property
+    def global_(self) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''
+        :schema: test-chart#global
+        '''
+        result = self._values.get(\\"global_\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
+
+    @builtins.property
+    def image(self) -> typing.Optional[TestChartImage]:
+        '''
+        :schema: test-chart#image
+        '''
+        result = self._values.get(\\"image\\")
+        return typing.cast(typing.Optional[TestChartImage], result)
+
+    @builtins.property
+    def replicas(self) -> typing.Optional[jsii.Number]:
+        '''
+        :schema: test-chart#replicas
+        '''
+        result = self._values.get(\\"replicas\\")
+        return typing.cast(typing.Optional[jsii.Number], result)
+
+    @builtins.property
+    def service(self) -> typing.Optional[TestChartService]:
+        '''
+        :schema: test-chart#service
+        '''
+        result = self._values.get(\\"service\\")
+        return typing.cast(typing.Optional[TestChartService], result)
+
+    def __eq__(self, rhs: typing.Any) -> builtins.bool:
+        return isinstance(rhs, self.__class__) and rhs._values == self._values
+
+    def __ne__(self, rhs: typing.Any) -> builtins.bool:
+        return not (rhs == self)
+
+    def __repr__(self) -> str:
+        return \\"TestchartValues(%s)\\" % \\", \\".join(
+            k + \\"=\\" + repr(v) for k, v in self._values.items()
+        )
+
+
+__all__ = [
+    \\"TestChartImage\\",
+    \\"TestChartService\\",
+    \\"TestChartServiceType\\",
+    \\"Testchart\\",
+    \\"TestchartProps\\",
+    \\"TestchartValues\\",
+]
+
+publication.publish()
+
+def _typecheckingstub__96e16d659bde96d82fe9f689c47ca239222a4f9489a7c031555cc89406bf0b91(
+    *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+    repository: typing.Optional[builtins.str] = None,
+    tag: typing.Optional[builtins.str] = None,
+) -> None:
+    \\"\\"\\"Type checking stubs\\"\\"\\"
+    pass
+
+def _typecheckingstub__e25ac3c4b7af79bbe767b2ed147e2c3b46234c9092660eb925362153c7a0cd6f(
+    *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+    port: typing.Optional[jsii.Number] = None,
+    type: typing.Optional[TestChartServiceType] = None,
+) -> None:
+    \\"\\"\\"Type checking stubs\\"\\"\\"
+    pass
+
+def _typecheckingstub__a94d4cc6ded4283bb13f9ec7bf5c5bea04c59d18599a4b71ee1bddba8085df39(
+    scope: _constructs_77d1e7e8.Construct,
+    id: builtins.str,
+    *,
+    helm_executable: typing.Optional[builtins.str] = None,
+    helm_flags: typing.Optional[typing.Sequence[builtins.str]] = None,
+    namespace: typing.Optional[builtins.str] = None,
+    release_name: typing.Optional[builtins.str] = None,
+    values: typing.Optional[typing.Union[TestchartValues, typing.Dict[builtins.str, typing.Any]]] = None,
+) -> None:
+    \\"\\"\\"Type checking stubs\\"\\"\\"
+    pass
+
+def _typecheckingstub__ccefddf4edf9004c9d8a5f37470f96d7d9a2d3cd446153b027e4b4b276151f0c(
+    *,
+    helm_executable: typing.Optional[builtins.str] = None,
+    helm_flags: typing.Optional[typing.Sequence[builtins.str]] = None,
+    namespace: typing.Optional[builtins.str] = None,
+    release_name: typing.Optional[builtins.str] = None,
+    values: typing.Optional[typing.Union[TestchartValues, typing.Dict[builtins.str, typing.Any]]] = None,
+) -> None:
+    \\"\\"\\"Type checking stubs\\"\\"\\"
+    pass
+
+def _typecheckingstub__7686da7c768cf17ae81f66d52ce621ab2036ed6c62af7b1b3cb693162fc67a35(
+    *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+    global_: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+    image: typing.Optional[typing.Union[TestChartImage, typing.Dict[builtins.str, typing.Any]]] = None,
+    replicas: typing.Optional[jsii.Number] = None,
+    service: typing.Optional[typing.Union[TestChartService, typing.Dict[builtins.str, typing.Any]]] = None,
+) -> None:
+    \\"\\"\\"Type checking stubs\\"\\"\\"
+    pass
+",
+  "test_chart/_jsii/__init__.py": "from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+
+import abc
+import builtins
+import datetime
+import enum
+import typing
+
+import jsii
+import publication
+import typing_extensions
+
+import typeguard
+from importlib.metadata import version as _metadata_package_version
+TYPEGUARD_MAJOR_VERSION = int(_metadata_package_version('typeguard').split('.')[0])
+
+def check_type(argname: str, value: object, expected_type: typing.Any) -> typing.Any:
+    if TYPEGUARD_MAJOR_VERSION <= 2:
+        return typeguard.check_type(argname=argname, value=value, expected_type=expected_type) # type:ignore
+    else:
+        if isinstance(value, jsii._reference_map.InterfaceDynamicProxy): # pyright: ignore [reportAttributeAccessIssue]
+           pass
+        else:
+            if TYPEGUARD_MAJOR_VERSION == 3:
+                typeguard.config.collection_check_strategy = typeguard.CollectionCheckStrategy.ALL_ITEMS # type:ignore
+                typeguard.check_type(value=value, expected_type=expected_type) # type:ignore
+            else:
+                typeguard.check_type(value=value, expected_type=expected_type, collection_check_strategy=typeguard.CollectionCheckStrategy.ALL_ITEMS) # type:ignore
+
+import cdk8s._jsii
+import constructs._jsii
+
+__jsii_assembly__ = jsii.JSIIAssembly.load(
+    \\"test-chart\\", \\"0.0.0\\", __name__[0:-6], \\"test-chart@0.0.0.jsii.tgz\\"
+)
+
+__all__ = [
+    \\"__jsii_assembly__\\",
+]
+
+publication.publish()
+",
+  "test_chart/py.typed": "
+",
+}
+`;
+
+exports[`importing helm chart helm:./test/import/fixtures/test-helm-chart with typescript lanugage 1`] = `
+Object {
+  "author": Object {
+    "name": "generated@generated.com",
+    "roles": Array [
+      "author",
+    ],
+  },
+  "dependencies": "__omitted__",
+  "dependencyClosure": Object {
+    "cdk8s": Object {
+      "targets": Object {
+        "dotnet": Object {
+          "namespace": "Org.Cdk8s",
+          "packageId": "Org.Cdk8s",
+        },
+        "go": Object {
+          "moduleName": "github.com/cdk8s-team/cdk8s-core-go",
+        },
+        "java": Object {
+          "maven": Object {
+            "artifactId": "cdk8s",
+            "groupId": "org.cdk8s",
+          },
+          "package": "org.cdk8s",
+        },
+        "js": Object {
+          "npm": "cdk8s",
+        },
+        "python": Object {
+          "distName": "cdk8s",
+          "module": "cdk8s",
+        },
+      },
+    },
+    "constructs": Object {
+      "targets": Object {
+        "dotnet": Object {
+          "namespace": "Constructs",
+          "packageId": "Constructs",
+        },
+        "go": Object {
+          "moduleName": "github.com/aws/constructs-go",
+        },
+        "java": Object {
+          "maven": Object {
+            "artifactId": "constructs",
+            "groupId": "software.constructs",
+          },
+          "package": "software.constructs",
+        },
+        "js": Object {
+          "npm": "constructs",
+        },
+        "python": Object {
+          "distName": "constructs",
+          "module": "constructs",
+        },
+      },
+    },
+  },
+  "description": "test-chart",
+  "fingerprint": "<fingerprint>",
+  "homepage": "http://generated",
+  "jsiiVersion": "__omitted__",
+  "license": "UNLICENSED",
+  "metadata": Object {
+    "jsii": Object {
+      "pacmak": Object {
+        "hasDefaultInterfaces": true,
+      },
+    },
+  },
+  "name": "test-chart",
+  "repository": Object {
+    "type": "git",
+    "url": "http://generated",
+  },
+  "schema": "jsii/0.10.0",
+  "targets": Object {
+    "js": Object {
+      "npm": "test-chart",
+    },
+  },
+  "types": Object {
+    "test-chart.TestChartImage": Object {
+      "assembly": "test-chart",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "TestChartImage",
+        },
+      },
+      "fqn": "test-chart.TestChartImage",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 118,
+      },
+      "name": "TestChartImage",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartImage#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 134,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartImage#repository",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 122,
+          },
+          "name": "repository",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartImage#tag",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 127,
+          },
+          "name": "tag",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+      ],
+      "symbolId": "test-chart:TestChartImage",
+    },
+    "test-chart.TestChartService": Object {
+      "assembly": "test-chart",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "TestChartService",
+        },
+      },
+      "fqn": "test-chart.TestChartService",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 156,
+      },
+      "name": "TestChartService",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartService#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 172,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartService#port",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 165,
+          },
+          "name": "port",
+          "optional": true,
+          "type": Object {
+            "primitive": "number",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartService#type",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 160,
+          },
+          "name": "type",
+          "optional": true,
+          "type": Object {
+            "fqn": "test-chart.TestChartServiceType",
+          },
+        },
+      ],
+      "symbolId": "test-chart:TestChartService",
+    },
+    "test-chart.TestChartServiceType": Object {
+      "assembly": "test-chart",
+      "docs": Object {
+        "custom": Object {
+          "schema": "TestChartServiceType",
+        },
+      },
+      "fqn": "test-chart.TestChartServiceType",
+      "kind": "enum",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 194,
+      },
+      "members": Array [
+        Object {
+          "docs": Object {
+            "summary": "ClusterIP.",
+          },
+          "name": "CLUSTER_IP",
+        },
+        Object {
+          "docs": Object {
+            "summary": "NodePort.",
+          },
+          "name": "NODE_PORT",
+        },
+        Object {
+          "docs": Object {
+            "summary": "LoadBalancer.",
+          },
+          "name": "LOAD_BALANCER",
+        },
+      ],
+      "name": "TestChartServiceType",
+      "symbolId": "test-chart:TestChartServiceType",
+    },
+    "test-chart.Testchart": Object {
+      "assembly": "test-chart",
+      "base": "constructs.Construct",
+      "fqn": "test-chart.Testchart",
+      "initializer": Object {
+        "locationInModule": Object {
+          "filename": "test-chart.ts",
+          "line": 14,
+        },
+        "parameters": Array [
+          Object {
+            "name": "scope",
+            "type": Object {
+              "fqn": "constructs.Construct",
+            },
+          },
+          Object {
+            "name": "id",
+            "type": Object {
+              "primitive": "string",
+            },
+          },
+          Object {
+            "name": "props",
+            "optional": true,
+            "type": Object {
+              "fqn": "test-chart.TestchartProps",
+            },
+          },
+        ],
+      },
+      "kind": "class",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 13,
+      },
+      "name": "Testchart",
+      "symbolId": "test-chart:Testchart",
+    },
+    "test-chart.TestchartProps": Object {
+      "assembly": "test-chart",
+      "datatype": true,
+      "fqn": "test-chart.TestchartProps",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 5,
+      },
+      "name": "TestchartProps",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 8,
+          },
+          "name": "helmExecutable",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 9,
+          },
+          "name": "helmFlags",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "string",
+              },
+              "kind": "array",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 6,
+          },
+          "name": "namespace",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 7,
+          },
+          "name": "releaseName",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 10,
+          },
+          "name": "values",
+          "optional": true,
+          "type": Object {
+            "fqn": "test-chart.TestchartValues",
+          },
+        },
+      ],
+      "symbolId": "test-chart:TestchartProps",
+    },
+    "test-chart.TestchartValues": Object {
+      "assembly": "test-chart",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "test-chart",
+        },
+      },
+      "fqn": "test-chart.TestchartValues",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 68,
+      },
+      "name": "TestchartValues",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "test-chart#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 94,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "test-chart#global",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 87,
+          },
+          "name": "global",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "test-chart#image",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 72,
+          },
+          "name": "image",
+          "optional": true,
+          "type": Object {
+            "fqn": "test-chart.TestChartImage",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "test-chart#replicas",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 82,
+          },
+          "name": "replicas",
+          "optional": true,
+          "type": Object {
+            "primitive": "number",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "test-chart#service",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 77,
+          },
+          "name": "service",
+          "optional": true,
+          "type": Object {
+            "fqn": "test-chart.TestChartService",
+          },
+        },
+      ],
+      "symbolId": "test-chart:TestchartValues",
+    },
+  },
+  "version": "0.0.0",
+}
+`;
+
+exports[`importing helm chart helm:./test/import/fixtures/test-helm-chart with typescript lanugage 2`] = `
+Object {
+  "test-chart.ts": "// generated by cdk8s
+import { Helm, HelmProps } from 'cdk8s';
+import { Construct } from 'constructs';
+
+export interface TestchartProps {
+  readonly namespace?: string;
+  readonly releaseName?: string;
+  readonly helmExecutable?: string;
+  readonly helmFlags?: string[];
+  readonly values?: TestchartValues;
+}
+
+export class Testchart extends Construct {
+  public constructor(scope: Construct, id: string, props: TestchartProps = {}) {
+    super(scope, id);
+    let updatedProps = {};
+
+    if (props.values) {
+      const values = toJson_TestchartValues(props.values);
+      if (values) {
+        const { additionalValues, ...valuesWithoutAdditionalValues } = values;
+        updatedProps = {
+          ...props,
+          values: {
+            ...this.flattenAdditionalValues(valuesWithoutAdditionalValues),
+            ...additionalValues,
+          },
+        };
+      }
+    }
+
+    const finalProps: HelmProps = {
+      chart: './test/import/fixtures/test-helm-chart',
+      version: '1.0.0',
+      ...(Object.keys(updatedProps).length !== 0 ? updatedProps : props),
+    };
+
+    new Helm(this, 'Helm', finalProps);
+  }
+
+  private flattenAdditionalValues(props: { [key: string]: any }): { [key: string]: any } {
+    for (let prop in props) {
+      if (Array.isArray(props[prop])) {
+        props[prop].map((item: any) => {
+          if (typeof item === 'object' && prop !== 'additionalValues') {
+            return this.flattenAdditionalValues(item);
+          }
+          return item;
+        });
+      }
+      else if (typeof props[prop] === 'object' && prop !== 'additionalValues') {
+        props[prop] = this.flattenAdditionalValues(props[prop]);
+      }
+    }
+
+    const { additionalValues, ...valuesWithoutAdditionalValues } = props;
+
+    return {
+      ...valuesWithoutAdditionalValues,
+      ...additionalValues,
+    };
+  }
+}
+
+/**
+ * @schema test-chart
+ */
+export interface TestchartValues {
+  /**
+   * @schema test-chart#image
+   */
+  readonly image?: TestChartImage;
+
+  /**
+   * @schema test-chart#service
+   */
+  readonly service?: TestChartService;
+
+  /**
+   * @schema test-chart#replicas
+   */
+  readonly replicas?: number;
+
+  /**
+   * @schema test-chart#global
+   */
+  readonly global?: { [key: string]: any };
+
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema test-chart#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+}
+
+/**
+ * Converts an object of type 'TestchartValues' to JSON representation.
+ */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+export function toJson_TestchartValues(obj: TestchartValues | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'image': toJson_TestChartImage(obj.image),
+    'service': toJson_TestChartService(obj.service),
+    'replicas': obj.replicas,
+    'global': ((obj.global) === undefined) ? undefined : (Object.entries(obj.global).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+
+/**
+ * @schema TestChartImage
+ */
+export interface TestChartImage {
+  /**
+   * @schema TestChartImage#repository
+   */
+  readonly repository?: string;
+
+  /**
+   * @schema TestChartImage#tag
+   */
+  readonly tag?: string;
+
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema TestChartImage#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+}
+
+/**
+ * Converts an object of type 'TestChartImage' to JSON representation.
+ */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+export function toJson_TestChartImage(obj: TestChartImage | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'repository': obj.repository,
+    'tag': obj.tag,
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+
+/**
+ * @schema TestChartService
+ */
+export interface TestChartService {
+  /**
+   * @schema TestChartService#type
+   */
+  readonly type?: TestChartServiceType;
+
+  /**
+   * @schema TestChartService#port
+   */
+  readonly port?: number;
+
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema TestChartService#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+}
+
+/**
+ * Converts an object of type 'TestChartService' to JSON representation.
+ */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+export function toJson_TestChartService(obj: TestChartService | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'type': obj.type,
+    'port': obj.port,
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+
+/**
+ * @schema TestChartServiceType
+ */
+export enum TestChartServiceType {
+  /** ClusterIP */
+  CLUSTER_IP = \\"ClusterIP\\",
+  /** NodePort */
+  NODE_PORT = \\"NodePort\\",
+  /** LoadBalancer */
+  LOAD_BALANCER = \\"LoadBalancer\\",
+}
+
+",
+}
+`;
+
 exports[`importing helm chart helm:https://charts.bitnami.com/bitnami/mysql@9.10.10 with python lanugage 1`] = `
 Object {
   "author": Object {
