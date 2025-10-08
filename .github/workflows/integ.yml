@@ -22,8 +22,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - name: Install pipenv
-        run: pip install pipenv
+      - name: Install uv
+        run: pip install uv
       - name: Set up Go
         uses: actions/setup-go@v4
         with:

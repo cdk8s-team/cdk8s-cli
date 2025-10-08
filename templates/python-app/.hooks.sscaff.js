@@ -7,9 +7,9 @@ const cli = require.resolve('../../bin/cdk8s');
 
 exports.pre = () => {
   try {
-    execSync(`${platform() === 'win32' ? 'where' : 'which'} pipenv`);
+    execSync(`${platform() === 'win32' ? 'where' : 'which'} uv`);
   } catch {
-    console.error(`Unable to find "pipenv". Install from https://pipenv.pypa.io/en/latest/installation/`);
+    console.error(`Unable to find "uv". Install from https://docs.astral.sh/uv/getting-started/installation/`);
     process.exit(1);
   }
 };
@@ -23,19 +23,19 @@ exports.post = options => {
     throw new Error(`missing context "pypi_cdk8s_plus"`);
   }
 
-  execSync('pipenv lock --clear')
+  execSync('uv lock --refresh')
 
-  // this installs the libraries in the Pipfile we provide
-  execSync('pipenv install', { stdio: 'inherit' });
+  // this installs the libraries in the pyproject.toml we provide
+  execSync('uv sync', { stdio: 'inherit' });
 
-  // these are more akward to put in the Pipfile since they can be local wheel files
-  execSync(`pipenv install --pre ${pypi_cdk8s}`, { stdio: 'inherit' });
-  execSync(`pipenv install --pre ${pypi_cdk8s_plus}`, { stdio: 'inherit' });
+  // these are more akward to put in the pyproject.toml since they can be local wheel files
+  execSync(`uv pip install --prerelease allow ${pypi_cdk8s}`, { stdio: 'inherit' });
+  execSync(`uv pip install --prerelease allow ${pypi_cdk8s_plus}`, { stdio: 'inherit' });
 
   chmodSync('main.py', '700');
 
   execSync(`node "${cli}" import k8s -l python`);
-  execSync(`pipenv run python main.py`);
+  execSync(`uv run python main.py`);
 
   console.log(readFileSync('./help', 'utf-8'));
 };

@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: 2.x
-      - run: pip3 install pipenv
+      - run: pip3 install uv
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
