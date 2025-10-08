@@ -274,7 +274,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 100,
+        "line": 99,
       },
       "name": "ConfigurationSpec",
       "properties": Array [
@@ -289,7 +289,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 106,
+            "line": 105,
           },
           "name": "crossplane",
           "optional": true,
@@ -308,7 +308,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 113,
+            "line": 112,
           },
           "name": "dependsOn",
           "optional": true,
@@ -337,7 +337,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 137,
+        "line": 135,
       },
       "name": "ConfigurationSpecCrossplane",
       "properties": Array [
@@ -352,7 +352,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 143,
+            "line": 141,
           },
           "name": "version",
           "type": Object {
@@ -376,7 +376,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "meta.pkg.crossplane.io.ts",
-        "line": 166,
+        "line": 163,
       },
       "name": "ConfigurationSpecDependsOn",
       "properties": Array [
@@ -391,7 +391,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 186,
+            "line": 183,
           },
           "name": "version",
           "type": Object {
@@ -409,7 +409,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 172,
+            "line": 169,
           },
           "name": "configuration",
           "optional": true,
@@ -428,7 +428,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "meta.pkg.crossplane.io.ts",
-            "line": 179,
+            "line": 176,
           },
           "name": "provider",
           "optional": true,
@@ -522,7 +522,6 @@ export interface CompositeResourceDefinitionProps {
    * @schema CompositeResourceDefinition#spec
    */
   readonly spec?: CompositeResourceDefinitionSpec;
-
 }
 
 /**
@@ -594,7 +593,6 @@ export interface CompositeResourceDefinitionSpec {
    * @schema CompositeResourceDefinitionSpec#versions
    */
   readonly versions: CompositeResourceDefinitionSpecVersions[];
-
 }
 
 /**
@@ -666,7 +664,6 @@ export interface CompositeResourceDefinitionSpecClaimNames {
    * @schema CompositeResourceDefinitionSpecClaimNames#singular
    */
   readonly singular?: string;
-
 }
 
 /**
@@ -700,7 +697,6 @@ export interface CompositeResourceDefinitionSpecDefaultCompositionRef {
    * @schema CompositeResourceDefinitionSpecDefaultCompositionRef#name
    */
   readonly name: string;
-
 }
 
 /**
@@ -729,7 +725,6 @@ export interface CompositeResourceDefinitionSpecEnforcedCompositionRef {
    * @schema CompositeResourceDefinitionSpecEnforcedCompositionRef#name
    */
   readonly name: string;
-
 }
 
 /**
@@ -795,7 +790,6 @@ export interface CompositeResourceDefinitionSpecNames {
    * @schema CompositeResourceDefinitionSpecNames#singular
    */
   readonly singular?: string;
-
 }
 
 /**
@@ -857,7 +851,6 @@ export interface CompositeResourceDefinitionSpecVersions {
    * @schema CompositeResourceDefinitionSpecVersions#served
    */
   readonly served: boolean;
-
 }
 
 /**
@@ -925,7 +918,6 @@ export interface CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns
    * @schema CompositeResourceDefinitionSpecVersionsAdditionalPrinterColumns#type
    */
   readonly type: string;
-
 }
 
 /**
@@ -959,7 +951,6 @@ export interface CompositeResourceDefinitionSpecVersionsSchema {
    * @schema CompositeResourceDefinitionSpecVersionsSchema#openAPIV3Schema
    */
   readonly openApiv3Schema?: any;
-
 }
 
 /**
@@ -1048,7 +1039,6 @@ export interface CompositeResourceDefinitionV1Beta1Props {
    * @schema CompositeResourceDefinitionV1Beta1#spec
    */
   readonly spec?: CompositeResourceDefinitionV1Beta1Spec;
-
 }
 
 /**
@@ -1120,7 +1110,6 @@ export interface CompositeResourceDefinitionV1Beta1Spec {
    * @schema CompositeResourceDefinitionV1Beta1Spec#versions
    */
   readonly versions: CompositeResourceDefinitionV1Beta1SpecVersions[];
-
 }
 
 /**
@@ -1192,7 +1181,6 @@ export interface CompositeResourceDefinitionV1Beta1SpecClaimNames {
    * @schema CompositeResourceDefinitionV1Beta1SpecClaimNames#singular
    */
   readonly singular?: string;
-
 }
 
 /**
@@ -1226,7 +1214,6 @@ export interface CompositeResourceDefinitionV1Beta1SpecDefaultCompositionRef {
    * @schema CompositeResourceDefinitionV1Beta1SpecDefaultCompositionRef#name
    */
   readonly name: string;
-
 }
 
 /**
@@ -1255,7 +1242,6 @@ export interface CompositeResourceDefinitionV1Beta1SpecEnforcedCompositionRef {
    * @schema CompositeResourceDefinitionV1Beta1SpecEnforcedCompositionRef#name
    */
   readonly name: string;
-
 }
 
 /**
@@ -1321,7 +1307,6 @@ export interface CompositeResourceDefinitionV1Beta1SpecNames {
    * @schema CompositeResourceDefinitionV1Beta1SpecNames#singular
    */
   readonly singular?: string;
-
 }
 
 /**
@@ -1383,7 +1368,6 @@ export interface CompositeResourceDefinitionV1Beta1SpecVersions {
    * @schema CompositeResourceDefinitionV1Beta1SpecVersions#served
    */
   readonly served: boolean;
-
 }
 
 /**
@@ -1451,7 +1435,6 @@ export interface CompositeResourceDefinitionV1Beta1SpecVersionsAdditionalPrinter
    * @schema CompositeResourceDefinitionV1Beta1SpecVersionsAdditionalPrinterColumns#type
    */
   readonly type: string;
-
 }
 
 /**
@@ -1485,7 +1468,6 @@ export interface CompositeResourceDefinitionV1Beta1SpecVersionsSchema {
    * @schema CompositeResourceDefinitionV1Beta1SpecVersionsSchema#openAPIV3Schema
    */
   readonly openApiv3Schema?: any;
-
 }
 
 /**
@@ -1574,7 +1556,6 @@ export interface CompositionProps {
    * @schema Composition#spec
    */
   readonly spec?: CompositionSpec;
-
 }
 
 /**
@@ -1618,7 +1599,6 @@ export interface CompositionSpec {
    * @schema CompositionSpec#writeConnectionSecretsToNamespace
    */
   readonly writeConnectionSecretsToNamespace?: string;
-
 }
 
 /**
@@ -1656,7 +1636,6 @@ export interface CompositionSpecCompositeTypeRef {
    * @schema CompositionSpecCompositeTypeRef#kind
    */
   readonly kind: string;
-
 }
 
 /**
@@ -1707,7 +1686,6 @@ export interface CompositionSpecResources {
    * @schema CompositionSpecResources#readinessChecks
    */
   readonly readinessChecks?: CompositionSpecResourcesReadinessChecks[];
-
 }
 
 /**
@@ -1753,7 +1731,6 @@ export interface CompositionSpecResourcesConnectionDetails {
    * @schema CompositionSpecResourcesConnectionDetails#value
    */
   readonly value?: string;
-
 }
 
 /**
@@ -1798,7 +1775,6 @@ export interface CompositionSpecResourcesPatches {
    * @schema CompositionSpecResourcesPatches#transforms
    */
   readonly transforms?: CompositionSpecResourcesPatchesTransforms[];
-
 }
 
 /**
@@ -1850,7 +1826,6 @@ export interface CompositionSpecResourcesReadinessChecks {
    * @schema CompositionSpecResourcesReadinessChecks#type
    */
   readonly type: CompositionSpecResourcesReadinessChecksType;
-
 }
 
 /**
@@ -1903,7 +1878,6 @@ export interface CompositionSpecResourcesPatchesTransforms {
    * @schema CompositionSpecResourcesPatchesTransforms#type
    */
   readonly type: string;
-
 }
 
 /**
@@ -1951,7 +1925,6 @@ export interface CompositionSpecResourcesPatchesTransformsMath {
    * @schema CompositionSpecResourcesPatchesTransformsMath#multiply
    */
   readonly multiply?: number;
-
 }
 
 /**
@@ -1980,7 +1953,6 @@ export interface CompositionSpecResourcesPatchesTransformsString {
    * @schema CompositionSpecResourcesPatchesTransformsString#fmt
    */
   readonly fmt: string;
-
 }
 
 /**
@@ -2069,7 +2041,6 @@ export interface CompositionV1Beta1Props {
    * @schema CompositionV1Beta1#spec
    */
   readonly spec?: CompositionV1Beta1Spec;
-
 }
 
 /**
@@ -2113,7 +2084,6 @@ export interface CompositionV1Beta1Spec {
    * @schema CompositionV1Beta1Spec#writeConnectionSecretsToNamespace
    */
   readonly writeConnectionSecretsToNamespace?: string;
-
 }
 
 /**
@@ -2151,7 +2121,6 @@ export interface CompositionV1Beta1SpecCompositeTypeRef {
    * @schema CompositionV1Beta1SpecCompositeTypeRef#kind
    */
   readonly kind: string;
-
 }
 
 /**
@@ -2202,7 +2171,6 @@ export interface CompositionV1Beta1SpecResources {
    * @schema CompositionV1Beta1SpecResources#readinessChecks
    */
   readonly readinessChecks?: CompositionV1Beta1SpecResourcesReadinessChecks[];
-
 }
 
 /**
@@ -2248,7 +2216,6 @@ export interface CompositionV1Beta1SpecResourcesConnectionDetails {
    * @schema CompositionV1Beta1SpecResourcesConnectionDetails#value
    */
   readonly value?: string;
-
 }
 
 /**
@@ -2293,7 +2260,6 @@ export interface CompositionV1Beta1SpecResourcesPatches {
    * @schema CompositionV1Beta1SpecResourcesPatches#transforms
    */
   readonly transforms?: CompositionV1Beta1SpecResourcesPatchesTransforms[];
-
 }
 
 /**
@@ -2345,7 +2311,6 @@ export interface CompositionV1Beta1SpecResourcesReadinessChecks {
    * @schema CompositionV1Beta1SpecResourcesReadinessChecks#type
    */
   readonly type: CompositionV1Beta1SpecResourcesReadinessChecksType;
-
 }
 
 /**
@@ -2398,7 +2363,6 @@ export interface CompositionV1Beta1SpecResourcesPatchesTransforms {
    * @schema CompositionV1Beta1SpecResourcesPatchesTransforms#type
    */
   readonly type: string;
-
 }
 
 /**
@@ -2446,7 +2410,6 @@ export interface CompositionV1Beta1SpecResourcesPatchesTransformsMath {
    * @schema CompositionV1Beta1SpecResourcesPatchesTransformsMath#multiply
    */
   readonly multiply?: number;
-
 }
 
 /**
@@ -2475,7 +2438,6 @@ export interface CompositionV1Beta1SpecResourcesPatchesTransformsString {
    * @schema CompositionV1Beta1SpecResourcesPatchesTransformsString#fmt
    */
   readonly fmt: string;
-
 }
 
 /**
@@ -2569,7 +2531,6 @@ export interface ConfigurationProps {
    * @schema Configuration#spec
    */
   readonly spec: ConfigurationSpec;
-
 }
 
 /**
@@ -2606,7 +2567,6 @@ export interface ConfigurationSpec {
    * @schema ConfigurationSpec#dependsOn
    */
   readonly dependsOn?: ConfigurationSpecDependsOn[];
-
 }
 
 /**
@@ -2636,7 +2596,6 @@ export interface ConfigurationSpecCrossplane {
    * @schema ConfigurationSpecCrossplane#version
    */
   readonly version: string;
-
 }
 
 /**
@@ -2679,7 +2638,6 @@ export interface ConfigurationSpecDependsOn {
    * @schema ConfigurationSpecDependsOn#version
    */
   readonly version: string;
-
 }
 
 /**
