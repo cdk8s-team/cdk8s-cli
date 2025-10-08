@@ -34,7 +34,7 @@ const project = new Cdk8sTeamTypeScriptProject({
     'codemaker',
     'constructs',
     'fs-extra@^8',
-    'jsii-srcmak@0.1.1236',
+    'jsii-srcmak@0.1.1319',
     'jsii-pacmak',
     'jsii-rosetta',
     'sscaff',
