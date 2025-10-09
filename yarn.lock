@@ -3869,29 +3869,10 @@ jsii-reflect@^1.115.0:
     oo-ascii-tree "^1.115.0"
     yargs "^17.7.2"
 
-jsii-rosetta@^5.9.3:
+jsii-rosetta@^5.9.3, jsii-rosetta@^5.9.8:
   version "5.9.8"
   resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-5.9.8.tgz#dbe2bb9ea89b4793e3ff8f5c3fea7fcbb93a1bba"
   integrity sha512-QpCE+5CmYPidfgtDztlFeYcfr2LuTYh3o9H58qhtFHHtTxY3PaRDxZGB4LwcuO6lRnz1a9INlgE2O6AafffReg==
-  dependencies:
-    "@jsii/check-node" "1.114.1"
-    "@jsii/spec" "^1.114.1"
-    "@xmldom/xmldom" "^0.9.8"
-    chalk "^4"
-    commonmark "^0.31.2"
-    fast-glob "^3.3.3"
-    jsii "~5.9.1"
-    semver "^7.7.2"
-    semver-intersect "^1.5.0"
-    stream-json "^1.9.1"
-    typescript "~5.9"
-    workerpool "^6.5.1"
-    yargs "^17.7.2"
-
-jsii-rosetta@^5.9.7:
-  version "5.9.7"
-  resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-5.9.7.tgz#b0ae7aa3dbefb6410b963b480b0b0ce93f89853b"
-  integrity sha512-OQbKI0Q1aOAbJ8vR1I+/Jv3cqZisgBBEm0DwSxrRfEeNd67UOYIcsHM0nefsV48R/FZAKIGEGxZYlix9jgAl8Q==
   dependencies:
     "@jsii/check-node" "1.114.1"
     "@jsii/spec" "^1.114.1"
