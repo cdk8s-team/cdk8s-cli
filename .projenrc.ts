@@ -20,7 +20,7 @@ const project = new Cdk8sTeamTypeScriptProject({
     'automation',
     'containers',
   ],
-  workflowBootstrapSteps: [{ run: 'pip3 install pipenv' }],
+  workflowBootstrapSteps: [{ run: 'pip3 install uv' }],
   defaultReleaseBranch: '2.x',
   majorVersion: 2,
   bin: {

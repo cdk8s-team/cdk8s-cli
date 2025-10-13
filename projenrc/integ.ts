@@ -92,8 +92,8 @@ function runSteps(tasks: string[], nodeVersion: string, python: boolean, go: boo
       },
     });
     steps.push({
-      name: 'Install pipenv',
-      run: 'pip install pipenv',
+      name: 'Install uv',
+      run: 'pip install uv',
     });
   }
 

@@ -20,7 +20,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
-      - run: pip3 install pipenv
+      - run: pip3 install uv
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
