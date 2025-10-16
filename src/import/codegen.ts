@@ -265,10 +265,10 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
   // Create custom type
   typegen.emitCustomType(chartName, code => {
 
-    const valuesInterface = `${chartName}Values`;
+    let valuesInterface = `${chartName}Values`;
     if (schema !== undefined) {
       // Creating values interface
-      emitValuesInterface();
+      valuesInterface = emitValuesInterface();
 
       function emitValuesInterface() {
 
@@ -288,7 +288,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
           };
         }
 
-        typegen.emitType(valuesInterface, copyOfSchema, def.fqn);
+        return typegen.emitType(valuesInterface, copyOfSchema, def.fqn);
       }
 
       function addAdditionalValuesToProps(schma: JSONSchema4): JSONSchema4 {

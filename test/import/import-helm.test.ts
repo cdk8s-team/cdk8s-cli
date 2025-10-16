@@ -11,6 +11,7 @@ describe.each([
   'helm:oci://registry-1.docker.io/bitnamicharts/mysql@9.12.5',
   'minio:=helm:https://operator.min.io/operator@5.0.9',
   'helm:https://grafana.github.io/helm-charts/loki@5.27.0',
+  'helm:https://charts.jetstack.io/cert-manager@v1.17.1', // Contains schema using $ref and version with 'v' prefix
 ])('importing helm chart %s', (testChartUrl) => {
   const spec = parseImports(testChartUrl);
 
