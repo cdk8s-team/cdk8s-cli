@@ -3886,9 +3886,9 @@ jsii-srcmak@0.1.1319:
     yargs "^17.7.2"
 
 jsii@~5.9.1, jsii@~5.9.3:
-  version "5.9.9"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.9.9.tgz#65e44a4bccd8d0ebbcd7c2a5aa44e42daa02d832"
-  integrity sha512-lfEK5z1XKEmTtlZZ1B7IfilHDqQrlDXBgs3UJsyLisocXoZoExGYA0F9SiXg7mOa6CPhCHYkuaGu2N6TIqS+Ig==
+  version "5.9.10"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.9.10.tgz#0324c973a9f259b14e78e7018be4cf02ba10a2a8"
+  integrity sha512-5CcN7hMRJArrVWL9RCYlTtKf6ZXO4Oi6NNxtuAyjAESF/uxy8i/maDdR72Ot1r8GlFq2bUFK0nimE3+ZP2UCHA==
   dependencies:
     "@jsii/check-node" "1.116.0"
     "@jsii/spec" "1.116.0"
