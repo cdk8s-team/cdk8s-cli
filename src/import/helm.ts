@@ -7,7 +7,6 @@ import { CodeMaker } from 'codemaker';
 import type { JSONSchema4 } from 'json-schema';
 import { TypeGenerator } from 'json2jsii';
 import * as semver from 'semver';
-import * as yaml from 'yaml';
 import { ImportBase } from './base';
 import { emitHelmHeader, generateHelmConstruct } from './codegen';
 import { ImportSpec } from '../config';
@@ -37,19 +36,16 @@ export class ImportHelm extends ImportBase {
     this.chartName = chartName;
     this.chartUrl = chartUrl;
     this.chartVersion = chartVersion;
-    const tmpDir = pullHelmRepo(chartUrl, chartName, chartVersion);
 
-    const chartYamlFilePath = path.join(tmpDir, this.chartName, CHART_YAML);
-    let contents: any[];
-
-    const isLocalChart = !chartUrl.startsWith('http') && !chartUrl.startsWith('oci://');
-    if (isLocalChart) {
-      const yamlContent = fs.readFileSync(chartYamlFilePath, 'utf-8');
-      contents = [yaml.parse(yamlContent)];
+    let tmpDir: string;
+    if (!chartUrl.startsWith('http') && !chartUrl.startsWith('oci://')) {
+      tmpDir = copyHelmLocalChart(chartUrl, chartName);
     } else {
-      contents = Yaml.load(chartYamlFilePath);
+      tmpDir = pullHelmRepo(chartUrl, chartName, chartVersion);
     }
 
+    const chartYamlFilePath = path.join(tmpDir, this.chartName, CHART_YAML);
+    const contents = Yaml.load(chartYamlFilePath);
     if (contents.length === 1 && contents[0].dependencies) {
       for (const dependency of contents[0].dependencies) {
         this.chartDependencies.push(dependency.name);
@@ -167,31 +163,34 @@ function extractHelmChartDetails(url: string) {
 }
 
 /**
+ * Copy local helm chart to a temporary directory to maintain the expected `workdir/chartName` structure
+ * @param chartUrl Chart url
+ * @param chartName Chart name
+ * @returns Temporary directory path
+ */
+function copyHelmLocalChart(chartUrl: string, chartName: string): string {
+  const absolutePath = path.resolve(chartUrl);
+  if (!fs.existsSync(absolutePath)) {
+    throw new Error(`Local chart path does not exist: ${absolutePath}`);
+  }
+
+  const workdir = fs.mkdtempSync(path.join(os.tmpdir(), 'cdk8s-helm-local-'));
+  const chartDir = path.join(workdir, chartName);
+
+  fs.mkdirSync(chartDir, { recursive: true });
+  fs.cpSync(absolutePath, chartDir, { recursive: true });
+
+  return workdir;
+}
+
+/**
  * Pulls the helm chart in a temporary directory
- * @param chartUrl Chart url or local path
+ * @param chartUrl Chart url
  * @param chartName Chart name
  * @param chartVersion Chart version
  * @returns Temporary directory path
  */
 function pullHelmRepo(chartUrl: string, chartName: string, chartVersion: string): string {
-  if (!chartUrl.startsWith('http') && !chartUrl.startsWith('oci://')) {
-    // For local charts, resolve the absolute path and return the parent directory
-    // so that the chart can be accessed as workdir/chartName just like remote charts
-    const absolutePath = path.resolve(chartUrl);
-    if (!fs.existsSync(absolutePath)) {
-      throw new Error(`Local chart path does not exist: ${absolutePath}`);
-    }
-
-    // Create a temp directory and copy the chart to maintain the expected structure
-    const workdir = fs.mkdtempSync(path.join(os.tmpdir(), 'cdk8s-helm-local-'));
-    const chartDir = path.join(workdir, chartName);
-
-    fs.mkdirSync(chartDir, { recursive: true });
-    fs.cpSync(absolutePath, chartDir, { recursive: true });
-
-    return workdir;
-  }
-
   const workdir = fs.mkdtempSync(path.join(os.tmpdir(), 'cdk8s-helm-'));
 
   const args = new Array<string>();
