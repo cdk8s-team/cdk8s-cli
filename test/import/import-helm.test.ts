@@ -1,7 +1,10 @@
+import * as path from 'path';
 import { testImportMatchSnapshot } from './util';
 import { Language } from '../../src/import/base';
 import { ImportHelm } from '../../src/import/helm';
 import { parseImports } from '../../src/util';
+
+const localChartPath = path.join(__dirname, 'fixtures', 'test-helm-chart');
 
 // TODO add multiple chart urls to test. Especially after fixing Json2Jsii issues
 describe.each([
@@ -12,11 +15,23 @@ describe.each([
   'minio:=helm:https://operator.min.io/operator@5.0.9',
   'helm:https://grafana.github.io/helm-charts/loki@5.27.0',
   'helm:https://charts.jetstack.io/cert-manager@v1.17.1', // Contains schema using $ref and version with 'v' prefix
+  `helm:./${path.relative(process.cwd(), localChartPath)}`, // Local chart (relative path)
 ])('importing helm chart %s', (testChartUrl) => {
   const spec = parseImports(testChartUrl);
 
   testImportMatchSnapshot('with typescript lanugage', async () => ImportHelm.fromSpec(spec));
   testImportMatchSnapshot('with python lanugage', async () => ImportHelm.fromSpec(spec), { targetLanguage: Language.PYTHON });
+});
+
+describe('local helm chart import', () => {
+  // As different environments may have different absolute paths, we only test that the import works
+  test('imports local chart with absolute path', async () => {
+    const absPathChartUrl = `helm:${localChartPath}`;
+    const spec = parseImports(absPathChartUrl);
+
+    const importer = await ImportHelm.fromSpec(spec);
+    expect(importer.moduleNames).toEqual(['test-chart']);
+  });
 });
 
 describe('helm chart import validations', () => {
@@ -39,5 +54,19 @@ describe('helm chart import validations', () => {
     const spec = parseImports(testUrl);
 
     await expect(() => ImportHelm.fromSpec(spec)).rejects.toThrow();
+  });
+
+  test('throws if local chart path does not exist', async () => {
+    const testUrl = 'helm:./non-existent-chart';
+    const spec = parseImports(testUrl);
+
+    await expect(() => ImportHelm.fromSpec(spec)).rejects.toThrow('Local chart path does not exist:');
+  });
+
+  test('throws if local chart path does not contain Chart.yaml', async () => {
+    const testUrl = 'helm:./test/import/fixtures';
+    const spec = parseImports(testUrl);
+
+    await expect(() => ImportHelm.fromSpec(spec)).rejects.toThrow('Chart.yaml not found in local path:');
   });
 });

@@ -384,11 +384,12 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.line();
 
       code.open('const finalProps: HelmProps = {');
-      if (repoUrl.startsWith('oci://')) {
-        code.line(`chart: \'${repoUrl}\',`);
-      } else {
+      if (repoUrl.startsWith('http')) {
         code.line(`chart: \'${def.chartName}\',`);
         code.line(`repo: \'${repoUrl}\',`);
+      } else {
+        // OCI or local path
+        code.line(`chart: \'${repoUrl}\',`);
       }
       code.line(`version: \'${chartVersion}\',`);
       code.line('...(Object.keys(updatedProps).length !== 0 ? updatedProps : props),');

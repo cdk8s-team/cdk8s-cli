@@ -36,11 +36,16 @@ export class ImportHelm extends ImportBase {
     this.chartName = chartName;
     this.chartUrl = chartUrl;
     this.chartVersion = chartVersion;
-    const tmpDir = pullHelmRepo(chartUrl, chartName, chartVersion);
+
+    let tmpDir: string;
+    if (!chartUrl.startsWith('http') && !chartUrl.startsWith('oci://')) {
+      tmpDir = copyHelmLocalChart(chartUrl, chartName);
+    } else {
+      tmpDir = pullHelmRepo(chartUrl, chartName, chartVersion);
+    }
 
     const chartYamlFilePath = path.join(tmpDir, this.chartName, CHART_YAML);
     const contents = Yaml.load(chartYamlFilePath);
-
     if (contents.length === 1 && contents[0].dependencies) {
       for (const dependency of contents[0].dependencies) {
         this.chartDependencies.push(dependency.name);
@@ -108,7 +113,30 @@ function extractHelmChartDetails(url: string) {
     const minor = helmDetails[3];
     const patch = helmDetails[4];
     chartVersion = `${major}.${minor}.${patch}`;
+  } else if (url.startsWith('helm:.') || url.startsWith('helm:/')) {
+    // URL: helm:./my-charts or helm:/absolute/path/to/my-charts
+    const localPath = url.slice(5);
 
+    if (!localPath) {
+      throw Error(`Invalid helm URL: ${url}. Must match the format: 'helm:<local-path>'.`);
+    }
+    if (!fs.existsSync(localPath)) {
+      throw Error(`Local chart path does not exist: ${localPath}`);
+    }
+
+    const chartYamlPath = path.join(localPath, CHART_YAML);
+    if (!fs.existsSync(chartYamlPath)) {
+      throw Error(`Chart.yaml not found in local path: ${localPath}`);
+    }
+
+    const chartYamlContent = Yaml.load(chartYamlPath);
+    if (chartYamlContent.length !== 1 || !chartYamlContent[0].name || !chartYamlContent[0].version) {
+      throw Error(`Invalid Chart.yaml in local path: ${localPath}. Missing name or version.`);
+    }
+
+    chartUrl = localPath;
+    chartName = chartYamlContent[0].name;
+    chartVersion = chartYamlContent[0].version;
   } else {
     // URL: helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0
     const helmRegex = /^helm:([A-Za-z0-9_.-:\-]+)\/([A-Za-z0-9_.-:\-]+)\@(v?[0-9]+)\.([0-9]+)\.([A-Za-z0-9-+]+)$/;
@@ -132,6 +160,27 @@ function extractHelmChartDetails(url: string) {
   }
 
   return [chartUrl, chartName, chartVersion];
+}
+
+/**
+ * Copy local helm chart to a temporary directory to maintain the expected `workdir/chartName` structure
+ * @param chartUrl Chart url
+ * @param chartName Chart name
+ * @returns Temporary directory path
+ */
+function copyHelmLocalChart(chartUrl: string, chartName: string): string {
+  const absolutePath = path.resolve(chartUrl);
+  if (!fs.existsSync(absolutePath)) {
+    throw new Error(`Local chart path does not exist: ${absolutePath}`);
+  }
+
+  const workdir = fs.mkdtempSync(path.join(os.tmpdir(), 'cdk8s-helm-local-'));
+  const chartDir = path.join(workdir, chartName);
+
+  fs.mkdirSync(chartDir, { recursive: true });
+  fs.cpSync(absolutePath, chartDir, { recursive: true });
+
+  return workdir;
 }
 
 /**
