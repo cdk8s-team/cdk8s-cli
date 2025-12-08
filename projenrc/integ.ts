@@ -100,7 +100,7 @@ function runSteps(tasks: string[], nodeVersion: string, python: boolean, go: boo
   if (go) {
     steps.push({
       name: 'Set up Go',
-      uses: 'actions/setup-go@v4',
+      uses: 'actions/setup-go@v6',
       with: {
         'go-version': '1.18',
       },
