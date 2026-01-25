@@ -33,7 +33,7 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
     }
   }
 
-  // run all init tests on node 16
+  // run all init tests on all node LTS
   integWorkflow.addJob('init', {
     runsOn: ['${{ matrix.os }}'],
     strategy: {
@@ -48,8 +48,8 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
     steps: runSteps([initTask.name], 'lts/*', true, true),
   });
 
-  // run typescript app on node 18 as well
-  const nodeVersions = [18];
+  // run typescript app on node 20 as well
+  const nodeVersions = [20];
   integWorkflow.addJob('init-typescript-app', {
     runsOn: ['ubuntu-latest'],
     strategy: {
