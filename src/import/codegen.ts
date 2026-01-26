@@ -346,6 +346,8 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
 
     function emitConstruct() {
       code.openBlock(`export class ${chartName} extends Construct`);
+      code.line('public helm: Helm;');
+      code.line();
 
       emitInitializer();
 
@@ -396,7 +398,7 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
       code.close('};');
 
       code.line();
-      code.line('new Helm(this, \'Helm\', finalProps);');
+      code.line('this.helm = new Helm(this, \'Helm\', finalProps);');
       code.closeBlock();
     }
 
