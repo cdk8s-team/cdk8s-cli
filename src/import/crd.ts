@@ -87,23 +87,25 @@ const TYPESCRIPT_BUILTIN_TYPES = new Set([
  * @param kind The CRD kind name
  * @returns Post-processed code with conflicts resolved
  */
-function fixBuiltinTypeConflicts(renderedCode: string, kind: string): string {
-  if (!TYPESCRIPT_BUILTIN_TYPES.has(kind)) {
-    return renderedCode;
-  }
-
+function fixBuiltinTypeConflicts(renderedCode: string, kind: string, fileLevelConflicts?: Set<string>): string {
   let result = renderedCode;
 
-  // Replace generic type usages like "Record<string, any>" but not "RecordProps" or "Record.GVK"
-  const genericPattern = new RegExp(`\\b${kind}<([^>]+)>`, 'g');
-  result = result.replace(genericPattern, `Json${kind}<$1>`);
+  // Fix generic type usages for this CRD's own kind (e.g. "Record<string, any>" -> "JsonRecord<string, any>")
+  if (TYPESCRIPT_BUILTIN_TYPES.has(kind)) {
+    const genericPattern = new RegExp(`\\b${kind}<([^>]+)>`, 'g');
+    result = result.replace(genericPattern, `Json${kind}<$1>`);
+  }
 
-  // Replace runtime static method calls like "Object.entries(", "Object.keys(" etc.
-  // These are shadowed when a CRD class has the same name as a global constructor.
+  // Fix runtime static method calls for ALL conflicting kinds in the same file.
+  // When a CRD class like "Object" is defined in a file, it shadows globalThis.Object
+  // for ALL code in that file, including code generated for other CRDs like ProviderConfig.
   const RUNTIME_GLOBALS = ['Object', 'Array', 'String', 'Number', 'Boolean', 'Symbol', 'Function', 'Promise', 'Map', 'Set'];
-  if (RUNTIME_GLOBALS.includes(kind)) {
-    const methodPattern = new RegExp(`\\b${kind}\\.(entries|keys|values|assign|freeze|defineProperty|getOwnPropertyDescriptor|getPrototypeOf|create|is|prototype|hasOwnProperty|fromEntries)`, 'g');
-    result = result.replace(methodPattern, `_${kind}.$1`);
+  const conflictsToFix = fileLevelConflicts ?? (TYPESCRIPT_BUILTIN_TYPES.has(kind) ? new Set([kind]) : new Set<string>());
+  for (const conflictKind of conflictsToFix) {
+    if (RUNTIME_GLOBALS.includes(conflictKind)) {
+      const methodPattern = new RegExp(`\\b${conflictKind}\\.(entries|keys|values|assign|freeze|defineProperty|getOwnPropertyDescriptor|getPrototypeOf|create|is|prototype|hasOwnProperty|fromEntries)`, 'g');
+      result = result.replace(methodPattern, `_${conflictKind}.$1`);
+    }
   }
 
   return result;
@@ -130,7 +132,7 @@ function getBuiltinTypeAlias(kind: string): string {
 
 export class CustomResourceDefinition {
 
-  private readonly kind: string;
+  public readonly kind: string;
   private readonly versions: CustomResourceDefinitionVersion[] = [];
 
   public readonly group: string;
@@ -178,7 +180,7 @@ export class CustomResourceDefinition {
     return `${this.group}/${this.kind.toLocaleLowerCase()}`;
   }
 
-  public async generateTypeScript(code: CodeMaker, options: GenerateOptions) {
+  public async generateTypeScript(code: CodeMaker, options: GenerateOptions, fileLevelConflicts?: Set<string>) {
 
     // Add type alias once at the beginning if needed for built-in type conflicts
     const typeAlias = getBuiltinTypeAlias(this.kind);
@@ -208,7 +210,7 @@ export class CustomResourceDefinition {
       });
 
       // Post-process to fix any TypeScript built-in type conflicts
-      const renderedCode = fixBuiltinTypeConflicts(types.render(), this.kind);
+      const renderedCode = fixBuiltinTypeConflicts(types.render(), this.kind, fileLevelConflicts);
       code.line(renderedCode);
     }
   }
@@ -266,12 +268,22 @@ export class ImportCustomResourceDefinition extends ImportBase {
   protected async generateTypeScript(code: CodeMaker, moduleName: string, options: GenerateOptions) {
     const crds = this.groups[moduleName];
 
+    // Collect all conflicting kinds in this file/module so that runtime method
+    // replacements (e.g. Object.entries -> _Object.entries) are applied to ALL
+    // CRDs in the file, not just the one whose kind shadows the builtin.
+    const fileLevelConflicts = new Set<string>();
+    for (const crd of crds) {
+      if (TYPESCRIPT_BUILTIN_TYPES.has(crd.kind)) {
+        fileLevelConflicts.add(crd.kind);
+      }
+    }
+    const conflicts = fileLevelConflicts.size > 0 ? fileLevelConflicts : undefined;
 
     emitHeader(code, true);
 
     for (const crd of crds) {
       console.log(`  ${crd.key}`);
-      await crd.generateTypeScript(code, options);
+      await crd.generateTypeScript(code, options, conflicts);
     }
   }
 }
