@@ -92,10 +92,21 @@ function fixBuiltinTypeConflicts(renderedCode: string, kind: string): string {
     return renderedCode;
   }
 
-  // Replace usages of the built-in type with the alias
-  // Match patterns like "Record<string, any>" but not "RecordProps" or "Record.GVK"
-  const pattern = new RegExp(`\\b${kind}<([^>]+)>`, 'g');
-  return renderedCode.replace(pattern, `Json${kind}<$1>`);
+  let result = renderedCode;
+
+  // Replace generic type usages like "Record<string, any>" but not "RecordProps" or "Record.GVK"
+  const genericPattern = new RegExp(`\\b${kind}<([^>]+)>`, 'g');
+  result = result.replace(genericPattern, `Json${kind}<$1>`);
+
+  // Replace runtime static method calls like "Object.entries(", "Object.keys(" etc.
+  // These are shadowed when a CRD class has the same name as a global constructor.
+  const RUNTIME_GLOBALS = ['Object', 'Array', 'String', 'Number', 'Boolean', 'Symbol', 'Function', 'Promise', 'Map', 'Set'];
+  if (RUNTIME_GLOBALS.includes(kind)) {
+    const methodPattern = new RegExp(`\\b${kind}\\.(entries|keys|values|assign|freeze|defineProperty|getOwnPropertyDescriptor|getPrototypeOf|create|is|prototype|hasOwnProperty|fromEntries)`, 'g');
+    result = result.replace(methodPattern, `_${kind}.$1`);
+  }
+
+  return result;
 }
 
 /**
@@ -108,7 +119,13 @@ function getBuiltinTypeAlias(kind: string): string {
   if (!TYPESCRIPT_BUILTIN_TYPES.has(kind)) {
     return '';
   }
-  return `// Type alias to avoid collision with the ${kind} class defined below\ntype Json${kind}<K extends keyof any, T> = { [P in K]: T };\n\n`;
+
+  const RUNTIME_GLOBALS = ['Object', 'Array', 'String', 'Number', 'Boolean', 'Symbol', 'Function', 'Promise', 'Map', 'Set'];
+  const runtimeAlias = RUNTIME_GLOBALS.includes(kind)
+    ? `// Preserve global ${kind} before it is shadowed by the ${kind} class below\nconst _${kind} = globalThis.${kind};\n\n`
+    : '';
+
+  return `${runtimeAlias}// Type alias to avoid collision with the ${kind} class defined below\ntype Json${kind}<K extends keyof any, T> = { [P in K]: T };\n\n`;
 }
 
 export class CustomResourceDefinition {
