@@ -1416,10 +1416,10 @@ cdk8s-plus-28@^2.5.6:
   dependencies:
     minimatch "^3.1.2"
 
-cdk8s@^2.70.47:
-  version "2.70.47"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.70.47.tgz#eda9ddb6236dadd5301d6f31d5c19e48d3bad2fd"
-  integrity sha512-9T3+bq9qqEt9/MLufPxxuggYY5npqsRRlFzCmq/VzfiBPoCMt7CPVw/ksl7XldzsjJeSfMUMb3lXc94RwOLBmQ==
+cdk8s@^2.70.48:
+  version "2.70.48"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.70.48.tgz#1a74bb6c2dfa47c0259881a409e6b74fb4d09459"
+  integrity sha512-foytyGfgMy68YcLYoNrJWr9SuAWxobfGfNnE258J2rSo3MA4bbp/3slqdhRh53Jjruie4IEeHlXcXxZZrWWrDA==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.11"
@@ -1608,10 +1608,15 @@ concat-stream@^2.0.0:
     readable-stream "^3.0.2"
     typedarray "^0.0.6"
 
-constructs@^10.0.0, constructs@^10.4.5:
+constructs@^10.0.0:
   version "10.4.5"
   resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.4.5.tgz#d06c9b33f8d1668ed36036c62e2e98dadfa1ed31"
   integrity sha512-fOoP70YLevMZr5avJHx2DU3LNYmC6wM8OwdrNewMZou1kZnPGOeVzBrRjZNgFDHUlulYUjkpFRSpTE3D+n+ZSg==
+
+constructs@^10.5.0:
+  version "10.5.0"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.5.0.tgz#66d1a5fb748f4adeb8698ea5f53f27e06f99b930"
+  integrity sha512-zWjwqIgk4nAWmQGrPnDWv+M2Yly6m7ROyqmmQVLgJiHnWP762It22uWFaF2Pu/sSx0u8WsoUcvt0PZ4DQIQYwQ==
 
 conventional-changelog-angular@^6.0.0:
   version "6.0.0"
