@@ -30,7 +30,7 @@ const project = new Cdk8sTeamTypeScriptProject({
   // upgrading them may introduce breaking changes to our API.
   deps: [
     'cdk8s',
-    'cdk8s-plus-28',
+    'cdk8s-plus-33',
     'codemaker',
     'constructs',
     'fs-extra@^8',
