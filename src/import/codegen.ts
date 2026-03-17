@@ -311,6 +311,16 @@ export function generateHelmConstruct(typegen: TypeGenerator, def: HelmObjectDef
             };
 
             addAdditionalValuesToProps(prop);
+          } else if (prop.additionalProperties && typeof prop.additionalProperties === 'object') {
+            const additionalPropSchema = prop.additionalProperties;
+            if (additionalPropSchema.properties && additionalPropSchema.additionalProperties !== false) {
+              additionalPropSchema.properties.additionalValues = {
+                type: 'object',
+                description: 'Values that are not available in values.schema.json will not be code generated. You can add such values to this property.',
+                additionalProperties: { type: 'object' },
+              };
+            }
+            addAdditionalValuesToProps(additionalPropSchema);
           }
         });
 
