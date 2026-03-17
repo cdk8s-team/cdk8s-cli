@@ -195,7 +195,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "test-chart.ts",
-            "line": 174,
+            "line": 179,
           },
           "name": "additionalValues",
           "optional": true,
@@ -230,6 +230,29 @@ Object {
           "abstract": true,
           "docs": Object {
             "custom": Object {
+              "schema": "TestChartService#ports",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 172,
+          },
+          "name": "ports",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "fqn": "test-chart.TestChartServicePorts",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
               "schema": "TestChartService#type",
             },
           },
@@ -247,6 +270,128 @@ Object {
       ],
       "symbolId": "test-chart:TestChartService",
     },
+    "test-chart.TestChartServicePorts": Object {
+      "assembly": "test-chart",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "TestChartServicePorts",
+        },
+      },
+      "fqn": "test-chart.TestChartServicePorts",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 214,
+      },
+      "name": "TestChartServicePorts",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartServicePorts#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 225,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartServicePorts#expose",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 218,
+          },
+          "name": "expose",
+          "optional": true,
+          "type": Object {
+            "fqn": "test-chart.TestChartServicePortsExpose",
+          },
+        },
+      ],
+      "symbolId": "test-chart:TestChartServicePorts",
+    },
+    "test-chart.TestChartServicePortsExpose": Object {
+      "assembly": "test-chart",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "TestChartServicePortsExpose",
+        },
+      },
+      "fqn": "test-chart.TestChartServicePortsExpose",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 246,
+      },
+      "name": "TestChartServicePortsExpose",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartServicePortsExpose#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 257,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartServicePortsExpose#default",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 250,
+          },
+          "name": "default",
+          "optional": true,
+          "type": Object {
+            "primitive": "boolean",
+          },
+        },
+      ],
+      "symbolId": "test-chart:TestChartServicePortsExpose",
+    },
     "test-chart.TestChartServiceType": Object {
       "assembly": "test-chart",
       "docs": Object {
@@ -258,7 +403,7 @@ Object {
       "kind": "enum",
       "locationInModule": Object {
         "filename": "test-chart.ts",
-        "line": 196,
+        "line": 202,
       },
       "members": Array [
         Object {
@@ -663,6 +808,7 @@ class TestChartImage:
     name_mapping={
         \\"additional_values\\": \\"additionalValues\\",
         \\"port\\": \\"port\\",
+        \\"ports\\": \\"ports\\",
         \\"type\\": \\"type\\",
     },
 )
@@ -672,11 +818,13 @@ class TestChartService:
         *,
         additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
         port: typing.Optional[jsii.Number] = None,
+        ports: typing.Optional[typing.Mapping[builtins.str, typing.Union[\\"TestChartServicePorts\\", typing.Dict[builtins.str, typing.Any]]]] = None,
         type: typing.Optional[\\"TestChartServiceType\\"] = None,
     ) -> None:
         '''
         :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
         :param port: 
+        :param ports: 
         :param type: 
 
         :schema: TestChartService
@@ -685,12 +833,15 @@ class TestChartService:
             type_hints = typing.get_type_hints(_typecheckingstub__e25ac3c4b7af79bbe767b2ed147e2c3b46234c9092660eb925362153c7a0cd6f)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument port\\", value=port, expected_type=type_hints[\\"port\\"])
+            check_type(argname=\\"argument ports\\", value=ports, expected_type=type_hints[\\"ports\\"])
             check_type(argname=\\"argument type\\", value=type, expected_type=type_hints[\\"type\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
         if additional_values is not None:
             self._values[\\"additional_values\\"] = additional_values
         if port is not None:
             self._values[\\"port\\"] = port
+        if ports is not None:
+            self._values[\\"ports\\"] = ports
         if type is not None:
             self._values[\\"type\\"] = type
 
@@ -714,6 +865,16 @@ class TestChartService:
         return typing.cast(typing.Optional[jsii.Number], result)
 
     @builtins.property
+    def ports(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, \\"TestChartServicePorts\\"]]:
+        '''
+        :schema: TestChartService#ports
+        '''
+        result = self._values.get(\\"ports\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, \\"TestChartServicePorts\\"]], result)
+
+    @builtins.property
     def type(self) -> typing.Optional[\\"TestChartServiceType\\"]:
         '''
         :schema: TestChartService#type
@@ -729,6 +890,126 @@ class TestChartService:
 
     def __repr__(self) -> str:
         return \\"TestChartService(%s)\\" % \\", \\".join(
+            k + \\"=\\" + repr(v) for k, v in self._values.items()
+        )
+
+
+@jsii.data_type(
+    jsii_type=\\"test-chart.TestChartServicePorts\\",
+    jsii_struct_bases=[],
+    name_mapping={\\"additional_values\\": \\"additionalValues\\", \\"expose\\": \\"expose\\"},
+)
+class TestChartServicePorts:
+    def __init__(
+        self,
+        *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+        expose: typing.Optional[typing.Union[\\"TestChartServicePortsExpose\\", typing.Dict[builtins.str, typing.Any]]] = None,
+    ) -> None:
+        '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+        :param expose: 
+
+        :schema: TestChartServicePorts
+        '''
+        if isinstance(expose, dict):
+            expose = TestChartServicePortsExpose(**expose)
+        if __debug__:
+            type_hints = typing.get_type_hints(_typecheckingstub__524c3053ce083ca953cc3df968393e57177d20bd69cb5be99a1be35459be38a6)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
+            check_type(argname=\\"argument expose\\", value=expose, expected_type=type_hints[\\"expose\\"])
+        self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
+        if expose is not None:
+            self._values[\\"expose\\"] = expose
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: TestChartServicePorts#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
+
+    @builtins.property
+    def expose(self) -> typing.Optional[\\"TestChartServicePortsExpose\\"]:
+        '''
+        :schema: TestChartServicePorts#expose
+        '''
+        result = self._values.get(\\"expose\\")
+        return typing.cast(typing.Optional[\\"TestChartServicePortsExpose\\"], result)
+
+    def __eq__(self, rhs: typing.Any) -> builtins.bool:
+        return isinstance(rhs, self.__class__) and rhs._values == self._values
+
+    def __ne__(self, rhs: typing.Any) -> builtins.bool:
+        return not (rhs == self)
+
+    def __repr__(self) -> str:
+        return \\"TestChartServicePorts(%s)\\" % \\", \\".join(
+            k + \\"=\\" + repr(v) for k, v in self._values.items()
+        )
+
+
+@jsii.data_type(
+    jsii_type=\\"test-chart.TestChartServicePortsExpose\\",
+    jsii_struct_bases=[],
+    name_mapping={\\"additional_values\\": \\"additionalValues\\", \\"default\\": \\"default\\"},
+)
+class TestChartServicePortsExpose:
+    def __init__(
+        self,
+        *,
+        additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+        default: typing.Optional[builtins.bool] = None,
+    ) -> None:
+        '''
+        :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+        :param default: 
+
+        :schema: TestChartServicePortsExpose
+        '''
+        if __debug__:
+            type_hints = typing.get_type_hints(_typecheckingstub__72e51d33177af9a8f701b8382f8934c4e85b95617b55197e1b756da62b506575)
+            check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
+            check_type(argname=\\"argument default\\", value=default, expected_type=type_hints[\\"default\\"])
+        self._values: typing.Dict[builtins.str, typing.Any] = {}
+        if additional_values is not None:
+            self._values[\\"additional_values\\"] = additional_values
+        if default is not None:
+            self._values[\\"default\\"] = default
+
+    @builtins.property
+    def additional_values(
+        self,
+    ) -> typing.Optional[typing.Mapping[builtins.str, typing.Any]]:
+        '''Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+
+        :schema: TestChartServicePortsExpose#additionalValues
+        '''
+        result = self._values.get(\\"additional_values\\")
+        return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
+
+    @builtins.property
+    def default(self) -> typing.Optional[builtins.bool]:
+        '''
+        :schema: TestChartServicePortsExpose#default
+        '''
+        result = self._values.get(\\"default\\")
+        return typing.cast(typing.Optional[builtins.bool], result)
+
+    def __eq__(self, rhs: typing.Any) -> builtins.bool:
+        return isinstance(rhs, self.__class__) and rhs._values == self._values
+
+    def __ne__(self, rhs: typing.Any) -> builtins.bool:
+        return not (rhs == self)
+
+    def __repr__(self) -> str:
+        return \\"TestChartServicePortsExpose(%s)\\" % \\", \\".join(
             k + \\"=\\" + repr(v) for k, v in self._values.items()
         )
 
@@ -996,6 +1277,8 @@ class TestchartValues:
 __all__ = [
     \\"TestChartImage\\",
     \\"TestChartService\\",
+    \\"TestChartServicePorts\\",
+    \\"TestChartServicePortsExpose\\",
     \\"TestChartServiceType\\",
     \\"Testchart\\",
     \\"TestchartProps\\",
@@ -1017,7 +1300,24 @@ def _typecheckingstub__e25ac3c4b7af79bbe767b2ed147e2c3b46234c9092660eb925362153c
     *,
     additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
     port: typing.Optional[jsii.Number] = None,
+    ports: typing.Optional[typing.Mapping[builtins.str, typing.Union[TestChartServicePorts, typing.Dict[builtins.str, typing.Any]]]] = None,
     type: typing.Optional[TestChartServiceType] = None,
+) -> None:
+    \\"\\"\\"Type checking stubs\\"\\"\\"
+    pass
+
+def _typecheckingstub__524c3053ce083ca953cc3df968393e57177d20bd69cb5be99a1be35459be38a6(
+    *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+    expose: typing.Optional[typing.Union[TestChartServicePortsExpose, typing.Dict[builtins.str, typing.Any]]] = None,
+) -> None:
+    \\"\\"\\"Type checking stubs\\"\\"\\"
+    pass
+
+def _typecheckingstub__72e51d33177af9a8f701b8382f8934c4e85b95617b55197e1b756da62b506575(
+    *,
+    additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+    default: typing.Optional[builtins.bool] = None,
 ) -> None:
     \\"\\"\\"Type checking stubs\\"\\"\\"
     pass
@@ -1302,7 +1602,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "test-chart.ts",
-            "line": 174,
+            "line": 179,
           },
           "name": "additionalValues",
           "optional": true,
@@ -1337,6 +1637,29 @@ Object {
           "abstract": true,
           "docs": Object {
             "custom": Object {
+              "schema": "TestChartService#ports",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 172,
+          },
+          "name": "ports",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "fqn": "test-chart.TestChartServicePorts",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
               "schema": "TestChartService#type",
             },
           },
@@ -1354,6 +1677,128 @@ Object {
       ],
       "symbolId": "test-chart:TestChartService",
     },
+    "test-chart.TestChartServicePorts": Object {
+      "assembly": "test-chart",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "TestChartServicePorts",
+        },
+      },
+      "fqn": "test-chart.TestChartServicePorts",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 214,
+      },
+      "name": "TestChartServicePorts",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartServicePorts#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 225,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartServicePorts#expose",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 218,
+          },
+          "name": "expose",
+          "optional": true,
+          "type": Object {
+            "fqn": "test-chart.TestChartServicePortsExpose",
+          },
+        },
+      ],
+      "symbolId": "test-chart:TestChartServicePorts",
+    },
+    "test-chart.TestChartServicePortsExpose": Object {
+      "assembly": "test-chart",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "TestChartServicePortsExpose",
+        },
+      },
+      "fqn": "test-chart.TestChartServicePortsExpose",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "test-chart.ts",
+        "line": 246,
+      },
+      "name": "TestChartServicePortsExpose",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartServicePortsExpose#additionalValues",
+            },
+            "summary": "Values that are not available in values.schema.json will not be code generated. You can add such values to this property.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 257,
+          },
+          "name": "additionalValues",
+          "optional": true,
+          "type": Object {
+            "collection": Object {
+              "elementtype": Object {
+                "primitive": "any",
+              },
+              "kind": "map",
+            },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartServicePortsExpose#default",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 250,
+          },
+          "name": "default",
+          "optional": true,
+          "type": Object {
+            "primitive": "boolean",
+          },
+        },
+      ],
+      "symbolId": "test-chart:TestChartServicePortsExpose",
+    },
     "test-chart.TestChartServiceType": Object {
       "assembly": "test-chart",
       "docs": Object {
@@ -1365,7 +1810,7 @@ Object {
       "kind": "enum",
       "locationInModule": Object {
         "filename": "test-chart.ts",
-        "line": 196,
+        "line": 202,
       },
       "members": Array [
         Object {
@@ -1821,6 +2266,11 @@ export interface TestChartService {
   readonly port?: number;
 
   /**
+   * @schema TestChartService#ports
+   */
+  readonly ports?: { [key: string]: TestChartServicePorts };
+
+  /**
    * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
    *
    * @schema TestChartService#additionalValues
@@ -1837,6 +2287,7 @@ export function toJson_TestChartService(obj: TestChartService | undefined): Reco
   const result = {
     'type': obj.type,
     'port': obj.port,
+    'ports': ((obj.ports) === undefined) ? undefined : (Object.entries(obj.ports).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: toJson_TestChartServicePorts(i[1]) }), {})),
     'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
   };
   // filter undefined values
@@ -1855,6 +2306,70 @@ export enum TestChartServiceType {
   /** LoadBalancer */
   LOAD_BALANCER = \\"LoadBalancer\\",
 }
+
+/**
+ * @schema TestChartServicePorts
+ */
+export interface TestChartServicePorts {
+  /**
+   * @schema TestChartServicePorts#expose
+   */
+  readonly expose?: TestChartServicePortsExpose;
+
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema TestChartServicePorts#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+}
+
+/**
+ * Converts an object of type 'TestChartServicePorts' to JSON representation.
+ */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+export function toJson_TestChartServicePorts(obj: TestChartServicePorts | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'expose': toJson_TestChartServicePortsExpose(obj.expose),
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+
+/**
+ * @schema TestChartServicePortsExpose
+ */
+export interface TestChartServicePortsExpose {
+  /**
+   * @schema TestChartServicePortsExpose#default
+   */
+  readonly default?: boolean;
+
+  /**
+   * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+   *
+   * @schema TestChartServicePortsExpose#additionalValues
+   */
+  readonly additionalValues?: { [key: string]: any };
+}
+
+/**
+ * Converts an object of type 'TestChartServicePortsExpose' to JSON representation.
+ */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+export function toJson_TestChartServicePortsExpose(obj: TestChartServicePortsExpose | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'default': obj.default,
+    'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
 
 ",
 }

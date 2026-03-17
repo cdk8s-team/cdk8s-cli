@@ -26,6 +26,22 @@
         "port": {
           "type": "integer",
           "default": 80
+        },
+        "ports": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "expose": {
+                "type": "object",
+                "properties": {
+                  "default": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
