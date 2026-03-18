@@ -85,11 +85,12 @@
       "type": "build"
     },
     {
-      "name": "typescript",
+      "name": "typescript-json-schema",
       "type": "build"
     },
     {
-      "name": "typescript-json-schema",
+      "name": "typescript",
+      "version": "~5.9",
       "type": "build"
     },
     {
