@@ -65,7 +65,7 @@
     "fast-glob": "^3.3.3",
     "jest": "^27",
     "jest-junit": "^16",
-    "projen": "^0.99.22",
+    "projen": "^0.99.23",
     "ts-jest": "^27",
     "ts-node": "^10.9.2",
     "typescript": "~5.9",
