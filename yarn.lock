@@ -1419,17 +1419,17 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s-plus-33@^2.4.40:
-  version "2.4.40"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-33/-/cdk8s-plus-33-2.4.40.tgz#607c1c4d6b209a8a75131398f7de7dc08648bcaa"
-  integrity sha512-Pae8EtAMo9yIemQK6Z0Ho3xe/EXl5FxGZ2JhKJ1MgO/umE4JGBBmCGicL+zOinOCUK79f5f/8iMRq4Je04KVdg==
+cdk8s-plus-33@^2.4.41:
+  version "2.4.41"
+  resolved "https://registry.yarnpkg.com/cdk8s-plus-33/-/cdk8s-plus-33-2.4.41.tgz#2f71ca167652b292c7359870969c263982aefe76"
+  integrity sha512-s8lkntGlGe3m+yo+QntJJfD9coFjfH2ImiTfOF6GANhJreqk1thtcU9E3KRX8MXDgqevyUbdqIs91Snz2/dvAA==
   dependencies:
     minimatch "^9.0.9"
 
-cdk8s@^2.70.53:
-  version "2.70.53"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.70.53.tgz#51703bafd269ac889b8a8ae32355c50bf0c8acad"
-  integrity sha512-udjFM/9Q6MCFzbG5gnfIZ2OEdeZU0mbFWiNJrcQ9DOpifK1CgGs8rIUgVvwM9qaYIghZCMCRhTvYoBuuPbSPNw==
+cdk8s@^2.70.54:
+  version "2.70.54"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.70.54.tgz#c750db72b31af7137691c29dd2a2aad790a61796"
+  integrity sha512-HxPVHj1OyLFJIE0ruSESQl2wfTDpZCBy7hpnDnOaX4EudQmZ4diBR0CdREWRRQTMUsfSPdZjR+ECzWGwmumTNg==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.15.11"
