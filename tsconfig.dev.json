@@ -23,7 +23,14 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
-    "target": "ES2020"
+    "target": "ES2020",
+    "types": [
+      "fs-extra",
+      "jest",
+      "json-schema",
+      "semver",
+      "node"
+    ]
   },
   "include": [
     "src/**/*.ts",
