@@ -83,7 +83,7 @@
     "jsii-pacmak": "^1.127.0",
     "jsii-rosetta": "^5.9.39",
     "jsii-srcmak": "0.1.1319",
-    "json2jsii": "0.5.12",
+    "json2jsii": "0.5.19",
     "semver": "^7.7.4",
     "sscaff": "^1.2.274",
     "table": "^6.9.0",

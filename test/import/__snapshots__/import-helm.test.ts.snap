@@ -195,7 +195,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "test-chart.ts",
-            "line": 179,
+            "line": 184,
           },
           "name": "additionalValues",
           "optional": true,
@@ -206,6 +206,24 @@ Object {
               },
               "kind": "map",
             },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartService#kubernetes.io/ingress.class",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 177,
+          },
+          "name": "kubernetesIoIngressClass",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
           },
         },
         Object {
@@ -282,7 +300,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "test-chart.ts",
-        "line": 214,
+        "line": 220,
       },
       "name": "TestChartServicePorts",
       "properties": Array [
@@ -297,7 +315,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "test-chart.ts",
-            "line": 225,
+            "line": 231,
           },
           "name": "additionalValues",
           "optional": true,
@@ -320,7 +338,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "test-chart.ts",
-            "line": 218,
+            "line": 224,
           },
           "name": "expose",
           "optional": true,
@@ -343,7 +361,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "test-chart.ts",
-        "line": 246,
+        "line": 252,
       },
       "name": "TestChartServicePortsExpose",
       "properties": Array [
@@ -358,7 +376,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "test-chart.ts",
-            "line": 257,
+            "line": 263,
           },
           "name": "additionalValues",
           "optional": true,
@@ -381,7 +399,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "test-chart.ts",
-            "line": 250,
+            "line": 256,
           },
           "name": "default",
           "optional": true,
@@ -403,7 +421,7 @@ Object {
       "kind": "enum",
       "locationInModule": Object {
         "filename": "test-chart.ts",
-        "line": 202,
+        "line": 208,
       },
       "members": Array [
         Object {
@@ -807,6 +825,7 @@ class TestChartImage:
     jsii_struct_bases=[],
     name_mapping={
         \\"additional_values\\": \\"additionalValues\\",
+        \\"kubernetes_io_ingress_class\\": \\"kubernetesIoIngressClass\\",
         \\"port\\": \\"port\\",
         \\"ports\\": \\"ports\\",
         \\"type\\": \\"type\\",
@@ -817,12 +836,14 @@ class TestChartService:
         self,
         *,
         additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+        kubernetes_io_ingress_class: typing.Optional[builtins.str] = None,
         port: typing.Optional[jsii.Number] = None,
         ports: typing.Optional[typing.Mapping[builtins.str, typing.Union[\\"TestChartServicePorts\\", typing.Dict[builtins.str, typing.Any]]]] = None,
         type: typing.Optional[\\"TestChartServiceType\\"] = None,
     ) -> None:
         '''
         :param additional_values: Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
+        :param kubernetes_io_ingress_class: 
         :param port: 
         :param ports: 
         :param type: 
@@ -832,12 +853,15 @@ class TestChartService:
         if __debug__:
             type_hints = typing.get_type_hints(_typecheckingstub__e25ac3c4b7af79bbe767b2ed147e2c3b46234c9092660eb925362153c7a0cd6f)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
+            check_type(argname=\\"argument kubernetes_io_ingress_class\\", value=kubernetes_io_ingress_class, expected_type=type_hints[\\"kubernetes_io_ingress_class\\"])
             check_type(argname=\\"argument port\\", value=port, expected_type=type_hints[\\"port\\"])
             check_type(argname=\\"argument ports\\", value=ports, expected_type=type_hints[\\"ports\\"])
             check_type(argname=\\"argument type\\", value=type, expected_type=type_hints[\\"type\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
         if additional_values is not None:
             self._values[\\"additional_values\\"] = additional_values
+        if kubernetes_io_ingress_class is not None:
+            self._values[\\"kubernetes_io_ingress_class\\"] = kubernetes_io_ingress_class
         if port is not None:
             self._values[\\"port\\"] = port
         if ports is not None:
@@ -855,6 +879,14 @@ class TestChartService:
         '''
         result = self._values.get(\\"additional_values\\")
         return typing.cast(typing.Optional[typing.Mapping[builtins.str, typing.Any]], result)
+
+    @builtins.property
+    def kubernetes_io_ingress_class(self) -> typing.Optional[builtins.str]:
+        '''
+        :schema: TestChartService#kubernetes.io/ingress.class
+        '''
+        result = self._values.get(\\"kubernetes_io_ingress_class\\")
+        return typing.cast(typing.Optional[builtins.str], result)
 
     @builtins.property
     def port(self) -> typing.Optional[jsii.Number]:
@@ -1299,6 +1331,7 @@ def _typecheckingstub__96e16d659bde96d82fe9f689c47ca239222a4f9489a7c031555cc8940
 def _typecheckingstub__e25ac3c4b7af79bbe767b2ed147e2c3b46234c9092660eb925362153c7a0cd6f(
     *,
     additional_values: typing.Optional[typing.Mapping[builtins.str, typing.Any]] = None,
+    kubernetes_io_ingress_class: typing.Optional[builtins.str] = None,
     port: typing.Optional[jsii.Number] = None,
     ports: typing.Optional[typing.Mapping[builtins.str, typing.Union[TestChartServicePorts, typing.Dict[builtins.str, typing.Any]]]] = None,
     type: typing.Optional[TestChartServiceType] = None,
@@ -1602,7 +1635,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "test-chart.ts",
-            "line": 179,
+            "line": 184,
           },
           "name": "additionalValues",
           "optional": true,
@@ -1613,6 +1646,24 @@ Object {
               },
               "kind": "map",
             },
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "TestChartService#kubernetes.io/ingress.class",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "test-chart.ts",
+            "line": 177,
+          },
+          "name": "kubernetesIoIngressClass",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
           },
         },
         Object {
@@ -1689,7 +1740,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "test-chart.ts",
-        "line": 214,
+        "line": 220,
       },
       "name": "TestChartServicePorts",
       "properties": Array [
@@ -1704,7 +1755,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "test-chart.ts",
-            "line": 225,
+            "line": 231,
           },
           "name": "additionalValues",
           "optional": true,
@@ -1727,7 +1778,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "test-chart.ts",
-            "line": 218,
+            "line": 224,
           },
           "name": "expose",
           "optional": true,
@@ -1750,7 +1801,7 @@ Object {
       "kind": "interface",
       "locationInModule": Object {
         "filename": "test-chart.ts",
-        "line": 246,
+        "line": 252,
       },
       "name": "TestChartServicePortsExpose",
       "properties": Array [
@@ -1765,7 +1816,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "test-chart.ts",
-            "line": 257,
+            "line": 263,
           },
           "name": "additionalValues",
           "optional": true,
@@ -1788,7 +1839,7 @@ Object {
           "immutable": true,
           "locationInModule": Object {
             "filename": "test-chart.ts",
-            "line": 250,
+            "line": 256,
           },
           "name": "default",
           "optional": true,
@@ -1810,7 +1861,7 @@ Object {
       "kind": "enum",
       "locationInModule": Object {
         "filename": "test-chart.ts",
-        "line": 202,
+        "line": 208,
       },
       "members": Array [
         Object {
@@ -2271,6 +2322,11 @@ export interface TestChartService {
   readonly ports?: { [key: string]: TestChartServicePorts };
 
   /**
+   * @schema TestChartService#kubernetes.io/ingress.class
+   */
+  readonly kubernetesIoIngressClass?: string;
+
+  /**
    * Values that are not available in values.schema.json will not be code generated. You can add such values to this property.
    *
    * @schema TestChartService#additionalValues
@@ -2288,6 +2344,7 @@ export function toJson_TestChartService(obj: TestChartService | undefined): Reco
     'type': obj.type,
     'port': obj.port,
     'ports': ((obj.ports) === undefined) ? undefined : (Object.entries(obj.ports).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: toJson_TestChartServicePorts(i[1]) }), {})),
+    'kubernetes.io/ingress.class': obj.kubernetesIoIngressClass,
     'additionalValues': ((obj.additionalValues) === undefined) ? undefined : (Object.entries(obj.additionalValues).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {})),
   };
   // filter undefined values
