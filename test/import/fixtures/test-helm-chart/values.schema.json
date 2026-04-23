@@ -42,6 +42,9 @@
               }
             }
           }
+        },
+        "kubernetes.io/ingress.class": {
+          "type": "string"
         }
       }
     },
