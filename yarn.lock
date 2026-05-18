@@ -4069,9 +4069,9 @@ lower-case@^2.0.2:
     tslib "^2.0.3"
 
 lru-cache@^11.0.0:
-  version "11.3.6"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-11.3.6.tgz#f0306ad6e9f0a5dc25b16aeba4e8f57b7ec2df55"
-  integrity sha512-Gf/KoL3C/MlI7Bt0PGI9I+TeTC/I6r/csU58N4BSNc4lppLBeKsOdFYkK+dX0ABDUMJNfCHTyPpzwwO21Awd3A==
+  version "11.4.0"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-11.4.0.tgz#87a577bfa71f7c94dfd71692874b859d1ca41a28"
+  integrity sha512-W+R+kFL4HgVxONq2bhXPi3bGpzGe/yEhVOp233qw9wCRtgncJ15P3bC+e4zZMu4Cq7d+WAJjXGW0uUkifhcatA==
 
 lru-cache@^5.1.1:
   version "5.1.1"
@@ -5653,10 +5653,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript-json-schema@^0.67.2:
-  version "0.67.2"
-  resolved "https://registry.yarnpkg.com/typescript-json-schema/-/typescript-json-schema-0.67.2.tgz#d2d50785da97d408cb0d5cfd7198c4b29b38d284"
-  integrity sha512-QRMWWIRu9JF6gL2cQAC4J7k0iEPEjJRq/p1d2xRa8ZwfHP/tNV4p248PdKoRPKcWFro3v4SAsB23XV6HOl3tHQ==
+typescript-json-schema@^0.67.3:
+  version "0.67.3"
+  resolved "https://registry.yarnpkg.com/typescript-json-schema/-/typescript-json-schema-0.67.3.tgz#e4581c1363fcc8beac8eaf2c84a9917687da8815"
+  integrity sha512-QGOi/rZgbo9pDl1G+s3WFHiJZi4vj6zHHfQpxA00J3I7p0VC+JjYgX70NiuZu2liXF3YtSErv5C3ZRKtQSwhoQ==
   dependencies:
     "@types/json-schema" "^7.0.15"
     "@types/node" "^24.10.2"
