@@ -1340,9 +1340,9 @@ brace-expansion@^1.1.7:
     concat-map "0.0.1"
 
 brace-expansion@^2.0.2:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-2.1.0.tgz#4f41a41190216ee36067ec381526fe9539c4f0ae"
-  integrity sha512-TN1kCZAgdgweJhWWpgKYrQaMNHcDULHkWwQIspdtjV4Y5aurRdZpjAqn6yX3FPqTA9ngHCc4hJxMAMgGfve85w==
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-2.1.1.tgz#c68b1c4111c76aae3a6fba55d496cee10c39dad8"
+  integrity sha512-WR1cURNjuvBLMZBMbqM0UoE+WAfdUcEV1ccD8PVBVOI+Z3ND4+SZbN8RsfT2bMuG1qwz5RFvPukSZm5fF2D5eA==
   dependencies:
     balanced-match "^1.0.0"
 
@@ -1455,10 +1455,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s-plus-33@^2.5.17:
-  version "2.5.17"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-33/-/cdk8s-plus-33-2.5.17.tgz#a50479cc1be3c8a6792b5a5cce479f6712574bac"
-  integrity sha512-+0bE2jTWseM+b2a5rpVmSVpSc2ZsGTJI4HR96droprLhKbURvhhq8kvISMzrJr+iKFfVC3l9NUSlzn8PqyC89w==
+cdk8s-plus-33@^2.5.18:
+  version "2.5.18"
+  resolved "https://registry.yarnpkg.com/cdk8s-plus-33/-/cdk8s-plus-33-2.5.18.tgz#5d84801fb22ec602ad97449bad0c4b6241988569"
+  integrity sha512-bSYmQg0xrwKqgC1XGYkoJx4YRi6ihXATzrCYpLm2N5zrPTPEP+0rpuseegCSLzmb4U0Vr2b+DofzrHberSpn3Q==
   dependencies:
     minimatch "^9.0.9"
 
