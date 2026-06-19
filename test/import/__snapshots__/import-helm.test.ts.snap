@@ -708,7 +708,9 @@ Object {
 
 exports[`importing helm chart helm:./test/import/fixtures/test-helm-chart with python lanugage 2`] = `
 Object {
-  "test_chart/__init__.py": "from pkgutil import extend_path
+  "test_chart/__init__.py": "from __future__ import annotations
+
+from pkgutil import extend_path
 __path__ = extend_path(__path__, __name__)
 
 import abc
@@ -726,8 +728,24 @@ from jsii._type_checking import check_type
 
 from ._jsii import *
 
-import cdk8s as _cdk8s_d3d9af27
-import constructs as _constructs_77d1e7e8
+class _LazyImport:
+    def __init__(self, module_name: str) -> None:
+        self._module_name = module_name
+        self._module: typing.Any = None
+    def __getattr__(self, name: str) -> typing.Any:
+        if self._module is None:
+            import importlib
+            self._module = importlib.import_module(self._module_name)
+        return getattr(self._module, name)
+
+if typing.TYPE_CHECKING:
+
+    import cdk8s as _cdk8s_d3d9af27
+    import constructs as _constructs_77d1e7e8
+else:
+
+    _cdk8s_d3d9af27 = _LazyImport(\\"cdk8s\\")
+    _constructs_77d1e7e8 = _LazyImport(\\"constructs\\")
 
 
 @jsii.data_type(
@@ -3665,7 +3683,9 @@ Object {
 
 exports[`importing helm chart helm:https://charts.bitnami.com/bitnami/mysql@9.10.10 with python lanugage 2`] = `
 Object {
-  "mysql/__init__.py": "from pkgutil import extend_path
+  "mysql/__init__.py": "from __future__ import annotations
+
+from pkgutil import extend_path
 __path__ = extend_path(__path__, __name__)
 
 import abc
@@ -3683,8 +3703,24 @@ from jsii._type_checking import check_type
 
 from ._jsii import *
 
-import cdk8s as _cdk8s_d3d9af27
-import constructs as _constructs_77d1e7e8
+class _LazyImport:
+    def __init__(self, module_name: str) -> None:
+        self._module_name = module_name
+        self._module: typing.Any = None
+    def __getattr__(self, name: str) -> typing.Any:
+        if self._module is None:
+            import importlib
+            self._module = importlib.import_module(self._module_name)
+        return getattr(self._module, name)
+
+if typing.TYPE_CHECKING:
+
+    import cdk8s as _cdk8s_d3d9af27
+    import constructs as _constructs_77d1e7e8
+else:
+
+    _cdk8s_d3d9af27 = _LazyImport(\\"cdk8s\\")
+    _constructs_77d1e7e8 = _LazyImport(\\"constructs\\")
 
 
 class Mysql(
@@ -12194,7 +12230,9 @@ Object {
 
 exports[`importing helm chart helm:https://charts.jetstack.io/cert-manager@v1.17.1 with python lanugage 2`] = `
 Object {
-  "cert_manager/__init__.py": "from pkgutil import extend_path
+  "cert_manager/__init__.py": "from __future__ import annotations
+
+from pkgutil import extend_path
 __path__ = extend_path(__path__, __name__)
 
 import abc
@@ -12212,8 +12250,24 @@ from jsii._type_checking import check_type
 
 from ._jsii import *
 
-import cdk8s as _cdk8s_d3d9af27
-import constructs as _constructs_77d1e7e8
+class _LazyImport:
+    def __init__(self, module_name: str) -> None:
+        self._module_name = module_name
+        self._module: typing.Any = None
+    def __getattr__(self, name: str) -> typing.Any:
+        if self._module is None:
+            import importlib
+            self._module = importlib.import_module(self._module_name)
+        return getattr(self._module, name)
+
+if typing.TYPE_CHECKING:
+
+    import cdk8s as _cdk8s_d3d9af27
+    import constructs as _constructs_77d1e7e8
+else:
+
+    _cdk8s_d3d9af27 = _LazyImport(\\"cdk8s\\")
+    _constructs_77d1e7e8 = _LazyImport(\\"constructs\\")
 
 
 class Certmanager(
@@ -25119,7 +25173,9 @@ Object {
 
 exports[`importing helm chart helm:https://grafana.github.io/helm-charts/loki@5.27.0 with python lanugage 2`] = `
 Object {
-  "loki/__init__.py": "from pkgutil import extend_path
+  "loki/__init__.py": "from __future__ import annotations
+
+from pkgutil import extend_path
 __path__ = extend_path(__path__, __name__)
 
 import abc
@@ -25137,8 +25193,24 @@ from jsii._type_checking import check_type
 
 from ._jsii import *
 
-import cdk8s as _cdk8s_d3d9af27
-import constructs as _constructs_77d1e7e8
+class _LazyImport:
+    def __init__(self, module_name: str) -> None:
+        self._module_name = module_name
+        self._module: typing.Any = None
+    def __getattr__(self, name: str) -> typing.Any:
+        if self._module is None:
+            import importlib
+            self._module = importlib.import_module(self._module_name)
+        return getattr(self._module, name)
+
+if typing.TYPE_CHECKING:
+
+    import cdk8s as _cdk8s_d3d9af27
+    import constructs as _constructs_77d1e7e8
+else:
+
+    _cdk8s_d3d9af27 = _LazyImport(\\"cdk8s\\")
+    _constructs_77d1e7e8 = _LazyImport(\\"constructs\\")
 
 
 class Loki(
@@ -25887,7 +25959,9 @@ Object {
 
 exports[`importing helm chart helm:https://kubernetes.github.io/ingress-nginx/ingress-nginx@4.8.0 with python lanugage 2`] = `
 Object {
-  "ingress_nginx/__init__.py": "from pkgutil import extend_path
+  "ingress_nginx/__init__.py": "from __future__ import annotations
+
+from pkgutil import extend_path
 __path__ = extend_path(__path__, __name__)
 
 import abc
@@ -25905,8 +25979,24 @@ from jsii._type_checking import check_type
 
 from ._jsii import *
 
-import cdk8s as _cdk8s_d3d9af27
-import constructs as _constructs_77d1e7e8
+class _LazyImport:
+    def __init__(self, module_name: str) -> None:
+        self._module_name = module_name
+        self._module: typing.Any = None
+    def __getattr__(self, name: str) -> typing.Any:
+        if self._module is None:
+            import importlib
+            self._module = importlib.import_module(self._module_name)
+        return getattr(self._module, name)
+
+if typing.TYPE_CHECKING:
+
+    import cdk8s as _cdk8s_d3d9af27
+    import constructs as _constructs_77d1e7e8
+else:
+
+    _cdk8s_d3d9af27 = _LazyImport(\\"cdk8s\\")
+    _constructs_77d1e7e8 = _LazyImport(\\"constructs\\")
 
 
 class Ingressnginx(
@@ -32339,7 +32429,9 @@ Possible enum values:
 
 exports[`importing helm chart helm:https://lacework.github.io/helm-charts/lacework-agent@6.9.0 with python lanugage 2`] = `
 Object {
-  "lacework_agent/__init__.py": "from pkgutil import extend_path
+  "lacework_agent/__init__.py": "from __future__ import annotations
+
+from pkgutil import extend_path
 __path__ = extend_path(__path__, __name__)
 
 import abc
@@ -32357,8 +32449,24 @@ from jsii._type_checking import check_type
 
 from ._jsii import *
 
-import cdk8s as _cdk8s_d3d9af27
-import constructs as _constructs_77d1e7e8
+class _LazyImport:
+    def __init__(self, module_name: str) -> None:
+        self._module_name = module_name
+        self._module: typing.Any = None
+    def __getattr__(self, name: str) -> typing.Any:
+        if self._module is None:
+            import importlib
+            self._module = importlib.import_module(self._module_name)
+        return getattr(self._module, name)
+
+if typing.TYPE_CHECKING:
+
+    import cdk8s as _cdk8s_d3d9af27
+    import constructs as _constructs_77d1e7e8
+else:
+
+    _cdk8s_d3d9af27 = _LazyImport(\\"cdk8s\\")
+    _constructs_77d1e7e8 = _LazyImport(\\"constructs\\")
 
 
 @jsii.data_type(
@@ -48411,7 +48519,9 @@ Object {
 
 exports[`importing helm chart helm:oci://registry-1.docker.io/bitnamicharts/mysql@9.12.5 with python lanugage 2`] = `
 Object {
-  "mysql/__init__.py": "from pkgutil import extend_path
+  "mysql/__init__.py": "from __future__ import annotations
+
+from pkgutil import extend_path
 __path__ = extend_path(__path__, __name__)
 
 import abc
@@ -48429,8 +48539,24 @@ from jsii._type_checking import check_type
 
 from ._jsii import *
 
-import cdk8s as _cdk8s_d3d9af27
-import constructs as _constructs_77d1e7e8
+class _LazyImport:
+    def __init__(self, module_name: str) -> None:
+        self._module_name = module_name
+        self._module: typing.Any = None
+    def __getattr__(self, name: str) -> typing.Any:
+        if self._module is None:
+            import importlib
+            self._module = importlib.import_module(self._module_name)
+        return getattr(self._module, name)
+
+if typing.TYPE_CHECKING:
+
+    import cdk8s as _cdk8s_d3d9af27
+    import constructs as _constructs_77d1e7e8
+else:
+
+    _cdk8s_d3d9af27 = _LazyImport(\\"cdk8s\\")
+    _constructs_77d1e7e8 = _LazyImport(\\"constructs\\")
 
 
 class Mysql(
@@ -51736,7 +51862,9 @@ Object {
 
 exports[`importing helm chart minio:=helm:https://operator.min.io/operator@5.0.9 with python lanugage 2`] = `
 Object {
-  "operator/__init__.py": "from pkgutil import extend_path
+  "operator/__init__.py": "from __future__ import annotations
+
+from pkgutil import extend_path
 __path__ = extend_path(__path__, __name__)
 
 import abc
@@ -51754,8 +51882,24 @@ from jsii._type_checking import check_type
 
 from ._jsii import *
 
-import cdk8s as _cdk8s_d3d9af27
-import constructs as _constructs_77d1e7e8
+class _LazyImport:
+    def __init__(self, module_name: str) -> None:
+        self._module_name = module_name
+        self._module: typing.Any = None
+    def __getattr__(self, name: str) -> typing.Any:
+        if self._module is None:
+            import importlib
+            self._module = importlib.import_module(self._module_name)
+        return getattr(self._module, name)
+
+if typing.TYPE_CHECKING:
+
+    import cdk8s as _cdk8s_d3d9af27
+    import constructs as _constructs_77d1e7e8
+else:
+
+    _cdk8s_d3d9af27 = _LazyImport(\\"cdk8s\\")
+    _constructs_77d1e7e8 = _LazyImport(\\"constructs\\")
 
 
 class Operator(
