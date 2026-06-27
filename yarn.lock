@@ -1460,10 +1460,10 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s-plus-33@^2.5.31:
-  version "2.5.31"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-33/-/cdk8s-plus-33-2.5.31.tgz#4dcc24050007000f325a89fa6cc9af1b2d7f052b"
-  integrity sha512-+SZvqmw6FRCtA0V1onML+IqerxSle+sWLztAjG933lK8H9i+O1nIbv6IacZVY4U/c1W3+hdk5733gmam5s60og==
+cdk8s-plus-33@^2.5.32:
+  version "2.5.32"
+  resolved "https://registry.yarnpkg.com/cdk8s-plus-33/-/cdk8s-plus-33-2.5.32.tgz#d20e7a2c637a5d02deebfd949bf03217f71cef31"
+  integrity sha512-8uedQmW1N5bUDwN3D0vo1IH15eCGumyzPiZw61tP550kJLmTg+TwO4x1mH2FC82I8iT7OmOP3PDPc8jswQoRmg==
   dependencies:
     minimatch "^9.0.9"
 
