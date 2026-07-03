@@ -723,7 +723,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 from ._jsii import *
@@ -773,7 +773,7 @@ class TestChartImage:
         :schema: TestChartImage
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__96e16d659bde96d82fe9f689c47ca239222a4f9489a7c031555cc89406bf0b91)
+            type_hints = cached_type_hints(_typecheckingstub__96e16d659bde96d82fe9f689c47ca239222a4f9489a7c031555cc89406bf0b91)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument repository\\", value=repository, expected_type=type_hints[\\"repository\\"])
             check_type(argname=\\"argument tag\\", value=tag, expected_type=type_hints[\\"tag\\"])
@@ -855,7 +855,7 @@ class TestChartService:
         :schema: TestChartService
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__e25ac3c4b7af79bbe767b2ed147e2c3b46234c9092660eb925362153c7a0cd6f)
+            type_hints = cached_type_hints(_typecheckingstub__e25ac3c4b7af79bbe767b2ed147e2c3b46234c9092660eb925362153c7a0cd6f)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument kubernetes_io_ingress_class\\", value=kubernetes_io_ingress_class, expected_type=type_hints[\\"kubernetes_io_ingress_class\\"])
             check_type(argname=\\"argument port\\", value=port, expected_type=type_hints[\\"port\\"])
@@ -951,7 +951,7 @@ class TestChartServicePorts:
         if isinstance(expose, dict):
             expose = TestChartServicePortsExpose(**expose)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__524c3053ce083ca953cc3df968393e57177d20bd69cb5be99a1be35459be38a6)
+            type_hints = cached_type_hints(_typecheckingstub__524c3053ce083ca953cc3df968393e57177d20bd69cb5be99a1be35459be38a6)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument expose\\", value=expose, expected_type=type_hints[\\"expose\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -1010,7 +1010,7 @@ class TestChartServicePortsExpose:
         :schema: TestChartServicePortsExpose
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__72e51d33177af9a8f701b8382f8934c4e85b95617b55197e1b756da62b506575)
+            type_hints = cached_type_hints(_typecheckingstub__72e51d33177af9a8f701b8382f8934c4e85b95617b55197e1b756da62b506575)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument default\\", value=default, expected_type=type_hints[\\"default\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -1090,7 +1090,7 @@ class Testchart(
         :param values: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__a94d4cc6ded4283bb13f9ec7bf5c5bea04c59d18599a4b71ee1bddba8085df39)
+            type_hints = cached_type_hints(_typecheckingstub__a94d4cc6ded4283bb13f9ec7bf5c5bea04c59d18599a4b71ee1bddba8085df39)
             check_type(argname=\\"argument scope\\", value=scope, expected_type=type_hints[\\"scope\\"])
             check_type(argname=\\"argument id\\", value=id, expected_type=type_hints[\\"id\\"])
         props = TestchartProps(
@@ -1111,7 +1111,7 @@ class Testchart(
     @helm.setter
     def helm(self, value: \\"_cdk8s_d3d9af27.Helm\\") -> None:
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__23f40195a50c0655f06379461cfa07590ec2e9eda498c85ac16857038295ee7f)
+            type_hints = cached_type_hints(_typecheckingstub__23f40195a50c0655f06379461cfa07590ec2e9eda498c85ac16857038295ee7f)
             check_type(argname=\\"argument value\\", value=value, expected_type=type_hints[\\"value\\"])
         jsii.set(self, \\"helm\\", value) # pyright: ignore[reportArgumentType]
 
@@ -1147,7 +1147,7 @@ class TestchartProps:
         if isinstance(values, dict):
             values = TestchartValues(**values)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__ccefddf4edf9004c9d8a5f37470f96d7d9a2d3cd446153b027e4b4b276151f0c)
+            type_hints = cached_type_hints(_typecheckingstub__ccefddf4edf9004c9d8a5f37470f96d7d9a2d3cd446153b027e4b4b276151f0c)
             check_type(argname=\\"argument helm_executable\\", value=helm_executable, expected_type=type_hints[\\"helm_executable\\"])
             check_type(argname=\\"argument helm_flags\\", value=helm_flags, expected_type=type_hints[\\"helm_flags\\"])
             check_type(argname=\\"argument namespace\\", value=namespace, expected_type=type_hints[\\"namespace\\"])
@@ -1237,7 +1237,7 @@ class TestchartValues:
         if isinstance(service, dict):
             service = TestChartService(**service)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__7686da7c768cf17ae81f66d52ce621ab2036ed6c62af7b1b3cb693162fc67a35)
+            type_hints = cached_type_hints(_typecheckingstub__7686da7c768cf17ae81f66d52ce621ab2036ed6c62af7b1b3cb693162fc67a35)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument global_\\", value=global_, expected_type=type_hints[\\"global_\\"])
             check_type(argname=\\"argument image\\", value=image, expected_type=type_hints[\\"image\\"])
@@ -1413,7 +1413,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 import cdk8s._jsii
@@ -3698,7 +3698,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 from ._jsii import *
@@ -3749,7 +3749,7 @@ class Mysql(
         :param values: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__95a811b01af67eee2d8e2ae24fcefa9fa2ac995a1f9685f3e921af5330ef82ff)
+            type_hints = cached_type_hints(_typecheckingstub__95a811b01af67eee2d8e2ae24fcefa9fa2ac995a1f9685f3e921af5330ef82ff)
             check_type(argname=\\"argument scope\\", value=scope, expected_type=type_hints[\\"scope\\"])
             check_type(argname=\\"argument id\\", value=id, expected_type=type_hints[\\"id\\"])
         props = MysqlProps(
@@ -3770,7 +3770,7 @@ class Mysql(
     @helm.setter
     def helm(self, value: \\"_cdk8s_d3d9af27.Helm\\") -> None:
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__6a97335aab88f219ab5d33fb1f96a2580c2e2edc13fd76a090b1f7ebb25cbd52)
+            type_hints = cached_type_hints(_typecheckingstub__6a97335aab88f219ab5d33fb1f96a2580c2e2edc13fd76a090b1f7ebb25cbd52)
             check_type(argname=\\"argument value\\", value=value, expected_type=type_hints[\\"value\\"])
         jsii.set(self, \\"helm\\", value) # pyright: ignore[reportArgumentType]
 
@@ -3828,7 +3828,7 @@ class MysqlAuth:
         :schema: MysqlAuth
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__ee06bc5fa81868398bad26c41946af017c8765bcca5abe66e5d88d360a20e315)
+            type_hints = cached_type_hints(_typecheckingstub__ee06bc5fa81868398bad26c41946af017c8765bcca5abe66e5d88d360a20e315)
             check_type(argname=\\"argument password\\", value=password, expected_type=type_hints[\\"password\\"])
             check_type(argname=\\"argument username\\", value=username, expected_type=type_hints[\\"username\\"])
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
@@ -3972,7 +3972,7 @@ class MysqlPrimary:
         if isinstance(pod_security_context, dict):
             pod_security_context = MysqlPrimaryPodSecurityContext(**pod_security_context)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__5f80f16db85307f6e2dc2fd18749079a45e96857945ee617d44938b1e1fa49dd)
+            type_hints = cached_type_hints(_typecheckingstub__5f80f16db85307f6e2dc2fd18749079a45e96857945ee617d44938b1e1fa49dd)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument container_security_context\\", value=container_security_context, expected_type=type_hints[\\"container_security_context\\"])
             check_type(argname=\\"argument persistence\\", value=persistence, expected_type=type_hints[\\"persistence\\"])
@@ -4061,7 +4061,7 @@ class MysqlPrimaryContainerSecurityContext:
         :schema: MysqlPrimaryContainerSecurityContext
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__b6c44d7f91b4cf3cb542cb1506165f060a9a15243f09931b735b74af15eaf7ae)
+            type_hints = cached_type_hints(_typecheckingstub__b6c44d7f91b4cf3cb542cb1506165f060a9a15243f09931b735b74af15eaf7ae)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument run_as_user\\", value=run_as_user, expected_type=type_hints[\\"run_as_user\\"])
@@ -4137,7 +4137,7 @@ class MysqlPrimaryPersistence:
         :schema: MysqlPrimaryPersistence
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__da573ccf5d6dca82a8d1cb770a6c85bd0dd98f4b5fe00a7260e815a7140dc9ba)
+            type_hints = cached_type_hints(_typecheckingstub__da573ccf5d6dca82a8d1cb770a6c85bd0dd98f4b5fe00a7260e815a7140dc9ba)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument size\\", value=size, expected_type=type_hints[\\"size\\"])
@@ -4213,7 +4213,7 @@ class MysqlPrimaryPodSecurityContext:
         :schema: MysqlPrimaryPodSecurityContext
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__f093d2c1e555d5d67dfb226a625b4abd2741a6b3333a3f12627a45d66a375c7c)
+            type_hints = cached_type_hints(_typecheckingstub__f093d2c1e555d5d67dfb226a625b4abd2741a6b3333a3f12627a45d66a375c7c)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument fs_group\\", value=fs_group, expected_type=type_hints[\\"fs_group\\"])
@@ -4295,7 +4295,7 @@ class MysqlProps:
         if isinstance(values, dict):
             values = MysqlValues(**values)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__e0f01c3bcbff3f33dcd5e42ea1dca1754a4ffa560d4ed4393b91bf8167da3e71)
+            type_hints = cached_type_hints(_typecheckingstub__e0f01c3bcbff3f33dcd5e42ea1dca1754a4ffa560d4ed4393b91bf8167da3e71)
             check_type(argname=\\"argument helm_executable\\", value=helm_executable, expected_type=type_hints[\\"helm_executable\\"])
             check_type(argname=\\"argument helm_flags\\", value=helm_flags, expected_type=type_hints[\\"helm_flags\\"])
             check_type(argname=\\"argument namespace\\", value=namespace, expected_type=type_hints[\\"namespace\\"])
@@ -4384,7 +4384,7 @@ class MysqlSecondary:
         if isinstance(pod_security_context, dict):
             pod_security_context = MysqlSecondaryPodSecurityContext(**pod_security_context)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__9f5e9436f8b23b1168f49948e6f47f206871fa357437067fe13eb80a1e4844f2)
+            type_hints = cached_type_hints(_typecheckingstub__9f5e9436f8b23b1168f49948e6f47f206871fa357437067fe13eb80a1e4844f2)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument container_security_context\\", value=container_security_context, expected_type=type_hints[\\"container_security_context\\"])
             check_type(argname=\\"argument persistence\\", value=persistence, expected_type=type_hints[\\"persistence\\"])
@@ -4475,7 +4475,7 @@ class MysqlSecondaryContainerSecurityContext:
         :schema: MysqlSecondaryContainerSecurityContext
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__1ae0b9a8b2ed30dd59da81691df3e07509c48d79c4bae3cf246ab40221c987b1)
+            type_hints = cached_type_hints(_typecheckingstub__1ae0b9a8b2ed30dd59da81691df3e07509c48d79c4bae3cf246ab40221c987b1)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument run_as_user\\", value=run_as_user, expected_type=type_hints[\\"run_as_user\\"])
@@ -4551,7 +4551,7 @@ class MysqlSecondaryPersistence:
         :schema: MysqlSecondaryPersistence
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__948c5c8f94b41fa54e53ae6a34ae87281865e016dcca8ad5308b1666738cbd56)
+            type_hints = cached_type_hints(_typecheckingstub__948c5c8f94b41fa54e53ae6a34ae87281865e016dcca8ad5308b1666738cbd56)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument size\\", value=size, expected_type=type_hints[\\"size\\"])
@@ -4627,7 +4627,7 @@ class MysqlSecondaryPodSecurityContext:
         :schema: MysqlSecondaryPodSecurityContext
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__c3d21a01f61c5c4594bfd80de49afce454aa452afa8cc380cf0792cf29872ce7)
+            type_hints = cached_type_hints(_typecheckingstub__c3d21a01f61c5c4594bfd80de49afce454aa452afa8cc380cf0792cf29872ce7)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument fs_group\\", value=fs_group, expected_type=type_hints[\\"fs_group\\"])
@@ -4721,7 +4721,7 @@ class MysqlValues:
         if isinstance(secondary, dict):
             secondary = MysqlSecondary(**secondary)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__ba4b7249d1a1862400c9b19cff8ae48324c2ce9cf5eddeb6ee91753a02247696)
+            type_hints = cached_type_hints(_typecheckingstub__ba4b7249d1a1862400c9b19cff8ae48324c2ce9cf5eddeb6ee91753a02247696)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument architecture\\", value=architecture, expected_type=type_hints[\\"architecture\\"])
             check_type(argname=\\"argument auth\\", value=auth, expected_type=type_hints[\\"auth\\"])
@@ -4979,7 +4979,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 import cdk8s._jsii
@@ -12245,7 +12245,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 from ._jsii import *
@@ -12296,7 +12296,7 @@ class Certmanager(
         :param values: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__89a70d238cbde564d2f86e0f0dd9cf3aa86d64fa4e2da743203149dad1490c26)
+            type_hints = cached_type_hints(_typecheckingstub__89a70d238cbde564d2f86e0f0dd9cf3aa86d64fa4e2da743203149dad1490c26)
             check_type(argname=\\"argument scope\\", value=scope, expected_type=type_hints[\\"scope\\"])
             check_type(argname=\\"argument id\\", value=id, expected_type=type_hints[\\"id\\"])
         props = CertmanagerProps(
@@ -12317,7 +12317,7 @@ class Certmanager(
     @helm.setter
     def helm(self, value: \\"_cdk8s_d3d9af27.Helm\\") -> None:
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__49d55ce274b4a938b152c0c3208088911adc30540b6312f53bc1b49da08a899c)
+            type_hints = cached_type_hints(_typecheckingstub__49d55ce274b4a938b152c0c3208088911adc30540b6312f53bc1b49da08a899c)
             check_type(argname=\\"argument value\\", value=value, expected_type=type_hints[\\"value\\"])
         jsii.set(self, \\"helm\\", value) # pyright: ignore[reportArgumentType]
 
@@ -12353,7 +12353,7 @@ class CertmanagerProps:
         if isinstance(values, dict):
             values = HelmValues(**values)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__3bba575382ebd48f5845a258f563027f6d7bb063aa5933682a93cb9d800a546f)
+            type_hints = cached_type_hints(_typecheckingstub__3bba575382ebd48f5845a258f563027f6d7bb063aa5933682a93cb9d800a546f)
             check_type(argname=\\"argument helm_executable\\", value=helm_executable, expected_type=type_hints[\\"helm_executable\\"])
             check_type(argname=\\"argument helm_flags\\", value=helm_flags, expected_type=type_hints[\\"helm_flags\\"])
             check_type(argname=\\"argument namespace\\", value=namespace, expected_type=type_hints[\\"namespace\\"])
@@ -12614,7 +12614,7 @@ class HelmValues:
         if isinstance(webhook, dict):
             webhook = HelmValuesWebhook(**webhook)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__c95a4d20447a84c9531965160214bac1a4163b7720efbc24de9e41932f651f9b)
+            type_hints = cached_type_hints(_typecheckingstub__c95a4d20447a84c9531965160214bac1a4163b7720efbc24de9e41932f651f9b)
             check_type(argname=\\"argument acmesolver\\", value=acmesolver, expected_type=type_hints[\\"acmesolver\\"])
             check_type(argname=\\"argument affinity\\", value=affinity, expected_type=type_hints[\\"affinity\\"])
             check_type(argname=\\"argument approve_signer_names\\", value=approve_signer_names, expected_type=type_hints[\\"approve_signer_names\\"])
@@ -13264,7 +13264,7 @@ class HelmValuesAcmesolver:
         if isinstance(image, dict):
             image = HelmValuesAcmesolverImage(**image)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__fe117465e5f369cc50551ee82208b661f72b5ba8cf98e58db778393e38b6c210)
+            type_hints = cached_type_hints(_typecheckingstub__fe117465e5f369cc50551ee82208b661f72b5ba8cf98e58db778393e38b6c210)
             check_type(argname=\\"argument image\\", value=image, expected_type=type_hints[\\"image\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
         if image is not None:
@@ -13321,7 +13321,7 @@ class HelmValuesAcmesolverImage:
         :schema: helm-values.acmesolver.image
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__7fff49e648367de55eaf7b7915c5c30f04641f161f9ac7f3e4909453864bb97f)
+            type_hints = cached_type_hints(_typecheckingstub__7fff49e648367de55eaf7b7915c5c30f04641f161f9ac7f3e4909453864bb97f)
             check_type(argname=\\"argument digest\\", value=digest, expected_type=type_hints[\\"digest\\"])
             check_type(argname=\\"argument pull_policy\\", value=pull_policy, expected_type=type_hints[\\"pull_policy\\"])
             check_type(argname=\\"argument registry\\", value=registry, expected_type=type_hints[\\"registry\\"])
@@ -13491,7 +13491,7 @@ class HelmValuesCainjector:
         if isinstance(service_account, dict):
             service_account = HelmValuesCainjectorServiceAccount(**service_account)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__2bee31b76619a436521822d94d8d3c3c4c2d8a0d8908bca5144a8977a72ef435)
+            type_hints = cached_type_hints(_typecheckingstub__2bee31b76619a436521822d94d8d3c3c4c2d8a0d8908bca5144a8977a72ef435)
             check_type(argname=\\"argument affinity\\", value=affinity, expected_type=type_hints[\\"affinity\\"])
             check_type(argname=\\"argument automount_service_account_token\\", value=automount_service_account_token, expected_type=type_hints[\\"automount_service_account_token\\"])
             check_type(argname=\\"argument config\\", value=config, expected_type=type_hints[\\"config\\"])
@@ -13825,7 +13825,7 @@ class HelmValuesCainjectorImage:
         :schema: helm-values.cainjector.image
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__ae98a2bf5f57012adc3fe06b38be4c3d9e8dee2fb15e690d77e9818cc2b2fd0a)
+            type_hints = cached_type_hints(_typecheckingstub__ae98a2bf5f57012adc3fe06b38be4c3d9e8dee2fb15e690d77e9818cc2b2fd0a)
             check_type(argname=\\"argument digest\\", value=digest, expected_type=type_hints[\\"digest\\"])
             check_type(argname=\\"argument pull_policy\\", value=pull_policy, expected_type=type_hints[\\"pull_policy\\"])
             check_type(argname=\\"argument registry\\", value=registry, expected_type=type_hints[\\"registry\\"])
@@ -13920,7 +13920,7 @@ class HelmValuesCainjectorPodDisruptionBudget:
         :schema: helm-values.cainjector.podDisruptionBudget
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__4df0aa0f318a2c2ed2628f64c3e95db9479e59b74e09f9dff944c727860dcc32)
+            type_hints = cached_type_hints(_typecheckingstub__4df0aa0f318a2c2ed2628f64c3e95db9479e59b74e09f9dff944c727860dcc32)
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument max_unavailable\\", value=max_unavailable, expected_type=type_hints[\\"max_unavailable\\"])
             check_type(argname=\\"argument min_available\\", value=min_available, expected_type=type_hints[\\"min_available\\"])
@@ -13999,7 +13999,7 @@ class HelmValuesCainjectorServiceAccount:
         :schema: helm-values.cainjector.serviceAccount
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__6ae9ab78bb8096f19e494c2d573d2aed44bc3b2aab0cca4dd25be63bfe3f4022)
+            type_hints = cached_type_hints(_typecheckingstub__6ae9ab78bb8096f19e494c2d573d2aed44bc3b2aab0cca4dd25be63bfe3f4022)
             check_type(argname=\\"argument annotations\\", value=annotations, expected_type=type_hints[\\"annotations\\"])
             check_type(argname=\\"argument automount_service_account_token\\", value=automount_service_account_token, expected_type=type_hints[\\"automount_service_account_token\\"])
             check_type(argname=\\"argument create\\", value=create, expected_type=type_hints[\\"create\\"])
@@ -14088,7 +14088,7 @@ class HelmValuesCrds:
         :schema: helm-values.crds
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__f1da82d19d18499d9af491bc25f426ee99df1def6e71971e9393663dd0433e74)
+            type_hints = cached_type_hints(_typecheckingstub__f1da82d19d18499d9af491bc25f426ee99df1def6e71971e9393663dd0433e74)
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument keep\\", value=keep, expected_type=type_hints[\\"keep\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -14172,7 +14172,7 @@ class HelmValuesGlobal:
         if isinstance(rbac, dict):
             rbac = HelmValuesGlobalRbac(**rbac)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__187b5c34ca6608a47b20f6fd2e7b5156fe259fd5387e1035ce99cdf5b41b5e6d)
+            type_hints = cached_type_hints(_typecheckingstub__187b5c34ca6608a47b20f6fd2e7b5156fe259fd5387e1035ce99cdf5b41b5e6d)
             check_type(argname=\\"argument common_labels\\", value=common_labels, expected_type=type_hints[\\"common_labels\\"])
             check_type(argname=\\"argument image_pull_secrets\\", value=image_pull_secrets, expected_type=type_hints[\\"image_pull_secrets\\"])
             check_type(argname=\\"argument leader_election\\", value=leader_election, expected_type=type_hints[\\"leader_election\\"])
@@ -14305,7 +14305,7 @@ class HelmValuesGlobalLeaderElection:
         :schema: helm-values.global.leaderElection
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__a15880db27b741e33f32ed86b2879b17f74f0ab8d5abd07196b477f85a964335)
+            type_hints = cached_type_hints(_typecheckingstub__a15880db27b741e33f32ed86b2879b17f74f0ab8d5abd07196b477f85a964335)
             check_type(argname=\\"argument lease_duration\\", value=lease_duration, expected_type=type_hints[\\"lease_duration\\"])
             check_type(argname=\\"argument namespace\\", value=namespace, expected_type=type_hints[\\"namespace\\"])
             check_type(argname=\\"argument renew_deadline\\", value=renew_deadline, expected_type=type_hints[\\"renew_deadline\\"])
@@ -14383,7 +14383,7 @@ class HelmValuesGlobalPodSecurityPolicy:
         :schema: helm-values.global.podSecurityPolicy
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__5445c74362001ea19a54ea29cfa69a712daf0794465ff357d5130682851747cd)
+            type_hints = cached_type_hints(_typecheckingstub__5445c74362001ea19a54ea29cfa69a712daf0794465ff357d5130682851747cd)
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument use_app_armor\\", value=use_app_armor, expected_type=type_hints[\\"use_app_armor\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -14442,7 +14442,7 @@ class HelmValuesGlobalRbac:
         :schema: helm-values.global.rbac
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__ab37af78d6f836f4c502b5b063d9da845c25cfdfa0e7c7f03c52748cd5cd6241)
+            type_hints = cached_type_hints(_typecheckingstub__ab37af78d6f836f4c502b5b063d9da845c25cfdfa0e7c7f03c52748cd5cd6241)
             check_type(argname=\\"argument aggregate_cluster_roles\\", value=aggregate_cluster_roles, expected_type=type_hints[\\"aggregate_cluster_roles\\"])
             check_type(argname=\\"argument create\\", value=create, expected_type=type_hints[\\"create\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -14510,7 +14510,7 @@ class HelmValuesImage:
         :schema: helm-values.image
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__ee7855a5c634fd31db3365257f1b5377f524992d0760aafdd3e7e888b609e441)
+            type_hints = cached_type_hints(_typecheckingstub__ee7855a5c634fd31db3365257f1b5377f524992d0760aafdd3e7e888b609e441)
             check_type(argname=\\"argument digest\\", value=digest, expected_type=type_hints[\\"digest\\"])
             check_type(argname=\\"argument pull_policy\\", value=pull_policy, expected_type=type_hints[\\"pull_policy\\"])
             check_type(argname=\\"argument registry\\", value=registry, expected_type=type_hints[\\"registry\\"])
@@ -14605,7 +14605,7 @@ class HelmValuesIngressShim:
         :schema: helm-values.ingressShim
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__dfa5e4cf44ca2b980593dba775e53dd75e64562cdc0886af543f467b49a94c5c)
+            type_hints = cached_type_hints(_typecheckingstub__dfa5e4cf44ca2b980593dba775e53dd75e64562cdc0886af543f467b49a94c5c)
             check_type(argname=\\"argument default_issuer_group\\", value=default_issuer_group, expected_type=type_hints[\\"default_issuer_group\\"])
             check_type(argname=\\"argument default_issuer_kind\\", value=default_issuer_kind, expected_type=type_hints[\\"default_issuer_kind\\"])
             check_type(argname=\\"argument default_issuer_name\\", value=default_issuer_name, expected_type=type_hints[\\"default_issuer_name\\"])
@@ -14678,7 +14678,7 @@ class HelmValuesPodDisruptionBudget:
         :schema: helm-values.podDisruptionBudget
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__e64f6de9dd21b4162319c38862f8f3d47fe5e821c5702d8003aaedddd28f0116)
+            type_hints = cached_type_hints(_typecheckingstub__e64f6de9dd21b4162319c38862f8f3d47fe5e821c5702d8003aaedddd28f0116)
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument max_unavailable\\", value=max_unavailable, expected_type=type_hints[\\"max_unavailable\\"])
             check_type(argname=\\"argument min_available\\", value=min_available, expected_type=type_hints[\\"min_available\\"])
@@ -14755,7 +14755,7 @@ class HelmValuesPrometheus:
         if isinstance(servicemonitor, dict):
             servicemonitor = HelmValuesPrometheusServicemonitor(**servicemonitor)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__eff67ee75bbd3b41dec7f4965703b9a2b1a0d2a79495d3fd1c132632b052a6f8)
+            type_hints = cached_type_hints(_typecheckingstub__eff67ee75bbd3b41dec7f4965703b9a2b1a0d2a79495d3fd1c132632b052a6f8)
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument podmonitor\\", value=podmonitor, expected_type=type_hints[\\"podmonitor\\"])
             check_type(argname=\\"argument servicemonitor\\", value=servicemonitor, expected_type=type_hints[\\"servicemonitor\\"])
@@ -14849,7 +14849,7 @@ class HelmValuesPrometheusPodmonitor:
         :schema: helm-values.prometheus.podmonitor
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__bf326cd191d96958d1440a7f40df809540560ff1247bed292ab8bc37fe10a614)
+            type_hints = cached_type_hints(_typecheckingstub__bf326cd191d96958d1440a7f40df809540560ff1247bed292ab8bc37fe10a614)
             check_type(argname=\\"argument annotations\\", value=annotations, expected_type=type_hints[\\"annotations\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument endpoint_additional_properties\\", value=endpoint_additional_properties, expected_type=type_hints[\\"endpoint_additional_properties\\"])
@@ -15023,7 +15023,7 @@ class HelmValuesPrometheusServicemonitor:
         :schema: helm-values.prometheus.servicemonitor
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__02de407f053f136e86997caedca3115a8648d098162203a91183c7648d4c370a)
+            type_hints = cached_type_hints(_typecheckingstub__02de407f053f136e86997caedca3115a8648d098162203a91183c7648d4c370a)
             check_type(argname=\\"argument annotations\\", value=annotations, expected_type=type_hints[\\"annotations\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument endpoint_additional_properties\\", value=endpoint_additional_properties, expected_type=type_hints[\\"endpoint_additional_properties\\"])
@@ -15190,7 +15190,7 @@ class HelmValuesServiceAccount:
         :schema: helm-values.serviceAccount
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__0d36c39a9198932be04dd03e696990f71b8b12f1d192701523ecbcce43eab18e)
+            type_hints = cached_type_hints(_typecheckingstub__0d36c39a9198932be04dd03e696990f71b8b12f1d192701523ecbcce43eab18e)
             check_type(argname=\\"argument annotations\\", value=annotations, expected_type=type_hints[\\"annotations\\"])
             check_type(argname=\\"argument automount_service_account_token\\", value=automount_service_account_token, expected_type=type_hints[\\"automount_service_account_token\\"])
             check_type(argname=\\"argument create\\", value=create, expected_type=type_hints[\\"create\\"])
@@ -15345,7 +15345,7 @@ class HelmValuesStartupapicheck:
         if isinstance(service_account, dict):
             service_account = HelmValuesStartupapicheckServiceAccount(**service_account)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__778ef0399265201210eed543c42c16b071c94958837a2962b7a33dea15c672d5)
+            type_hints = cached_type_hints(_typecheckingstub__778ef0399265201210eed543c42c16b071c94958837a2962b7a33dea15c672d5)
             check_type(argname=\\"argument affinity\\", value=affinity, expected_type=type_hints[\\"affinity\\"])
             check_type(argname=\\"argument automount_service_account_token\\", value=automount_service_account_token, expected_type=type_hints[\\"automount_service_account_token\\"])
             check_type(argname=\\"argument backoff_limit\\", value=backoff_limit, expected_type=type_hints[\\"backoff_limit\\"])
@@ -15624,7 +15624,7 @@ class HelmValuesStartupapicheckImage:
         :schema: helm-values.startupapicheck.image
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__6ccb08222bf204d6041593ad9667464c1079a81a7cfc932bfdcf1c522f6924e2)
+            type_hints = cached_type_hints(_typecheckingstub__6ccb08222bf204d6041593ad9667464c1079a81a7cfc932bfdcf1c522f6924e2)
             check_type(argname=\\"argument digest\\", value=digest, expected_type=type_hints[\\"digest\\"])
             check_type(argname=\\"argument pull_policy\\", value=pull_policy, expected_type=type_hints[\\"pull_policy\\"])
             check_type(argname=\\"argument registry\\", value=registry, expected_type=type_hints[\\"registry\\"])
@@ -15707,7 +15707,7 @@ class HelmValuesStartupapicheckRbac:
         :schema: helm-values.startupapicheck.rbac
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__f6bd043d5f7ac675e23be4cf17ce3b0ab7e64ab27efa7920b018130f4e5175ae)
+            type_hints = cached_type_hints(_typecheckingstub__f6bd043d5f7ac675e23be4cf17ce3b0ab7e64ab27efa7920b018130f4e5175ae)
             check_type(argname=\\"argument annotations\\", value=annotations, expected_type=type_hints[\\"annotations\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
         if annotations is not None:
@@ -15764,7 +15764,7 @@ class HelmValuesStartupapicheckServiceAccount:
         :schema: helm-values.startupapicheck.serviceAccount
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__fae7a71fcfaf79a730a959e23cb3a680d4fd70de6951c6366311a7a41a15317c)
+            type_hints = cached_type_hints(_typecheckingstub__fae7a71fcfaf79a730a959e23cb3a680d4fd70de6951c6366311a7a41a15317c)
             check_type(argname=\\"argument annotations\\", value=annotations, expected_type=type_hints[\\"annotations\\"])
             check_type(argname=\\"argument automount_service_account_token\\", value=automount_service_account_token, expected_type=type_hints[\\"automount_service_account_token\\"])
             check_type(argname=\\"argument create\\", value=create, expected_type=type_hints[\\"create\\"])
@@ -15982,7 +15982,7 @@ class HelmValuesWebhook:
         if isinstance(validating_webhook_configuration, dict):
             validating_webhook_configuration = HelmValuesWebhookValidatingWebhookConfiguration(**validating_webhook_configuration)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__ac33b93ae1cbca74a741886a8d8cf8fd8ea1a4f9cc162ccc5e4259360fce7f32)
+            type_hints = cached_type_hints(_typecheckingstub__ac33b93ae1cbca74a741886a8d8cf8fd8ea1a4f9cc162ccc5e4259360fce7f32)
             check_type(argname=\\"argument affinity\\", value=affinity, expected_type=type_hints[\\"affinity\\"])
             check_type(argname=\\"argument automount_service_account_token\\", value=automount_service_account_token, expected_type=type_hints[\\"automount_service_account_token\\"])
             check_type(argname=\\"argument config\\", value=config, expected_type=type_hints[\\"config\\"])
@@ -16474,7 +16474,7 @@ class HelmValuesWebhookImage:
         :schema: helm-values.webhook.image
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__9318ae3e351e0ca84c7c207f6da49128ff803708fcccd6260f7453b0a7c991f2)
+            type_hints = cached_type_hints(_typecheckingstub__9318ae3e351e0ca84c7c207f6da49128ff803708fcccd6260f7453b0a7c991f2)
             check_type(argname=\\"argument digest\\", value=digest, expected_type=type_hints[\\"digest\\"])
             check_type(argname=\\"argument pull_policy\\", value=pull_policy, expected_type=type_hints[\\"pull_policy\\"])
             check_type(argname=\\"argument registry\\", value=registry, expected_type=type_hints[\\"registry\\"])
@@ -16557,7 +16557,7 @@ class HelmValuesWebhookMutatingWebhookConfiguration:
         :schema: helm-values.webhook.mutatingWebhookConfiguration
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__293d894d03bb26545a7ef1b12234dce2ad7c03636b4e888c4b8cea100bb8678c)
+            type_hints = cached_type_hints(_typecheckingstub__293d894d03bb26545a7ef1b12234dce2ad7c03636b4e888c4b8cea100bb8678c)
             check_type(argname=\\"argument namespace_selector\\", value=namespace_selector, expected_type=type_hints[\\"namespace_selector\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
         if namespace_selector is not None:
@@ -16604,7 +16604,7 @@ class HelmValuesWebhookNetworkPolicy:
         :schema: helm-values.webhook.networkPolicy
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__074df63a59e5ab43b00058bfbbcde6347ed4f146db39a9b5b7aa82f6c3779a1e)
+            type_hints = cached_type_hints(_typecheckingstub__074df63a59e5ab43b00058bfbbcde6347ed4f146db39a9b5b7aa82f6c3779a1e)
             check_type(argname=\\"argument egress\\", value=egress, expected_type=type_hints[\\"egress\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument ingress\\", value=ingress, expected_type=type_hints[\\"ingress\\"])
@@ -16677,7 +16677,7 @@ class HelmValuesWebhookPodDisruptionBudget:
         :schema: helm-values.webhook.podDisruptionBudget
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__2b30a832a95f974ff018a8181b79dac74d6f49911a3ceeecaea6e127cad42daf)
+            type_hints = cached_type_hints(_typecheckingstub__2b30a832a95f974ff018a8181b79dac74d6f49911a3ceeecaea6e127cad42daf)
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument max_unavailable\\", value=max_unavailable, expected_type=type_hints[\\"max_unavailable\\"])
             check_type(argname=\\"argument min_available\\", value=min_available, expected_type=type_hints[\\"min_available\\"])
@@ -16756,7 +16756,7 @@ class HelmValuesWebhookServiceAccount:
         :schema: helm-values.webhook.serviceAccount
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__7f0dae1f348fffee00872321db994318707d9dc980fee91cdf9e9a3b6f15ce22)
+            type_hints = cached_type_hints(_typecheckingstub__7f0dae1f348fffee00872321db994318707d9dc980fee91cdf9e9a3b6f15ce22)
             check_type(argname=\\"argument annotations\\", value=annotations, expected_type=type_hints[\\"annotations\\"])
             check_type(argname=\\"argument automount_service_account_token\\", value=automount_service_account_token, expected_type=type_hints[\\"automount_service_account_token\\"])
             check_type(argname=\\"argument create\\", value=create, expected_type=type_hints[\\"create\\"])
@@ -16839,7 +16839,7 @@ class HelmValuesWebhookValidatingWebhookConfiguration:
         :schema: helm-values.webhook.validatingWebhookConfiguration
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__23606d5761e197b6e6962687a1940fa9f1ab760dd7eab817c7cd3b3f493c456a)
+            type_hints = cached_type_hints(_typecheckingstub__23606d5761e197b6e6962687a1940fa9f1ab760dd7eab817c7cd3b3f493c456a)
             check_type(argname=\\"argument namespace_selector\\", value=namespace_selector, expected_type=type_hints[\\"namespace_selector\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
         if namespace_selector is not None:
@@ -17374,7 +17374,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 import cdk8s._jsii
@@ -25188,7 +25188,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 from ._jsii import *
@@ -25239,7 +25239,7 @@ class Loki(
         :param values: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__f1d23af9ace606bd925629648645169df04574e2a303e09d4fcaf42d666e0f62)
+            type_hints = cached_type_hints(_typecheckingstub__f1d23af9ace606bd925629648645169df04574e2a303e09d4fcaf42d666e0f62)
             check_type(argname=\\"argument scope\\", value=scope, expected_type=type_hints[\\"scope\\"])
             check_type(argname=\\"argument id\\", value=id, expected_type=type_hints[\\"id\\"])
         props = LokiProps(
@@ -25260,7 +25260,7 @@ class Loki(
     @helm.setter
     def helm(self, value: \\"_cdk8s_d3d9af27.Helm\\") -> None:
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__4ce0a4b600b5e431f59726607b0807de8b928a7439cb3603d7a5e16a725b53e1)
+            type_hints = cached_type_hints(_typecheckingstub__4ce0a4b600b5e431f59726607b0807de8b928a7439cb3603d7a5e16a725b53e1)
             check_type(argname=\\"argument value\\", value=value, expected_type=type_hints[\\"value\\"])
         jsii.set(self, \\"helm\\", value) # pyright: ignore[reportArgumentType]
 
@@ -25294,7 +25294,7 @@ class LokiProps:
         :param values: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__c8e7d6706b1656a9b1ed96c19860786a777f4336504fed38f4230700ca183292)
+            type_hints = cached_type_hints(_typecheckingstub__c8e7d6706b1656a9b1ed96c19860786a777f4336504fed38f4230700ca183292)
             check_type(argname=\\"argument helm_executable\\", value=helm_executable, expected_type=type_hints[\\"helm_executable\\"])
             check_type(argname=\\"argument helm_flags\\", value=helm_flags, expected_type=type_hints[\\"helm_flags\\"])
             check_type(argname=\\"argument namespace\\", value=namespace, expected_type=type_hints[\\"namespace\\"])
@@ -25399,7 +25399,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 import cdk8s._jsii
@@ -25974,7 +25974,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 from ._jsii import *
@@ -26025,7 +26025,7 @@ class Ingressnginx(
         :param values: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__85396a67490dbbfcd10c31b9f9ce68b754adb55bb50faf2fe76992886bfef5be)
+            type_hints = cached_type_hints(_typecheckingstub__85396a67490dbbfcd10c31b9f9ce68b754adb55bb50faf2fe76992886bfef5be)
             check_type(argname=\\"argument scope\\", value=scope, expected_type=type_hints[\\"scope\\"])
             check_type(argname=\\"argument id\\", value=id, expected_type=type_hints[\\"id\\"])
         props = IngressnginxProps(
@@ -26046,7 +26046,7 @@ class Ingressnginx(
     @helm.setter
     def helm(self, value: \\"_cdk8s_d3d9af27.Helm\\") -> None:
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__bf4e38d82d6ec512d25f7746a82eabc0d602261aa2aeeab89a5d0933455140d4)
+            type_hints = cached_type_hints(_typecheckingstub__bf4e38d82d6ec512d25f7746a82eabc0d602261aa2aeeab89a5d0933455140d4)
             check_type(argname=\\"argument value\\", value=value, expected_type=type_hints[\\"value\\"])
         jsii.set(self, \\"helm\\", value) # pyright: ignore[reportArgumentType]
 
@@ -26080,7 +26080,7 @@ class IngressnginxProps:
         :param values: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__85110f2d73c16d180cff3964310561744c0306d72b234ccd18c0a1c76fb41d18)
+            type_hints = cached_type_hints(_typecheckingstub__85110f2d73c16d180cff3964310561744c0306d72b234ccd18c0a1c76fb41d18)
             check_type(argname=\\"argument helm_executable\\", value=helm_executable, expected_type=type_hints[\\"helm_executable\\"])
             check_type(argname=\\"argument helm_flags\\", value=helm_flags, expected_type=type_hints[\\"helm_flags\\"])
             check_type(argname=\\"argument namespace\\", value=namespace, expected_type=type_hints[\\"namespace\\"])
@@ -26185,7 +26185,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 import cdk8s._jsii
@@ -32444,7 +32444,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 from ._jsii import *
@@ -32501,7 +32501,7 @@ class IoK8SApiCoreV1Affinity:
         if isinstance(pod_anti_affinity, dict):
             pod_anti_affinity = IoK8SApiCoreV1AffinityPodAntiAffinity(**pod_anti_affinity)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__dcbd3c1d64c57915cdfe4d3e9c252dc593c38b7af2c271606308ad2dd0688fca)
+            type_hints = cached_type_hints(_typecheckingstub__dcbd3c1d64c57915cdfe4d3e9c252dc593c38b7af2c271606308ad2dd0688fca)
             check_type(argname=\\"argument node_affinity\\", value=node_affinity, expected_type=type_hints[\\"node_affinity\\"])
             check_type(argname=\\"argument pod_affinity\\", value=pod_affinity, expected_type=type_hints[\\"pod_affinity\\"])
             check_type(argname=\\"argument pod_anti_affinity\\", value=pod_anti_affinity, expected_type=type_hints[\\"pod_anti_affinity\\"])
@@ -32579,7 +32579,7 @@ class IoK8SApiCoreV1AffinityNodeAffinity:
         if isinstance(required_during_scheduling_ignored_during_execution, dict):
             required_during_scheduling_ignored_during_execution = IoK8SApiCoreV1AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution(**required_during_scheduling_ignored_during_execution)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__83fb7082ba953b5b9e787cc0ee59a9bef2197db6a48b11240fdf117606315a5a)
+            type_hints = cached_type_hints(_typecheckingstub__83fb7082ba953b5b9e787cc0ee59a9bef2197db6a48b11240fdf117606315a5a)
             check_type(argname=\\"argument preferred_during_scheduling_ignored_during_execution\\", value=preferred_during_scheduling_ignored_during_execution, expected_type=type_hints[\\"preferred_during_scheduling_ignored_during_execution\\"])
             check_type(argname=\\"argument required_during_scheduling_ignored_during_execution\\", value=required_during_scheduling_ignored_during_execution, expected_type=type_hints[\\"required_during_scheduling_ignored_during_execution\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -32648,7 +32648,7 @@ class IoK8SApiCoreV1AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringEx
         if isinstance(preference, dict):
             preference = IoK8SApiCoreV1AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference(**preference)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__3bc3a7ad7604790369045dfb4698addef29a8a8a6153811d9f7dd8f99e3ee359)
+            type_hints = cached_type_hints(_typecheckingstub__3bc3a7ad7604790369045dfb4698addef29a8a8a6153811d9f7dd8f99e3ee359)
             check_type(argname=\\"argument preference\\", value=preference, expected_type=type_hints[\\"preference\\"])
             check_type(argname=\\"argument weight\\", value=weight, expected_type=type_hints[\\"weight\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -32716,7 +32716,7 @@ class IoK8SApiCoreV1AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringEx
         :schema: IoK8SApiCoreV1AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__41dee617dee988ead026c7bad2ebb4fae531007cc7f48f0db25cfa20dca41762)
+            type_hints = cached_type_hints(_typecheckingstub__41dee617dee988ead026c7bad2ebb4fae531007cc7f48f0db25cfa20dca41762)
             check_type(argname=\\"argument match_expressions\\", value=match_expressions, expected_type=type_hints[\\"match_expressions\\"])
             check_type(argname=\\"argument match_fields\\", value=match_fields, expected_type=type_hints[\\"match_fields\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -32781,7 +32781,7 @@ class IoK8SApiCoreV1AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringEx
         :schema: IoK8SApiCoreV1AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchExpressions
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__3730cdd540fb8e7d48cf1be08570870a521033bbdb76cecc74c8fb287aebc010)
+            type_hints = cached_type_hints(_typecheckingstub__3730cdd540fb8e7d48cf1be08570870a521033bbdb76cecc74c8fb287aebc010)
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
@@ -32901,7 +32901,7 @@ class IoK8SApiCoreV1AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringEx
         :schema: IoK8SApiCoreV1AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchFields
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__7b9dade3151f99e1afdce33c41e3c8dd8d3c83a16e10b28ddaf5ea28a3e22ada)
+            type_hints = cached_type_hints(_typecheckingstub__7b9dade3151f99e1afdce33c41e3c8dd8d3c83a16e10b28ddaf5ea28a3e22ada)
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
@@ -33019,7 +33019,7 @@ class IoK8SApiCoreV1AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExe
         :schema: IoK8SApiCoreV1AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__9acfa843b7229c0e9ad74630682849efa291d2c9468e4afb8a72503609d4a5d6)
+            type_hints = cached_type_hints(_typecheckingstub__9acfa843b7229c0e9ad74630682849efa291d2c9468e4afb8a72503609d4a5d6)
             check_type(argname=\\"argument node_selector_terms\\", value=node_selector_terms, expected_type=type_hints[\\"node_selector_terms\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
         if node_selector_terms is not None:
@@ -33075,7 +33075,7 @@ class IoK8SApiCoreV1AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExe
         :schema: IoK8SApiCoreV1AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerms
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__2985f1fb46d7d123a1304f37a4bdd1cb669f518ddebf14def78cd809166f7135)
+            type_hints = cached_type_hints(_typecheckingstub__2985f1fb46d7d123a1304f37a4bdd1cb669f518ddebf14def78cd809166f7135)
             check_type(argname=\\"argument match_expressions\\", value=match_expressions, expected_type=type_hints[\\"match_expressions\\"])
             check_type(argname=\\"argument match_fields\\", value=match_fields, expected_type=type_hints[\\"match_fields\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -33140,7 +33140,7 @@ class IoK8SApiCoreV1AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExe
         :schema: IoK8SApiCoreV1AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsMatchExpressions
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__2eef7443ccd6b5aaac15c30182a3aaae735d74ec9a15de2a348964115b0f1bad)
+            type_hints = cached_type_hints(_typecheckingstub__2eef7443ccd6b5aaac15c30182a3aaae735d74ec9a15de2a348964115b0f1bad)
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
@@ -33260,7 +33260,7 @@ class IoK8SApiCoreV1AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExe
         :schema: IoK8SApiCoreV1AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsMatchFields
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__9ec67c499846b6a293071ecb3ec3a0f941758830e6820225b2170274524e6b3a)
+            type_hints = cached_type_hints(_typecheckingstub__9ec67c499846b6a293071ecb3ec3a0f941758830e6820225b2170274524e6b3a)
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
@@ -33381,7 +33381,7 @@ class IoK8SApiCoreV1AffinityPodAffinity:
         :schema: IoK8SApiCoreV1AffinityPodAffinity
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__ecd2363c495f3d762f767f20f3b220c8eb4d1138684a8c2cf0ffa57e67d7aeeb)
+            type_hints = cached_type_hints(_typecheckingstub__ecd2363c495f3d762f767f20f3b220c8eb4d1138684a8c2cf0ffa57e67d7aeeb)
             check_type(argname=\\"argument preferred_during_scheduling_ignored_during_execution\\", value=preferred_during_scheduling_ignored_during_execution, expected_type=type_hints[\\"preferred_during_scheduling_ignored_during_execution\\"])
             check_type(argname=\\"argument required_during_scheduling_ignored_during_execution\\", value=required_during_scheduling_ignored_during_execution, expected_type=type_hints[\\"required_during_scheduling_ignored_during_execution\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -33450,7 +33450,7 @@ class IoK8SApiCoreV1AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExe
         if isinstance(pod_affinity_term, dict):
             pod_affinity_term = IoK8SApiCoreV1AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm(**pod_affinity_term)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__73fb8396890742e720d837189aebf4ac5e0bc16c2f01edcaf5364c545a74c0a1)
+            type_hints = cached_type_hints(_typecheckingstub__73fb8396890742e720d837189aebf4ac5e0bc16c2f01edcaf5364c545a74c0a1)
             check_type(argname=\\"argument pod_affinity_term\\", value=pod_affinity_term, expected_type=type_hints[\\"pod_affinity_term\\"])
             check_type(argname=\\"argument weight\\", value=weight, expected_type=type_hints[\\"weight\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -33524,7 +33524,7 @@ class IoK8SApiCoreV1AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExe
         if isinstance(namespace_selector, dict):
             namespace_selector = IoK8SApiCoreV1AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermNamespaceSelector(**namespace_selector)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__b8dcc9ff575d6ba789f0a4bf1a9431102f18c195a13405596170979aca3a6cb2)
+            type_hints = cached_type_hints(_typecheckingstub__b8dcc9ff575d6ba789f0a4bf1a9431102f18c195a13405596170979aca3a6cb2)
             check_type(argname=\\"argument topology_key\\", value=topology_key, expected_type=type_hints[\\"topology_key\\"])
             check_type(argname=\\"argument label_selector\\", value=label_selector, expected_type=type_hints[\\"label_selector\\"])
             check_type(argname=\\"argument namespaces\\", value=namespaces, expected_type=type_hints[\\"namespaces\\"])
@@ -33625,7 +33625,7 @@ class IoK8SApiCoreV1AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExe
         :schema: IoK8SApiCoreV1AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__40cfaac301cd989c2a2863d9bcefa06dbd6fbab7916f86ca78ccf892347ffafb)
+            type_hints = cached_type_hints(_typecheckingstub__40cfaac301cd989c2a2863d9bcefa06dbd6fbab7916f86ca78ccf892347ffafb)
             check_type(argname=\\"argument match_expressions\\", value=match_expressions, expected_type=type_hints[\\"match_expressions\\"])
             check_type(argname=\\"argument match_labels\\", value=match_labels, expected_type=type_hints[\\"match_labels\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -33694,7 +33694,7 @@ class IoK8SApiCoreV1AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExe
         :schema: IoK8SApiCoreV1AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressions
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__2b198777efafa2bcf798a86663d42e7d69dea513909618f4a7ba62c47966529f)
+            type_hints = cached_type_hints(_typecheckingstub__2b198777efafa2bcf798a86663d42e7d69dea513909618f4a7ba62c47966529f)
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
@@ -33774,7 +33774,7 @@ class IoK8SApiCoreV1AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExe
         :schema: IoK8SApiCoreV1AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermNamespaceSelector
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__1d7a88051a5ab512c4e0d9b5fbed96bb1f36fd6ae3201420ace8e2be23a019b2)
+            type_hints = cached_type_hints(_typecheckingstub__1d7a88051a5ab512c4e0d9b5fbed96bb1f36fd6ae3201420ace8e2be23a019b2)
             check_type(argname=\\"argument match_expressions\\", value=match_expressions, expected_type=type_hints[\\"match_expressions\\"])
             check_type(argname=\\"argument match_labels\\", value=match_labels, expected_type=type_hints[\\"match_labels\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -33843,7 +33843,7 @@ class IoK8SApiCoreV1AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExe
         :schema: IoK8SApiCoreV1AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermNamespaceSelectorMatchExpressions
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__bbd3a72a8cffc689f71da929f6797f32d6f852fa2e1e9d97277ed0eddeaad132)
+            type_hints = cached_type_hints(_typecheckingstub__bbd3a72a8cffc689f71da929f6797f32d6f852fa2e1e9d97277ed0eddeaad132)
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
@@ -33931,7 +33931,7 @@ class IoK8SApiCoreV1AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExec
         if isinstance(namespace_selector, dict):
             namespace_selector = IoK8SApiCoreV1AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionNamespaceSelector(**namespace_selector)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__2a6d00d95d2d04eea9613de1c7903d2e66e53fac220751130ed1b8dc64a5e972)
+            type_hints = cached_type_hints(_typecheckingstub__2a6d00d95d2d04eea9613de1c7903d2e66e53fac220751130ed1b8dc64a5e972)
             check_type(argname=\\"argument label_selector\\", value=label_selector, expected_type=type_hints[\\"label_selector\\"])
             check_type(argname=\\"argument namespaces\\", value=namespaces, expected_type=type_hints[\\"namespaces\\"])
             check_type(argname=\\"argument namespace_selector\\", value=namespace_selector, expected_type=type_hints[\\"namespace_selector\\"])
@@ -34031,7 +34031,7 @@ class IoK8SApiCoreV1AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExec
         :schema: IoK8SApiCoreV1AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__94286539963b88ed2abd60f58ddf76d754b62bbca1e65881e343f4dc1a75ecae)
+            type_hints = cached_type_hints(_typecheckingstub__94286539963b88ed2abd60f58ddf76d754b62bbca1e65881e343f4dc1a75ecae)
             check_type(argname=\\"argument match_expressions\\", value=match_expressions, expected_type=type_hints[\\"match_expressions\\"])
             check_type(argname=\\"argument match_labels\\", value=match_labels, expected_type=type_hints[\\"match_labels\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -34100,7 +34100,7 @@ class IoK8SApiCoreV1AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExec
         :schema: IoK8SApiCoreV1AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressions
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__de7b755055a8d366bf9836a2f930f13b4b5936266e2bf73587ed60ba8b4b2a8c)
+            type_hints = cached_type_hints(_typecheckingstub__de7b755055a8d366bf9836a2f930f13b4b5936266e2bf73587ed60ba8b4b2a8c)
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
@@ -34180,7 +34180,7 @@ class IoK8SApiCoreV1AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExec
         :schema: IoK8SApiCoreV1AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionNamespaceSelector
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__216dabe6923643276c2131b29326ded426ee439ab42adc975360c3f53dea4682)
+            type_hints = cached_type_hints(_typecheckingstub__216dabe6923643276c2131b29326ded426ee439ab42adc975360c3f53dea4682)
             check_type(argname=\\"argument match_expressions\\", value=match_expressions, expected_type=type_hints[\\"match_expressions\\"])
             check_type(argname=\\"argument match_labels\\", value=match_labels, expected_type=type_hints[\\"match_labels\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -34249,7 +34249,7 @@ class IoK8SApiCoreV1AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExec
         :schema: IoK8SApiCoreV1AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionNamespaceSelectorMatchExpressions
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__3ea0d99f7344162148befe0c73dc109ce6af186931d8630c3aab4a07df5a590a)
+            type_hints = cached_type_hints(_typecheckingstub__3ea0d99f7344162148befe0c73dc109ce6af186931d8630c3aab4a07df5a590a)
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
@@ -34327,7 +34327,7 @@ class IoK8SApiCoreV1AffinityPodAntiAffinity:
         :schema: IoK8SApiCoreV1AffinityPodAntiAffinity
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__b88eace380f44c65d21d90d3a959666edb3c888eb5a8b0fe785c3aaa22d86421)
+            type_hints = cached_type_hints(_typecheckingstub__b88eace380f44c65d21d90d3a959666edb3c888eb5a8b0fe785c3aaa22d86421)
             check_type(argname=\\"argument preferred_during_scheduling_ignored_during_execution\\", value=preferred_during_scheduling_ignored_during_execution, expected_type=type_hints[\\"preferred_during_scheduling_ignored_during_execution\\"])
             check_type(argname=\\"argument required_during_scheduling_ignored_during_execution\\", value=required_during_scheduling_ignored_during_execution, expected_type=type_hints[\\"required_during_scheduling_ignored_during_execution\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -34396,7 +34396,7 @@ class IoK8SApiCoreV1AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDurin
         if isinstance(pod_affinity_term, dict):
             pod_affinity_term = IoK8SApiCoreV1AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm(**pod_affinity_term)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__3b5279544107027f249afe15ae53a3f9fc003336039ae784915c7894311253c0)
+            type_hints = cached_type_hints(_typecheckingstub__3b5279544107027f249afe15ae53a3f9fc003336039ae784915c7894311253c0)
             check_type(argname=\\"argument pod_affinity_term\\", value=pod_affinity_term, expected_type=type_hints[\\"pod_affinity_term\\"])
             check_type(argname=\\"argument weight\\", value=weight, expected_type=type_hints[\\"weight\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -34470,7 +34470,7 @@ class IoK8SApiCoreV1AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDurin
         if isinstance(namespace_selector, dict):
             namespace_selector = IoK8SApiCoreV1AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermNamespaceSelector(**namespace_selector)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__d6879ad10b0b3bf32416b947889ea0fafb9697033bd98f9280aa3d9dac126887)
+            type_hints = cached_type_hints(_typecheckingstub__d6879ad10b0b3bf32416b947889ea0fafb9697033bd98f9280aa3d9dac126887)
             check_type(argname=\\"argument topology_key\\", value=topology_key, expected_type=type_hints[\\"topology_key\\"])
             check_type(argname=\\"argument label_selector\\", value=label_selector, expected_type=type_hints[\\"label_selector\\"])
             check_type(argname=\\"argument namespaces\\", value=namespaces, expected_type=type_hints[\\"namespaces\\"])
@@ -34571,7 +34571,7 @@ class IoK8SApiCoreV1AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDurin
         :schema: IoK8SApiCoreV1AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__779e9109822ded6fb329c314168503867d9f0a2da63eb380b58847710fc7c54c)
+            type_hints = cached_type_hints(_typecheckingstub__779e9109822ded6fb329c314168503867d9f0a2da63eb380b58847710fc7c54c)
             check_type(argname=\\"argument match_expressions\\", value=match_expressions, expected_type=type_hints[\\"match_expressions\\"])
             check_type(argname=\\"argument match_labels\\", value=match_labels, expected_type=type_hints[\\"match_labels\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -34640,7 +34640,7 @@ class IoK8SApiCoreV1AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDurin
         :schema: IoK8SApiCoreV1AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorMatchExpressions
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__fbe1868dfaa4ea324e7b51741dc160ac660e7aead3d6ad63309f8527b880a9ee)
+            type_hints = cached_type_hints(_typecheckingstub__fbe1868dfaa4ea324e7b51741dc160ac660e7aead3d6ad63309f8527b880a9ee)
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
@@ -34720,7 +34720,7 @@ class IoK8SApiCoreV1AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDurin
         :schema: IoK8SApiCoreV1AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermNamespaceSelector
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__68e47b2143b4877a3368c835d90e670218ba9b3c952ba8824d9a815404577149)
+            type_hints = cached_type_hints(_typecheckingstub__68e47b2143b4877a3368c835d90e670218ba9b3c952ba8824d9a815404577149)
             check_type(argname=\\"argument match_expressions\\", value=match_expressions, expected_type=type_hints[\\"match_expressions\\"])
             check_type(argname=\\"argument match_labels\\", value=match_labels, expected_type=type_hints[\\"match_labels\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -34789,7 +34789,7 @@ class IoK8SApiCoreV1AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDurin
         :schema: IoK8SApiCoreV1AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermNamespaceSelectorMatchExpressions
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__22b27419d7799ad450b94ff5f87bc58d4744c4e0c666e3767b396de0204de11a)
+            type_hints = cached_type_hints(_typecheckingstub__22b27419d7799ad450b94ff5f87bc58d4744c4e0c666e3767b396de0204de11a)
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
@@ -34877,7 +34877,7 @@ class IoK8SApiCoreV1AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuring
         if isinstance(namespace_selector, dict):
             namespace_selector = IoK8SApiCoreV1AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionNamespaceSelector(**namespace_selector)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__63f8c333243eb40563cc7d45ef1b7e6e5b9d38ad721d1418adf58e94b7bf4acb)
+            type_hints = cached_type_hints(_typecheckingstub__63f8c333243eb40563cc7d45ef1b7e6e5b9d38ad721d1418adf58e94b7bf4acb)
             check_type(argname=\\"argument label_selector\\", value=label_selector, expected_type=type_hints[\\"label_selector\\"])
             check_type(argname=\\"argument namespaces\\", value=namespaces, expected_type=type_hints[\\"namespaces\\"])
             check_type(argname=\\"argument namespace_selector\\", value=namespace_selector, expected_type=type_hints[\\"namespace_selector\\"])
@@ -34977,7 +34977,7 @@ class IoK8SApiCoreV1AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuring
         :schema: IoK8SApiCoreV1AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__0fc9c7df6b2de294ab5354d9cf7c44bbfcc94265b47418f00cafe7ecdf36144c)
+            type_hints = cached_type_hints(_typecheckingstub__0fc9c7df6b2de294ab5354d9cf7c44bbfcc94265b47418f00cafe7ecdf36144c)
             check_type(argname=\\"argument match_expressions\\", value=match_expressions, expected_type=type_hints[\\"match_expressions\\"])
             check_type(argname=\\"argument match_labels\\", value=match_labels, expected_type=type_hints[\\"match_labels\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -35046,7 +35046,7 @@ class IoK8SApiCoreV1AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuring
         :schema: IoK8SApiCoreV1AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressions
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__ed3918916c6e7886791cf2a5252525faa2413def1916ebb4df746a8a27cbb1e7)
+            type_hints = cached_type_hints(_typecheckingstub__ed3918916c6e7886791cf2a5252525faa2413def1916ebb4df746a8a27cbb1e7)
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
@@ -35126,7 +35126,7 @@ class IoK8SApiCoreV1AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuring
         :schema: IoK8SApiCoreV1AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionNamespaceSelector
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__385d6e39815cb32272bda30489d64561dda13ec9946858d27fc65a0802694108)
+            type_hints = cached_type_hints(_typecheckingstub__385d6e39815cb32272bda30489d64561dda13ec9946858d27fc65a0802694108)
             check_type(argname=\\"argument match_expressions\\", value=match_expressions, expected_type=type_hints[\\"match_expressions\\"])
             check_type(argname=\\"argument match_labels\\", value=match_labels, expected_type=type_hints[\\"match_labels\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -35195,7 +35195,7 @@ class IoK8SApiCoreV1AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuring
         :schema: IoK8SApiCoreV1AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionNamespaceSelectorMatchExpressions
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__9fdfe8df35f946a45e968b4b38d69b1382d866a3449f1eda5f75ff5a6ac17808)
+            type_hints = cached_type_hints(_typecheckingstub__9fdfe8df35f946a45e968b4b38d69b1382d866a3449f1eda5f75ff5a6ac17808)
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
@@ -35272,7 +35272,7 @@ class IoK8SApiCoreV1DaemonSetUpdateStrategy:
         if isinstance(rolling_update, dict):
             rolling_update = IoK8SApiCoreV1DaemonSetUpdateStrategyRollingUpdate(**rolling_update)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__691cf1c6250365dd9cb33a494eefd1c10935548095a168d5ef395a7441862256)
+            type_hints = cached_type_hints(_typecheckingstub__691cf1c6250365dd9cb33a494eefd1c10935548095a168d5ef395a7441862256)
             check_type(argname=\\"argument rolling_update\\", value=rolling_update, expected_type=type_hints[\\"rolling_update\\"])
             check_type(argname=\\"argument type\\", value=type, expected_type=type_hints[\\"type\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -35340,7 +35340,7 @@ class IoK8SApiCoreV1DaemonSetUpdateStrategyRollingUpdate:
         :schema: IoK8SApiCoreV1DaemonSetUpdateStrategyRollingUpdate
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__bcbe1e4525c8ae8dac04633b9fd41a3cdc32975e54777d9b5669373b2f18141c)
+            type_hints = cached_type_hints(_typecheckingstub__bcbe1e4525c8ae8dac04633b9fd41a3cdc32975e54777d9b5669373b2f18141c)
             check_type(argname=\\"argument max_surge\\", value=max_surge, expected_type=type_hints[\\"max_surge\\"])
             check_type(argname=\\"argument max_unavailable\\", value=max_unavailable, expected_type=type_hints[\\"max_unavailable\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -35411,7 +35411,7 @@ class IoK8SApiCoreV1LocalObjectReference:
         :schema: io.k8s.api.core.v1.LocalObjectReference
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__aad31b07aae14ea370a8ca13338d399e64c240651525bbc3a724ea48937a61e8)
+            type_hints = cached_type_hints(_typecheckingstub__aad31b07aae14ea370a8ca13338d399e64c240651525bbc3a724ea48937a61e8)
             check_type(argname=\\"argument name\\", value=name, expected_type=type_hints[\\"name\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
         if name is not None:
@@ -35460,7 +35460,7 @@ class IoK8SApiCoreV1ResourceRequirements:
         :schema: io.k8s.api.core.v1.ResourceRequirements
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__b0cfae6cb4aad42921bb69bfe68fccfe027731b98cff20327e29d9b23d764e1a)
+            type_hints = cached_type_hints(_typecheckingstub__b0cfae6cb4aad42921bb69bfe68fccfe027731b98cff20327e29d9b23d764e1a)
             check_type(argname=\\"argument limits\\", value=limits, expected_type=type_hints[\\"limits\\"])
             check_type(argname=\\"argument requests\\", value=requests, expected_type=type_hints[\\"requests\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -35535,7 +35535,7 @@ class IoK8SApiCoreV1Toleration:
         :schema: io.k8s.api.core.v1.Toleration
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__8961b249a3bd11e4645f57459dc73620f46a774c6a01af2d7b27f6d837bf44ea)
+            type_hints = cached_type_hints(_typecheckingstub__8961b249a3bd11e4645f57459dc73620f46a774c6a01af2d7b27f6d837bf44ea)
             check_type(argname=\\"argument effect\\", value=effect, expected_type=type_hints[\\"effect\\"])
             check_type(argname=\\"argument key\\", value=key, expected_type=type_hints[\\"key\\"])
             check_type(argname=\\"argument operator\\", value=operator, expected_type=type_hints[\\"operator\\"])
@@ -35697,7 +35697,7 @@ class LaceworkAgentCloudservice:
         if isinstance(gke, dict):
             gke = LaceworkAgentCloudserviceGke(**gke)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__a00c30cb766c4ce3670ed7fa040a7194f0cc005e50f492fee71a1d7221fdbc73)
+            type_hints = cached_type_hints(_typecheckingstub__a00c30cb766c4ce3670ed7fa040a7194f0cc005e50f492fee71a1d7221fdbc73)
             check_type(argname=\\"argument gke\\", value=gke, expected_type=type_hints[\\"gke\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
         if gke is not None:
@@ -35736,7 +35736,7 @@ class LaceworkAgentCloudserviceGke:
         :schema: LaceworkAgentCloudserviceGke
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__a4d2ea86626ffffc816a5d7ea7ea672b7cbcee10de8e26d93325b202baa6294c)
+            type_hints = cached_type_hints(_typecheckingstub__a4d2ea86626ffffc816a5d7ea7ea672b7cbcee10de8e26d93325b202baa6294c)
             check_type(argname=\\"argument autopilot\\", value=autopilot, expected_type=type_hints[\\"autopilot\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
         if autopilot is not None:
@@ -35801,7 +35801,7 @@ class LaceworkAgentClusterAgent:
         if isinstance(image, dict):
             image = LaceworkAgentClusterAgentImage(**image)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__427477360d777d212ced442a6c1a4283eae0d78b2a8c760ed72582ef9fe4964a)
+            type_hints = cached_type_hints(_typecheckingstub__427477360d777d212ced442a6c1a4283eae0d78b2a8c760ed72582ef9fe4964a)
             check_type(argname=\\"argument enable\\", value=enable, expected_type=type_hints[\\"enable\\"])
             check_type(argname=\\"argument image\\", value=image, expected_type=type_hints[\\"image\\"])
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
@@ -35951,7 +35951,7 @@ class LaceworkAgentClusterAgentImage:
         :schema: LaceworkAgentClusterAgentImage
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__1b0c01541508b3b32c7ca4979253b8778a14c281b271f717c8b3cfd5cc199c6e)
+            type_hints = cached_type_hints(_typecheckingstub__1b0c01541508b3b32c7ca4979253b8778a14c281b271f717c8b3cfd5cc199c6e)
             check_type(argname=\\"argument pull_policy\\", value=pull_policy, expected_type=type_hints[\\"pull_policy\\"])
             check_type(argname=\\"argument registry\\", value=registry, expected_type=type_hints[\\"registry\\"])
             check_type(argname=\\"argument repository\\", value=repository, expected_type=type_hints[\\"repository\\"])
@@ -36100,7 +36100,7 @@ class LaceworkAgentDaemonset:
         if isinstance(update_strategy, dict):
             update_strategy = IoK8SApiCoreV1DaemonSetUpdateStrategy(**update_strategy)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__8865f58784f4c0cc708c5b4fff21b85d0aa02c8830ebe0c003e678386afd20c6)
+            type_hints = cached_type_hints(_typecheckingstub__8865f58784f4c0cc708c5b4fff21b85d0aa02c8830ebe0c003e678386afd20c6)
             check_type(argname=\\"argument affinity\\", value=affinity, expected_type=type_hints[\\"affinity\\"])
             check_type(argname=\\"argument update_strategy\\", value=update_strategy, expected_type=type_hints[\\"update_strategy\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {
@@ -36159,7 +36159,7 @@ class LaceworkAgentDatacollector:
         :schema: LaceworkAgentDatacollector
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__f6147c05aec3384656fc31bffde0dfd4f7b09aec7c5989879df33bfa5a918a27)
+            type_hints = cached_type_hints(_typecheckingstub__f6147c05aec3384656fc31bffde0dfd4f7b09aec7c5989879df33bfa5a918a27)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enable\\", value=enable, expected_type=type_hints[\\"enable\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -36246,7 +36246,7 @@ class LaceworkAgentDeployment:
         if isinstance(resources, dict):
             resources = IoK8SApiCoreV1ResourceRequirements(**resources)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__787d1f6f42b54e0d6cad91b099f0e65026246f3e2b10b3a1f8add1f3ea9b4637)
+            type_hints = cached_type_hints(_typecheckingstub__787d1f6f42b54e0d6cad91b099f0e65026246f3e2b10b3a1f8add1f3ea9b4637)
             check_type(argname=\\"argument affinity\\", value=affinity, expected_type=type_hints[\\"affinity\\"])
             check_type(argname=\\"argument update_strategy\\", value=update_strategy, expected_type=type_hints[\\"update_strategy\\"])
             check_type(argname=\\"argument priority_class_create\\", value=priority_class_create, expected_type=type_hints[\\"priority_class_create\\"])
@@ -36399,7 +36399,7 @@ class LaceworkAgentImage:
         :schema: LaceworkAgentImage
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__4c0a83a494e348ea80a80280a82eb843acacd28d70ef2adf7d118c45b12ca124)
+            type_hints = cached_type_hints(_typecheckingstub__4c0a83a494e348ea80a80280a82eb843acacd28d70ef2adf7d118c45b12ca124)
             check_type(argname=\\"argument pull_policy\\", value=pull_policy, expected_type=type_hints[\\"pull_policy\\"])
             check_type(argname=\\"argument registry\\", value=registry, expected_type=type_hints[\\"registry\\"])
             check_type(argname=\\"argument repository\\", value=repository, expected_type=type_hints[\\"repository\\"])
@@ -36636,7 +36636,7 @@ class LaceworkAgentLaceworkConfig:
         if isinstance(procscan, dict):
             procscan = LaceworkAgentLaceworkConfigProcscan(**procscan)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__137ccaec2780b925802b147c3602013773aba0adcc89e414986c5d5a31ac1a52)
+            type_hints = cached_type_hints(_typecheckingstub__137ccaec2780b925802b147c3602013773aba0adcc89e414986c5d5a31ac1a52)
             check_type(argname=\\"argument access_token\\", value=access_token, expected_type=type_hints[\\"access_token\\"])
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument annotations\\", value=annotations, expected_type=type_hints[\\"annotations\\"])
@@ -36955,7 +36955,7 @@ class LaceworkAgentLaceworkConfigAnonymizeIncoming:
         :schema: LaceworkAgentLaceworkConfigAnonymizeIncoming
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__cae19ba49ffeb3756e422ae55a616d552a7b1a48e805ed6342cdcedeb898252d)
+            type_hints = cached_type_hints(_typecheckingstub__cae19ba49ffeb3756e422ae55a616d552a7b1a48e805ed6342cdcedeb898252d)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument netmask\\", value=netmask, expected_type=type_hints[\\"netmask\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -37026,7 +37026,7 @@ class LaceworkAgentLaceworkConfigCmdlinefilter:
         :schema: LaceworkAgentLaceworkConfigCmdlinefilter
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__d49626aa144236418ebd376e1f10ea94398ba5fc8167c20717e1b2e7d5629eb9)
+            type_hints = cached_type_hints(_typecheckingstub__d49626aa144236418ebd376e1f10ea94398ba5fc8167c20717e1b2e7d5629eb9)
             check_type(argname=\\"argument allow\\", value=allow, expected_type=type_hints[\\"allow\\"])
             check_type(argname=\\"argument disallow\\", value=disallow, expected_type=type_hints[\\"disallow\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -37076,7 +37076,7 @@ class LaceworkAgentLaceworkConfigCodeaware:
         :schema: LaceworkAgentLaceworkConfigCodeaware
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__5882a8edec8095b7334e91a883a0e95f3d4d4a8f83a44c6e4483316a2267bf63)
+            type_hints = cached_type_hints(_typecheckingstub__5882a8edec8095b7334e91a883a0e95f3d4d4a8f83a44c6e4483316a2267bf63)
             check_type(argname=\\"argument enable\\", value=enable, expected_type=type_hints[\\"enable\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
         if enable is not None:
@@ -37168,7 +37168,7 @@ class LaceworkAgentLaceworkConfigFim:
         :schema: LaceworkAgentLaceworkConfigFim
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__3a82613c3b10f84fd3c85552b1bf3d3eb0de5e479e129b12fa8986455f413ed2)
+            type_hints = cached_type_hints(_typecheckingstub__3a82613c3b10f84fd3c85552b1bf3d3eb0de5e479e129b12fa8986455f413ed2)
             check_type(argname=\\"argument enable\\", value=enable, expected_type=type_hints[\\"enable\\"])
             check_type(argname=\\"argument file_ignore\\", value=file_ignore, expected_type=type_hints[\\"file_ignore\\"])
             check_type(argname=\\"argument file_path\\", value=file_path, expected_type=type_hints[\\"file_path\\"])
@@ -37294,7 +37294,7 @@ class LaceworkAgentLaceworkConfigPackagescan:
         :schema: LaceworkAgentLaceworkConfigPackagescan
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__7a28ae402580638d4ca326df3f41bd0b2997d028ee2ad046ae4834bceb9580ee)
+            type_hints = cached_type_hints(_typecheckingstub__7a28ae402580638d4ca326df3f41bd0b2997d028ee2ad046ae4834bceb9580ee)
             check_type(argname=\\"argument enable\\", value=enable, expected_type=type_hints[\\"enable\\"])
             check_type(argname=\\"argument interval\\", value=interval, expected_type=type_hints[\\"interval\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -37364,7 +37364,7 @@ class LaceworkAgentLaceworkConfigProcscan:
         :schema: LaceworkAgentLaceworkConfigProcscan
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__574fdc26e474c6dcbd22d3b5de880518aa899c6e4ac43317fce728e591c17e31)
+            type_hints = cached_type_hints(_typecheckingstub__574fdc26e474c6dcbd22d3b5de880518aa899c6e4ac43317fce728e591c17e31)
             check_type(argname=\\"argument enable\\", value=enable, expected_type=type_hints[\\"enable\\"])
             check_type(argname=\\"argument interval\\", value=interval, expected_type=type_hints[\\"interval\\"])
         self._values: typing.Dict[builtins.str, typing.Any] = {}
@@ -37427,7 +37427,7 @@ class Laceworkagent(
         :param release_name: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__114ea5fe7e7841a5303933808db33ffb935e37c0ef8577589791a696f226951d)
+            type_hints = cached_type_hints(_typecheckingstub__114ea5fe7e7841a5303933808db33ffb935e37c0ef8577589791a696f226951d)
             check_type(argname=\\"argument scope\\", value=scope, expected_type=type_hints[\\"scope\\"])
             check_type(argname=\\"argument id\\", value=id, expected_type=type_hints[\\"id\\"])
         props = LaceworkagentProps(
@@ -37448,7 +37448,7 @@ class Laceworkagent(
     @helm.setter
     def helm(self, value: \\"_cdk8s_d3d9af27.Helm\\") -> None:
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__4de5e2d6c1dabef373e4f83822b3144b820f13526e9749be7796a38a2675a8ce)
+            type_hints = cached_type_hints(_typecheckingstub__4de5e2d6c1dabef373e4f83822b3144b820f13526e9749be7796a38a2675a8ce)
             check_type(argname=\\"argument value\\", value=value, expected_type=type_hints[\\"value\\"])
         jsii.set(self, \\"helm\\", value) # pyright: ignore[reportArgumentType]
 
@@ -37484,7 +37484,7 @@ class LaceworkagentProps:
         if isinstance(values, dict):
             values = LaceworkagentValues(**values)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__42b286772f6a0399931871ddfc86cb3edc039392ac6d0608f2b4d7f1d1dc28fb)
+            type_hints = cached_type_hints(_typecheckingstub__42b286772f6a0399931871ddfc86cb3edc039392ac6d0608f2b4d7f1d1dc28fb)
             check_type(argname=\\"argument values\\", value=values, expected_type=type_hints[\\"values\\"])
             check_type(argname=\\"argument helm_executable\\", value=helm_executable, expected_type=type_hints[\\"helm_executable\\"])
             check_type(argname=\\"argument helm_flags\\", value=helm_flags, expected_type=type_hints[\\"helm_flags\\"])
@@ -37617,7 +37617,7 @@ class LaceworkagentValues:
         if isinstance(resources, dict):
             resources = IoK8SApiCoreV1ResourceRequirements(**resources)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__75de6b5286dea4b274a90e031e8b30635c9eeb0419b57e7aeb0962ead8d548b7)
+            type_hints = cached_type_hints(_typecheckingstub__75de6b5286dea4b274a90e031e8b30635c9eeb0419b57e7aeb0962ead8d548b7)
             check_type(argname=\\"argument lacework_config\\", value=lacework_config, expected_type=type_hints[\\"lacework_config\\"])
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument cloudservice\\", value=cloudservice, expected_type=type_hints[\\"cloudservice\\"])
@@ -38450,7 +38450,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 import cdk8s._jsii
@@ -48534,7 +48534,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 from ._jsii import *
@@ -48585,7 +48585,7 @@ class Mysql(
         :param values: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__95a811b01af67eee2d8e2ae24fcefa9fa2ac995a1f9685f3e921af5330ef82ff)
+            type_hints = cached_type_hints(_typecheckingstub__95a811b01af67eee2d8e2ae24fcefa9fa2ac995a1f9685f3e921af5330ef82ff)
             check_type(argname=\\"argument scope\\", value=scope, expected_type=type_hints[\\"scope\\"])
             check_type(argname=\\"argument id\\", value=id, expected_type=type_hints[\\"id\\"])
         props = MysqlProps(
@@ -48606,7 +48606,7 @@ class Mysql(
     @helm.setter
     def helm(self, value: \\"_cdk8s_d3d9af27.Helm\\") -> None:
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__6a97335aab88f219ab5d33fb1f96a2580c2e2edc13fd76a090b1f7ebb25cbd52)
+            type_hints = cached_type_hints(_typecheckingstub__6a97335aab88f219ab5d33fb1f96a2580c2e2edc13fd76a090b1f7ebb25cbd52)
             check_type(argname=\\"argument value\\", value=value, expected_type=type_hints[\\"value\\"])
         jsii.set(self, \\"helm\\", value) # pyright: ignore[reportArgumentType]
 
@@ -48664,7 +48664,7 @@ class MysqlAuth:
         :schema: MysqlAuth
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__ee06bc5fa81868398bad26c41946af017c8765bcca5abe66e5d88d360a20e315)
+            type_hints = cached_type_hints(_typecheckingstub__ee06bc5fa81868398bad26c41946af017c8765bcca5abe66e5d88d360a20e315)
             check_type(argname=\\"argument password\\", value=password, expected_type=type_hints[\\"password\\"])
             check_type(argname=\\"argument username\\", value=username, expected_type=type_hints[\\"username\\"])
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
@@ -48808,7 +48808,7 @@ class MysqlPrimary:
         if isinstance(pod_security_context, dict):
             pod_security_context = MysqlPrimaryPodSecurityContext(**pod_security_context)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__5f80f16db85307f6e2dc2fd18749079a45e96857945ee617d44938b1e1fa49dd)
+            type_hints = cached_type_hints(_typecheckingstub__5f80f16db85307f6e2dc2fd18749079a45e96857945ee617d44938b1e1fa49dd)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument container_security_context\\", value=container_security_context, expected_type=type_hints[\\"container_security_context\\"])
             check_type(argname=\\"argument persistence\\", value=persistence, expected_type=type_hints[\\"persistence\\"])
@@ -48897,7 +48897,7 @@ class MysqlPrimaryContainerSecurityContext:
         :schema: MysqlPrimaryContainerSecurityContext
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__b6c44d7f91b4cf3cb542cb1506165f060a9a15243f09931b735b74af15eaf7ae)
+            type_hints = cached_type_hints(_typecheckingstub__b6c44d7f91b4cf3cb542cb1506165f060a9a15243f09931b735b74af15eaf7ae)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument run_as_user\\", value=run_as_user, expected_type=type_hints[\\"run_as_user\\"])
@@ -48973,7 +48973,7 @@ class MysqlPrimaryPersistence:
         :schema: MysqlPrimaryPersistence
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__da573ccf5d6dca82a8d1cb770a6c85bd0dd98f4b5fe00a7260e815a7140dc9ba)
+            type_hints = cached_type_hints(_typecheckingstub__da573ccf5d6dca82a8d1cb770a6c85bd0dd98f4b5fe00a7260e815a7140dc9ba)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument size\\", value=size, expected_type=type_hints[\\"size\\"])
@@ -49049,7 +49049,7 @@ class MysqlPrimaryPodSecurityContext:
         :schema: MysqlPrimaryPodSecurityContext
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__f093d2c1e555d5d67dfb226a625b4abd2741a6b3333a3f12627a45d66a375c7c)
+            type_hints = cached_type_hints(_typecheckingstub__f093d2c1e555d5d67dfb226a625b4abd2741a6b3333a3f12627a45d66a375c7c)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument fs_group\\", value=fs_group, expected_type=type_hints[\\"fs_group\\"])
@@ -49131,7 +49131,7 @@ class MysqlProps:
         if isinstance(values, dict):
             values = MysqlValues(**values)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__e0f01c3bcbff3f33dcd5e42ea1dca1754a4ffa560d4ed4393b91bf8167da3e71)
+            type_hints = cached_type_hints(_typecheckingstub__e0f01c3bcbff3f33dcd5e42ea1dca1754a4ffa560d4ed4393b91bf8167da3e71)
             check_type(argname=\\"argument helm_executable\\", value=helm_executable, expected_type=type_hints[\\"helm_executable\\"])
             check_type(argname=\\"argument helm_flags\\", value=helm_flags, expected_type=type_hints[\\"helm_flags\\"])
             check_type(argname=\\"argument namespace\\", value=namespace, expected_type=type_hints[\\"namespace\\"])
@@ -49220,7 +49220,7 @@ class MysqlSecondary:
         if isinstance(pod_security_context, dict):
             pod_security_context = MysqlSecondaryPodSecurityContext(**pod_security_context)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__9f5e9436f8b23b1168f49948e6f47f206871fa357437067fe13eb80a1e4844f2)
+            type_hints = cached_type_hints(_typecheckingstub__9f5e9436f8b23b1168f49948e6f47f206871fa357437067fe13eb80a1e4844f2)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument container_security_context\\", value=container_security_context, expected_type=type_hints[\\"container_security_context\\"])
             check_type(argname=\\"argument persistence\\", value=persistence, expected_type=type_hints[\\"persistence\\"])
@@ -49311,7 +49311,7 @@ class MysqlSecondaryContainerSecurityContext:
         :schema: MysqlSecondaryContainerSecurityContext
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__1ae0b9a8b2ed30dd59da81691df3e07509c48d79c4bae3cf246ab40221c987b1)
+            type_hints = cached_type_hints(_typecheckingstub__1ae0b9a8b2ed30dd59da81691df3e07509c48d79c4bae3cf246ab40221c987b1)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument run_as_user\\", value=run_as_user, expected_type=type_hints[\\"run_as_user\\"])
@@ -49387,7 +49387,7 @@ class MysqlSecondaryPersistence:
         :schema: MysqlSecondaryPersistence
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__948c5c8f94b41fa54e53ae6a34ae87281865e016dcca8ad5308b1666738cbd56)
+            type_hints = cached_type_hints(_typecheckingstub__948c5c8f94b41fa54e53ae6a34ae87281865e016dcca8ad5308b1666738cbd56)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument size\\", value=size, expected_type=type_hints[\\"size\\"])
@@ -49463,7 +49463,7 @@ class MysqlSecondaryPodSecurityContext:
         :schema: MysqlSecondaryPodSecurityContext
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__c3d21a01f61c5c4594bfd80de49afce454aa452afa8cc380cf0792cf29872ce7)
+            type_hints = cached_type_hints(_typecheckingstub__c3d21a01f61c5c4594bfd80de49afce454aa452afa8cc380cf0792cf29872ce7)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument enabled\\", value=enabled, expected_type=type_hints[\\"enabled\\"])
             check_type(argname=\\"argument fs_group\\", value=fs_group, expected_type=type_hints[\\"fs_group\\"])
@@ -49557,7 +49557,7 @@ class MysqlValues:
         if isinstance(secondary, dict):
             secondary = MysqlSecondary(**secondary)
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__ba4b7249d1a1862400c9b19cff8ae48324c2ce9cf5eddeb6ee91753a02247696)
+            type_hints = cached_type_hints(_typecheckingstub__ba4b7249d1a1862400c9b19cff8ae48324c2ce9cf5eddeb6ee91753a02247696)
             check_type(argname=\\"argument additional_values\\", value=additional_values, expected_type=type_hints[\\"additional_values\\"])
             check_type(argname=\\"argument architecture\\", value=architecture, expected_type=type_hints[\\"architecture\\"])
             check_type(argname=\\"argument auth\\", value=auth, expected_type=type_hints[\\"auth\\"])
@@ -49815,7 +49815,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 import cdk8s._jsii
@@ -51877,7 +51877,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 from ._jsii import *
@@ -51928,7 +51928,7 @@ class Operator(
         :param values: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__11493dc2fc191cbb73ceb199e0facf7edcc58bf9f85942664ecc4614b277a2ba)
+            type_hints = cached_type_hints(_typecheckingstub__11493dc2fc191cbb73ceb199e0facf7edcc58bf9f85942664ecc4614b277a2ba)
             check_type(argname=\\"argument scope\\", value=scope, expected_type=type_hints[\\"scope\\"])
             check_type(argname=\\"argument id\\", value=id, expected_type=type_hints[\\"id\\"])
         props = OperatorProps(
@@ -51949,7 +51949,7 @@ class Operator(
     @helm.setter
     def helm(self, value: \\"_cdk8s_d3d9af27.Helm\\") -> None:
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__bbe1b5f7f477ccaaae9562435a3e43413b51ac77fa72bfc34d370f1284d8f1e1)
+            type_hints = cached_type_hints(_typecheckingstub__bbe1b5f7f477ccaaae9562435a3e43413b51ac77fa72bfc34d370f1284d8f1e1)
             check_type(argname=\\"argument value\\", value=value, expected_type=type_hints[\\"value\\"])
         jsii.set(self, \\"helm\\", value) # pyright: ignore[reportArgumentType]
 
@@ -51983,7 +51983,7 @@ class OperatorProps:
         :param values: -
         '''
         if __debug__:
-            type_hints = typing.get_type_hints(_typecheckingstub__1ba6cfa05344ec1eb73016e5b58b05d2a9a2e22bf82546647dd2d6dac88cf487)
+            type_hints = cached_type_hints(_typecheckingstub__1ba6cfa05344ec1eb73016e5b58b05d2a9a2e22bf82546647dd2d6dac88cf487)
             check_type(argname=\\"argument helm_executable\\", value=helm_executable, expected_type=type_hints[\\"helm_executable\\"])
             check_type(argname=\\"argument helm_flags\\", value=helm_flags, expected_type=type_hints[\\"helm_flags\\"])
             check_type(argname=\\"argument namespace\\", value=namespace, expected_type=type_hints[\\"namespace\\"])
@@ -52088,7 +52088,7 @@ import jsii
 import publication
 import typing_extensions
 
-from jsii._type_checking import check_type
+from jsii._type_checking import cached_type_hints, check_type
 
 
 import cdk8s._jsii
