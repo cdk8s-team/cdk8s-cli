@@ -1345,9 +1345,9 @@ brace-expansion@^1.1.7:
     concat-map "0.0.1"
 
 brace-expansion@^2.0.2:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-2.1.1.tgz#c68b1c4111c76aae3a6fba55d496cee10c39dad8"
-  integrity sha512-WR1cURNjuvBLMZBMbqM0UoE+WAfdUcEV1ccD8PVBVOI+Z3ND4+SZbN8RsfT2bMuG1qwz5RFvPukSZm5fF2D5eA==
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-2.1.2.tgz#0bba2271feb7d458b0d31ad13625aaa4754431e2"
+  integrity sha512-w5JZcKgdhDOgOwm8H+KgbosopHMuGcl6qbulwjtz3SM7I7P3yW1eAjzMPLrIE+NQ9vjgANKHWeMHnrT0OXW1oA==
   dependencies:
     balanced-match "^1.0.0"
 
@@ -1460,17 +1460,17 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdk8s-plus-33@^2.5.36:
-  version "2.5.36"
-  resolved "https://registry.yarnpkg.com/cdk8s-plus-33/-/cdk8s-plus-33-2.5.36.tgz#feba3b1d41cd18814b400052360ebfb7562d9136"
-  integrity sha512-OjqnjRq4EDGFUGdZBB+LULQVeEN+CK2I8i+Ut1u+/ONt77o1ApxPRxURChmFfQAzntR0kOHcwxyjr/cyqFczEQ==
+cdk8s-plus-33@^2.5.37:
+  version "2.5.37"
+  resolved "https://registry.yarnpkg.com/cdk8s-plus-33/-/cdk8s-plus-33-2.5.37.tgz#6de1b00b88e77d7526812e09ff7b20cc0e86e3f2"
+  integrity sha512-cLTRoeIPHnxQgKdRMGZA+97f2GKXoAQWsgQtFNfHX/DDO9h1oGG5T82JKRYoUxlz29ij66pz7kFSAcqBXpiOJg==
   dependencies:
     minimatch "^9.0.9"
 
-cdk8s@^2.70.82:
-  version "2.70.82"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.70.82.tgz#9d7c71fa80fc6d84791ad5218baa935dc01d2a33"
-  integrity sha512-71QhJeJy0/RQshabRsXlHgC6iOxfLL/npsZFNdDNlvOAQRqUCDdfUAKJwFspFZFUAIu58O8FgaGOv3cAHURdCQ==
+cdk8s@^2.70.83:
+  version "2.70.83"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.70.83.tgz#3a3a682140a546ca5fe30f003db1bf41e62fedcf"
+  integrity sha512-dZ3258xLeyQqhrkt55guRWrN65ym+rWznQtxJaaw+1NE8ZRgHkOnhh6qP51nLF3euFdNVmut2kSnoGVDBHuQsA==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.16.0"
