@@ -1027,7 +1027,7 @@ acorn-walk@^7.1.1:
   resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-7.2.0.tgz#0de889a601203909b0fbe07b8938dc21d2e967bc"
   integrity sha512-OPdCF6GsMIP+Az+aWfAAOEt2/+iVDKE7oy6lJ098aoe59oAmK76qV6Gw60SbZ8jHuG2wH058GF4pLFbYamYrVA==
 
-acorn-walk@^8.1.1, acorn-walk@^8.3.4:
+acorn-walk@^8.1.1:
   version "8.3.5"
   resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-8.3.5.tgz#8a6b8ca8fc5b34685af15dabb44118663c296496"
   integrity sha512-HEHNfbars9v4pgpW6SO1KSPkfoS0xVOM/9UzkJltjlsHZmJasxg8aXkuZa7SMf8vKGIBhpUsPluQSqhJFCqebw==
@@ -2081,9 +2081,9 @@ dunder-proto@^1.0.0, dunder-proto@^1.0.1:
     gopd "^1.2.0"
 
 electron-to-chromium@^1.5.389:
-  version "1.5.389"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.389.tgz#538be9ebec78026d4daba6be321ab854dfac2a8f"
-  integrity sha512-cEto7aeOqBfU1D+c5py5pE+ooscKE75JifxLBdFUZsqAxRS6y7kebtxAZvICszSl05gPjYHDTjY+lXpyGvpJbg==
+  version "1.5.392"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.392.tgz#31e9f9af0d8df3d1489468a4242b173605617482"
+  integrity sha512-1yQq3VQCZRwsnYc67Oc+1fge6Lwtn0hzi6zmEVkB61Zx21kTbwJAW4dFLadl5Rc1tKhG/kSpYXnfiAhu0f0a1g==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -5717,10 +5717,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript-json-schema@^0.67.4:
-  version "0.67.4"
-  resolved "https://registry.yarnpkg.com/typescript-json-schema/-/typescript-json-schema-0.67.4.tgz#068ee06f3e0f54f486cfabab9da972a900116816"
-  integrity sha512-BhDCVfwGtPKKt9JOBvh6ocmSbEk7ftx7dpqqIpvGNrjzYcUKm8pnYwKSFfNJwqcp/qNTfZr9sKtVyTxx4V9iRA==
+typescript-json-schema@^0.68.0:
+  version "0.68.0"
+  resolved "https://registry.yarnpkg.com/typescript-json-schema/-/typescript-json-schema-0.68.0.tgz#3b8aab7357e024bd21bef7a4e035dcf869573a70"
+  integrity sha512-1X60xXxkZpLAr125Jt5MT9VJTTxT0xfafbjdcbtml26nvpUr2p/P4V34JEXa+ObrHc71W9ksH5pemstY6y+SEw==
   dependencies:
     "@types/json-schema" "^7.0.15"
     "@types/node" "^24.10.2"
@@ -5729,7 +5729,6 @@ typescript-json-schema@^0.67.4:
     safe-stable-stringify "^2.5.0"
     ts-node "^10.9.2"
     typescript "~5.9.3"
-    vm2 "^3.11.3"
     yargs "^18.0.0"
 
 typescript@~5.9, typescript@~5.9.3:
@@ -5831,14 +5830,6 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
-
-vm2@^3.11.3:
-  version "3.11.5"
-  resolved "https://registry.yarnpkg.com/vm2/-/vm2-3.11.5.tgz#6dcebf22c7bf77acf80571f26f1040ee626a97d0"
-  integrity sha512-RSrkBiwrj6FRU+QdqNs6KG0XdlvJCjpQ4GXiqmMbrhmwfu5k/XIMpAer0L8f6iuf0uJ3a4T1xJN126Q8yf0VIA==
-  dependencies:
-    acorn "^8.15.0"
-    acorn-walk "^8.3.4"
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"
@@ -6022,9 +6013,9 @@ write-file-atomic@^3.0.0:
     typedarray-to-buffer "^3.1.5"
 
 ws@^7.4.6:
-  version "7.5.11"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.11.tgz#9460daf1812bb81a423c5b9eac746941a86310fa"
-  integrity sha512-zS54Oen9bITtp7kp2XM3AydrCIq1D+HwJOuH+c+e4LfpL/lotP5osijd+UoMnxwAam1GN8R4KtLAyIrIcBNpiA==
+  version "7.5.12"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.12.tgz#4ca2c04966db4dcd2f9bc4d1419d23cd1e4a18db"
+  integrity sha512-1xGnbYN3zbog9CwuNDQULNRrTCLIn46/WmpR1f0w6PsCYQHkylZr5vkd6kfMZYV6pRnQkcPNRyiA8LsrNKyhpg==
 
 xml-name-validator@^3.0.0:
   version "3.0.0"
