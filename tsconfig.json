@@ -38,5 +38,7 @@
     "src/**/*.ts",
     "src/schemas/*.json"
   ],
-  "exclude": []
+  "exclude": [
+    "node_modules"
+  ]
 }
