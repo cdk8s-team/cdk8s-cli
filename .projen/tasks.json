@@ -552,6 +552,7 @@
             "@types/jest",
             "@types/json-schema",
             "@types/semver",
+            "@types/yargs",
             "@typescript-eslint/eslint-plugin",
             "@typescript-eslint/parser",
             "commit-and-tag-version",

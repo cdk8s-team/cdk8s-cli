@@ -51,6 +51,7 @@ const project = new Cdk8sTeamTypeScriptProject({
     '@types/fs-extra@^8',
     '@types/json-schema',
     '@types/semver',
+    '@types/yargs@^15',
     'fast-glob',
     'typescript-json-schema',
   ],

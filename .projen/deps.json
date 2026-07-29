@@ -27,6 +27,11 @@
       "type": "build"
     },
     {
+      "name": "@types/yargs",
+      "version": "^15",
+      "type": "build"
+    },
+    {
       "name": "@typescript-eslint/eslint-plugin",
       "version": "^8",
       "type": "build"
