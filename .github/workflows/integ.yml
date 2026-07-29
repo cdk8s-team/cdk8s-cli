@@ -11,24 +11,31 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v3
+      - id: auto_656c9688
+        uses: actions/checkout@v3
       - name: Set up Node.js
+        id: set_up_node_js
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --frozen-lockfile
       - name: Set up Python 3.x
+        id: set_up_python_3_x
         uses: actions/setup-python@v4
         with:
           python-version: 3.x
       - name: Install uv
+        id: install_uv
         run: pip install uv
       - name: Set up Go
+        id: set_up_go
         uses: actions/setup-go@v6
         with:
           go-version: "1.25"
       - name: Run integration tests
+        id: run_integration_tests
         run: yarn run integ:init
     strategy:
       fail-fast: false
@@ -42,16 +49,21 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v3
+      - id: auto_656c9688
+        uses: actions/checkout@v3
       - name: Set up Node.js
+        id: set_up_node_js
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.nodeVersion }}
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --frozen-lockfile
       - name: Run integration tests
+        id: run_integration_tests
         run: yarn run integ:init:typescript-app-npm
       - name: Run integration tests
+        id: run_integration_tests_2
         run: yarn run integ:init:typescript-app-yarn
     strategy:
       fail-fast: false
