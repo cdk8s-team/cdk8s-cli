@@ -50,7 +50,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@cdk8s/projen-common": "^0.1.18",
+    "@cdk8s/projen-common": "^0.1.19",
     "@stylistic/eslint-plugin": "^2",
     "@types/fs-extra": "^8",
     "@types/jest": "^29",
@@ -67,7 +67,7 @@
     "fast-glob": "^3.3.3",
     "jest": "^29",
     "jest-junit": "^17",
-    "projen": "^0.101.31",
+    "projen": "^0.101.33",
     "ts-jest": "^29",
     "ts-node": "^10.9.2",
     "typescript": "~5.9",
