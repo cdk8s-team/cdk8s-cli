@@ -1,60 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`crds.dev import github:crossplane/crossplane@0.14.0 emit module per API group 1`] = `
-Object {
-  "author": Object {
+{
+  "author": {
     "name": "generated@generated.com",
-    "roles": Array [
+    "roles": [
       "author",
     ],
   },
   "dependencies": "__omitted__",
-  "dependencyClosure": Object {
-    "cdk8s": Object {
-      "targets": Object {
-        "dotnet": Object {
+  "dependencyClosure": {
+    "cdk8s": {
+      "targets": {
+        "dotnet": {
           "namespace": "Org.Cdk8s",
           "packageId": "Org.Cdk8s",
         },
-        "go": Object {
+        "go": {
           "moduleName": "github.com/cdk8s-team/cdk8s-core-go",
         },
-        "java": Object {
-          "maven": Object {
+        "java": {
+          "maven": {
             "artifactId": "cdk8s",
             "groupId": "org.cdk8s",
           },
           "package": "org.cdk8s",
         },
-        "js": Object {
+        "js": {
           "npm": "cdk8s",
         },
-        "python": Object {
+        "python": {
           "distName": "cdk8s",
           "module": "cdk8s",
         },
       },
     },
-    "constructs": Object {
-      "targets": Object {
-        "dotnet": Object {
+    "constructs": {
+      "targets": {
+        "dotnet": {
           "namespace": "Constructs",
           "packageId": "Constructs",
         },
-        "go": Object {
+        "go": {
           "moduleName": "github.com/aws/constructs-go",
         },
-        "java": Object {
-          "maven": Object {
+        "java": {
+          "maven": {
             "artifactId": "constructs",
             "groupId": "software.constructs",
           },
           "package": "software.constructs",
         },
-        "js": Object {
+        "js": {
           "npm": "constructs",
         },
-        "python": Object {
+        "python": {
           "distName": "constructs",
           "module": "constructs",
         },
@@ -66,255 +66,255 @@ Object {
   "homepage": "http://generated",
   "jsiiVersion": "__omitted__",
   "license": "UNLICENSED",
-  "metadata": Object {
-    "jsii": Object {
-      "pacmak": Object {
+  "metadata": {
+    "jsii": {
+      "pacmak": {
         "hasDefaultInterfaces": true,
       },
     },
   },
   "name": "metapkgcrossplaneio",
-  "repository": Object {
+  "repository": {
     "type": "git",
     "url": "http://generated",
   },
   "schema": "jsii/0.10.0",
-  "targets": Object {
-    "js": Object {
+  "targets": {
+    "js": {
       "npm": "metapkgcrossplaneio",
     },
   },
-  "types": Object {
-    "metapkgcrossplaneio.Configuration": Object {
+  "types": {
+    "metapkgcrossplaneio.Configuration": {
       "assembly": "metapkgcrossplaneio",
       "base": "cdk8s.ApiObject",
-      "docs": Object {
-        "custom": Object {
+      "docs": {
+        "custom": {
           "schema": "Configuration",
         },
         "summary": "A Configuration is the description of a Crossplane Configuration package.",
       },
       "fqn": "metapkgcrossplaneio.Configuration",
-      "initializer": Object {
-        "docs": Object {
-          "summary": "Defines a \\"Configuration\\" API object.",
+      "initializer": {
+        "docs": {
+          "summary": "Defines a "Configuration" API object.",
         },
-        "locationInModule": Object {
+        "locationInModule": {
           "filename": "meta.pkg.crossplane.io.ts",
           "line": 40,
         },
-        "parameters": Array [
-          Object {
-            "docs": Object {
+        "parameters": [
+          {
+            "docs": {
               "summary": "the scope in which to define this object.",
             },
             "name": "scope",
-            "type": Object {
+            "type": {
               "fqn": "constructs.Construct",
             },
           },
-          Object {
-            "docs": Object {
+          {
+            "docs": {
               "summary": "a scope-local name for the object.",
             },
             "name": "id",
-            "type": Object {
+            "type": {
               "primitive": "string",
             },
           },
-          Object {
-            "docs": Object {
+          {
+            "docs": {
               "summary": "initialization props.",
             },
             "name": "props",
-            "type": Object {
+            "type": {
               "fqn": "metapkgcrossplaneio.ConfigurationProps",
             },
           },
         ],
       },
       "kind": "class",
-      "locationInModule": Object {
+      "locationInModule": {
         "filename": "meta.pkg.crossplane.io.ts",
         "line": 11,
       },
-      "methods": Array [
-        Object {
-          "docs": Object {
+      "methods": [
+        {
+          "docs": {
             "remarks": "This can be used to inline resource manifests inside other objects (e.g. as templates).",
-            "summary": "Renders a Kubernetes manifest for \\"Configuration\\".",
+            "summary": "Renders a Kubernetes manifest for "Configuration".",
           },
-          "locationInModule": Object {
+          "locationInModule": {
             "filename": "meta.pkg.crossplane.io.ts",
             "line": 27,
           },
           "name": "manifest",
-          "parameters": Array [
-            Object {
-              "docs": Object {
+          "parameters": [
+            {
+              "docs": {
                 "summary": "initialization props.",
               },
               "name": "props",
-              "type": Object {
+              "type": {
                 "fqn": "metapkgcrossplaneio.ConfigurationProps",
               },
             },
           ],
-          "returns": Object {
-            "type": Object {
+          "returns": {
+            "type": {
               "primitive": "any",
             },
           },
           "static": true,
         },
-        Object {
-          "docs": Object {
+        {
+          "docs": {
             "summary": "Renders the object to Kubernetes JSON.",
           },
-          "locationInModule": Object {
+          "locationInModule": {
             "filename": "meta.pkg.crossplane.io.ts",
             "line": 50,
           },
           "name": "toJson",
           "overrides": "cdk8s.ApiObject",
-          "returns": Object {
-            "type": Object {
+          "returns": {
+            "type": {
               "primitive": "any",
             },
           },
         },
       ],
       "name": "Configuration",
-      "properties": Array [
-        Object {
+      "properties": [
+        {
           "const": true,
-          "docs": Object {
-            "summary": "Returns the apiVersion and kind for \\"Configuration\\".",
+          "docs": {
+            "summary": "Returns the apiVersion and kind for "Configuration".",
           },
           "immutable": true,
-          "locationInModule": Object {
+          "locationInModule": {
             "filename": "meta.pkg.crossplane.io.ts",
             "line": 15,
           },
           "name": "GVK",
           "static": true,
-          "type": Object {
+          "type": {
             "fqn": "cdk8s.GroupVersionKind",
           },
         },
       ],
       "symbolId": "meta.pkg.crossplane.io:Configuration",
     },
-    "metapkgcrossplaneio.ConfigurationProps": Object {
+    "metapkgcrossplaneio.ConfigurationProps": {
       "assembly": "metapkgcrossplaneio",
       "datatype": true,
-      "docs": Object {
-        "custom": Object {
+      "docs": {
+        "custom": {
           "schema": "Configuration",
         },
         "summary": "A Configuration is the description of a Crossplane Configuration package.",
       },
       "fqn": "metapkgcrossplaneio.ConfigurationProps",
       "kind": "interface",
-      "locationInModule": Object {
+      "locationInModule": {
         "filename": "meta.pkg.crossplane.io.ts",
         "line": 65,
       },
       "name": "ConfigurationProps",
-      "properties": Array [
-        Object {
+      "properties": [
+        {
           "abstract": true,
-          "docs": Object {
-            "custom": Object {
+          "docs": {
+            "custom": {
               "schema": "Configuration#spec",
             },
             "summary": "ConfigurationSpec specifies the configuration of a Configuration.",
           },
           "immutable": true,
-          "locationInModule": Object {
+          "locationInModule": {
             "filename": "meta.pkg.crossplane.io.ts",
             "line": 76,
           },
           "name": "spec",
-          "type": Object {
+          "type": {
             "fqn": "metapkgcrossplaneio.ConfigurationSpec",
           },
         },
-        Object {
+        {
           "abstract": true,
-          "docs": Object {
-            "custom": Object {
+          "docs": {
+            "custom": {
               "schema": "Configuration#metadata",
             },
           },
           "immutable": true,
-          "locationInModule": Object {
+          "locationInModule": {
             "filename": "meta.pkg.crossplane.io.ts",
             "line": 69,
           },
           "name": "metadata",
           "optional": true,
-          "type": Object {
+          "type": {
             "fqn": "cdk8s.ApiObjectMetadata",
           },
         },
       ],
       "symbolId": "meta.pkg.crossplane.io:ConfigurationProps",
     },
-    "metapkgcrossplaneio.ConfigurationSpec": Object {
+    "metapkgcrossplaneio.ConfigurationSpec": {
       "assembly": "metapkgcrossplaneio",
       "datatype": true,
-      "docs": Object {
-        "custom": Object {
+      "docs": {
+        "custom": {
           "schema": "ConfigurationSpec",
         },
         "summary": "ConfigurationSpec specifies the configuration of a Configuration.",
       },
       "fqn": "metapkgcrossplaneio.ConfigurationSpec",
       "kind": "interface",
-      "locationInModule": Object {
+      "locationInModule": {
         "filename": "meta.pkg.crossplane.io.ts",
         "line": 99,
       },
       "name": "ConfigurationSpec",
-      "properties": Array [
-        Object {
+      "properties": [
+        {
           "abstract": true,
-          "docs": Object {
-            "custom": Object {
+          "docs": {
+            "custom": {
               "schema": "ConfigurationSpec#crossplane",
             },
             "summary": "Semantic version constraints of Crossplane that package is compatible with.",
           },
           "immutable": true,
-          "locationInModule": Object {
+          "locationInModule": {
             "filename": "meta.pkg.crossplane.io.ts",
             "line": 105,
           },
           "name": "crossplane",
           "optional": true,
-          "type": Object {
+          "type": {
             "fqn": "metapkgcrossplaneio.ConfigurationSpecCrossplane",
           },
         },
-        Object {
+        {
           "abstract": true,
-          "docs": Object {
-            "custom": Object {
+          "docs": {
+            "custom": {
               "schema": "ConfigurationSpec#dependsOn",
             },
             "summary": "Dependencies on other packages.",
           },
           "immutable": true,
-          "locationInModule": Object {
+          "locationInModule": {
             "filename": "meta.pkg.crossplane.io.ts",
             "line": 112,
           },
           "name": "dependsOn",
           "optional": true,
-          "type": Object {
-            "collection": Object {
-              "elementtype": Object {
+          "type": {
+            "collection": {
+              "elementtype": {
                 "fqn": "metapkgcrossplaneio.ConfigurationSpecDependsOn",
               },
               "kind": "array",
@@ -324,49 +324,49 @@ Object {
       ],
       "symbolId": "meta.pkg.crossplane.io:ConfigurationSpec",
     },
-    "metapkgcrossplaneio.ConfigurationSpecCrossplane": Object {
+    "metapkgcrossplaneio.ConfigurationSpecCrossplane": {
       "assembly": "metapkgcrossplaneio",
       "datatype": true,
-      "docs": Object {
-        "custom": Object {
+      "docs": {
+        "custom": {
           "schema": "ConfigurationSpecCrossplane",
         },
         "summary": "Semantic version constraints of Crossplane that package is compatible with.",
       },
       "fqn": "metapkgcrossplaneio.ConfigurationSpecCrossplane",
       "kind": "interface",
-      "locationInModule": Object {
+      "locationInModule": {
         "filename": "meta.pkg.crossplane.io.ts",
         "line": 135,
       },
       "name": "ConfigurationSpecCrossplane",
-      "properties": Array [
-        Object {
+      "properties": [
+        {
           "abstract": true,
-          "docs": Object {
-            "custom": Object {
+          "docs": {
+            "custom": {
               "schema": "ConfigurationSpecCrossplane#version",
             },
             "summary": "Semantic version constraints of Crossplane that package is compatible with.",
           },
           "immutable": true,
-          "locationInModule": Object {
+          "locationInModule": {
             "filename": "meta.pkg.crossplane.io.ts",
             "line": 141,
           },
           "name": "version",
-          "type": Object {
+          "type": {
             "primitive": "string",
           },
         },
       ],
       "symbolId": "meta.pkg.crossplane.io:ConfigurationSpecCrossplane",
     },
-    "metapkgcrossplaneio.ConfigurationSpecDependsOn": Object {
+    "metapkgcrossplaneio.ConfigurationSpecDependsOn": {
       "assembly": "metapkgcrossplaneio",
       "datatype": true,
-      "docs": Object {
-        "custom": Object {
+      "docs": {
+        "custom": {
           "schema": "ConfigurationSpecDependsOn",
         },
         "remarks": "One of Provider or Configuration may be supplied.",
@@ -374,65 +374,65 @@ Object {
       },
       "fqn": "metapkgcrossplaneio.ConfigurationSpecDependsOn",
       "kind": "interface",
-      "locationInModule": Object {
+      "locationInModule": {
         "filename": "meta.pkg.crossplane.io.ts",
         "line": 163,
       },
       "name": "ConfigurationSpecDependsOn",
-      "properties": Array [
-        Object {
+      "properties": [
+        {
           "abstract": true,
-          "docs": Object {
-            "custom": Object {
+          "docs": {
+            "custom": {
               "schema": "ConfigurationSpecDependsOn#version",
             },
             "summary": "Version is the semantic version constraints of the dependency image.",
           },
           "immutable": true,
-          "locationInModule": Object {
+          "locationInModule": {
             "filename": "meta.pkg.crossplane.io.ts",
             "line": 183,
           },
           "name": "version",
-          "type": Object {
+          "type": {
             "primitive": "string",
           },
         },
-        Object {
+        {
           "abstract": true,
-          "docs": Object {
-            "custom": Object {
+          "docs": {
+            "custom": {
               "schema": "ConfigurationSpecDependsOn#configuration",
             },
             "summary": "Configuration is the name of a Configuration package image.",
           },
           "immutable": true,
-          "locationInModule": Object {
+          "locationInModule": {
             "filename": "meta.pkg.crossplane.io.ts",
             "line": 169,
           },
           "name": "configuration",
           "optional": true,
-          "type": Object {
+          "type": {
             "primitive": "string",
           },
         },
-        Object {
+        {
           "abstract": true,
-          "docs": Object {
-            "custom": Object {
+          "docs": {
+            "custom": {
               "schema": "ConfigurationSpecDependsOn#provider",
             },
             "summary": "Provider is the name of a Provider package image.",
           },
           "immutable": true,
-          "locationInModule": Object {
+          "locationInModule": {
             "filename": "meta.pkg.crossplane.io.ts",
             "line": 176,
           },
           "name": "provider",
           "optional": true,
-          "type": Object {
+          "type": {
             "primitive": "string",
           },
         },
@@ -445,7 +445,7 @@ Object {
 `;
 
 exports[`crds.dev import github:crossplane/crossplane@0.14.0 emit module per API group 2`] = `
-Object {
+{
   "apiextensions.crossplane.io.ts": "// generated by cdk8s
 import { ApiObject, ApiObjectMetadata, GroupVersionKind } from 'cdk8s';
 import { Construct } from 'constructs';
@@ -458,7 +458,7 @@ import { Construct } from 'constructs';
  */
 export class CompositeResourceDefinition extends ApiObject {
   /**
-   * Returns the apiVersion and kind for \\"CompositeResourceDefinition\\"
+   * Returns the apiVersion and kind for "CompositeResourceDefinition"
    */
   public static readonly GVK: GroupVersionKind = {
     apiVersion: 'apiextensions.crossplane.io/v1alpha1',
@@ -466,7 +466,7 @@ export class CompositeResourceDefinition extends ApiObject {
   }
 
   /**
-   * Renders a Kubernetes manifest for \\"CompositeResourceDefinition\\".
+   * Renders a Kubernetes manifest for "CompositeResourceDefinition".
    *
    * This can be used to inline resource manifests inside other objects (e.g. as templates).
    *
@@ -480,7 +480,7 @@ export class CompositeResourceDefinition extends ApiObject {
   }
 
   /**
-   * Defines a \\"CompositeResourceDefinition\\" API object
+   * Defines a "CompositeResourceDefinition" API object
    * @param scope the scope in which to define this object
    * @param id a scope-local name for the object
    * @param props initialization props
@@ -588,7 +588,7 @@ export interface CompositeResourceDefinitionSpec {
   readonly names: CompositeResourceDefinitionSpecNames;
 
   /**
-   * Versions is the list of all API versions of the defined composite resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is \\"kube-like\\", it will sort above non \\"kube-like\\" version strings, which are ordered lexicographically. \\"Kube-like\\" versions start with a \\"v\\", then are followed by a number (the major version), then optionally the string \\"alpha\\" or \\"beta\\" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10. Note that all versions must have identical schemas; Crossplane does not currently support conversion between different version schemas.
+   * Versions is the list of all API versions of the defined composite resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10. Note that all versions must have identical schemas; Crossplane does not currently support conversion between different version schemas.
    *
    * @schema CompositeResourceDefinitionSpec#versions
    */
@@ -636,9 +636,9 @@ export interface CompositeResourceDefinitionSpecClaimNames {
   readonly kind: string;
 
   /**
-   * listKind is the serialized kind of the list for this resource. Defaults to \\"\`kind\`List\\".
+   * listKind is the serialized kind of the list for this resource. Defaults to "\`kind\`List".
    *
-   * @default kind\`List\\".
+   * @default kind\`List".
    * @schema CompositeResourceDefinitionSpecClaimNames#listKind
    */
   readonly listKind?: string;
@@ -762,9 +762,9 @@ export interface CompositeResourceDefinitionSpecNames {
   readonly kind: string;
 
   /**
-   * listKind is the serialized kind of the list for this resource. Defaults to \\"\`kind\`List\\".
+   * listKind is the serialized kind of the list for this resource. Defaults to "\`kind\`List".
    *
-   * @default kind\`List\\".
+   * @default kind\`List".
    * @schema CompositeResourceDefinitionSpecNames#listKind
    */
   readonly listKind?: string;
@@ -975,7 +975,7 @@ export function toJson_CompositeResourceDefinitionSpecVersionsSchema(obj: Compos
  */
 export class CompositeResourceDefinitionV1Beta1 extends ApiObject {
   /**
-   * Returns the apiVersion and kind for \\"CompositeResourceDefinitionV1Beta1\\"
+   * Returns the apiVersion and kind for "CompositeResourceDefinitionV1Beta1"
    */
   public static readonly GVK: GroupVersionKind = {
     apiVersion: 'apiextensions.crossplane.io/v1beta1',
@@ -983,7 +983,7 @@ export class CompositeResourceDefinitionV1Beta1 extends ApiObject {
   }
 
   /**
-   * Renders a Kubernetes manifest for \\"CompositeResourceDefinitionV1Beta1\\".
+   * Renders a Kubernetes manifest for "CompositeResourceDefinitionV1Beta1".
    *
    * This can be used to inline resource manifests inside other objects (e.g. as templates).
    *
@@ -997,7 +997,7 @@ export class CompositeResourceDefinitionV1Beta1 extends ApiObject {
   }
 
   /**
-   * Defines a \\"CompositeResourceDefinitionV1Beta1\\" API object
+   * Defines a "CompositeResourceDefinitionV1Beta1" API object
    * @param scope the scope in which to define this object
    * @param id a scope-local name for the object
    * @param props initialization props
@@ -1105,7 +1105,7 @@ export interface CompositeResourceDefinitionV1Beta1Spec {
   readonly names: CompositeResourceDefinitionV1Beta1SpecNames;
 
   /**
-   * Versions is the list of all API versions of the defined composite resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is \\"kube-like\\", it will sort above non \\"kube-like\\" version strings, which are ordered lexicographically. \\"Kube-like\\" versions start with a \\"v\\", then are followed by a number (the major version), then optionally the string \\"alpha\\" or \\"beta\\" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10. Note that all versions must have identical schemas; Crossplane does not currently support conversion between different version schemas.
+   * Versions is the list of all API versions of the defined composite resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10. Note that all versions must have identical schemas; Crossplane does not currently support conversion between different version schemas.
    *
    * @schema CompositeResourceDefinitionV1Beta1Spec#versions
    */
@@ -1153,9 +1153,9 @@ export interface CompositeResourceDefinitionV1Beta1SpecClaimNames {
   readonly kind: string;
 
   /**
-   * listKind is the serialized kind of the list for this resource. Defaults to \\"\`kind\`List\\".
+   * listKind is the serialized kind of the list for this resource. Defaults to "\`kind\`List".
    *
-   * @default kind\`List\\".
+   * @default kind\`List".
    * @schema CompositeResourceDefinitionV1Beta1SpecClaimNames#listKind
    */
   readonly listKind?: string;
@@ -1279,9 +1279,9 @@ export interface CompositeResourceDefinitionV1Beta1SpecNames {
   readonly kind: string;
 
   /**
-   * listKind is the serialized kind of the list for this resource. Defaults to \\"\`kind\`List\\".
+   * listKind is the serialized kind of the list for this resource. Defaults to "\`kind\`List".
    *
-   * @default kind\`List\\".
+   * @default kind\`List".
    * @schema CompositeResourceDefinitionV1Beta1SpecNames#listKind
    */
   readonly listKind?: string;
@@ -1492,7 +1492,7 @@ export function toJson_CompositeResourceDefinitionV1Beta1SpecVersionsSchema(obj:
  */
 export class Composition extends ApiObject {
   /**
-   * Returns the apiVersion and kind for \\"Composition\\"
+   * Returns the apiVersion and kind for "Composition"
    */
   public static readonly GVK: GroupVersionKind = {
     apiVersion: 'apiextensions.crossplane.io/v1alpha1',
@@ -1500,7 +1500,7 @@ export class Composition extends ApiObject {
   }
 
   /**
-   * Renders a Kubernetes manifest for \\"Composition\\".
+   * Renders a Kubernetes manifest for "Composition".
    *
    * This can be used to inline resource manifests inside other objects (e.g. as templates).
    *
@@ -1514,7 +1514,7 @@ export class Composition extends ApiObject {
   }
 
   /**
-   * Defines a \\"Composition\\" API object
+   * Defines a "Composition" API object
    * @param scope the scope in which to define this object
    * @param id a scope-local name for the object
    * @param props initialization props
@@ -1681,7 +1681,7 @@ export interface CompositionSpecResources {
   readonly patches?: CompositionSpecResourcesPatches[];
 
   /**
-   * ReadinessChecks allows users to define custom readiness checks. All checks have to return true in order for resource to be considered ready. The default readiness check is to have the \\"Ready\\" condition to be \\"True\\".
+   * ReadinessChecks allows users to define custom readiness checks. All checks have to return true in order for resource to be considered ready. The default readiness check is to have the "Ready" condition to be "True".
    *
    * @schema CompositionSpecResources#readinessChecks
    */
@@ -1807,14 +1807,14 @@ export interface CompositionSpecResourcesReadinessChecks {
   readonly fieldPath?: string;
 
   /**
-   * MatchInt is the value you'd like to match if you're using \\"MatchInt\\" type.
+   * MatchInt is the value you'd like to match if you're using "MatchInt" type.
    *
    * @schema CompositionSpecResourcesReadinessChecks#matchInteger
    */
   readonly matchInteger?: number;
 
   /**
-   * MatchString is the value you'd like to match if you're using \\"MatchString\\" type.
+   * MatchString is the value you'd like to match if you're using "MatchString" type.
    *
    * @schema CompositionSpecResourcesReadinessChecks#matchString
    */
@@ -1904,13 +1904,13 @@ export function toJson_CompositionSpecResourcesPatchesTransforms(obj: Compositio
  */
 export enum CompositionSpecResourcesReadinessChecksType {
   /** MatchString */
-  MATCH_STRING = \\"MatchString\\",
+  MATCH_STRING = "MatchString",
   /** MatchInteger */
-  MATCH_INTEGER = \\"MatchInteger\\",
+  MATCH_INTEGER = "MatchInteger",
   /** NonEmpty */
-  NON_EMPTY = \\"NonEmpty\\",
+  NON_EMPTY = "NonEmpty",
   /** None */
-  NONE = \\"None\\",
+  NONE = "None",
 }
 
 /**
@@ -1977,7 +1977,7 @@ export function toJson_CompositionSpecResourcesPatchesTransformsString(obj: Comp
  */
 export class CompositionV1Beta1 extends ApiObject {
   /**
-   * Returns the apiVersion and kind for \\"CompositionV1Beta1\\"
+   * Returns the apiVersion and kind for "CompositionV1Beta1"
    */
   public static readonly GVK: GroupVersionKind = {
     apiVersion: 'apiextensions.crossplane.io/v1beta1',
@@ -1985,7 +1985,7 @@ export class CompositionV1Beta1 extends ApiObject {
   }
 
   /**
-   * Renders a Kubernetes manifest for \\"CompositionV1Beta1\\".
+   * Renders a Kubernetes manifest for "CompositionV1Beta1".
    *
    * This can be used to inline resource manifests inside other objects (e.g. as templates).
    *
@@ -1999,7 +1999,7 @@ export class CompositionV1Beta1 extends ApiObject {
   }
 
   /**
-   * Defines a \\"CompositionV1Beta1\\" API object
+   * Defines a "CompositionV1Beta1" API object
    * @param scope the scope in which to define this object
    * @param id a scope-local name for the object
    * @param props initialization props
@@ -2166,7 +2166,7 @@ export interface CompositionV1Beta1SpecResources {
   readonly patches?: CompositionV1Beta1SpecResourcesPatches[];
 
   /**
-   * ReadinessChecks allows users to define custom readiness checks. All checks have to return true in order for resource to be considered ready. The default readiness check is to have the \\"Ready\\" condition to be \\"True\\".
+   * ReadinessChecks allows users to define custom readiness checks. All checks have to return true in order for resource to be considered ready. The default readiness check is to have the "Ready" condition to be "True".
    *
    * @schema CompositionV1Beta1SpecResources#readinessChecks
    */
@@ -2292,14 +2292,14 @@ export interface CompositionV1Beta1SpecResourcesReadinessChecks {
   readonly fieldPath?: string;
 
   /**
-   * MatchInt is the value you'd like to match if you're using \\"MatchInt\\" type.
+   * MatchInt is the value you'd like to match if you're using "MatchInt" type.
    *
    * @schema CompositionV1Beta1SpecResourcesReadinessChecks#matchInteger
    */
   readonly matchInteger?: number;
 
   /**
-   * MatchString is the value you'd like to match if you're using \\"MatchString\\" type.
+   * MatchString is the value you'd like to match if you're using "MatchString" type.
    *
    * @schema CompositionV1Beta1SpecResourcesReadinessChecks#matchString
    */
@@ -2389,13 +2389,13 @@ export function toJson_CompositionV1Beta1SpecResourcesPatchesTransforms(obj: Com
  */
 export enum CompositionV1Beta1SpecResourcesReadinessChecksType {
   /** MatchString */
-  MATCH_STRING = \\"MatchString\\",
+  MATCH_STRING = "MatchString",
   /** MatchInteger */
-  MATCH_INTEGER = \\"MatchInteger\\",
+  MATCH_INTEGER = "MatchInteger",
   /** NonEmpty */
-  NON_EMPTY = \\"NonEmpty\\",
+  NON_EMPTY = "NonEmpty",
   /** None */
-  NONE = \\"None\\",
+  NONE = "None",
 }
 
 /**
@@ -2467,7 +2467,7 @@ import { Construct } from 'constructs';
  */
 export class Configuration extends ApiObject {
   /**
-   * Returns the apiVersion and kind for \\"Configuration\\"
+   * Returns the apiVersion and kind for "Configuration"
    */
   public static readonly GVK: GroupVersionKind = {
     apiVersion: 'meta.pkg.crossplane.io/v1alpha1',
@@ -2475,7 +2475,7 @@ export class Configuration extends ApiObject {
   }
 
   /**
-   * Renders a Kubernetes manifest for \\"Configuration\\".
+   * Renders a Kubernetes manifest for "Configuration".
    *
    * This can be used to inline resource manifests inside other objects (e.g. as templates).
    *
@@ -2489,7 +2489,7 @@ export class Configuration extends ApiObject {
   }
 
   /**
-   * Defines a \\"Configuration\\" API object
+   * Defines a "Configuration" API object
    * @param scope the scope in which to define this object
    * @param id a scope-local name for the object
    * @param props initialization props

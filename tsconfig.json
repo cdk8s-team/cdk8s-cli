@@ -31,6 +31,7 @@
       "jest",
       "json-schema",
       "semver",
+      "yargs",
       "node"
     ]
   },
@@ -38,5 +39,7 @@
     "src/**/*.ts",
     "src/schemas/*.json"
   ],
-  "exclude": []
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -1,6 +1,5 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { mocked } from 'ts-jest/utils';
 import { expectImportMatchSnapshot } from './util';
 import { ImportCustomResourceDefinition } from '../../src/import/crd';
 import { matchCrdsDevUrl } from '../../src/import/crds-dev';
@@ -39,7 +38,7 @@ describe('crds.dev import', () => {
   for ( const t of fullImportTests ) {
     const source = `${t.provider}:${t.account}/${t.repo}@${t.version}`;
 
-    mocked(download).mockImplementation((_url: string): Promise<string> => {
+    jest.mocked(download).mockImplementation((_url: string): Promise<string> => {
       return new Promise((ok, _ko) => {
         const mockFile = `${t.provider}-${t.account}-${t.repo}-v${t.version}.yaml`;
         const crds = readFixture(mockFile);

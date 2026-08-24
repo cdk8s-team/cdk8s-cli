@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Helm synthesis --chart-api-version is v1 with all inputs from cli and no config file is present 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v1\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v1"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
@@ -18,10 +18,10 @@ metadata:
 `;
 
 exports[`Helm synthesis --chart-api-version is v1 with all inputs from config file and no related cli inputs 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v1\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v1"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
@@ -35,10 +35,10 @@ metadata:
 `;
 
 exports[`Helm synthesis --chart-api-version is v1 with different inputs in cli and config file 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v1\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v1"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
@@ -52,10 +52,10 @@ metadata:
 `;
 
 exports[`Helm synthesis --chart-api-version is v1 with inputs duplicated in cli and config file 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v1\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v1"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
@@ -69,10 +69,10 @@ metadata:
 `;
 
 exports[`Helm synthesis --chart-api-version is v2 and crds are present with all inputs from cli and no config file is present 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v2"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
@@ -195,7 +195,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -269,7 +269,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -296,10 +296,10 @@ spec:
                 description: 'Versions is the list of all API versions of the defined
                   composite resource. Version names are used to compute the order
                   in which served versions are listed in API discovery. If the version
-                  string is \\"kube-like\\", it will sort above non \\"kube-like\\" version
-                  strings, which are ordered lexicographically. \\"Kube-like\\" versions
-                  start with a \\"v\\", then are followed by a number (the major version),
-                  then optionally the string \\"alpha\\" or \\"beta\\" and another number
+                  string is "kube-like", it will sort above non "kube-like" version
+                  strings, which are ordered lexicographically. "Kube-like" versions
+                  start with a "v", then are followed by a number (the major version),
+                  then optionally the string "alpha" or "beta" and another number
                   (the minor version). These are sorted first by GA > beta > alpha
                   (where GA is a version with no suffix such as beta or alpha), and
                   then by comparing major version, then minor version. An example
@@ -542,7 +542,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -616,7 +616,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -643,10 +643,10 @@ spec:
                 description: 'Versions is the list of all API versions of the defined
                   composite resource. Version names are used to compute the order
                   in which served versions are listed in API discovery. If the version
-                  string is \\"kube-like\\", it will sort above non \\"kube-like\\" version
-                  strings, which are ordered lexicographically. \\"Kube-like\\" versions
-                  start with a \\"v\\", then are followed by a number (the major version),
-                  then optionally the string \\"alpha\\" or \\"beta\\" and another number
+                  string is "kube-like", it will sort above non "kube-like" version
+                  strings, which are ordered lexicographically. "Kube-like" versions
+                  start with a "v", then are followed by a number (the major version),
+                  then optionally the string "alpha" or "beta" and another number
                   (the minor version). These are sorted first by GA > beta > alpha
                   (where GA is a version with no suffix such as beta or alpha), and
                   then by comparing major version, then minor version. An example
@@ -833,8 +833,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -1007,7 +1007,7 @@ spec:
                       description: ReadinessChecks allows users to define custom readiness
                         checks. All checks have to return true in order for resource
                         to be considered ready. The default readiness check is to
-                        have the \\"Ready\\" condition to be \\"True\\".
+                        have the "Ready" condition to be "True".
                       items:
                         description: ReadinessCheck is used to indicate how to tell
                           whether a resource is ready for consumption
@@ -1018,12 +1018,12 @@ spec:
                             type: string
                           matchInteger:
                             description: MatchInt is the value you'd like to match
-                              if you're using \\"MatchInt\\" type.
+                              if you're using "MatchInt" type.
                             format: int64
                             type: integer
                           matchString:
                             description: MatchString is the value you'd like to match
-                              if you're using \\"MatchString\\" type.
+                              if you're using "MatchString" type.
                             type: string
                           type:
                             description: Type indicates the type of probe you'd like
@@ -1244,7 +1244,7 @@ spec:
                       description: ReadinessChecks allows users to define custom readiness
                         checks. All checks have to return true in order for resource
                         to be considered ready. The default readiness check is to
-                        have the \\"Ready\\" condition to be \\"True\\".
+                        have the "Ready" condition to be "True".
                       items:
                         description: ReadinessCheck is used to indicate how to tell
                           whether a resource is ready for consumption
@@ -1255,12 +1255,12 @@ spec:
                             type: string
                           matchInteger:
                             description: MatchInt is the value you'd like to match
-                              if you're using \\"MatchInt\\" type.
+                              if you're using "MatchInt" type.
                             format: int64
                             type: integer
                           matchString:
                             description: MatchString is the value you'd like to match
-                              if you're using \\"MatchString\\" type.
+                              if you're using "MatchString" type.
                             type: string
                           type:
                             description: Type indicates the type of probe you'd like
@@ -1332,8 +1332,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -1414,8 +1414,8 @@ spec:
     storage: true
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1alpha1
@@ -1506,8 +1506,8 @@ spec:
     storage: true
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1alpha1
@@ -1570,7 +1570,7 @@ spec:
                           node that meets all of the scheduling requirements (resource
                           request, requiredDuringScheduling affinity expressions,
                           etc.), compute a sum by iterating through the elements of
-                          this field and adding \\"weight\\" to the sum if the node matches
+                          this field and adding "weight" to the sum if the node matches
                           the corresponding matchExpressions; the node(s) with the
                           highest sum are the most preferred.
                         items:
@@ -1774,7 +1774,7 @@ spec:
                           node that meets all of the scheduling requirements (resource
                           request, requiredDuringScheduling affinity expressions,
                           etc.), compute a sum by iterating through the elements of
-                          this field and adding \\"weight\\" to the sum if the node has
+                          this field and adding "weight" to the sum if the node has
                           pods which matches the corresponding podAffinityTerm; the
                           node(s) with the highest sum are the most preferred.
                         items:
@@ -1831,15 +1831,15 @@ spec:
                                       description: matchLabels is a map of {key,value}
                                         pairs. A single {key,value} in the matchLabels
                                         map is equivalent to an element of matchExpressions,
-                                        whose key field is \\"key\\", the operator is
-                                        \\"In\\", and the values array contains only \\"value\\".
+                                        whose key field is "key", the operator is
+                                        "In", and the values array contains only "value".
                                         The requirements are ANDed.
                                       type: object
                                   type: object
                                 namespaces:
                                   description: namespaces specifies which namespaces
                                     the labelSelector applies to (matches against);
-                                    null or empty list means \\"this pod's namespace\\"
+                                    null or empty list means "this pod's namespace"
                                   items:
                                     type: string
                                   type: array
@@ -1926,15 +1926,15 @@ spec:
                                   description: matchLabels is a map of {key,value}
                                     pairs. A single {key,value} in the matchLabels
                                     map is equivalent to an element of matchExpressions,
-                                    whose key field is \\"key\\", the operator is \\"In\\",
-                                    and the values array contains only \\"value\\". The
+                                    whose key field is "key", the operator is "In",
+                                    and the values array contains only "value". The
                                     requirements are ANDed.
                                   type: object
                               type: object
                             namespaces:
                               description: namespaces specifies which namespaces the
                                 labelSelector applies to (matches against); null or
-                                empty list means \\"this pod's namespace\\"
+                                empty list means "this pod's namespace"
                               items:
                                 type: string
                               type: array
@@ -1966,7 +1966,7 @@ spec:
                           node that meets all of the scheduling requirements (resource
                           request, requiredDuringScheduling anti-affinity expressions,
                           etc.), compute a sum by iterating through the elements of
-                          this field and adding \\"weight\\" to the sum if the node has
+                          this field and adding "weight" to the sum if the node has
                           pods which matches the corresponding podAffinityTerm; the
                           node(s) with the highest sum are the most preferred.
                         items:
@@ -2023,15 +2023,15 @@ spec:
                                       description: matchLabels is a map of {key,value}
                                         pairs. A single {key,value} in the matchLabels
                                         map is equivalent to an element of matchExpressions,
-                                        whose key field is \\"key\\", the operator is
-                                        \\"In\\", and the values array contains only \\"value\\".
+                                        whose key field is "key", the operator is
+                                        "In", and the values array contains only "value".
                                         The requirements are ANDed.
                                       type: object
                                   type: object
                                 namespaces:
                                   description: namespaces specifies which namespaces
                                     the labelSelector applies to (matches against);
-                                    null or empty list means \\"this pod's namespace\\"
+                                    null or empty list means "this pod's namespace"
                                   items:
                                     type: string
                                   type: array
@@ -2118,15 +2118,15 @@ spec:
                                   description: matchLabels is a map of {key,value}
                                     pairs. A single {key,value} in the matchLabels
                                     map is equivalent to an element of matchExpressions,
-                                    whose key field is \\"key\\", the operator is \\"In\\",
-                                    and the values array contains only \\"value\\". The
+                                    whose key field is "key", the operator is "In",
+                                    and the values array contains only "value". The
                                     requirements are ANDed.
                                   type: object
                               type: object
                             namespaces:
                               description: namespaces specifies which namespaces the
                                 labelSelector applies to (matches against); null or
-                                empty list means \\"this pod's namespace\\"
+                                empty list means "this pod's namespace"
                               items:
                                 type: string
                               type: array
@@ -2173,7 +2173,7 @@ spec:
                         be resolved, the reference in the input string will be unchanged.
                         The $(VAR_NAME) syntax can be escaped with a double $$, ie:
                         $$(VAR_NAME). Escaped references will never be expanded, regardless
-                        of whether the variable exists or not. Defaults to \\"\\".'
+                        of whether the variable exists or not. Defaults to "".'
                       type: string
                     valueFrom:
                       description: Source for the environment variable's value. Cannot
@@ -2204,7 +2204,7 @@ spec:
                           properties:
                             apiVersion:
                               description: Version of the schema the FieldPath is
-                                written in terms of, defaults to \\"v1\\".
+                                written in terms of, defaults to "v1".
                               type: string
                             fieldPath:
                               description: Path of the field to select in the specified
@@ -2228,8 +2228,8 @@ spec:
                               - type: integer
                               - type: string
                               description: Specifies the output format of the exposed
-                                resources, defaults to \\"1\\"
-                              pattern: ^(\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))))?$
+                                resources, defaults to "1"
+                              pattern: ^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$
                               x-kubernetes-int-or-string: true
                             resource:
                               description: 'Required: resource to select'
@@ -2340,13 +2340,13 @@ spec:
                   type description for default values of each field.'
                 properties:
                   fsGroup:
-                    description: \\"A special supplemental group that applies to all
+                    description: "A special supplemental group that applies to all
                       containers in a pod. Some volume types allow the Kubelet to
                       change the ownership of that volume to be owned by the pod:
-                      \\\\n 1. The owning GID will be the FSGroup 2. The setgid bit is
+                      \\n 1. The owning GID will be the FSGroup 2. The setgid bit is
                       set (new files created in the volume will be owned by FSGroup)
-                      3. The permission bits are OR'd with 660 \\\\n If unset, the Kubelet
-                      will not modify the ownership and permissions of any volume.\\"
+                      3. The permission bits are OR'd with 660 \\n If unset, the Kubelet
+                      will not modify the ownership and permissions of any volume."
                     format: int64
                     type: integer
                   fsGroupChangePolicy:
@@ -2355,8 +2355,8 @@ spec:
                       inside Pod. This field will only apply to volume types which
                       support fsGroup based ownership(and permissions). It will have
                       no effect on ephemeral volume types such as: secret, configmaps
-                      and emptydir. Valid values are \\"OnRootMismatch\\" and \\"Always\\".
-                      If not specified defaults to \\"Always\\".'
+                      and emptydir. Valid values are "OnRootMismatch" and "Always".
+                      If not specified defaults to "Always".'
                     type: string
                   runAsGroup:
                     description: The GID to run the entrypoint of the container process.
@@ -2458,8 +2458,8 @@ spec:
                     type: object
                 type: object
               priorityClassName:
-                description: If specified, indicates the pod's priority. \\"system-node-critical\\"
-                  and \\"system-cluster-critical\\" are two special keywords which indicate
+                description: If specified, indicates the pod's priority. "system-node-critical"
+                  and "system-cluster-critical" are two special keywords which indicate
                   the highest priorities with the former being the highest priority.
                   Any other name must be defined by creating a PriorityClass object
                   with that name. If not specified, the pod priority will be default
@@ -2469,7 +2469,7 @@ spec:
                 description: 'Number of desired pods. This is a pointer to distinguish
                   between explicit zero and not specified. Defaults to 1. Note: If
                   more than 1 replica is set and leader election is not enabled then
-                  controllers could conflict. Environment variable \\"LEADER_ELECTION\\"
+                  controllers could conflict. Environment variable "LEADER_ELECTION"
                   can be used to enable leader election process.'
                 format: int32
                 type: integer
@@ -2482,7 +2482,7 @@ spec:
                       anyOf:
                       - type: integer
                       - type: string
-                      pattern: ^(\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))))?$
+                      pattern: ^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$
                       x-kubernetes-int-or-string: true
                     description: 'Limits describes the maximum amount of compute resources
                       allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/'
@@ -2492,7 +2492,7 @@ spec:
                       anyOf:
                       - type: integer
                       - type: string
-                      pattern: ^(\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))))?$
+                      pattern: ^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$
                       x-kubernetes-int-or-string: true
                     description: 'Requests describes the minimum amount of compute
                       resources required. If Requests is omitted for a container,
@@ -2504,7 +2504,7 @@ spec:
                 description: 'RuntimeClassName refers to a RuntimeClass object in
                   the node.k8s.io group, which should be used to run this pod.  If
                   no RuntimeClass resource matches the named class, the pod will not
-                  be run. If unset or empty, the \\"legacy\\" RuntimeClass will be used,
+                  be run. If unset or empty, the "legacy" RuntimeClass will be used,
                   which is an implicit class with an empty definition that uses the
                   default runtime handler. More info: https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md
                   This is a beta feature as of Kubernetes v1.14.'
@@ -2678,8 +2678,8 @@ spec:
     subresources: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1alpha1
@@ -2970,8 +2970,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -3331,8 +3331,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -3641,8 +3641,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -4002,8 +4002,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -4061,10 +4061,10 @@ metadata:
 `;
 
 exports[`Helm synthesis --chart-api-version is v2 and crds are present with all inputs from config file and no related cli inputs 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v2"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
@@ -4187,7 +4187,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -4261,7 +4261,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -4288,10 +4288,10 @@ spec:
                 description: 'Versions is the list of all API versions of the defined
                   composite resource. Version names are used to compute the order
                   in which served versions are listed in API discovery. If the version
-                  string is \\"kube-like\\", it will sort above non \\"kube-like\\" version
-                  strings, which are ordered lexicographically. \\"Kube-like\\" versions
-                  start with a \\"v\\", then are followed by a number (the major version),
-                  then optionally the string \\"alpha\\" or \\"beta\\" and another number
+                  string is "kube-like", it will sort above non "kube-like" version
+                  strings, which are ordered lexicographically. "Kube-like" versions
+                  start with a "v", then are followed by a number (the major version),
+                  then optionally the string "alpha" or "beta" and another number
                   (the minor version). These are sorted first by GA > beta > alpha
                   (where GA is a version with no suffix such as beta or alpha), and
                   then by comparing major version, then minor version. An example
@@ -4534,7 +4534,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -4608,7 +4608,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -4635,10 +4635,10 @@ spec:
                 description: 'Versions is the list of all API versions of the defined
                   composite resource. Version names are used to compute the order
                   in which served versions are listed in API discovery. If the version
-                  string is \\"kube-like\\", it will sort above non \\"kube-like\\" version
-                  strings, which are ordered lexicographically. \\"Kube-like\\" versions
-                  start with a \\"v\\", then are followed by a number (the major version),
-                  then optionally the string \\"alpha\\" or \\"beta\\" and another number
+                  string is "kube-like", it will sort above non "kube-like" version
+                  strings, which are ordered lexicographically. "Kube-like" versions
+                  start with a "v", then are followed by a number (the major version),
+                  then optionally the string "alpha" or "beta" and another number
                   (the minor version). These are sorted first by GA > beta > alpha
                   (where GA is a version with no suffix such as beta or alpha), and
                   then by comparing major version, then minor version. An example
@@ -4825,8 +4825,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -4999,7 +4999,7 @@ spec:
                       description: ReadinessChecks allows users to define custom readiness
                         checks. All checks have to return true in order for resource
                         to be considered ready. The default readiness check is to
-                        have the \\"Ready\\" condition to be \\"True\\".
+                        have the "Ready" condition to be "True".
                       items:
                         description: ReadinessCheck is used to indicate how to tell
                           whether a resource is ready for consumption
@@ -5010,12 +5010,12 @@ spec:
                             type: string
                           matchInteger:
                             description: MatchInt is the value you'd like to match
-                              if you're using \\"MatchInt\\" type.
+                              if you're using "MatchInt" type.
                             format: int64
                             type: integer
                           matchString:
                             description: MatchString is the value you'd like to match
-                              if you're using \\"MatchString\\" type.
+                              if you're using "MatchString" type.
                             type: string
                           type:
                             description: Type indicates the type of probe you'd like
@@ -5236,7 +5236,7 @@ spec:
                       description: ReadinessChecks allows users to define custom readiness
                         checks. All checks have to return true in order for resource
                         to be considered ready. The default readiness check is to
-                        have the \\"Ready\\" condition to be \\"True\\".
+                        have the "Ready" condition to be "True".
                       items:
                         description: ReadinessCheck is used to indicate how to tell
                           whether a resource is ready for consumption
@@ -5247,12 +5247,12 @@ spec:
                             type: string
                           matchInteger:
                             description: MatchInt is the value you'd like to match
-                              if you're using \\"MatchInt\\" type.
+                              if you're using "MatchInt" type.
                             format: int64
                             type: integer
                           matchString:
                             description: MatchString is the value you'd like to match
-                              if you're using \\"MatchString\\" type.
+                              if you're using "MatchString" type.
                             type: string
                           type:
                             description: Type indicates the type of probe you'd like
@@ -5324,8 +5324,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -5406,8 +5406,8 @@ spec:
     storage: true
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1alpha1
@@ -5498,8 +5498,8 @@ spec:
     storage: true
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1alpha1
@@ -5562,7 +5562,7 @@ spec:
                           node that meets all of the scheduling requirements (resource
                           request, requiredDuringScheduling affinity expressions,
                           etc.), compute a sum by iterating through the elements of
-                          this field and adding \\"weight\\" to the sum if the node matches
+                          this field and adding "weight" to the sum if the node matches
                           the corresponding matchExpressions; the node(s) with the
                           highest sum are the most preferred.
                         items:
@@ -5766,7 +5766,7 @@ spec:
                           node that meets all of the scheduling requirements (resource
                           request, requiredDuringScheduling affinity expressions,
                           etc.), compute a sum by iterating through the elements of
-                          this field and adding \\"weight\\" to the sum if the node has
+                          this field and adding "weight" to the sum if the node has
                           pods which matches the corresponding podAffinityTerm; the
                           node(s) with the highest sum are the most preferred.
                         items:
@@ -5823,15 +5823,15 @@ spec:
                                       description: matchLabels is a map of {key,value}
                                         pairs. A single {key,value} in the matchLabels
                                         map is equivalent to an element of matchExpressions,
-                                        whose key field is \\"key\\", the operator is
-                                        \\"In\\", and the values array contains only \\"value\\".
+                                        whose key field is "key", the operator is
+                                        "In", and the values array contains only "value".
                                         The requirements are ANDed.
                                       type: object
                                   type: object
                                 namespaces:
                                   description: namespaces specifies which namespaces
                                     the labelSelector applies to (matches against);
-                                    null or empty list means \\"this pod's namespace\\"
+                                    null or empty list means "this pod's namespace"
                                   items:
                                     type: string
                                   type: array
@@ -5918,15 +5918,15 @@ spec:
                                   description: matchLabels is a map of {key,value}
                                     pairs. A single {key,value} in the matchLabels
                                     map is equivalent to an element of matchExpressions,
-                                    whose key field is \\"key\\", the operator is \\"In\\",
-                                    and the values array contains only \\"value\\". The
+                                    whose key field is "key", the operator is "In",
+                                    and the values array contains only "value". The
                                     requirements are ANDed.
                                   type: object
                               type: object
                             namespaces:
                               description: namespaces specifies which namespaces the
                                 labelSelector applies to (matches against); null or
-                                empty list means \\"this pod's namespace\\"
+                                empty list means "this pod's namespace"
                               items:
                                 type: string
                               type: array
@@ -5958,7 +5958,7 @@ spec:
                           node that meets all of the scheduling requirements (resource
                           request, requiredDuringScheduling anti-affinity expressions,
                           etc.), compute a sum by iterating through the elements of
-                          this field and adding \\"weight\\" to the sum if the node has
+                          this field and adding "weight" to the sum if the node has
                           pods which matches the corresponding podAffinityTerm; the
                           node(s) with the highest sum are the most preferred.
                         items:
@@ -6015,15 +6015,15 @@ spec:
                                       description: matchLabels is a map of {key,value}
                                         pairs. A single {key,value} in the matchLabels
                                         map is equivalent to an element of matchExpressions,
-                                        whose key field is \\"key\\", the operator is
-                                        \\"In\\", and the values array contains only \\"value\\".
+                                        whose key field is "key", the operator is
+                                        "In", and the values array contains only "value".
                                         The requirements are ANDed.
                                       type: object
                                   type: object
                                 namespaces:
                                   description: namespaces specifies which namespaces
                                     the labelSelector applies to (matches against);
-                                    null or empty list means \\"this pod's namespace\\"
+                                    null or empty list means "this pod's namespace"
                                   items:
                                     type: string
                                   type: array
@@ -6110,15 +6110,15 @@ spec:
                                   description: matchLabels is a map of {key,value}
                                     pairs. A single {key,value} in the matchLabels
                                     map is equivalent to an element of matchExpressions,
-                                    whose key field is \\"key\\", the operator is \\"In\\",
-                                    and the values array contains only \\"value\\". The
+                                    whose key field is "key", the operator is "In",
+                                    and the values array contains only "value". The
                                     requirements are ANDed.
                                   type: object
                               type: object
                             namespaces:
                               description: namespaces specifies which namespaces the
                                 labelSelector applies to (matches against); null or
-                                empty list means \\"this pod's namespace\\"
+                                empty list means "this pod's namespace"
                               items:
                                 type: string
                               type: array
@@ -6165,7 +6165,7 @@ spec:
                         be resolved, the reference in the input string will be unchanged.
                         The $(VAR_NAME) syntax can be escaped with a double $$, ie:
                         $$(VAR_NAME). Escaped references will never be expanded, regardless
-                        of whether the variable exists or not. Defaults to \\"\\".'
+                        of whether the variable exists or not. Defaults to "".'
                       type: string
                     valueFrom:
                       description: Source for the environment variable's value. Cannot
@@ -6196,7 +6196,7 @@ spec:
                           properties:
                             apiVersion:
                               description: Version of the schema the FieldPath is
-                                written in terms of, defaults to \\"v1\\".
+                                written in terms of, defaults to "v1".
                               type: string
                             fieldPath:
                               description: Path of the field to select in the specified
@@ -6220,8 +6220,8 @@ spec:
                               - type: integer
                               - type: string
                               description: Specifies the output format of the exposed
-                                resources, defaults to \\"1\\"
-                              pattern: ^(\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))))?$
+                                resources, defaults to "1"
+                              pattern: ^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$
                               x-kubernetes-int-or-string: true
                             resource:
                               description: 'Required: resource to select'
@@ -6332,13 +6332,13 @@ spec:
                   type description for default values of each field.'
                 properties:
                   fsGroup:
-                    description: \\"A special supplemental group that applies to all
+                    description: "A special supplemental group that applies to all
                       containers in a pod. Some volume types allow the Kubelet to
                       change the ownership of that volume to be owned by the pod:
-                      \\\\n 1. The owning GID will be the FSGroup 2. The setgid bit is
+                      \\n 1. The owning GID will be the FSGroup 2. The setgid bit is
                       set (new files created in the volume will be owned by FSGroup)
-                      3. The permission bits are OR'd with 660 \\\\n If unset, the Kubelet
-                      will not modify the ownership and permissions of any volume.\\"
+                      3. The permission bits are OR'd with 660 \\n If unset, the Kubelet
+                      will not modify the ownership and permissions of any volume."
                     format: int64
                     type: integer
                   fsGroupChangePolicy:
@@ -6347,8 +6347,8 @@ spec:
                       inside Pod. This field will only apply to volume types which
                       support fsGroup based ownership(and permissions). It will have
                       no effect on ephemeral volume types such as: secret, configmaps
-                      and emptydir. Valid values are \\"OnRootMismatch\\" and \\"Always\\".
-                      If not specified defaults to \\"Always\\".'
+                      and emptydir. Valid values are "OnRootMismatch" and "Always".
+                      If not specified defaults to "Always".'
                     type: string
                   runAsGroup:
                     description: The GID to run the entrypoint of the container process.
@@ -6450,8 +6450,8 @@ spec:
                     type: object
                 type: object
               priorityClassName:
-                description: If specified, indicates the pod's priority. \\"system-node-critical\\"
-                  and \\"system-cluster-critical\\" are two special keywords which indicate
+                description: If specified, indicates the pod's priority. "system-node-critical"
+                  and "system-cluster-critical" are two special keywords which indicate
                   the highest priorities with the former being the highest priority.
                   Any other name must be defined by creating a PriorityClass object
                   with that name. If not specified, the pod priority will be default
@@ -6461,7 +6461,7 @@ spec:
                 description: 'Number of desired pods. This is a pointer to distinguish
                   between explicit zero and not specified. Defaults to 1. Note: If
                   more than 1 replica is set and leader election is not enabled then
-                  controllers could conflict. Environment variable \\"LEADER_ELECTION\\"
+                  controllers could conflict. Environment variable "LEADER_ELECTION"
                   can be used to enable leader election process.'
                 format: int32
                 type: integer
@@ -6474,7 +6474,7 @@ spec:
                       anyOf:
                       - type: integer
                       - type: string
-                      pattern: ^(\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))))?$
+                      pattern: ^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$
                       x-kubernetes-int-or-string: true
                     description: 'Limits describes the maximum amount of compute resources
                       allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/'
@@ -6484,7 +6484,7 @@ spec:
                       anyOf:
                       - type: integer
                       - type: string
-                      pattern: ^(\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))))?$
+                      pattern: ^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$
                       x-kubernetes-int-or-string: true
                     description: 'Requests describes the minimum amount of compute
                       resources required. If Requests is omitted for a container,
@@ -6496,7 +6496,7 @@ spec:
                 description: 'RuntimeClassName refers to a RuntimeClass object in
                   the node.k8s.io group, which should be used to run this pod.  If
                   no RuntimeClass resource matches the named class, the pod will not
-                  be run. If unset or empty, the \\"legacy\\" RuntimeClass will be used,
+                  be run. If unset or empty, the "legacy" RuntimeClass will be used,
                   which is an implicit class with an empty definition that uses the
                   default runtime handler. More info: https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md
                   This is a beta feature as of Kubernetes v1.14.'
@@ -6670,8 +6670,8 @@ spec:
     subresources: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1alpha1
@@ -6962,8 +6962,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -7323,8 +7323,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -7633,8 +7633,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -7994,8 +7994,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -8053,10 +8053,10 @@ metadata:
 `;
 
 exports[`Helm synthesis --chart-api-version is v2 and crds are present with different inputs in cli and config file 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v2"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
@@ -8179,7 +8179,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -8253,7 +8253,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -8280,10 +8280,10 @@ spec:
                 description: 'Versions is the list of all API versions of the defined
                   composite resource. Version names are used to compute the order
                   in which served versions are listed in API discovery. If the version
-                  string is \\"kube-like\\", it will sort above non \\"kube-like\\" version
-                  strings, which are ordered lexicographically. \\"Kube-like\\" versions
-                  start with a \\"v\\", then are followed by a number (the major version),
-                  then optionally the string \\"alpha\\" or \\"beta\\" and another number
+                  string is "kube-like", it will sort above non "kube-like" version
+                  strings, which are ordered lexicographically. "Kube-like" versions
+                  start with a "v", then are followed by a number (the major version),
+                  then optionally the string "alpha" or "beta" and another number
                   (the minor version). These are sorted first by GA > beta > alpha
                   (where GA is a version with no suffix such as beta or alpha), and
                   then by comparing major version, then minor version. An example
@@ -8526,7 +8526,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -8600,7 +8600,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -8627,10 +8627,10 @@ spec:
                 description: 'Versions is the list of all API versions of the defined
                   composite resource. Version names are used to compute the order
                   in which served versions are listed in API discovery. If the version
-                  string is \\"kube-like\\", it will sort above non \\"kube-like\\" version
-                  strings, which are ordered lexicographically. \\"Kube-like\\" versions
-                  start with a \\"v\\", then are followed by a number (the major version),
-                  then optionally the string \\"alpha\\" or \\"beta\\" and another number
+                  string is "kube-like", it will sort above non "kube-like" version
+                  strings, which are ordered lexicographically. "Kube-like" versions
+                  start with a "v", then are followed by a number (the major version),
+                  then optionally the string "alpha" or "beta" and another number
                   (the minor version). These are sorted first by GA > beta > alpha
                   (where GA is a version with no suffix such as beta or alpha), and
                   then by comparing major version, then minor version. An example
@@ -8817,8 +8817,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -8991,7 +8991,7 @@ spec:
                       description: ReadinessChecks allows users to define custom readiness
                         checks. All checks have to return true in order for resource
                         to be considered ready. The default readiness check is to
-                        have the \\"Ready\\" condition to be \\"True\\".
+                        have the "Ready" condition to be "True".
                       items:
                         description: ReadinessCheck is used to indicate how to tell
                           whether a resource is ready for consumption
@@ -9002,12 +9002,12 @@ spec:
                             type: string
                           matchInteger:
                             description: MatchInt is the value you'd like to match
-                              if you're using \\"MatchInt\\" type.
+                              if you're using "MatchInt" type.
                             format: int64
                             type: integer
                           matchString:
                             description: MatchString is the value you'd like to match
-                              if you're using \\"MatchString\\" type.
+                              if you're using "MatchString" type.
                             type: string
                           type:
                             description: Type indicates the type of probe you'd like
@@ -9228,7 +9228,7 @@ spec:
                       description: ReadinessChecks allows users to define custom readiness
                         checks. All checks have to return true in order for resource
                         to be considered ready. The default readiness check is to
-                        have the \\"Ready\\" condition to be \\"True\\".
+                        have the "Ready" condition to be "True".
                       items:
                         description: ReadinessCheck is used to indicate how to tell
                           whether a resource is ready for consumption
@@ -9239,12 +9239,12 @@ spec:
                             type: string
                           matchInteger:
                             description: MatchInt is the value you'd like to match
-                              if you're using \\"MatchInt\\" type.
+                              if you're using "MatchInt" type.
                             format: int64
                             type: integer
                           matchString:
                             description: MatchString is the value you'd like to match
-                              if you're using \\"MatchString\\" type.
+                              if you're using "MatchString" type.
                             type: string
                           type:
                             description: Type indicates the type of probe you'd like
@@ -9316,8 +9316,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -9398,8 +9398,8 @@ spec:
     storage: true
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1alpha1
@@ -9490,8 +9490,8 @@ spec:
     storage: true
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1alpha1
@@ -9554,7 +9554,7 @@ spec:
                           node that meets all of the scheduling requirements (resource
                           request, requiredDuringScheduling affinity expressions,
                           etc.), compute a sum by iterating through the elements of
-                          this field and adding \\"weight\\" to the sum if the node matches
+                          this field and adding "weight" to the sum if the node matches
                           the corresponding matchExpressions; the node(s) with the
                           highest sum are the most preferred.
                         items:
@@ -9758,7 +9758,7 @@ spec:
                           node that meets all of the scheduling requirements (resource
                           request, requiredDuringScheduling affinity expressions,
                           etc.), compute a sum by iterating through the elements of
-                          this field and adding \\"weight\\" to the sum if the node has
+                          this field and adding "weight" to the sum if the node has
                           pods which matches the corresponding podAffinityTerm; the
                           node(s) with the highest sum are the most preferred.
                         items:
@@ -9815,15 +9815,15 @@ spec:
                                       description: matchLabels is a map of {key,value}
                                         pairs. A single {key,value} in the matchLabels
                                         map is equivalent to an element of matchExpressions,
-                                        whose key field is \\"key\\", the operator is
-                                        \\"In\\", and the values array contains only \\"value\\".
+                                        whose key field is "key", the operator is
+                                        "In", and the values array contains only "value".
                                         The requirements are ANDed.
                                       type: object
                                   type: object
                                 namespaces:
                                   description: namespaces specifies which namespaces
                                     the labelSelector applies to (matches against);
-                                    null or empty list means \\"this pod's namespace\\"
+                                    null or empty list means "this pod's namespace"
                                   items:
                                     type: string
                                   type: array
@@ -9910,15 +9910,15 @@ spec:
                                   description: matchLabels is a map of {key,value}
                                     pairs. A single {key,value} in the matchLabels
                                     map is equivalent to an element of matchExpressions,
-                                    whose key field is \\"key\\", the operator is \\"In\\",
-                                    and the values array contains only \\"value\\". The
+                                    whose key field is "key", the operator is "In",
+                                    and the values array contains only "value". The
                                     requirements are ANDed.
                                   type: object
                               type: object
                             namespaces:
                               description: namespaces specifies which namespaces the
                                 labelSelector applies to (matches against); null or
-                                empty list means \\"this pod's namespace\\"
+                                empty list means "this pod's namespace"
                               items:
                                 type: string
                               type: array
@@ -9950,7 +9950,7 @@ spec:
                           node that meets all of the scheduling requirements (resource
                           request, requiredDuringScheduling anti-affinity expressions,
                           etc.), compute a sum by iterating through the elements of
-                          this field and adding \\"weight\\" to the sum if the node has
+                          this field and adding "weight" to the sum if the node has
                           pods which matches the corresponding podAffinityTerm; the
                           node(s) with the highest sum are the most preferred.
                         items:
@@ -10007,15 +10007,15 @@ spec:
                                       description: matchLabels is a map of {key,value}
                                         pairs. A single {key,value} in the matchLabels
                                         map is equivalent to an element of matchExpressions,
-                                        whose key field is \\"key\\", the operator is
-                                        \\"In\\", and the values array contains only \\"value\\".
+                                        whose key field is "key", the operator is
+                                        "In", and the values array contains only "value".
                                         The requirements are ANDed.
                                       type: object
                                   type: object
                                 namespaces:
                                   description: namespaces specifies which namespaces
                                     the labelSelector applies to (matches against);
-                                    null or empty list means \\"this pod's namespace\\"
+                                    null or empty list means "this pod's namespace"
                                   items:
                                     type: string
                                   type: array
@@ -10102,15 +10102,15 @@ spec:
                                   description: matchLabels is a map of {key,value}
                                     pairs. A single {key,value} in the matchLabels
                                     map is equivalent to an element of matchExpressions,
-                                    whose key field is \\"key\\", the operator is \\"In\\",
-                                    and the values array contains only \\"value\\". The
+                                    whose key field is "key", the operator is "In",
+                                    and the values array contains only "value". The
                                     requirements are ANDed.
                                   type: object
                               type: object
                             namespaces:
                               description: namespaces specifies which namespaces the
                                 labelSelector applies to (matches against); null or
-                                empty list means \\"this pod's namespace\\"
+                                empty list means "this pod's namespace"
                               items:
                                 type: string
                               type: array
@@ -10157,7 +10157,7 @@ spec:
                         be resolved, the reference in the input string will be unchanged.
                         The $(VAR_NAME) syntax can be escaped with a double $$, ie:
                         $$(VAR_NAME). Escaped references will never be expanded, regardless
-                        of whether the variable exists or not. Defaults to \\"\\".'
+                        of whether the variable exists or not. Defaults to "".'
                       type: string
                     valueFrom:
                       description: Source for the environment variable's value. Cannot
@@ -10188,7 +10188,7 @@ spec:
                           properties:
                             apiVersion:
                               description: Version of the schema the FieldPath is
-                                written in terms of, defaults to \\"v1\\".
+                                written in terms of, defaults to "v1".
                               type: string
                             fieldPath:
                               description: Path of the field to select in the specified
@@ -10212,8 +10212,8 @@ spec:
                               - type: integer
                               - type: string
                               description: Specifies the output format of the exposed
-                                resources, defaults to \\"1\\"
-                              pattern: ^(\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))))?$
+                                resources, defaults to "1"
+                              pattern: ^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$
                               x-kubernetes-int-or-string: true
                             resource:
                               description: 'Required: resource to select'
@@ -10324,13 +10324,13 @@ spec:
                   type description for default values of each field.'
                 properties:
                   fsGroup:
-                    description: \\"A special supplemental group that applies to all
+                    description: "A special supplemental group that applies to all
                       containers in a pod. Some volume types allow the Kubelet to
                       change the ownership of that volume to be owned by the pod:
-                      \\\\n 1. The owning GID will be the FSGroup 2. The setgid bit is
+                      \\n 1. The owning GID will be the FSGroup 2. The setgid bit is
                       set (new files created in the volume will be owned by FSGroup)
-                      3. The permission bits are OR'd with 660 \\\\n If unset, the Kubelet
-                      will not modify the ownership and permissions of any volume.\\"
+                      3. The permission bits are OR'd with 660 \\n If unset, the Kubelet
+                      will not modify the ownership and permissions of any volume."
                     format: int64
                     type: integer
                   fsGroupChangePolicy:
@@ -10339,8 +10339,8 @@ spec:
                       inside Pod. This field will only apply to volume types which
                       support fsGroup based ownership(and permissions). It will have
                       no effect on ephemeral volume types such as: secret, configmaps
-                      and emptydir. Valid values are \\"OnRootMismatch\\" and \\"Always\\".
-                      If not specified defaults to \\"Always\\".'
+                      and emptydir. Valid values are "OnRootMismatch" and "Always".
+                      If not specified defaults to "Always".'
                     type: string
                   runAsGroup:
                     description: The GID to run the entrypoint of the container process.
@@ -10442,8 +10442,8 @@ spec:
                     type: object
                 type: object
               priorityClassName:
-                description: If specified, indicates the pod's priority. \\"system-node-critical\\"
-                  and \\"system-cluster-critical\\" are two special keywords which indicate
+                description: If specified, indicates the pod's priority. "system-node-critical"
+                  and "system-cluster-critical" are two special keywords which indicate
                   the highest priorities with the former being the highest priority.
                   Any other name must be defined by creating a PriorityClass object
                   with that name. If not specified, the pod priority will be default
@@ -10453,7 +10453,7 @@ spec:
                 description: 'Number of desired pods. This is a pointer to distinguish
                   between explicit zero and not specified. Defaults to 1. Note: If
                   more than 1 replica is set and leader election is not enabled then
-                  controllers could conflict. Environment variable \\"LEADER_ELECTION\\"
+                  controllers could conflict. Environment variable "LEADER_ELECTION"
                   can be used to enable leader election process.'
                 format: int32
                 type: integer
@@ -10466,7 +10466,7 @@ spec:
                       anyOf:
                       - type: integer
                       - type: string
-                      pattern: ^(\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))))?$
+                      pattern: ^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$
                       x-kubernetes-int-or-string: true
                     description: 'Limits describes the maximum amount of compute resources
                       allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/'
@@ -10476,7 +10476,7 @@ spec:
                       anyOf:
                       - type: integer
                       - type: string
-                      pattern: ^(\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))))?$
+                      pattern: ^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$
                       x-kubernetes-int-or-string: true
                     description: 'Requests describes the minimum amount of compute
                       resources required. If Requests is omitted for a container,
@@ -10488,7 +10488,7 @@ spec:
                 description: 'RuntimeClassName refers to a RuntimeClass object in
                   the node.k8s.io group, which should be used to run this pod.  If
                   no RuntimeClass resource matches the named class, the pod will not
-                  be run. If unset or empty, the \\"legacy\\" RuntimeClass will be used,
+                  be run. If unset or empty, the "legacy" RuntimeClass will be used,
                   which is an implicit class with an empty definition that uses the
                   default runtime handler. More info: https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md
                   This is a beta feature as of Kubernetes v1.14.'
@@ -10662,8 +10662,8 @@ spec:
     subresources: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1alpha1
@@ -10954,8 +10954,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -11315,8 +11315,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -11625,8 +11625,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -11986,8 +11986,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -12045,10 +12045,10 @@ metadata:
 `;
 
 exports[`Helm synthesis --chart-api-version is v2 and crds are present with inputs duplicated in cli and config file 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v2"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
@@ -12171,7 +12171,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -12245,7 +12245,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -12272,10 +12272,10 @@ spec:
                 description: 'Versions is the list of all API versions of the defined
                   composite resource. Version names are used to compute the order
                   in which served versions are listed in API discovery. If the version
-                  string is \\"kube-like\\", it will sort above non \\"kube-like\\" version
-                  strings, which are ordered lexicographically. \\"Kube-like\\" versions
-                  start with a \\"v\\", then are followed by a number (the major version),
-                  then optionally the string \\"alpha\\" or \\"beta\\" and another number
+                  string is "kube-like", it will sort above non "kube-like" version
+                  strings, which are ordered lexicographically. "Kube-like" versions
+                  start with a "v", then are followed by a number (the major version),
+                  then optionally the string "alpha" or "beta" and another number
                   (the minor version). These are sorted first by GA > beta > alpha
                   (where GA is a version with no suffix such as beta or alpha), and
                   then by comparing major version, then minor version. An example
@@ -12518,7 +12518,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -12592,7 +12592,7 @@ spec:
                     type: string
                   listKind:
                     description: listKind is the serialized kind of the list for this
-                      resource. Defaults to \\"\`kind\`List\\".
+                      resource. Defaults to "\`kind\`List".
                     type: string
                   plural:
                     description: plural is the plural name of the resource to serve.
@@ -12619,10 +12619,10 @@ spec:
                 description: 'Versions is the list of all API versions of the defined
                   composite resource. Version names are used to compute the order
                   in which served versions are listed in API discovery. If the version
-                  string is \\"kube-like\\", it will sort above non \\"kube-like\\" version
-                  strings, which are ordered lexicographically. \\"Kube-like\\" versions
-                  start with a \\"v\\", then are followed by a number (the major version),
-                  then optionally the string \\"alpha\\" or \\"beta\\" and another number
+                  string is "kube-like", it will sort above non "kube-like" version
+                  strings, which are ordered lexicographically. "Kube-like" versions
+                  start with a "v", then are followed by a number (the major version),
+                  then optionally the string "alpha" or "beta" and another number
                   (the minor version). These are sorted first by GA > beta > alpha
                   (where GA is a version with no suffix such as beta or alpha), and
                   then by comparing major version, then minor version. An example
@@ -12809,8 +12809,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -12983,7 +12983,7 @@ spec:
                       description: ReadinessChecks allows users to define custom readiness
                         checks. All checks have to return true in order for resource
                         to be considered ready. The default readiness check is to
-                        have the \\"Ready\\" condition to be \\"True\\".
+                        have the "Ready" condition to be "True".
                       items:
                         description: ReadinessCheck is used to indicate how to tell
                           whether a resource is ready for consumption
@@ -12994,12 +12994,12 @@ spec:
                             type: string
                           matchInteger:
                             description: MatchInt is the value you'd like to match
-                              if you're using \\"MatchInt\\" type.
+                              if you're using "MatchInt" type.
                             format: int64
                             type: integer
                           matchString:
                             description: MatchString is the value you'd like to match
-                              if you're using \\"MatchString\\" type.
+                              if you're using "MatchString" type.
                             type: string
                           type:
                             description: Type indicates the type of probe you'd like
@@ -13220,7 +13220,7 @@ spec:
                       description: ReadinessChecks allows users to define custom readiness
                         checks. All checks have to return true in order for resource
                         to be considered ready. The default readiness check is to
-                        have the \\"Ready\\" condition to be \\"True\\".
+                        have the "Ready" condition to be "True".
                       items:
                         description: ReadinessCheck is used to indicate how to tell
                           whether a resource is ready for consumption
@@ -13231,12 +13231,12 @@ spec:
                             type: string
                           matchInteger:
                             description: MatchInt is the value you'd like to match
-                              if you're using \\"MatchInt\\" type.
+                              if you're using "MatchInt" type.
                             format: int64
                             type: integer
                           matchString:
                             description: MatchString is the value you'd like to match
-                              if you're using \\"MatchString\\" type.
+                              if you're using "MatchString" type.
                             type: string
                           type:
                             description: Type indicates the type of probe you'd like
@@ -13308,8 +13308,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -13390,8 +13390,8 @@ spec:
     storage: true
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1alpha1
@@ -13482,8 +13482,8 @@ spec:
     storage: true
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1alpha1
@@ -13546,7 +13546,7 @@ spec:
                           node that meets all of the scheduling requirements (resource
                           request, requiredDuringScheduling affinity expressions,
                           etc.), compute a sum by iterating through the elements of
-                          this field and adding \\"weight\\" to the sum if the node matches
+                          this field and adding "weight" to the sum if the node matches
                           the corresponding matchExpressions; the node(s) with the
                           highest sum are the most preferred.
                         items:
@@ -13750,7 +13750,7 @@ spec:
                           node that meets all of the scheduling requirements (resource
                           request, requiredDuringScheduling affinity expressions,
                           etc.), compute a sum by iterating through the elements of
-                          this field and adding \\"weight\\" to the sum if the node has
+                          this field and adding "weight" to the sum if the node has
                           pods which matches the corresponding podAffinityTerm; the
                           node(s) with the highest sum are the most preferred.
                         items:
@@ -13807,15 +13807,15 @@ spec:
                                       description: matchLabels is a map of {key,value}
                                         pairs. A single {key,value} in the matchLabels
                                         map is equivalent to an element of matchExpressions,
-                                        whose key field is \\"key\\", the operator is
-                                        \\"In\\", and the values array contains only \\"value\\".
+                                        whose key field is "key", the operator is
+                                        "In", and the values array contains only "value".
                                         The requirements are ANDed.
                                       type: object
                                   type: object
                                 namespaces:
                                   description: namespaces specifies which namespaces
                                     the labelSelector applies to (matches against);
-                                    null or empty list means \\"this pod's namespace\\"
+                                    null or empty list means "this pod's namespace"
                                   items:
                                     type: string
                                   type: array
@@ -13902,15 +13902,15 @@ spec:
                                   description: matchLabels is a map of {key,value}
                                     pairs. A single {key,value} in the matchLabels
                                     map is equivalent to an element of matchExpressions,
-                                    whose key field is \\"key\\", the operator is \\"In\\",
-                                    and the values array contains only \\"value\\". The
+                                    whose key field is "key", the operator is "In",
+                                    and the values array contains only "value". The
                                     requirements are ANDed.
                                   type: object
                               type: object
                             namespaces:
                               description: namespaces specifies which namespaces the
                                 labelSelector applies to (matches against); null or
-                                empty list means \\"this pod's namespace\\"
+                                empty list means "this pod's namespace"
                               items:
                                 type: string
                               type: array
@@ -13942,7 +13942,7 @@ spec:
                           node that meets all of the scheduling requirements (resource
                           request, requiredDuringScheduling anti-affinity expressions,
                           etc.), compute a sum by iterating through the elements of
-                          this field and adding \\"weight\\" to the sum if the node has
+                          this field and adding "weight" to the sum if the node has
                           pods which matches the corresponding podAffinityTerm; the
                           node(s) with the highest sum are the most preferred.
                         items:
@@ -13999,15 +13999,15 @@ spec:
                                       description: matchLabels is a map of {key,value}
                                         pairs. A single {key,value} in the matchLabels
                                         map is equivalent to an element of matchExpressions,
-                                        whose key field is \\"key\\", the operator is
-                                        \\"In\\", and the values array contains only \\"value\\".
+                                        whose key field is "key", the operator is
+                                        "In", and the values array contains only "value".
                                         The requirements are ANDed.
                                       type: object
                                   type: object
                                 namespaces:
                                   description: namespaces specifies which namespaces
                                     the labelSelector applies to (matches against);
-                                    null or empty list means \\"this pod's namespace\\"
+                                    null or empty list means "this pod's namespace"
                                   items:
                                     type: string
                                   type: array
@@ -14094,15 +14094,15 @@ spec:
                                   description: matchLabels is a map of {key,value}
                                     pairs. A single {key,value} in the matchLabels
                                     map is equivalent to an element of matchExpressions,
-                                    whose key field is \\"key\\", the operator is \\"In\\",
-                                    and the values array contains only \\"value\\". The
+                                    whose key field is "key", the operator is "In",
+                                    and the values array contains only "value". The
                                     requirements are ANDed.
                                   type: object
                               type: object
                             namespaces:
                               description: namespaces specifies which namespaces the
                                 labelSelector applies to (matches against); null or
-                                empty list means \\"this pod's namespace\\"
+                                empty list means "this pod's namespace"
                               items:
                                 type: string
                               type: array
@@ -14149,7 +14149,7 @@ spec:
                         be resolved, the reference in the input string will be unchanged.
                         The $(VAR_NAME) syntax can be escaped with a double $$, ie:
                         $$(VAR_NAME). Escaped references will never be expanded, regardless
-                        of whether the variable exists or not. Defaults to \\"\\".'
+                        of whether the variable exists or not. Defaults to "".'
                       type: string
                     valueFrom:
                       description: Source for the environment variable's value. Cannot
@@ -14180,7 +14180,7 @@ spec:
                           properties:
                             apiVersion:
                               description: Version of the schema the FieldPath is
-                                written in terms of, defaults to \\"v1\\".
+                                written in terms of, defaults to "v1".
                               type: string
                             fieldPath:
                               description: Path of the field to select in the specified
@@ -14204,8 +14204,8 @@ spec:
                               - type: integer
                               - type: string
                               description: Specifies the output format of the exposed
-                                resources, defaults to \\"1\\"
-                              pattern: ^(\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))))?$
+                                resources, defaults to "1"
+                              pattern: ^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$
                               x-kubernetes-int-or-string: true
                             resource:
                               description: 'Required: resource to select'
@@ -14316,13 +14316,13 @@ spec:
                   type description for default values of each field.'
                 properties:
                   fsGroup:
-                    description: \\"A special supplemental group that applies to all
+                    description: "A special supplemental group that applies to all
                       containers in a pod. Some volume types allow the Kubelet to
                       change the ownership of that volume to be owned by the pod:
-                      \\\\n 1. The owning GID will be the FSGroup 2. The setgid bit is
+                      \\n 1. The owning GID will be the FSGroup 2. The setgid bit is
                       set (new files created in the volume will be owned by FSGroup)
-                      3. The permission bits are OR'd with 660 \\\\n If unset, the Kubelet
-                      will not modify the ownership and permissions of any volume.\\"
+                      3. The permission bits are OR'd with 660 \\n If unset, the Kubelet
+                      will not modify the ownership and permissions of any volume."
                     format: int64
                     type: integer
                   fsGroupChangePolicy:
@@ -14331,8 +14331,8 @@ spec:
                       inside Pod. This field will only apply to volume types which
                       support fsGroup based ownership(and permissions). It will have
                       no effect on ephemeral volume types such as: secret, configmaps
-                      and emptydir. Valid values are \\"OnRootMismatch\\" and \\"Always\\".
-                      If not specified defaults to \\"Always\\".'
+                      and emptydir. Valid values are "OnRootMismatch" and "Always".
+                      If not specified defaults to "Always".'
                     type: string
                   runAsGroup:
                     description: The GID to run the entrypoint of the container process.
@@ -14434,8 +14434,8 @@ spec:
                     type: object
                 type: object
               priorityClassName:
-                description: If specified, indicates the pod's priority. \\"system-node-critical\\"
-                  and \\"system-cluster-critical\\" are two special keywords which indicate
+                description: If specified, indicates the pod's priority. "system-node-critical"
+                  and "system-cluster-critical" are two special keywords which indicate
                   the highest priorities with the former being the highest priority.
                   Any other name must be defined by creating a PriorityClass object
                   with that name. If not specified, the pod priority will be default
@@ -14445,7 +14445,7 @@ spec:
                 description: 'Number of desired pods. This is a pointer to distinguish
                   between explicit zero and not specified. Defaults to 1. Note: If
                   more than 1 replica is set and leader election is not enabled then
-                  controllers could conflict. Environment variable \\"LEADER_ELECTION\\"
+                  controllers could conflict. Environment variable "LEADER_ELECTION"
                   can be used to enable leader election process.'
                 format: int32
                 type: integer
@@ -14458,7 +14458,7 @@ spec:
                       anyOf:
                       - type: integer
                       - type: string
-                      pattern: ^(\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))))?$
+                      pattern: ^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$
                       x-kubernetes-int-or-string: true
                     description: 'Limits describes the maximum amount of compute resources
                       allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/'
@@ -14468,7 +14468,7 @@ spec:
                       anyOf:
                       - type: integer
                       - type: string
-                      pattern: ^(\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\\\+|-)?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))))?$
+                      pattern: ^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$
                       x-kubernetes-int-or-string: true
                     description: 'Requests describes the minimum amount of compute
                       resources required. If Requests is omitted for a container,
@@ -14480,7 +14480,7 @@ spec:
                 description: 'RuntimeClassName refers to a RuntimeClass object in
                   the node.k8s.io group, which should be used to run this pod.  If
                   no RuntimeClass resource matches the named class, the pod will not
-                  be run. If unset or empty, the \\"legacy\\" RuntimeClass will be used,
+                  be run. If unset or empty, the "legacy" RuntimeClass will be used,
                   which is an implicit class with an empty definition that uses the
                   default runtime handler. More info: https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md
                   This is a beta feature as of Kubernetes v1.14.'
@@ -14654,8 +14654,8 @@ spec:
     subresources: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1alpha1
@@ -14946,8 +14946,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -15307,8 +15307,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -15617,8 +15617,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -15978,8 +15978,8 @@ spec:
       status: {}
 status:
   acceptedNames:
-    kind: \\"\\"
-    plural: \\"\\"
+    kind: ""
+    plural: ""
   conditions: []
   storedVersions:
   - v1beta1
@@ -16037,10 +16037,10 @@ metadata:
 `;
 
 exports[`Helm synthesis --chart-api-version is v2 without crds with all inputs from cli and no config file is present 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v2"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
@@ -16054,10 +16054,10 @@ metadata:
 `;
 
 exports[`Helm synthesis --chart-api-version is v2 without crds with all inputs from config file and no related cli inputs 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v2"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
@@ -16071,10 +16071,10 @@ metadata:
 `;
 
 exports[`Helm synthesis --chart-api-version is v2 without crds with different inputs in cli and config file 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v2"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
@@ -16088,10 +16088,10 @@ metadata:
 `;
 
 exports[`Helm synthesis --chart-api-version is v2 without crds with inputs duplicated in cli and config file 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v2"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
@@ -16105,42 +16105,42 @@ metadata:
 `;
 
 exports[`Helm synthesis filename url hash remains the same across synthesis with all inputs from cli and no config file is present 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v2"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
   "crds/8e4ff9d9c8d4a5c8c8d1e4ab2af3417619afb5649d43c5f181b333ad06af8eb0.yaml": "{
-  \\"apiVersion\\": \\"apiextensions.k8s.io/v1\\",
-  \\"kind\\": \\"CustomResourceDefinition\\",
-  \\"metadata\\": {
-    \\"name\\": \\"crontabs.stable.example.com\\"
+  "apiVersion": "apiextensions.k8s.io/v1",
+  "kind": "CustomResourceDefinition",
+  "metadata": {
+    "name": "crontabs.stable.example.com"
   },
-  \\"spec\\": {
-    \\"group\\": \\"stable.example.com\\",
-    \\"versions\\": [
+  "spec": {
+    "group": "stable.example.com",
+    "versions": [
       {
-        \\"name\\": \\"v1\\",
-        \\"served\\": true,
-        \\"storage\\": true,
-        \\"schema\\": {
-          \\"openAPIV3Schema\\": {
-            \\"type\\": \\"object\\",
-            \\"properties\\": {
-              \\"spec\\": {
-                \\"type\\": \\"object\\",
-                \\"properties\\": {
-                  \\"cronSpec\\": {
-                    \\"type\\": \\"string\\"
+        "name": "v1",
+        "served": true,
+        "storage": true,
+        "schema": {
+          "openAPIV3Schema": {
+            "type": "object",
+            "properties": {
+              "spec": {
+                "type": "object",
+                "properties": {
+                  "cronSpec": {
+                    "type": "string"
                   },
-                  \\"image\\": {
-                    \\"type\\": \\"string\\"
+                  "image": {
+                    "type": "string"
                   },
-                  \\"replicas\\": {
-                    \\"type\\": \\"integer\\"
+                  "replicas": {
+                    "type": "integer"
                   }
                 }
               }
@@ -16149,13 +16149,13 @@ type: application
         }
       }
     ],
-    \\"scope\\": \\"Namespaced\\",
-    \\"names\\": {
-      \\"plural\\": \\"crontabs\\",
-      \\"singular\\": \\"crontab\\",
-      \\"kind\\": \\"CronTab\\",
-      \\"shortNames\\": [
-        \\"ct\\"
+    "scope": "Namespaced",
+    "names": {
+      "plural": "crontabs",
+      "singular": "crontab",
+      "kind": "CronTab",
+      "shortNames": [
+        "ct"
       ]
     }
   }
@@ -16169,42 +16169,42 @@ metadata:
 `;
 
 exports[`Helm synthesis filename url hash remains the same across synthesis with all inputs from config file and no related cli inputs 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v2"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
   "crds/8e4ff9d9c8d4a5c8c8d1e4ab2af3417619afb5649d43c5f181b333ad06af8eb0.yaml": "{
-  \\"apiVersion\\": \\"apiextensions.k8s.io/v1\\",
-  \\"kind\\": \\"CustomResourceDefinition\\",
-  \\"metadata\\": {
-    \\"name\\": \\"crontabs.stable.example.com\\"
+  "apiVersion": "apiextensions.k8s.io/v1",
+  "kind": "CustomResourceDefinition",
+  "metadata": {
+    "name": "crontabs.stable.example.com"
   },
-  \\"spec\\": {
-    \\"group\\": \\"stable.example.com\\",
-    \\"versions\\": [
+  "spec": {
+    "group": "stable.example.com",
+    "versions": [
       {
-        \\"name\\": \\"v1\\",
-        \\"served\\": true,
-        \\"storage\\": true,
-        \\"schema\\": {
-          \\"openAPIV3Schema\\": {
-            \\"type\\": \\"object\\",
-            \\"properties\\": {
-              \\"spec\\": {
-                \\"type\\": \\"object\\",
-                \\"properties\\": {
-                  \\"cronSpec\\": {
-                    \\"type\\": \\"string\\"
+        "name": "v1",
+        "served": true,
+        "storage": true,
+        "schema": {
+          "openAPIV3Schema": {
+            "type": "object",
+            "properties": {
+              "spec": {
+                "type": "object",
+                "properties": {
+                  "cronSpec": {
+                    "type": "string"
                   },
-                  \\"image\\": {
-                    \\"type\\": \\"string\\"
+                  "image": {
+                    "type": "string"
                   },
-                  \\"replicas\\": {
-                    \\"type\\": \\"integer\\"
+                  "replicas": {
+                    "type": "integer"
                   }
                 }
               }
@@ -16213,13 +16213,13 @@ type: application
         }
       }
     ],
-    \\"scope\\": \\"Namespaced\\",
-    \\"names\\": {
-      \\"plural\\": \\"crontabs\\",
-      \\"singular\\": \\"crontab\\",
-      \\"kind\\": \\"CronTab\\",
-      \\"shortNames\\": [
-        \\"ct\\"
+    "scope": "Namespaced",
+    "names": {
+      "plural": "crontabs",
+      "singular": "crontab",
+      "kind": "CronTab",
+      "shortNames": [
+        "ct"
       ]
     }
   }
@@ -16233,42 +16233,42 @@ metadata:
 `;
 
 exports[`Helm synthesis filename url hash remains the same across synthesis with different inputs in cli and config file 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v2"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
   "crds/8e4ff9d9c8d4a5c8c8d1e4ab2af3417619afb5649d43c5f181b333ad06af8eb0.yaml": "{
-  \\"apiVersion\\": \\"apiextensions.k8s.io/v1\\",
-  \\"kind\\": \\"CustomResourceDefinition\\",
-  \\"metadata\\": {
-    \\"name\\": \\"crontabs.stable.example.com\\"
+  "apiVersion": "apiextensions.k8s.io/v1",
+  "kind": "CustomResourceDefinition",
+  "metadata": {
+    "name": "crontabs.stable.example.com"
   },
-  \\"spec\\": {
-    \\"group\\": \\"stable.example.com\\",
-    \\"versions\\": [
+  "spec": {
+    "group": "stable.example.com",
+    "versions": [
       {
-        \\"name\\": \\"v1\\",
-        \\"served\\": true,
-        \\"storage\\": true,
-        \\"schema\\": {
-          \\"openAPIV3Schema\\": {
-            \\"type\\": \\"object\\",
-            \\"properties\\": {
-              \\"spec\\": {
-                \\"type\\": \\"object\\",
-                \\"properties\\": {
-                  \\"cronSpec\\": {
-                    \\"type\\": \\"string\\"
+        "name": "v1",
+        "served": true,
+        "storage": true,
+        "schema": {
+          "openAPIV3Schema": {
+            "type": "object",
+            "properties": {
+              "spec": {
+                "type": "object",
+                "properties": {
+                  "cronSpec": {
+                    "type": "string"
                   },
-                  \\"image\\": {
-                    \\"type\\": \\"string\\"
+                  "image": {
+                    "type": "string"
                   },
-                  \\"replicas\\": {
-                    \\"type\\": \\"integer\\"
+                  "replicas": {
+                    "type": "integer"
                   }
                 }
               }
@@ -16277,13 +16277,13 @@ type: application
         }
       }
     ],
-    \\"scope\\": \\"Namespaced\\",
-    \\"names\\": {
-      \\"plural\\": \\"crontabs\\",
-      \\"singular\\": \\"crontab\\",
-      \\"kind\\": \\"CronTab\\",
-      \\"shortNames\\": [
-        \\"ct\\"
+    "scope": "Namespaced",
+    "names": {
+      "plural": "crontabs",
+      "singular": "crontab",
+      "kind": "CronTab",
+      "shortNames": [
+        "ct"
       ]
     }
   }
@@ -16297,42 +16297,42 @@ metadata:
 `;
 
 exports[`Helm synthesis filename url hash remains the same across synthesis with inputs duplicated in cli and config file 1`] = `
-Object {
-  "Chart.yaml": "apiVersion: \\"v2\\"
-name: \\"cdk8s-synth-test\\"
-version: \\"1.1.1\\"
+{
+  "Chart.yaml": "apiVersion: "v2"
+name: "cdk8s-synth-test"
+version: "1.1.1"
 description: Generated chart for cdk8s-synth-test
 type: application
 ",
   "README.md": "This Helm chart is generated using cdk8s. Any manual changes to the chart would be discarded once cdk8s app is synthesized again with \`--format helm\`.",
   "crds/8e4ff9d9c8d4a5c8c8d1e4ab2af3417619afb5649d43c5f181b333ad06af8eb0.yaml": "{
-  \\"apiVersion\\": \\"apiextensions.k8s.io/v1\\",
-  \\"kind\\": \\"CustomResourceDefinition\\",
-  \\"metadata\\": {
-    \\"name\\": \\"crontabs.stable.example.com\\"
+  "apiVersion": "apiextensions.k8s.io/v1",
+  "kind": "CustomResourceDefinition",
+  "metadata": {
+    "name": "crontabs.stable.example.com"
   },
-  \\"spec\\": {
-    \\"group\\": \\"stable.example.com\\",
-    \\"versions\\": [
+  "spec": {
+    "group": "stable.example.com",
+    "versions": [
       {
-        \\"name\\": \\"v1\\",
-        \\"served\\": true,
-        \\"storage\\": true,
-        \\"schema\\": {
-          \\"openAPIV3Schema\\": {
-            \\"type\\": \\"object\\",
-            \\"properties\\": {
-              \\"spec\\": {
-                \\"type\\": \\"object\\",
-                \\"properties\\": {
-                  \\"cronSpec\\": {
-                    \\"type\\": \\"string\\"
+        "name": "v1",
+        "served": true,
+        "storage": true,
+        "schema": {
+          "openAPIV3Schema": {
+            "type": "object",
+            "properties": {
+              "spec": {
+                "type": "object",
+                "properties": {
+                  "cronSpec": {
+                    "type": "string"
                   },
-                  \\"image\\": {
-                    \\"type\\": \\"string\\"
+                  "image": {
+                    "type": "string"
                   },
-                  \\"replicas\\": {
-                    \\"type\\": \\"integer\\"
+                  "replicas": {
+                    "type": "integer"
                   }
                 }
               }
@@ -16341,13 +16341,13 @@ type: application
         }
       }
     ],
-    \\"scope\\": \\"Namespaced\\",
-    \\"names\\": {
-      \\"plural\\": \\"crontabs\\",
-      \\"singular\\": \\"crontab\\",
-      \\"kind\\": \\"CronTab\\",
-      \\"shortNames\\": [
-        \\"ct\\"
+    "scope": "Namespaced",
+    "names": {
+      "plural": "crontabs",
+      "singular": "crontab",
+      "kind": "CronTab",
+      "shortNames": [
+        "ct"
       ]
     }
   }
@@ -16362,31 +16362,31 @@ metadata:
 
 exports[`validations synth can write the validation reports to a file 1`] = `
 "{
-  \\"reports\\": [
+  "reports": [
     {
-      \\"title\\": \\"Validation Report (<__dirname-replaced>/__resources__/validation-plugin@0.0.0)\\",
-      \\"violations\\": [
+      "title": "Validation Report (<__dirname-replaced>/__resources__/validation-plugin@0.0.0)",
+      "violations": [
         {
-          \\"ruleName\\": \\"Some rule\\",
-          \\"recommendation\\": \\"Some recommendation\\",
-          \\"violatingConstructs\\": [
+          "ruleName": "Some rule",
+          "recommendation": "Some recommendation",
+          "violatingConstructs": [
             {
-              \\"manifestPath\\": \\"dist/chart-c86185a7.k8s.yaml\\",
-              \\"resourceName\\": \\"config-map\\",
-              \\"locations\\": [
-                \\"location1\\",
-                \\"location2\\"
+              "manifestPath": "dist/chart-c86185a7.k8s.yaml",
+              "resourceName": "config-map",
+              "locations": [
+                "location1",
+                "location2"
               ],
-              \\"constructPath\\": \\"Chart/Object\\"
+              "constructPath": "Chart/Object"
             }
           ],
-          \\"fix\\": \\"Some fix\\"
+          "fix": "Some fix"
         }
       ],
-      \\"summary\\": {
-        \\"status\\": \\"success\\",
-        \\"plugin\\": \\"<__dirname-replaced>/__resources__/validation-plugin\\",
-        \\"version\\": \\"0.0.0\\"
+      "summary": {
+        "status": "success",
+        "plugin": "<__dirname-replaced>/__resources__/validation-plugin",
+        "version": "0.0.0"
       }
     }
   ]
