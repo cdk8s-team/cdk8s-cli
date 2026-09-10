@@ -640,3 +640,89 @@ describe('cdk8s.yaml file', () => {
   });
 
 });
+
+describe('aggregating multiple CRD imports from the same API group', () => {
+
+  test('consolidates CRDs from same API group when importing multiple files without prefix', async () => {
+    // This test verifies that when importing multiple CRD files from the same API group
+    // (e.g., compute.example.com), they are consolidated into a single module instead
+    // of the second import overwriting the first.
+    const crd1Path = path.join(fixtures, 'same_group_crd_1.yaml');
+    const crd2Path = path.join(fixtures, 'same_group_crd_2.yaml');
+
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'crd-aggregate-test'));
+    const importOptions: ImportOptions = {
+      targetLanguage: Language.TYPESCRIPT,
+      outdir: tempDir,
+      save: false,
+    };
+
+    try {
+      // Import both CRDs from the same API group
+      await importDispatch([
+        { source: crd1Path },
+        { source: crd2Path },
+      ], {}, importOptions);
+
+      // Both Network and Subnetwork should be in the same module file
+      const moduleFile = path.join(tempDir, 'compute.example.com.ts');
+      expect(fs.existsSync(moduleFile)).toBe(true);
+
+      const content = fs.readFileSync(moduleFile, 'utf-8');
+      // Both classes should be present in the same file
+      expect(content).toContain('export class Network');
+      expect(content).toContain('export class Subnetwork');
+    } finally {
+      fs.removeSync(tempDir);
+    }
+  });
+
+  test('fromSpecs aggregates multiple import specs into single importer', async () => {
+    const crd1Path = path.join(fixtures, 'same_group_crd_1.yaml');
+    const crd2Path = path.join(fixtures, 'same_group_crd_2.yaml');
+
+    const importer = await ImportCustomResourceDefinition.fromSpecs([
+      { source: crd1Path },
+      { source: crd2Path },
+    ]);
+
+    // Should have one module for the shared API group
+    expect(importer.moduleNames).toEqual(['compute.example.com']);
+  });
+
+  test('prefixed imports are kept separate even from same API group', async () => {
+    const crd1Path = path.join(fixtures, 'same_group_crd_1.yaml');
+    const crd2Path = path.join(fixtures, 'same_group_crd_2.yaml');
+
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'crd-prefix-test'));
+    const importOptions: ImportOptions = {
+      targetLanguage: Language.TYPESCRIPT,
+      outdir: tempDir,
+      save: false,
+    };
+
+    try {
+      // Import with different prefixes - should create separate modules
+      await importDispatch([
+        { source: crd1Path, moduleNamePrefix: 'net' },
+        { source: crd2Path, moduleNamePrefix: 'subnet' },
+      ], {}, importOptions);
+
+      // Each should have its own prefixed file
+      expect(fs.existsSync(path.join(tempDir, 'net-compute.example.com.ts'))).toBe(true);
+      expect(fs.existsSync(path.join(tempDir, 'subnet-compute.example.com.ts'))).toBe(true);
+
+      const netContent = fs.readFileSync(path.join(tempDir, 'net-compute.example.com.ts'), 'utf-8');
+      const subnetContent = fs.readFileSync(path.join(tempDir, 'subnet-compute.example.com.ts'), 'utf-8');
+
+      expect(netContent).toContain('export class Network');
+      expect(netContent).not.toContain('export class Subnetwork');
+
+      expect(subnetContent).toContain('export class Subnetwork');
+      expect(subnetContent).not.toContain('export class Network');
+    } finally {
+      fs.removeSync(tempDir);
+    }
+  });
+
+});
