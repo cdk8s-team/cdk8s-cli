@@ -76,7 +76,7 @@
   "dependencies": {
     "@types/node": "^16",
     "ajv": "^8.20.0",
-    "cdk8s": "^2.70.101",
+    "cdk8s": "^2.70.102",
     "cdk8s-plus-33": "^2.5.54",
     "codemaker": "^1.140.0",
     "colors": "1.4.0",
@@ -89,7 +89,7 @@
     "semver": "^7.8.5",
     "sscaff": "^1.2.274",
     "table": "^6.9.0",
-    "yaml": "2.9.0",
+    "yaml": "2.9.1",
     "yargs": "^15"
   },
   "keywords": [
