@@ -48,8 +48,8 @@ export function addIntegTests(project: typescript.TypeScriptProject) {
     steps: runSteps([initTask.name], 'lts/*', true, true),
   });
 
-  // run typescript app on node 20 as well
-  const nodeVersions = [20];
+  // run typescript app on node 22 as well
+  const nodeVersions = [22];
   integWorkflow.addJob('init-typescript-app', {
     runsOn: ['ubuntu-latest'],
     strategy: {
