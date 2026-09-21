@@ -104,6 +104,13 @@
   "engines": {
     "node": ">= 16.20.0"
   },
+  "devEngines": {
+    "packageManager": {
+      "name": "yarn",
+      "version": "1.22.22",
+      "onFail": "ignore"
+    }
+  },
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"

@@ -69,4 +69,4 @@ jobs:
       fail-fast: false
       matrix:
         nodeVersion:
-          - 20
+          - 22

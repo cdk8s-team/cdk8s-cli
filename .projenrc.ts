@@ -1,5 +1,5 @@
 import { Cdk8sTeamTypeScriptProject } from '@cdk8s/projen-common';
-import { DependencyType } from 'projen';
+import { DependencyType, javascript } from 'projen';
 import { addIntegTests } from './projenrc/integ';
 
 const project = new Cdk8sTeamTypeScriptProject({
@@ -7,6 +7,7 @@ const project = new Cdk8sTeamTypeScriptProject({
   release: true,
   name: 'cdk8s-cli',
   description: 'This is the command line tool for Cloud Development Kit (CDK) for Kubernetes (cdk8s).',
+  packageManager: javascript.NodePackageManager.YARN_CLASSIC,
 
   // no need, we are configuring explicit exports.
   entrypoint: '',
