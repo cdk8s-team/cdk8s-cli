@@ -1113,7 +1113,7 @@ class Testchart(
         if __debug__:
             type_hints = cached_type_hints(_typecheckingstub__23f40195a50c0655f06379461cfa07590ec2e9eda498c85ac16857038295ee7f)
             check_type(argname="argument value", value=value, expected_type=type_hints["value"])
-        jsii.set(self, "helm", value) # pyright: ignore[reportArgumentType]
+        jsii.set(self, "helm", value)
 
 
 @jsii.data_type(
@@ -3772,7 +3772,7 @@ class Mysql(
         if __debug__:
             type_hints = cached_type_hints(_typecheckingstub__6a97335aab88f219ab5d33fb1f96a2580c2e2edc13fd76a090b1f7ebb25cbd52)
             check_type(argname="argument value", value=value, expected_type=type_hints["value"])
-        jsii.set(self, "helm", value) # pyright: ignore[reportArgumentType]
+        jsii.set(self, "helm", value)
 
 
 @jsii.enum(jsii_type="mysql.MysqlArchitecture")
@@ -12319,7 +12319,7 @@ class Certmanager(
         if __debug__:
             type_hints = cached_type_hints(_typecheckingstub__49d55ce274b4a938b152c0c3208088911adc30540b6312f53bc1b49da08a899c)
             check_type(argname="argument value", value=value, expected_type=type_hints["value"])
-        jsii.set(self, "helm", value) # pyright: ignore[reportArgumentType]
+        jsii.set(self, "helm", value)
 
 
 @jsii.data_type(
@@ -25262,7 +25262,7 @@ class Loki(
         if __debug__:
             type_hints = cached_type_hints(_typecheckingstub__4ce0a4b600b5e431f59726607b0807de8b928a7439cb3603d7a5e16a725b53e1)
             check_type(argname="argument value", value=value, expected_type=type_hints["value"])
-        jsii.set(self, "helm", value) # pyright: ignore[reportArgumentType]
+        jsii.set(self, "helm", value)
 
 
 @jsii.data_type(
@@ -26048,7 +26048,7 @@ class Ingressnginx(
         if __debug__:
             type_hints = cached_type_hints(_typecheckingstub__bf4e38d82d6ec512d25f7746a82eabc0d602261aa2aeeab89a5d0933455140d4)
             check_type(argname="argument value", value=value, expected_type=type_hints["value"])
-        jsii.set(self, "helm", value) # pyright: ignore[reportArgumentType]
+        jsii.set(self, "helm", value)
 
 
 @jsii.data_type(
@@ -37450,7 +37450,7 @@ class Laceworkagent(
         if __debug__:
             type_hints = cached_type_hints(_typecheckingstub__4de5e2d6c1dabef373e4f83822b3144b820f13526e9749be7796a38a2675a8ce)
             check_type(argname="argument value", value=value, expected_type=type_hints["value"])
-        jsii.set(self, "helm", value) # pyright: ignore[reportArgumentType]
+        jsii.set(self, "helm", value)
 
 
 @jsii.data_type(
@@ -48608,7 +48608,7 @@ class Mysql(
         if __debug__:
             type_hints = cached_type_hints(_typecheckingstub__6a97335aab88f219ab5d33fb1f96a2580c2e2edc13fd76a090b1f7ebb25cbd52)
             check_type(argname="argument value", value=value, expected_type=type_hints["value"])
-        jsii.set(self, "helm", value) # pyright: ignore[reportArgumentType]
+        jsii.set(self, "helm", value)
 
 
 @jsii.enum(jsii_type="mysql.MysqlArchitecture")
@@ -51951,7 +51951,7 @@ class Operator(
         if __debug__:
             type_hints = cached_type_hints(_typecheckingstub__bbe1b5f7f477ccaaae9562435a3e43413b51ac77fa72bfc34d370f1284d8f1e1)
             check_type(argname="argument value", value=value, expected_type=type_hints["value"])
-        jsii.set(self, "helm", value) # pyright: ignore[reportArgumentType]
+        jsii.set(self, "helm", value)
 
 
 @jsii.data_type(
