@@ -237579,6 +237579,883 @@ export function toJson_ThanosRulerSpecVolumesProjectedSourcesDownwardApiItemsRes
 }
 `;
 
+exports[`snapshots same_group_crd_1.yaml 1`] = `
+Object {
+  "author": Object {
+    "name": "generated@generated.com",
+    "roles": Array [
+      "author",
+    ],
+  },
+  "dependencies": "__omitted__",
+  "dependencyClosure": Object {
+    "cdk8s": Object {
+      "targets": Object {
+        "dotnet": Object {
+          "namespace": "Org.Cdk8s",
+          "packageId": "Org.Cdk8s",
+        },
+        "go": Object {
+          "moduleName": "github.com/cdk8s-team/cdk8s-core-go",
+        },
+        "java": Object {
+          "maven": Object {
+            "artifactId": "cdk8s",
+            "groupId": "org.cdk8s",
+          },
+          "package": "org.cdk8s",
+        },
+        "js": Object {
+          "npm": "cdk8s",
+        },
+        "python": Object {
+          "distName": "cdk8s",
+          "module": "cdk8s",
+        },
+      },
+    },
+    "constructs": Object {
+      "targets": Object {
+        "dotnet": Object {
+          "namespace": "Constructs",
+          "packageId": "Constructs",
+        },
+        "go": Object {
+          "moduleName": "github.com/aws/constructs-go",
+        },
+        "java": Object {
+          "maven": Object {
+            "artifactId": "constructs",
+            "groupId": "software.constructs",
+          },
+          "package": "software.constructs",
+        },
+        "js": Object {
+          "npm": "constructs",
+        },
+        "python": Object {
+          "distName": "constructs",
+          "module": "constructs",
+        },
+      },
+    },
+  },
+  "description": "computeexamplecom",
+  "fingerprint": "<fingerprint>",
+  "homepage": "http://generated",
+  "jsiiVersion": "__omitted__",
+  "license": "UNLICENSED",
+  "metadata": Object {
+    "jsii": Object {
+      "pacmak": Object {
+        "hasDefaultInterfaces": true,
+      },
+    },
+  },
+  "name": "computeexamplecom",
+  "repository": Object {
+    "type": "git",
+    "url": "http://generated",
+  },
+  "schema": "jsii/0.10.0",
+  "targets": Object {
+    "js": Object {
+      "npm": "computeexamplecom",
+    },
+  },
+  "types": Object {
+    "computeexamplecom.Network": Object {
+      "assembly": "computeexamplecom",
+      "base": "cdk8s.ApiObject",
+      "docs": Object {
+        "custom": Object {
+          "schema": "Network",
+        },
+      },
+      "fqn": "computeexamplecom.Network",
+      "initializer": Object {
+        "docs": Object {
+          "summary": "Defines a \\"Network\\" API object.",
+        },
+        "locationInModule": Object {
+          "filename": "compute.example.com.ts",
+          "line": 40,
+        },
+        "parameters": Array [
+          Object {
+            "docs": Object {
+              "summary": "the scope in which to define this object.",
+            },
+            "name": "scope",
+            "type": Object {
+              "fqn": "constructs.Construct",
+            },
+          },
+          Object {
+            "docs": Object {
+              "summary": "a scope-local name for the object.",
+            },
+            "name": "id",
+            "type": Object {
+              "primitive": "string",
+            },
+          },
+          Object {
+            "docs": Object {
+              "summary": "initialization props.",
+            },
+            "name": "props",
+            "optional": true,
+            "type": Object {
+              "fqn": "computeexamplecom.NetworkProps",
+            },
+          },
+        ],
+      },
+      "kind": "class",
+      "locationInModule": Object {
+        "filename": "compute.example.com.ts",
+        "line": 11,
+      },
+      "methods": Array [
+        Object {
+          "docs": Object {
+            "remarks": "This can be used to inline resource manifests inside other objects (e.g. as templates).",
+            "summary": "Renders a Kubernetes manifest for \\"Network\\".",
+          },
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 27,
+          },
+          "name": "manifest",
+          "parameters": Array [
+            Object {
+              "docs": Object {
+                "summary": "initialization props.",
+              },
+              "name": "props",
+              "optional": true,
+              "type": Object {
+                "fqn": "computeexamplecom.NetworkProps",
+              },
+            },
+          ],
+          "returns": Object {
+            "type": Object {
+              "primitive": "any",
+            },
+          },
+          "static": true,
+        },
+        Object {
+          "docs": Object {
+            "summary": "Renders the object to Kubernetes JSON.",
+          },
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 50,
+          },
+          "name": "toJson",
+          "overrides": "cdk8s.ApiObject",
+          "returns": Object {
+            "type": Object {
+              "primitive": "any",
+            },
+          },
+        },
+      ],
+      "name": "Network",
+      "properties": Array [
+        Object {
+          "const": true,
+          "docs": Object {
+            "summary": "Returns the apiVersion and kind for \\"Network\\".",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 15,
+          },
+          "name": "GVK",
+          "static": true,
+          "type": Object {
+            "fqn": "cdk8s.GroupVersionKind",
+          },
+        },
+      ],
+      "symbolId": "compute.example.com:Network",
+    },
+    "computeexamplecom.NetworkProps": Object {
+      "assembly": "computeexamplecom",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "Network",
+        },
+      },
+      "fqn": "computeexamplecom.NetworkProps",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "compute.example.com.ts",
+        "line": 63,
+      },
+      "name": "NetworkProps",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "Network#metadata",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 67,
+          },
+          "name": "metadata",
+          "optional": true,
+          "type": Object {
+            "fqn": "cdk8s.ApiObjectMetadata",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "Network#spec",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 72,
+          },
+          "name": "spec",
+          "optional": true,
+          "type": Object {
+            "fqn": "computeexamplecom.NetworkSpec",
+          },
+        },
+      ],
+      "symbolId": "compute.example.com:NetworkProps",
+    },
+    "computeexamplecom.NetworkSpec": Object {
+      "assembly": "computeexamplecom",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "NetworkSpec",
+        },
+      },
+      "fqn": "computeexamplecom.NetworkSpec",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "compute.example.com.ts",
+        "line": 93,
+      },
+      "name": "NetworkSpec",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "NetworkSpec#cidr",
+            },
+            "summary": "CIDR block for the network.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 99,
+          },
+          "name": "cidr",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+      ],
+      "symbolId": "compute.example.com:NetworkSpec",
+    },
+  },
+  "version": "0.0.0",
+}
+`;
+
+exports[`snapshots same_group_crd_1.yaml 2`] = `
+Object {
+  "compute.example.com.ts": "// generated by cdk8s
+import { ApiObject, ApiObjectMetadata, GroupVersionKind } from 'cdk8s';
+import { Construct } from 'constructs';
+
+
+/**
+ *
+ *
+ * @schema Network
+ */
+export class Network extends ApiObject {
+  /**
+   * Returns the apiVersion and kind for \\"Network\\"
+   */
+  public static readonly GVK: GroupVersionKind = {
+    apiVersion: 'compute.example.com/v1',
+    kind: 'Network',
+  }
+
+  /**
+   * Renders a Kubernetes manifest for \\"Network\\".
+   *
+   * This can be used to inline resource manifests inside other objects (e.g. as templates).
+   *
+   * @param props initialization props
+   */
+  public static manifest(props: NetworkProps = {}): any {
+    return {
+      ...Network.GVK,
+      ...toJson_NetworkProps(props),
+    };
+  }
+
+  /**
+   * Defines a \\"Network\\" API object
+   * @param scope the scope in which to define this object
+   * @param id a scope-local name for the object
+   * @param props initialization props
+   */
+  public constructor(scope: Construct, id: string, props: NetworkProps = {}) {
+    super(scope, id, {
+      ...Network.GVK,
+      ...props,
+    });
+  }
+
+  /**
+   * Renders the object to Kubernetes JSON.
+   */
+  public override toJson(): any {
+    const resolved = super.toJson();
+
+    return {
+      ...Network.GVK,
+      ...toJson_NetworkProps(resolved),
+    };
+  }
+}
+
+/**
+ * @schema Network
+ */
+export interface NetworkProps {
+  /**
+   * @schema Network#metadata
+   */
+  readonly metadata?: ApiObjectMetadata;
+
+  /**
+   * @schema Network#spec
+   */
+  readonly spec?: NetworkSpec;
+}
+
+/**
+ * Converts an object of type 'NetworkProps' to JSON representation.
+ */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+export function toJson_NetworkProps(obj: NetworkProps | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'metadata': obj.metadata,
+    'spec': toJson_NetworkSpec(obj.spec),
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+
+/**
+ * @schema NetworkSpec
+ */
+export interface NetworkSpec {
+  /**
+   * CIDR block for the network
+   *
+   * @schema NetworkSpec#cidr
+   */
+  readonly cidr?: string;
+}
+
+/**
+ * Converts an object of type 'NetworkSpec' to JSON representation.
+ */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+export function toJson_NetworkSpec(obj: NetworkSpec | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'cidr': obj.cidr,
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+
+",
+}
+`;
+
+exports[`snapshots same_group_crd_2.yaml 1`] = `
+Object {
+  "author": Object {
+    "name": "generated@generated.com",
+    "roles": Array [
+      "author",
+    ],
+  },
+  "dependencies": "__omitted__",
+  "dependencyClosure": Object {
+    "cdk8s": Object {
+      "targets": Object {
+        "dotnet": Object {
+          "namespace": "Org.Cdk8s",
+          "packageId": "Org.Cdk8s",
+        },
+        "go": Object {
+          "moduleName": "github.com/cdk8s-team/cdk8s-core-go",
+        },
+        "java": Object {
+          "maven": Object {
+            "artifactId": "cdk8s",
+            "groupId": "org.cdk8s",
+          },
+          "package": "org.cdk8s",
+        },
+        "js": Object {
+          "npm": "cdk8s",
+        },
+        "python": Object {
+          "distName": "cdk8s",
+          "module": "cdk8s",
+        },
+      },
+    },
+    "constructs": Object {
+      "targets": Object {
+        "dotnet": Object {
+          "namespace": "Constructs",
+          "packageId": "Constructs",
+        },
+        "go": Object {
+          "moduleName": "github.com/aws/constructs-go",
+        },
+        "java": Object {
+          "maven": Object {
+            "artifactId": "constructs",
+            "groupId": "software.constructs",
+          },
+          "package": "software.constructs",
+        },
+        "js": Object {
+          "npm": "constructs",
+        },
+        "python": Object {
+          "distName": "constructs",
+          "module": "constructs",
+        },
+      },
+    },
+  },
+  "description": "computeexamplecom",
+  "fingerprint": "<fingerprint>",
+  "homepage": "http://generated",
+  "jsiiVersion": "__omitted__",
+  "license": "UNLICENSED",
+  "metadata": Object {
+    "jsii": Object {
+      "pacmak": Object {
+        "hasDefaultInterfaces": true,
+      },
+    },
+  },
+  "name": "computeexamplecom",
+  "repository": Object {
+    "type": "git",
+    "url": "http://generated",
+  },
+  "schema": "jsii/0.10.0",
+  "targets": Object {
+    "js": Object {
+      "npm": "computeexamplecom",
+    },
+  },
+  "types": Object {
+    "computeexamplecom.Subnetwork": Object {
+      "assembly": "computeexamplecom",
+      "base": "cdk8s.ApiObject",
+      "docs": Object {
+        "custom": Object {
+          "schema": "Subnetwork",
+        },
+      },
+      "fqn": "computeexamplecom.Subnetwork",
+      "initializer": Object {
+        "docs": Object {
+          "summary": "Defines a \\"Subnetwork\\" API object.",
+        },
+        "locationInModule": Object {
+          "filename": "compute.example.com.ts",
+          "line": 40,
+        },
+        "parameters": Array [
+          Object {
+            "docs": Object {
+              "summary": "the scope in which to define this object.",
+            },
+            "name": "scope",
+            "type": Object {
+              "fqn": "constructs.Construct",
+            },
+          },
+          Object {
+            "docs": Object {
+              "summary": "a scope-local name for the object.",
+            },
+            "name": "id",
+            "type": Object {
+              "primitive": "string",
+            },
+          },
+          Object {
+            "docs": Object {
+              "summary": "initialization props.",
+            },
+            "name": "props",
+            "optional": true,
+            "type": Object {
+              "fqn": "computeexamplecom.SubnetworkProps",
+            },
+          },
+        ],
+      },
+      "kind": "class",
+      "locationInModule": Object {
+        "filename": "compute.example.com.ts",
+        "line": 11,
+      },
+      "methods": Array [
+        Object {
+          "docs": Object {
+            "remarks": "This can be used to inline resource manifests inside other objects (e.g. as templates).",
+            "summary": "Renders a Kubernetes manifest for \\"Subnetwork\\".",
+          },
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 27,
+          },
+          "name": "manifest",
+          "parameters": Array [
+            Object {
+              "docs": Object {
+                "summary": "initialization props.",
+              },
+              "name": "props",
+              "optional": true,
+              "type": Object {
+                "fqn": "computeexamplecom.SubnetworkProps",
+              },
+            },
+          ],
+          "returns": Object {
+            "type": Object {
+              "primitive": "any",
+            },
+          },
+          "static": true,
+        },
+        Object {
+          "docs": Object {
+            "summary": "Renders the object to Kubernetes JSON.",
+          },
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 50,
+          },
+          "name": "toJson",
+          "overrides": "cdk8s.ApiObject",
+          "returns": Object {
+            "type": Object {
+              "primitive": "any",
+            },
+          },
+        },
+      ],
+      "name": "Subnetwork",
+      "properties": Array [
+        Object {
+          "const": true,
+          "docs": Object {
+            "summary": "Returns the apiVersion and kind for \\"Subnetwork\\".",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 15,
+          },
+          "name": "GVK",
+          "static": true,
+          "type": Object {
+            "fqn": "cdk8s.GroupVersionKind",
+          },
+        },
+      ],
+      "symbolId": "compute.example.com:Subnetwork",
+    },
+    "computeexamplecom.SubnetworkProps": Object {
+      "assembly": "computeexamplecom",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "Subnetwork",
+        },
+      },
+      "fqn": "computeexamplecom.SubnetworkProps",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "compute.example.com.ts",
+        "line": 63,
+      },
+      "name": "SubnetworkProps",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "Subnetwork#metadata",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 67,
+          },
+          "name": "metadata",
+          "optional": true,
+          "type": Object {
+            "fqn": "cdk8s.ApiObjectMetadata",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "Subnetwork#spec",
+            },
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 72,
+          },
+          "name": "spec",
+          "optional": true,
+          "type": Object {
+            "fqn": "computeexamplecom.SubnetworkSpec",
+          },
+        },
+      ],
+      "symbolId": "compute.example.com:SubnetworkProps",
+    },
+    "computeexamplecom.SubnetworkSpec": Object {
+      "assembly": "computeexamplecom",
+      "datatype": true,
+      "docs": Object {
+        "custom": Object {
+          "schema": "SubnetworkSpec",
+        },
+      },
+      "fqn": "computeexamplecom.SubnetworkSpec",
+      "kind": "interface",
+      "locationInModule": Object {
+        "filename": "compute.example.com.ts",
+        "line": 93,
+      },
+      "name": "SubnetworkSpec",
+      "properties": Array [
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "SubnetworkSpec#ipRange",
+            },
+            "summary": "IP range for the subnetwork.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 106,
+          },
+          "name": "ipRange",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+        Object {
+          "abstract": true,
+          "docs": Object {
+            "custom": Object {
+              "schema": "SubnetworkSpec#networkRef",
+            },
+            "summary": "Reference to the parent network.",
+          },
+          "immutable": true,
+          "locationInModule": Object {
+            "filename": "compute.example.com.ts",
+            "line": 99,
+          },
+          "name": "networkRef",
+          "optional": true,
+          "type": Object {
+            "primitive": "string",
+          },
+        },
+      ],
+      "symbolId": "compute.example.com:SubnetworkSpec",
+    },
+  },
+  "version": "0.0.0",
+}
+`;
+
+exports[`snapshots same_group_crd_2.yaml 2`] = `
+Object {
+  "compute.example.com.ts": "// generated by cdk8s
+import { ApiObject, ApiObjectMetadata, GroupVersionKind } from 'cdk8s';
+import { Construct } from 'constructs';
+
+
+/**
+ *
+ *
+ * @schema Subnetwork
+ */
+export class Subnetwork extends ApiObject {
+  /**
+   * Returns the apiVersion and kind for \\"Subnetwork\\"
+   */
+  public static readonly GVK: GroupVersionKind = {
+    apiVersion: 'compute.example.com/v1',
+    kind: 'Subnetwork',
+  }
+
+  /**
+   * Renders a Kubernetes manifest for \\"Subnetwork\\".
+   *
+   * This can be used to inline resource manifests inside other objects (e.g. as templates).
+   *
+   * @param props initialization props
+   */
+  public static manifest(props: SubnetworkProps = {}): any {
+    return {
+      ...Subnetwork.GVK,
+      ...toJson_SubnetworkProps(props),
+    };
+  }
+
+  /**
+   * Defines a \\"Subnetwork\\" API object
+   * @param scope the scope in which to define this object
+   * @param id a scope-local name for the object
+   * @param props initialization props
+   */
+  public constructor(scope: Construct, id: string, props: SubnetworkProps = {}) {
+    super(scope, id, {
+      ...Subnetwork.GVK,
+      ...props,
+    });
+  }
+
+  /**
+   * Renders the object to Kubernetes JSON.
+   */
+  public override toJson(): any {
+    const resolved = super.toJson();
+
+    return {
+      ...Subnetwork.GVK,
+      ...toJson_SubnetworkProps(resolved),
+    };
+  }
+}
+
+/**
+ * @schema Subnetwork
+ */
+export interface SubnetworkProps {
+  /**
+   * @schema Subnetwork#metadata
+   */
+  readonly metadata?: ApiObjectMetadata;
+
+  /**
+   * @schema Subnetwork#spec
+   */
+  readonly spec?: SubnetworkSpec;
+}
+
+/**
+ * Converts an object of type 'SubnetworkProps' to JSON representation.
+ */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+export function toJson_SubnetworkProps(obj: SubnetworkProps | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'metadata': obj.metadata,
+    'spec': toJson_SubnetworkSpec(obj.spec),
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+
+/**
+ * @schema SubnetworkSpec
+ */
+export interface SubnetworkSpec {
+  /**
+   * Reference to the parent network
+   *
+   * @schema SubnetworkSpec#networkRef
+   */
+  readonly networkRef?: string;
+
+  /**
+   * IP range for the subnetwork
+   *
+   * @schema SubnetworkSpec#ipRange
+   */
+  readonly ipRange?: string;
+}
+
+/**
+ * Converts an object of type 'SubnetworkSpec' to JSON representation.
+ */
+/* eslint-disable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+export function toJson_SubnetworkSpec(obj: SubnetworkSpec | undefined): Record<string, any> | undefined {
+  if (obj === undefined) { return undefined; }
+  const result = {
+    'networkRef': obj.networkRef,
+    'ipRange': obj.ipRange,
+  };
+  // filter undefined values
+  return Object.entries(result).reduce((r, i) => (i[1] === undefined) ? r : ({ ...r, [i[0]]: i[1] }), {});
+}
+/* eslint-enable max-len, @stylistic/max-len, quote-props, @stylistic/quote-props */
+
+",
+}
+`;
+
 exports[`snapshots version.yaml 1`] = `
 {
   "author": {

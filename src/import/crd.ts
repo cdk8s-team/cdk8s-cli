@@ -128,6 +128,33 @@ export class ImportCustomResourceDefinition extends ImportBase {
     return new ImportCustomResourceDefinition(manifest);
   }
 
+  /**
+   * Creates an importer from multiple import specs by downloading and combining
+   * their manifests. This ensures CRDs from the same API group across different
+   * sources are consolidated into a single module.
+   *
+   * @param importSpecs Array of import specifications to aggregate
+   * @returns A single ImportCustomResourceDefinition containing all CRDs
+   */
+  public static async fromSpecs(importSpecs: ImportSpec[]): Promise<ImportCustomResourceDefinition> {
+    const manifests = await Promise.all(
+      importSpecs.map(spec => download(spec.source)),
+    );
+    // Combine all manifests with YAML document separator
+    const combinedManifest = manifests.join('\n---\n');
+    return new ImportCustomResourceDefinition(combinedManifest);
+  }
+
+  /**
+   * Creates an importer directly from a raw manifest string.
+   *
+   * @param manifest Raw YAML manifest string containing one or more CRDs
+   * @returns An ImportCustomResourceDefinition instance
+   */
+  public static fromManifest(manifest: string): ImportCustomResourceDefinition {
+    return new ImportCustomResourceDefinition(manifest);
+  }
+
   public readonly rawManifest: string;
   private readonly groups: Record<string, CustomResourceDefinition[]> = { };
 
