@@ -76,7 +76,7 @@
   "dependencies": {
     "@types/node": "^16",
     "ajv": "^8.20.0",
-    "cdk8s": "^2.70.117",
+    "cdk8s": "^2.70.118",
     "cdk8s-plus-33": "^2.5.63",
     "codemaker": "^1.142.0",
     "colors": "1.4.0",
@@ -86,7 +86,7 @@
     "jsii-rosetta": "^5.9.72",
     "jsii-srcmak": "0.1.1319",
     "json2jsii": "0.5.19",
-    "semver": "^7.8.5",
+    "semver": "^7.8.6",
     "sscaff": "^1.2.274",
     "table": "^6.9.0",
     "yaml": "2.9.1",

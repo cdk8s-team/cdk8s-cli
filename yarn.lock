@@ -1449,10 +1449,10 @@ cdk8s-plus-33@^2.5.63:
   dependencies:
     minimatch "^9.0.9"
 
-cdk8s@^2.70.117:
-  version "2.70.117"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.70.117.tgz#d57d5eccec6d3346ae304c5b1576d65767f86f90"
-  integrity sha512-z7cjKwS90pKeR1En61Ot8XA8tGRiHtksk/8Q0VNL1Cwja2NgUibBg6YAizEyoAiX+9ilnSY4X/mI7+K+sy8dJg==
+cdk8s@^2.70.118:
+  version "2.70.118"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.70.118.tgz#99843830c188549d6402e70845415f8ab6cb2ce8"
+  integrity sha512-Y6yrecsqbypRsnIxY2d4HlZii4BqId1H049xf7w0W/yEK2OlWa5Cb3S1hlou0bop915fvUJcVA7vSMcjn+/Xgw==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.16.2"
@@ -4218,15 +4218,25 @@ semver-intersect@^1.5.0:
   dependencies:
     semver "^6.3.0"
 
-semver@^6.3.0, semver@^6.3.1:
+semver@^6.3.0:
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.2.tgz#f50413fbe5a686c6379385b2e8789b61c124a3c7"
+  integrity sha512-GYrCADwpu6yV5OAvchkQ27Z5wwMxWAEMg5NNWjyHh/5DboFFqbdbvYNIvZouQpxXyeMPoTOh0vdPYKlf0ZswdQ==
+
+semver@^6.3.1:
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.1.tgz#556d2ef8689146e46dcea4bfdd095f3434dffcb4"
   integrity sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==
 
-semver@^7.5.2, semver@^7.5.3, semver@^7.5.4, semver@^7.7.2, semver@^7.7.3, semver@^7.8.5:
+semver@^7.5.2, semver@^7.5.3, semver@^7.5.4, semver@^7.7.2, semver@^7.7.3:
   version "7.8.5"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.8.5.tgz#39b646037dd50c14fb451e7e4cac58ed8b863f69"
   integrity sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==
+
+semver@^7.8.5, semver@^7.8.6:
+  version "7.8.6"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.8.6.tgz#67c0cda133a3ceb6f70b803e67625bf969000424"
+  integrity sha512-9lpSSU4Mly3mrtruwLs1eLK6+gzbzqeBFwRNjIjE+9LuDpWdYctrQlQ3ej1Ilgi7gknpsTRnPoLP8DpCHqHIJw==
 
 set-blocking@^2.0.0:
   version "2.0.0"
