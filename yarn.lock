@@ -1449,10 +1449,10 @@ cdk8s-plus-33@^2.5.63:
   dependencies:
     minimatch "^9.0.9"
 
-cdk8s@^2.70.118:
-  version "2.70.118"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.70.118.tgz#99843830c188549d6402e70845415f8ab6cb2ce8"
-  integrity sha512-Y6yrecsqbypRsnIxY2d4HlZii4BqId1H049xf7w0W/yEK2OlWa5Cb3S1hlou0bop915fvUJcVA7vSMcjn+/Xgw==
+cdk8s@^2.70.119:
+  version "2.70.119"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.70.119.tgz#a7395a4769666035ceac04ef7250811de89cff29"
+  integrity sha512-weF/1GrCMk44xBffCOMpFAuLe7pF6b8BDgupzkC9nbjro0MxYzzb+U9Uebsbcoau4eGx2JIlAIvRWurPScP6lA==
   dependencies:
     fast-json-patch "^3.1.1"
     follow-redirects "^1.16.2"
@@ -4548,10 +4548,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-table@^6.9.0:
-  version "6.9.0"
-  resolved "https://registry.yarnpkg.com/table/-/table-6.9.0.tgz#50040afa6264141c7566b3b81d4d82c47a8668f5"
-  integrity sha512-9kY+CygyYM6j02t5YFHbNz2FN5QmYGv9zAjVp4lCDjlCw7amdckXlEt/bjMhUIfj4ThGRE4gCUH5+yGnNuPo5A==
+table@^6.9.1:
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/table/-/table-6.9.1.tgz#5db499659bf26334769492f0c973b13de14001c0"
+  integrity sha512-aFh6MRLCU6WKdrJS+v++PeuglXT6VQ9qPDFgMBBJk5PJBaFHM10kb6Gqv8ecKD6iMXi4cheXh3KMWtWO0IJWIg==
   dependencies:
     ajv "^8.0.1"
     lodash.truncate "^4.4.2"
