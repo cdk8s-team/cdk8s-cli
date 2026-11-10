@@ -1449,13 +1449,13 @@ cdk8s-plus-33@^2.5.63:
   dependencies:
     minimatch "^9.0.9"
 
-cdk8s@^2.70.119:
-  version "2.70.119"
-  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.70.119.tgz#a7395a4769666035ceac04ef7250811de89cff29"
-  integrity sha512-weF/1GrCMk44xBffCOMpFAuLe7pF6b8BDgupzkC9nbjro0MxYzzb+U9Uebsbcoau4eGx2JIlAIvRWurPScP6lA==
+cdk8s@^2.70.121:
+  version "2.70.121"
+  resolved "https://registry.yarnpkg.com/cdk8s/-/cdk8s-2.70.121.tgz#fe2c873be9db93dc140dfec47043f4ecd9eb099e"
+  integrity sha512-Ot1WoBHIK8q7MbxITvN2ZDmvhVGOOjHgi8xBQTr5Lo5Ui68kaKPsaGctpFXwjHQPJfT1KVCq38snue80tP9jiw==
   dependencies:
     fast-json-patch "^3.1.1"
-    follow-redirects "^1.16.2"
+    follow-redirects "^1.16.3"
     yaml "2.9.1"
 
 chalk@^4, chalk@^4.0.0, chalk@^4.1.2:
@@ -2353,10 +2353,10 @@ flatted@^3.2.7, flatted@^3.2.9:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.4.4.tgz#aeeca2a506303f0cee61c59e6c9f2a88d2f29fc6"
   integrity sha512-5+ybhBZANEJxaH3X5evAFatUxLfEHSr7n6kYJ+1Qd0mUqr4eu9gIf6GDbWHf8RJijHrjjO8G+la14SlL2SeS1Q==
 
-follow-redirects@^1.16.2:
-  version "1.16.2"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.16.2.tgz#a233160dd1bc9b16cbbab43709e6adc7cc941c8c"
-  integrity sha512-/kVP2U8z596Ia0gwFrwyIeo74ta5aVmSeU1FfAUMAmcEP5EP7zydmag3SLiN64NaRKef3lxsq7i/g7ltJQDGow==
+follow-redirects@^1.16.3:
+  version "1.16.3"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.16.3.tgz#62b60932427f616327014a5e401e8fc5e9027e9b"
+  integrity sha512-toOSoqN6d51Wjf1aOFJYcoVv1aND9rj/CwjLU0Vz40oDuSpWDayCeKe4JpL5NL0WdFvoOOCI3BRo69HahjbR1A==
 
 for-each@^0.3.3, for-each@^0.3.5:
   version "0.3.5"
@@ -4395,17 +4395,17 @@ stop-iteration-iterator@^1.1.0:
     es-errors "^1.3.0"
     internal-slot "^1.1.0"
 
-stream-chain@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/stream-chain/-/stream-chain-4.4.1.tgz#bd7f954214405a84a2bc1eeaf52335f7b0fad658"
-  integrity sha512-4MWXw+Si0RW3HAYQN3MdxpgTJA6Te9StiLtdkZO248DLPsRipqBbuiQSkyYLpCDEuvqGfqb2B5dEGxiEfHYkNQ==
+stream-chain@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/stream-chain/-/stream-chain-4.4.2.tgz#9d810a2162cc133735d452c51b26addd6345bd6e"
+  integrity sha512-6WQtf7XW70N8/IXV4DfpTswi0VHTahsB0nO5UlLGp5HarJN+Q7VHT5HvBMlH9x0x77e+kJFnQkhkCdvFkwv2Vw==
 
 stream-json@^3.7.0:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/stream-json/-/stream-json-3.8.0.tgz#cef8bd190d5cd591c0d86ea962249e62cf2eb439"
-  integrity sha512-xD0bPEoPgaaEpEu2HSq1spYAs5LSJrLAlo44SHycE+aI8W0IrU2cklY7fiQKhRTVbuvxNUij06vIiz1NBT+AZA==
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/stream-json/-/stream-json-3.9.0.tgz#7998952b974602370770ec02d5259d5fe09aaebf"
+  integrity sha512-kL2w6owYCdzCRApK9/9HI7Vgrd+0iWE5tTGc8P/AS2AdPoHcFTQwUek66sbMpfaX73lgHvDN+u1AoRC/dzB1Hw==
   dependencies:
-    stream-chain "^4.4.1"
+    stream-chain "^4.4.2"
 
 streamroller@^3.1.5:
   version "3.1.5"
