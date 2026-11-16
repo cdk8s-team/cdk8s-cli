@@ -3949,9 +3949,9 @@ parse-json@^5.2.0:
     lines-and-columns "^1.1.6"
 
 path-equal@^1.2.5:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/path-equal/-/path-equal-1.2.8.tgz#f234a23616ad7d55cc8c8e6c6188c7e1966977f6"
-  integrity sha512-rCJWMlXlk9lZ2FEllgvh2IgPj/kxMx2sOeqtFNLO8dxEY0I4hBTa+ZW3JAsgeiTe8vL4MifATVDwxF9nGUI7HQ==
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/path-equal/-/path-equal-1.2.9.tgz#a9186ea0907c9148f83c6ee7a9ce810567bd961f"
+  integrity sha512-Haq/ZQIRQUOJVlfJmGO40pNo0PGwXWsoPlxM4k1cMtEFUZFT30gnwWbAGLqqqOAfQb8Nf9hFlhNXr+ahaNfrDw==
 
 path-exists@^3.0.0:
   version "3.0.0"
