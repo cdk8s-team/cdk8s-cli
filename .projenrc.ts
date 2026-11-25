@@ -24,6 +24,13 @@ const project = new Cdk8sTeamTypeScriptProject({
   workflowBootstrapSteps: [{ run: 'pip3 install uv' }],
   defaultReleaseBranch: '2.x',
   majorVersion: 2,
+  githubOptions: {
+    mergeQueueOptions: {
+      autoQueueOptions: {
+        targetBranches: ['2.x'],
+      },
+    },
+  },
   bin: {
     cdk8s: 'bin/cdk8s',
   },
